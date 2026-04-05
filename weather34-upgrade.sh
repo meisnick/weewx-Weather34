@@ -334,11 +334,33 @@ restore_settings() {
     chown -R "${WWW_USER}:${WWW_GROUP}" "${W34_DIR}"
 }
 
+# Check and fix xtype_services in weewx.conf
+check_xtype_services() {
+    echo -e "${BLUE}==> Checking xtype_services configuration...${NC}"
+    
+    if ! grep -q "LastNonZeroService" "${WEWX_CONF}" 2>/dev/null; then
+        echo -e "${YELLOW}WARNING: LastNonZeroService not found in xtype_services${NC}"
+        
+        # Check if xtype_services section exists
+        if grep -q "^[[:space:]]*xtype_services" "${WEWX_CONF}"; then
+            echo "  Adding LastNonZeroService to xtype_services..."
+            sed -i 's/xtype_services = \(.*\)/xtype_services = \1, user.lastnonzero.LastNonZeroService/' "${WEWX_CONF}"
+            echo -e "${GREEN}  Fixed: LastNonZeroService added to xtype_services${NC}"
+        else
+            echo -e "${YELLOW}  xtype_services section not found in weewx.conf${NC}"
+        fi
+    else
+        echo -e "${GREEN}  OK: LastNonZeroService is configured${NC}"
+    fi
+}
+
 # Verify installation
 verify() {
     echo -e "${BLUE}==> Verifying installation...${NC}"
     
     local errors=0
+    
+    check_xtype_services
     
     # Check key files exist
     echo "  Checking key files..."

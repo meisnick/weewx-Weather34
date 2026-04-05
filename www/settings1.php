@@ -66,8 +66,8 @@ $linkAWEKASID = "";
 $linkAmbientWeatherID = "";
 $linkPWSWeatherID = "";
 $linkMetOfficeID = "";
-$linkCustom1Title = "Services Config";
-$linkCustom1URL = "https://steepleian.github.io/weewx-Weather34/";
+$linkCustom1Title = "";
+$linkCustom1URL = "";
 $linkCustom2Title = "Belchertown";
 $linkCustom2URL = "";
 $USAWeatherFinder = "";
@@ -76,5 +76,5 @@ $extraLinkColor = "";
 $extraLinkURL = "";
 $darkskyunit = "";
 $wuapiunit = "h";
-$meteogramPlace = "United_Kingdom/England/Somewhere";
+$meteogramPlace = "Your_Country/Your_Region/Your_City";
 ?>

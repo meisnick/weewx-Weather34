@@ -6,13 +6,13 @@
 
   
 
-$sta['location'] = "Steeple Claydon, UK";
-$sta['name'] = "Steeple Claydon, UK";
-$sta['latitude'] = "51.94";
-$sta['longitude'] = "-0.987";
-$sta['altitude_meters'] = "84.0";
-$sta['link'] = "https://claydonsweather.org.uk";
-$sta['hardware'] = "GW1000";
+$sta['location'] = "Your Station Location";
+$sta['name'] = "Your Station Name";
+$sta['latitude'] = "0.0";
+$sta['longitude'] = "0.0";
+$sta['altitude_meters'] = "0.0";
+$sta['link'] = "https://your-weather-site.example.com";
+$sta['hardware'] = "Your Hardware";
 
 
 

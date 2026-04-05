@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-* Issues can be submitted here https://github.com/steepleian/weewx-Weather34/issues
+* Issues can be submitted here https://github.com/meisnick/weewx-Weather34/issues
 
 * Before sumitting a new issue, please look through the open and closed issue logs to see if there is previous history of the problem you encountered.
 * When submitting an issue it will help us to deal with your problem more quickly if you can supply the following information and run the listed procedures: -

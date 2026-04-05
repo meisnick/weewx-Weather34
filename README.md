@@ -1,52 +1,51 @@
-# Weather34 skin for WeeWX — Maintained Fork
+# Weather34 skin for WeeWX
 
-> **This is a community-maintained fork of the original weewx-Weather34 skin.** The upstream project (steepleian/weewx-Weather34) reached end-of-life in August 2023. This fork keeps the skin alive, working, and compatible with modern systems.
+> **A community-maintained fork of the original weewx-Weather34 skin.** The upstream project (steepleian/weewx-Weather34) reached end-of-life in August 2023. This fork keeps the skin alive, working, and compatible with modern systems.
 
 ## System Requirements
 
 - **WeeWX:** 4.x (tested with 4.10.2)
 - **PHP:** 8.1+ (compatibility fixes applied)
-- **OS:** Debian 11 (Bullseye) / Raspbian Bullseye
+- **OS:** Debian 11+ (Bullseye) / Raspbian Bullseye+
 - **Python:** 3.x
 
-## What's Different from Upstream
+## Features & Changes from Upstream
 
-This fork includes all fixes applied to keep a live production system running, including:
+### Local Highcharts Libraries
+- Replaced broken external CDN links with local Highcharts libraries
+- Updated deprecated `Highcharts.Color()` constructor calls for Highcharts 11+ compatibility
+- Fixed chart margins and container heights
+- Charts now load reliably without depending on third-party CDNs
 
-### PHP 8.1 Compatibility
-- Fixed `json_decode()` calls to use associative array mode
+### Lightning Panel Updates
+- `top_lightning_wf.php` rewritten — removed hardcoded WeatherFlow API key and station ID
+- Lightning data now sourced from the WeeWX-generated `jsondata/wf.txt` file
+- Ecowitt GW1000 lightning detector support added
+- GW1000-specific accumulator fields in `skin.conf`
+- Extended `archivedata.php.tmpl` with Ecowitt lightning fields
+
+### PHP 8.1+ Compatibility
+- Fixed `json_decode()` calls to use associative array mode throughout
 - Fixed NOAA KP index API response format changes
 - Fixed `int('%')` crash in `w34highchartsSearchX.py`
+- `w34CombinedData.php` wrapped in try/catch for `archivedata.php` loading failures
 
-### Highcharts 11+ Compatibility
-- Updated deprecated `Highcharts.Color()` constructor calls
-- Fixed chart margins and container heights
-- Replaced broken CDN links with local Highcharts libraries
-
-### Ecowitt GW1000 Support
-- Lightning panel rewritten for Ecowitt GW1000 (was WeatherFlow-only)
-- Added GW1000-specific accumulator fields to weewx.conf
-- Extended `archivedata.php.tmpl` with Ecowitt lightning fields
+### Security & Privacy
+- All hardcoded API keys, tokens, and credentials removed
+- Station-specific coordinates zeroed out in templates
+- Personal email addresses and URLs replaced with placeholders
+- Comprehensive `.gitignore` prevents runtime data and personal config from being committed
 
 ### Services Cleanup
 - Removed AerisWeather API dependency (service deprecated)
 - Removed earthquake service (API no longer functional)
 - Added AQI translator script for local data
 
-### Security
-- Removed all hardcoded API keys and tokens
-- Removed personally identifiable information from templates
-- Added comprehensive `.gitignore` for runtime files
-
 ## Installation
 
 Follow the instructions in [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md).
 
 **If upgrading from the original upstream version**, review the migration notes in [CHANGELOG.md](CHANGELOG.md) for breaking changes.
-
-## Demo
-
-A live example can be seen at your station's URL after installation.
 
 ## Screenshots
 

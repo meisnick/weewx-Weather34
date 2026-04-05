@@ -1,7 +1,6 @@
 from configobj import ConfigObj
-import distutils.file_util
-import traceback
 import shutil
+import traceback
 import time
 import sys
 import os
@@ -74,7 +73,7 @@ class w34_uninstaller:
                 try: os.remove(path)
                 except: print("File Not Found " + path)
             weewx_config_file = d["weewx_config_file"]
-            distutils.file_util.copy_file(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
+            shutil.copy2(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
             print('Updating weewx config')
             config_data = ConfigObj(weewx_config_file, encoding='utf8', list_values=False,write_empty_values=True)
             for k in KEYS_TO_DELETE:

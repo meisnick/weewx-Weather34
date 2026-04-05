@@ -33,6 +33,7 @@ Holding the left mouse down allows the chart to be scrolled left to right within
 # Setup Instructions for Weather34 Highcharts Option
 
 1. You must select the 'w34highcharts' option for the WeeWX Chart Data field in the Weather34 settings page.
+
 2. Setting the correct paths. Go to 'w34highcharts/scripts' in the root of your WX-HWS installation and edit the file 'plots_config.js'. The path settings are in the first few lines: -
 
         var pathweewx = '/weewx/'             //Path from web server home location to weewx directory
@@ -55,9 +56,12 @@ Ensure that these paths are correct for your installation.
             (as an example sudo chown www-data:www-data -R /var/www/html)
             
 4. Re-start WeeWX. Wait for the first archive period to elapse. Additional folders 'json' and 'json_day' should now have been created in the 'w34highcharts folder'. These contain the day, week and year json data files which are updated every archive period and the json_day files which are updated when you click through data points on the charts. Please note that the json_day/day report feature is not currently available with a local WeeWX remote webserver setup.
+
 5. Open your website page and click on any of the chart links and a new chart will be displayed.
+
 6. You will find additional controls which allows you change the time frame and zoom-in on data etc. 
-7. Apart from the many features metioned earlier, the context menu (button top right in each chart) allows the charts to be displayed full screen, printed or saved.
+
+7. Apart from the many features mentioned earlier, the context menu (button top right in each chart) allows the charts to be displayed full screen, printed or saved.
             
 8. You will notice that not all of the available charts are represented in the links on the alternative index page. If you wish to add or change the links the following format must be used, where '[chart_ID]' is the name of the chart e.g. 'humidityplot and '[time_frame]' is either 'weekly' or 'yearly': -
 
@@ -82,4 +86,3 @@ Note in the plots_config.js you can turn off all day plots using the info  var d
 To summarise there are multiple ways for day plots to work with local setups, with each level down getting a little more brittle. With remote machines there is only one way and everything must be setup correctly.
 
 Any problems, please raise an Issue in this repository attaching a debug report (see here for details http://www.weewx.com/docs/utilities.htm#wee_debug_utility), your skin.conf files and a syslog tail report covering at least two archive cycles from startup.
-

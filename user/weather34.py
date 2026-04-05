@@ -39,11 +39,11 @@ import time
 import weeutil.rsyncupload
 try: import xmltodict
 except: pass
-from distutils.version import StrictVersion
 try:
-    import urllib2 as urllib
+    from packaging.version import Version
 except ImportError:
-    import urllib.request as urllib
+    from pkg_resources import parse_version as Version
+import urllib.request as urllib
 try:
     from PIL import Image
 except ImportError:
@@ -94,8 +94,8 @@ except ImportError:
 
 VERSION = "0.0.5"
 
-REQUIRED_WEEWX = "3.9.2"
-if StrictVersion(weewx.__version__) < StrictVersion(REQUIRED_WEEWX):
+REQUIRED_WEEWX = "5.0.0"
+if Version(weewx.__version__) < Version(REQUIRED_WEEWX):
     raise weewx.UnsupportedFeature("weewx %s or greater is required, found %s"
                                    % (REQUIRED_WEEWX, weewx.__version__))
 
@@ -479,7 +479,7 @@ class ForecastData():
                         os.mkdir(os.path.dirname(lfilename), 0o777)
                     loginf("Web Service: %s is running" % (service,))
                     try:
-                        response = urllib.urlopen(urllib.Request(url, None, header), timeout = 15).read().decode('utf-8')
+                        response = urllib.request.urlopen(urllib.request.Request(url, None, header), timeout = 15).read().decode('utf-8')
                         if service_xml:
                             try:
                                 response = json.dumps(xmltodict.parse(response))

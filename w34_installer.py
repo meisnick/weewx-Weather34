@@ -1,6 +1,5 @@
 from zipfile import ZipFile
-import distutils.file_util
-import distutils.dir_util
+import shutil
 import traceback
 import platform
 import time
@@ -151,19 +150,21 @@ class w34_installer:
                     zip_file.extractall(extract_path)
                     print('Files extracted')
             try:
-                try:
                     for i in range(0, len(copy_list), 2):
-                        distutils.dir_util.copy_tree(os.path.join(extract_path, copy_list[i+1].strip()), copy_list[i].strip(), update = do_overwrite)
-                except:
-                    for i in range(0, len(copy_list), 2):
-                        distutils.dir_util.copy_tree(os.path.join(extract_path, copy_list[i+1].strip()), copy_list[i].strip(), update = do_overwrite)
+                        src = os.path.join(extract_path, copy_list[i+1].strip())
+                        dst = copy_list[i].strip()
+                        if os.path.exists(dst) and not do_overwrite:
+                            continue
+                        if os.path.exists(dst):
+                            shutil.rmtree(dst)
+                        shutil.copytree(src, dst)
                 self.change_permissions_recursive([locations["www"]], d["uid_gid"].split(","))
             except Exception as e: 
                 print(e)
             if d["delete_extracted_files"] == "True":
                 if extract_path != os.getcwd():
-                    distutils.dir_util.remove_tree(extract_path)
-            distutils.file_util.copy_file(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
+                    shutil.rmtree(extract_path, ignore_errors=True)
+            shutil.copy2(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
             print('Updating weewx config')
             for i in d:
                 if i.startswith("config_entries"):

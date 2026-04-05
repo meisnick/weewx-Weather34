@@ -44,9 +44,43 @@ These are in `.gitignore` and will not be touched by the installer:
 
 ---
 
-## Pre-Upgrade Checklist
+## Quick Upgrade (Recommended)
 
-### 1. Backup Everything
+An automated upgrade script is included that handles everything:
+
+```bash
+# 1. Pull the latest version
+cd ~/weewx-Weather34
+git pull origin main
+
+# 2. Run the automated upgrade (creates backup automatically)
+sudo bash weather34-upgrade.sh
+
+# 3. Verify in browser
+#    http://your-pi/weather34/
+```
+
+The script will:
+- Detect your WeeWX installation type automatically
+- Create a timestamped backup
+- Update from steepleian to meisnick repo automatically
+- Perform in-place update
+- Restore your settings
+- Restart WeeWX
+- Verify the installation
+
+For fresh install (uninstall + reinstall):
+```bash
+sudo bash weather34-upgrade.sh --fresh
+```
+
+---
+
+## Manual Upgrade (If Script Fails)
+
+### Pre-Upgrade Checklist
+
+#### 1. Backup Everything
 
 ```bash
 # Create a backup directory

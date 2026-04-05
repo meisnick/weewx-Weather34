@@ -79,19 +79,29 @@ class w34_installer:
             except:
                 print("Cannot find " + services_file + " file INSTALL ABORTED")
                 sys.exit(1)
-            from configobj import ConfigObj
+from configobj import ConfigObj
+from w34_services_parser import parse_services_text
             if conf_file == None:
                 file_count = 1
                 files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith(".conf")]
                 for f in files:
                     with open(f) as infile:
                         try:
-                            d = eval(re.sub(".*\"##.*\n",'', infile.read()).replace("\n", "").replace("\t", ""))
-                            if os.path.isdir(list(d["copy_paths"].split(","))[0]):
-                                conf_files[file_count] = f   
-                                file_count += 1   
-                        except Exception as e:
-                            pass
+                            raw = infile.read()
+                            parsed = parse_services_text(raw)
+                            if isinstance(parsed, dict) and "copy_paths" in parsed:
+                                if os.path.isdir(list(parsed["copy_paths"].split(","))[0]):
+                                    conf_files[file_count] = f
+                                    file_count += 1
+                        except Exception:
+                            try:
+                                d = eval(re.sub(".*\"##.*\n",'', raw).replace("\n", "").replace("\t", ""))
+                                if isinstance(d, dict) and "copy_paths" in d:
+                                    if os.path.isdir(list(d["copy_paths"].split(","))[0]):
+                                        conf_files[file_count] = f
+                                        file_count += 1
+                            except Exception:
+                                pass
                 if len(conf_files) == 1:
                     conf_file = conf_files[1]
                 else:

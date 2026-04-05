@@ -38,15 +38,15 @@ Holding the left mouse down allows the chart to be scrolled left to right within
 
         var pathweewx = '/weewx/'             //Path from web server home location to weewx directory
         var pathpws   = '/weather34/'               //Path from web server home location to weather34 directory
-        var pathweewxbin ='/home/weewx/bin'  //Physical path to weewx include files for wee_report_w34 if setup.py installed WeeWX
-        //var pathweewxbin ='/usr/share/weewx'  //Physical path to weewx include files for wee_report_w34 if DEB installed WeeWX
+        var pathweewxbin ='/home/weewx/bin'  //Physical path to weewx include files for w34highcharts if setup.py installed WeeWX
+        //var pathweewxbin ='/usr/share/weewx'  //Physical path to weewx include files for w34highcharts if DEB installed WeeWX
 
         var realtimefile =  pathweewx   + "w34realtime.txt";    //Location of real-time data from web server
         var pathjsonfiles = pathpws + "w34highcharts/json/";                    //Location weewx report output json files from home             location of weewx. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
 
         var dayplotsurl =   pathpws   + "w34highcharts/getDayChart.php"; //Location of day reports php file from home location of pws.
-        var pathjsondayfiles = "json_day/";                         //Location day report output json files from home location of where         wee_report_34 run. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
-        var weereportcmd = "./wee_reports_w34";                     //Command to run wee_report_34. DO NOT CHANGE.
+        var pathjsondayfiles = "json_day/";                         //Location day report output json files from home location of where w34highcharts run. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
+        var weereportcmd = "./wee_reports_w34";                     //Command to run w34highcharts reports. DO NOT CHANGE.
         
 Ensure that these paths are correct for your installation.        
 
@@ -76,6 +76,8 @@ If the socket connection fails the the getDayChart.php code uses the location of
 If weewxserverinfo.txt is not there then the php falls back to hardcoded WeeWX paths in the getDayChart.php to execute w34_reports.  If WeeWX is still not found the errors are logged in the webserver log file.
 
 As a side note the w34_reports command is always logged into the webserver error log for reference. This is why next to the syslog log this is the most important log followed by the browser console log.
+
+Note: For WeeWX 5.x, use `weectl report run` instead of `wee_reports` for manual report generation.
 
 If using a remote webserver then the setup is different and now rsync needs to be used since the python path will not work and the file w34_reports is a noop now and weather34.py is the only path.
 

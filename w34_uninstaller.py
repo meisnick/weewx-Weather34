@@ -6,6 +6,9 @@ import sys
 import os
 import re
 
+def w34_input(prompt):
+    return input(prompt)
+
 KEYS_TO_DELETE   = ['Weather34RealTime','Weather34WebServices','Weather34CloudCover','W34_DB_Backup','StdReport:w34Highcharts','StdReport:Weather34Report','StdReport:w34skinReport']
 VALUES_TO_DELETE = ['Engine:Services:process_services:user.w34_db_backup.W34_DB_Backup','Engine:Services:process_services:user.weather34.Weather34RealTime','Engine:Services:xtype_services:user.lastnonzero.LastNonZeroService']
 DIRS_TO_DELETE   = ['www:','skins:Weather34','skins:w34Highcharts','skins:w34Highcharts-day']
@@ -14,17 +17,11 @@ FILES_TO_DELETE  = ['user:w34highchartsSearchX.py','user:weather34.py','user:w34
 class w34_uninstaller:
     def __init__(self, conf_file):
         try:
-            try:
-                response = raw_input("Do you want to UNinstall w34 Template Yes/No? ").strip().upper()
-            except:
-                response = input("Do you want to UNinstall w34 Template Yes/No? ").strip().upper()
+            response = w34_input("Do you want to UNinstall w34 Template Yes/No? ").strip().upper()
             if response != "YES":
                 sys.exit(0)
             print ("!!!!!!!!!!!!UNINSTALLING W34 TEMPLATE!!!!!!!!!!!!!!")
-            try:
-                response = raw_input("Are you SURE you want to UNinstall w34 Template Yes/No? ").strip().upper()
-            except:
-                response = input("Are you SURE you want to UNinstall w34 Template Yes/No? ").strip().upper()
+            response = w34_input("Are you SURE you want to UNinstall w34 Template Yes/No? ").strip().upper()
             if response != "YES":
                 sys.exit(0)
             conf_files = {}
@@ -49,10 +46,7 @@ class w34_uninstaller:
                             print(str(f+1) + " -> " + conf_files[f+1])
                         response = 0
                         while response == 0 or response > len(conf_files):
-                            try:
-                                response = int(raw_input("Enter the NUMBER of the uninstaller config file ").strip())
-                            except:
-                                response = int(input("Enter the NUMBER of the uninstaller config file ").strip())
+                            response = int(w34_input("Enter the NUMBER of the uninstaller config file ").strip())
                         conf_file = conf_files[response]
                     else:
                         print("!!! NO VALID W34_INSTALLER CONFIG FILE. UNINSTALL ABORTED!!!")

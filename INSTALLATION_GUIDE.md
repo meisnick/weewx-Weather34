@@ -30,7 +30,9 @@ IMPORTANT. Installing PHP; please make sure you install all the PHP modules appr
 
 Once completed, make sure you save weewx.conf
 
-* If you have the CRT extension (Cumulus Real-Time) extension installed, unless you require it for another purpose, you can remove it now. (sudo ./wee_extension --uninstall crt)
+* If you have the CRT extension (Cumulus Real-Time) extension installed, unless you require it for another purpose, you can remove it now. Run:
+  - WeeWX 4.x: `sudo ./wee_extension --uninstall crt`
+  - WeeWX 5.x: `sudo weectl extension uninstall crt`
 
 * This install process assumes that you are using one of the officially documented WeeWX installs and a typical Apache2 web server configuration of /var/www/html. In this instance, at the end of the installation process your path to the Weather34 skin will be /var/www/html/weewx/weather34. If your installation deviates from this, you will need to adjust the paths in your weewx.conf file after the installation process has taken place.
 
@@ -54,8 +56,8 @@ Once completed, make sure you save weewx.conf
 
 
 * Restart WeeWX and from command line run: -
-             	
-		sudo python3 ./[YOUR OWN PATH TO]/wee_reports
+  - WeeWX 4.x: `sudo python3 ./[YOUR OWN PATH TO]/wee_reports`
+  - WeeWX 5.x: `sudo weectl report run`
 
 This will allow some of the required variable data to be generated immediately without having to wait for the next report generation interval.
 

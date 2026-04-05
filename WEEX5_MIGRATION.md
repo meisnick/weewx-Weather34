@@ -28,24 +28,11 @@ WeeWX 5.3.1 is the current stable release. The Weather34 skin is largely compati
 
 ### 1. Installation Scripts
 
-**File:** `w34_installer.py`
+**Files:** `w34_installer.py`, `w34_uninstaller.py`
 
-The installer uses `raw_input` (Python 2) with a Python 3 fallback, but still uses old `wee_extension` commands. These must be updated to WeeWX 5.x's `weectl` commands.
+The installers used Python 2-style `raw_input`. These have been updated to Python 3-only with a compatible `w34_input()` wrapper function.
 
-**Actions:**
-- Replace `wee_extension --install=...` → `weectl extension install ...`
-- Replace `wee_extension --uninstall=...` → `weectl extension uninstall ...`
-- Update `wee_reports` reference → `weectl report run`
-- Update `wee_config` reference → `weectl station reconfigure`
-
-**Example:**
-```python
-# Old (WeeWX 4.x)
-os.system('wee_extension --install=weather34-archive.tar.gz')
-
-# New (WeeWX 5.x)
-os.system('weectl extension install weather34-archive.tar.gz')
-```
+The installer does not call `wee_*` commands directly. References to `wee_extension`, `wee_reports`, and `wee_debug` are in the documentation files, not the installer code itself.
 
 ### 2. weewx.conf Configuration
 
@@ -115,6 +102,18 @@ sudo weectl extension install weewx-gw1000.tar.gz
 
 ### 4. Update Installation Documentation
 
+**Files:** `INSTALLATION_GUIDE.md`, `TROUBLESHOOTING.md`, `HIGHCHARTS_GUIDE.md`
+
+References to old WeeWX 4.x commands have been updated in the documentation:
+
+| Old Command | New Command |
+|-------------|-------------|
+| `wee_extension --uninstall crt` | `weectl extension uninstall crt` |
+| `python3 ./[PATH]/wee_reports` | `weectl report run` |
+| `./wee_debug --output` | `weectl debug --output` |
+
+### 5. Remove Deprecated Services
+
 **File:** `INSTALLATION_GUIDE.md`
 
 References to old WeeWX 4.x commands need updating:
@@ -128,10 +127,6 @@ References to old WeeWX 4.x commands need updating:
 | `wee_database` | `weectl database` |
 | `wee_debug` | `weectl debug` |
 | `wee_device` | `weectl device` |
-
-**Update these lines:**
-- Line 33: `wee_extension --uninstall crt` → `weectl extension uninstall crt`
-- Line 58: `python3 ./[PATH]/wee_reports` → `weectl report run`
 
 ### 5. Remove Deprecated Services
 

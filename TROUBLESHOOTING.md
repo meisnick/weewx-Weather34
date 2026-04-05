@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-* Issues can be submitted here https://github.com/steepleian/weewx-Weather34/issues
+* Issues can be submitted here https://github.com/meisnick/weewx-Weather34/issues
 
 * Before sumitting a new issue, please look through the open and closed issue logs to see if there is previous history of the problem you encountered.
 * When submitting an issue it will help us to deal with your problem more quickly if you can supply the following information and run the listed procedures: -
@@ -22,7 +22,10 @@
     
     8. cd to your /skins folder and run    ls -lR "\*34\*"
         
-    9. run     ./wee_debug --output    This will generate weewx.debug report which includes weewx.conf with all sensitive information like passwords and keys removed. The default location for the output is /var/tmp/weewx.debug. More details can be found here http://www.weewx.com/docs/utilities.htm#wee_debug_utility
+    9. Run the debug utility:
+       - WeeWX 4.x: `./wee_debug --output`
+       - WeeWX 5.x: `weectl debug --output`
+       This will generate weewx.debug report which includes weewx.conf with all sensitive information like passwords and keys removed. The default location for the output is /var/tmp/weewx.debug. More details can be found here http://www.weewx.com/docs/utilities.htm#wee_debug_utility
 
    10. need error console output from your browser  
 

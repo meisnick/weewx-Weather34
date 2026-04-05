@@ -1,6 +1,5 @@
 from zipfile import ZipFile
-import distutils.file_util
-import distutils.dir_util
+import shutil
 import traceback
 import platform
 import time
@@ -9,6 +8,10 @@ import os
 import re
 
 services_file = "../services.txt"
+
+def w34_input(prompt):
+    return input(prompt)
+
 class w34_installer:
     def change_permissions_recursive(self, path_list, uid_gid):
         import grp,pwd
@@ -54,10 +57,7 @@ class w34_installer:
         conf_files = {}
         try:
             ver = platform.python_version()
-            try:
-                response = raw_input("!!! THIS INSTALL IS USING PYTHON VERSION " + ver + " IS THIS CORRECT? (Yes/No) ").strip()
-            except:
-                response = input("!!! THIS INSTALL IS USING PYTHON VERSION " + ver + " IS THIS CORRECT? (Yes/No) ").strip()
+            response = w34_input("!!! THIS INSTALL IS USING PYTHON VERSION " + ver + " IS THIS CORRECT? (Yes/No) ").strip()
             if not response.upper().startswith("Y"):
                 print("User terminated install due to Python Version " + ver) 
                 sys.exit(1)
@@ -101,19 +101,13 @@ class w34_installer:
                             print(str(f+1) + " -> " + conf_files[f+1])
                         response = 0
                         while response == 0 or response > len(conf_files):
-                            try:
-                                response = int(raw_input("Enter the NUMBER of the installer config file ").strip())
-                            except:
-                                response = int(input("Enter the NUMBER of the installer config file ").strip())
+                            response = int(w34_input("Enter the NUMBER of the installer config file ").strip())
                         conf_file = conf_files[response]
                     else:
                         print("!!! NO VALID W34_INSTALLER CONFIG FILE. INSTALL ABORTED!!!")
                         sys.exit(1)
             print("w34_installer Config file " + conf_file + " was chosen.")
-            try:
-                response = raw_input("IS THIS CORRECT? (Yes/No) ").strip()
-            except:
-                response = input("IS THIS CORRECT? (Yes/No) ").strip()
+            response = w34_input("IS THIS CORRECT? (Yes/No) ").strip()
             if not response.upper().startswith("Y"):
                 print("User terminated") 
                 sys.exit(1)
@@ -141,29 +135,28 @@ class w34_installer:
                     else:
                         if not do_overwrite:
                             print ("Extract path exists and overwrite set to False")
-                            try:
-                                response = raw_input("Do you want to abort the install!!! (Yes/No) ").strip()
-                            except:
-                                response = input("Do you want to abort the install!!! (Yes/No) ").strip()
+                            response = w34_input("Do you want to abort the install!!! (Yes/No) ").strip()
                             if response.upper().startswith("Y"):
                                 return
                     print('Extracting all the files to ' + extract_path)
                     zip_file.extractall(extract_path)
                     print('Files extracted')
             try:
-                try:
                     for i in range(0, len(copy_list), 2):
-                        distutils.dir_util.copy_tree(os.path.join(extract_path, copy_list[i+1].strip()), copy_list[i].strip(), update = do_overwrite)
-                except:
-                    for i in range(0, len(copy_list), 2):
-                        distutils.dir_util.copy_tree(os.path.join(extract_path, copy_list[i+1].strip()), copy_list[i].strip(), update = do_overwrite)
+                        src = os.path.join(extract_path, copy_list[i+1].strip())
+                        dst = copy_list[i].strip()
+                        if os.path.exists(dst) and not do_overwrite:
+                            continue
+                        if os.path.exists(dst):
+                            shutil.rmtree(dst)
+                        shutil.copytree(src, dst)
                 self.change_permissions_recursive([locations["www"]], d["uid_gid"].split(","))
             except Exception as e: 
                 print(e)
             if d["delete_extracted_files"] == "True":
                 if extract_path != os.getcwd():
-                    distutils.dir_util.remove_tree(extract_path)
-            distutils.file_util.copy_file(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
+                    shutil.rmtree(extract_path, ignore_errors=True)
+            shutil.copy2(weewx_config_file, weewx_config_file + "." + str(int(time.time())))
             print('Updating weewx config')
             for i in d:
                 if i.startswith("config_entries"):

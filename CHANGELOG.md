@@ -4,37 +4,40 @@ All notable changes to this maintained fork will be documented in this file.
 
 ## [Unreleased]
 
-### Security
-- Removed hardcoded WeatherFlow API key from `top_lightning_wf.php`
-- Replaced hardcoded UUID token in `settings.php` with placeholder
-- Replaced personal email address in `menu.php` with GitHub repo link
-- Zeroed out hardcoded coordinates in `template.php` and `initial_settings1.php`
-- Removed hardcoded personal URLs from `dark-meteogram.php` and `light-meteogram.php`
+### Local Highcharts
+- Replaced broken external CDN links with local Highcharts libraries
+- Updated deprecated `Highcharts.Color()` constructor calls for Highcharts 11+ compatibility
+- Fixed chart margins and container heights in `dark-meteogram.php` and `light-meteogram.php`
+- Charts now load reliably without depending on third-party CDNs
+
+### Lightning Panel
+- Rewrote `top_lightning_wf.php` — removed hardcoded WeatherFlow API key and station ID
+- Lightning data now sourced from WeeWX-generated `jsondata/wf.txt` file
+- Added Ecowitt GW1000 lightning detector support
+- Added GW1000-specific accumulator fields in `skin.conf`
+- Extended `archivedata.php.tmpl` with Ecowitt lightning fields
+
+### PHP 8.1+ Compatibility
+- Fixed `json_decode()` calls to use associative array mode throughout
+- Fixed NOAA KP index API response format changes
+- Fixed `int('%')` crash in `w34highchartsSearchX.py`
+- Wrapped `archivedata.php` loading in try/catch in `w34CombinedData.php`
+
+### Security & Privacy
+- Removed all hardcoded API keys, tokens, and credentials
+- Zeroed out station-specific coordinates in templates
+- Replaced personal email addresses and URLs with generic placeholders
+- Added comprehensive `.gitignore` preventing runtime data and personal config from being committed
+
+### Services Cleanup
+- Removed AerisWeather API dependency (service deprecated)
+- Removed earthquake service (API no longer functional)
+- Added AQI translator script for local data
 
 ### Cleanup
-- Removed junk/placeholder files from git tracking:
-  - `404.html`, `_config.yml`, `favicon.ico`, `info.php`, `license.txt`
-  - `manifest.php`, `notify.php`, `placeholder.txt`, `sw.js`
-  - `time_offset.php`, `updater.php`, `updatesection.php`
-  - `webserver_ip_address.php`, `wireframe.php`, `wxcharts.php`
-  - `pop_metoffice_daynight.php-not working`
-- Removed all generated runtime data files from tracking:
-  - `jsondata/*` (API response cache files)
-  - `serverdata/*` (WeeWX-generated server data)
-  - `w34highcharts/json/*` and `w34highcharts/json_day/*` (chart data)
-- Added comprehensive `.gitignore` covering:
-  - Runtime-generated JSON cache files
-  - Server data generated from `.tmpl` templates
-  - Highcharts generated JSON data
-  - Personal configuration (`settings1.php`)
-  - Backup files (`*.bak`)
-  - Third-party Highcharts libraries
-  - Python cache, OS artifacts
-
-### Documentation
-- Rewrote README to document this as a maintained fork
-- Added CHANGELOG.md (this file)
-- Documented all changes from upstream in PROJECT_COMPARISON.md
+- Removed junk/placeholder files from git tracking
+- Removed all generated runtime data files from tracking (`jsondata/*`, `serverdata/*`, `w34highcharts/json/*`)
+- Consolidated duplicate changelog files
 
 ---
 

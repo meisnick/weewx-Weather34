@@ -38,7 +38,10 @@ Revision History
 
 # python imports
 import configobj
-from distutils.version import StrictVersion
+try:
+    from packaging.version import Version
+except ImportError:
+    from pkg_resources import parse_version as Version
 from setup import ExtensionInstaller
 
 # import StringIO, use six.moves due to python2/python3 differences
@@ -311,7 +314,7 @@ def loader():
 
 class Gw1000Installer(ExtensionInstaller):
     def __init__(self):
-        if StrictVersion(weewx.__version__) < StrictVersion(REQUIRED_VERSION):
+        if Version(weewx.__version__) < Version(REQUIRED_VERSION):
             msg = "%s requires WeeWX %s or greater, found %s" % (''.join(('GW1000 driver ', GW1000_VERSION)),
                                                                  REQUIRED_VERSION,
                                                                  weewx.__version__)

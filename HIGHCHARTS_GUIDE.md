@@ -33,19 +33,20 @@ Holding the left mouse down allows the chart to be scrolled left to right within
 # Setup Instructions for Weather34 Highcharts Option
 
 1. You must select the 'w34highcharts' option for the WeeWX Chart Data field in the Weather34 settings page.
+
 2. Setting the correct paths. Go to 'w34highcharts/scripts' in the root of your WX-HWS installation and edit the file 'plots_config.js'. The path settings are in the first few lines: -
 
         var pathweewx = '/weewx/'             //Path from web server home location to weewx directory
         var pathpws   = '/weather34/'               //Path from web server home location to weather34 directory
-        var pathweewxbin ='/home/weewx/bin'  //Physical path to weewx include files for wee_report_w34 if setup.py installed WeeWX
-        //var pathweewxbin ='/usr/share/weewx'  //Physical path to weewx include files for wee_report_w34 if DEB installed WeeWX
+        var pathweewxbin ='/home/weewx/bin'  //Physical path to weewx include files for w34highcharts if setup.py installed WeeWX
+        //var pathweewxbin ='/usr/share/weewx'  //Physical path to weewx include files for w34highcharts if DEB installed WeeWX
 
         var realtimefile =  pathweewx   + "w34realtime.txt";    //Location of real-time data from web server
         var pathjsonfiles = pathpws + "w34highcharts/json/";                    //Location weewx report output json files from home             location of weewx. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
 
         var dayplotsurl =   pathpws   + "w34highcharts/getDayChart.php"; //Location of day reports php file from home location of pws.
-        var pathjsondayfiles = "json_day/";                         //Location day report output json files from home location of where         wee_report_34 run. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
-        var weereportcmd = "./wee_reports_w34";                     //Command to run wee_report_34. DO NOT CHANGE.
+        var pathjsondayfiles = "json_day/";                         //Location day report output json files from home location of where w34highcharts run. DO NOT CHANGE UNLESS YOU CHANGE SKIN DIRECTORY.
+        var weereportcmd = "./wee_reports_w34";                     //Command to run w34highcharts reports. DO NOT CHANGE.
         
 Ensure that these paths are correct for your installation.        
 
@@ -55,9 +56,12 @@ Ensure that these paths are correct for your installation.
             (as an example sudo chown www-data:www-data -R /var/www/html)
             
 4. Re-start WeeWX. Wait for the first archive period to elapse. Additional folders 'json' and 'json_day' should now have been created in the 'w34highcharts folder'. These contain the day, week and year json data files which are updated every archive period and the json_day files which are updated when you click through data points on the charts. Please note that the json_day/day report feature is not currently available with a local WeeWX remote webserver setup.
+
 5. Open your website page and click on any of the chart links and a new chart will be displayed.
+
 6. You will find additional controls which allows you change the time frame and zoom-in on data etc. 
-7. Apart from the many features metioned earlier, the context menu (button top right in each chart) allows the charts to be displayed full screen, printed or saved.
+
+7. Apart from the many features mentioned earlier, the context menu (button top right in each chart) allows the charts to be displayed full screen, printed or saved.
             
 8. You will notice that not all of the available charts are represented in the links on the alternative index page. If you wish to add or change the links the following format must be used, where '[chart_ID]' is the name of the chart e.g. 'humidityplot and '[time_frame]' is either 'weekly' or 'yearly': -
 
@@ -73,6 +77,8 @@ If weewxserverinfo.txt is not there then the php falls back to hardcoded WeeWX p
 
 As a side note the w34_reports command is always logged into the webserver error log for reference. This is why next to the syslog log this is the most important log followed by the browser console log.
 
+Note: For WeeWX 5.x, use `weectl report run` instead of `wee_reports` for manual report generation.
+
 If using a remote webserver then the setup is different and now rsync needs to be used since the python path will not work and the file w34_reports is a noop now and weather34.py is the only path.
 
 The user must setup keys and the transfer in the WeeWX config to to rsync for any transfers to work from a WeeWX server to a remote webserver.
@@ -82,4 +88,3 @@ Note in the plots_config.js you can turn off all day plots using the info  var d
 To summarise there are multiple ways for day plots to work with local setups, with each level down getting a little more brittle. With remote machines there is only one way and everything must be setup correctly.
 
 Any problems, please raise an Issue in this repository attaching a debug report (see here for details http://www.weewx.com/docs/utilities.htm#wee_debug_utility), your skin.conf files and a syslog tail report covering at least two archive cycles from startup.
-

@@ -558,7 +558,7 @@ if (!location.hash) {
     //place = 'United_States/California/San_Francisco';
     //place = 'United_States/Minnesota/Minneapolis';
     location.hash = '<?php echo "$meteogramURL"; ?>/weewx/weather34/jsondata/yr.xml';
-	//location.hash = 'https://www.yr.no/place/United_Kingdom/England/Steeple_Claydon/forecast_hour_by_hour.xml';
+	//location.hash = 'https://www.yr.no/place/Your_Country/Your_Region/Your_City/forecast_hour_by_hour.xml';
 
 }
 

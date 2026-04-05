@@ -409,13 +409,13 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
         </a>
       </li>
       <li>
-        <a href="https://steepleian.github.io/weewx-Weather34/" title="Web Services Setup Page" target="_blank">
+        <a href="https://github.com/your-org/weewx-Weather34" title="Web Services Setup Page" target="_blank">
           <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Web Services Setup Page
         </a>
       </li>
       <li>
-        <a href="mailto://steepleian@gmail.com" title="Email Steepleian for Support" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Maintained by Ian Millard (Steepleian)
+        <a href="https://github.com/meisnick/weewx-Weather34" title="View on GitHub" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Weather34 for WeeWX on GitHub
         </a>
       </li>
       <li>

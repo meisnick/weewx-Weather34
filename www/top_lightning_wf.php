@@ -6,7 +6,7 @@
 // example
 // [Weather34WebServices]
 
-//	ls_url = https://swd.weatherflow.com/swd/rest/observations/station/32338?api_key=20c70eae-e62f-4d3b-b3a4-8586e90f3ac8
+//	ls_url = https://swd.weatherflow.com/swd/rest/observations/station/YOUR_STATION_ID?api_key=YOUR_API_KEY
 //	ls_interval = 60
 
 //  services = .wf
@@ -14,7 +14,7 @@
 // or use an example like below !
 
 <!--?php
-$url2 = 'https://swd.weatherflow.com/swd/rest/observations/station/'.$weatherflowID.'?api_key=20c70eae-e62f-4d3b-b3a4-8586e90f3ac8';  
+$url2 = 'https://swd.weatherflow.com/swd/rest/observations/station/'.$weatherflowID.'?api_key='.$somethinggoeshere;  
 $ch2 = curl_init($url2);
 $filename2 = 'jsondata/wf.txt';
 $complete_save_loc2 = $filename2; 

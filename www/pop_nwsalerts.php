@@ -69,7 +69,7 @@ else
 <main class="grid_FT">
 <articlegraph_FT style="height:15px">  
   <div class="lotemp">
-   <?php echo $info; ?> CSS/SVG/PHP scripts by steepleian at claydonsweather.org.uk &copy; 2021-<?php echo date("Y"); ?>  -  <a href="https://www.aerisweather.com/support/docs/api/reference/endpoints/alerts/" title="AerisWeather" target="_blank">Data © <?php echo date("Y"); ?>AerisWeather Alerts</a></span>
+    <?php echo $info; ?> CSS/SVG/PHP scripts by weather34 community &copy; 2021-<?php echo date("Y"); ?>  -  <a href="https://www.aerisweather.com/support/docs/api/reference/endpoints/alerts/" title="AerisWeather" target="_blank">Data © <?php echo date("Y"); ?>AerisWeather Alerts</a></span>
   </div>   
     
      

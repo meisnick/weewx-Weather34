@@ -70,7 +70,7 @@ var two = new Two(params).appendTo(sky);
 	var Dm = '-11.450';   // Moon position					
 	var Da = '-11.450';   // Hand of Aries position 
 	
-	var longitude = '13.767345965293318';
+	var longitude = '0.0';
 	var clock_R = 147;
 	
 	// ----- SUN OTIONS --------------------------------------------------------------

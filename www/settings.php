@@ -82,7 +82,7 @@ $credits            = "Data Supplied via Weather Underground"; // for chart page
 $templateinfo       = ''; // template information page
 $templateversion    = 'W34-<maxblue>4.2.8.4</maxblue>';
 
-$software    = 'WeeWX <span>Hardware</span> Users';$designedfor='<br>For WeeWX Users';$chartversion='(WUDATACHARTS)';$somethinggoeshere ='d4586dec-e7a2-47ae-99b6-25527b2563c9';$chartversionmysql  =  '(DATACHARTS WeeWX Database Version)';
+$software    = 'WeeWX <span>Hardware</span> Users';$designedfor='<br>For WeeWX Users';$chartversion='(WUDATACHARTS)';$somethinggoeshere ='YOUR_WEATHERFLOW_API_TOKEN';$chartversionmysql  =  '(DATACHARTS WeeWX Database Version)';
 if (array_key_exists('theme', $_GET) && ($_GET['theme'] == 'dark' || $_GET['theme'] == 'light')) {
   SetCookie('theme', $_GET['theme'], time() + 15552000);
   $theme = $_GET['theme'];

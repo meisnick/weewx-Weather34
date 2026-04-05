@@ -282,7 +282,7 @@ switch ($favcolor)
 <main class="grid_FT">
 <articlegraph_FT style="height:15px">  
   <div class="lotemp">
-   <?php echo $info ?> CSS/SVG/PHP scripts by claydonsweather.org.uk &copy; 2021-<?php echo date('Y'); ?>  -  <a href="https://www.aerisweather.com/support/docs/api/reference/endpoints/alerts/" title="AerisWeather" target="_blank">Data © <?php echo date('Y'); ?>AerisWeather</a></span>
+   <?php echo $info ?> CSS/SVG/PHP scripts by claydonsweather.org.uk &copy; 2021-<?php echo date('Y'); ?>  - Weather alerts via AerisWeather (requires API key)</span>
   </div>   
     
      

@@ -25,7 +25,7 @@ $code = $parsed_json["error"]["code"];
 
 </head>
 <body>
-<?php echo '<div class="weather34darkbrowser" url="NWS Advisory via AerisWeather for ' . $stationlocation . '"></div>'; ?> 
+<?php echo '<div class="weather34darkbrowser" url="NWS Advisory for ' . $stationlocation . '"></div>'; ?> 
 
   
     <?php
@@ -34,7 +34,7 @@ if ($code == "warn_no_data")
 { ?>
   <p><main class="grid3"><articlegraph3 class="alert-row-narrow" style="background-color:white; font-size:10px;"><img src="css/svg/icon-warning-noalert-white.svg" style="width:75px; height:75px;"><ul><li><?php
         echo "NO ADVISORIES in force for this location at the present time."
-?></li></br><li><?php echo "The weather alerts used by this website are provided by AerisWeather using data supplied to them by NWS.";
+?></li></br><li><?php echo "Weather advisories sourced from NWS.";
 ?></li></ul></articlegraph3>
 <?php
 }
@@ -69,7 +69,7 @@ else
 <main class="grid_FT">
 <articlegraph_FT style="height:15px">  
   <div class="lotemp">
-   <?php echo $info; ?> CSS/SVG/PHP scripts by steepleian at claydonsweather.org.uk &copy; 2021-<?php echo date("Y"); ?>  -  <a href="https://www.aerisweather.com/support/docs/api/reference/endpoints/alerts/" title="AerisWeather" target="_blank">Data © <?php echo date("Y"); ?>AerisWeather Alerts</a></span>
+   <?php echo $info; ?> CSS/SVG/PHP scripts by weather34 community &copy; 2021-<?php echo date("Y"); ?>  - Weather data sourced from NWS</span>
   </div>   
     
      

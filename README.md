@@ -45,7 +45,9 @@
 
 Follow the instructions in [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md).
 
-**If upgrading from the original upstream version**, review the migration notes in [CHANGELOG.md](CHANGELOG.md) for breaking changes.
+**If upgrading from the original upstream version (steepleian/weewx-Weather34)**, read [UPGRADE.md](UPGRADE.md) first.
+
+**If upgrading WeeWX from 4.x to 5.x**, see [WEEWX5_MIGRATION.md](WEEWX5_MIGRATION.md).
 
 ## Screenshots
 
@@ -68,6 +70,15 @@ The above copyright notice and this permission notice shall be included in all c
 THE TEMPLATE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE TEMPLATE OR THE USE OR OTHER DEALINGS IN THE TEMPLATE.
 
 Attribution-NonCommercial 4.0 International based on a work at https://weather34.com/homeweatherstation
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) | Fresh installation |
+| [UPGRADE.md](UPGRADE.md) | Upgrading from steepleian/weewx-Weather34 |
+| [WEEWX5_MIGRATION.md](WEEWX5_MIGRATION.md) | Upgrading from WeeWX 4.x to 5.x |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues and fixes |
 
 ## Credits
 

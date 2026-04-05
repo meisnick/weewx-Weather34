@@ -1,0 +1,12 @@
+## Weather34 Services Configuration
+## Format: Python dictionary
+## Enable/disable services by setting values to True/False
+
+{
+"weather Underground" : True,
+"METAR" : True,
+"air quality" : True,
+"AQI" : True,
+"weatherflow" : False,
+"lightning" : True
+}

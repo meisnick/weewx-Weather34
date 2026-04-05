@@ -16,5 +16,6 @@
 ?>
 </span></div>
 <!-- HOMEWEATHER STATION TEMPLATE SIMPLE WEBCAM -add your url as shown below do NOT delete the class='webcam' !!! -->
-<a href= "https://webcams.windy.com/webcams/public/embed/player/1643100141/day?autoresize=1" data-lity><img src="https://webcams.windy.com/webcams/public/embed/player/1643100141/day?autoresize=1?v=<?php echo date('YmdGis');?>" alt="weathercam" class="webcam"></a>
+<a href= "<?php echo $webcamurl?>" data-lity><img src="<?php echo $webcamurl?>?v=<?php echo date('YmdGis');?>>" alt="weathercam" class="webcam"></a>
+
 

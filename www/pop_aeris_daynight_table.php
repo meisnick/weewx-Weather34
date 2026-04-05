@@ -9,7 +9,6 @@
 // 	                                                                                                				#
 //###################################################################################################################
 include ('w34CombinedData.php');
-$iconset = "icon2";
 if ($theme === "dark")
 {
     echo '<style>.demo{border:0 solid #aaa;border-collapse:collapse;padding:50px;font-family:arial,helvetica,verdana,sans-serif;font-size:10px;margin-bottom:50px;margin-top:50px margin-left:50%;margin-right:-50%;width:100%;color:silver}.demo th{border-bottom:.5px solid #aaa;/*! border-top:1px solid #aaa; */
@@ -43,7 +42,7 @@ $parsed_json = json_decode($json, true);
 for ($k = 0;$k < 14;$k++)
 {
     $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'];
-    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]][$iconset];
+    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon1'];
     $Time[$k] = date("H", $parsed_json['response'][0]['periods'][$k]['timestamp']);
     $nameDay[$k] = date("l", $parsed_json['response'][0]['periods'][$k]['timestamp']);
 
@@ -62,16 +61,16 @@ for ($k = 0;$k < 14;$k++)
         $forecastTime[10] = $nameDay[10];
         $forecastTime[11] = $nameDay[11] . " Night";
         $forecastTime[12] = $nameDay[12];
+        $forecastTime[12] = $nameDay[12] . " Night";
+        $forecastTime[13] = $nameDay[13];
         $forecastTime[13] = $nameDay[13] . " Night";
         $forecastTime[14] = $nameDay[14];
+        $forecastTime[14] = $nameDay[14] . " Night";
+        $forecastTime[15] = $nameDay[15];
         $forecastTime[15] = $nameDay[15] . " Night";
         $forecastTime[16] = $nameDay[16];
-        $forecastTime[17] = $nameDay[17] . " Night";
-        $forecastTime[18] = $nameDay[18];
-        $forecastTime[19] = $nameDay[19] . " Night";
-        $forecastTime[20] = $nameDay[20];
-        $forecastTime[21] = $nameDay[21] . " Night";
-        $forecastTime[22] = $nameDay[22];
+        $forecastTime[16] = $nameDay[16] . " Night";
+        $forecastTime[17] = $nameDay[17];
     }
     else if ($Time[0] === "19")
     {

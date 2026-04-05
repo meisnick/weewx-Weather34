@@ -1,5 +1,7 @@
 <?php
-  include('../divumdev/dvmCombinedData.php');
+  include('w34CombinedData.php');
+  include('settings.php');
+  //include('shared.php');
   date_default_timezone_set($TZ);
   header('Content-type: text/html; charset=utf-8');
   error_reporting(0);
@@ -8,7 +10,7 @@
   <div class="wfstrike">
     <?php
       //weather34 lightning
-      echo "<wfstriketoday>".$lightning['strike_count_last_3hr']; ?>
+      echo "<wfstriketoday>".$lightning['strike_count_3hr']; ?>
     </wfstriketoday>
   </div>
   <div class="minwordl">Strikes</div></div>
@@ -16,17 +18,18 @@
   <div class='wflaststrike'>
   <?php
     //weather34 weather34 last detect
-      echo "<spanfeelstitle>Last Strike: <orange> ".date("j M Y", $lightning['last_time'])." </orange> ";?><br />
+    if ($lightning['last_time']>=1) {
+      echo "<spanfeelstitle>Last Strike: <orange> ".date("j M Y", $lightning['last_time'])." </orange> ";}?><br />
   <?php
     if ($windunit == 'mph'){
-      echo "<spanfeelstitle>Last Distance At:<orange> " .number_format($lightning['last_distance']*0.621371,1). "  </orange>miles";
+      echo "<spanfeelstitle>Last Distance At:<orange> " .number_format($lightning['light_last_distance']*0.621371,1). "  </orange>miles";
     }else{
-      echo "<spanfeelstitle>Last Distance At:<orange> " .$lightning['last_distance']. "  </orange>km";
+      echo "<spanfeelstitle>Last Distance At:<orange> " .$lightning['light_last_distance']. "  </orange>km";
     }
   ?><br />
   <?php
     //weather34 weather34 last detect
-    echo "<spanfeelstitle>All-time Strike Total: <orange> ".$lightning["alltime_strike_count"]." </orange> ";?><br>
+    echo "<spanfeelstitle>All-time Strike Total: <orange> ".$lightning['strike_count']." </orange> ";?><br>
 </div>
 <div class="lightningicon">
 <?php

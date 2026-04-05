@@ -415,7 +415,7 @@ class w34highcharts_bar_rain_week(SearchList):
         # Create strike count json
         try:
                 (time_start_vt, time_stop_vt, strike_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts, timespan.stop), 'lightning_strike_count')
-                strikeRound = int(self.generator.skin_dict['Units']['StringFormats'].get(strike_vt[1], "1f")[-2])
+                strikeRound = 0
                 strikeRound_vt =  [roundNone(x,strikeRound) if x != None else 0 for x in strike_vt[0]]
                 strikeTime_ms =  [time_stop_vt[0][0] if (x == 0) else time_stop_vt[0][x] - time_stop_vt[0][0] for x in range(len(time_stop_vt[0]))]
                 strikeCount_json = json.dumps(list(zip(strikeTime_ms, strikeRound_vt)))
@@ -1259,11 +1259,11 @@ class w34highchartsYear(SearchList):
         try:
                 (strike_time_vt, strike_dict) = getDaySummaryVectors(db_lookup(), 'lightning_strike_count', timespan,['sum'])
                 time_ms = [strike_time_vt[0][0] if (x == 0) else strike_time_vt[0][x] - strike_time_vt[0][0] for x in range(len(strike_time_vt[0]))]
-                strikePlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(strike_dict['sum'][1], "1f")[-2])
+                strikePlaces = 0
                 strikeCountRound = [roundNone(x,strikePlaces) for x in strike_dict['sum'][0]]
                 strikeCount_json = json.dumps(list(zip(time_ms, strikeCountRound)))
         except Exception as e:
-                strikeCount_json = None
+                import syslog; syslog.syslog(syslog.LOG_ERR, "W34 strikeCount error: " + str(e) + " unit=" + str(strike_dict["sum"][1])); strikeCount_json = None
 
         # Create noise count json
         try:

@@ -158,14 +158,12 @@ if ($notifications == 'yes') {
         $longi = array();
         $eventime = array();
         for ($i = 0; $i < 100; $i++) {
-            //Fix for 'curly brace array access syntax' is deprecated since PHP 8.0 error
-            // Replaced {} with [] in lines 163 thru 168
-            $magnitude[$i]=$parsed_json[$i]['magnitude'];
-            $eqtitle[$i]=$parsed_json[$i]['title'];
-            $depth[$i]=$parsed_json[$i]['depth'];
-            $time[$i]=$parsed_json[$i]['date_time'];
-            $lati[$i]=$parsed_json[$i]['latitude'];
-            $longi[$i]=$parsed_json[$i]['longitude'];
+            $magnitude[$i]=$parsed_json{$i}{'magnitude'};
+            $eqtitle[$i]=$parsed_json{$i}['title'];
+            $depth[$i]=$parsed_json{$i}['depth'];
+            $time[$i]=$parsed_json{$i}['date_time'];
+            $lati[$i]=$parsed_json{$i}['latitude'];
+            $longi[$i]=$parsed_json{$i}['longitude'];
             $eventime[$i]=date($timeFormatShort, strtotime($time[$i]));
             $eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i]));
         }

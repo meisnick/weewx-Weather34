@@ -42,14 +42,14 @@ if (isset($weewxapi))
 {
     $weather["rain_alltime"] = $weewxapi[151];
     $year = substr($weewxrt[0], 6);
-    //if ($livedataFormat == 'WeeWX-W34')
-    //{
+    if ($livedataFormat == 'WeeWX-W34')
+    {
         if (isset($weewxrt[23]))
         {
             $weewxrt[23] = (float)(1 * $weewxrt[23]);
             $weewxrt[23] = number_format((float)$weewxrt[23], 0, '.', '');
         }
-    //}
+    }
     $recordDate = mktime(substr($weewxrt[1], 0, 2) , substr($weewxrt[1], 3, 2) , substr($weewxrt[1], 6, 2) , substr($weewxrt[0], 3, 2) , substr($weewxrt[0], 0, 2) , $year);
 
     $stationlocation = $sta['location'];
@@ -61,12 +61,12 @@ if (isset($weewxapi))
     $weather["datetime"] = $recordDate;
     $weather["date"] = date($dateFormat, $recordDate);
     $weather["time"] = date($timeFormat, $recordDate);
-    $barom["now"] = $weewxrt[10];
-    //$barom["max"] = (is_numeric($weewxapi[34]) ? number_format($weewxapi[34], 1) : null);
-    $barom["max"] = ($weewxapi[34] == "   N/A" ? "0" : $weewxapi[34]);
-    $barom["min"] = ($weewxapi[36] == "   N/A" ? "0" : $weewxapi[36]);
-    $barom["units"] = $weewxrt[15]; // mb or hPa or kPa or in
-    $barom["trend"] = $weewxrt[10] - ($weewxapi[18] == "   N/A" ? "0" : $weewxapi[18]);
+    $weather["barometer"] = $weewxrt[10];
+    //$weather["barometer_max"] = (is_numeric($weewxapi[34]) ? number_format($weewxapi[34], 1) : null);
+    $weather["barometer_max"] = ($weewxapi[34] == "   N/A" ? "0" : $weewxapi[34]);
+    $weather["barometer_min"] = ($weewxapi[36] == "   N/A" ? "0" : $weewxapi[36]);
+    $weather["barometer_units"] = $weewxrt[15]; // mb or hPa or kPa or in
+    $weather["barometer_trend"] = $weewxrt[10] - ($weewxapi[18] == "   N/A" ? "0" : $weewxapi[18]);
     $weather["temp_units"] = $weewxrt[14]; // C
     $weather["temp_indoor"] = $weewxrt[22];
     $weather["temp_indoor_feel"] = heatIndex($weewxrt[22], $weewxrt[23]); // must set temp_units first
@@ -166,7 +166,7 @@ if (isset($weewxapi))
     }
     if ($weather['luminance'] < 100)
     {
-        $weather['luminance'] = round($weather['luminance'],2);
+        $weather['luminance'] = $weather['luminance'];
     }
     //weather34 convert weewx lunar segment
     if ($weather["moonphase"] == 0)
@@ -220,6 +220,8 @@ if (isset($weewxapi))
     $weather["lightningday"] = ($weewxapi[76] == "   N/A" ? "0" : $weewxapi[76]);
     $weather["lightningmonth"] = ($weewxapi[74] == "   N/A" ? "0" : $weewxapi[74]);
     $weather["lightningyear"] = ($weewxapi[75] == "   N/A" ? "0" : $weewxapi[75]);
+    $weather["lightningalltime"] = ($weewxapi[78] == "   N/A" ? "0" : $weewxapi[78]);
+    $weather["lightningyesterday"] = ($weewxapi[79] == "   N/A" ? "0" : $weewxapi[79]);
     
     //ecowitt lightning
     $lightning['light_last_distance'] = ($lightning['light_last_distance'] == "   N/A" ? "0" : $lightning['light_last_distance']);
@@ -422,44 +424,44 @@ if (isset($weewxapi))
     $baromaxtimeyest = date("H:i", strtotime($baromaxoriginalDateb0));
     $barominoriginalDateb1 = ($weewxapi[138] == "   N/A" ? "0" : $weewxapi[138]);
     $baromintimeyest = date("H:i", strtotime($barominoriginalDateb1));
-    $barom["yesterday_maxtime"] = $baromaxtimeyest; //seconds
-    $barom["yesterday_mintime"] = $baromintimeyest; //seconds
-    $barom["yesterday_max"] = ($weewxapi[135] == "   N/A" ? "0" : $weewxapi[135]); //max yesterday
-    $barom["yesterday_min"] = ($weewxapi[137] == "   N/A" ? "0" : $weewxapi[137]); //min yesterday
+    $weather["thb0seapressydmaxtime"] = $baromaxtimeyest; //seconds
+    $weather["thb0seapressydmintime"] = $baromintimeyest; //seconds
+    $weather["thb0seapressydmax"] = ($weewxapi[135] == "   N/A" ? "0" : $weewxapi[135]); //max yesterday
+    $weather["thb0seapressydmin"] = ($weewxapi[137] == "   N/A" ? "0" : $weewxapi[137]); //min yesterday
     //pressure month
     $baromaxoriginalDateb2 = ($weewxapi[140] == "   N/A" ? "0" : $weewxapi[140]);
     $baromaxtimemonth = date("jS M", strtotime($baromaxoriginalDateb2));
     $barominoriginalDateb3 = ($weewxapi[142] == "   N/A" ? "0" : $weewxapi[142]);
     $baromintimemonth = date("jS M", strtotime($barominoriginalDateb3));
-    $barom["month_maxtime"] = $baromaxtimemonth; //seconds
-    $barom["month_mintime"] = $baromintimemonth; //seconds
-    $barom["month_max"] = ($weewxapi[139] == "   N/A" ? "0" : $weewxapi[139]); //max month
-    $barom["month_min"] = ($weewxapi[141] == "   N/A" ? "0" : $weewxapi[141]); //min month
+    $weather["thb0seapressmonthmaxtime"] = $baromaxtimemonth; //seconds
+    $weather["thb0seapressmonthmintime"] = $baromintimemonth; //seconds
+    $weather["thb0seapressmmax"] = ($weewxapi[139] == "   N/A" ? "0" : $weewxapi[139]); //max month
+    $weather["thb0seapressmmin"] = ($weewxapi[141] == "   N/A" ? "0" : $weewxapi[141]); //min month
     //pressure year
     $baromaxoriginalDateb4 = ($weewxapi[144] == "   N/A" ? "0" : $weewxapi[144]);
     $baromaxtimeyear = date("jS M", strtotime($baromaxoriginalDateb4));
     $barominoriginalDateb5 = ($weewxapi[146] == "   N/A" ? "0" : $weewxapi[146]);
     $baromintimeyear = date("jS M", strtotime($barominoriginalDateb5));
-    $barom["year_maxtime"] = $baromaxtimeyear; //seconds
-    $barom["year_mintime"] = $baromintimeyear; //seconds
-    $barom["year_max"] = ($weewxapi[143] == "   N/A" ? "0" : $weewxapi[143]); //max year
-    $barom["year_min"] = ($weewxapi[145] == "   N/A" ? "0" : $weewxapi[145]); //min year
+    $weather["thb0seapressyearmaxtime"] = $baromaxtimeyear; //seconds
+    $weather["thb0seapressyearmintime"] = $baromintimeyear; //seconds
+    $weather["thb0seapressymax"] = ($weewxapi[143] == "   N/A" ? "0" : $weewxapi[143]); //max year
+    $weather["thb0seapressymin"] = ($weewxapi[145] == "   N/A" ? "0" : $weewxapi[145]); //min year
     //pressure all time
     $baromaxoriginalDateb6 = ($weewxapi[148] == "   N/A" ? "0" : $weewxapi[148]);
     $baromaxtimeall = date("jS M Y", strtotime($baromaxoriginalDateb6));
     $barominoriginalDateb7 = ($weewxapi[150] == "   N/A" ? "0" : $weewxapi[150]);
     $baromintimeall = date("jS M Y", strtotime($barominoriginalDateb7));
-    $barom["alltime_maxtime"] = $baromaxtimeall; //seconds
-    $barom["alltime_mintime"] = $baromintimeall; //seconds
-    $barom["alltime_max"] = ($weewxapi[147] == "   N/A" ? "0" : $weewxapi[147]); //max all time
-    $barom["alltime_min"] = ($weewxapi[149] == "   N/A" ? "0" : $weewxapi[149]); //min all time
+    $weather["thb0seapressamaxtime"] = $baromaxtimeall; //seconds
+    $weather["thb0seapressamintime"] = $baromintimeall; //seconds
+    $weather["thb0seapressamax"] = ($weewxapi[147] == "   N/A" ? "0" : $weewxapi[147]); //max all time
+    $weather["thb0seapressamin"] = ($weewxapi[149] == "   N/A" ? "0" : $weewxapi[149]); //min all time
     //pressure today
     $baromaxoriginalDate = ($weewxapi[35] == "   N/A" ? "0" : $weewxapi[35]);
     $baromaxtime = date("H:i", strtotime($baromaxoriginalDate));
     $barominoriginalDate = ($weewxapi[37] == "   N/A" ? "0" : $weewxapi[37]);
     $baromintime = date("H:i", strtotime($barominoriginalDate));
-    $barom["maxtime"] = $baromaxtime; //seconds
-    $barom["mintime"] = $baromintime; //seconds
+    $weather["thb0seapressmaxtime"] = $baromaxtime; //seconds
+    $weather["thb0seapressmintime"] = $baromintime; //seconds
     //alamanac solar
     $solaroriginalDate = ($weewxapi[108] == "   N/A" ? "0" : $weewxapi[108]);
     $solarydmaxtime = date("H:i", strtotime($solaroriginalDate));
@@ -506,21 +508,17 @@ if (isset($weewxapi))
     $weather["temp_trend"] = number_format($weewxrt[2], 1) - number_format($weewxapi[67], 1);
     $weather["humidity_trend"] = number_format($weewxapi[3], 0) - number_format($weewxapi[68], 0);
     $weather["dewpoint_trend"] = number_format($weewxrt[4], 1) - number_format($weewxapi[69], 1);
-    if (isset($weewxrt[22])) {
-        $weather["temp_indoor_trend"] = number_format($weewxrt[22], 1) - number_format($weewxapi[70], 1);
-    }
-    if (isset($weewxrt[23])) { 
-        $weather["temp_humidity_trend"] = number_format($weewxrt[23], 1) - number_format($weewxapi[71], 1);
-    }
+    $weather["temp_indoor_trend"] = number_format($weewxrt[22], 1) - number_format($weewxapi[70], 1);
+    $weather["temp_humidity_trend"] = number_format($weewxrt[23], 1) - number_format($weewxapi[71], 1);
     $weather["barotrend"] = $weewxrt[10] - $barotrend[0];
     $weather['barometer6h'] = $weewxrt[10] - $weewxapi[73];
     $weather['winddir6h'] = ($weewxapi[72] == "   N/A" ? "0" : $weewxapi[72]);
     $weather["dirtrend"] = $dirtrend[0];
     //barometer units
-    if ($barom["units"] == "in")
+    if ($weather["barometer_units"] == "in")
     {
         // standardize format
-        $barom["units"] = "inHg";
+        $weather["barometer_units"] = "inHg";
     }
 }
 // Convert temperatures if necessary
@@ -654,56 +652,56 @@ if ($rainunit != $weather["rain_units"])
     }
 }
 // Convert pressure units if necessary
-if ($pressureunit != $barom["units"])
+if ($pressureunit != $weather["barometer_units"])
 {
-    if (($pressureunit == 'hPa' && $barom["units"] == 'mb') || ($pressureunit == 'mb' && $barom["units"] == 'hPa') || ($pressureunit == 'kPa' && $barom["units"] == 'mb') || ($pressureunit == 'mb' && $barom["units"] == 'kPa') || ($pressureunit == 'kPa' && $barom["units"] == 'hPa') || ($pressureunit == 'hPa' && $barom["units"] == 'kPa'))
+    if (($pressureunit == 'hPa' && $weather["barometer_units"] == 'mb') || ($pressureunit == 'mb' && $weather["barometer_units"] == 'hPa') || ($pressureunit == 'kPa' && $weather["barometer_units"] == 'mb') || ($pressureunit == 'mb' && $weather["barometer_units"] == 'kPa') || ($pressureunit == 'kPa' && $weather["barometer_units"] == 'hPa') || ($pressureunit == 'hPa' && $weather["barometer_units"] == 'kPa'))
     {
         // 1 mb = 1 hPa so just change the unit being displayed
-        $barom["units"] = $pressureunit;
+        $weather["barometer_units"] = $pressureunit;
     }
-    else if ($pressureunit == "inHg" && ($barom["units"] == 'mb' || $barom["units"] == 'hPa' || $barom["units"] == 'kPa'))
+    else if ($pressureunit == "inHg" && ($weather["barometer_units"] == 'mb' || $weather["barometer_units"] == 'hPa' || $weather["barometer_units"] == 'kPa'))
     {
-        mbToin($barom, "now", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "alltime_max", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "alltime_min", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "year_max", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "year_min", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "yesterday_max", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "yesterday_min", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "month_max", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "month_min", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "trend", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "trend1", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "barometermovement", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "max", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "min", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "avg", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "barometert", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "barotrend", ($barom["units"] == 'kPa' ? 1000 : 1));
-        mbToin($barom, "trendt", ($barom["units"] == 'kPa' ? 1000 : 1));
-        $barom["units"] = $pressureunit;
+        mbToin($weather, "barometer", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressamax", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressamin", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressymax", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressymin", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressydmax", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressydmin", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressmmax", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "thb0seapressmmin", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_trend", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_trend1", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometermovement", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_max", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_min", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_avg", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometert", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barotrend", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        mbToin($weather, "barometer_trendt", ($weather["barometer_units"] == 'kPa' ? 1000 : 1));
+        $weather["barometer_units"] = $pressureunit;
     }
-    else if (($pressureunit == "mb" || $pressureunit == 'hPa' || $pressureunit == 'kPa') && $barom["units"] == 'inHg')
+    else if (($pressureunit == "mb" || $pressureunit == 'hPa' || $pressureunit == 'kPa') && $weather["barometer_units"] == 'inHg')
     {
-        inTomb($barom, "now", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "alltime_max", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "alltime_min", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "year_max", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "year_min", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "yesterday_max", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "yesterday_min", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "month_max", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "month_min", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "trend", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "trend1", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "barometermovement", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "max", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "min", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "avg", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "barometert", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "barotrend", ($pressureunit == 'kPa' ? 0.001 : 1));
-        inTomb($barom, "trendt", ($pressureunit == 'kPa' ? 0.001 : 1));
-        $barom["units"] = $pressureunit;
+        inTomb($weather, "barometer", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressamax", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressamin", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressymax", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressymin", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressydmax", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressydmin", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressmmax", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "thb0seapressmmin", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_trend", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_trend1", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometermovement", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_max", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_min", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_avg", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometert", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barotrend", ($pressureunit == 'kPa' ? 0.001 : 1));
+        inTomb($weather, "barometer_trendt", ($pressureunit == 'kPa' ? 0.001 : 1));
+        $weather["barometer_units"] = $pressureunit;
     }
 }
 //Convert cloudbase
@@ -1275,8 +1273,8 @@ $wetbulbcalc = (((0.00066 * $P) * $Tc) + ((4098 * $E) / pow(($Tdc + 237.7) , 2) 
 $wetbulbx = number_format($wetbulbcalc, 1);
 // K-INDEX & SOLAR DATA FOR WEATHER34 HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
 $str = file_get_contents('jsondata/ki.txt');
-$json = array_reverse(json_decode($str, false));
-$kp = $json[1][1];
+$json = array_reverse(json_decode($str, true));
+$kp = $json[1]['kp'];
 $file = $_SERVER["SCRIPT_NAME"];
 $break = Explode('/', $file);
 $mod34file = $break[count($break) - 1];

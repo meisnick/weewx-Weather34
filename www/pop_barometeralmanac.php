@@ -33,22 +33,6 @@ if ($theme === "dark") {
 ); ?>" rel="stylesheet prefetch">
 
 
-<?php
-if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
-                                        $barom["trend"]=$barom["trend"]*0.1;
-                                        $barom["min"]=$barom["min"]*0.1;
-                                        $barom["max"]=$barom["max"]*0.1;
-                                        $barom["yesterday_max"]=$barom["yesterday_max"]*0.1;
-                                        $barom["yesterday_min"]=$barom["yesterday_min"]*0.1;
-                                        $barom["month_max"]=$barom["month_max"]*0.1;
-                                        $barom["month_min"]=$barom["month_min"]*0.1;
-                                        $barom["year_max"]=$barom["year_max"]*0.1;
-                                        $barom["year_min"]=$barom["year_min"]*0.1;
-                                        $barom["alltime_max"]=$barom["alltime_max"]*0.1;
-                                        $barom["alltime_min"]=$barom["alltime_min"]*0.1;
-}
-                                        
-?>
 <main class="grid">
   <article>
    <div class=actualt>&nbsp;Barometer Today </div>
@@ -56,29 +40,29 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 
 			  <?php
      ////pressure max today
-     if ($barom["month_max"] >= 0) {
+     if ($weather["thb0seapressmmax"] >= 0) {
          echo "<div class='temperaturetoday24'>",
-             $barom["max"] . "</value>";
+             $weather["barometer_max"] . "</value>";
      }
-     echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+     echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $barom[
-        "maxtime"
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $weather[
+        "thb0seapressmaxtime"
     ]; ?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
  //pressure min today
- if ($barom["min"] >= 0) {
+ if ($weather["barometer_min"] >= 0) {
      echo "<div class='temperaturetoday0'>",
-         $barom["min"] . "</value>";
+         $weather["barometer_min"] . "</value>";
  }
 
- echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+ echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $barom[
-    "mintime"
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $weather[
+    "thb0seapressmintime"
 ]; ?></span></div>
 </article>
 
@@ -88,15 +72,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 
 			  <?php
      ////pressure max yesterday
-     if ($barom["yesterday_max"] >= 0) {
+     if ($weather["thb0seapressydmax"] >= 0) {
          echo "<div class='temperaturetoday24'>",
-             $barom["yesterday_max"] . "</value>";
+             $weather["thb0seapressydmax"] . "</value>";
      }
-     echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+     echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $barom[
-        "yesterday_maxtime"
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+        "thb0seapressydmaxtime"
     ]; ?></span></div>
 			</div>
 
@@ -104,15 +88,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 <div class="temperaturecontainer2">
  <?php
  //pressure min yesterday
- if ($barom["yesterday_min"] >= 0) {
+ if ($weather["thb0seapressydmin"] >= 0) {
      echo "<div class='temperaturetoday0'>",
-         $barom["yesterday_min"] . "</value>";
+         $weather["thb0seapressydmin"] . "</value>";
  }
 
- echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+ echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $barom[
-    "yesterday_mintime"
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+    "thb0seapressydmintime"
 ]; ?></span></div>
 
 </article>
@@ -124,28 +108,28 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
    <div class="temperaturecontainer1">
   <?php
   ////pressure max month
-  if ($barom["month_max"] >= 0) {
+  if ($weather["thb0seapressmmax"] >= 0) {
       echo "<div class='temperaturetoday24'>",
-          $barom["month_max"] . "</value>";
+          $weather["thb0seapressmmax"] . "</value>";
   }
-  echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+  echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
   ?> </div>
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $barom[
-        "month_maxtime"
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+        "thb0seapressmonthmaxtime"
     ]; ?></span>
     </div>
 	</div>
 <div class="temperaturecontainer2">
    <?php
    //pressure min month
-   if ($barom["month_min"] >= 0) {
+   if ($weather["thb0seapressmmin"] >= 0) {
        echo "<div class='temperaturetoday0'>",
-           $barom["month_min"] . "</value>";
+           $weather["thb0seapressmmin"] . "</value>";
    }
-   echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+   echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
    ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $barom[
-    "month_mintime"
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+    "thb0seapressmonthmintime"
 ]; ?></span>
 </div>	</div>
 </article>
@@ -157,15 +141,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 
 			  <?php
      ////pressure max year
-     if ($barom["year_max"] >= 0) {
+     if ($weather["thb0seapressymax"] >= 0) {
          echo "<div class='temperaturetoday24'>",
-             $barom["year_max"] . "</value>";
+             $weather["thb0seapressymax"] . "</value>";
      }
-     echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+     echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $barom[
-        "year_maxtime"
+    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+        "thb0seapressyearmaxtime"
     ]; ?></span></div>
 			</div>
 
@@ -173,15 +157,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 <div class="temperaturecontainer2">
  <?php
  //pressure min year
- if ($barom["year_min"] >= 0) {
+ if ($weather["thb0seapressymin"] >= 0) {
      echo "<div class='temperaturetoday0'>",
-         $barom["year_min"] . "</value>";
+         $weather["thb0seapressymin"] . "</value>";
  }
 
- echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+ echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $barom[
-    "year_mintime"
+<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+    "thb0seapressyearmintime"
 ]; ?></span></div>
 
 </article>
@@ -193,15 +177,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 
 			  <?php
      ////pressure max year
-     if ($barom["alltime_max"] >= 0) {
+     if ($weather["thb0seapressamax"] >= 0) {
          echo "<div class='temperaturetoday24'>",
-             $barom["alltime_max"] . "</value>";
+             $weather["thb0seapressamax"] . "</value>";
      }
-     echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+     echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $barom[
-        "alltime_maxtime"
+    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $weather[
+        "thb0seapressamaxtime"
     ]; ?></span></div>
 			</div>
 
@@ -209,15 +193,15 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
 <div class="temperaturecontainer2">
  <?php
  //pressure min year
- if ($barom["alltime_min"] >= 0) {
+ if ($weather["thb0seapressamin"] >= 0) {
      echo "<div class='temperaturetoday0'>",
-         $barom["alltime_min"] . "</value>";
+         $weather["thb0seapressamin"] . "</value>";
  }
 
- echo "<smalluvunit>" . $barom["units"] . "</smalluvunit>";
+ echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $barom[
-    "alltime_mintime"
+<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $weather[
+    "thb0seapressamintime"
 ]; ?></span></div>
 
 </article>   
@@ -228,8 +212,8 @@ if ($barom["units"]==="kPa"){$barom["barometer"]=$barom["barometer"]*0.1;
   <iframe  src="w34highcharts/<?php echo $theme1; ?>-charts.html?chart='barsmallplot'&span='yearly'&temp='<?php echo $weather[
     "temp_units"
 ]; ?>'&pressure='<?php echo $weather[
-    "units"
-]; ?>'&wind='<?php echo $barom["wind_units"]; ?>'&rain='<?php echo $weather[
+    "barometer_units"
+]; ?>'&wind='<?php echo $weather["wind_units"]; ?>'&rain='<?php echo $weather[
     "rain_units"
 ]; ?>" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
    

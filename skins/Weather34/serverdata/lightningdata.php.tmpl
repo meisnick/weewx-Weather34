@@ -6,8 +6,19 @@
 #encoding UTF-8
 ##
 <?php
+//lightning for Ecowitt sensor
 $lightningdistance = "$alltime.lightning_distance.lastnonzero.format(add_label=False, $localize=False)";
 $lastlightningtime = "$alltime.lightning_last_det_time.lastnonzero.raw";
 $lightning = "$alltime.lightning_strike_count.sum";
-$lightning3hr = "$span($hour_delta=3)lightning_strike_count.sum";  
+$lightning3hr = "$span($hour_delta=3)lightning_strike_count.sum";
+$ecowitt['lightningdistance'] = ($lightningdistance == "   N/A" ? "0" : $lightningdistance);
+    $ecowitt['lastlightningtime'] = ($lastlightningtime == "   N/A" ? "0" : $lastlightningtime);
+    $ecowitt['lightning'] = ($lightning == "   N/A" ? "0" : $lightning);
+    $ecowitt['lightning3hr'] = ($lightning3hr == "   N/A" ? "0" : $lightning3hr);
+   
+
+echo $ecowitt['lightningdistance']."</br>";
+echo $ecowitt['lastlightningtime']."</br>";
+echo $ecowitt['lightning']."</br>";
+echo $ecowitt['lightning3hr']."</br>";
 ?>

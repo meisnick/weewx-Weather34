@@ -632,7 +632,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 
 	function setTempSmall(options) {
-	    options.chart.marginBottom = 20;
+	    options.chart.marginBottom = 40;
+            options.chart.marginTop = 50;
 	    options.yAxis[0].height = "180";
 	    $("#"+plot_div).css("height", 210);
 	    return options
@@ -910,7 +911,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 	
 	function setBarSmall(obj) {
-	    obj.chart.marginBottom = 20;
+	    obj.chart.marginBottom = 40;
 	    obj.yAxis[0].height = "260";
 	    $("#"+plot_div).css("height", 290);
 	    return obj
@@ -960,8 +961,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
             return wcolors;
         }
 	function setWindSmall(options) {
-	    options.chart.marginBottom = 20;
-	    options.yAxis[0].height = "295";
+	    options.chart.marginBottom = 40;
+            options.chart.marginTop = 50;
+	    options.yAxis[0].height = "255";
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1193,8 +1195,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setRainSmall(options) {
-	    options.chart.marginBottom = 20;
-	    options.yAxis[0].height = "295";
+	    options.chart.marginBottom = 40;
+            options.chart.marginTop = 50;
+	    options.yAxis[0].height = "255";
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1253,15 +1256,16 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setStrikeSmall(options) {
-	    options.chart.marginBottom = 20;
-	    options.yAxis[0].height = "295";
-	    $("#"+plot_div).css("height", 325);
+	    options.chart.marginBottom = 40;
+            options.chart.marginTop = 50;
+	    options.yAxis[0].height = "255";
+	    $("#"+plot_div).css("height", 375);
 	    return options;
 	};
 
 	function create_strike_chart(options, span, seriesData, units){
 	    options = create_chart_options(options, 'column', 'Strikes Count', null, [['Strikes Count', 'column']]);
-	    options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount));
+	    options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount || []));
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].title.text = "Strikes";
 	    options.yAxis[0].allowDecimals = false;
@@ -1274,7 +1278,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        options = create_chart_options(options, 'column', 'Lightning Distance/Strikes/Energy Max & Avg/Cnt', null, [['Distance Max', 'column',1], ['Distance Avg', 'column',1], ['Strikes Cnt', 'column'], ['Energy Max', 'column',2], ['Energy Avg', 'column',2]]);
 	        options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.distanceMax));
 	        options.series[1].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.distanceAvg));
-	        options.series[2].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount));
+	        options.series[2].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount || []));
 	        options.series[3].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.energyMax));
 	        options.series[4].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.energyAvg));
 	    }else if (span[0] == "weekly"){
@@ -1652,7 +1656,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                                         },
                                     stops: [
                                         [0, Highcharts.getOptions().colors[0]],
-                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]]
+                                        [1, new Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]]
                                 },
                                 marker: {radius: 2},
                                 lineWidth: 2,

@@ -10,7 +10,7 @@
 //  Contains original code by Ian Millard and collaborators															#
 //  © claydonsweather.org original CSS/SVG/PHP 2020-2021                                                            #
 // 	                                                                                                				#
-// 	Issues for weewx-Weather34 template should be addressed to https://github.com/steepleian/weewx-Weather34/issues #                                                                                              #
+// 	Issues for weewx-Weather34 template should be addressed to https://github.com/meisnick/weewx-Weather34/issues #                                                                                              #
 // 	                                                                                                				#
 //###################################################################################################################
 

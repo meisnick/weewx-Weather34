@@ -78,7 +78,7 @@ All notable changes to this maintained fork will be documented in this file.
 
 ---
 
-## Changes inherited from upstream (steepleian/weewx-Weather34)
+## Changes inherited from upstream (meisnick/weewx-Weather34)
 
 ### Upstream v4.3.0 (Mar 2023) - Last upstream release
 - DarkSky API removal (discontinued by Apple)

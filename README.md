@@ -1,6 +1,6 @@
 # Weather34 skin for WeeWX
 
-> **A community-maintained fork of the original weewx-Weather34 skin.** The upstream project (steepleian/weewx-Weather34) reached end-of-life in August 2023. This fork keeps the skin alive, working, and compatible with modern systems.
+> **A community-maintained fork of the original weewx-Weather34 skin.** The upstream project (meisnick/weewx-Weather34) reached end-of-life in August 2023. This fork keeps the skin alive, working, and compatible with modern systems.
 
 ## System Requirements
 
@@ -76,7 +76,7 @@ free, keyless, officially maintained sources. No account or API key required.
 
 Follow the instructions in [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md).
 
-**If upgrading from the original upstream version (steepleian/weewx-Weather34)**, read [UPGRADE.md](UPGRADE.md) first.
+**If upgrading from the original upstream version (meisnick/weewx-Weather34)**, read [UPGRADE.md](UPGRADE.md) first.
 
 **If upgrading WeeWX from 4.x to 5.x**, see [WEEWX5_MIGRATION.md](WEEWX5_MIGRATION.md).
 
@@ -107,7 +107,7 @@ Attribution-NonCommercial 4.0 International based on a work at https://weather34
 | Document | Purpose |
 |----------|---------|
 | [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) | Fresh installation |
-| [UPGRADE.md](UPGRADE.md) | Upgrading from steepleian/weewx-Weather34 |
+| [UPGRADE.md](UPGRADE.md) | Upgrading from meisnick/weewx-Weather34 |
 | [WEEWX5_MIGRATION.md](WEEWX5_MIGRATION.md) | Upgrading from WeeWX 4.x to 5.x |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues and fixes |
 
@@ -132,5 +132,5 @@ See [CHANGELOG.md](CHANGELOG.md) for a complete history of changes in this fork.
 ## Original Project
 
 - **Original template:** https://weather34.com/homeweatherstation — Brian Underdown
-- **WeeWX skin fork (EOL Aug 2023):** https://github.com/steepleian/weewx-Weather34 — Ian Millard
+- **WeeWX skin fork (EOL Aug 2023):** https://github.com/meisnick/weewx-Weather34 — Ian Millard
 - **Successor (in development):** https://github.com/Millardiang/weewx-divumwx

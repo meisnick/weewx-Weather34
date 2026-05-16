@@ -82,19 +82,23 @@ for ($k = 0;$k < 24;$k++)
         $forecastheatindex[$k] = round(($forecastheatindex[$k] * 9 / 5) + 32, 0);
     }
 
-    //rain mm to in
-    if ($forecastprecipIntensity[$k] === 0)
+    //rain — split amount and probability into distinct elements
+    if ($forecastprecipIntensity[$k] > 0 && $rainunit == 'in')
     {
-        $forecastPrecip[$k] = "-";
+        $forecastprecipIntensity[$k] = number_format($forecastprecipIntensity[$k] * 0.0393701, 2);
+        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . "&nbsp;in</bluet><br><greyt>" . $forecastPrecipProb[$k] . "%</greyt>";
     }
-    else if ($rainunit == 'in')
+    else if ($forecastprecipIntensity[$k] > 0)
     {
-        $forecastprecipIntensity[$k] = round(($forecastprecipIntensity[$k] * 0.0393701) , 2);
-        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
+        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . "&nbsp;mm</bluet><br><greyt>" . $forecastPrecipProb[$k] . "%</greyt>";
     }
-    else if ($rainunit == 'mm')
+    else if ($forecastPrecipProb[$k] > 0)
     {
-        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
+        $forecastPrecip[$k] = "<greyt>" . $forecastPrecipProb[$k] . "%&nbsp;chance</greyt>";
+    }
+    else
+    {
+        $forecastPrecip[$k] = "<greyt>-</greyt>";
     }
 
     //kmh to ms

@@ -297,6 +297,6 @@ for ($k = 0;$k < 14;$k++)
     Data: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
     (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:#aaa;">CC BY 4.0</a>)
     &nbsp;&middot;&nbsp;
-    Icons: <a href="https://github.com/nrkno/yr-weather-symbols/tree/master/dist/svg" target="_blank" style="color:#aaa;">Yr.no / MET Norway</a>
+    Icons: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
   </div>
    </main>

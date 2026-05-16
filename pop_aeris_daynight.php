@@ -373,7 +373,7 @@ for ($k = 0;$k < 12;$k++)
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
   <?php echo $knfo ?> Data for Forecast provided by <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;">CC BY 4.0</a></span></br>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> Icons for Forecast provided by <a href="https://github.com/nrkno/yr-weather-symbols/tree/master/dist/svg" title="YR" target="_blank">Yr.no / MET Norway</a></span>
+  <?php echo $knfo ?> Icons for Forecast provided by <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;">MIT</a></span>
  
     </article>
 </main>

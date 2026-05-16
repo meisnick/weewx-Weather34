@@ -39,6 +39,39 @@ All notable changes to this maintained fork will be documented in this file.
 
 ---
 
+## [2026-05-16] — Cloud Cover, Forecast Fixes & UI Corrections
+
+### Cloud Cover Chart (cloudcoverplot)
+- `scripts/cloud_cover_update.py`: fetches Open-Meteo hourly `cloudcover`, patches weewx `signal8` field every 5 min via root cron
+- `scripts/cloud_cover_backfill.py`: one-time script using Open-Meteo archive API to backfill all 248,383 zero records back to March 2022
+- `scripts/fix_sat24.py`: overwrote 193,852 pre-Jan-2024 records stored in sat24.com okta scale (0–2) with correct Open-Meteo percent values (0–100)
+- Rebuilt weewx daily summaries (`wee_database --drop-daily --rebuild-daily`) to reflect corrected archive data
+- Dashboard link switched from `span='weekly'` (7 days) to `span='yearly'` (4-year history with 1d/1w/1m/6m/1yr/All)
+- Chart type changed from `column` → `area` for yearly view; restored both Max and Avg series
+- `plotOptions.area.dataGrouping.approximation` set to `'average'`: auto-grouped bars now show mean cloud cover, not sum (prevented 564% readings when multiple days were condensed into one bar)
+- Apache no-cache headers added for `w34highcharts/` directory; `?v=` cache-buster added to `plots.js` script tag
+
+### Forecast Popup Fixes (pop_aeris_* files)
+- Fixed `['weather']` → `['weatherPrimary']` field name in all four forecast popouts (condition text was blank)
+- Fixed rain display: amount and probability now shown separately (`0.13 in · 45% chance`)
+- Fixed daily humidity showing `0%`: `nws_forecast_update.py` now aggregates hourly humidity from Open-Meteo into day/night periods
+- Fixed tonight showing "Sunny" instead of "Clear" in night periods
+- Fixed today's forecast icon using daily worst-case code (caused rain icon all day after morning showers cleared)
+- Fixed `=` vs `==` bug in rain block causing it to always display even on dry hours
+
+### Attribution & Repo Cleanup
+- Updated all 47 references from `steepleian/weewx-Weather34` → `meisnick/weewx-Weather34`
+- Forecast popout attribution updated: AerisWeather → Open-Meteo (CC BY 4.0), Yr.no → basmilius/weather-icons (MIT)
+- Table-style forecast popouts now include attribution footer (previously had none)
+- SSH access setup: key-based auth (`~/.ssh/pi_id`), `~/.ssh/config` Host alias `pi`, no-cache Apache config committed
+- `CLAUDE.md` updated with SSH alias instructions
+
+### Known Issues (updated)
+- Open-Meteo daily humidity fix landed — hourly data correct, daily aggregated from hourly ✓
+- sat24.com cloud cover data corrected via historical backfill ✓
+
+---
+
 ## [Unreleased]
 
 ### Local Highcharts
@@ -107,9 +140,9 @@ All notable changes to this maintained fork will be documented in this file.
 
 | Issue | Status |
 |-------|--------|
-| sat24.com cloud cover data source unreachable (since Jan 2024) | No fix available |
+| sat24.com cloud cover data source unreachable (since Jan 2024) | Backfilled with Open-Meteo archive API (2026-05) |
 | Earthquake service removed | Accepted |
 | AerisWeather API deprecated | Replaced with Open-Meteo (2026-05) |
 | CheckWX METAR API | Replaced with aviationweather.gov (2026-05) |
 | Weather Underground advisory module non-functional for US | Replaced with NWS Alerts API (2026-05) |
-| Open-Meteo daily humidity always 0 | Pending — hourly data is correct |
+| Open-Meteo daily humidity always 0 | Fixed — aggregated from hourly data (2026-05) |

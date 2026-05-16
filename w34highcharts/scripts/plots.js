@@ -196,7 +196,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        plotOptions: {
 	            area: {
 	                dataGrouping: {
-	                    enabled: false,
+	                    approximation: 'average',
 	                },
 	                lineWidth: 1,
 	                marker: {
@@ -207,7 +207,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            },
 	            column: {
                         dataGrouping: {
-                            approximation: 'average',
+                            enabled: false,
                         },
                     },
 	            columnrange: {
@@ -1585,8 +1585,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        return do_radial_chart(options, dataMinMax, 'columnrange', ['Cloud Cover'], humcolors);
 	    }
 	    else if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'Cloud Cover Average (Daily)', null, [['Cloud Cover Avg', 'column']]);
-	        options.series[0].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverAvg);
+	        options = create_chart_options(options, 'area', 'Cloud Cover Max & Avg', null, [['Cloud Cover Max', 'area'], ['Cloud Cover Avg', 'area']]);
+	        options.series[0].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverMax);
+	        options.series[1].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverAvg);
     }
 	    else if (span[0] == "weekly"){
 	        if (compare_dates)

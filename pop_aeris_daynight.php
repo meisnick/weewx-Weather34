@@ -287,15 +287,14 @@ for ($k = 0;$k < 12;$k++)
     {
         echo '&nbsp;' . $snowflakesvg[$k] . '<valuer>Snow  <bluer>' . $forecastacumm[$k] . 'cm</bluer>';
     }
-    //rain
-    else if ($forecastPrecipType[$k] = 'rain' && $rainunit == 'in')
+    //rain — only show when there is a signal (amount or probability)
+    else if ($forecastPrecipProb[$k] > 0 || $forecastprecipIntensity[$k] > 0)
     {
-        echo '&nbsp;' . $rainsvg . '<valuer>Rain <bluer>' . number_format($forecastprecipIntensity[$k], 1) . '&nbsp;' . $rainunit . '&nbsp;' . $forecastPrecipProb[$k] . '%</bluer>';
-    }
-    //mm
-    else if ($forecastPrecipType[$k] = 'rain')
-    {
-        echo '&nbsp;' . $rainsvg . '<valuer>Rain <bluer>' . number_format($forecastprecipIntensity[$k], 1) . '&nbsp;' . $rainunit . '&nbsp;' . $forecastPrecipProb[$k] . '%</bluer>';
+        echo '&nbsp;' . $rainsvg . '<valuer>';
+        if ($forecastprecipIntensity[$k] > 0) {
+            echo '<bluer>' . number_format($forecastprecipIntensity[$k], 2) . '&nbsp;' . $rainunit . '</bluer>&nbsp;&middot;&nbsp;';
+        }
+        echo '<grey>' . $forecastPrecipProb[$k] . '%&nbsp;chance</grey></valuer>';
     }
     echo "</div>";
     //wind/gusts

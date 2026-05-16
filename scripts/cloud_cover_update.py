@@ -56,7 +56,7 @@ def nearest_cover(ts, cover_map):
     return cover_map.get(hour_ts, cover_map.get(hour_ts - 3600))
 
 def update_database(cover_map):
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30)
     c = conn.cursor()
 
     # Fetch archive records in the past 7 days where signal8 is 0 or NULL

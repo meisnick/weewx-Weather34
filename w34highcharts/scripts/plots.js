@@ -207,7 +207,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            },
 	            column: {
                         dataGrouping: {
-                            enabled: false,
+                            approximation: 'average',
                         },
                     },
 	            columnrange: {
@@ -1587,7 +1587,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    else if (span[0] == "yearly"){
 	        options = create_chart_options(options, 'column', 'Cloud Cover Average (Daily)', null, [['Cloud Cover Avg', 'column']]);
 	        options.series[0].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverAvg);
-        options.series[0].dataGrouping = {approximation: 'average'};
     }
 	    else if (span[0] == "weekly"){
 	        if (compare_dates)

@@ -1585,10 +1585,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        return do_radial_chart(options, dataMinMax, 'columnrange', ['Cloud Cover'], humcolors);
 	    }
 	    else if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'Cloud Cover Average (Daily)', null, [['Cloud Cover Avg', 'column'], ['Cloud Cover Max', 'column', , , , , 1]]);
+	        options = create_chart_options(options, 'column', 'Cloud Cover Average (Daily)', null, [['Cloud Cover Avg', 'column']]);
 	        options.series[0].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverAvg);
-	        options.series[1].data = reinflate_time(seriesData[0].cloudcoverplot.cloudcoverMax);
-	    }
+    }
 	    else if (span[0] == "weekly"){
 	        if (compare_dates)
 	            options = create_chart_options(options, 'area', 'Cloud Cover', null, [['Cloud Cover', 'area'], ['Cloud Cover', 'area',,,,,1]]);

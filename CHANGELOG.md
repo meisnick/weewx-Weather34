@@ -2,6 +2,43 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [2026-05] — API Migration: Open-Meteo / NOAA
+
+### Forecast (awd.txt / awh.txt)
+- Replaced AerisWeather forecast API (deprecated) with [Open-Meteo](https://open-meteo.com/) — free, no key, CC BY 4.0
+- `scripts/nws_forecast_update.py`: fetches Open-Meteo 8-day forecast, writes Aeris-compatible JSON
+- Fixed `icon1` → `icon` field name in `forecast3aw.php`, `pop_aeris_hourly.php`, `pop_aeris_hourly_table.php`, `pop_aeris_daynight.php`, `pop_aeris_daynight_table.php`
+- Today's daytime icon now derives from afternoon hourly WMO codes (not the daily worst-case which includes overnight rain)
+- Night forecast periods now display "Clear" / "Mostly Clear" instead of "Sunny"
+- Known limitation: daily humidity field unavailable from Open-Meteo daily endpoint (shows 0); hourly humidity is correct
+
+### METAR Current Conditions (me.txt)
+- Replaced CheckWX API with [aviationweather.gov](https://aviationweather.gov/) (NOAA/AWC) — free, no key, public domain
+- `scripts/metar_update.py`: fetches METAR, writes CheckWX-compatible JSON to `me.txt`; `metar34get.php` unchanged
+- Added `metar34sky.php`: lightweight sky icon/description parser with no conflicting includes (safe to use in any PHP context)
+- Fixed `currentconditionsw34.php`: now uses METAR sky icon, description, and visibility rather than stale `awc.txt` and broken `cloud_cover` field (was always 0 due to missing realtime data field 204)
+- Updated `pop_metarnearby.php` API Info section: NOAA logo and link replacing CheckWX
+
+### Weather Alerts
+- Replaced EU MeteoAlarm / Weather Underground advisory module (both non-functional for US users) with [NWS Alerts API](https://www.weather.gov/documentation/services-web-api) — free, no key, public domain
+- `scripts/nws_alerts_update.py`: fetches active alerts for configured NWS zones, writes `nws_alerts.txt`
+- `top_advisory_nws.php`: colour-coded severity display (Extreme=red, Severe=orange, Moderate=yellow, Minor=blue, clear=green)
+- `settings1.php`: `position4` switched from `top_advisory_rw.php` to `top_advisory_nws.php`
+
+### Configuration & Privacy
+- `scripts/w34config.example.py`: template for all site-specific settings (lat/lon, ICAO, NWS zones)
+- `scripts/w34config.py`: gitignored — actual station coordinates and identifiers never committed
+- All three scripts import from `w34config` at runtime; no location data in any committed file
+
+### Cron (www-data)
+```
+15 * * * *   /usr/bin/python3 /usr/local/bin/nws_forecast_update.py >> /var/log/nws_forecast.log 2>&1
+*/15 * * * * /usr/bin/python3 /usr/local/bin/metar_update.py >> /var/log/metar_update.log 2>&1
+*/5 * * * *  /usr/bin/python3 /usr/local/bin/nws_alerts_update.py >> /var/log/nws_alerts.log 2>&1
+```
+
+---
+
 ## [Unreleased]
 
 ### Local Highcharts
@@ -66,11 +103,13 @@ All notable changes to this maintained fork will be documented in this file.
 
 ---
 
-## Known Issues (inherited from upstream)
+## Known Issues
 
 | Issue | Status |
 |-------|--------|
 | sat24.com cloud cover data source unreachable (since Jan 2024) | No fix available |
 | Earthquake service removed | Accepted |
-| AerisWeather API may require updated credentials | Monitor |
-| Weather Underground API key validity unknown | Monitor |
+| AerisWeather API deprecated | Replaced with Open-Meteo (2026-05) |
+| CheckWX METAR API | Replaced with aviationweather.gov (2026-05) |
+| Weather Underground advisory module non-functional for US | Replaced with NWS Alerts API (2026-05) |
+| Open-Meteo daily humidity always 0 | Pending — hourly data is correct |

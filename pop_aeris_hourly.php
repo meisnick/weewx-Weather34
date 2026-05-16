@@ -36,7 +36,7 @@ else if ($theme === "light")
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AerisWeather Hourly Forecast</title>
+  <title>Hourly Forecast</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link href="css/popup.light.css?version=<?php echo filemtime('css/popup.light.css'); ?>" rel="stylesheet prefetch">//-->
 
@@ -336,9 +336,9 @@ for ($k = 0;$k < 12;$k++)
     </article>
   <article>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> Data for Forecast provided by <a href="https://www.aerisweather.com/develop/api/" title="AerisWeather API" target="_blank">AerisWeather</a></span></br>
+  <?php echo $knfo ?> Data for Forecast provided by <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;">CC BY 4.0</a></span></br>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> Icons for Forecast provided by <a href="https://github.com/nrkno/yr-weather-symbols/tree/master/dist/svg" title="YR" target="_blank">Yr.no</a></span>
+  <?php echo $knfo ?> Icons for Forecast provided by <a href="https://github.com/nrkno/yr-weather-symbols/tree/master/dist/svg" title="YR" target="_blank">Yr.no / MET Norway</a></span>
  
     </article>
 </main>

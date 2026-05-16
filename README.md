@@ -41,6 +41,37 @@
 - Removed earthquake service (API no longer functional)
 - Added AQI translator script for local data
 
+### API Migration — Free, Keyless Government Sources (2026)
+
+Replaced all remaining third-party paid/deprecated forecast and conditions APIs with
+free, keyless, officially maintained sources. No account or API key required.
+
+**Forecast (`awd.txt` / `awh.txt`)**
+- `scripts/nws_forecast_update.py` replaces the AerisWeather forecast dependency
+- Source: [Open-Meteo](https://open-meteo.com/) — open-source, free, CC BY 4.0
+- Outputs Aeris-compatible JSON so `forecast3aw.php` and related templates need no changes
+- Fixed `icon1` → `icon` field name in `forecast3aw.php` and `pop_aeris_*` files
+- Today's daytime icon now uses afternoon hourly conditions rather than the daily worst-case code
+- Night periods now show "Clear" / "Mostly Clear" instead of "Sunny"
+
+**METAR Current Conditions (`me.txt`)**
+- `scripts/metar_update.py` replaces the CheckWX API dependency
+- Source: [aviationweather.gov](https://aviationweather.gov/) (NOAA/AWC) — no key, public domain
+- Outputs CheckWX-compatible JSON; `metar34get.php` and `pop_metarnearby.php` unchanged
+- `metar34sky.php` — lightweight sky icon/description parser safe to include anywhere
+- `currentconditionsw34.php` — now uses METAR sky icon and visibility instead of stale `awc.txt`
+
+**Weather Alerts (`nws_alerts.txt`)**
+- `scripts/nws_alerts_update.py` replaces the EU MeteoAlarm / Weather Underground advisory module
+- Source: [api.weather.gov](https://www.weather.gov/documentation/services-web-api) (NOAA NWS) — no key, public domain
+- `top_advisory_nws.php` — colour-coded severity display; green "No Active Advisories" when clear
+- Configure your forecast zone and county zone in `scripts/w34config.py`
+
+**Configuration**
+- `scripts/w34config.example.py` — copy to `scripts/w34config.py` and set your lat/lon/ICAO/zones
+- `scripts/w34config.py` is gitignored and never committed — location data stays on your device
+- All three scripts run via cron as `www-data` (forecast hourly, METAR every 15 min, alerts every 5 min)
+
 ## Installation
 
 Follow the instructions in [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md).
@@ -80,6 +111,18 @@ Attribution-NonCommercial 4.0 International based on a work at https://weather34
 | [WEEWX5_MIGRATION.md](WEEWX5_MIGRATION.md) | Upgrading from WeeWX 4.x to 5.x |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues and fixes |
 
+## Data Sources & Attribution
+
+| Source | Purpose | License |
+|--------|---------|---------|
+| [Open-Meteo](https://open-meteo.com/) | Forecast data (awd.txt / awh.txt) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — attribution required |
+| [NOAA Aviation Weather Center](https://aviationweather.gov/) | METAR current conditions (me.txt) | US Government / Public Domain |
+| [NOAA National Weather Service API](https://www.weather.gov/documentation/services-web-api) | Weather alerts (nws_alerts.txt) | US Government / Public Domain |
+| [WeeWX](https://weewx.com/) | Weather station daemon | [GPL v3](https://github.com/weewx/weewx/blob/master/LICENSE.txt) |
+
+Open-Meteo attribution per their [terms](https://open-meteo.com/en/terms): data used under CC BY 4.0.
+NOAA data is produced by the US government and is not subject to copyright protection within the United States.
+
 ## Credits
 
 This fork is based on the original weewx-Weather34 by Ian Millard (Steepleian), Jerry Dietrich, and many contributors. The original template was created by Brian Underdown (weather34.com).
@@ -88,5 +131,6 @@ See [CHANGELOG.md](CHANGELOG.md) for a complete history of changes in this fork.
 
 ## Original Project
 
-- **Upstream (EOL):** https://github.com/steepleian/weewx-Weather34
+- **Original template:** https://weather34.com/homeweatherstation — Brian Underdown
+- **WeeWX skin fork (EOL Aug 2023):** https://github.com/steepleian/weewx-Weather34 — Ian Millard
 - **Successor (in development):** https://github.com/Millardiang/weewx-divumwx

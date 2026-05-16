@@ -104,9 +104,9 @@ for ($k = 0;$k < 14;$k++)
     $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
     $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
     $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = $parsed_json['response'][0]['periods'][$k]['weather'];
+    $forecastsummary[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
     $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = $parsed_json['response'][0]['periods'][$k]['weather'];
+    $forecastdesc[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
     $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
     $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
     if ($forecastUV[$k] === 0 or $forecastUV[$k] === null)
@@ -134,10 +134,10 @@ for ($k = 0;$k < 14;$k++)
     else if ($rainunit == 'in')
     {
         $forecastprecipIntensity[$k] = round(($forecastprecipIntensity[$k] * 0.0393701) , 2);
+        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
     }
     else if ($rainunit == 'mm')
     {
-
         $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
     }
 
@@ -196,6 +196,11 @@ for ($k = 0;$k < 14;$k++)
     else if ($forecasthumidity[$k] > 0)
     {
         $colorHumidity[$k] = "<redt>";
+    }
+    else
+    {
+        $forecasthumidity[$k] = "-";
+        $colorHumidity[$k] = "";
     }
     if ($tempunit == 'F' && $forecastTempHigh[$k] < 44.6)
     {
@@ -277,7 +282,7 @@ for ($k = 0;$k < 14;$k++)
 <td><span style="font-size: 11px;";><?php echo $colorTempHigh[$k]; ?><?php echo $forecastTempHigh[$k] . "&deg" . $tempunit; ?></span></td>
 <td><span style="font-size: 11px; ";><?php echo $forecastPrecip[$k]; ?>
 </td>
-<td><span style="font-size: 11px; ";><redt><?php echo $forecastWindSpeedMin[$k] . "-" . $forecastWindSpeedMax[$k]; ?><small><?php echo $windunit; ?></small></span></td>
+<td><span style="font-size: 11px; ";><redt><?php echo $forecastWindSpeedMax[$k]; ?><small><?php echo $windunit; ?></small></span></td>
 <td><?php echo $forecastWinddircardinal[$k]; ?></td>
 <td><span style="font-size: 11px; ";><?php echo $colorUV[$k]; ?><?php echo $forecastUV[$k]; ?></span></td>
 <td><span style="font-size: 11px;";><?php echo $colorHumidity[$k]; ?><?php echo $forecasthumidity[$k]; ?><small> %</small></span></td>

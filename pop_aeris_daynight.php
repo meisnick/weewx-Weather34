@@ -97,9 +97,9 @@ for ($k = 0;$k < 12;$k++)
     $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
     $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
     $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = $parsed_json['response'][0]['periods'][$k]['weather'];
+    $forecastsummary[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
     $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = $parsed_json['response'][0]['periods'][$k]['weather'];
+    $forecastdesc[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
     $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
     $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
     if ($forecastTempHigh[$k] === null)
@@ -251,6 +251,10 @@ for ($k = 0;$k < 12;$k++)
         else if ($forecasthumidity[$k] > 0)
         {
             echo "<redu>" . $forecasthumidity[$k] . '%</redu>';
+        }
+        else
+        {
+            echo '<grey>-</grey>';
         }
     }
     //uvi

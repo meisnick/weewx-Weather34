@@ -165,6 +165,21 @@ def build_awd(data):
     hourly_times  = data["hourly"]["time"]
     hourly_wcodes = data["hourly"]["weathercode"] or []
     hourly_is_day = data["hourly"]["is_day"] or []
+    hourly_humid  = data["hourly"].get("relativehumidity_2m") or []
+
+    def avg_humidity(date_str, hour_start, hour_end, next_date_str=None):
+        """Average hourly humidity for a date between two hours (inclusive).
+        If next_date_str given, also includes hours 0..hour_end of next date."""
+        vals = [
+            hourly_humid[j]
+            for j, t in enumerate(hourly_times)
+            if j < len(hourly_humid) and hourly_humid[j] is not None
+            and (
+                (t.startswith(date_str) and hour_start <= int(t[11:13]) <= hour_end)
+                or (next_date_str and t.startswith(next_date_str) and int(t[11:13]) <= hour_end)
+            )
+        ]
+        return round(sum(vals) / len(vals)) if vals else 0
 
     for i, date_str in enumerate(times[:7]):
         daily_wcode = (daily["weathercode"] or [None]*20)[i]
@@ -195,6 +210,9 @@ def build_awd(data):
         wind_kph = mph_to_kph(wind_mph)
         gust_kph = mph_to_kph(gust_mph)
         uvi      = (daily["uv_index_max"] or [0]*20)[i] or 0
+        next_date = times[i+1] if i+1 < len(times) else None
+        day_humidity  = avg_humidity(date_str, 7, 18)
+        night_humidity = avg_humidity(date_str, 19, 23, next_date)
 
         # Day period
         day_iso  = f"{date_str}T07:00:00"
@@ -224,9 +242,9 @@ def build_awd(data):
             "avgDewpointC":        None,
             "dewpointC":           None,
             "dewpointF":           None,
-            "maxHumidity":         0,
-            "minHumidity":         0,
-            "humidity":            0,
+            "maxHumidity":         day_humidity,
+            "minHumidity":         day_humidity,
+            "humidity":            day_humidity,
             "pop":                 int(pop),
             "precipMM":            precip_mm,
             "precipIN":            round(precip_in, 2),
@@ -291,9 +309,9 @@ def build_awd(data):
             "avgDewpointC":        None,
             "dewpointC":           None,
             "dewpointF":           None,
-            "maxHumidity":         0,
-            "minHumidity":         0,
-            "humidity":            0,
+            "maxHumidity":         night_humidity,
+            "minHumidity":         night_humidity,
+            "humidity":            night_humidity,
             "pop":                 int(pop),
             "precipMM":            precip_mm,
             "precipIN":            round(precip_in, 2),

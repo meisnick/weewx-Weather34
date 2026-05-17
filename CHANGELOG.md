@@ -2,6 +2,53 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [2026-05-16] — Naming Cleanup, Earthquake Removal & Git Structure
+
+### Tier 2: Deprecated service naming cleanup
+- Renamed forecast data files: `awd.txt` → `forecast_daily.txt`, `awh.txt` → `forecast_hourly.txt`
+- Renamed forecast PHP files: `forecast3aw.php` → `forecast3om.php`, `forecast3awlarge.php` → `forecast3omlarge.php`
+- Renamed popup files: `pop_aeris_{hourly,hourly_table,daynight,daynight_table}.php` → `pop_forecast_*`
+- Config variables renamed: `AWD_PATH`/`AWH_PATH` → `FORECAST_DAILY_PATH`/`FORECAST_HOURLY_PATH`
+- CSS classes: all `darksky*` renamed to `forecast*` across both themes and all PHP files
+- All references updated: `settings1.php`, `initial_settings1.php`, `index.php`, `pop_menu_forecast.php`, `templateSetup.php`, `scripts/`, `.gitignore`
+
+### Tier 3: Weather Underground attribution corrected
+- `wu.txt` forecast data is fetched from IBM The Weather Company API (`api.weather.com/v3`), not Weather Underground's defunct public API
+- Updated attribution in `outlookwu.php`, `pop_outlookwu.php`, `uvindexwu.php`, `templateSetup.php`, `settings.php`
+- `menu.php` WU personal weather station link left unchanged (uploading to WU PWS network is a separate active service)
+
+### Tier 4: DarkSky (ds) suffix removal
+- `dsuvindex.php` → `uvindex.php`
+- `uvindexds.php` → `uvindex_detail.php`
+- `outlookds.php` → `outlook.php`
+- `solaruvds.php` → `solaruv.php`
+- These files use local weewx sensor data only; `ds` suffix was dead legacy naming from DarkSky era
+- `templateSetup.php` reference updated
+
+### Git structure: www/ path migration
+- Original upstream tracked all files under `www/`; deployed Pi has files at web root
+- Resolved 1,329 ghost `www/` entries via `git rm --cached -r www/`
+- Re-tracked all PHP template files and CSS at correct root-level paths
+- Added `css/icons/`, `css/fonts/`, `img/` to `.gitignore` — 925 static SVG icons not suited for a PHP fork repo
+
+### Earthquake module removed
+- Service non-functional since 2023 (earthquakereport.com API dead, `eq.txt` stale since Mar 2023)
+- Deleted: `earthquake.php`, `eq.php`, `eq_uk.php`, `pop_eqlist.php`, `pop_eqlist_uk.php`
+- Cleaned all references: `index.php`, `notify.php`, `shared.php`, `settings.php`, `updater.php`, `initial_settings1.php`, `templateSetup.php`
+- Renamed `earthquake()` JS loader → `position3()` (generic slot loader); `$eqRefresh` → `$position3Refresh`
+- Fixed copy-paste bug: `purpleairqualitymodule` position block was incorrectly linking to earthquake list (now links to `aqipopup.php`)
+- `weather34card--earthquake1/2/3` CSS classes in UV/AQI files left intact — they are color-gradient definitions, not earthquake-specific
+
+### EU alert module guard
+- `top_advisory_eu.php`, `pop_europealerts.php`: added null guard for empty `awa.txt` response
+- AerisWeather EU alerts not applicable for US stations; `awa.txt` returns empty response since AerisWeather trial expired (Apr 2026)
+
+### AQI pipeline confirmed active
+- `aq.txt` fetched hourly by weewx `aq` service from WAQI API (`api.waqi.info`)
+- `update_aqi.sh` transforms `aq.txt` → `aqiJson.txt` (PM2.5/PM10 extraction) — no changes needed
+
+---
+
 ## [2026-05] — API Migration: Open-Meteo / NOAA
 
 ### Forecast (awd.txt / awh.txt)

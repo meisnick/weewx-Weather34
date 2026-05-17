@@ -18,6 +18,7 @@ $json_icon = file_get_contents("jsondata/lookupTable.json");
 $parsed_icon = json_decode($json_icon, true);
 $json_string = file_get_contents("jsondata/awa.txt");
 $parsed_json = json_decode($json_string, true);
+if (empty($parsed_json['response'])) { return; }
 $name = $parsed_json['response'][0]['details']['name'];
 $type = $parsed_json["response"][0]["details"]["type"];
 $alertdesc = substr($type, 0 ,5);

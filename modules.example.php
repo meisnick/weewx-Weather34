@@ -5,8 +5,8 @@
 
 $topbar_modules = [
     ['module' => 'weather34clock.php',        'title' => 'Station Time',     'refresh' => 60],
-    ['module' => 'top_rainfallfyearmonth.php', 'title' => 'Rainfall Totals', 'refresh' => 600],
-    ['module' => 'top_lightning.php',          'title' => 'Lightning',       'refresh' => 600],
+    ['module' => 'top_rainfallfyearmonth.php', 'title' => 'Rainfall Totals', 'refresh' => 600, 'mod_top' => true],
+    ['module' => 'top_lightning.php',          'title' => 'Lightning',       'refresh' => 600, 'mod_top' => true],
     ['module' => 'top_advisory_nws.php',       'title' => 'Weather Advisory','refresh' => 300],
 ];
 

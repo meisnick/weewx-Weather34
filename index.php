@@ -202,8 +202,10 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 <!-- ── TOP BAR ─────────────────────────────────────────────────────────────── -->
 <div class="weather2-container">
 <div class="container weather34box-toparea" id="topbar-sortable">
-<?php foreach ($topbar_modules as $i => $mod): ?>
-    <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
+<?php foreach ($topbar_modules as $i => $mod):
+    $boxClass = !empty($mod['mod_top']) ? 'weather34box mod-box' : 'weather34box';
+?>
+    <div class="<?php echo $boxClass; ?>" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($mod['title']); ?></div>
         <div class="value"><div id="top_<?php echo $i; ?>"></div></div>
     </div>

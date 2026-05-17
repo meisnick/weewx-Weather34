@@ -2,7 +2,7 @@
 if ($notifications == 'yes') {
 
     # Check battery levels
-    if ($weather['consoleLowBattery'] || $weather['stationLowBattery']) {?>
+    if (($notifyBattery ?? 'yes') == 'yes' && ($weather['consoleLowBattery'] || $weather['stationLowBattery'])) {?>
         <div id="weather34lightningdialog-notify">
             <div class="weather34lightningdialog-box">
                 <div class="weather34lightningbackground-alert"></div>
@@ -32,8 +32,8 @@ if ($notifications == 'yes') {
         </div>
     <?php }
 
-    //WEATHER34 pure css UV-Index above 8  pop up alert
-    if ($weather["uv"]>=8){?>
+    //WEATHER34 pure css UV-Index pop up alert
+    if (($notifyUV ?? 'yes') == 'yes' && $weather["uv"] >= ($notifyUVThreshold ?? 8)){?>
         <div id="weather34lightningdialog-notify">
             <div class="weather34lightningdialog-box">
                 <div class="weather34lightningbackground-alert"></div>
@@ -52,8 +52,8 @@ if ($notifications == 'yes') {
         </div>
     <?php }
 
-    //WEATHER34 pure css temperature heat index above 30c/84F  pop up alert
-    if(anyToC($weather["heatindex"])>=30){?>
+    //WEATHER34 pure css temperature heat index pop up alert
+    if(($notifyHeatIndex ?? 'yes') == 'yes' && anyToC($weather["heatindex"]) >= anyToC($notifyHeatIndexThreshold ?? 84)){?>
         <div id="weather34lightningdialog-notify">
             <div class="weather34lightningdialog-box">
                 <div class="weather34lightningbackground-alert"></div>
@@ -105,8 +105,8 @@ if ($notifications == 'yes') {
         <?php }
     }
 
-    //WEATHER34 pure css wind chill  below 0c/32F  pop up alert
-    if(anyToC($weather["windchill"])<=0){?>
+    //WEATHER34 pure css wind chill pop up alert
+    if(($notifyWindChill ?? 'yes') == 'yes' && anyToC($weather["windchill"]) <= anyToC($notifyWindChillThreshold ?? 32)){?>
         <div id="weather34lightningdialog-notify">
             <div class="weather34lightningdialog-box">
                 <div class="weather34lightningbackground-alert"></div>
@@ -125,8 +125,8 @@ if ($notifications == 'yes') {
         </div>
     <?php }
 
-    //WEATHER34 pure css near freezing dewpoint below 0c/32F  pop up alert
-    if(anyToC($weather["dewpoint"])<=0){?>
+    //WEATHER34 pure css near freezing dewpoint pop up alert
+    if(($notifyDewpoint ?? 'yes') == 'yes' && anyToC($weather["dewpoint"]) <= anyToC($notifyDewpointThreshold ?? 32)){?>
         <div id="weather34lightningdialog-notify">
             <div class="weather34lightningdialog-box">
                 <div class="weather34lightningbackground-alert"></div>

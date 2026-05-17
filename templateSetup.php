@@ -92,7 +92,16 @@ $password    = "'.$_POST['password']. '";
 $flag   = "'.$_POST["flag"]. '";
 $manifestShortName = "'.$_POST["manifestShortName"].'";
 $notifications = "'. $_POST["notifications"]. '";
-$notifyWind = "'. $_POST["notifyWind"]. '";
+$notifyWind = "'. ($_POST["notifyWind"] ?? ''). '";
+$notifyBattery = "'. ($_POST["notifyBattery"] ?? ''). '";
+$notifyUV = "'. ($_POST["notifyUV"] ?? ''). '";
+$notifyUVThreshold = '. intval($_POST["notifyUVThreshold"] ?? 8). ';
+$notifyHeatIndex = "'. ($_POST["notifyHeatIndex"] ?? ''). '";
+$notifyHeatIndexThreshold = '. intval($_POST["notifyHeatIndexThreshold"] ?? 84). ';
+$notifyWindChill = "'. ($_POST["notifyWindChill"] ?? ''). '";
+$notifyWindChillThreshold = '. intval($_POST["notifyWindChillThreshold"] ?? 32). ';
+$notifyDewpoint = "'. ($_POST["notifyDewpoint"] ?? ''). '";
+$notifyDewpointThreshold = '. intval($_POST["notifyDewpointThreshold"] ?? 32). ';
 $linkWU = "'. $_POST["linkWU"]. '";
 $linkWUNew = "'. $_POST["linkWUNew"]. '";
 $id = "'. $_POST["id"]. '";
@@ -848,7 +857,63 @@ double check again
     &nbsp;&nbsp;• <b>Wind Advisory</b> — gust ≥ 46 mph / 40 knots or 30-min avg ≥ 25 mph / 21.7 knots<br/>
     &nbsp;&nbsp;• <b>High Wind Warning</b> — gust ≥ 58 mph / 50 knots or 30-min avg ≥ 39 mph / 34 knots<br/>
     &nbsp;&nbsp;• <b>Extreme Wind</b> — gust ≥ 115 mph / 99.9 knots
-    </span><br/>
+    </span><br/><br/>
+
+    <div class="stationvalue">Low Battery Alert</div>
+    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><path d="M30 12 L16 24 2 12" /></svg>
+    <select id="notifyBattery" name="notifyBattery" class="choose1">
+        <option><?php echo $notifyBattery ?? 'yes';?></option>
+        <?php if (($notifyBattery ?? 'yes') == 'yes'){?><option>no</option><?php } else {?><option>yes</option><?php }?>
+    </select>
+    <?php echo $iicon;?> <span style="color:rgba(86, 95, 103, 1.000);">Popup alert when console or station battery is low</span><br/><br/>
+
+    <div class="stationvalue">UV Index Alert</div>
+    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><path d="M30 12 L16 24 2 12" /></svg>
+    <select id="notifyUV" name="notifyUV" class="choose1">
+        <option><?php echo $notifyUV ?? 'yes';?></option>
+        <?php if (($notifyUV ?? 'yes') == 'yes'){?><option>no</option><?php } else {?><option>yes</option><?php }?>
+    </select>
+    &nbsp;<span style="color:rgba(86, 95, 103, 1.000);">Threshold (UV index):</span>&nbsp;
+    <input type="number" name="notifyUVThreshold" id="notifyUVThreshold"
+           value="<?php echo $notifyUVThreshold ?? 8;?>"
+           min="1" max="11" step="1" style="width:55px;font-size:13px;">
+    <?php echo $iicon;?> <span style="color:rgba(86, 95, 103, 1.000);">Alert when UV index reaches or exceeds this value (scale 1–11)</span><br/><br/>
+
+    <div class="stationvalue">Heat Index Alert</div>
+    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><path d="M30 12 L16 24 2 12" /></svg>
+    <select id="notifyHeatIndex" name="notifyHeatIndex" class="choose1">
+        <option><?php echo $notifyHeatIndex ?? 'yes';?></option>
+        <?php if (($notifyHeatIndex ?? 'yes') == 'yes'){?><option>no</option><?php } else {?><option>yes</option><?php }?>
+    </select>
+    &nbsp;<span style="color:rgba(86, 95, 103, 1.000);">Threshold (°<?php echo $weather["temp_units"] ?? 'F';?>):</span>&nbsp;
+    <input type="number" name="notifyHeatIndexThreshold" id="notifyHeatIndexThreshold"
+           value="<?php echo $notifyHeatIndexThreshold ?? 84;?>"
+           step="1" style="width:65px;font-size:13px;">
+    <?php echo $iicon;?> <span style="color:rgba(86, 95, 103, 1.000);">Alert when heat index reaches or exceeds this temperature</span><br/><br/>
+
+    <div class="stationvalue">Wind Chill Alert</div>
+    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><path d="M30 12 L16 24 2 12" /></svg>
+    <select id="notifyWindChill" name="notifyWindChill" class="choose1">
+        <option><?php echo $notifyWindChill ?? 'yes';?></option>
+        <?php if (($notifyWindChill ?? 'yes') == 'yes'){?><option>no</option><?php } else {?><option>yes</option><?php }?>
+    </select>
+    &nbsp;<span style="color:rgba(86, 95, 103, 1.000);">Threshold (°<?php echo $weather["temp_units"] ?? 'F';?>):</span>&nbsp;
+    <input type="number" name="notifyWindChillThreshold" id="notifyWindChillThreshold"
+           value="<?php echo $notifyWindChillThreshold ?? 32;?>"
+           step="1" style="width:65px;font-size:13px;">
+    <?php echo $iicon;?> <span style="color:rgba(86, 95, 103, 1.000);">Alert when wind chill drops to or below this temperature</span><br/><br/>
+
+    <div class="stationvalue">Dewpoint Alert</div>
+    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><path d="M30 12 L16 24 2 12" /></svg>
+    <select id="notifyDewpoint" name="notifyDewpoint" class="choose1">
+        <option><?php echo $notifyDewpoint ?? 'yes';?></option>
+        <?php if (($notifyDewpoint ?? 'yes') == 'yes'){?><option>no</option><?php } else {?><option>yes</option><?php }?>
+    </select>
+    &nbsp;<span style="color:rgba(86, 95, 103, 1.000);">Threshold (°<?php echo $weather["temp_units"] ?? 'F';?>):</span>&nbsp;
+    <input type="number" name="notifyDewpointThreshold" id="notifyDewpointThreshold"
+           value="<?php echo $notifyDewpointThreshold ?? 32;?>"
+           step="1" style="width:65px;font-size:13px;">
+    <?php echo $iicon;?> <span style="color:rgba(86, 95, 103, 1.000);">Alert when dewpoint drops to or below this temperature</span><br/>
 </div>
 
 

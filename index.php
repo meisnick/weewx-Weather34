@@ -177,11 +177,32 @@ $popupVars = compact('chartinfo','menucharticonpage','info','webcamicon','webcam
                      'purpleairhardware','lang','chartsource','theme1');
 ?>
 
+<!-- ── EDIT MODE TOGGLE ────────────────────────────────────────────────────── -->
+<style>
+#edit-toggle{position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(33,34,39,.85);
+  border:1px solid rgba(84,85,86,.5);color:silver;font-size:11px;padding:6px 12px;
+  cursor:pointer;font-family:arial,helvetica;display:flex;align-items:center;gap:6px}
+#edit-toggle:hover{background:rgba(50,52,60,.95)}
+body.edit-mode .weather-item,
+body.edit-mode .weather34box{cursor:grab;outline:1px dashed rgba(240,94,64,.5)}
+body.edit-mode .weather-item:active,
+body.edit-mode .weather34box:active{cursor:grabbing}
+.sortable-ghost{opacity:.35}
+.sortable-chosen{outline:2px solid rgba(240,94,64,.8) !important}
+#edit-status{position:fixed;bottom:18px;right:160px;z-index:9999;font-size:11px;
+  font-family:arial;padding:6px 10px;background:rgba(33,34,39,.85);
+  border:1px solid rgba(84,85,86,.4);color:#5a9;display:none}
+</style>
+<button id="edit-toggle" onclick="toggleEdit()" title="Toggle layout edit mode">
+  <span id="edit-icon">&#128274;</span> <span id="edit-label">Edit Layout</span>
+</button>
+<div id="edit-status"></div>
+
 <!-- ── TOP BAR ─────────────────────────────────────────────────────────────── -->
 <div class="weather2-container">
-<div class="container weather34box-toparea">
+<div class="container weather34box-toparea" id="topbar-sortable">
 <?php foreach ($topbar_modules as $i => $mod): ?>
-    <div class="weather34box">
+    <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($mod['title']); ?></div>
         <div class="value"><div id="top_<?php echo $i; ?>"></div></div>
     </div>
@@ -190,28 +211,20 @@ $popupVars = compact('chartinfo','menucharticonpage','info','webcamicon','webcam
 
 <!-- ── GRID ────────────────────────────────────────────────────────────────── -->
 <?php
-// Wind unit fix
 if ($weather['wind_units'] === 'kts') { $weather['wind_units'] = 'kn'; }
 
 foreach ($grid_modules as $i => $mod):
     $file  = $mod['module'];
     $title = $mod['title'] !== '' ? $mod['title'] : moduleTitle($file, $weather, $lang);
-
-    // Night substitution for webcam
     if ($file === 'webcamsmall.php' && $dayPartCivil === 'night') {
-        $file  = 'moonphase.php';
-        $title = 'Moonphase';
+        $file = 'moonphase.php'; $title = 'Moonphase';
     }
-
     $popups = modulePopups($file, $popupVars);
-
     if ($i === 0): ?>
-<div class="weather-container">
+<div class="weather-container" id="grid-sortable">
     <?php endif; ?>
-    <div class="weather-item">
-        <div class="chartforecast">
-            <?php echo $popups; ?>
-        </div>
+    <div class="weather-item" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
+        <div class="chartforecast"><?php echo $popups; ?></div>
         <span class='moduletitle'><?php echo $title; ?></span><br />
         <div id="grid_<?php echo $i; ?>"></div>
     </div>
@@ -219,6 +232,60 @@ foreach ($grid_modules as $i => $mod):
 </div>
     <?php endif; ?>
 <?php endforeach; ?>
+
+<script src="js/sortable.min.js"></script>
+<script>
+var editMode = false;
+var topSort, gridSort;
+
+function collect(id) {
+    return Array.from(document.querySelectorAll('#' + id + ' [data-module]')).map(function(el) {
+        return {module: el.dataset.module, title: el.dataset.title || ''};
+    });
+}
+
+function saveOrder() {
+    var st = document.getElementById('edit-status');
+    st.style.display = 'block';
+    st.style.color = 'rgba(150,155,165,1)';
+    st.textContent = 'Saving…';
+    var fd = new FormData();
+    fd.append('topbar', JSON.stringify(collect('topbar-sortable')));
+    fd.append('grid',   JSON.stringify(collect('grid-sortable')));
+    fetch('module_save.php', {method:'POST', body:fd})
+        .then(function(r){return r.json();})
+        .then(function(d){
+            st.style.color = d.success ? '#5a9' : '#e05a27';
+            st.textContent = d.success ? 'Layout saved' : (d.error || 'Save failed');
+            setTimeout(function(){ if (!editMode) st.style.display='none'; }, 3000);
+        })
+        .catch(function(){ st.style.color='#e05a27'; st.textContent='Save failed'; });
+}
+
+function toggleEdit() {
+    editMode = !editMode;
+    document.body.classList.toggle('edit-mode', editMode);
+    document.getElementById('edit-icon').textContent  = editMode ? '✏' : '🔒';
+    document.getElementById('edit-label').textContent = editMode ? 'Done' : 'Edit Layout';
+
+    if (editMode) {
+        topSort  = Sortable.create(document.getElementById('topbar-sortable'),
+            {animation:150, ghostClass:'sortable-ghost', chosenClass:'sortable-chosen',
+             onEnd: saveOrder});
+        gridSort = Sortable.create(document.getElementById('grid-sortable'),
+            {animation:150, ghostClass:'sortable-ghost', chosenClass:'sortable-chosen',
+             onEnd: saveOrder});
+        var st = document.getElementById('edit-status');
+        st.style.display = 'block';
+        st.style.color = 'rgba(240,94,64,1)';
+        st.textContent = 'Edit mode — drag modules to reorder';
+    } else {
+        if (topSort)  topSort.destroy();
+        if (gridSort) gridSort.destroy();
+        document.getElementById('edit-status').style.display = 'none';
+    }
+}
+</script>
 
 <!-- ── FOOTER ──────────────────────────────────────────────────────────────── -->
 <div class=weatherfooter-container><div class=weatherfooter-item>

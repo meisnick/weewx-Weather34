@@ -1074,7 +1074,7 @@ General template settings with options to choose which type of module to display
             <option>webcamsmall.php</option>
             <option>moonphase.php</option>
             <option>weather34uvsolar.php</option>
-            <option>solaruvds.php</option>
+            <option>solaruv.php</option>
             <option>solaruvwu.php</option>
             <option>eq.php</option>
             <option>lightning34.php</option>
@@ -1104,7 +1104,7 @@ General template settings with options to choose which type of module to display
             <option>webcamsmall.php</option>
             <option>moonphase.php</option>
             <option>weather34uvsolar.php</option>
-            <option>solaruvds.php</option>
+            <option>solaruv.php</option>
              <option>solaruvwu.php</option>
             <option>eq.php</option>
             <option>lightning34.php</option>

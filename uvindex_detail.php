@@ -104,14 +104,14 @@ align-items:center;justify-content:center;margin-bottom:10px;top:0}
   <article>  
    <div class=actualt>&nbsp;&nbsp UV-INDEX Forecast</div>        
    <div class="uvcontainer1"><?php $hi = 0;
-      foreach ($darkskyhourlyCond as $cond) {     
+      foreach ($forecasthourlyCond as $cond) {     
             
-			$darkskyhourlyuv = $cond['uvIndex'];
+			$forecasthourlyuv = $cond['uvIndex'];
 			
 			
 			  if ($hi++ == 0) break; 
 }
-$weather["uv"]=$darkskyhourlyuv ;
+$weather["uv"]=$forecasthourlyuv ;
    
    
 if ($weather["uv"]>=10) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
@@ -300,7 +300,7 @@ echo '<green>0</green> UVI No cautions required<br>';
   <?php echo $info?> CSS/SVG/PHP scripts were developed by <a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:9px;">weather34.com</a>  for use in the weather34 template &copy; 2015-<?php echo date('Y');?><br>
   <br>
   <span style="font-size:8px;">
-  <?php echo $info?> UV Forecast provided by <a href="https://darksky.net/about" title="https://darksky.net/about" target="_blank">DarkSky API</a></span>
+  <?php echo $info?> UV Forecast provided by <a href="https://forecast.net/about" title="https://forecast.net/about" target="_blank">DarkSky API</a></span>
   
   </article> 
   

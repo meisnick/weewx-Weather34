@@ -133,43 +133,43 @@ updated{position:absolute;bottom:5px;float:right;}uvmax{position:absolute;top:5p
 	
 	// KP INDEX
 $hi = 0;
-      foreach ($darkskyhourlyCond as $cond) {     
+      foreach ($forecasthourlyCond as $cond) {     
             
-			$darkskyhourlyuv = $cond['uvIndex'];
+			$forecasthourlyuv = $cond['uvIndex'];
 			
 			  if ($hi++ == 0) break; }
-	if ($darkskyhourlyuv>11)  {
-	echo "<purple>",$darkskyhourlyuv . "</value>";	} 
+	if ($forecasthourlyuv>11)  {
+	echo "<purple>",$forecasthourlyuv . "</value>";	} 
 	
 	
-	else if ($darkskyhourlyuv>=10) {
-	echo "<purple>",$darkskyhourlyuv . "</value>";}	 	
+	else if ($forecasthourlyuv>=10) {
+	echo "<purple>",$forecasthourlyuv . "</value>";}	 	
 	
 	
-	else if ($darkskyhourlyuv>=8) {
+	else if ($forecasthourlyuv>=8) {
 	
-	echo "<red>",$darkskyhourlyuv . "</value>";	} 
+	echo "<red>",$forecasthourlyuv . "</value>";	} 
 	
 		
-	else if ($darkskyhourlyuv>=7) {
+	else if ($forecasthourlyuv>=7) {
 	
-	echo "<orange>",$darkskyhourlyuv . "</value>";	} 
+	echo "<orange>",$forecasthourlyuv . "</value>";	} 
 	
-	else if ($darkskyhourlyuv>=5) {
+	else if ($forecasthourlyuv>=5) {
 	
-	echo "<yellow>",$darkskyhourlyuv . "</value>";	} 
+	echo "<yellow>",$forecasthourlyuv . "</value>";	} 
 	
-	else if ($darkskyhourlyuv>3) {
+	else if ($forecasthourlyuv>3) {
 	
-	echo "<yellow>",$darkskyhourlyuv . "</value>";	}
+	echo "<yellow>",$forecasthourlyuv . "</value>";	}
 	
-	else if ($darkskyhourlyuv>2) {
+	else if ($forecasthourlyuv>2) {
 	
-	echo "<green>",$darkskyhourlyuv . "</value>";	}
+	echo "<green>",$forecasthourlyuv . "</value>";	}
 	
-	else if ($darkskyhourlyuv>=0) {
+	else if ($forecasthourlyuv>=0) {
 	
-	echo "<green>",$darkskyhourlyuv . "</value>";	}
+	echo "<green>",$forecasthourlyuv . "</value>";	}
 	
 	
 	else {
@@ -178,8 +178,8 @@ $hi = 0;
 
 
 ?></span> UV Index <div class="uvsun"><?php
-	if ($darkskyhourlyuv>=7){echo "<img src=css/icons/uvstrong.svg width=60px>";}		
-	else if ($darkskyhourlyuv>=1){echo "<img src=css/icons/clear.svg width=60px>";}	
+	if ($forecasthourlyuv>=7){echo "<img src=css/icons/uvstrong.svg width=60px>";}		
+	else if ($forecasthourlyuv>=1){echo "<img src=css/icons/clear.svg width=60px>";}	
 	else echo "<img src=css/icons/nosunuv.svg width=60px>";
 	?></div>
             </div>
@@ -189,37 +189,37 @@ $hi = 0;
                 <span class="weather34card__count-text--bigs"> <?php
 	echo " \n";
 
-	if ($darkskyhourlyuv>10)  {
+	if ($forecasthourlyuv>10)  {
 	echo "<purple><br><br> Extra Protection </purple><br>";
 	echo 'Avoid being outside during midday hours!
 Make sure you seek a shaded area! <orange>Sunscreen</orange> and wear a hat ,<orange>wear sunglasses</orange> during bright <orange>sunlight</orange> periods.';
 	} 
 	
-	else if ($darkskyhourlyuv>8)  {
+	else if ($forecasthourlyuv>8)  {
 	echo "<red><br><br> Extra Protection ", $alert,"</red><br>";
 	echo 'Avoid being outside during midday hours!
 Make sure you seek a shaded area! Wear <orange>Sunscreen</orange> and hat ,<orange>wear sunglasses</orange>.';
 	} 
 	
 	
-	else if ($darkskyhourlyuv>5)  {
+	else if ($forecasthourlyuv>5)  {
 	echo "<orange><br><br> Protection Required ", $alert,"</orange><br>";
 	echo 'Seek shadea area during midday hours!
 Use sunscreen and a hat for protection,<orange>wear sunglasses</orange> during bright <orange>sunlight</orange periods.';
 	} 
 	
-	else if ($darkskyhourlyuv>3)  {
+	else if ($forecasthourlyuv>3)  {
 	echo "<yellow><br><br> Protection Required ", $alert,"</yellow><br>";
 	echo ' During midday hours!
 caution use some form of  protection,<orange>wear sunglasses</orange> during bright <orange>sunlight</orange periods.';
 	} 
 	
-	else if ($darkskyhourlyuv>=1)  {
+	else if ($forecasthourlyuv>=1)  {
 	echo "<green><br><br> No Cautions Required</green><br>";
 	echo 'No advisory required . Safe for all skin types though be-aware of <orange>sunlight</orange> when <orange>sun</orange> approaches low horizon,<orange>wear sunglasses</orange>.';
 	} 
 	
-	else if ($darkskyhourlyuv==0)  {
+	else if ($forecasthourlyuv==0)  {
 	echo "<green><br><br> No Caution Required</green><br>";
 	echo 'No cautions required.The <orange>sun</orange> may be low on the horizon,obscured or below the horizon due to darkness hours.';
 	

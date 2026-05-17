@@ -980,7 +980,34 @@ General template settings with options to choose which type of module to display
                 result.textContent = 'Request failed.';
             });
     }
-    </script><br/>
+    function saveICAOManual() {
+        var val = document.getElementById('icaoManual').value.trim().toUpperCase();
+        var result = document.getElementById('icaoResult');
+        if (!val) return;
+        fetch('icao_lookup.php?manual=' + encodeURIComponent(val))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    result.style.color = '#e05a27';
+                    result.textContent = data.error;
+                } else {
+                    result.style.color = '#5a5';
+                    result.textContent = 'Saved: ' + data.icao;
+                }
+            })
+            .catch(function() {
+                result.style.color = '#e05a27';
+                result.textContent = 'Request failed.';
+            });
+    }
+    </script>
+    <br/>
+    <span style="color:rgba(86, 95, 103, 1.000);font-size:12px;">Or enter manually:</span>&nbsp;
+    <input type="text" id="icaoManual" placeholder="e.g. KETB" maxlength="4"
+           style="width:80px;font-size:13px;text-transform:uppercase;"
+           onkeydown="if(event.key==='Enter')saveICAOManual()">
+    <button type="button" onclick="saveICAOManual()" class="button"
+            style="font-size:12px;padding:4px 10px;">Save</button><br/>
 
     <div class="stationvalue">NWS Weather Alerts</div><br/>
     <?php echo $iicon;?>
@@ -1035,7 +1062,34 @@ General template settings with options to choose which type of module to display
                 result.textContent = 'Request failed.';
             });
     }
+    function saveZonesManual() {
+        var val = document.getElementById('zonesManual').value.trim().toUpperCase();
+        var result = document.getElementById('nwsZoneResult');
+        if (!val) return;
+        fetch('nws_zone_lookup.php?manual=' + encodeURIComponent(val))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    result.style.color = '#e05a27';
+                    result.textContent = data.error;
+                } else {
+                    result.style.color = '#5a5';
+                    result.textContent = 'Saved: ' + data.zones;
+                }
+            })
+            .catch(function() {
+                result.style.color = '#e05a27';
+                result.textContent = 'Request failed.';
+            });
+    }
     </script>
+    <br/>
+    <span style="color:rgba(86, 95, 103, 1.000);font-size:12px;">Or enter manually:</span>&nbsp;
+    <input type="text" id="zonesManual" placeholder="e.g. WIZ060,WIC089"
+           style="width:160px;font-size:13px;text-transform:uppercase;"
+           onkeydown="if(event.key==='Enter')saveZonesManual()">
+    <button type="button" onclick="saveZonesManual()" class="button"
+            style="font-size:12px;padding:4px 10px;">Save</button><br/>
 </div>
 <br/>
 

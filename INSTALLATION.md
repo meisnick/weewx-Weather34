@@ -1,0 +1,245 @@
+# Installation Guide
+
+This guide covers a fresh installation of the Weather34 WeeWX skin on a Raspberry Pi running Debian 12 (Bookworm) or Debian 13 (Trixie). The result is a fully functional local weather dashboard fed by an Ecowitt GW1000 or GW2000 gateway.
+
+**Tested configuration:** WeeWX 5.3.1 · PHP 8.4 · Python 3.13 · Debian 13 Trixie 64-bit
+
+---
+
+## Prerequisites
+
+- Raspberry Pi (any model with 64-bit support recommended)
+- Debian 12 Bookworm or 13 Trixie (64-bit)
+- Ecowitt GW1000 or GW2000 on your local network
+- Apache web server access
+- A nearby airport ICAO code (for METAR current conditions)
+- NWS forecast zone codes for your location (US stations — find at [weather.gov/pfl](https://www.weather.gov/pfl/))
+
+---
+
+## 1. Install WeeWX 5
+
+Add the official WeeWX apt repository and install:
+
+```bash
+sudo apt update && sudo apt install -y apt-transport-https wget gnupg
+wget -qO - https://weewx.com/keys.html | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/weewx.gpg
+echo "deb [arch=all] https://weewx.com/apt/python3 buster main" | sudo tee /etc/apt/sources.list.d/weewx.list
+sudo apt update && sudo apt install -y weewx python3-packaging python3-six
+```
+
+Verify the install:
+
+```bash
+weewxd --version   # should print 5.x.x
+```
+
+---
+
+## 2. Install the GW1000/GW2000 Driver
+
+```bash
+sudo apt install -y python3-six   # required by the driver installer
+sudo weectl extension install --yes \
+  https://github.com/weewx-contrib/weewx-gw1000/archive/refs/heads/master.zip
+```
+
+---
+
+## 3. Install Apache and PHP
+
+```bash
+sudo apt install -y apache2 php libapache2-mod-php php-curl php8.4-mbstring
+sudo systemctl enable apache2
+```
+
+> **Note:** `php8.4-mbstring` is a separate package on Debian Trixie and must be installed explicitly. Without it the dashboard will display a blank page.
+
+---
+
+## 4. Deploy the Skin
+
+Clone the repository to your web root:
+
+```bash
+sudo git clone https://github.com/meisnick/weewx-Weather34.git /var/www/html/weewx/weather34
+sudo chown -R www-data:www-data /var/www/html/weewx/weather34
+```
+
+Copy the WeeWX user extensions:
+
+```bash
+sudo cp /var/www/html/weewx/weather34/user/*.py /etc/weewx/bin/user/
+```
+
+Copy the WeeWX skin templates:
+
+```bash
+sudo cp -r /var/www/html/weewx/weather34/skins/Weather34 /etc/weewx/skins/
+```
+
+Set the correct group on the serverdata directory so WeeWX can write to it:
+
+```bash
+sudo usermod -a -G www-data weewx
+sudo chown -R weewx:www-data /var/www/html/weewx/weather34/serverdata
+sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
+sudo chown -R weewx:www-data /var/www/html/weewx/weather34/jsondata
+sudo chmod -R 775 /var/www/html/weewx/weather34/jsondata
+sudo mkdir -p /tmp/weather34
+sudo chown weewx:weewx /tmp/weather34
+```
+
+---
+
+## 5. Configure WeeWX
+
+Copy the example configuration and edit it with your station details:
+
+```bash
+sudo cp /var/www/html/weewx/weather34/weewx5.conf.example /etc/weewx/weewx.conf
+sudo nano /etc/weewx/weewx.conf
+```
+
+Replace every `YOUR_*` placeholder:
+
+| Placeholder | What to enter |
+|-------------|---------------|
+| `YOUR_STATION_NAME, State` | Your location name |
+| `0.000` (latitude) | Your latitude in decimal degrees |
+| `0.000` (longitude) | Your longitude (negative for west) |
+| `0, foot` | Your elevation |
+| `192.168.1.x` | Your GW1000/GW2000 IP address |
+| `YOUR_PWS_STATION_ID` | PWSWeather station ID (or disable) |
+| `YOUR_WAQI_TOKEN` | WAQI API token from [waqi.info](https://waqi.info/api/) |
+| `YOUR_TWC_API_KEY` | IBM Weather Company API key (for wu.txt forecast) |
+
+---
+
+## 6. Create Station Config for Data Scripts
+
+```bash
+cp /var/www/html/weewx/weather34/scripts/w34config.example.py \
+   /var/www/html/weewx/weather34/scripts/w34config.py
+nano /var/www/html/weewx/weather34/scripts/w34config.py
+```
+
+Fill in your station's latitude, longitude, ICAO airport code, and NWS zone identifiers. This file is gitignored and never committed.
+
+---
+
+## 7. Install Data Fetch Scripts
+
+Copy the scripts to `/usr/local/bin` and make them executable:
+
+```bash
+sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update}.py \
+        /var/www/html/weewx/weather34/scripts/w34config.py \
+        /usr/local/bin/
+sudo cp /var/www/html/weewx/weather34/scripts/update_aqi.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/*.py /usr/local/bin/update_aqi.sh
+```
+
+Create log files:
+
+```bash
+sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover}.log
+sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover}.log
+```
+
+Add to root crontab (`sudo crontab -e`):
+
+```
+0 * * * *       /usr/local/bin/update_aqi.sh
+1-56/5 * * * *  /usr/bin/python3 /usr/local/bin/cloud_cover_update.py >> /var/log/cloud_cover.log 2>&1
+15 * * * *      /usr/bin/python3 /usr/local/bin/nws_forecast_update.py >> /var/log/nws_forecast.log 2>&1
+*/15 * * * *    /usr/bin/python3 /usr/local/bin/metar_update.py >> /var/log/metar_update.log 2>&1
+*/5 * * * *     /usr/bin/python3 /usr/local/bin/nws_alerts_update.py >> /var/log/nws_alerts.log 2>&1
+```
+
+---
+
+## 8. Configure Apache
+
+Create a virtual host configuration:
+
+```bash
+sudo tee /etc/apache2/sites-available/weather34.conf > /dev/null << 'EOF'
+<VirtualHost *:80>
+    DocumentRoot /var/www/html
+    <Directory /var/www/html/weewx/weather34>
+        AllowOverride All
+        Require all granted
+        Options -Indexes
+    </Directory>
+    <Directory /var/www/html/weewx/weather34/w34highcharts>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+
+sudo a2ensite weather34
+sudo a2enmod headers
+sudo a2dissite 000-default
+sudo systemctl restart apache2
+```
+
+---
+
+## 9. Start WeeWX
+
+```bash
+sudo systemctl enable weewx
+sudo systemctl start weewx
+```
+
+Watch the log to confirm data is flowing:
+
+```bash
+sudo journalctl -u weewx -f
+```
+
+You should see lines like:
+```
+INFO weewx.engine: Starting main packet loop.
+INFO user.gw1000: Using 't_rainyear' for rain total
+INFO user.weather34: Web Service: wu is running
+```
+
+---
+
+## 10. Verify and Configure
+
+Open a browser and navigate to:
+
+```
+http://<your-pi-ip>/weewx/weather34/
+```
+
+The dashboard should load with live sensor data within 20–30 seconds of WeeWX starting.
+
+To configure the dashboard layout, module positions, and appearance, visit the setup page:
+
+```
+http://<your-pi-ip>/weewx/weather34/templateSetup.php
+```
+
+---
+
+## Data Source Reference
+
+| Data | Source | Update Interval |
+|------|--------|----------------|
+| Live sensor readings | Ecowitt GW1000/GW2000 via WeeWX | Every 20 seconds |
+| Archive records | WeeWX database | Every 5 minutes |
+| 8-day forecast | Open-Meteo (free, no key) | Hourly |
+| METAR current conditions | aviationweather.gov NOAA/AWC (free, no key) | Every 15 minutes |
+| Weather alerts | api.weather.gov NWS (free, no key, US only) | Every 5 minutes |
+| Cloud cover history | Open-Meteo archive API | Every 5 minutes |
+| Air quality index | WAQI API | Hourly |
+| Extended forecast | IBM The Weather Company | Hourly |
+| Kp-index / aurora | NOAA Space Weather | Every 6 hours |

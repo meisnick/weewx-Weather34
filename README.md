@@ -174,4 +174,13 @@ This fork adds modifications under the same non-commercial terms.
 - **This fork:** [meisnick/weewx-Weather34](https://github.com/meisnick/weewx-Weather34)
   Continued maintenance after upstream EOL: WeeWX 5.x support, PHP 8.4 / Python 3.13 compatibility, API migration to free government sources, and cleanup of deprecated services.
 
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [INSTALLATION.md](INSTALLATION.md) | Fresh installation from a bare Pi |
+| [MIGRATION.md](MIGRATION.md) | Upgrading from WeeWX 4 or steepleian fork |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common configuration issues and fixes |
+| [CHANGELOG.md](CHANGELOG.md) | Full change history |
+
 See [CHANGELOG.md](CHANGELOG.md) for complete change history.

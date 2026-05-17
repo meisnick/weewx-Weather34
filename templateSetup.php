@@ -936,8 +936,51 @@ General template settings with options to choose which type of module to display
     <?php echo $iicon;?>
     <span style="color:rgba(86, 95, 103, 1.000);"><b>scripts/metar_update.py</b> — fetches METAR from
     <a href="https://aviationweather.gov/" target="_blank">aviationweather.gov</a> (free, no key).
-    Set <b>ICAO</b> in w34config.py to your nearest 4-letter airport code (e.g. KETB).
+    Uses your Lat/Lon to find the nearest NWS observation station automatically.
     Run via cron every 15 min.</span><br/><br/>
+
+    <button type="button" id="icaoBtn" class="button"
+            onclick="lookupICAO()"
+            style="font-size:13px;padding:6px 14px;">
+        Auto-detect &amp; save nearest airport (ICAO) from Lat/Lon
+    </button>
+    <span id="icaoResult" style="margin-left:10px;font-size:13px;"></span>
+
+    <script>
+    function lookupICAO() {
+        var lat = document.getElementById('lat').value;
+        var lon = document.getElementById('lon').value;
+        var btn = document.getElementById('icaoBtn');
+        var result = document.getElementById('icaoResult');
+        if (!lat || !lon || (parseFloat(lat) === 0 && parseFloat(lon) === 0)) {
+            result.style.color = '#e05a27';
+            result.textContent = 'Enter Lat/Lon in the Location section above first.';
+            return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Looking up...';
+        result.textContent = '';
+        fetch('icao_lookup.php?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lon))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.textContent = 'Auto-detect & save nearest airport (ICAO) from Lat/Lon';
+                if (data.error) {
+                    result.style.color = '#e05a27';
+                    result.textContent = data.error;
+                } else {
+                    result.style.color = '#5a5';
+                    result.textContent = 'Saved: ' + data.icao + ' — ' + data.name;
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Auto-detect & save nearest airport (ICAO) from Lat/Lon';
+                result.style.color = '#e05a27';
+                result.textContent = 'Request failed.';
+            });
+    }
+    </script><br/>
 
     <div class="stationvalue">NWS Weather Alerts</div><br/>
     <?php echo $iicon;?>

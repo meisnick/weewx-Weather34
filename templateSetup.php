@@ -1023,10 +1023,6 @@ General template settings with options to choose which type of module to display
         <select id="position4" name="position4" class="choose">
         <option><?php echo $position4 ;?></option>
         <option>top_advisory_nws.php</option>
-        <option>top_advisory_eu.php</option>
-        <option>top_advisory_uk.php</option>
-        <option>top_advisory_au.php</option>
-        <option>top_advisory_rw.php</option>
         </select>
         <div class="stationvalue"> Position 4 Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1120,10 +1116,6 @@ General template settings with options to choose which type of module to display
         <br/>
       <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Top 4 positions</span></strong><br/>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_nws.php</span> NWS Alerts API — US stations (free, no key) <br/></span>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_eu.php for European Union</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_aw_uk.php for United Kingdom</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_au.php for Australia</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
-<span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_rw.php for Rest of the World</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_rainfallfyearmonth.php</span> Totals <span style="color:rgba(24, 25, 27, 0.8)">YEARLY-MONTHLY</span> Rainfall<br/></span>
         <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34clock.php</span> Station  <span style="color:rgba(24, 25, 27, 0.8)">Time</span><br/>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_windgustyear.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Current Monthly / Yearly max Gust </span> <br/>

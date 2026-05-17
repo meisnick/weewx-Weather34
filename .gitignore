@@ -1,7 +1,4 @@
-jsondata/forecast_daily.txt
-jsondata/forecast_hourly.txt
-jsondata/me.txt
-jsondata/*.txt
+# jsondata/ directory is now fully ignored below
 *.log
 scripts/w34config.py
 
@@ -15,3 +12,25 @@ img/
 *.ttf
 *.eot
 CLAUDE.md
+
+# Runtime generated data
+serverdata/
+jsondata/
+w34highcharts/json/
+w34highcharts/json_day/
+w34highcharts/w34_reports/__pycache__/
+
+# Static icon/image asset sets (large binary, not skin code)
+css/metofficeicons/
+css/mouse/
+css/rain/
+css/windicons/
+css/wuicons/
+w34highcharts/css/yricons/
+
+# Backup / scratch files
+*.bak
+placeholder.txt
+_config.yml
+pop_metoffice_daynight.php-not*
+w34highcharts/*.html-org

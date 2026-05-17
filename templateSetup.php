@@ -943,13 +943,56 @@ General template settings with options to choose which type of module to display
     <?php echo $iicon;?>
     <span style="color:rgba(86, 95, 103, 1.000);"><b>scripts/nws_alerts_update.py</b> — fetches active alerts from
     <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">api.weather.gov</a> (free, no key, US only).
-    Set <b>ALERT_ZONES</b> in w34config.py to your NWS zone codes (e.g. <b>WIZ060,WIC089</b>).
-    Run via cron every 5 min.</span><br/>
+    Uses your Lat/Lon to look up your NWS forecast zone and county codes automatically.
+    Run via cron every 5 min.</span><br/><br/>
+
     <?php echo $iicon;?>
-    <span style="color:rgba(86, 95, 103, 1.000);">To find your zones: open
-    <b>https://api.weather.gov/points/LAT,LON</b> (your coordinates) and look for
-    <b>forecastZone</b> (e.g. <i>.../zones/forecast/WIZ060</i> → <b>WIZ060</b>) and
-    <b>county</b> (e.g. <i>.../zones/county/WIC089</i> → <b>WIC089</b>).</span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">Don't know your coordinates?
+    <a href="https://www.gps-coordinates.net/" target="_blank">gps-coordinates.net</a> — enter your address and copy the values into the Lat/Lon fields in the Location section above, then save.</span><br/><br/>
+
+    <button type="button" id="nwsZoneBtn" class="button"
+            onclick="lookupNWSZones()"
+            style="font-size:13px;padding:6px 14px;">
+        Auto-detect &amp; save NWS alert zones from Lat/Lon
+    </button>
+    <span id="nwsZoneResult" style="margin-left:10px;font-size:13px;"></span>
+
+    <script>
+    function lookupNWSZones() {
+        var lat = document.getElementById('lat').value;
+        var lon = document.getElementById('lon').value;
+        var btn = document.getElementById('nwsZoneBtn');
+        var result = document.getElementById('nwsZoneResult');
+        if (!lat || !lon || (parseFloat(lat) === 0 && parseFloat(lon) === 0)) {
+            result.style.color = '#e05a27';
+            result.textContent = 'Enter Lat/Lon in the Location section above first.';
+            return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Looking up...';
+        result.textContent = '';
+        fetch('nws_zone_lookup.php?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lon))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                btn.disabled = false;
+                if (data.error) {
+                    btn.textContent = 'Auto-detect & save NWS alert zones from Lat/Lon';
+                    result.style.color = '#e05a27';
+                    result.textContent = data.error;
+                } else {
+                    btn.textContent = 'Auto-detect & save NWS alert zones from Lat/Lon';
+                    result.style.color = '#5a5';
+                    result.textContent = 'Saved: ' + data.zones;
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Auto-detect & save NWS alert zones from Lat/Lon';
+                result.style.color = '#e05a27';
+                result.textContent = 'Request failed.';
+            });
+    }
+    </script>
 </div>
 <br/>
 

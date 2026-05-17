@@ -16,7 +16,7 @@ $grid_modules = [
     ['module' => 'currentconditionsw34.php', 'title' => '',                'refresh' => 600],
     ['module' => 'windspeeddirection.php',   'title' => '',                'refresh' => 4],
     ['module' => 'barometer.php',            'title' => '',                'refresh' => 300],
-    ['module' => 'w34skymap.php',            'title' => '',                'refresh' => 3600],
+    ['module' => 'sun3.php',                 'title' => '',                'refresh' => 3600],
     ['module' => 'rainfall.php',             'title' => '',                'refresh' => 60],
     ['module' => 'moonphase.php',            'title' => '',                'refresh' => 600],
     ['module' => 'lightning34.php',          'title' => 'Lightning',       'refresh' => 60],

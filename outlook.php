@@ -16,7 +16,7 @@ include_once('settings.php');include('w34CombinedData.php');
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title><?php echo "${stationName}";?> <?php echo 'Forecast' ;?> </title>
+		<title><?php echo "{$stationName}";?> <?php echo 'Forecast' ;?> </title>
 		
 		<style>
 		@font-face{font-family:system;font-style:normal;src:local(".SFNSText-Light"),local("Arial")}
@@ -42,7 +42,7 @@ blueu{background:#01a4b5}zerou{color:#777}yellowu{background:#e6a141}orangeu{bac
 </style>
 </head>
 <body>
-<div class="weather34darkbrowser" url="<?php echo "${stationName} \n";?> Forecast  (<?php echo $weather["temp_units"]?>&deg;)"></div>
+<div class="weather34darkbrowser" url="<?php echo "{$stationName} \n";?> Forecast  (<?php echo $weather["temp_units"]?>&deg;)"></div>
 		<div style="position:absolute;width:725px;background:none;margin:0 auto;margin-left:7%;margin-top:5px;">
 			
         <br>

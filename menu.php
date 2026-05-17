@@ -399,23 +399,23 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
       <?php // please do not remove this and if so no support is given and your domain will be blacklisted from support it is not much to ask //
  ?>
       <li>
-        <a href="https://www.chrisalemany.ca/2021/02/24/installing-the-weather34-skin-on-weewx-with-remote-web-server-2021-edition/" title="remote setup" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Remote Setup Guide
+        <a href="https://github.com/meisnick/weewx-Weather34/blob/main/INSTALLATION.md" title="Installation Guide" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Installation Guide
         </a>
       </li>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34/" title="weewx-Weather34 on Github" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Download weewx-Weather34 skin
+        <a href="https://github.com/meisnick/weewx-Weather34/" title="weewx-Weather34 on GitHub" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> GitHub: meisnick/weewx-Weather34
         </a>
       </li>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34" title="Web Services Setup Page" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Web Services Setup Page
+        <a href="templateSetup.php" title="Dashboard Setup Page">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Dashboard Setup Page
         </a>
       </li>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34/issues" title="Open an issue on GitHub" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Maintained by Ian Millard (Steepleian)
+        <a href="https://github.com/steepleian/weewx-Weather34" title="WeeWX port by Ian Millard" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> WeeWX port by Ian Millard (Steepleian)
         </a>
       </li>
       <li>

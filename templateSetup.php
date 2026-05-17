@@ -1124,7 +1124,7 @@ General template settings with options to choose which type of module to display
     <b><span style="color:rgba(236, 87, 27, 1.000);">Leave blank to hide link within menu</span></b><br/>
 
     <?php echo $iicon;?>
-    <span style="color:rgba(86, 95, 103, 1.000);">Should be an image url, possibly ending in <b>jpg</b>/<b>jpeg</b>/<b>png</b></span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">Must be a direct image URL (e.g. <b>http://camera-ip/snapshot.jpg</b>) — not a webpage. A cache-busting timestamp is appended automatically, so the endpoint must tolerate extra query parameters.</span><br/>
 
     <div class="stationvalue">Path/Url to your webcam <b>video</b></div>
     <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1133,13 +1133,10 @@ General template settings with options to choose which type of module to display
 
   <input name="videoWeatherCamURL" type="text" id="videoWeatherCamURL" value="<?php echo $videoWeatherCamURL ;?>" class="chooseapi"><br/>
     <?php echo $iicon;?>
-    <b><span style="color:rgba(236, 87, 27, 1.000);">Leave blank to use the Static Weather Camera image instead</span></b><br/>
+    <b><span style="color:rgba(236, 87, 27, 1.000);">Optional — when set, enables the Webcam popup link in the navigation menu</span></b><br/>
 
     <?php echo $iicon;?>
-    <span style="color:rgba(86, 95, 103, 1.000);">Add the url to your Weather Camera's live video feed to include it in the Weather Camera popup</span><br/>
-
-    <?php echo $iicon;?>
-    <span style="color:rgba(86, 95, 103, 1.000);">If your video doesn't work here, but you can view it by putting it in the URL bar, <a href="https://github.com/lightmaster/Meteobridge-Weather34-Template/issues/new?assignees=lightmaster&labels=enhancement&template=feature_request.md&title=" title="Add a Feature | HWS GitHub" target="_blank"><span style="color:rgba(236, 87, 27, 1.000);">start a new issue on the GitHub page</span></a> and I'll try to add support for your video.</span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">Note: the popup currently displays the static snapshot image above — video stream rendering is not implemented</span><br/>
 </div>
 <br/>
 

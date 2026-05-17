@@ -1178,6 +1178,158 @@ General template settings with options to choose which type of module to display
 <br/>
 
 <!--##########################################################################################
+    #########                      Start of Module Layout Section                    #########
+    ##########################################################################################-->
+<div class="weatheroptions">
+  <div class="weathersectiontitle">Module Layout</div><br/>
+  <?php echo $iicon; ?>
+  <span style="color:rgba(86,95,103,1);">Drag modules to reorder. Use + Add to insert new modules, &#10005; to remove.
+  Click <b>Save Layout</b> to apply &mdash; changes take effect on the next dashboard page load.</span><br/><br/>
+
+  <script src="js/sortable.min.js"></script>
+  <style>
+  .mod-list{list-style:none;margin:0;padding:0;min-height:36px}
+  .mod-item{display:flex;align-items:center;gap:8px;padding:5px 6px;margin:3px 0;background:rgba(24,25,27,0.7);border:1px solid rgba(84,85,86,0.4);user-select:none}
+  .mod-grip{cursor:grab;color:rgba(84,85,86,0.8);font-size:14px;padding:0 4px;flex-shrink:0}
+  .mod-grip:active{cursor:grabbing}
+  .mod-name{font-size:11px;font-family:monospace;color:#ccc;min-width:180px}
+  .mod-label{flex:1;font-size:10px;color:rgba(150,155,165,1)}
+  .mod-remove{background:rgba(180,60,40,0.7);border:0;color:#fff;font-size:11px;padding:2px 7px;cursor:pointer;flex-shrink:0}
+  .mod-remove:hover{background:rgba(200,70,50,0.9)}
+  .mod-add-row{display:flex;gap:6px;margin-top:5px;align-items:center}
+  .mod-add-row select{background:rgba(24,25,27,0.8);color:#ccc;border:1px solid rgba(84,85,86,0.5);padding:4px;font-size:11px;flex:1}
+  .mod-add-btn{background:rgba(86,95,103,0.8);border:0;color:#fff;padding:4px 12px;font-size:11px;cursor:pointer}
+  .mod-add-btn:hover{background:rgba(100,110,120,0.9)}
+  .mod-save-btn{background:rgba(240,94,64,1);border:0;color:#fff;padding:6px 18px;font-size:13px;cursor:pointer;margin-top:10px}
+  .mod-save-btn:hover{background:rgba(220,74,44,1)}
+  .mod-section-label{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:rgba(84,85,86,1);margin:12px 0 4px 0}
+  </style>
+
+  <?php
+  if (!file_exists('modules.php')) { copy('modules.example.php', 'modules.php'); }
+  include_once('modules.php');
+
+  $available_modules = [
+    'weather34clock.php'         => 'Station Clock',
+    'top_rainfallfyearmonth.php' => 'Rainfall Totals (top)',
+    'top_lightning.php'          => 'Lightning (top)',
+    'top_advisory_nws.php'       => 'NWS Weather Advisory (top)',
+    'top_windgustyear.php'       => 'Wind Gust Year (top)',
+    'top_temperatureyear.php'    => 'Temperature Year (top)',
+    'temperaturein.php'          => 'Temperature',
+    'forecast3om.php'            => 'Forecast 3-period (Open-Meteo)',
+    'forecast3omlarge.php'       => 'Forecast Large (Open-Meteo)',
+    'currentconditionsw34.php'   => 'Current Conditions (METAR)',
+    'windspeeddirection.php'     => 'Wind Speed & Direction',
+    'barometer.php'              => 'Barometer',
+    'sun3.php'                   => 'Daylight | Darkness',
+    'rainfall.php'               => 'Rainfall Today',
+    'moonphase.php'              => 'Moon Phase',
+    'lightning34.php'            => 'Lightning Detail',
+    'indoortemperature.php'      => 'Indoor Temperature',
+    'airqualitymodule.php'       => 'Air Quality (AQI)',
+    'weather34uvsolar.php'       => 'UV & Solar',
+    'solaruv.php'                => 'UV & Solar (local)',
+    'solaruvwu.php'              => 'UV & Solar (Weather Company)',
+    'webcamsmall.php'            => 'Webcam / Moonphase (night)',
+    'pop_sensors.php'            => 'Sensor Status',
+  ];
+
+  function modItem($mod) {
+      global $available_modules;
+      $f = htmlspecialchars($mod['module']);
+      $t = htmlspecialchars($mod['title']);
+      $l = htmlspecialchars($available_modules[$mod['module']] ?? $mod['module']);
+      return "<li class='mod-item' data-module='{$f}' data-title='{$t}'>"
+           . "<span class='mod-grip' title='Drag to reorder'>&#8942;</span>"
+           . "<span class='mod-name'>{$f}</span>"
+           . "<span class='mod-label'>{$l}</span>"
+           . "<button type='button' class='mod-remove' onclick='this.closest(\"li\").remove()'>&#10005;</button>"
+           . "</li>";
+  }
+
+  function modSelect($id) {
+      global $available_modules;
+      $h = "<select id='{$id}'>";
+      foreach ($available_modules as $file => $label) {
+          $h .= "<option value='" . htmlspecialchars($file) . "'>" . htmlspecialchars($label) . "</option>";
+      }
+      return $h . "</select>";
+  }
+  ?>
+
+  <div class="mod-section-label">Top Bar</div>
+  <ul class="mod-list" id="topbar-list">
+    <?php foreach ($topbar_modules as $m) echo modItem($m); ?>
+  </ul>
+  <div class="mod-add-row">
+    <?php echo modSelect('sel-top'); ?>
+    <button type="button" class="mod-add-btn" onclick="addMod('topbar-list','sel-top')">+ Add</button>
+  </div>
+
+  <div class="mod-section-label">Grid</div>
+  <ul class="mod-list" id="grid-list">
+    <?php foreach ($grid_modules as $m) echo modItem($m); ?>
+  </ul>
+  <div class="mod-add-row">
+    <?php echo modSelect('sel-grid'); ?>
+    <button type="button" class="mod-add-btn" onclick="addMod('grid-list','sel-grid')">+ Add</button>
+  </div>
+
+  <br/>
+  <button type="button" class="mod-save-btn" onclick="saveLayout()">Save Layout</button>
+  <span id="mod-status" style="font-size:12px;margin-left:12px"></span>
+
+  <script>
+  new Sortable(document.getElementById('topbar-list'), {animation:120, handle:'.mod-grip'});
+  new Sortable(document.getElementById('grid-list'),   {animation:120, handle:'.mod-grip'});
+
+  function addMod(listId, selId) {
+      var sel = document.getElementById(selId);
+      var file = sel.value;
+      var label = sel.options[sel.selectedIndex].text;
+      var li = document.createElement('li');
+      li.className = 'mod-item';
+      li.dataset.module = file;
+      li.dataset.title = '';
+      li.innerHTML = '<span class="mod-grip">&#8942;</span>'
+                   + '<span class="mod-name">' + file + '</span>'
+                   + '<span class="mod-label">' + label + '</span>'
+                   + '<button type="button" class="mod-remove" onclick="this.closest(\'li\').remove()">&#10005;</button>';
+      document.getElementById(listId).appendChild(li);
+  }
+
+  function collect(listId) {
+      return Array.from(document.querySelectorAll('#' + listId + ' .mod-item')).map(function(li) {
+          return {module: li.dataset.module, title: li.dataset.title || ''};
+      });
+  }
+
+  function saveLayout() {
+      var st = document.getElementById('mod-status');
+      st.style.color = 'rgba(150,155,165,1)';
+      st.textContent = 'Saving…';
+      var fd = new FormData();
+      fd.append('topbar', JSON.stringify(collect('topbar-list')));
+      fd.append('grid',   JSON.stringify(collect('grid-list')));
+      fetch('module_save.php', {method:'POST', body:fd})
+          .then(function(r){return r.json();})
+          .then(function(d){
+              if (d.success) {
+                  st.style.color = '#5a9';
+                  st.textContent = 'Saved — ' + d.topbar + ' top bar + ' + d.grid + ' grid modules';
+              } else {
+                  st.style.color = '#e05a27';
+                  st.textContent = d.error || 'Save failed';
+              }
+          })
+          .catch(function(){ st.style.color='#e05a27'; st.textContent='Request failed'; });
+  }
+  </script>
+</div>
+<br/>
+
+<!--##########################################################################################
     #########                        Start of Module Section                         #########
     ##########################################################################################-->
 

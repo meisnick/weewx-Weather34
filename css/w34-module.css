@@ -38,6 +38,11 @@
   padding: 4px 6px;
 }
 
+/* Override the 26px font-size inherited from .weather34box .value */
+.weather34box .value .mod-top {
+  font-size: 11px;
+}
+
 /* ── Header row — timestamp right-aligned, no absolute positioning ───────── */
 .mod-header {
   display: flex;

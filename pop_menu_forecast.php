@@ -74,24 +74,24 @@ body, html {
   
   <div id="Tab1" class="tabcontent">
   
-  <iframe width="100%" height="92%" scrolling="no" src="pop_aeris_hourly.php" frameborder="0"></iframe>
+  <iframe width="100%" height="92%" scrolling="no" src="pop_forecast_hourly.php" frameborder="0"></iframe>
 </div>
 
 <div id="Tab2" class="tabcontent">
   
-  <iframe width="100%" height="92%" scrolling="no" src="pop_aeris_hourly_table.php" frameborder="0"></iframe>
+  <iframe width="100%" height="92%" scrolling="no" src="pop_forecast_hourly_table.php" frameborder="0"></iframe>
 </div>
   
   
   
   <div id="Tab3" class="tabcontent">
   
-  <iframe width="100%" height="92%" scrolling="no" src="pop_aeris_daynight.php" frameborder="0"></iframe>
+  <iframe width="100%" height="92%" scrolling="no" src="pop_forecast_daynight.php" frameborder="0"></iframe>
 </div>
   
   <div id="Tab4" class="tabcontent">
   
-  <iframe width="100%" height="92%" scrolling="no" src="pop_aeris_daynight_table.php" frameborder="0"></iframe>
+  <iframe width="100%" height="92%" scrolling="no" src="pop_forecast_daynight_table.php" frameborder="0"></iframe>
 </div>
   
 <script>

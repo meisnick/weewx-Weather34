@@ -21,7 +21,7 @@ PLACE_COUNTRY = "us"
 
 # Paths to output files (change only if your web root differs)
 WEB_ROOT   = "/var/www/html/weewx/weather34"
-AWD_PATH   = WEB_ROOT + "/jsondata/awd.txt"
-AWH_PATH   = WEB_ROOT + "/jsondata/awh.txt"
+FORECAST_DAILY_PATH   = WEB_ROOT + "/jsondata/forecast_daily.txt"
+FORECAST_HOURLY_PATH   = WEB_ROOT + "/jsondata/forecast_hourly.txt"
 ME_PATH    = WEB_ROOT + "/jsondata/me.txt"
 ALERTS_PATH = WEB_ROOT + "/jsondata/nws_alerts.txt"

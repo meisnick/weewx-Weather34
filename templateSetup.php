@@ -117,7 +117,7 @@ $USAWeatherFinder = "'. $_POST["USAWeatherFinder"]. '";
 $extraLinkTitle = "'. $_POST["extraLinkTitle"]. '";
 $extraLinkColor = "'. $_POST["extraLinkColor"]. '";
 $extraLinkURL = "'. $_POST["extraLinkURL"]. '";
-$darkskyunit = "'. $_POST["darkskyunit"]. '";
+$forecastunit = "'. $_POST["forecastunit"]. '";
 $wuapiunit = "'. $_POST["wuapiunit"]. '";
 $meteogramPlace = "'. $_POST["meteogramPlace"]. '";
 $meteogramURL = "'. $_POST["meteogramURL"]. '";
@@ -1046,8 +1046,8 @@ General template settings with options to choose which type of module to display
         <label name="position6"></label>
         <select id="position6" name="position6" class="choose">
             <option><?php echo $position6 ;?></option>
-            <option>forecast3aw.php</option>
-            <option>forecast3awlarge.php</option>
+            <option>forecast3om.php</option>
+            <option>forecast3omlarge.php</option>
                      </select>
         <div class="stationvalue"> Position 6 Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">

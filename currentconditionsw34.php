@@ -32,7 +32,7 @@ else if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]<1999)
 else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
 else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
 }?></div></div>
-<div class="darkskyiconcurrent"><span1>
+<div class="forecasticoncurrent"><span1>
 <?php 
 //homeweatherstation weather34 current conditions using hardware values
 if ($windunit=='kts'){$windunit="kn";}       
@@ -55,7 +55,7 @@ else if(filesize('jsondata/me.txt')<160){
 echo "<img rel='prefetch' src='css/icons/offline.svg' width='70px' height='60px' alt='weather34 offline icon'>";}
 else {echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='70px' height='60px' alt='".htmlspecialchars($sky_desc)."'>";}
 ?></div>
-<div class="darkskysummary"><span>
+<div class="forecastsummary"><span>
 <?php echo '';
 if ($windunit=='kts'){$windunit="kn";}
 //rain-weather34
@@ -94,7 +94,7 @@ else if($weather["cloud_cover"]<=100) {$weather["cloud_oktas"]="8 oktas";}
 ?>
 </span></div>
  <!-- weather34 generated Data--> 
-<div class="darkskynexthours" style="margin: 60px auto auto">
+<div class="forecastnexthours" style="margin: 60px auto auto">
 <?php //weather34 average station data
 //echo "Average <oblue>Cloud Cover</oblue> last 5 minutes <ogreen>" .$weather["cloud_cover"]."</ogreen><valuetext>".$cloudcoverunit. "(".$weather["cloud_oktas"].")";
 

@@ -1,0 +1,187 @@
+# WeeWX 5.3.1 — Weather34 Skin — Ecowitt GW1000/GW2000
+debug = 0
+log_success = True
+log_failure = True
+socket_timeout = 20
+version = 5.3.1
+
+[Station]
+    location = "Your Station Name, State"
+    latitude = 0.000
+    longitude = 0.000
+    altitude = 0, foot
+    station_type = GW1000
+    rain_year_start = 1
+    week_start = 6
+
+[GW1000]
+    driver = user.gw1000
+    ip_address = 192.168.1.x  # your GW1000/GW2000 IP
+    port = 45000
+    poll_interval = 20
+
+[StdRESTful]
+    [[StationRegistry]]
+        register_this_station = false
+    [[Wunderground]]
+        enable = false
+        station = YOUR_WU_STATION_ID
+        password = your_wu_password
+    [[PWSweather]]
+        enable = true
+        station = YOUR_PWS_STATION_ID
+        password = your_pws_password
+    [[CWOP]]
+        enable = false
+        station = replace_me
+    [[WOW]]
+        enable = false
+        station = replace_me
+        password = replace_me
+    [[AWEKAS]]
+        enable = false
+        username = replace_me
+        password = replace_me
+
+[StdReport]
+    SKIN_ROOT = /etc/weewx/skins
+    HTML_ROOT = /var/www/html/weewx
+    data_binding = wx_binding
+    [[Weather34Report]]
+        skin = Weather34
+        HTML_ROOT = /var/www/html/weewx/weather34/
+        enable = true
+        [[[Units]]]
+            [[[[Groups]]]]
+                group_altitude = meter
+                group_degree_day = degree_C_day
+                group_pressure = hPa
+                group_rain = mm
+                group_rainrate = mm_per_hour
+                group_speed = meter_per_second
+    [[w34Highcharts]]
+        HTML_ROOT = /var/www/html/weewx/weather34/w34highcharts
+        enable = false
+
+    [[RSYNC]]
+        enable = false
+        server = replace_me
+        path = replace_me
+        user = replace_me
+        port = 22
+        ssh_options = -o ConnectTimeout=2
+        compress = 0
+        delete = 0
+    [[SeasonsReport]]
+        skin = Seasons
+        enable = false
+
+[StdConvert]
+    target_unit = US
+
+[StdCalibrate]
+    [[Corrections]]
+
+[StdQC]
+    [[MinMax]]
+        outTemp = -40, 120
+        inTemp = 10, 120
+        barometer = 28, 32.5
+        outHumidity = 0, 100
+        inHumidity = 0, 100
+        windSpeed = 0, 150
+        windGust = 0, 200
+        rain = 0, 10
+        rainRate = 0, 100
+
+[StdArchive]
+    archive_interval = 300
+    archive_delay = 15
+    record_generation = hardware
+    loop_hilo = True
+    data_binding = wx_binding
+
+[DataBindings]
+    [[wx_binding]]
+        database = archive_sqlite
+        table_name = archive
+        manager = weewx.manager.DaySummaryManager
+        schema = weewx.schemas.wview_extended.schema
+
+[Databases]
+    [[archive_sqlite]]
+        database_name = weewx.sdb
+        database_type = SQLite
+    [[archive_mysql]]
+        database_name = weewx
+        database_type = MySQL
+
+[DatabaseTypes]
+    [[SQLite]]
+        driver = weedb.sqlite
+        SQLITE_ROOT = /var/lib/weewx
+    [[MySQL]]
+        driver = weedb.mysql
+
+[Engine]
+    [[Services]]
+        prep_services = weewx.engine.StdTimeSynch
+        data_services =
+        process_services = weewx.engine.StdConvert, weewx.engine.StdCalibrate, weewx.engine.StdQC, weewx.wxservices.StdWXCalculate, user.weather34.Weather34RealTime
+        xtype_services = weewx.wxxtypes.StdWXXTypes, weewx.wxxtypes.StdPressureCooker, weewx.wxxtypes.StdRainRater, weewx.wxxtypes.StdDelta, user.lastnonzero.LastNonZeroService
+        archive_services = weewx.engine.StdArchive
+        restful_services = weewx.restx.StdStationRegistry, weewx.restx.StdWunderground, weewx.restx.StdPWSweather, weewx.restx.StdCWOP, weewx.restx.StdWOW, weewx.restx.StdAWEKAS
+        report_services = weewx.engine.StdPrint, weewx.engine.StdReport
+
+[Weather34RealTime]
+    realtime_path_only = ""
+    unit_system = METRICWX
+    exclude_fields = rain
+    cache_enable = True
+    cache_stale_time = 900
+    weewx_port = 25252
+    webserver_address = ""
+    weewxserver_address = ""
+    weewx_file_transfer = ""
+    HTML_ROOT = ""
+
+[LastNonZero]
+    algorithm = simple
+
+[Weather34WebServices]
+    aq_url = https://api.waqi.info/feed/geo:LAT;LON/?token=YOUR_WAQI_TOKEN
+    aq_interval = 3600
+    wu_url = https://api.weather.com/v3/wx/forecast/daily/5day?geocode=LAT,LON&language=en&format=json&units=e&apiKey=YOUR_TWC_API_KEY
+    wu_interval = 3600
+    ki_url = https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json
+    ki_interval = 21600
+    services = aq.wu.ki
+
+[Accumulator]
+    [[lightning_strike_count]]
+        extractor = sum
+    [[lightning_noise_count]]
+        extractor = sum
+    [[lightning_disturber_count]]
+        extractor = sum
+    [[lightning_distance]]
+        extractor = last
+    [[signal5]]
+        extractor = last
+
+[StdWXCalculate]
+    [[Calculations]]
+        pressure = prefer_hardware
+        altimeter = prefer_hardware
+        appTemp = software
+        barometer = prefer_hardware
+        cloudbase = prefer_hardware
+        dewpoint = prefer_hardware
+        ET = prefer_hardware
+        heatindex = prefer_hardware
+        humidex = prefer_hardware
+        inDewpoint = prefer_hardware
+        maxSolarRad = prefer_hardware
+        rainRate = prefer_hardware
+        windchill = prefer_hardware
+        windrun = prefer_hardware

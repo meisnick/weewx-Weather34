@@ -2,6 +2,54 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [2026-05-17] — WeeWX 5.x Migration (main branch)
+
+### Branch Structure
+- `main` — WeeWX 5.x + PHP 8.4 + Python 3.13 (current, Debian 13 Trixie 64-bit)
+- `legacy-4.x` — WeeWX 4.10.2 + PHP 8.1 + Python 3.9 (Debian 11 Bullseye, preserved)
+
+### WeeWX 5.x Compatibility
+- `user/weather34.py`: replaced `from distutils.version import StrictVersion` with
+  `from packaging.version import Version` — `distutils` removed in Python 3.12+
+- `user/gw1000.py`: updated to weewx-contrib WeeWX 5 compatible driver
+  (`weectl extension install https://github.com/weewx-contrib/weewx-gw1000`)
+- `weewx5.conf.example`: complete WeeWX 5.3.1 configuration template including:
+  - `[StdWXCalculate]` with `appTemp = software` (GW1000 does not provide appTemp)
+  - `[[w34Highcharts]]` under `[StdReport]` (required — weather34.py crashes without it)
+  - `[DatabaseTypes]` section (WeeWX 5 format, replaces WeeWX 4 `database_path`)
+  - `[[RSYNC]]` under `[StdReport]` (required — weather34.py accesses it unconditionally)
+- Database migrated from WeeWX 4 via binary SQLite copy + `weectl database update`
+
+### PHP 8.4 Compatibility
+- `common.php`: `ob_start('mb_output_handler')` → `ob_start()` — `mb_output_handler`
+  deprecated PHP 8.2, causes blank pages (fatal) in PHP 8.4
+- `weather34skydata.php`: `${moon}` → `{$moon}` — deprecated `${var}` interpolation
+- `outlook.php`: `${stationName}` → `{$stationName}` — same deprecation (2 occurrences)
+- `php8.4-mbstring` required — not installed by default on Debian Trixie
+
+### CSS Fixes
+- `css/homeindoor.dark.css`, `css/homeindoor.light.css`: `url(css/fonts/...)` inside a
+  CSS file resolves to `css/css/fonts/` (double path). Fixed to `url(fonts/...)`
+- Added missing CSS placeholder files (referenced as style hooks, never had content):
+  `css/auxillary.dark.css`, `css/auxillary.light.css`, `css/baromalmanac.dark.css`,
+  `css/baromalmanac.light.css`, `css/popup.light.css`
+
+### Highcharts
+- `w34highcharts/scripts/plots.js`: `Highcharts.setOptions({accessibility:{enabled:false}})`
+  suppresses accessibility module warning on Highcharts 11+
+
+### Installation Notes (WeeWX 5)
+See `weewx5.conf.example` for the complete configuration template. Key steps:
+1. Install WeeWX 5 via apt: `https://weewx.com/apt/python3`
+2. Install GW1000 driver: `sudo weectl extension install --yes https://github.com/weewx-contrib/weewx-gw1000/archive/refs/heads/master.zip`
+3. Install `python3-six` and `python3-packaging` before the above
+4. Copy `user/` files to `/etc/weewx/bin/user/`
+5. Deploy skin to web root; set `www-data` ownership
+6. Copy `scripts/w34config.example.py` → `scripts/w34config.py` with your station details
+7. Run `weectl database update` after migrating an existing WeeWX 4 database
+
+---
+
 ## [2026-05-16] — Naming Cleanup, Earthquake Removal & Git Structure
 
 ### Tier 2: Deprecated service naming cleanup

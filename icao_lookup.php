@@ -1,6 +1,31 @@
 <?php
 header('Content-Type: application/json');
 
+$cfgPath = '/usr/local/bin/w34config.py';
+
+function writeCfg($path, $icao) {
+    if (!is_writable($path)) {
+        return "w34config.py not writable — run: sudo chown www-data {$path}";
+    }
+    $cfg = file_get_contents($path);
+    $cfg = preg_replace('/^ICAO\s*=\s*.*/m', "ICAO = \"{$icao}\"", $cfg);
+    file_put_contents($path, $cfg);
+    return null;
+}
+
+// Manual override path
+if (isset($_GET['manual'])) {
+    $icao = strtoupper(trim($_GET['manual']));
+    if (!preg_match('/^[A-Z]{4}$/', $icao)) {
+        echo json_encode(['error' => 'Invalid format — expected a 4-letter ICAO code like KETB']);
+        exit;
+    }
+    $err = writeCfg($cfgPath, $icao);
+    echo $err ? json_encode(['error' => $err]) : json_encode(['icao' => $icao, 'name' => '']);
+    exit;
+}
+
+// Auto-detect path
 $lat = isset($_GET['lat']) ? floatval($_GET['lat']) : 0;
 $lon = isset($_GET['lon']) ? floatval($_GET['lon']) : 0;
 
@@ -12,7 +37,6 @@ if ($lat === 0.0 && $lon === 0.0) {
 $headers = "User-Agent: weewx-weather34/icao-lookup\r\nAccept: application/geo+json\r\n";
 $ctx = stream_context_create(['http' => ['timeout' => 10, 'header' => $headers]]);
 
-// Step 1: get observationStations URL from points API
 $pts = @file_get_contents("https://api.weather.gov/points/{$lat},{$lon}", false, $ctx);
 if ($pts === false) {
     echo json_encode(['error' => 'NWS API request failed — check internet connection.']);
@@ -25,7 +49,6 @@ if (!$stationsUrl) {
     exit;
 }
 
-// Step 2: get nearest station ICAO
 $sts = @file_get_contents($stationsUrl, false, $ctx);
 if ($sts === false) {
     echo json_encode(['error' => 'Failed to fetch nearby stations from NWS.']);
@@ -45,15 +68,5 @@ if (!$icao) {
     exit;
 }
 
-// Step 3: write ICAO to w34config.py
-$cfgPath = '/usr/local/bin/w34config.py';
-if (!is_writable($cfgPath)) {
-    echo json_encode(['error' => "w34config.py not writable — run: sudo chown www-data {$cfgPath}"]);
-    exit;
-}
-
-$cfg = file_get_contents($cfgPath);
-$cfg = preg_replace('/^ICAO\s*=\s*.*/m', "ICAO = \"{$icao}\"", $cfg);
-file_put_contents($cfgPath, $cfg);
-
-echo json_encode(['icao' => $icao, 'name' => $name]);
+$err = writeCfg($cfgPath, $icao);
+echo $err ? json_encode(['error' => $err]) : json_encode(['icao' => $icao, 'name' => $name]);

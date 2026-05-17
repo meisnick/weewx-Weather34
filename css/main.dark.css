@@ -372,17 +372,16 @@ h6 {
 }
 
 .weather-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   list-style: none;
-  width: 960px;
-  height: 200px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 1280px;
   margin: 2px auto;
   background: 0
 }
 
 .weather-item {
-  width: 32.84%;
   height: 195px;
   border: 0;
   border-bottom: 18px solid rgba(97, 106, 114, .1);
@@ -1741,14 +1740,17 @@ suptemp3 {
 }
 
 @media screen and (max-width:768px) {
+  .weather34box-toparea {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
   .weather-container {
-    display: inline;
-    width: 300px;
-    height: 200px;
-    background-color: 0;
-    text-rendering: optimizeLegibility;
-    font-family: arial, system;
-    overflow: hidden
+    grid-template-columns: 1fr
+  }
+
+  .weather-item {
+    width: 100%;
+    margin: 4px 0
   }
 
   .almanacpopup,
@@ -1759,13 +1761,6 @@ suptemp3 {
     display: none
   }
 
-  .weather-item {
-    float: none;
-    width: 310px;
-    margin: 10px auto 0;
-    overflow: hidden
-  }
-
   .c {
     width: auto;
     left: 40px;
@@ -1774,14 +1769,17 @@ suptemp3 {
 }
 
 @media screen and (max-width:1024px) and (orientation:portrait) {
+  .weather34box-toparea {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
   .weather-container {
-    display: inline;
-    width: 300px;
-    height: 200px;
-    background-color: 0;
-    text-rendering: optimizeLegibility;
-    font-family: arial, system;
-    overflow: hidden
+    grid-template-columns: 1fr
+  }
+
+  .weather-item {
+    width: 100%;
+    margin: 4px 0
   }
 
   .almanacpopup,
@@ -1789,45 +1787,6 @@ suptemp3 {
   .weatherfooter-container,
   header {
     display: none
-  }
-
-  .weather-item {
-    float: none;
-    width: 310px;
-    margin: 10px auto 0;
-    overflow: hidden
-  }
-
-  .c {
-    width: auto;
-    left: 40px;
-    right: 40px
-  }
-}
-
-@media screen and (max-width:640px) {
-  .weather-container {
-    display: inline;
-    width: 300px;
-    height: 200px;
-    background-color: 0;
-    text-rendering: optimizeLegibility;
-    font-family: arial, system;
-    overflow: hidden
-  }
-
-  .almanacpopup,
-  .weather2-container,
-  .weatherfooter-container,
-  header {
-    display: none
-  }
-
-  .weather-item {
-    float: none;
-    width: 310px;
-    margin: 10px auto 0;
-    overflow: hidden
   }
 }
 
@@ -2059,8 +2018,11 @@ lightningrain {
 }
 
 .weather34box-toparea {
-  margin: 0 0 -10px;
-  width: 100%
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto -10px
 }
 
 .weather34box {
@@ -2068,12 +2030,10 @@ lightningrain {
   border-top: 1px;
   border-bottom: 1px;
   color: silver;
-  float: left;
   padding: 5px;
   position: relative;
-  width: 24.93%;
   height: 83px;
-  margin: -3px auto 0
+  margin: -3px 0 0
 }
 
 .weather34box .title,

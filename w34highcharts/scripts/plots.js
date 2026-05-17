@@ -1844,7 +1844,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        reload_plot_type = reload_plot_type_span.split(":")[0];
 	        reload_span = reload_plot_type_span.split(":")[1];
 	    }
-	    Highcharts.setOptions({global:{timezoneOffset: 0,}});
+	    Highcharts.setOptions({global:{timezoneOffset: 0,}, accessibility:{enabled:false}});
 	    Highcharts.setOptions({lang:{rangeSelectorZoom: ""}});
 	    var results, files = [], index = 0;
 	    if (!jsonfileforplot.hasOwnProperty(plot_type) || !(span[0] == "weekly" || span[0] == "yearly")){alert("Bad plot_type (" + plot_type + ") or span (" + span[0] + ")"); return};

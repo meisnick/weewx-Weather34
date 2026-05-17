@@ -2334,7 +2334,12 @@ lightningrain {
   padding: 5px;
   position: relative;
   height: 83px;
-  margin: -3px 0 0
+  margin: -3px 0 0;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 20px #f6f8fc;
+  box-shadow: inset 0 20px #f6f8fc;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
 }
 
 .weather34box .title {

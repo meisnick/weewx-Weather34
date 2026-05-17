@@ -4,3 +4,13 @@ jsondata/me.txt
 jsondata/*.txt
 *.log
 scripts/w34config.py
+
+css/icons/
+css/svg/
+css/fonts/
+css/aqi/
+img/
+*.woff
+*.woff2
+*.ttf
+*.eot

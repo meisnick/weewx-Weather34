@@ -1,34 +1,28 @@
-# jsondata/ directory is now fully ignored below
-*.log
-scripts/w34config.py
-
-css/icons/
-css/svg/
-css/fonts/
-css/aqi/
-img/
-*.woff
-*.woff2
-*.ttf
-*.eot
-CLAUDE.md
-
-# Runtime generated data
+# Runtime generated data — never commit these
 serverdata/
 jsondata/
+
+# jsondata exception — static lookup table must be tracked
+!jsondata/lookupTable.json
+
+# Highcharts runtime data
 w34highcharts/json/
 w34highcharts/json_day/
 w34highcharts/w34_reports/__pycache__/
 
-# Static icon/image asset sets (large binary, not skin code)
+# Station-specific config — never commit
+scripts/w34config.py
+CLAUDE.md
+
+# Icon sets not used for US stations (UK Met Office, WU, decorative)
 css/metofficeicons/
 css/mouse/
 css/rain/
 css/windicons/
 css/wuicons/
-w34highcharts/css/yricons/
 
-# Backup / scratch files
+# Log files and scratch files
+*.log
 *.bak
 placeholder.txt
 _config.yml

@@ -1,22 +1,25 @@
-<?php include('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');date_default_timezone_set($TZ);?>
-<div class="topmin">
+<?php include('w34CombinedData.php'); date_default_timezone_set($TZ); error_reporting(0); ?>
+<div class="mod mod-top">
 
-<?php //rain month 
-if($weather["rain_month"]>=1000){ echo "<topblue1>".round($weather["rain_month"],0)  ;}
-else  echo "<topblue1>".$weather["rain_month"]  ;echo "<smallwindunit>".$weather["rain_units"];
-?>
-</div></smallwindunit>
-<div class="minword"><?php echo date('M')?></div></div>
-<div class="mintimedate">Total 
-</div>  
+  <div class="mod-primary" style="gap:16px;margin-top:4px">
 
-<div class="yearwordbig"><?php echo date('Y')?></div>
-<div class="topmax">
-<?php //rain year 
-if($weather["rain_year"]>=1000){ echo "<topblue1>".round($weather["rain_year"],0)  ;}
-else  echo "<topblue1>".$weather["rain_year"]  ;echo "<smallwindunit>".$weather["rain_units"];
-?>
-</div></smallwindunit>
-<div class="maxword"><?php echo date('Y')?></div></div>
-<div class="maxtimedate">Total</div> 
+    <div>
+      <div class="mod-label"><?php echo date('M'); ?></div>
+      <span class="mod-lg mod-cold">
+        <?php echo ($weather['rain_month']>=1000) ? round($weather['rain_month'],0) : $weather['rain_month']; ?>
+      </span>
+      <span class="mod-unit"><?php echo $weather['rain_units']; ?></span>
+      <div class="mod-label">Total</div>
+    </div>
 
+    <div>
+      <div class="mod-label"><?php echo date('Y'); ?></div>
+      <span class="mod-lg mod-cold">
+        <?php echo ($weather['rain_year']>=1000) ? round($weather['rain_year'],0) : $weather['rain_year']; ?>
+      </span>
+      <span class="mod-unit"><?php echo $weather['rain_units']; ?></span>
+      <div class="mod-label">Total</div>
+    </div>
+
+  </div>
+</div>

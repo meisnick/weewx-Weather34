@@ -1,7 +1,7 @@
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include('w34CombinedData.php');include('common.php');include('settings1.php');?>
-<div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
+<div class="mod-header"><span class="mod-time"><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></span></div>  
 <div class="tempcontainer">
 <div class="maxdata"><?php 
 if ($weather["temp_today_high"]<10){echo "&nbsp;".$weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}else if ($weather["temp_today_high"]>=10){echo $weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}?>
@@ -145,4 +145,6 @@ else if(anyToC($weather["windchill"])>=0 ){echo "<div class=tempmodulehome0-5c>"
 else if(anyToC($weather["windchill"])>-10){echo "<div class=tempmodulehome-10-0c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>-50){echo "<div class=tempmodulehome-50-10c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></a></div>
-</div> 
+<div class="mod">
+</div>
+</div>

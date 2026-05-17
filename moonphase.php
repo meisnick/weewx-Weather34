@@ -192,3 +192,5 @@ echo $meteor_default;?>
 
 <?php echo'<div class="weather34moonphasem2">Moon Phase<br>'.$weather["moonphase"].'</div>
 <div class="weather34luminancem2">Luminance<br>'.$weather["luminance"].'% </div>';?>
+<div class="mod">
+</div>

@@ -25,7 +25,7 @@ $sensorDesc = [
 
 $output = shell_exec('sudo /usr/bin/weectl device --sensors 2>&1');
 $lines  = explode("\n", trim($output));
-$active = []; $disabled = []; $registering = [];
+$active = []; $registering = [];
 
 foreach ($lines as $line) {
     $line = trim($line);
@@ -36,20 +36,28 @@ foreach ($lines as $line) {
     $status= trim($m[2]);
     $model = preg_replace('/\s+ch\d+$/', '', $name);
     if (strpos($status, 'is disabled') !== false) {
-        $disabled[] = ['name' => $name, 'model' => $model];
+        // GW1000 marks sensor types as disabled when they conflict with an active sensor
+        // (e.g. WH65/WS80 disabled because WH68 handles wind) — skip, user doesn't own them
+        continue;
     } elseif (strpos($status, 'registering') !== false) {
         $registering[] = ['name' => $name, 'model' => $model];
     } else {
         preg_match('/sensor ID:\s*(\S+)/i',              $status, $id);
         preg_match('/signal:\s*(\d+)/i',                 $status, $sig);
         preg_match('/battery:\s*([^\s(]+)\s*\(([^)]+)\)/i', $status, $batt);
+        $bVal = isset($batt[1]) ? $batt[1] : null;
+        $bOK  = isset($batt[2]) ? strtolower($batt[2]) : 'unknown';
+        // None/Unknown means sensor doesn't report battery (e.g. wired rain gauge)
+        if ($bVal === null || strtolower($bVal) === 'none' || $bOK === 'unknown') {
+            $bVal = null; $bOK = 'none';
+        }
         $active[] = [
             'name'    => $name,
             'model'   => $model,
-            'id'      => isset($id[1])   ? $id[1]   : '—',
-            'signal'  => isset($sig[1])  ? intval($sig[1]) : null,
-            'battVal' => isset($batt[1]) ? $batt[1] : '—',
-            'battOK'  => isset($batt[2]) ? strtolower($batt[2]) : 'unknown',
+            'id'      => isset($id[1])  ? $id[1]  : '—',
+            'signal'  => isset($sig[1]) ? intval($sig[1]) : null,
+            'battVal' => $bVal,
+            'battOK'  => $bOK,
         ];
     }
 }
@@ -106,8 +114,9 @@ if (!empty($active)) {
     echo "<div class='hdr'>Active sensors (" . count($active) . ")</div>";
     foreach ($active as $s) {
         $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
-        $bClass = ($s['battOK'] === 'ok') ? 'ok' : (($s['battOK'] === 'low') ? 'low' : 'unk');
-        $bLabel = htmlspecialchars($s['battVal']) . ' ' . strtoupper($s['battOK']);
+        if ($s['battOK'] === 'ok')        { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; }
+        elseif ($s['battOK'] === 'low')   { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; }
+        else                              { $bClass = 'unk'; $bLabel = '—'; }
         echo "<div class='row'>"
            . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
            . "<span class='sdesc'>" . $desc . "</span>"
@@ -118,17 +127,6 @@ if (!empty($active)) {
     }
 }
 
-if (!empty($disabled)) {
-    echo "<div class='hdr'>Disabled (" . count($disabled) . ")</div>";
-    foreach ($disabled as $s) {
-        $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
-        echo "<div class='row dim'>"
-           . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
-           . "<span class='sdesc'>" . $desc . "</span>"
-           . "<span class='unk'>disabled</span>"
-           . "</div>";
-    }
-}
 
 $regModels = array_values(array_unique(array_column($registering, 'model')));
 if (!empty($regModels)) {

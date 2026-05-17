@@ -64,34 +64,42 @@ foreach ($lines as $line) {
 
 if ($theme === 'dark') {
     echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:rgba(33,34,39,.95)}
-.row{display:flex;align-items:center;gap:8px;padding:5px 4px;border-bottom:1px solid rgba(84,85,86,0.3);font-size:11px}
+.row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid rgba(84,85,86,0.3)}
 .row:last-child{border-bottom:0}
 .hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(84,85,86,1);font-weight:bold}
-.sname{font-weight:bold;color:#ccc;min-width:72px;font-size:12px}
-.sdesc{color:rgba(150,155,165,1);flex:1;font-size:10px}
-.sid{font-family:monospace;font-size:10px;color:rgba(100,105,115,1);min-width:52px}
-.bar{display:inline-block;width:4px;margin-right:2px;background:rgba(84,85,86,0.4);vertical-align:bottom}
+.left{flex:1;min-width:0}
+.right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.sname{font-weight:bold;color:#ccc;font-size:12px;margin-right:8px}
+.sdesc{color:rgba(150,155,165,1);font-size:10px}
+.snote{font-size:9px;color:rgba(100,105,115,1);font-style:italic;margin-top:2px}
+.sid{font-family:monospace;font-size:10px;color:rgba(100,105,115,1);width:62px}
+.bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:22px}
+.bar{display:inline-block;width:4px;background:rgba(84,85,86,0.4)}
 .bar.on{background:#5a9}
+.batt{width:62px;text-align:right;font-size:11px}
 .ok{color:#5a9;font-weight:bold}
 .low{color:#e08020;font-weight:bold}
 .unk{color:rgba(100,105,115,1)}
-.dim{opacity:.4}
 .reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
 </style>';
 } else {
     echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#333;background-color:#fff}
-.row{display:flex;align-items:center;gap:8px;padding:5px 4px;border-bottom:1px solid #e2e6ef;font-size:11px}
+.row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid #e2e6ef}
 .row:last-child{border-bottom:0}
 .hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999;font-weight:bold}
-.sname{font-weight:bold;color:#333;min-width:72px;font-size:12px}
-.sdesc{color:#888;flex:1;font-size:10px}
-.sid{font-family:monospace;font-size:10px;color:#bbb;min-width:52px}
-.bar{display:inline-block;width:4px;margin-right:2px;background:#ddd;vertical-align:bottom}
+.left{flex:1;min-width:0}
+.right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.sname{font-weight:bold;color:#333;font-size:12px;margin-right:8px}
+.sdesc{color:#888;font-size:10px}
+.snote{font-size:9px;color:#bbb;font-style:italic;margin-top:2px}
+.sid{font-family:monospace;font-size:10px;color:#bbb;width:62px}
+.bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:22px}
+.bar{display:inline-block;width:4px;background:#ddd}
 .bar.on{background:#5a9}
+.batt{width:62px;text-align:right;font-size:11px}
 .ok{color:#3a8;font-weight:bold}
 .low{color:#c70;font-weight:bold}
 .unk{color:#bbb}
-.dim{opacity:.4}
 .reg{color:#bbb;font-size:10px;line-height:1.9}
 </style>';
 }
@@ -114,15 +122,20 @@ if (!empty($active)) {
     echo "<div class='hdr'>Active sensors (" . count($active) . ")</div>";
     foreach ($active as $s) {
         $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
-        if ($s['battOK'] === 'ok')        { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; }
-        elseif ($s['battOK'] === 'low')   { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; }
-        else                              { $bClass = 'unk'; $bLabel = 'not reported by gateway'; }
+        if ($s['battOK'] === 'ok')      { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; $note = ''; }
+        elseif ($s['battOK'] === 'low') { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; $note = ''; }
+        else                            { $bClass = 'unk'; $bLabel = '—'; $note = 'battery not reported by hardware'; }
         echo "<div class='row'>"
-           . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
-           . "<span class='sdesc'>" . $desc . "</span>"
-           . "<span class='sid'>ID: " . htmlspecialchars($s['id']) . "</span>"
-           . "<span style='display:inline-flex;align-items:flex-end;gap:2px;height:13px'>" . bars($s['signal']) . "</span>"
-           . "<span class='{$bClass}'>{$bLabel}</span>"
+           . "<div class='left'>"
+           .   "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
+           .   "<span class='sdesc'>" . $desc . "</span>"
+           .   ($note ? "<div class='snote'>{$note}</div>" : "")
+           . "</div>"
+           . "<div class='right'>"
+           .   "<span class='sid'>ID:&nbsp;" . htmlspecialchars($s['id']) . "</span>"
+           .   "<span class='bars'>" . bars($s['signal']) . "</span>"
+           .   "<span class='batt {$bClass}'>{$bLabel}</span>"
+           . "</div>"
            . "</div>";
     }
 }

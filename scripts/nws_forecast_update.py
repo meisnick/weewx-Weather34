@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 nws_forecast_update.py
-Fetches forecast from Open-Meteo (free, no API key) and writes awd.txt / awh.txt
-in Aeris-compatible format for Weather34's forecast3aw.php renderer.
+Fetches forecast from Open-Meteo (free, no API key) and writes forecast_daily.txt / forecast_hourly.txt
+in Aeris-compatible format for Weather34's forecast3om.php renderer.
 Configure location in scripts/w34config.py (see w34config.example.py).
 """
 
@@ -14,7 +14,7 @@ import sys
 import os
 from datetime import datetime, timezone, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from w34config import LAT, LON, TZ, AWD_PATH, AWH_PATH, PLACE_NAME, PLACE_STATE, PLACE_COUNTRY
+from w34config import LAT, LON, TZ, FORECAST_DAILY_PATH, FORECAST_HOURLY_PATH, PLACE_NAME, PLACE_STATE, PLACE_COUNTRY
 
 HEADERS = {"User-Agent": "weewx-weather34/open-meteo"}
 
@@ -151,9 +151,9 @@ def to_ts(dt_str):
 
 def build_awd(data):
     """
-    Build awd.txt from Open-Meteo daily arrays.
+    Build forecast_daily.txt from Open-Meteo daily arrays.
     Daily data has one entry per day. We synthesize day+night periods
-    to match the alternating structure forecast3aw.php expects.
+    to match the alternating structure forecast3om.php expects.
     """
     daily    = data["daily"]
     times    = daily["time"]           # ["2026-05-16", ...]
@@ -362,7 +362,7 @@ def build_awd(data):
 
 def build_awh(data):
     """
-    Build awh.txt from Open-Meteo hourly arrays.
+    Build forecast_hourly.txt from Open-Meteo hourly arrays.
     Open-Meteo returns 192 hourly values (8 days). We emit 24.
     """
     hourly   = data["hourly"]
@@ -456,13 +456,13 @@ def main():
     print("Fetching Open-Meteo forecast...")
     data = fetch_json(OM_URL)
 
-    print("Building awd.txt (daily)...")
+    print("Building forecast_daily.txt (daily)...")
     awd = build_awd(data)
-    write_atomic(AWD_PATH, awd)
+    write_atomic(FORECAST_DAILY_PATH, awd)
 
-    print("Building awh.txt (hourly)...")
+    print("Building forecast_hourly.txt (hourly)...")
     awh = build_awh(data)
-    write_atomic(AWH_PATH, awh)
+    write_atomic(FORECAST_HOURLY_PATH, awh)
 
     print("Done.")
 

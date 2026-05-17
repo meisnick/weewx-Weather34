@@ -34,7 +34,7 @@ else if($theme==="light"){echo '<style>@font-face{font-family:weathertext2;src:u
 
 <body>
 <?php
-$forecastime = filemtime('jsondata/awd.txt'); ?>
+$forecastime = filemtime('jsondata/forecast_daily.txt'); ?>
  
   
 <main class="grid">
@@ -42,8 +42,8 @@ $forecastime = filemtime('jsondata/awd.txt'); ?>
 $jsonIcon = 'jsondata/lookupTable.json';
 $jsonIcon = file_get_contents($jsonIcon);
 $parsed_icon = json_decode($jsonIcon, true);
-$forecastime = filemtime('jsondata/awd.txt');
-$json = 'jsondata/awd.txt';
+$forecastime = filemtime('jsondata/forecast_daily.txt');
+$json = 'jsondata/forecast_daily.txt';
 $json = file_get_contents($json);
 $parsed_json = json_decode($json, true);
 for ($k = 0;$k < 12;$k++)

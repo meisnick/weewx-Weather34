@@ -105,33 +105,33 @@ if ('serviceWorker' in navigator) {
 {
     echo ' <a alt="wu weather forecast" title="weather underground forecast" href="pop_outlookwu.php" data-lity>' . $chartinfo . " Daily F.cast </a>";
 } ?>
-<?php if ($position6 == 'forecast3aw.php' || $position6 == 'forecast3awlarge.php')
+<?php if ($position6 == 'forecast3om.php' || $position6 == 'forecast3omlarge.php')
 {
     echo ' <a alt="Forecasts" title="Forecasts" href="pop_menu_forecast.php" data-lity style="padding-top:98%">' . $chartinfo . " Forecasts </a>";
 } ?>
 
-<?php if ($position6 == 'forecast3awlarge.php' && $position4 == 'top_advisory_eu.php')
+<?php if ($position6 == 'forecast3omlarge.php' && $position4 == 'top_advisory_eu.php')
 {
     echo '<a alt="Europe Alerts" title="Europe Alerts" href="pop_europealerts.php"  data-lity>&nbsp;' . $chartinfo . " Weather Alerts</a>";
 } ?></span>
-<?php if ($position6 == 'forecast3awlarge.php' && $position4 == 'top_advisory_uk.php')
+<?php if ($position6 == 'forecast3omlarge.php' && $position4 == 'top_advisory_uk.php')
 {
     echo '<a alt="MetOffice Warnings" title="MetOffice Warnings" href="pop_ukalerts.php"  data-lity>&nbsp;' . $chartinfo . " Weather Alerts</a>";
 } ?></span>
-<?php if ($position6 == 'forecast3awlarge.php' && $position4 == 'top_advisory_au.php')
+<?php if ($position6 == 'forecast3omlarge.php' && $position4 == 'top_advisory_au.php')
 {
     echo '<a alt="BOM warnings" title="BOM Warnings" href="pop_bom_alerts.php"  data-lity>&nbsp;' . $chartinfo . " Australian BOM Alerts</a>";
 } ?></span>
 
-<?php if ($position6 == 'forecast3aw.php' && $position4 == 'top_advisory_eu.php')
+<?php if ($position6 == 'forecast3om.php' && $position4 == 'top_advisory_eu.php')
 {
     echo '<a alt="Europe Alerts" title="Europe Alerts" href="pop_europealerts.php"  data-lity>&nbsp;' . $chartinfo . " Weather Alerts</a>";
 } ?></span>
-<?php if ($position6 == 'forecast3aw.php' && $position4 == 'top_advisory_uk.php')
+<?php if ($position6 == 'forecast3om.php' && $position4 == 'top_advisory_uk.php')
 {
     echo '<a alt="MetOffice Warnings" title="MetOffice Warnings" href="pop_ukalerts.php"  data-lity>&nbsp;' . $chartinfo . " Weather Alerts</a>";
 } ?></span>
-<?php if ($position6 == 'forecast3aw.php' && $position4 == 'top_advisory_au.php')
+<?php if ($position6 == 'forecast3om.php' && $position4 == 'top_advisory_au.php')
 {
     echo '<a alt="BOM warnings" title="BOM Warnings" href="pop_bom_alerts.php"  data-lity>&nbsp;' . $chartinfo . " Australian BOM Alerts</a>";
 } ?></span>

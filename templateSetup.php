@@ -1022,6 +1022,7 @@ General template settings with options to choose which type of module to display
         <label name="position4"></label>
         <select id="position4" name="position4" class="choose">
         <option><?php echo $position4 ;?></option>
+        <option>top_advisory_nws.php</option>
         <option>top_advisory_eu.php</option>
         <option>top_advisory_uk.php</option>
         <option>top_advisory_au.php</option>
@@ -1118,6 +1119,7 @@ General template settings with options to choose which type of module to display
         </select>
         <br/>
       <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Top 4 positions</span></strong><br/>
+       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_nws.php</span> NWS Alerts API — US stations (free, no key) <br/></span>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_eu.php for European Union</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_aw_uk.php for United Kingdom</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_au.php for Australia</span> Weather <span style="color:rgba(24, 25, 27, 0.8)">Alerts</span><br/></span>
@@ -1134,11 +1136,11 @@ General template settings with options to choose which type of module to display
      add your url/path to wecam image using option below <br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> mooonphase.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display moonphase</span><br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34uvsolar.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display uv and solar radiation if you have hardware</span> <br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> solaruvwu.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display Weather Underground Day UV forecast and if you have only solar radiation </span> <br/></span>
+     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> solaruvwu.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display The Weather Company Day UV forecast and if you have only solar radiation </span> <br/></span>
           </span>
-   <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecas3aw.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display 3 period day/night forecast from AerisWeather</span>   <br/>
+   <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecast3om.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display 3-period day/night forecast from Open-Meteo</span>   <br/>
      </span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecas3awlarge.php</span> <span style="color:rgba(236, 87, 27, 1.000);">large display of current period day/night forecast from AerisWeather</span>   <br/>
+     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecast3omlarge.php</span> <span style="color:rgba(236, 87, 27, 1.000);">large display of current day/night forecast from Open-Meteo</span>   <br/>
      </span>
         <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> lightning34.php</span> <span style="color:rgba(236, 87, 27, 1.000);">Lightning for those using weatherflow direct with meteobridge</span>   <br/>
      </span>

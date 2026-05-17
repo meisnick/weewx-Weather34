@@ -916,6 +916,44 @@ General template settings with options to choose which type of module to display
 </div>
 
 <!--##########################################################################################
+    #########                      Start of Data Scripts Section                      #########
+    ##########################################################################################-->
+
+<div class="weatheroptions">
+    <div class="weathersectiontitle">Weather Data Scripts</div><br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);">The three background scripts below run via cron and supply forecast, METAR, and alert data.
+    All location settings are configured in <b>scripts/w34config.py</b> on the server
+    (copy from <b>scripts/w34config.example.py</b> — this file is never committed to git).</span><br/><br/>
+
+    <div class="stationvalue">Open-Meteo Forecast</div><br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);"><b>scripts/nws_forecast_update.py</b> — fetches 8-day forecast from
+    <a href="https://open-meteo.com/" target="_blank">open-meteo.com</a> (free, no key).
+    Uses <b>LAT</b> / <b>LON</b> from w34config.py. Run via cron every 15 min.</span><br/><br/>
+
+    <div class="stationvalue">METAR Current Conditions</div><br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);"><b>scripts/metar_update.py</b> — fetches METAR from
+    <a href="https://aviationweather.gov/" target="_blank">aviationweather.gov</a> (free, no key).
+    Set <b>ICAO</b> in w34config.py to your nearest 4-letter airport code (e.g. KETB).
+    Run via cron every 15 min.</span><br/><br/>
+
+    <div class="stationvalue">NWS Weather Alerts</div><br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);"><b>scripts/nws_alerts_update.py</b> — fetches active alerts from
+    <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">api.weather.gov</a> (free, no key, US only).
+    Set <b>ALERT_ZONES</b> in w34config.py to your NWS zone codes (e.g. <b>WIZ060,WIC089</b>).
+    Run via cron every 5 min.</span><br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);">To find your zones: open
+    <b>https://api.weather.gov/points/LAT,LON</b> (your coordinates) and look for
+    <b>forecastZone</b> (e.g. <i>.../zones/forecast/WIZ060</i> → <b>WIZ060</b>) and
+    <b>county</b> (e.g. <i>.../zones/county/WIC089</i> → <b>WIC089</b>).</span><br/>
+</div>
+<br/>
+
+<!--##########################################################################################
     #########                        Start of Module Section                         #########
     ##########################################################################################-->
 
@@ -1099,7 +1137,7 @@ General template settings with options to choose which type of module to display
         </select>
         <br/>
       <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Top 4 positions</span></strong><br/>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_nws.php</span> NWS Alerts API — US stations (free, no key) <br/></span>
+       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_nws.php</span> NWS Alerts API — US stations only (free, no key) — requires <b>ALERT_ZONES</b> set in <b>scripts/w34config.py</b> (see Weather Data Scripts section above) <br/></span>
        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_rainfallfyearmonth.php</span> Totals <span style="color:rgba(24, 25, 27, 0.8)">YEARLY-MONTHLY</span> Rainfall<br/></span>
         <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34clock.php</span> Station  <span style="color:rgba(24, 25, 27, 0.8)">Time</span><br/>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_windgustyear.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Current Monthly / Yearly max Gust </span> <br/>

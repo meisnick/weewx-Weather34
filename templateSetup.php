@@ -93,8 +93,6 @@ $flag   = "'.$_POST["flag"]. '";
 $manifestShortName = "'.$_POST["manifestShortName"].'";
 $notifications = "'. $_POST["notifications"]. '";
 $notifyWind = "'. $_POST["notifyWind"]. '";
-$notifyEarthquake = "'. $_POST["notifyEarthquake"]. '";
-$notifyMagnitude = '. $_POST["notifyMagnitude"]. ';
 $linkWU = "'. $_POST["linkWU"]. '";
 $linkWUNew = "'. $_POST["linkWUNew"]. '";
 $id = "'. $_POST["id"]. '";
@@ -803,35 +801,6 @@ double check again
         <?php } else {?>
             <option>yes</option>
         <?php }?>
-    </select>
-    <br/>
-    <div class="stationvalue">Earthquakes</div>
-    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <path d="M30 12 L16 24 2 12" />
-    </svg>
-    <select id="notifyEarthquake" name="notifyEarthquake" class="choose1">
-        <option><?php echo $notifyEarthquake;?></option>
-        <?php if ($notifyEarthquake == 'yes'){?>
-            <option>no</option>
-        <?php } else {?>
-            <option>yes</option>
-        <?php }?>
-    </select>&nbsp;&nbsp;&nbsp;
-    <div class="stationvalue">Minimum Magnitude</div>
-    <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <path d="M30 12 L16 24 2 12" />
-    </svg>
-    <select id="notifyMagnitude" name="notifyMagnitude" class="choose1">
-        <option><?php echo $notifyMagnitude;?></option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
     </select>
     <br/>
     <div class="stationvalue">Wind Alerts&nbsp;&nbsp;</div>

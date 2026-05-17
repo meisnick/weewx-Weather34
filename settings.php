@@ -51,7 +51,7 @@ $rainRefresh        = 60; // 60 seconds
 $p12Refresh         = 600; // 10 minutes        Position 12 refresh (if not webcam) 
 $p13Refresh         = 600; // 10 minutes        Last Postion refresh (if not webcam)
 $moonphaseRefresh   = 600; // 10 minutes
-$eqRefresh          = 600; // 10 minutes 
+$position3Refresh    = 600; // 10 min refresh for position3 module
 $forecastRefresh    = 900; // 15 minutes 
 $notificationcenterRefresh    = 300; // 5 minutes set refresh time for notification of earthquakes default 5 minutes
 $wuupdate           = 1800; // 30 minutes 
@@ -59,7 +59,6 @@ $wfupdate           = 60; // weatherflow api 60 seconds
 $camRefresh         = 60; // 1 minute refresh on camera popup
 // Thresholds for warnings or notifications
 $notifyDistEQ       = 300; // miles if $windunit is mph otherwise km
-$notifyEQMag        = 5; // set this to minimum magnitude of earthquake for notifications, typically 5 or 6, or you can set to 12 to switch off if not required
 $notifyWindGust     = 22; // knots; 22 knots, which is 40.7 km/h, 35 = 40.2 mph, 40 = 20.5  m/s
 $notifyHeatIndex    = 30; // degrees C, default is 30 celsius which is 86 degrees F 
 $notifyWindchill    = 3; // degrees C, default is 10 celsius which is 50 degrees F

@@ -1076,7 +1076,6 @@ General template settings with options to choose which type of module to display
             <option>weather34uvsolar.php</option>
             <option>solaruv.php</option>
             <option>solaruvwu.php</option>
-            <option>eq.php</option>
             <option>lightning34.php</option>
         </select>
         <div class="stationvalue"> Position 12 Title</div>
@@ -1106,7 +1105,6 @@ General template settings with options to choose which type of module to display
             <option>weather34uvsolar.php</option>
             <option>solaruv.php</option>
              <option>solaruvwu.php</option>
-            <option>eq.php</option>
             <option>lightning34.php</option>
         </select>
         <div class="stationvalue">Last Title</div>
@@ -1137,7 +1135,6 @@ General template settings with options to choose which type of module to display
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> mooonphase.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display moonphase</span><br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34uvsolar.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display uv and solar radiation if you have hardware</span> <br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> solaruvwu.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display Weather Underground Day UV forecast and if you have only solar radiation </span> <br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> eq.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display last earthquake from earthquakereport.com</span>   <br/>
           </span>
    <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecas3aw.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display 3 period day/night forecast from AerisWeather</span>   <br/>
      </span>

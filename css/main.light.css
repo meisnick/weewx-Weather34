@@ -504,9 +504,10 @@ svg:not(:root) {
 
 .weather-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, 320px);
+  justify-content: center;
   list-style: none;
-  width: 960px;
+  width: 100%;
   background-color: 0;
   margin: 3px auto
 }
@@ -2320,8 +2321,9 @@ lightningrain {
 
 .weather34box-toparea {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 960px;
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: center;
+  width: 100%;
   margin: 0 auto
 }
 

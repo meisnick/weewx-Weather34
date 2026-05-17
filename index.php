@@ -158,6 +158,7 @@ function modulePopups($module, $vars) {
 <link rel="preload" href="css/fonts/clock3-webfont.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="css/fonts/verbatim-regular.woff" as="font" type="font/woff" crossorigin>
 <link href="css/main.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/main.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
+<link href="css/w34-module.css" rel="stylesheet">
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

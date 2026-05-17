@@ -1,3 +1,12 @@
+/* Weather34 module design system — light theme token overrides */
+:root {
+  --mod-text:   #333;
+  --mod-muted:  #888;
+  --mod-border: rgba(230,232,239,.8);
+  --mod-bg:     #fff;
+  --mod-inset:  #f6f8fc;
+}
+
 .w34uptime,
 ogreyh1 {
   align-items: center

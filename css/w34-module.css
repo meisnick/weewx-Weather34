@@ -1,0 +1,167 @@
+/*
+ * Weather34 Module Design System — css/w34-module.css
+ *
+ * Include this file in any new or refactored module.
+ * CSS custom properties are defined here; theme values come from
+ * main.dark.css / main.light.css via :root overrides.
+ *
+ * Two target containers:
+ *   .mod          — grid cell  320px wide × 195px tall
+ *   .mod.mod-top  — top bar    240px wide × 83px tall
+ */
+
+/* ── Theme tokens (defaults — dark overrides in main.dark.css) ───────────── */
+:root {
+  --mod-text:    #ccc;
+  --mod-muted:   rgba(150,155,165,1);
+  --mod-border:  rgba(84,85,86,0.3);
+  --mod-bg:      rgba(33,34,39,.8);
+  --mod-inset:   rgba(97,106,114,.1);
+}
+
+/* ── Container ───────────────────────────────────────────────────────────── */
+.mod {
+  display: flex;
+  flex-direction: column;
+  height: 195px;
+  width: 100%;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: var(--mod-text);
+  overflow: hidden;
+}
+
+.mod.mod-top {
+  height: 83px;
+  padding: 4px 6px;
+}
+
+/* ── Header row — timestamp right-aligned, no absolute positioning ───────── */
+.mod-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 13px;
+  margin-bottom: 1px;
+}
+
+/* ── Primary reading ─────────────────────────────────────────────────────── */
+.mod-primary {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  flex-wrap: nowrap;
+}
+
+/* ── Secondary data rows ─────────────────────────────────────────────────── */
+.mod-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mod-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Typography scale ────────────────────────────────────────────────────── */
+
+/* Large reading — primary value (temperature, wind speed, etc.) */
+.mod-xl {
+  font-family: weathertext2, Arial, Helvetica;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Medium reading — secondary or top-bar primary */
+.mod-lg {
+  font-family: weathertext2, Arial, Helvetica;
+  font-size: 1.0rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Small reading — labeled secondary values */
+.mod-md {
+  font-family: weathertext2, Arial, Helvetica;
+  font-size: .85rem;
+  line-height: 1;
+}
+
+/* Tiny — min/max, trend values */
+.mod-sm {
+  font-family: weathertext2, Arial, Helvetica;
+  font-size: .7rem;
+  line-height: 1;
+}
+
+/* Row label */
+.mod-label {
+  font-size: .55rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--mod-muted);
+  white-space: nowrap;
+}
+
+/* Unit suffix — appears beside a value */
+.mod-unit {
+  font-size: .55rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--mod-muted);
+}
+
+/* Update timestamp */
+.mod-time {
+  font-size: .55rem;
+  font-family: weathertext2, Arial;
+  color: var(--mod-muted);
+  line-height: 1;
+}
+
+/* ── Semantic color classes (match existing orange/tred/tgreen palette) ──── */
+.mod-warm    { color: #ff7c39; }   /* orange  — hot temp, high wind */
+.mod-hot     { color: #d35d4e; }   /* red     — danger / extreme */
+.mod-cold    { color: #3b9cac; }   /* blue    — cold / freezing */
+.mod-ok      { color: #90b12a; }   /* green   — normal / good */
+.mod-caution { color: #e6a141; }   /* yellow  — watch / advisory */
+.mod-muted-c { color: var(--mod-muted); }
+
+/* ── Trend indicators ────────────────────────────────────────────────────── */
+.mod-rising  { color: #ff7c39; }
+.mod-falling { color: #3b9cac; }
+.mod-steady  { color: var(--mod-muted); }
+
+/* ── Online / offline indicator ──────────────────────────────────────────── */
+.mod-online  { color: #9aba2f; font-size: .6rem; }
+.mod-offline { color: #d35d4e; font-size: .6rem; }
+
+/* ── Pill badge — replaces tempconvertercircle* ──────────────────────────── */
+/*    Coloured rounded badge for prominent single values                       */
+.mod-pill {
+  font-family: weathertext2, Arial, Helvetica;
+  font-size: .85rem;
+  padding: 3px 8px 0;
+  border-bottom: 10px solid rgba(0,0,0,.18);
+  border-radius: 2px;
+  text-align: center;
+  min-width: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.mod-pill-warm    { background: rgba(240,94,64,.85);  border-bottom-color: rgba(180,60,30,.5); }
+.mod-pill-cold    { background: rgba(59,156,172,.85); border-bottom-color: rgba(30,100,120,.5); }
+.mod-pill-ok      { background: rgba(144,177,42,.85); border-bottom-color: rgba(90,120,20,.5); }
+.mod-pill-caution { background: rgba(230,161,65,.85); border-bottom-color: rgba(160,110,30,.5); }
+.mod-pill-neutral { background: rgba(86,95,103,.8);   border-bottom-color: rgba(50,58,65,.5); }

@@ -115,6 +115,4 @@ if ($weather["wind_speed_bft"] == 0) {
   echo "Hurricane Force " . $alert . "";
 }
 ?>
-<div class="mod">
-</div>
 </div>

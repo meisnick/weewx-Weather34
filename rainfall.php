@@ -28,5 +28,3 @@ echo " &nbsp;&nbsp;<valuetextheading1>Last 24hr</valuetextheading1><br><div clas
 <div class="rainrateextra">
 <?php echo "<div class=rainratemodulehome><rainratetextheading>&nbsp;Rate&nbsp;</rainratetextheading><raiblue>"; if ($weather["rain_rate"]>100){echo number_format($weather["rain_rate"],1);} else echo number_format($weather["rain_rate"],2);echo"</raiblue><smallrainunit2>".$weather["rain_units"];
 ?></smallrainunit2></div></div></div></div>
-<div class="mod">
-</div>

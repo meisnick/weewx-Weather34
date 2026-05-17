@@ -134,7 +134,6 @@ else if ($theme === "light")
 	var now = new Date();
 	
 	var yourTimeZoneFrom = <?php echo $UTC_offset?>;
-<div class="mod">
 	
 	var tzDifference = yourTimeZoneFrom * 60 + now.getTimezoneOffset();
 	var offset = tzDifference * 60 * 1000;
@@ -165,4 +164,3 @@ else if ($theme === "light")
 });
   
 </script>
-</div>

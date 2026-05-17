@@ -298,5 +298,3 @@ ctx.strokeStyle = "'.$sn_clr.'";
 ctx.stroke();
   
 </script>'?>
-<div class="mod">
-</div>

@@ -118,5 +118,3 @@ else if($weather["wind_direction_avg"]<=168.75){echo "SSE";}else if($weather["wi
 echo " </oorange><oblue> ".$weather["wind_direction_avg"]."</oblue>°";}
 echo "</oorange><br><oblue>Rainfall</oblue> for the last 3 hours <oblue> " .$weather["rain_last3hours"]."</oblue><valuetext> " .$rainunit;
 ?></valuetext></div></div></div>
-<div class="mod">
-</div>

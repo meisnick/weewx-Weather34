@@ -77,6 +77,4 @@ else if ($weather["barometer_units"]=="kPa"){
 } else {
     echo "<weather34-barometerlimitminf><value>28</barometerlimitminf><weather34-barometerlimitmaxf><value>31</weather34-barometerlimitmaxf>";
 }?>
-<div class="mod">
 </div></div>
-</div>

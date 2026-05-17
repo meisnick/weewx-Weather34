@@ -1,7 +1,7 @@
 <?php
 include('settings1.php');
 $defaultlanguage = 'en';
-$iicon = '<svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+$iicon = '<svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
 <path d="M16 14 L16 23 M16 8 L16 10" />
 <circle cx="16" cy="16" r="14" />
 </svg>';
@@ -146,6 +146,21 @@ FCLOSE($fp);
         <link href="favicon.ico" rel="icon" type="image/x-icon">
         <script src="js/jquery.js"></script>
         <link href="css/templateSetup.css" rel="stylesheet prefetch">
+        <?php if ($theme === "dark"): ?>
+        <style>
+            body { background: #1b1c20 !important; color: #aaa; }
+            .theframe { background: #232428 !important; border-color: rgba(84,85,86,0.4); }
+            .weatheroptions { border-color: rgba(84,85,86,0.35); border-bottom-color: rgba(84,85,86,0.35); }
+            .weatheroptionssidebar, .weatheroptionssidebarbottom { border-color: rgba(84,85,86,0.35); border-bottom-color: rgba(84,85,86,0.35); }
+            h1, h2 { color: #bbb; }
+            #hover { background: #1b1c20; }
+            #weatherpopup { background: #232428; border-color: rgba(84,85,86,0.4); border-bottom-color: rgba(84,85,86,0.6); color: #ccc; }
+            #close { background: #333; color: #ccc; }
+            .login_screen { border-color: rgba(84,85,86,0.5) !important; color: #aaa !important; }
+            .weatherbottominfo, .weatherbottomwarning { color: #888; }
+            .seperator { border-top-color: rgba(84,85,86,0.4); }
+        </style>
+        <?php endif; ?>
     </head>
     <body>
         <div class="loginformarea">

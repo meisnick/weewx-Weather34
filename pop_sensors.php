@@ -1,53 +1,47 @@
-<?php include('w34CombinedData.php'); error_reporting(0); ?>
-<?php
+<?php include('w34CombinedData.php'); error_reporting(0);
+
 $sensorDesc = [
-    'WH65'  => 'Outdoor Weather Array (temp, humidity, wind, UV, solar, rain)',
-    'WH68'  => 'Solar-Powered Anemometer (wind speed &amp; direction)',
-    'WS80'  => 'Sonic Anemometer (wind speed &amp; direction)',
-    'WH40'  => 'Tipping Bucket Rain Gauge',
-    'WH32'  => 'Outdoor Temp &amp; Humidity Sensor',
-    'WH26'  => 'Outdoor Temp &amp; Humidity Sensor',
-    'WH31'  => 'Indoor Temp &amp; Humidity Sensor',
-    'WH51'  => 'Soil Moisture Sensor',
-    'WH41'  => 'PM2.5 Air Quality Sensor',
-    'WH43'  => 'PM2.5 Air Quality Sensor',
-    'WH57'  => 'Lightning Detector',
-    'WH55'  => 'Water Leak Sensor',
-    'WN34'  => 'Waterproof Temperature Probe',
-    'WH45'  => 'CO2 &amp; Air Quality Sensor (PM2.5/PM10)',
-    'WN35'  => 'Leaf Wetness Sensor',
-    'WS90'  => 'Sonic Weather Station Array',
-    'WS85'  => 'Sonic Weather Station (wind/rain/solar)',
-    'GW1000'=> 'Ecowitt Gateway Console',
-    'GW1100'=> 'Ecowitt Gateway Console',
-    'GW2000'=> 'Ecowitt Gateway Console',
+    'WH65'  => 'Outdoor weather array — temp, humidity, wind, UV, solar, rain',
+    'WH68'  => 'Solar-powered anemometer — wind speed &amp; direction',
+    'WS80'  => 'Sonic anemometer — wind speed &amp; direction',
+    'WH40'  => 'Tipping bucket rain gauge',
+    'WH32'  => 'Outdoor temp &amp; humidity sensor',
+    'WH26'  => 'Outdoor temp &amp; humidity sensor',
+    'WH31'  => 'Indoor temp &amp; humidity sensor',
+    'WH51'  => 'Soil moisture sensor',
+    'WH41'  => 'PM2.5 air quality sensor',
+    'WH43'  => 'PM2.5 air quality sensor',
+    'WH57'  => 'Lightning detector',
+    'WH55'  => 'Water leak sensor',
+    'WN34'  => 'Waterproof temperature probe',
+    'WH45'  => 'CO2 &amp; air quality sensor (PM2.5/PM10)',
+    'WN35'  => 'Leaf wetness sensor',
+    'WS90'  => 'Sonic weather station array',
+    'WS85'  => 'Sonic weather station — wind, rain, solar',
+    'GW1000'=> 'Ecowitt gateway console',
+    'GW1100'=> 'Ecowitt gateway console',
+    'GW2000'=> 'Ecowitt gateway console',
 ];
 
 $output = shell_exec('sudo /usr/bin/weectl device --sensors 2>&1');
 $lines  = explode("\n", trim($output));
-
-$active      = [];
-$disabled    = [];
-$registering = [];
+$active = []; $disabled = []; $registering = [];
 
 foreach ($lines as $line) {
     $line = trim($line);
     if (!$line || strpos($line, 'Sensor') === 0 || strpos($line, 'Using') === 0 ||
         strpos($line, 'Interrogating') === 0) continue;
-
     if (!preg_match('/^(\w+(?:\s+ch\d+)?)\s+(.+)$/', $line, $m)) continue;
-
-    $name   = trim($m[1]);
-    $status = trim($m[2]);
-    $model  = preg_replace('/\s+ch\d+$/', '', $name);
-
+    $name  = trim($m[1]);
+    $status= trim($m[2]);
+    $model = preg_replace('/\s+ch\d+$/', '', $name);
     if (strpos($status, 'is disabled') !== false) {
         $disabled[] = ['name' => $name, 'model' => $model];
     } elseif (strpos($status, 'registering') !== false) {
         $registering[] = ['name' => $name, 'model' => $model];
     } else {
-        preg_match('/sensor ID:\s*(\S+)/i',  $status, $id);
-        preg_match('/signal:\s*(\d+)/i',     $status, $sig);
+        preg_match('/sensor ID:\s*(\S+)/i',              $status, $id);
+        preg_match('/signal:\s*(\d+)/i',                 $status, $sig);
         preg_match('/battery:\s*([^\s(]+)\s*\(([^)]+)\)/i', $status, $batt);
         $active[] = [
             'name'    => $name,
@@ -60,111 +54,91 @@ foreach ($lines as $line) {
     }
 }
 
-$bgBody  = ($theme === 'dark') ? 'rgba(28,29,34,1)'   : '#f4f6fb';
-$cardBg  = ($theme === 'dark') ? 'rgba(36,38,44,1)'   : '#fff';
-$border  = ($theme === 'dark') ? 'rgba(84,85,86,0.35)': '#e2e6ef';
-$txtMain = ($theme === 'dark') ? '#ccc' : '#444';
-$txtSub  = ($theme === 'dark') ? '#888' : '#888';
+if ($theme === 'dark') {
+    echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:rgba(33,34,39,.95)}
+.row{display:flex;align-items:center;gap:8px;padding:5px 4px;border-bottom:1px solid rgba(84,85,86,0.3);font-size:11px}
+.row:last-child{border-bottom:0}
+.hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(84,85,86,1);font-weight:bold}
+.sname{font-weight:bold;color:#ccc;min-width:72px;font-size:12px}
+.sdesc{color:rgba(150,155,165,1);flex:1;font-size:10px}
+.sid{font-family:monospace;font-size:10px;color:rgba(100,105,115,1);min-width:52px}
+.bar{display:inline-block;width:4px;margin-right:2px;background:rgba(84,85,86,0.4);vertical-align:bottom}
+.bar.on{background:#5a9}
+.ok{color:#5a9;font-weight:bold}
+.low{color:#e08020;font-weight:bold}
+.unk{color:rgba(100,105,115,1)}
+.dim{opacity:.4}
+.reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
+</style>';
+} else {
+    echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#333;background-color:#fff}
+.row{display:flex;align-items:center;gap:8px;padding:5px 4px;border-bottom:1px solid #e2e6ef;font-size:11px}
+.row:last-child{border-bottom:0}
+.hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999;font-weight:bold}
+.sname{font-weight:bold;color:#333;min-width:72px;font-size:12px}
+.sdesc{color:#888;flex:1;font-size:10px}
+.sid{font-family:monospace;font-size:10px;color:#bbb;min-width:52px}
+.bar{display:inline-block;width:4px;margin-right:2px;background:#ddd;vertical-align:bottom}
+.bar.on{background:#5a9}
+.ok{color:#3a8;font-weight:bold}
+.low{color:#c70;font-weight:bold}
+.unk{color:#bbb}
+.dim{opacity:.4}
+.reg{color:#bbb;font-size:10px;line-height:1.9}
+</style>';
+}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: <?php echo $bgBody; ?>; font-family: Arial, Helvetica, sans-serif;
-       font-size: 12px; color: <?php echo $txtMain; ?>; padding: 12px; }
-h2 { font-size: 14px; font-weight: bold; color: <?php echo $txtMain; ?>;
-     padding: 6px 0 10px 0; border-bottom: 1px solid <?php echo $border; ?>; margin-bottom: 10px; }
-.section-title { font-size: 11px; font-weight: bold; text-transform: uppercase;
-                 letter-spacing: .5px; color: <?php echo $txtSub; ?>; margin: 12px 0 6px 0; }
-.card { background: <?php echo $cardBg; ?>; border: 1px solid <?php echo $border; ?>;
-        border-radius: 6px; padding: 8px 10px; margin-bottom: 6px;
-        display: flex; align-items: center; gap: 10px; }
-.sensor-name { font-weight: bold; font-size: 13px; min-width: 80px; }
-.sensor-desc { color: <?php echo $txtSub; ?>; font-size: 11px; flex: 1; }
-.meta { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
-.pill { border-radius: 20px; padding: 2px 9px; font-size: 11px; font-weight: bold; }
-.ok   { background: rgba(80,180,80,0.2);  color: #4a4; border: 1px solid #4a4; }
-.low  { background: rgba(220,120,30,0.2); color: #c70; border: 1px solid #c70; }
-.unk  { background: rgba(120,120,120,0.15); color: <?php echo $txtSub; ?>;
-        border: 1px solid <?php echo $border; ?>; }
-.signal { display: flex; align-items: flex-end; gap: 2px; height: 14px; }
-.signal span { display: inline-block; width: 4px; background: <?php echo $border; ?>; border-radius: 1px; }
-.signal span.on { background: #4a4; }
-.signal span.s1 { height: 4px; }
-.signal span.s2 { height: 7px; }
-.signal span.s3 { height: 10px; }
-.signal span.s4 { height: 13px; }
-.id-tag { font-size: 10px; color: <?php echo $txtSub; ?>; font-family: monospace; }
-.dim { opacity: .45; }
-.reg-list { color: <?php echo $txtSub; ?>; font-size: 11px; padding: 4px 0; line-height: 1.8; }
-</style>
-</head>
 <body>
-<h2>GW1000 Sensor Status
-  <span style="font-weight:normal;font-size:11px;color:<?php echo $txtSub; ?>">
-    &mdash; live from gateway &mdash; <?php echo date('H:i:s'); ?>
-  </span>
-</h2>
+<div class="weather34darkbrowser" url="GW1000 Sensor Status &nbsp;— &nbsp;<?php echo date('H:i:s'); ?>"></div>
 
 <?php
-function signalBars($level) {
-    $bars = '';
-    for ($i = 1; $i <= 4; $i++) {
-        $on = ($level !== null && $i <= $level) ? ' on' : '';
-        $bars .= "<span class='s{$i}{$on}'></span>";
+function bars($level) {
+    $h = [4, 7, 10, 13];
+    $out = '';
+    for ($i = 0; $i < 4; $i++) {
+        $on = ($level !== null && $i < $level) ? ' on' : '';
+        $out .= "<span class='bar{$on}' style='height:{$h[$i]}px'></span>";
     }
-    return "<div class='signal'>{$bars}</div>";
+    return $out;
 }
 
-function battPill($val, $ok) {
-    $label = htmlspecialchars($val);
-    if ($ok === 'ok')  return "<span class='pill ok'>&#9679; {$label} OK</span>";
-    if ($ok === 'low') return "<span class='pill low'>&#9650; {$label} LOW</span>";
-    return "<span class='pill unk'>{$label}</span>";
+if (!empty($active)) {
+    echo "<div class='hdr'>Active sensors (" . count($active) . ")</div>";
+    foreach ($active as $s) {
+        $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
+        $bClass = ($s['battOK'] === 'ok') ? 'ok' : (($s['battOK'] === 'low') ? 'low' : 'unk');
+        $bLabel = htmlspecialchars($s['battVal']) . ' ' . strtoupper($s['battOK']);
+        echo "<div class='row'>"
+           . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
+           . "<span class='sdesc'>" . $desc . "</span>"
+           . "<span class='sid'>ID: " . htmlspecialchars($s['id']) . "</span>"
+           . "<span style='display:inline-flex;align-items:flex-end;gap:2px;height:13px'>" . bars($s['signal']) . "</span>"
+           . "<span class='{$bClass}'>{$bLabel}</span>"
+           . "</div>";
+    }
 }
 
-if (!empty($active)):
-    echo "<div class='section-title'>Active Sensors (" . count($active) . ")</div>";
-    foreach ($active as $s):
-        $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : 'Sensor';
-?>
-<div class="card">
-    <div class="sensor-name"><?php echo htmlspecialchars($s['name']); ?></div>
-    <div class="sensor-desc"><?php echo $desc; ?></div>
-    <div class="meta">
-        <span class="id-tag">ID:&nbsp;<?php echo htmlspecialchars($s['id']); ?></span>
-        <?php echo signalBars($s['signal']); ?>
-        <?php echo battPill($s['battVal'], $s['battOK']); ?>
-    </div>
-</div>
-<?php endforeach; endif; ?>
+if (!empty($disabled)) {
+    echo "<div class='hdr'>Disabled (" . count($disabled) . ")</div>";
+    foreach ($disabled as $s) {
+        $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
+        echo "<div class='row dim'>"
+           . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
+           . "<span class='sdesc'>" . $desc . "</span>"
+           . "<span class='unk'>disabled</span>"
+           . "</div>";
+    }
+}
 
-<?php if (!empty($disabled)): ?>
-<div class="section-title">Disabled (<?php echo count($disabled); ?>)</div>
-<?php foreach ($disabled as $s):
-    $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
-?>
-<div class="card dim">
-    <div class="sensor-name"><?php echo htmlspecialchars($s['name']); ?></div>
-    <div class="sensor-desc"><?php echo $desc; ?></div>
-    <div class="meta"><span class="pill unk">Disabled</span></div>
-</div>
-<?php endforeach; endif; ?>
-
-<?php
 $regModels = array_values(array_unique(array_column($registering, 'model')));
-if (!empty($regModels)):
+if (!empty($regModels)) {
+    echo "<div class='hdr'>Not connected — " . count($registering) . " slots, " . count($regModels) . " types</div>";
     $parts = [];
     foreach ($regModels as $rm) {
-        $d = isset($sensorDesc[$rm]) ? ' (' . $sensorDesc[$rm] . ')' : '';
-        $parts[] = htmlspecialchars($rm) . $d;
+        $d = isset($sensorDesc[$rm]) ? ' — ' . $sensorDesc[$rm] : '';
+        $parts[] = '<b>' . htmlspecialchars($rm) . '</b>' . $d;
     }
+    echo "<div class='reg'>" . implode('<br>', $parts) . "</div>";
+}
 ?>
-<div class="section-title">Not Connected (<?php echo count($registering); ?> slots / <?php echo count($regModels); ?> types)</div>
-<div class="reg-list"><?php echo implode(' &nbsp;|&nbsp; ', $parts); ?></div>
-<?php endif; ?>
-
 </body>
-</html>

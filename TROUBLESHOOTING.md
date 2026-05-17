@@ -8,10 +8,7 @@ Quick reference for the most common configuration issues.
 
 **Cause:** The `mbstring` PHP extension is missing.
 
-```bash
-sudo apt install -y php8.4-mbstring
-sudo systemctl restart apache2
-```
+
 
 ---
 
@@ -69,10 +66,7 @@ The same applies to `[[RSYNC]]` — it must exist even if RSYNC is not used.
 
 **Cause:** The skin Cheetah templates were not copied to the WeeWX skins directory.
 
-```bash
-sudo cp -r /var/www/html/weewx/weather34/skins/Weather34 /etc/weewx/skins/
-sudo systemctl restart weewx
-```
+
 
 ---
 
@@ -93,9 +87,7 @@ If you are using a custom skin.conf, remove `weewx.reportengine.CopyGenerator` f
 
 Check the cron log:
 
-```bash
-tail -20 /var/log/nws_forecast.log
-```
+
 
 Common causes:
 - `scripts/w34config.py` not created (copy from `w34config.example.py` and fill in your coordinates)
@@ -106,9 +98,7 @@ Common causes:
 
 ## METAR / current conditions not updating
 
-```bash
-tail -20 /var/log/metar_update.log
-```
+
 
 Verify your ICAO airport code is set correctly in `scripts/w34config.py`. The code must be a valid ICAO identifier (4 letters, e.g. `KORD`), not an FAA code (3 letters).
 
@@ -136,9 +126,7 @@ Zone codes can be forecast zones (FLZ...) or county zones (FLC...). Use the [NWS
 
 Verify the GW1000/GW2000 IP address is correct:
 
-```bash
-sudo weectl device --driver=user.gw1000 --discover
-```
+
 
 This scans the local network for Ecowitt gateways and prints their IP addresses.
 
@@ -156,3 +144,24 @@ sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
 sudo chmod -R 775 /var/www/html/weewx/weather34/jsondata
 sudo systemctl restart weewx
 ```
+
+
+
+---
+
+## Day/night icon shows sun at night
+
+**Cause:** PHP defaults to UTC on Debian Trixie. The day/night comparison in archivedata.php uses local time strings but PHP interprets them in UTC, so at midnight local time the UTC hour can appear to be past sunrise.
+
+Set the PHP timezone in both ini files and reload Apache:
+
+```bash
+sudo sed -i 's/;date.timezone =/date.timezone = America/Chicago/' /etc/php/8.4/apache2/php.ini /etc/php/8.4/cli/php.ini
+sudo systemctl reload apache2
+```
+
+
+
+Replace `America/Chicago` with your local timezone (`timedatectl list-timezones` to find yours).
+
+

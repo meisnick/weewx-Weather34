@@ -55,6 +55,14 @@ sudo systemctl enable apache2
 
 > **Note:** `php8.4-mbstring` is a separate package on Debian Trixie and must be installed explicitly. Without it the dashboard will display a blank page.
 
+Set the PHP timezone to match your station — Debian defaults to UTC, which causes incorrect day/night icon detection:
+
+```bash
+sudo sed -i 's/;date.timezone =/date.timezone = America/Chicago/' /etc/php/8.4/apache2/php.ini /etc/php/8.4/cli/php.ini
+sudo systemctl reload apache2
+```
+
+
 ---
 
 ## 4. Deploy the Skin

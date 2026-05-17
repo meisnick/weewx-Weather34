@@ -116,7 +116,7 @@ if (!empty($active)) {
         $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
         if ($s['battOK'] === 'ok')        { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; }
         elseif ($s['battOK'] === 'low')   { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; }
-        else                              { $bClass = 'unk'; $bLabel = '—'; }
+        else                              { $bClass = 'unk'; $bLabel = 'not reported by gateway'; }
         echo "<div class='row'>"
            . "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"
            . "<span class='sdesc'>" . $desc . "</span>"

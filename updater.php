@@ -32,8 +32,8 @@ var refreshId;$(document).ready(function(){indoor()});function indoor(){$.ajax({
   type:"GET",url:"<?php echo $position2 ;?>"})};  
   
  // position 3
-var refreshId;$(document).ready(function(){earthquake()});function earthquake(){$.ajax({cache:false,success:function(a){$("#position3").html(a);<?php if ($eqRefresh > 0) {
-    echo 'setTimeout(earthquake,' . 1000*$eqRefresh.')';
+var refreshId;$(document).ready(function(){position3()});function position3(){$.ajax({cache:false,success:function(a){$("#position3").html(a);<?php if ($position3Refresh > 0) {
+    echo 'setTimeout(position3,' . 1000*$position3Refresh.')';
 } ?>},type:"GET",url:"<?php echo $position3 ?>"})}; 
   
   

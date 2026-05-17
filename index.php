@@ -240,12 +240,6 @@ if ($position12 == 'solaruvwu.php'){
 }
 if ($position12 == 'lightning34.php'){
     echo '<span class="yearpopup"><a alt="Lightning Strike Almanac" title="AlmanacLightning"href="pop_lightningalmanac.php". data-lity>' . $chartinfo . " Strike Almanac </a></span>";
-}
-if ($position12 == 'eq.php'){
-    echo ' <span class="yearpopup"><a alt="Earthquakes Worldwide" title="Earthquakes Worldwide" href="pop_eqlist.php" data-lity>' . $chartinfo . " Worldwide Earthquakes </a></span>";
-}
-if ($position12 == 'eq_uk.php'){
-    echo ' <span class="yearpopup" scrolling="no"><a alt="Earthquakes UK" title="Earthquakes UK" href="pop_eqlist.php" data-lity>' . $chartinfo . " UK Earthquakes </a></span>";
 } ?>
 </div><span class='moduletitle'><a alt="Position12 Switcher" title="Position12 Switcher" href="updatesection.php?pos=position12"><img src="img/lightningalert.svg" width="10" height="10" align="right"/></a><?php echo $position12title ?></span></span><div id="solar"></div></div>
  <!--position last module for homeweatherstation template-->
@@ -297,17 +291,9 @@ if ($positionlastmodule == 'lightning34.php')
 alt="Lightning Strike Almanac" title="Almanac 
 Lightning"href="pop_lightningalmanac.php". data-lity>' . $chartinfo . " Strike Almanac </a></span>";
 }
-if ($positionlastmodule == 'eq.php')
-{
-    echo ' <span class="yearpopup"><a alt="Earthquakes Worldwide" title="Earthquakes Worldwide" href="pop_eqlist.php" data-lity>' . $chartinfo . " Worldwide Earthquakes </a></span>";
-}
-if ($positionlastmodule == 'eq_uk.php')
-{
-    echo ' <span class="yearpopup"><a alt="Earthquakes UK" title="Earthquakes UK" href="pop_eqlist_uk.php" data-lity>' . $chartinfo . " UK Earthquakes </a></span>";
-}
 if ($positionlastmodule == 'purpleairqualitymodule.php')
 {
-    echo '<span class="yearpopup"><a alt="Earthquakes Worldwide" title="Earthquakes Worldwide" href="eqlist.php" data-lity>' . $chartinfo . " Worldwide Earthquakes </a></span>";
+    echo '<span class="yearpopup"><a alt="Air Quality" title="Air Quality" href="aqipopup.php" data-lity>' . $chartinfo . " Air Quality | Cloudbase </a></span>";
 } ?>
     
 </div><span class='moduletitle'><?php echo $positionlastmoduletitle ?></span></span><div id="dldata"></div>

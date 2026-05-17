@@ -1126,17 +1126,17 @@ General template settings with options to choose which type of module to display
     <?php echo $iicon;?>
     <span style="color:rgba(86, 95, 103, 1.000);">Must be a direct image URL (e.g. <b>http://camera-ip/snapshot.jpg</b>) — not a webpage. A cache-busting timestamp is appended automatically, so the endpoint must tolerate extra query parameters.</span><br/>
 
-    <div class="stationvalue">Path/Url to your webcam <b>video</b></div>
+    <div class="stationvalue">Live Stream URL <b>(go2rtc / iframe)</b></div>
     <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg>
 
   <input name="videoWeatherCamURL" type="text" id="videoWeatherCamURL" value="<?php echo $videoWeatherCamURL ;?>" class="chooseapi"><br/>
     <?php echo $iicon;?>
-    <b><span style="color:rgba(236, 87, 27, 1.000);">Optional — when set, enables the Webcam popup link in the navigation menu</span></b><br/>
+    <b><span style="color:rgba(236, 87, 27, 1.000);">When set, the webcam popup opens as a live stream player instead of the static snapshot</span></b><br/>
 
     <?php echo $iicon;?>
-    <span style="color:rgba(86, 95, 103, 1.000);">Note: the popup currently displays the static snapshot image above — video stream rendering is not implemented</span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">Enter any iframe-embeddable stream URL. For go2rtc: <b>http://&lt;host&gt;:1984/webrtc.html?src=&lt;stream_name&gt;</b> (WebRTC, lowest latency) or <b>http://&lt;host&gt;:1984/stream.html?src=&lt;stream_name&gt;</b> (auto-selects best protocol). The go2rtc server handles RTSP transcoding — browsers cannot play RTSP directly.</span><br/>
 </div>
 <br/>
 

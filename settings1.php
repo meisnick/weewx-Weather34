@@ -59,7 +59,6 @@ $defaultlanguage   = "en";
 $language    = "";
 $password    = "Welcome1!";
 $flag   = "en";
-$dshourly   = "";
 $manifestShortName = "MYWX";
 $notifications = "yes";
 $notifyWind = "yes";

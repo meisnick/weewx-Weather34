@@ -818,6 +818,17 @@ double check again
         <?php }?>
     </select>
     <br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);">Master switch for all dashboard popup alerts. When enabled, the following conditions trigger an overlay notification on the dashboard:</span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">
+    &nbsp;&nbsp;• <b>Low battery</b> — console or station battery low<br/>
+    &nbsp;&nbsp;• <b>UV Index ≥ 8</b> — high UV exposure risk<br/>
+    &nbsp;&nbsp;• <b>Heat index ≥ 30°C / 84°F</b> — heat exhaustion risk<br/>
+    &nbsp;&nbsp;• <b>Wind chill ≤ 0°C / 32°F</b> — freezing wind chill<br/>
+    &nbsp;&nbsp;• <b>Dewpoint ≤ 0°C / 32°F</b> — near-freezing dewpoint<br/>
+    &nbsp;&nbsp;• <b>Wind alerts</b> (if enabled separately below)
+    </span><br/><br/>
+
     <div class="stationvalue">Wind Alerts&nbsp;&nbsp;</div>
     <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="rgba(86, 95, 103, 1.000)" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
         <path d="M30 12 L16 24 2 12" />
@@ -830,6 +841,14 @@ double check again
             <option>yes</option>
         <?php }?>
     </select>
+    <br/>
+    <?php echo $iicon;?>
+    <span style="color:rgba(86, 95, 103, 1.000);">Requires Notifications enabled above. Three severity levels:</span><br/>
+    <span style="color:rgba(86, 95, 103, 1.000);">
+    &nbsp;&nbsp;• <b>Wind Advisory</b> — gust ≥ 46 mph / 40 knots or 30-min avg ≥ 25 mph / 21.7 knots<br/>
+    &nbsp;&nbsp;• <b>High Wind Warning</b> — gust ≥ 58 mph / 50 knots or 30-min avg ≥ 39 mph / 34 knots<br/>
+    &nbsp;&nbsp;• <b>Extreme Wind</b> — gust ≥ 115 mph / 99.9 knots
+    </span><br/>
 </div>
 
 

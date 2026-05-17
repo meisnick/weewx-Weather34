@@ -14,12 +14,7 @@ w34highcharts/w34_reports/__pycache__/
 scripts/w34config.py
 CLAUDE.md
 
-# Icon sets not used for US stations (UK Met Office, WU, decorative)
-css/metofficeicons/
-css/mouse/
-css/rain/
-css/windicons/
-css/wuicons/
+# (all icon sets are now tracked)
 
 # Log files and scratch files
 *.log

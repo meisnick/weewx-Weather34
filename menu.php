@@ -322,6 +322,9 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
       <li><!--hardware info-->
         <a href="stationinfo.php" data-lity title="Hardware Weather Station Hardware Info"><weather34menumarkerred></weather34menumarkerred> Hardware Info</a>
       </li>
+      <li><!--sensor battery status-->
+        <a href="pop_sensors.php" data-lity title="GW1000 Sensor Battery &amp; Signal Status"><weather34menumarkergreen></weather34menumarkergreen> Sensor Status</a>
+      </li>
       <?php if (!empty($extraLinkTitle) && !empty($extraLinkURL) && !empty($extraLinkColor))
 { ?>
         <li>

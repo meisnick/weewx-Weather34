@@ -1,6 +1,6 @@
 <?php
 // metar34sky.php — sets $sky_icon, $sky_desc, $metar34vismiles, $metar34viskm
-// from jsondata/me.txt (CheckWX-compatible format written by metar_update.py)
+// from jsondata/me.txt (aviationweather.gov format written by metar_update.py)
 // Does NOT re-include settings or w34CombinedData — safe to include anywhere.
 
 $_metar_raw = @file_get_contents("jsondata/me.txt");

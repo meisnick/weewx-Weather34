@@ -165,14 +165,34 @@ All third-party paid or deprecated APIs replaced with free, keyless, officially 
 - `weather34skydata.php`, `outlook.php`: `${var}` → `{$var}` string interpolation (deprecated PHP 8.2+)
 - `php8.4-mbstring` required — install separately on Debian Trixie
 
+### Settings Page (templateSetup.php)
+
+The settings page has been substantially overhauled:
+
+- **Dark mode** — page now follows the site theme (`$theme` from `settings1.php`) instead of always rendering white
+- **Weather Data Scripts section** — documents all three cron scripts in-UI; links to `w34config.py` for configuration
+- **NWS alert zone auto-detection** — one-click lookup via `api.weather.gov/points/LAT,LON`; extracts forecast zone and county codes and writes them directly to `w34config.py`. Manual override field also provided
+- **ICAO auto-detection** — same one-click flow; queries the NWS observation stations list for the nearest airport and writes the 4-letter code to `w34config.py`. Manual override field also provided
+- **Module picker cleanup** — removed dead options: EU/UK/AU/RW advisory modules (non-functional for US), earthquake notifications (module removed)
+- **Webcam section** — stale link to archived third-party GitHub removed; image vs. live stream URL requirements documented accurately
+- **PHP warning fixes** — undefined array key warnings on `$_POST` reads silenced with `??` null coalescing
+
+### Webcam / Live Stream
+
+- `pop_cam.php` now renders a full-width `<iframe>` when `$videoWeatherCamURL` is set, enabling live stream playback from [go2rtc](https://github.com/AlexxIT/go2rtc) or any iframe-embeddable source. Supports WebRTC (`/webrtc.html?src=...`) and HLS endpoints
+- Falls back to static snapshot `<img>` when no stream URL is configured
+- Removed broken `filemtime("http://www.winterman.org.uk/image1.jpg")` cache-buster; replaced with `time()`
+- `webcamsmall.php` dashboard tile correctly switches to moonphase at night by design — documented in settings UI
+
 ### Other Fixes
 - Highcharts accessibility warning suppressed via global `setOptions`
 - Cloud cover chart `dataGrouping.approximation`: `sum` → `average` (prevented 500%+ readings)
 - `css/homeindoor.*.css`: `url(css/fonts/...)` → `url(fonts/...)` (double-path bug in browser)
 - Missing CSS placeholder files added: `auxillary`, `baromalmanac`, `popup.light`
 - Weather Underground forecast attribution corrected to IBM The Weather Company (`api.weather.com/v3`)
-- Earthquake module removed (API dead since 2023)
+- Earthquake module removed (API dead since 2023); `notifyEarthquake`/`notifyMagnitude` variables cleaned from `settings1.php`
 - All hardcoded credentials, API keys, and coordinates removed from committed files
+- `top_advisory_eu.php`, `pop_europealerts.php`: null guard added for empty `awa.txt` (EU alerts not applicable for US stations)
 
 ---
 

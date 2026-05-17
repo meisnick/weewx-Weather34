@@ -1124,8 +1124,7 @@ General template settings with options to choose which type of module to display
          <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Positions 6 and 12 + last module</span></strong><br/>
         <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> indoortemperature.php <span style="color:rgba(236, 87, 27, 1.000);">display indoor temperature</span><br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> airqualitymodule.php <span style="color:rgba(236, 87, 27, 1.000);">display airquality</span><br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> webcamsmall.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display webcam</span>.*
-     add your url/path to wecam image using option below <br/></span>
+     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> webcamsmall.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display webcam — requires webcam URL configured below; automatically shows moonphase at night</span> <br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> mooonphase.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display moonphase</span><br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34uvsolar.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display uv and solar radiation if you have hardware</span> <br/></span>
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> solaruvwu.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display The Weather Company Day UV forecast and if you have only solar radiation </span> <br/></span>

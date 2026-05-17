@@ -415,7 +415,7 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
       </li>
       <li>
         <a href="https://github.com/steepleian/weewx-Weather34" title="WeeWX port by Ian Millard" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> WeeWX port by Ian Millard (Steepleian)
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> WeeWX skin by Steepleian
         </a>
       </li>
       <li>

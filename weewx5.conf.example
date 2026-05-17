@@ -135,7 +135,7 @@ version = 5.3.1
 
 [Weather34RealTime]
     realtime_path_only = ""
-    unit_system = METRICWX
+    unit_system = US
     exclude_fields = rain
     cache_enable = True
     cache_stale_time = 900

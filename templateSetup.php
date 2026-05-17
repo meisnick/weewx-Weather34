@@ -737,7 +737,7 @@ double check again
         </select>
     <br/>
   <label name="wuapiunit"></label>
-  <div class="stationvalue">Weather Underground Forecast Units</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <div class="stationvalue">The Weather Company Forecast Units</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M30 12 L16 24 2 12" />
@@ -917,7 +917,7 @@ General template settings with options to choose which type of module to display
 <br/><br/>
 <svg id="i-checkmark" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M2 20 L12 28 30 4" />
-</svg> Make sure you have a <strong><span style="color:#F8712E;"><a href="https://www.wunderground.com/member/api-keys" title="https://www.wunderground.com/member/api-keys" target="_blank"><strong>*NEW*</strong> Weather Underground Developer API KEY</a></span></strong> ..
+</svg> Make sure you have a <strong><span style="color:#F8712E;"><a href="https://www.weather.com/" title="The Weather Company (weather.com)" target="_blank"><strong>*NEW*</strong> The Weather Company API Key</a></span></strong> ..
 
 <br/><br/>
 <svg id="i-checkmark" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1409,7 +1409,7 @@ General template settings with options to choose which type of module to display
     </select>
     <br/>
   <!-- WU id -->
-  <div class="stationvalue">Weather Underground ID</div>
+  <div class="stationvalue">Weather Underground Station ID</div>
     <?php echo $rightchevron;?>
     <label name="id"></label>
     <input name="id" type="text" id="id" value="<?php echo $id;?>" class="choose">

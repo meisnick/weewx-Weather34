@@ -1,7 +1,7 @@
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include('w34CombinedData.php');include('common.php');include('settings1.php');?>
-<div class="mod-header"><span class="mod-time"><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></span></div>  
+<div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 <div class="tempcontainer">
 <div class="maxdata"><?php 
 if ($weather["temp_today_high"]<10){echo "&nbsp;".$weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}else if ($weather["temp_today_high"]>=10){echo $weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}?>

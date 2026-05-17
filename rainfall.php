@@ -1,5 +1,5 @@
 <?php  //weather34 rain module 15th Feb 2019 //
-include_once('w34CombinedData.php');?><div class="mod-header"><span class="mod-time"><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
+include_once('w34CombinedData.php');?><div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
 <div class="weather34i-rairate-bar"><div id="raincontainer"><div id="weather34rainbeaker">
 <div id="weather34rainwater" style="height:<?php if ($weather["rain_units"] =='mm' && $weather["rain_today"]){echo $weather["rain_today"]*2.5+1;}else if ($weather["rain_units"] =='in' && $weather["rain_today"]){echo $weather["rain_today"]*25.4*2.5;}?>px;">      
 </div></div></div></div>  

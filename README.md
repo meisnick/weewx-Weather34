@@ -165,9 +165,13 @@ This fork adds modifications under the same non-commercial terms.
 
 ---
 
-## Credits & History
+## Credits & Attribution
 
 - **Original template:** Brian Underdown — [weather34.com](https://weather34.com/homeweatherstation)
-- **WeeWX skin fork (EOL Aug 2023):** Ian Millard — [meisnick/weewx-Weather34](https://github.com/meisnick/weewx-Weather34)
+- **WeeWX skin port and primary maintainer:** Ian Millard (Steepleian) — [steepleian/weewx-Weather34](https://github.com/steepleian/weewx-Weather34)
+  Ian ported Weather34 to WeeWX and maintained it through v4.3.0 (August 2023). This fork is built directly on his work. The upstream repo is the authoritative reference for WeeWX 4 installations.
+
+- **This fork:** [meisnick/weewx-Weather34](https://github.com/meisnick/weewx-Weather34)
+  Continued maintenance after upstream EOL: WeeWX 5.x support, PHP 8.4 / Python 3.13 compatibility, API migration to free government sources, and cleanup of deprecated services.
 
 See [CHANGELOG.md](CHANGELOG.md) for complete change history.

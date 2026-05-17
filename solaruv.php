@@ -1,6 +1,6 @@
 <?php //weather34 solar and uvindex module 27th Jan 2017 //
 include_once('w34CombinedData.php');include('common.php');
-$hi = 0;foreach ($darkskyhourlyCond as $cond) {$darkskyhourlyuv = $cond['uvIndex']; if ($hi++ == 0) break; }$weather["uv3"]=$darkskyhourlyuv ;
+$hi = 0;foreach ($forecasthourlyCond as $cond) {$forecasthourlyuv = $cond['uvIndex']; if ($hi++ == 0) break; }$weather["uv3"]=$forecasthourlyuv ;
 $result = date_sun_info(time(), $lat, $lon); '<pre>'.time().print_r($result,true); $nextday = time() + 24*60*60; $result2 = date_sun_info($nextday,$lat, $lon); '<pre>'.print_r($result2,true); 
 $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise = date('H:i',$result2['sunrise']);} else {$nextrise = date('H:i',$nextrise);} 
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);

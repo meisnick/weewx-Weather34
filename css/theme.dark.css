@@ -1,0 +1,9 @@
+:root {
+  --bg-page:    #1a1c22;
+  --color-body: #ccc;
+  --mod-text:   #ccc;
+  --mod-muted:  rgba(150,155,165,1);
+  --mod-border: rgba(84,85,86,0.35);
+  --mod-bg:     rgba(33,34,39,.88);
+  --mod-inset:  rgba(97,106,114,.1);
+}

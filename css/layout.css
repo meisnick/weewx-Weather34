@@ -1,0 +1,45 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0; min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--color-body);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.w34-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  min-height: 100vh;
+}
+
+/* top bar — row of 83px-tall mod-top modules */
+.w34-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.w34-topbar [data-module] {
+  width: 240px;
+  height: 83px;
+  overflow: hidden;
+  background: var(--mod-bg);
+  border: 1px solid var(--mod-border);
+  border-radius: 3px;
+}
+
+/* main grid — auto-fill 240px columns, 195px rows */
+.w34-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 6px;
+}
+.w34-grid [data-module] {
+  height: 195px;
+  overflow: hidden;
+  background: var(--mod-bg);
+  border: 1px solid var(--mod-border);
+  border-radius: 3px;
+}

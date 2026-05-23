@@ -15,7 +15,7 @@ else if ($weather["solar"]>0){echo "<div class=solarluxtoday>".$weather["solar"]
 <div class="uvcontainer1"><?php if ($weather["uv"]>10) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}else if ($weather["uv"]>8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}else if ($weather["uv"]>5) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}else if ($weather["uv"]>3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 else if (date('Hi')>$sunset && $weather["uv"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 else if (date('Gi')<$sunrise && $weather["uv"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}?></smallrainunit></div></div>
+else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}?></smalluvunit></div></div>
 <div class="uvtrend"><?php echo "UV INDEX"?></div>  
 <div class="uvcaution"><?php echo "&nbsp;<valuetext>Max ".$weather["uvdmax"]." <time><value>(".$weather["uvdmaxtime"]?></value>)</valuetext></time></div>
 
@@ -25,6 +25,6 @@ else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weathe
 if ($weather["lux"]>99999) {echo "<div class=luxtoday>".number_format($weather["lux"]/1000,0). "K";}
 else if($weather["lux"]==0) echo "<div class=luxtodaydark>".$weather["lux"];
 else echo "<div class=luxtoday>".$weather["lux"];?> 
-</div></div></div><div class="luxtodayword"><valuetext>Brightness<valuetext></div><div class="luxwrap"></div>
+</div></div></div><div class="luxtodayword"><valuetext>Brightness</valuetext></div><div class="luxwrap"></div>
 <div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
 else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Low';}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Very Low';}?></div>

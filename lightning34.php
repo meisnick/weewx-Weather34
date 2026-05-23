@@ -1,5 +1,6 @@
-<?php include('w34CombinedData.php');date_default_timezone_set($TZ);?>
+﻿<?php include('w34CombinedData.php');date_default_timezone_set($TZ);?>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>
+<div class="mod-lightning34">
 <div class="simsekcontainer">
 <div class="simsekdata">Strikes</div>
 <?php
@@ -27,3 +28,4 @@ echo "<div class=tempconvertercircleyellow><orange> ";?><?php echo rand(6452,288
 <lightningiconx>
 <?php if ($lightning['strike_count_3hr'] > 0) echo '<img src="img/lightningalert.svg" width="20" height="20" align="right"/>';?>
 </lightningiconx>
+</div><!-- /mod-lightning34 -->

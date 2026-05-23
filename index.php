@@ -165,17 +165,12 @@ function modulePopups($module, $vars) {
 <link rel="preload" href="css/fonts/clock3-webfont.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="css/fonts/verbatim-regular.woff" as="font" type="font/woff" crossorigin>
 <link href="css/main.dark.css?version=<?php echo filemtime('css/main.dark.css'); ?>" rel="stylesheet prefetch">
-<link href="css/modules/temperature.css" rel="stylesheet">
-<link href="css/modules/rainfall.css?version=<?php echo filemtime('css/modules/rainfall.css'); ?>" rel="stylesheet">
-<link href="css/modules/airquality.css?version=<?php echo filemtime('css/modules/airquality.css'); ?>" rel="stylesheet">
-<link href="css/modules/lightning34.css?version=<?php echo filemtime('css/modules/lightning34.css'); ?>" rel="stylesheet">
-<link href="css/modules/barometer.css?version=<?php echo filemtime('css/modules/barometer.css'); ?>" rel="stylesheet">
-<link href="css/modules/wind.css?version=<?php echo filemtime('css/modules/wind.css'); ?>" rel="stylesheet">
-<link href="css/modules/sun.css?version=<?php echo filemtime('css/modules/sun.css'); ?>" rel="stylesheet"><link href="css/modules/moonphase.css?version=<?php echo filemtime('css/modules/moonphase.css'); ?>" rel="stylesheet"><link href="css/modules/conditions.css?version=<?php echo filemtime('css/modules/conditions.css'); ?>" rel="stylesheet"><link href="css/modules/forecast.css?version=<?php echo filemtime('css/modules/forecast.css'); ?>" rel="stylesheet">
-<link href="css/modules/clock.css?version=<?php echo filemtime('css/modules/clock.css'); ?>" rel="stylesheet">
-<link href="css/modules/rain-totals.css?version=<?php echo filemtime('css/modules/rain-totals.css'); ?>" rel="stylesheet">
-<link href="css/modules/top-lightning.css?version=<?php echo filemtime('css/modules/top-lightning.css'); ?>" rel="stylesheet">
-<link href="css/modules/advisory.css?version=<?php echo filemtime('css/modules/advisory.css'); ?>" rel="stylesheet">
+<?php
+// Scoped CSS modules dynamic glob loader (Plug-and-Play architecture)
+foreach (glob("css/modules/*.css") as $sheet) {
+    echo '<link href="' . $sheet . '?version=' . filemtime($sheet) . '" rel="stylesheet">' . "\n";
+}
+?>
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

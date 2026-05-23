@@ -17,6 +17,9 @@ if (!is_array($topbar) || !is_array($grid)) {
 $existing = [];
 if (file_exists('modules.php')) {
     include('modules.php');
+    // Re-read grid_columns from POST — include('modules.php') overwrites it
+    $grid_columns = $_POST['grid_columns'] ?? $grid_columns ?? 'auto';
+    if (!in_array($grid_columns, ['auto', '3', '4', '6'])) { $grid_columns = 'auto'; }
     foreach (array_merge($topbar_modules ?? [], $grid_modules ?? []) as $m) {
         $existing[$m['module']] = $m;
     }

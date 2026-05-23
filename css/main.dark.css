@@ -15,6 +15,15 @@
   --bg1:       #38383c;
   --text-d:    #bbb;
   --text-m:    #777;
+  --text:      #e8e8e8;
+}
+
+:root[data-theme="light"] {
+  --bg0:    #fff;
+  --bg1:    #f8f8f8;
+  --text:   #2d2d2d;
+  --text-d: #aaa;
+  --text-m: #888;
 }
 
 @supports (-moz-appearance:none) {
@@ -5281,7 +5290,7 @@ smallsup {
 }
 
 smalltempunit {
-  font-size: .5em
+  font-size: .6em
 }
 
 smalltempunit2 {
@@ -9421,4 +9430,21 @@ body:hover {
 }
 .alertpos {
   margin: auto
+}
+/* ── Light mode direct overrides ───────────────────────────────────────── */
+[data-theme="light"] body {
+  background: #fff;
+}
+
+[data-theme="light"] .weather34box {
+  border: 1px solid rgba(230, 232, 239, .8);
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 20px var(--bg0);
+  box-shadow: inset 0 20px var(--bg0);
+  color: #2d3a4b;
+}
+
+[data-theme="light"] .weather34box .title,
+[data-theme="light"] .weather34box .value {
+  color: #2d3a4b;
 }

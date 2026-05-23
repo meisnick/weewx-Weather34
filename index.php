@@ -157,7 +157,7 @@ function modulePopups($module, $vars) {
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link rel="preload" href="css/fonts/clock3-webfont.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="css/fonts/verbatim-regular.woff" as="font" type="font/woff" crossorigin>
-<link href="css/main.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/main.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
+<link href="css/main.dark.css?version=<?php echo filemtime('css/main.dark.css'); ?>" rel="stylesheet prefetch">
 <link href="css/modules/temperature.css" rel="stylesheet">
 <link href="css/modules/rainfall.css?version=<?php echo filemtime('css/modules/rainfall.css'); ?>" rel="stylesheet">
 <link href="css/modules/airquality.css?version=<?php echo filemtime('css/modules/airquality.css'); ?>" rel="stylesheet">

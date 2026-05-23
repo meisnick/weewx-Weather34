@@ -38,6 +38,7 @@ function moduleTitle($module, $weather, $lang) {
             return $lang['Direction'] . ' | ' . $lang['Windspeed'] . ' (<valuetitleunit>' . $wu . '</valuetitleunit>)';
         case 'barometer.php':
             return $lang['Barometer'] . ' (<valuetitleunit>' . $weather['barometer_units'] . '</valuetitleunit>)';
+        case 'sun3.php':
         case 'w34skymap.php':
             return $lang['Daylight'] . ' | ' . $lang['Darkness'];
         case 'rainfall.php':
@@ -92,6 +93,7 @@ function modulePopups($module, $vars) {
         case 'barometer.php':
             $out = '<span class="yearpopup"><a href="pop_menu_barometer.php" data-lity>' . $menucharticonpage . ' Barometer Almanac and Charts</a></span>';
             break;
+        case 'sun3.php':
         case 'w34skymap.php':
         case 'moonphase.php':
             $out  = '<span class="yearpopup"><a href="mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';

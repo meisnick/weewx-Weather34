@@ -95,12 +95,15 @@ function modulePopups($module, $vars) {
             break;
         case 'sun3.php':
         case 'w34skymap.php':
-        case 'moonphase.php':
-            $out  = '<span class="yearpopup"><a href="mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
             $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' Meteor Showers</a></span>';
             $kp_label = isset($kp) && $kp >= 5 ? ' <oorange>Active</oorange>' : '';
             $out .= '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Aurora' . $kp_label . '</a></span>';
             $out .= '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' Daylight Map</a></span>';
+            break;
+        case 'moonphase.php':
+            $out  = '<span class="yearpopup"><a href="pop_cam.php" data-lity>' . $webcamicon . ' Time Lapse Camera</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' Indoor Guide</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
             break;
         case 'rainfall.php':
             $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' Rainfall Almanac and Charts</a></span>';

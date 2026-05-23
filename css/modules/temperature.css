@@ -1,18 +1,21 @@
-﻿/* ============================================================
+﻿/* temperature module — scoped to .mod-temperature */
+.mod-temperature { display: contents; }
+
+/* ============================================================
    temperature module
    Extracted from main.dark.css + main.light.css
    Theme-specific overrides via [data-theme="light"]
    ============================================================ */
 
-.tempcontainer,
+.mod-temperature .tempcontainer,
 
-.tempcontainer1,
+.mod-temperature .tempcontainer1,
 
-.heatcircle,
+.mod-temperature .heatcircle,
 
-.heatcircle2,
+.mod-temperature .heatcircle2,
 
-.heatcircle-content {
+.mod-temperature .heatcircle-content {
   color: silver;
   float: left;
   margin-left: -4px;
@@ -24,17 +27,17 @@
   line-height: 15px
 }
 
-.tempconvertercircleblue,
+.mod-temperature .tempconvertercircleblue,
 
-.tempconvertercirclegreen,
+.mod-temperature .tempconvertercirclegreen,
 
-.tempconvertercircleorange,
+.mod-temperature .tempconvertercircleorange,
 
-.tempconvertercirclepurple,
+.mod-temperature .tempconvertercirclepurple,
 
-.tempconvertercirclered,
+.mod-temperature .tempconvertercirclered,
 
-.tempconvertercircleyellow {
+.mod-temperature .tempconvertercircleyellow {
   align-items: center;
   width: 4.2rem;
   color: silver;
@@ -44,17 +47,17 @@
   overflow: hidden
 }
 
-.tempconvertercircleblue,
+.mod-temperature .tempconvertercircleblue,
 
-.tempconvertercirclegreen,
+.mod-temperature .tempconvertercirclegreen,
 
-.tempconvertercircleorange,
+.mod-temperature .tempconvertercircleorange,
 
-.tempconvertercirclepurple,
+.mod-temperature .tempconvertercirclepurple,
 
-.tempconvertercirclered,
+.mod-temperature .tempconvertercirclered,
 
-.tempconvertercircleyellow {
+.mod-temperature .tempconvertercircleyellow {
   display: flex;
   justify-content: center;
   border: 1px solid var(--bg1);
@@ -62,68 +65,68 @@
   font-size: .85em  
 }
 
-.tempindoorconverter {
+.mod-temperature .tempindoorconverter {
   font-size: 12px;
   position: absolute
 }
 
-.tempindoorconverter {
+.mod-temperature .tempindoorconverter {
   margin-left: 245px;
   margin-top: -15px
 }
 
-.tempconverter1,
+.mod-temperature .tempconverter1,
 
-.tempconverter1 {
+.mod-temperature .tempconverter1 {
   margin-left: 53px;
   margin-top: 0
 }
 
-.heatcircle,
+.mod-temperature .heatcircle,
 
-.heatcircle2,
+.mod-temperature .heatcircle2,
 
-.heatcircle3,
+.mod-temperature .heatcircle3,
 
-.heatcircle4,
+.mod-temperature .heatcircle4,
 
-.heatcircle5 {
+.mod-temperature .heatcircle5 {
   padding: 0;
   width: 170px;
   position: absolute;
   float: left
 }
 
-.heatcircle {
+.mod-temperature .heatcircle {
   margin-top: 30px;
   margin-left: 100px
 }
 
-.heatcircle2 {
+.mod-temperature .heatcircle2 {
   margin-top: 0;
   margin-left: 75px
 }
 
-.heatcircle3,
+.mod-temperature .heatcircle3,
 
-.heatcircle4 {
+.mod-temperature .heatcircle4 {
   margin-top: 40px
 }
 
-.heatcircle3 {
+.mod-temperature .heatcircle3 {
   margin-left: 0
 }
 
-.heatcircle4 {
+.mod-temperature .heatcircle4 {
   margin-left: 75px
 }
 
-.heatcircle5 {
+.mod-temperature .heatcircle5 {
   margin-top: 120px;
   margin-left: 100px
 }
 
-.tempcontainer {
+.mod-temperature .tempcontainer {
   float: left;
   font-family: weathertext2;
   bottom: 0;
@@ -134,39 +137,39 @@
   top: -4px
 }
 
-.tempcontainerx {
+.mod-temperature .tempcontainerx {
   position: relative;
   left: -20px;
   top: -11px
 }
 
-.outside0-5,
+.mod-temperature .outside0-5,
 
-.outside11-15,
+.mod-temperature .outside11-15,
 
-.outside16-20,
+.mod-temperature .outside16-20,
 
-.outside21-25,
+.mod-temperature .outside21-25,
 
-.outside26-30,
+.mod-temperature .outside26-30,
 
-.outside31-35,
+.mod-temperature .outside31-35,
 
-.outside36-40,
+.mod-temperature .outside36-40,
 
-.outside41-45,
+.mod-temperature .outside41-45,
 
-.outside50,
+.mod-temperature .outside50,
 
-.outside6-10,
+.mod-temperature .outside6-10,
 
-.outsideminus,
+.mod-temperature .outsideminus,
 
-.outsideminus10,
+.mod-temperature .outsideminus10,
 
-.outsideminus5,
+.mod-temperature .outsideminus5,
 
-.outsidezero {
+.mod-temperature .outsidezero {
   font-family: weathertext2;
   width: 6rem;
   height: 5.5rem;
@@ -183,83 +186,83 @@
   border-radius: 2px
 }
 
-.outsideminus10 {
+.mod-temperature .outsideminus10 {
   background: #3369e7;
   background: -webkit-linear-gradient(45deg, #ab49de, #3369e7);
   background: linear-gradient(45deg, #ab49de, #3369e7)
 }
 
-.outsideminus5 {
+.mod-temperature .outsideminus5 {
   background: var(--teal);
   background: -webkit-linear-gradient(45deg, #ab49de, var(--teal));
   background: linear-gradient(45deg, #ab49de, var(--teal))
 }
 
-.outsideminus,
+.mod-temperature .outsideminus,
 
-.outsidezero {
+.mod-temperature .outsidezero {
   background: var(--teal-b);
   background: -webkit-linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1));
   background: linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1))
 }
 
-.outside0-5 {
+.mod-temperature .outside0-5 {
   background: var(--teal-b);
   background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
   background: linear-gradient(270deg, var(--teal-b), #087883)
 }
 
-.outside6-10 {
+.mod-temperature .outside6-10 {
   background: #88b04b;
   background: -webkit-linear-gradient(90deg, var(--teal-b), #88b04b);
   background: linear-gradient(90deg, var(--teal-b), #88b04b)
 }
 
-.outside11-15 {
+.mod-temperature .outside11-15 {
   background: var(--amber);
   background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
   background: linear-gradient(90deg, var(--green), var(--amber))
 }
 
-.outside16-20 {
+.mod-temperature .outside16-20 {
   background: var(--orange);
   background: -webkit-linear-gradient(90deg, var(--green), var(--orange));
   background: linear-gradient(90deg, var(--green), var(--orange))
 }
 
-.outside21-25 {
+.mod-temperature .outside21-25 {
   background: #efa80f;
   background: -webkit-linear-gradient(90deg, #efa80f, var(--red-l));
   background: linear-gradient(90deg, #efa80f, var(--red-l))
 }
 
-.outside26-30 {
+.mod-temperature .outside26-30 {
   background: var(--orange-d);
   background: -webkit-linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1));
   background: linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1))
 }
 
-.outside31-35 {
+.mod-temperature .outside31-35 {
   background: var(--red-l);
   background: -webkit-linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7));
   background: linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7))
 }
 
-.outside36-40 {
+.mod-temperature .outside36-40 {
   background: #fd7641;
   background: -webkit-linear-gradient(90deg, #fd7641, #637ff6);
   background: linear-gradient(90deg, #fd7641, #637ff6)
 }
 
-.outside41-45,
+.mod-temperature .outside41-45,
 
-.outside50 {
+.mod-temperature .outside50 {
   background: #de2c52;
   background: -webkit-linear-gradient(90deg, #de2c52, #637ff6);
   background: linear-gradient(90deg, #de2c52, #637ff6)
 }
 
-.temptrendx {
+.mod-temperature .temptrendx {
   position: absolute;
   margin-top: -17px;
   margin-left: 5%;
@@ -270,9 +273,9 @@
   font-family: Arial, system
 }
 
-.maxdata,
+.mod-temperature .maxdata,
 
-.maxdata {
+.mod-temperature .maxdata {
   position: absolute;
   font-size: .75em;
   color: #fff;
@@ -280,7 +283,7 @@
   left: 18%
 }
 
-.tempindoorextra {
+.mod-temperature .tempindoorextra {
   font-weight: 500;
   font-family: weathertext2;
   font-size: .68rem;
@@ -289,7 +292,7 @@
   margin-top: 115px;
 }
 
-.tempindoorextra1 {
+.mod-temperature .tempindoorextra1 {
   font-weight: 500;
   font-family: weathertext2;
   font-size: .68rem;
@@ -298,7 +301,7 @@
   margin-top: 115px;
 }
 
-.tempindoorextra2 {
+.mod-temperature .tempindoorextra2 {
   font-weight: 500;
   font-family: weathertext2;
   font-size: .68rem;
@@ -307,15 +310,15 @@
   margin-top: 115px;
 }
 
-.temphumcircle0-25,
+.mod-temperature .temphumcircle0-25,
 
-.temphumcircle25-35,
+.mod-temperature .temphumcircle25-35,
 
-.temphumcircle35-60,
+.mod-temperature .temphumcircle35-60,
 
-.temphumcircle60-80,
+.mod-temperature .temphumcircle60-80,
 
-.temphumcircle80-100 {
+.mod-temperature .temphumcircle80-100 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -328,7 +331,7 @@
   color: silver
 }
 
-.tempmodulehome-50-10c {
+.mod-temperature .tempmodulehome-50-10c {
   display: flex;
   align-items: center;
   line-height: 16px;
@@ -337,7 +340,7 @@
   color: silver
 }
 
-.temphumcircle60-80 {
+.mod-temperature .temphumcircle60-80 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
@@ -347,7 +350,7 @@
   border-bottom-right-radius: 2px
 }
 
-.temphumcircle25-35 {
+.mod-temperature .temphumcircle25-35 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
@@ -357,7 +360,7 @@
   border-bottom-right-radius: 2px
 }
 
-.temphumcircle35-60 {
+.mod-temperature .temphumcircle35-60 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
@@ -367,7 +370,7 @@
   border-bottom-right-radius: 2px
 }
 
-.temphumcircle80-100 {
+.mod-temperature .temphumcircle80-100 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #4e95a0;
@@ -377,7 +380,7 @@
   border-bottom-right-radius: 2px
 }
 
-.temphumcircle0-25 {
+.mod-temperature .temphumcircle0-25 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
@@ -387,29 +390,29 @@
   border-bottom-right-radius: 2px
 }
 
-.tempconverter2 {
+.mod-temperature .tempconverter2 {
   position: absolute;
   margin-top: 5px;
   font-size: 12px
 }
 
-.tempconverter2 {
+.mod-temperature .tempconverter2 {
   margin-left: 240px
 }
 
-.tempmodulehome-10-0c,
+.mod-temperature .tempmodulehome-10-0c,
 
-.tempmodulehome-50-10c,
+.mod-temperature .tempmodulehome-50-10c,
 
-.tempmodulehome0-5c,
+.mod-temperature .tempmodulehome0-5c,
 
-.tempmodulehome20-25c,
+.mod-temperature .tempmodulehome20-25c,
 
-.tempmodulehome25-30c,
+.mod-temperature .tempmodulehome25-30c,
 
-.tempmodulehome30-35c,
+.mod-temperature .tempmodulehome30-35c,
 
-.tempmodulehome35-40c {
+.mod-temperature .tempmodulehome35-40c {
   height: 1.1rem;
   overflow: hidden;
   font-size: .65rem;
@@ -417,7 +420,7 @@
   width: 4rem
 }
 
-.tempmodulehome-50-10c {
+.mod-temperature .tempmodulehome-50-10c {
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
@@ -429,9 +432,9 @@
   font-weight: 400
 }
 
-.tempmodulehome-10-0c,
+.mod-temperature .tempmodulehome-10-0c,
 
-.tempmodulehome0-5c {
+.mod-temperature .tempmodulehome0-5c {
   display: flex;
   align-items: center;
   line-height: 16px;
@@ -441,7 +444,7 @@
   font-weight: 400
 }
 
-.tempmodulehome-10-0c {
+.mod-temperature .tempmodulehome-10-0c {
   justify-content: center;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #487ea9;
@@ -452,16 +455,16 @@
   font-weight: 400
 }
 
-.tempmodulehome0-5c,
+.mod-temperature .tempmodulehome0-5c,
 
-.tempmodulehome5-10c {
+.mod-temperature .tempmodulehome5-10c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   font-weight: 400
 }
 
-.tempmodulehome0-5c {
+.mod-temperature .tempmodulehome0-5c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--teal);
   border-top-right-radius: 2px;
@@ -469,11 +472,11 @@
   font-weight: 400
 }
 
-.tempmodulehome10-15c,
+.mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c,
+.mod-temperature .tempmodulehome15-20c,
 
-.tempmodulehome5-10c {
+.mod-temperature .tempmodulehome5-10c {
   display: flex;
   align-items: center;
   height: 1.1rem;
@@ -487,7 +490,7 @@
   border: 1px solid var(--bg0)
 }
 
-.tempmodulehome5-10c {
+.mod-temperature .tempmodulehome5-10c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green2);
   border-top-right-radius: 2px;
@@ -495,20 +498,20 @@
   font-weight: 400
 }
 
-.tempmodulehome10-15c,
+.mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c,
+.mod-temperature .tempmodulehome15-20c,
 
-.tempmodulehome20-25c {
+.mod-temperature .tempmodulehome20-25c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   font-weight: 400
 }
 
-.tempmodulehome10-15c,
+.mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c {
+.mod-temperature .tempmodulehome15-20c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   border-top-right-radius: 2px;
@@ -516,9 +519,9 @@
   font-weight: 400
 }
 
-.tempmodulehome20-25c,
+.mod-temperature .tempmodulehome20-25c,
 
-.tempmodulehome25-30c {
+.mod-temperature .tempmodulehome25-30c {
   display: flex;
   align-items: center;
   line-height: 16px;
@@ -528,7 +531,7 @@
   font-weight: 400
 }
 
-.tempmodulehome20-25c {
+.mod-temperature .tempmodulehome20-25c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #ec5a34;
   border-top-right-radius: 2px;
@@ -536,16 +539,16 @@
   font-weight: 400
 }
 
-.tempmodulehome25-30c,
+.mod-temperature .tempmodulehome25-30c,
 
-.tempmodulehome30-35c {
+.mod-temperature .tempmodulehome30-35c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   font-weight: 400
 }
 
-.tempmodulehome25-30c {
+.mod-temperature .tempmodulehome25-30c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
   border-top-right-radius: 2px;
@@ -553,9 +556,9 @@
   font-weight: 400
 }
 
-.tempmodulehome30-35c,
+.mod-temperature .tempmodulehome30-35c,
 
-.tempmodulehome35-40c {
+.mod-temperature .tempmodulehome35-40c {
   display: flex;
   align-items: center;
   line-height: 16px;
@@ -565,7 +568,7 @@
   font-weight: 400
 }
 
-.tempmodulehome30-35c {
+.mod-temperature .tempmodulehome30-35c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #d65b4a;
   border-top-right-radius: 2px;
@@ -573,7 +576,7 @@
   font-weight: 400
 }
 
-.tempmodulehome35-40c {
+.mod-temperature .tempmodulehome35-40c {
   justify-content: center;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #dc4953;
@@ -584,7 +587,7 @@
   font-weight: 400
 }
 
-.tempmodulehome40-50c {
+.mod-temperature .tempmodulehome40-50c {
   display: flex;
   height: 1.1rem;
   overflow: hidden;
@@ -596,18 +599,18 @@
   font-weight: 400
 }
 
-.tempmodulehome40-50c {
+.mod-temperature .tempmodulehome40-50c {
   align-items: center
 }
 
-.intempmodulehome0-5c,
+.mod-temperature .intempmodulehome0-5c,
 
-.tempmodulehome40-50c {
+.mod-temperature .tempmodulehome40-50c {
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.tempmodulehome40-50c {
+.mod-temperature .tempmodulehome40-50c {
   justify-content: center;
   width: 4rem;
   border-left: 0;
@@ -617,17 +620,17 @@
   font-weight: 400
 }
 
-.intempmodulehome0-5c,
+.mod-temperature .intempmodulehome0-5c,
 
-.intempmodulehome10-15c,
+.mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c,
+.mod-temperature .intempmodulehome15-20c,
 
-.intempmodulehome20-25c,
+.mod-temperature .intempmodulehome20-25c,
 
-.intempmodulehome25-30c,
+.mod-temperature .intempmodulehome25-30c,
 
-.intempmodulehome5-10c {
+.mod-temperature .intempmodulehome5-10c {
   height: 1.1rem;
   width: 4.3rem;
   line-height: 16px;
@@ -639,13 +642,13 @@
   overflow: hidden
 }
 
-.intempmodulehome0-5c,
+.mod-temperature .intempmodulehome0-5c,
 
-.intempmodulehome5-10c {
+.mod-temperature .intempmodulehome5-10c {
   border: 1px solid var(--bg0)
 }
 
-.intempmodulehome0-5c {
+.mod-temperature .intempmodulehome0-5c {
   align-items: center;
   justify-content: center;
   border-left: 0;
@@ -654,7 +657,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome5-10c {
+.mod-temperature .intempmodulehome5-10c {
   align-items: center;
   justify-content: center;
   border-left: 0;
@@ -665,9 +668,9 @@
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome10-15c,
+.mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c {
+.mod-temperature .intempmodulehome15-20c {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--bg0);
@@ -679,13 +682,13 @@
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome20-25c,
+.mod-temperature .intempmodulehome20-25c,
 
-.intempmodulehome25-30c {
+.mod-temperature .intempmodulehome25-30c {
   align-items: center
 }
 
-.intempmodulehome20-25c {
+.mod-temperature .intempmodulehome20-25c {
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
@@ -696,7 +699,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome25-30c {
+.mod-temperature .intempmodulehome25-30c {
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
@@ -707,7 +710,7 @@
   border-bottom-right-radius: 2px
 }
 
-.inheatcircle-content {
+.mod-temperature .inheatcircle-content {
   position: absolute;
   color: silver;
   float: left;
@@ -720,7 +723,7 @@
   line-height: 15px
 }
 
-.heatcircle6 {
+.mod-temperature .heatcircle6 {
   padding: 0;
   width: 170px;
   position: absolute;
@@ -728,7 +731,7 @@
   margin-left: 140px
 }
 
-.inheatcircle2-content {
+.mod-temperature .inheatcircle2-content {
   position: absolute;
   color: silver;
   float: left;
@@ -742,7 +745,7 @@
   line-height: 15px
 }
 
-.heatcircle7 {
+.mod-temperature .heatcircle7 {
   padding: 0;
   width: 170px;
   position: relative;
@@ -750,15 +753,15 @@
   margin-left: 49px
 }
 
-.intemphumcircle0-25,
+.mod-temperature .intemphumcircle0-25,
 
-.intemphumcircle25-35,
+.mod-temperature .intemphumcircle25-35,
 
-.intemphumcircle35-60,
+.mod-temperature .intemphumcircle35-60,
 
-.intemphumcircle60-80,
+.mod-temperature .intemphumcircle60-80,
 
-.intemphumcircle80-100 {
+.mod-temperature .intemphumcircle80-100 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -771,7 +774,7 @@
   color: silver
 }
 
-.intemphumcircle60-80 {
+.mod-temperature .intemphumcircle60-80 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
@@ -781,7 +784,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle25-35 {
+.mod-temperature .intemphumcircle25-35 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
@@ -791,7 +794,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle35-60 {
+.mod-temperature .intemphumcircle35-60 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
@@ -801,7 +804,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle80-100 {
+.mod-temperature .intemphumcircle80-100 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #4e95a0;
@@ -811,7 +814,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle0-25 {
+.mod-temperature .intemphumcircle0-25 {
   border: 1px solid var(--bg0);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
@@ -821,31 +824,31 @@
   border-bottom-right-radius: 2px
 }
 
-.tempconvertercircle0-5,
+.mod-temperature .tempconvertercircle0-5,
 
-.tempconvertercircle11-15,
+.mod-temperature .tempconvertercircle11-15,
 
-.tempconvertercircle16-20,
+.mod-temperature .tempconvertercircle16-20,
 
-.tempconvertercircle21-25,
+.mod-temperature .tempconvertercircle21-25,
 
-.tempconvertercircle26-30,
+.mod-temperature .tempconvertercircle26-30,
 
-.tempconvertercircle31-35,
+.mod-temperature .tempconvertercircle31-35,
 
-.tempconvertercircle36-40,
+.mod-temperature .tempconvertercircle36-40,
 
-.tempconvertercircle41-45,
+.mod-temperature .tempconvertercircle41-45,
 
-.tempconvertercircle50,
+.mod-temperature .tempconvertercircle50,
 
-.tempconvertercircle6-10,
+.mod-temperature .tempconvertercircle6-10,
 
-.tempconvertercircleminus,
+.mod-temperature .tempconvertercircleminus,
 
-.tempconvertercircleminus10,
+.mod-temperature .tempconvertercircleminus10,
 
-.tempconvertercircleminus5 {
+.mod-temperature .tempconvertercircleminus5 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -864,23 +867,22 @@
 
 
 /* ── Light theme overrides ── */
-[data-theme="light"] {
 
-.tempcontainer,
+[data-theme="light"] .mod-temperature .tempcontainer,
 
-.tempcontainer1,
+[data-theme="light"] .mod-temperature .tempcontainer1,
 
-.tempconvertercircleblue,
+[data-theme="light"] .mod-temperature .tempconvertercircleblue,
 
-.tempconvertercirclegreen,
+[data-theme="light"] .mod-temperature .tempconvertercirclegreen,
 
-.tempconvertercircleorange,
+[data-theme="light"] .mod-temperature .tempconvertercircleorange,
 
-.tempconvertercirclepurple,
+[data-theme="light"] .mod-temperature .tempconvertercirclepurple,
 
-.tempconvertercirclered,
+[data-theme="light"] .mod-temperature .tempconvertercirclered,
 
-.tempconvertercircleyellow {
+[data-theme="light"] .mod-temperature .tempconvertercircleyellow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -895,39 +897,39 @@
   font-size: .85em
 }
 
-.tempconvertercircleyellow {
+[data-theme="light"] .mod-temperature .tempconvertercircleyellow {
   background: rgba(var(--amber-rgb), .8)
 }
 
-.tempconvertercircleorange {
+[data-theme="light"] .mod-temperature .tempconvertercircleorange {
   background: rgba(255, 124, 57, 1)
 }
 
-.tempconvertercirclered {
+[data-theme="light"] .mod-temperature .tempconvertercirclered {
   background: var(--red)
 }
 
-.tempconvertercirclegreen {
+[data-theme="light"] .mod-temperature .tempconvertercirclegreen {
   background: var(--green)
 }
 
-.tempconvertercirclepurple {
+[data-theme="light"] .mod-temperature .tempconvertercirclepurple {
   background: #a475cb
 }
 
-.tempindoorconverter {
+[data-theme="light"] .mod-temperature .tempindoorconverter {
   margin-left: 252px;
   margin-top: -15px
 }
 
-.tempconverter1 {
+[data-theme="light"] .mod-temperature .tempconverter1 {
   position: absolute;
   margin-left: 53px;
   margin-top: 0;
   font-size: 12px
 }
 
-.heatcircle {
+[data-theme="light"] .mod-temperature .heatcircle {
   float: left;
   margin-top: 30px;
   margin-left: 100px;
@@ -936,9 +938,9 @@
   position: absolute
 }
 
-.tempcontainer,
+[data-theme="light"] .mod-temperature .tempcontainer,
 
-.tempcontainer {
+[data-theme="light"] .mod-temperature .tempcontainer {
   font-family: weathertext2;
   position: relative;
   margin: 25px 10px 10px 40px;
@@ -946,33 +948,33 @@
   top: -4px
 }
 
-.outside0-5,
+[data-theme="light"] .mod-temperature .outside0-5,
 
-.outside11-15,
+[data-theme="light"] .mod-temperature .outside11-15,
 
-.outside16-20,
+[data-theme="light"] .mod-temperature .outside16-20,
 
-.outside21-25,
+[data-theme="light"] .mod-temperature .outside21-25,
 
-.outside26-30,
+[data-theme="light"] .mod-temperature .outside26-30,
 
-.outside31-35,
+[data-theme="light"] .mod-temperature .outside31-35,
 
-.outside36-40,
+[data-theme="light"] .mod-temperature .outside36-40,
 
-.outside41-45,
+[data-theme="light"] .mod-temperature .outside41-45,
 
-.outside50,
+[data-theme="light"] .mod-temperature .outside50,
 
-.outside6-10,
+[data-theme="light"] .mod-temperature .outside6-10,
 
-.outsideminus,
+[data-theme="light"] .mod-temperature .outsideminus,
 
-.outsideminus10,
+[data-theme="light"] .mod-temperature .outsideminus10,
 
-.outsideminus5,
+[data-theme="light"] .mod-temperature .outsideminus5,
 
-.outsidezero {
+[data-theme="light"] .mod-temperature .outsidezero {
   font-family: weathertext2;
   width: 6rem;
   height: 5.5rem;
@@ -989,7 +991,7 @@
   border-radius: 3px
 }
 
-.temptrendx {
+[data-theme="light"] .mod-temperature .temptrendx {
   position: absolute;
   margin-top: -17px;
   margin-left: 5%;
@@ -1000,7 +1002,7 @@
   font-family: Arial, system
 }
 
-.maxdata {
+[data-theme="light"] .mod-temperature .maxdata {
   position: absolute;
   font-family: weathertext2;
   font-size: .8em;
@@ -1010,11 +1012,11 @@
   left: 18%
 }
 
-.heatcircle {
+[data-theme="light"] .mod-temperature .heatcircle {
   background: 0
 }
 
-.heatcircle-content {
+[data-theme="light"] .mod-temperature .heatcircle-content {
   color: #2d3a4b;
   float: left;
   margin-left: -4px;
@@ -1026,22 +1028,22 @@
   line-height: 15px
 }
 
-.heatcircle2,
+[data-theme="light"] .mod-temperature .heatcircle2,
 
-.heatcircle3,
+[data-theme="light"] .mod-temperature .heatcircle3,
 
-.heatcircle4 {
+[data-theme="light"] .mod-temperature .heatcircle4 {
   padding: 0;
   width: 170px;
   position: absolute;
   float: left
 }
 
-.tempmodulehome-10-0c {
+[data-theme="light"] .mod-temperature .tempmodulehome-10-0c {
   justify-content: center
 }
 
-.tempconvertercircleblue {
+[data-theme="light"] .mod-temperature .tempconvertercircleblue {
   background: rgba(0, 164, 180, 1);
   background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
   background: -o-linear-gradient(270deg, var(--teal-b), #087883);
@@ -1050,7 +1052,7 @@
   background: linear-gradient(270deg, var(--teal-b), #087883)
 }
 
-.tempindoorextra {
+[data-theme="light"] .mod-temperature .tempindoorextra {
   font-weight: 500;
   font-family: weathertext2;
   font-size: .68rem;
@@ -1059,15 +1061,15 @@
   margin-top: 115px
 }
 
-.temphumcircle0-25,
+[data-theme="light"] .mod-temperature .temphumcircle0-25,
 
-.temphumcircle25-35,
+[data-theme="light"] .mod-temperature .temphumcircle25-35,
 
-.temphumcircle35-60,
+[data-theme="light"] .mod-temperature .temphumcircle35-60,
 
-.temphumcircle60-80,
+[data-theme="light"] .mod-temperature .temphumcircle60-80,
 
-.temphumcircle80-100 {
+[data-theme="light"] .mod-temperature .temphumcircle80-100 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1080,27 +1082,27 @@
   color: #2d3a4b
 }
 
-.tempmodulehome-10-0c,
+[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
 
-.tempmodulehome-50-10c,
+[data-theme="light"] .mod-temperature .tempmodulehome-50-10c,
 
-.tempmodulehome0-5c,
+[data-theme="light"] .mod-temperature .tempmodulehome0-5c,
 
-.tempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
 
-.tempmodulehome20-25c,
+[data-theme="light"] .mod-temperature .tempmodulehome20-25c,
 
-.tempmodulehome25-30c,
+[data-theme="light"] .mod-temperature .tempmodulehome25-30c,
 
-.tempmodulehome30-35c,
+[data-theme="light"] .mod-temperature .tempmodulehome30-35c,
 
-.tempmodulehome35-40c,
+[data-theme="light"] .mod-temperature .tempmodulehome35-40c,
 
-.tempmodulehome40-50c,
+[data-theme="light"] .mod-temperature .tempmodulehome40-50c,
 
-.tempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
   font-size: .65rem;
   height: 1.1rem;
   line-height: 16px;
@@ -1108,7 +1110,7 @@
   overflow: hidden
 }
 
-.temphumcircle60-80 {
+[data-theme="light"] .mod-temperature .temphumcircle60-80 {
   background: 0;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1119,7 +1121,7 @@
   border-bottom-right-radius: 3px
 }
 
-.temphumcircle25-35 {
+[data-theme="light"] .mod-temperature .temphumcircle25-35 {
   background: 0;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1130,7 +1132,7 @@
   border-bottom-right-radius: 3px
 }
 
-.temphumcircle35-60 {
+[data-theme="light"] .mod-temperature .temphumcircle35-60 {
   background: 0;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1141,7 +1143,7 @@
   border-bottom-right-radius: 3px
 }
 
-.temphumcircle80-100 {
+[data-theme="light"] .mod-temperature .temphumcircle80-100 {
   background: 0;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1152,7 +1154,7 @@
   border-bottom-right-radius: 3px
 }
 
-.temphumcircle0-25 {
+[data-theme="light"] .mod-temperature .temphumcircle0-25 {
   background: 0;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1163,17 +1165,17 @@
   border-bottom-right-radius: 3px
 }
 
-.tempmodulehome-10-0c,
+[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
 
-.tempmodulehome-50-10c,
+[data-theme="light"] .mod-temperature .tempmodulehome-50-10c,
 
-.tempmodulehome0-5c {
+[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
   display: flex;
   width: 4rem;
   color: #2d3a4b
 }
 
-.tempmodulehome-50-10c {
+[data-theme="light"] .mod-temperature .tempmodulehome-50-10c {
   align-items: center;
   justify-content: center;
   border: 1px solid #e6e8ef;
@@ -1186,14 +1188,14 @@
   font-weight: 400
 }
 
-.tempmodulehome-10-0c,
+[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
 
-.tempmodulehome0-5c {
+[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
   border: 1px solid #e6e8ef;
   align-items: center
 }
 
-.tempmodulehome-10-0c {
+[data-theme="light"] .mod-temperature .tempmodulehome-10-0c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #487ea9;
   -webkit-border-top-right-radius: 2px;
@@ -1203,14 +1205,14 @@
   font-weight: 400
 }
 
-.tempmodulehome0-5c,
+[data-theme="light"] .mod-temperature .tempmodulehome0-5c,
 
-.tempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.tempmodulehome0-5c {
+[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
   justify-content: center;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--teal);
@@ -1219,13 +1221,13 @@
   font-weight: 400
 }
 
-.tempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
 
-.tempmodulehome20-25c,
+[data-theme="light"] .mod-temperature .tempmodulehome20-25c,
 
-.tempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
   border: 1px solid #e6e8ef;
   color: #2d3a4b;
   width: 4rem;
@@ -1233,7 +1235,7 @@
   font-weight: 400
 }
 
-.tempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
   align-items: center;
   justify-content: center;
   border-left: 0;
@@ -1242,18 +1244,18 @@
   border-bottom-right-radius: 2px
 }
 
-.tempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
 
-.tempmodulehome35-40c {
+[data-theme="light"] .mod-temperature .tempmodulehome35-40c {
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.tempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
 
-.tempmodulehome15-20c {
+[data-theme="light"] .mod-temperature .tempmodulehome15-20c {
   align-items: center;
   justify-content: center;
   border-left: 0;
@@ -1262,7 +1264,7 @@
   border-bottom-right-radius: 2px
 }
 
-.tempmodulehome20-25c {
+[data-theme="light"] .mod-temperature .tempmodulehome20-25c {
   align-items: center;
   justify-content: center;
   border-left: 0;
@@ -1273,16 +1275,16 @@
   border-bottom-right-radius: 2px
 }
 
-.tempmodulehome25-30c,
+[data-theme="light"] .mod-temperature .tempmodulehome25-30c,
 
-.tempmodulehome30-35c {
+[data-theme="light"] .mod-temperature .tempmodulehome30-35c {
   display: flex;
   align-items: center;
   width: 4rem;
   color: #2d3a4b
 }
 
-.tempmodulehome25-30c {
+[data-theme="light"] .mod-temperature .tempmodulehome25-30c {
   justify-content: center;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1294,7 +1296,7 @@
   font-weight: 400
 }
 
-.tempmodulehome30-35c {
+[data-theme="light"] .mod-temperature .tempmodulehome30-35c {
   justify-content: center;
   border: 1px solid #e6e8ef;
   border-left: 0;
@@ -1306,9 +1308,9 @@
   font-weight: 400
 }
 
-.tempmodulehome35-40c,
+[data-theme="light"] .mod-temperature .tempmodulehome35-40c,
 
-.tempmodulehome40-50c {
+[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
   display: flex;
   align-items: center;
   width: 4rem;
@@ -1317,17 +1319,17 @@
   font-weight: 400
 }
 
-.intempmodulehome0-5c,
+[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
 
-.intempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
 
-.intempmodulehome20-25c,
+[data-theme="light"] .mod-temperature .intempmodulehome20-25c,
 
-.intempmodulehome25-30c,
+[data-theme="light"] .mod-temperature .intempmodulehome25-30c,
 
-.intempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   height: 1.1rem;
   width: 4.2rem;
   overflow: hidden;
@@ -1337,7 +1339,7 @@
   color: #2d3a4b
 }
 
-.tempmodulehome35-40c {
+[data-theme="light"] .mod-temperature .tempmodulehome35-40c {
   justify-content: center;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #dc4953;
@@ -1345,30 +1347,30 @@
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome0-5c,
+[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
 
-.tempmodulehome40-50c {
+[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.tempmodulehome40-50c {
+[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #e26870;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome0-5c,
+[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
 
-.intempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   display: flex;
   align-items: center;
   border: 1px solid #e6e8ef
 }
 
-.intempmodulehome0-5c {
+[data-theme="light"] .mod-temperature .intempmodulehome0-5c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--teal);
   border-top-right-radius: 2px;
@@ -1376,17 +1378,17 @@
   font-weight: 400
 }
 
-.intempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
 
-.intempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.intempmodulehome5-10c {
+[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green2);
   border-top-right-radius: 2px;
@@ -1394,44 +1396,44 @@
   font-weight: 400
 }
 
-.intempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c,
+[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
 
-.intempmodulehome20-25c {
+[data-theme="light"] .mod-temperature .intempmodulehome20-25c {
   align-items: center;
   border: 1px solid #e6e8ef;
   display: flex;
   font-weight: 400
 }
 
-.intempmodulehome10-15c,
+[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
 
-.intempmodulehome15-20c {
+[data-theme="light"] .mod-temperature .intempmodulehome15-20c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome20-25c,
+[data-theme="light"] .mod-temperature .intempmodulehome20-25c,
 
-.intempmodulehome25-30c {
+[data-theme="light"] .mod-temperature .intempmodulehome25-30c {
   justify-content: center;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px
 }
 
-.intempmodulehome20-25c {
+[data-theme="light"] .mod-temperature .intempmodulehome20-25c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #ec5a34;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
 
-.intempmodulehome25-30c,
+[data-theme="light"] .mod-temperature .intempmodulehome25-30c,
 
-.intempmodulehome25-30c {
+[data-theme="light"] .mod-temperature .intempmodulehome25-30c {
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
   border-top-right-radius: 2px;
@@ -1439,13 +1441,13 @@
   font-weight: 400
 }
 
-.tempconverter2 {
+[data-theme="light"] .mod-temperature .tempconverter2 {
   margin-left: 250px
 }
 
-.inheatcircle-content,
+[data-theme="light"] .mod-temperature .inheatcircle-content,
 
-.inheatcircle2-content {
+[data-theme="light"] .mod-temperature .inheatcircle2-content {
   float: left;
   text-align: center;
   display: block;
@@ -1453,7 +1455,7 @@
   color: #2d3a4b
 }
 
-.inheatcircle-content {
+[data-theme="light"] .mod-temperature .inheatcircle-content {
   position: absolute;
   margin-left: -4px;
   width: 160px;
@@ -1461,7 +1463,7 @@
   line-height: 15px
 }
 
-.inheatcircle2-content {
+[data-theme="light"] .mod-temperature .inheatcircle2-content {
   position: absolute;
   margin-top: 35px;
   margin-left: -5px;
@@ -1470,15 +1472,15 @@
   line-height: 15px
 }
 
-.intemphumcircle0-25,
+[data-theme="light"] .mod-temperature .intemphumcircle0-25,
 
-.intemphumcircle25-35,
+[data-theme="light"] .mod-temperature .intemphumcircle25-35,
 
-.intemphumcircle35-60,
+[data-theme="light"] .mod-temperature .intemphumcircle35-60,
 
-.intemphumcircle60-80,
+[data-theme="light"] .mod-temperature .intemphumcircle60-80,
 
-.intemphumcircle80-100 {
+[data-theme="light"] .mod-temperature .intemphumcircle80-100 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1491,7 +1493,7 @@
   color: #2d3a4b
 }
 
-.intemphumcircle60-80 {
+[data-theme="light"] .mod-temperature .intemphumcircle60-80 {
   border: 1px solid #393d40;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
@@ -1501,7 +1503,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle25-35 {
+[data-theme="light"] .mod-temperature .intemphumcircle25-35 {
   border: 1px solid #393d40;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
@@ -1511,7 +1513,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle35-60 {
+[data-theme="light"] .mod-temperature .intemphumcircle35-60 {
   border: 1px solid #393d40;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
@@ -1521,7 +1523,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle80-100 {
+[data-theme="light"] .mod-temperature .intemphumcircle80-100 {
   border: 1px solid #393d40;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 #4e95a0;
@@ -1531,7 +1533,7 @@
   border-bottom-right-radius: 2px
 }
 
-.intemphumcircle0-25 {
+[data-theme="light"] .mod-temperature .intemphumcircle0-25 {
   border: 1px solid #393d40;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
@@ -1541,31 +1543,31 @@
   border-bottom-right-radius: 2px
 }
 
-.tempconvertercircle0-5,
+[data-theme="light"] .mod-temperature .tempconvertercircle0-5,
 
-.tempconvertercircle11-15,
+[data-theme="light"] .mod-temperature .tempconvertercircle11-15,
 
-.tempconvertercircle16-20,
+[data-theme="light"] .mod-temperature .tempconvertercircle16-20,
 
-.tempconvertercircle21-25,
+[data-theme="light"] .mod-temperature .tempconvertercircle21-25,
 
-.tempconvertercircle26-30,
+[data-theme="light"] .mod-temperature .tempconvertercircle26-30,
 
-.tempconvertercircle31-35,
+[data-theme="light"] .mod-temperature .tempconvertercircle31-35,
 
-.tempconvertercircle36-40,
+[data-theme="light"] .mod-temperature .tempconvertercircle36-40,
 
-.tempconvertercircle41-45,
+[data-theme="light"] .mod-temperature .tempconvertercircle41-45,
 
-.tempconvertercircle50,
+[data-theme="light"] .mod-temperature .tempconvertercircle50,
 
-.tempconvertercircle6-10,
+[data-theme="light"] .mod-temperature .tempconvertercircle6-10,
 
-.tempconvertercircleminus,
+[data-theme="light"] .mod-temperature .tempconvertercircleminus,
 
-.tempconvertercircleminus10,
+[data-theme="light"] .mod-temperature .tempconvertercircleminus10,
 
-.tempconvertercircleminus5 {
+[data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1581,81 +1583,80 @@
   font-size: .85em
 }
 
-.tempconvertercircleminus10 {
+[data-theme="light"] .mod-temperature .tempconvertercircleminus10 {
   background: #3369e7;
   background: -webkit-linear-gradient(45deg, #ab49de, #3369e7);
   background: linear-gradient(45deg, #ab49de, #3369e7)
 }
 
-.tempconvertercircleminus5 {
+[data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
   background: var(--teal);
   background: -webkit-linear-gradient(45deg, #ab49de, var(--teal));
   background: linear-gradient(45deg, #ab49de, var(--teal))
 }
 
-.tempconvertercircleminus,
+[data-theme="light"] .mod-temperature .tempconvertercircleminus,
 
-.tempconvertercirclezero {
+[data-theme="light"] .mod-temperature .tempconvertercirclezero {
   background: var(--teal-b);
   background: -webkit-linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1));
   background: linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1))
 }
 
-.tempconvertercircle0-5 {
+[data-theme="light"] .mod-temperature .tempconvertercircle0-5 {
   background: var(--teal-b);
   background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
   background: linear-gradient(270deg, var(--teal-b), #087883)
 }
 
-.tempconvertercircle6-10 {
+[data-theme="light"] .mod-temperature .tempconvertercircle6-10 {
   background: #88b04b;
   background: -webkit-linear-gradient(90deg, var(--teal-b), #88b04b);
   background: linear-gradient(90deg, var(--teal-b), #88b04b)
 }
 
-.tempconvertercircle11-15 {
+[data-theme="light"] .mod-temperature .tempconvertercircle11-15 {
   background: var(--amber);
   background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
   background: linear-gradient(90deg, var(--green), var(--amber))
 }
 
-.tempconvertercircle16-20 {
+[data-theme="light"] .mod-temperature .tempconvertercircle16-20 {
   background: var(--orange);
   background: -webkit-linear-gradient(90deg, var(--green), var(--orange));
   background: linear-gradient(90deg, var(--green), var(--orange))
 }
 
-.tempconvertercircle21-25 {
+[data-theme="light"] .mod-temperature .tempconvertercircle21-25 {
   background: #efa80f;
   background: -webkit-linear-gradient(90deg, #efa80f, var(--red-l));
   background: linear-gradient(90deg, #efa80f, var(--red-l))
 }
 
-.tempconvertercircle26-30 {
+[data-theme="light"] .mod-temperature .tempconvertercircle26-30 {
   background: var(--orange-d);
   background: -webkit-linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1));
   background: linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1))
 }
 
-.tempconvertercircle31-35 {
+[data-theme="light"] .mod-temperature .tempconvertercircle31-35 {
   background: var(--red-l);
   background: -webkit-linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7));
   background: linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7))
 }
 
-.tempconvertercircle36-40 {
+[data-theme="light"] .mod-temperature .tempconvertercircle36-40 {
   background: #fd7641;
   background: -webkit-linear-gradient(90deg, #fd7641, #637ff6);
   background: linear-gradient(90deg, #fd7641, #637ff6)
 }
 
-.tempconvertercircle41-45,
+[data-theme="light"] .mod-temperature .tempconvertercircle41-45,
 
-.tempconvertercircle50 {
+[data-theme="light"] .mod-temperature .tempconvertercircle50 {
   background: #de2c52;
   background: -webkit-linear-gradient(90deg, #de2c52, #637ff6);
   background: linear-gradient(90deg, #de2c52, #637ff6)
 }
 
 
-}

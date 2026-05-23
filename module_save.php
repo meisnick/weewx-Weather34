@@ -6,7 +6,7 @@ $topbar = json_decode($_POST['topbar'] ?? '[]', true);
 $grid   = json_decode($_POST['grid']   ?? '[]', true);
 
 $grid_columns = $_POST['grid_columns'] ?? 'auto';
-if (!in_array($grid_columns, ['auto', '3', '4', '6'])) { $grid_columns = 'auto'; }
+if (!in_array($grid_columns, ['auto', '2', '3', '4', '6'])) { $grid_columns = 'auto'; }
 
 if (!is_array($topbar) || !is_array($grid)) {
     echo json_encode(['error' => 'Invalid data received']);
@@ -19,7 +19,7 @@ if (file_exists('modules.php')) {
     include('modules.php');
     // Re-read grid_columns from POST — include('modules.php') overwrites it
     $grid_columns = $_POST['grid_columns'] ?? $grid_columns ?? 'auto';
-    if (!in_array($grid_columns, ['auto', '3', '4', '6'])) { $grid_columns = 'auto'; }
+    if (!in_array($grid_columns, ['auto', '2', '3', '4', '6'])) { $grid_columns = 'auto'; }
     foreach (array_merge($topbar_modules ?? [], $grid_modules ?? []) as $m) {
         $existing[$m['module']] = $m;
     }

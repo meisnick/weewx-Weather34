@@ -214,6 +214,7 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 </style>
 <div id="col-picker">
   <button data-cols="auto" onclick="setColumns('auto')">Auto</button>
+  <button data-cols="2" onclick="setColumns(2)">2</button>
   <button data-cols="3" onclick="setColumns(3)">3</button>
   <button data-cols="4" onclick="setColumns(4)">4</button>
   <button data-cols="6" onclick="setColumns(6)">6</button>

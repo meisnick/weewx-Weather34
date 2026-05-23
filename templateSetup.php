@@ -63,20 +63,6 @@ $timeFormatShort    = "'. $_POST["timeFormatShort"]. '";
 $clockformat    = "'. $_POST["clockformat"]. '";
 $showDate = '. $_POST["showDate"]. ';
 $temperaturemodule   = "'. $_POST["temperaturemodule"]. '";
-$position1   = "'. $_POST["position1"]. '";
-$position2   = "'. $_POST["position2"]. '";
-$position3   = "'. $_POST["position3"]. '";
-$position4   = "'. $_POST["position4"]. '";
-$position1title   = "'. $_POST["position1title"]. '";
-$position2title   = "'. $_POST["position2title"]. '";
-$position3title   = "'. $_POST["position3title"]. '";
-$position4title   = "'. $_POST["position4title"]. '";
-$position6title   = "'. $_POST["position6title"]. '";
-$position6   = "'. $_POST["position6"]. '";
-$position12title   = "'. $_POST["position12title"]. '";
-$position12   = "'. $_POST["position12"]. '";
-$positionlastmoduletitle   = "'. $_POST["positionlastmoduletitle"]. '";
-$positionlastmodule   = "'. $_POST["positionlastmodule"]. '";
 $webcamurl   = "'. $_POST["webcamurl"]. '";
 $videoWeatherCamURL  = "'.$_POST["videoWeatherCamURL"].'";
 $email    = "'. $_POST["email"]. '";
@@ -1203,6 +1189,9 @@ General template settings with options to choose which type of module to display
   .mod-save-btn{background:rgba(240,94,64,1);border:0;color:#fff;padding:6px 18px;font-size:13px;cursor:pointer;margin-top:10px}
   .mod-save-btn:hover{background:rgba(220,74,44,1)}
   .mod-section-label{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:rgba(84,85,86,1);margin:12px 0 4px 0}
+  .mod-col-btn{background:rgba(44,46,50,0.9);border:1px solid rgba(84,85,86,0.5);color:#ccc;padding:4px 14px;font-size:11px;cursor:pointer;border-radius:3px}
+  .mod-col-btn:hover{background:rgba(70,75,85,0.9)}
+  .mod-col-btn.active{background:rgba(240,94,64,1);color:#fff;border-color:rgba(240,94,64,1)}
   </style>
 
   <?php
@@ -1277,6 +1266,16 @@ General template settings with options to choose which type of module to display
   </div>
 
   <br/>
+  <div class="mod-section-label">Grid Column Count</div>
+  <div class="mod-col-row" id="col-btn-group" style="display:flex;gap:6px;margin:4px 0 12px 0;align-items:center;">
+    <button type="button" class="mod-col-btn" data-cols="auto" onclick="setupSetColumns('auto')">Auto</button>
+    <button type="button" class="mod-col-btn" data-cols="2"    onclick="setupSetColumns('2')">2</button>
+    <button type="button" class="mod-col-btn" data-cols="3"    onclick="setupSetColumns('3')">3</button>
+    <button type="button" class="mod-col-btn" data-cols="4"    onclick="setupSetColumns('4')">4</button>
+    <button type="button" class="mod-col-btn" data-cols="6"    onclick="setupSetColumns('6')">6</button>
+  </div>
+  <div style="font-size:11px;color:rgba(120,125,135,1);margin:-8px 0 10px 0;" id="col-hint"></div>
+
   <button type="button" class="mod-save-btn" onclick="saveLayout()">Save Layout</button>
   <span id="mod-status" style="font-size:12px;margin-left:12px"></span>
 
@@ -1312,6 +1311,7 @@ General template settings with options to choose which type of module to display
       var fd = new FormData();
       fd.append('topbar', JSON.stringify(collect('topbar-list')));
       fd.append('grid',   JSON.stringify(collect('grid-list')));
+      fd.append('grid_columns', setupCurrentCols);
       fetch('module_save.php', {method:'POST', body:fd})
           .then(function(r){return r.json();})
           .then(function(d){
@@ -1325,232 +1325,28 @@ General template settings with options to choose which type of module to display
           })
           .catch(function(){ st.style.color='#e05a27'; st.textContent='Request failed'; });
   }
+  var setupCurrentCols = <?php echo json_encode($grid_columns); ?>;
+  var colHints = {
+      'auto': 'Auto — fills viewport width (recommended for most screens)',
+      '2':    '2 columns — large modules, good for tablets or portrait displays',
+      '3':    '3 columns — classic layout (default)',
+      '4':    '4 columns — wide screen layout',
+      '6':    '6 columns — compact, ultrawide monitors'
+  };
+  function setupSetColumns(cols) {
+      setupCurrentCols = cols;
+      document.querySelectorAll('.mod-col-btn').forEach(function(b){
+          b.classList.toggle('active', b.dataset.cols === String(cols));
+      });
+      var hint = document.getElementById('col-hint');
+      if (hint) hint.textContent = colHints[String(cols)] || '';
+  }
+  // Init active state
+  (function(){ setupSetColumns(String(setupCurrentCols)); })();
+
   </script>
 </div>
 <br/>
-
-<!--##########################################################################################
-    #########                        Start of Module Section                         #########
-    ##########################################################################################-->
-
-  <div class="weatheroptions">
-    <div class="weathersectiontitle">Template Modules</div><br/>
-
-    <!-- Modularize Layout Notice -->
-    <div style="background: rgba(224, 90, 39, 0.15); border-left: 4px solid rgba(224, 90, 39, 1); padding: 12px 16px; margin: 15px 0 25px 0; border-radius: 4px; color: #eee; font-size: 13px; line-height: 1.5; font-family: sans-serif; text-align: left;">
-      <strong style="color: rgba(224, 90, 39, 1); text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Modular Layout Notice (Pi2 / Development)</strong><br/>
-      On the <strong>modularize</strong> branch, the legacy position select dropdowns and titles below are <strong>ignored</strong>. 
-      The dashboard grid is now fully dynamic and loop-driven. To arrange, add, or rename modules, please use the interactive <strong>Drag-and-Drop Layout Editor</strong> located at the top of this setup screen.
-    </div>
-
-  <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-    <path d="M16 14 L16 23 M16 8 L16 10" />
-    <circle cx="16" cy="16" r="14" />
-</svg>
-</svg> Options for Top Row 4 Modules + *new Position 6 and 12 module &amp; + Last module<span style="color:#777;"></span> <br/>
-       <div class="stationvalue"> Position 1 </div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-       <label name="position1"></label>
-        <select id="position1" name="position1" class="choose">
-          <option><?php echo $position1 ;?></option>
-            <option>weather34clock.php</option>
-            </select>
-
-        <div class="stationvalue"> Position 1 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position1title"></label>
-        <input name="position1title" type="text" id="position1title" value="<?php echo $position1title ;?>" class="choose">
-        <br/>
-        <div class="stationvalue"> Position 2 </div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position2"></label>
-        <select id="position2" name="position2" class="choose">
-            <option><?php echo $position2 ;?></option>
-            <option>top_rainfallfyearmonth.php</option>
-            <option>top_windgustyear.php</option>
-            <option>top_temperatureyear.php</option>
-            <option>top_lightning.php</option>
-            <option>top_aqi_world.php</option>
-           </select>
-        <div class="stationvalue"> Position 2 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position2title"></label>
-       <input name="position2title" type="text" id="position2title" value="<?php echo $position2title ;?>" class="choose">
-        <br/>
-        <div class="stationvalue"> Position 3 </div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position3"></label>
-        <select id="position3" name="position3" class="choose">
-            <option><?php echo $position3 ;?></option>
-            <option>top_rainfallfyearmonth.php</option>
-            <option>top_windgustyear.php</option>
-            <option>top_temperatureyear.php</option>
-            <option>top_lightning.php</option>
-            <option>top_aqi_world.php</option>
-           </select>
-     <div class="stationvalue"> Position 3 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position3title"></label>
-        <input name="position3title" type="text" id="position3title" value="<?php echo $position3title ;?>" class="choose">
-        <br/>
-        <div class="stationvalue"> Position 4 </div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position4"></label>
-        <select id="position4" name="position4" class="choose">
-        <option><?php echo $position4 ;?></option>
-        <option>top_advisory_nws.php</option>
-        </select>
-        <div class="stationvalue"> Position 4 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position4title"></label>
-       <input name="position4title" type="text" id="position4title" value="<?php echo $position4title ;?>" class="choose">
-        </select>
-        <br/>
-         <div class="stationvalue"> *Position 6 </div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position6"></label>
-        <select id="position6" name="position6" class="choose">
-            <option><?php echo $position6 ;?></option>
-            <option>forecast3om.php</option>
-            <option>forecast3omlarge.php</option>
-                     </select>
-        <div class="stationvalue"> Position 6 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position6title"></label>
-       <input name="position6title" type="text" id="position6title" value="<?php echo $position6title;?>" class="choose">
-        </select>
-        <br/>
-         <div class="stationvalue"> *Position 12</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position12"></label>
-        <select id="position12" name="position12" class="choose">
-            <option><?php echo $position12 ;?></option>
-            <option>temperaturein.php</option>
-            <option>indoortemperature.php</option>
-            <option>forecast3om.php</option>
-            <option>forecast3omlarge.php</option>
-            <option>currentconditionsw34.php</option>
-            <option>windspeeddirection.php</option>
-            <option>barometer.php</option>
-            <option>sun3.php</option>
-            <option>rainfall.php</option>
-            <option>moonphase.php</option>
-            <option>lightning34.php</option>
-            <option>airqualitymodule.php</option>
-            <option>weather34uvsolar.php</option>
-            <option>webcamsmall.php</option>
-        </select>
-        <div class="stationvalue"> Position 12 Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="position12title"></label>
-       <input name="position12title" type="text" id="position12title" value="<?php echo $position12title ;?>" class="choose">
-        </select>
-        <br/>
-         <div class="stationvalue"> *Last Module</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="positionlastmodule"></label>
-        <select id="positionlastmodule" name="positionlastmodule" class="choose">
-            <option><?php echo $positionlastmodule ;?></option>
-            <option>temperaturein.php</option>
-            <option>indoortemperature.php</option>
-            <option>forecast3om.php</option>
-            <option>forecast3omlarge.php</option>
-            <option>currentconditionsw34.php</option>
-            <option>windspeeddirection.php</option>
-            <option>barometer.php</option>
-            <option>sun3.php</option>
-            <option>rainfall.php</option>
-            <option>moonphase.php</option>
-            <option>lightning34.php</option>
-            <option>airqualitymodule.php</option>
-            <option>weather34uvsolar.php</option>
-            <option>webcamsmall.php</option>
-        </select>
-        <div class="stationvalue">Last Title</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <label name="positionlastmoduletitle"></label>
-       <input name="positionlastmoduletitle" type="text" id="positionlastmoduletitle" value="<?php echo $positionlastmoduletitle ;?>" class="choose">
-        </select>
-        <br/>
-      <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Top 4 positions</span></strong><br/>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_advisory_nws.php</span> NWS Alerts API — US stations only (free, no key) — requires <b>ALERT_ZONES</b> set in <b>scripts/w34config.py</b> (see Weather Data Scripts section above) <br/></span>
-       <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_rainfallfyearmonth.php</span> Totals <span style="color:rgba(24, 25, 27, 0.8)">YEARLY-MONTHLY</span> Rainfall<br/></span>
-        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34clock.php</span> Station  <span style="color:rgba(24, 25, 27, 0.8)">Time</span><br/>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_windgustyear.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Current Monthly / Yearly max Gust </span> <br/>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> top_temperatureyear.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Current Monthly / Yearly Temperature </span>  <br/>
-      <br/></span></span>
-         <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Positions 6 and 12 + last module</span></strong><br/>
-        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> indoortemperature.php <span style="color:rgba(236, 87, 27, 1.000);">display indoor temperature</span><br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> airqualitymodule.php <span style="color:rgba(236, 87, 27, 1.000);">display airquality</span><br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> webcamsmall.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display webcam — requires webcam URL configured below; automatically shows moonphase at night</span> <br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> mooonphase.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display moonphase</span><br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> weather34uvsolar.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display uv and solar radiation if you have hardware</span> <br/></span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> solaruvwu.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display The Weather Company Day UV forecast and if you have only solar radiation </span> <br/></span>
-          </span>
-   <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecast3om.php</span> <span style="color:rgba(236, 87, 27, 1.000);">display 3-period day/night forecast from Open-Meteo</span>   <br/>
-     </span>
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> forecast3omlarge.php</span> <span style="color:rgba(236, 87, 27, 1.000);">large display of current day/night forecast from Open-Meteo</span>   <br/>
-     </span>
-        <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> lightning34.php</span> <span style="color:rgba(236, 87, 27, 1.000);">Lightning for those using weatherflow direct with meteobridge</span>   <br/>
-     </span>
-    </div>
-    <br/>
 
 <!--##########################################################################################
     #########                        Start of Webcam Section                         #########

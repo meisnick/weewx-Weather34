@@ -1198,31 +1198,40 @@ General template settings with options to choose which type of module to display
   if (!file_exists('modules.php')) { copy('modules.example.php', 'modules.php'); }
   include_once('modules.php');
 
-  $available_modules = [
+  // Top bar modules — clock + anything prefixed top_
+  $topbar_available = [
     'weather34clock.php'         => 'Station Clock',
-    'top_rainfallfyearmonth.php' => 'Rainfall Totals (top)',
-    'top_lightning.php'          => 'Lightning (top)',
-    'top_advisory_nws.php'       => 'NWS Weather Advisory (top)',
-    'top_windgustyear.php'       => 'Wind Gust Year (top)',
-    'top_temperatureyear.php'    => 'Temperature Year (top)',
+    'top_rainfallfyearmonth.php' => 'Rainfall Totals',
+    'top_lightning.php'          => 'Lightning',
+    'top_advisory_nws.php'       => 'NWS Weather Advisory',
+    'top_windgustyear.php'       => 'Wind Gust Year',
+    'top_temperatureyear.php'    => 'Temperature Year',
+  ];
+
+  // Grid modules — everything that goes in the main card grid
+  $grid_available = [
     'temperaturein.php'          => 'Temperature',
+    'indoortemperature.php'      => 'Indoor Temperature',
+    'barometer.php'              => 'Barometer',
+    'windspeeddirection.php'     => 'Wind Speed & Direction',
+    'rainfall.php'               => 'Rainfall Today',
     'forecast3om.php'            => 'Forecast 3-period (Open-Meteo)',
     'forecast3omlarge.php'       => 'Forecast Large (Open-Meteo)',
     'currentconditionsw34.php'   => 'Current Conditions (METAR)',
-    'windspeeddirection.php'     => 'Wind Speed & Direction',
-    'barometer.php'              => 'Barometer',
     'sun3.php'                   => 'Daylight | Darkness',
-    'rainfall.php'               => 'Rainfall Today',
     'moonphase.php'              => 'Moon Phase',
     'lightning34.php'            => 'Lightning Detail',
-    'indoortemperature.php'      => 'Indoor Temperature',
     'airqualitymodule.php'       => 'Air Quality (AQI)',
-    'weather34uvsolar.php'       => 'UV & Solar',
+    'purpleairqualitymodule.php' => 'Air Quality (PurpleAir)',
     'solaruv.php'                => 'UV & Solar (local)',
     'solaruvwu.php'              => 'UV & Solar (Weather Company)',
+    'weather34uvsolar.php'       => 'UV & Solar (AerisWeather)',
     'webcamsmall.php'            => 'Webcam / Moonphase (night)',
     'pop_sensors.php'            => 'Sensor Status',
   ];
+
+  // Combined for label lookups (modItem uses this)
+  $available_modules = $topbar_available + $grid_available;
 
   function modItem($mod) {
       global $available_modules;
@@ -1237,10 +1246,9 @@ General template settings with options to choose which type of module to display
            . "</li>";
   }
 
-  function modSelect($id) {
-      global $available_modules;
+  function modSelect($id, $modules) {
       $h = "<select id='{$id}'>";
-      foreach ($available_modules as $file => $label) {
+      foreach ($modules as $file => $label) {
           $h .= "<option value='" . htmlspecialchars($file) . "'>" . htmlspecialchars($label) . "</option>";
       }
       return $h . "</select>";
@@ -1252,7 +1260,7 @@ General template settings with options to choose which type of module to display
     <?php foreach ($topbar_modules as $m) echo modItem($m); ?>
   </ul>
   <div class="mod-add-row">
-    <?php echo modSelect('sel-top'); ?>
+    <?php echo modSelect('sel-top', $topbar_available); ?>
     <button type="button" class="mod-add-btn" onclick="addMod('topbar-list','sel-top')">+ Add</button>
   </div>
 
@@ -1261,7 +1269,7 @@ General template settings with options to choose which type of module to display
     <?php foreach ($grid_modules as $m) echo modItem($m); ?>
   </ul>
   <div class="mod-add-row">
-    <?php echo modSelect('sel-grid'); ?>
+    <?php echo modSelect('sel-grid', $grid_available); ?>
     <button type="button" class="mod-add-btn" onclick="addMod('grid-list','sel-grid')">+ Add</button>
   </div>
 

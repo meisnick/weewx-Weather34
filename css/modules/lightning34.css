@@ -2,198 +2,326 @@
 .mod-lightning34 { display: contents; }
 
 .mod-lightning34 .lightninginfo {
-  position: absolute;
-  margin-left: 125px;
-  padding: 5px;
-  text-align: left;
-  color: silver
+  position: absolute;
+
+  margin-left: 125px;
+
+  padding: 5px;
+
+  text-align: left;
+
+  color: silver
+
 }
 
 .mod-lightning34 .lightninginfo {
-  margin-top: 45px;
-  border-radius: 2px;
-  border: 1px solid rgba(95, 96, 97, .4);
-  width: 140px;
-  font-size: .7rem
+  margin-top: 52px;
+
+  border-radius: 2px;
+
+  border: 1px solid rgba(95, 96, 97, .4);
+
+  width: 140px;
+
+  font-size: .7rem
+
 }
 
 .mod-lightning34 .tempconvertercircleyellow {
-  align-items: center;
-  width: 4.2rem;
-  color: silver;
-  font-family: weathertext2;
-  height: 1rem;
-  line-height: 16px;
-  overflow: hidden
+  align-items: center;
+
+  width: 4.2rem;
+
+  color: silver;
+
+  font-family: weathertext2;
+
+  height: 1rem;
+
+  line-height: 16px;
+
+  overflow: hidden
+
 }
 
 .mod-lightning34 .rainconverter {
-  position: absolute;
-  font-size: 12px
+  position: absolute;
+
+  font-size: 12px
+
 }
 
 .mod-lightning34 .rainconvertercircle {
-  display: flex;
-  justify-content: center;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  font-size: .85em
+  display: flex;
+
+  justify-content: center;
+
+  border: 1px solid var(--bg1);
+
+  border-radius: 2px;
+
+  font-size: .85em
+
 }
 
 .mod-lightning34 .tempconvertercircleyellow {
-  display: flex;
-  justify-content: center;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  font-size: .85em  
+  display: flex;
+
+  justify-content: center;
+
+  border: 1px solid var(--bg1);
+
+  border-radius: 2px;
+
+  font-size: .85em  
+
 }
 
 .mod-lightning34 .simsekcontainer {
-  font-family: weathertext2;
-  position: relative;
-  margin: 40px 10px 10px 40px;
-  top: 13px
+  font-family: weathertext2;
+
+  position: relative;
+
+  margin: 40px 10px 10px 40px;
+
+  top: 13px
+
 }
 
 .mod-lightning34 .simsek {
-  font-size: 1.45rem;
-  padding-top: 12px;
-  color: #f8f8f8;
-  border-bottom: 15px solid var(--bg1);
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px
+  font-size: 1.45rem;
+
+  padding-top: 12px;
+
+  color: #f8f8f8;
+
+  border-bottom: 15px solid var(--bg1);
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 2px
+
 }
 
 .mod-lightning34 .simsektoday {
-  position: absolute;
-  font-size: .7rem
+  position: absolute;
+
+  font-size: .7rem
+
 }
 
 .mod-lightning34 .simsektoday {
-  margin-top: -15px;
-  margin-left: 1.65rem;
-  text-align: center;
-  z-index: auto;
-  color: silver;
-  font-family: Arial, system
+  margin-top: -15px;
+
+  margin-left: 1.65rem;
+
+  text-align: center;
+
+  z-index: auto;
+
+  color: silver;
+
+  font-family: Arial, system
+
 }
 
 .mod-lightning34 .simsekdata {
-  font-family: Arial, Helvetica, system;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 4px auto auto;
-  left: 28.1%
+  font-family: Arial, Helvetica, system;
+
+  color: #fff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 4px auto auto;
+
+  left: 28.1%
+
 }
 
 .mod-lightning34 .rainconvertercircleblue1 {
-  justify-content: center;
-  height: 1rem;
-  width: 3.55rem;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  line-height: 16px;
-  font-size: .85em;
-  color: var(--teal);
-  background: 0
+  justify-content: center;
+
+  height: 1rem;
+
+  width: 3.55rem;
+
+  border: 1px solid var(--bg1);
+
+  border-radius: 2px;
+
+  line-height: 16px;
+
+  font-size: .85em;
+
+  color: var(--teal);
+
+  background: 0
+
 }
 
 
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-lightning34 .lightninginfo {
-  position: absolute;
-  margin-left: 125px;
-  padding: 5px;
-  text-align: left
+  position: absolute;
+
+  margin-left: 125px;
+
+  padding: 5px;
+
+  text-align: left
+
 }
 
 [data-theme="light"] .mod-lightning34 .lightninginfo {
-  margin-top: 45px;
-  border-radius: 3px;
-  border: 1px solid rgba(95, 96, 97, .2);
-  width: 140px;
-  font-size: .7rem
+  margin-top: 52px;
+
+  border-radius: 3px;
+
+  border: 1px solid rgba(95, 96, 97, .2);
+
+  width: 140px;
+
+  font-size: .7rem
+
 }
 
 [data-theme="light"] .mod-lightning34 .tempconvertercircleyellow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 3.4rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 4px;
-  color: #fff;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  height: 1.1rem;
+
+  width: 3.4rem;
+
+  border: 2px solid #e6e8ef;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  color: #fff;
+
+  line-height: 16px;
+
+  font-family: weathertext2;
+
+  font-size: .85em
+
 }
 
 [data-theme="light"] .mod-lightning34 .tempconvertercircleyellow {
-  background: rgba(var(--amber-rgb), .8)
+  background: rgba(var(--amber-rgb), .8)
+
 }
 
 [data-theme="light"] .mod-lightning34 .simsekcontainer {
-  font-family: weathertext2;
-  position: relative;
-  margin: 40px 10px 10px 40px;
-  left: -10px;
-  top: 12px
+  font-family: weathertext2;
+
+  position: relative;
+
+  margin: 40px 10px 10px 40px;
+
+  left: -10px;
+
+  top: 12px
+
 }
 
 [data-theme="light"] .mod-lightning34 .simsek {
-  font-size: 1.45rem;
-  padding-top: 12px;
-  color: var(--bg1);
-  border-bottom: 15px solid #e6e8ef;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px
+  font-size: 1.45rem;
+
+  padding-top: 12px;
+
+  color: var(--bg1);
+
+  border-bottom: 15px solid #e6e8ef;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 3px
+
 }
 
 [data-theme="light"] .mod-lightning34 .simsektoday {
-  margin-top: -15px;
-  margin-left: 1.65rem;
-  text-align: center;
-  z-index: auto;
-  color: #2d3a4b;
-  font-family: Arial, system
+  margin-top: -15px;
+
+  margin-left: 1.65rem;
+
+  text-align: center;
+
+  z-index: auto;
+
+  color: #2d3a4b;
+
+  font-family: Arial, system
+
 }
 
 [data-theme="light"] .mod-lightning34 .rainconvertercircle {
-  background: #4e95a0;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 3px;
-  color: #fff;
-  line-height: 16px;
-  font-size: .85em
+  background: #4e95a0;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 3.2rem;
+
+  border: 2px solid #e6e8ef;
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+  color: #fff;
+
+  line-height: 16px;
+
+  font-size: .85em
+
 }
 
 [data-theme="light"] .mod-lightning34 .rainconverter {
-  position: absolute;
-  font-size: 12px;
-  margin-left: 255px
+  position: absolute;
+
+  font-size: 12px;
+
+  margin-left: 255px
+
 }
 
 [data-theme="light"] .mod-lightning34 .rainconvertercircleblue1 {
-  align-items: center;
-  justify-content: center;
-  width: 3.6rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 3px;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: #fff;
-  background: #4e95a0
+  align-items: center;
+
+  justify-content: center;
+
+  width: 3.6rem;
+
+  border: 2px solid #e6e8ef;
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+  line-height: 16px;
+
+  font-family: weathertext2;
+
+  font-size: .85em;
+
+  color: #fff;
+
+  background: #4e95a0
+
 }
 

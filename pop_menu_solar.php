@@ -69,7 +69,7 @@ body, html {
 <body>
 
 <button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen">UV Index Almanac</button>
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Solar Almanac</button>
+<!-- <button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Solar Almanac</button> -->
 <button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')">UV Guide</button>  
   
   <div id="Tab1" class="tabcontent">

@@ -113,7 +113,14 @@ if (isset($weewxapi))
     $weather["maxsolar"] = (is_numeric($weewxapi[80]) ? number_format($weewxapi[80], 0) : null);
     $weather["maxuv"] = ($weewxapi[58] == "   N/A" ? "0" : $weewxapi[58]);
     $weather["sunny"] = ($weewxapi[57] == "   N/A" ? "0" : $weewxapi[57]);
-    $weather["lux"] = (is_numeric($weewxrt[45]) ? number_format($weewxrt[45] / 0.00809399477, 0, '.', '') : null);
+    // Expose real luminosity from WeeWX (real-time loop value is index 63, archive is index 214)
+    if (isset($weewxrt[63]) && is_numeric($weewxrt[63])) {
+        $weather["lux"] = round($weewxrt[63], 0);
+    } elseif (isset($weewxapi[214]) && $weewxapi[214] !== "   N/A" && is_numeric($weewxapi[214])) {
+        $weather["lux"] = round($weewxapi[214], 0);
+    } else {
+        $weather["lux"] = (is_numeric($weewxrt[45]) ? number_format($weewxrt[45] / 0.00809399477, 0, '.', '') : null);
+    }
     $weather["maxtemptime"] = ($weewxapi[27] == "   N/A" ? "0" : $weewxapi[27]);
     $weather["lowtemptime"] = ($weewxapi[29] == "   N/A" ? "0" : $weewxapi[29]);
     $weather["maxwindtime"] = ($weewxapi[31] == "   N/A" ? "0" : $weewxapi[31]);

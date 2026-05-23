@@ -8,6 +8,13 @@ error_reporting(0);
 $_raw    = @file_get_contents("jsondata/nws_alerts.txt");
 $_data   = @json_decode($_raw, true);
 $_alerts = $_data['alerts'] ?? [];
+// Filter expired alerts
+$_now = new DateTime('now', new DateTimeZone('UTC'));
+$_alerts = array_values(array_filter($_alerts, function($a) use ($_now) {
+    if (empty($a['expires'])) return true;
+    try { $exp = new DateTime($a['expires']); return $exp > $_now; }
+    catch (Exception $e) { return true; }
+}));
 $_count  = count($_alerts);
 $_age    = $_data['fetched'] ?? '';
 

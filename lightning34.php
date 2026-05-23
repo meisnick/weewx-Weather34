@@ -8,6 +8,7 @@
 echo '<div class=simsek>'.$lightning["strike_count_3hr"];?></div>
 <div class="simsektoday"><valuetext>Last 3 Hrs</valuetext></div>
 </div>
+<div class="lightning-right">
 <div class="lightninginfo">Strikes Recorded
 <?php
 // Lightning Month Current
@@ -28,4 +29,4 @@ echo "<div class=tempconvertercircleyellow><orange> ";?><?php echo rand(6452,288
 <lightningiconx>
 <?php if ($lightning['strike_count_3hr'] > 0) echo '<img src="img/lightningalert.svg" width="20" height="20" align="right"/>';?>
 </lightningiconx>
-</div><!-- /mod-lightning34 -->
+</div></div><!-- /mod-lightning34 -->

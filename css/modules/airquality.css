@@ -1,209 +1,230 @@
-﻿/* airquality module -- scoped to .mod-airquality */
-.mod-airquality { display: contents; }
-
-.mod-airquality .tempconvertercircleyellow {
-  align-items: center;
-  width: 4.2rem;
-  color: silver;
-  font-family: weathertext2;
-  height: 1rem;
-  line-height: 16px;
-  overflow: hidden
+/* airquality module -- scoped to .mod-airquality */
+.mod-airquality {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .mod-airquality .tempconvertercircleyellow {
-  display: flex;
-  justify-content: center;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  font-size: .85em  
+  align-items: center;
+  width: 4.2rem;
+  color: silver;
+  font-family: weathertext2;
+  height: 1rem;
+  line-height: 16px;
+  overflow: hidden
+}
+
+.mod-airquality .tempconvertercircleyellow {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--bg1);
+  border-radius: 2px;
+  font-size: .85em  
 }
 
 .mod-airquality .tempcontainer {
-  float: left;
-  font-family: weathertext2;
-  bottom: 0;
-  right: 0;
-  position: relative;
-  margin: 25px 10px 10px 40px;
-  left: -5px;
-  top: -4px
+  float: left;
+  font-family: weathertext2;
+  bottom: 0;
+  right: 0;
+  position: relative;
+  margin: 25px 10px 10px 40px;
+  left: -5px;
+  top: -4px
 }
 
 .mod-airquality .tempcontainerx {
-  position: relative;
-  left: -20px;
-  top: -11px
+  position: relative;
+  left: -20px;
+  top: -11px
 }
 
 .mod-airquality .tempconverter2 {
-  position: absolute;
-  margin-top: 5px;
-  font-size: 12px
+  position: absolute;
+  margin-top: 5px;
+  font-size: 12px
 }
 
 .mod-airquality .tempconverter2 {
-  margin-left: 240px
+  margin-left: 240px
 }
 
 .mod-airquality .airqualitymoduleposition {
-  position: relative;
-  left: 75px;
-  top: 10px
+  position: relative;
+  left: 75px;
+  top: 10px
 }
 
 .mod-airquality .airsvg {
-  margin-top: -12px;
-  left: 20px
+  position: absolute;
+  margin-top: -12px;
+  left: 20px
 }
 
+.mod-airquality .dottedcirclegreen,
+.mod-airquality .dottedcircleorange,
+.mod-airquality .dottedcirclepurple,
+.mod-airquality .dottedcirclered,
 .mod-airquality .dottedcircleyellow {
-  width: 100px;
-  height: 100px;
-  margin-top: 25px;
-  z-index: 20;
-  position: absolute;
-  border: 0;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%
+  width: 100px;
+  height: 100px;
+  margin-top: 25px;
+  z-index: 20;
+  position: absolute;
+  border: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%
 }
 
 .mod-airquality .airvalue {
-  position: relative;
-  margin-top: 75px;
-  left: 5px;
-  top: 5px;
-  font-size: .9rem
+  position: relative;
+  margin-top: 75px;
+  left: 80px; /* Shifted 2px right from 78px (total 75px shift) */
+  top: 15px;  /* Kept 10px down shift */
+  font-size: .9rem
+}
+
+.mod-airquality airdescription {
+  position: absolute;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  left: -105px;
+  line-height: 26px;
+  margin-top: 0;
 }
 
 .mod-airquality .air50 {
-  margin-top: 15px;
-  width: 5rem;
-  height: 4.68rem;
-  font-size: 1.4rem;
-  padding-top: 0;
-  color: #fff;
-  border-bottom: 15px solid rgba(56, 56, 60, 1);
-  align-items: center;
-  justify-content: center;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px
+  margin-top: 15px;
+  width: 5rem;
+  height: 4.68rem;
+  font-size: 1.4rem;
+  padding-top: 0;
+  color: #fff;
+  border-bottom: 15px solid rgba(56, 56, 60, 1);
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px
 }
 
 .mod-airquality .air0 {
-  background: var(--green)
+  background: var(--green)
 }
 
 .mod-airquality .air50 {
-  background: var(--amber)
+  background: var(--amber)
 }
 
 .mod-airquality .air100 {
-  background: var(--orange-d)
+  background: var(--orange-d)
 }
 
 .mod-airquality .air150 {
-  background: var(--red)
+  background: var(--red)
 }
 
 .mod-airquality .air300 {
-  background: #a475cb
+  background: #a475cb
 }
 
 .mod-airquality .airwarning {
-  position: absolute;
-  margin-left: 150px;
-  margin-top: 45px
+  display: none; /* Hidden as the built-in SVG face boxes already contain warnings/checkmarks */
 }
 
 .mod-airquality .airwarning1 {
-  margin-left: -60px
+  position: absolute;
+  margin-top: 0;
+  margin-left: -60px
 }
 
 .mod-airquality .airwarning21 {
-  position: absolute
+  position: absolute
 }
 
 .mod-airquality .airqualitywordbig {
-  margin-left: 50px;
-  margin-top: 15px
+  margin-left: 50px;
+  margin-top: 15px
 }
 
 
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-airquality .airwarning4 {
-  margin-top: 95px
+  margin-top: 95px
 }
 
 [data-theme="light"] .mod-airquality .airwarning2 span {
-  font-size: 8px;
-  line-height: 14px
+  font-size: 8px;
+  line-height: 14px
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleyellow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 3.4rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 4px;
-  color: #fff;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.1rem;
+  width: 3.4rem;
+  border: 2px solid #e6e8ef;
+  overflow: hidden;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 16px;
+  font-family: weathertext2;
+  font-size: .85em
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleyellow {
-  background: rgba(var(--amber-rgb), .8)
+  background: rgba(var(--amber-rgb), .8)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleorange {
-  background: rgba(255, 124, 57, 1)
+  background: rgba(255, 124, 57, 1)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclered {
-  background: var(--red)
+  background: var(--red)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclegreen {
-  background: var(--green)
+  background: var(--green)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclepurple {
-  background: #a475cb
+  background: #a475cb
 }
 
 [data-theme="light"] .mod-airquality .tempcontainer {
-  font-family: weathertext2;
-  position: relative;
-  margin: 25px 10px 10px 40px;
-  left: -5px;
-  top: -4px
+  font-family: weathertext2;
+  position: relative;
+  margin: 25px 10px 10px 40px;
+  left: -5px;
+  top: -4px
 }
 
 [data-theme="light"] .mod-airquality .tempconverter2 {
-  margin-left: 250px
+  margin-left: 250px
 }
 
 [data-theme="light"] .mod-airquality .air50 {
-  margin-top: 15px;
-  width: 5rem;
-  height: 4.68rem;
-  font-size: 1.4rem;
-  padding-top: 0;
-  color: #fff;
-  border-bottom: 15px solid #e6e8ef;
-  align-items: center;
-  justify-content: center;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px
+  margin-top: 15px;
+  width: 5rem;
+  height: 4.68rem;
+  font-size: 1.4rem;
+  padding-top: 0;
+  color: #fff;
+  border-bottom: 15px solid #e6e8ef;
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px
 }
-

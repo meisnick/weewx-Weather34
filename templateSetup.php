@@ -1336,6 +1336,13 @@ General template settings with options to choose which type of module to display
   <div class="weatheroptions">
     <div class="weathersectiontitle">Template Modules</div><br/>
 
+    <!-- Modularize Layout Notice -->
+    <div style="background: rgba(224, 90, 39, 0.15); border-left: 4px solid rgba(224, 90, 39, 1); padding: 12px 16px; margin: 15px 0 25px 0; border-radius: 4px; color: #eee; font-size: 13px; line-height: 1.5; font-family: sans-serif; text-align: left;">
+      <strong style="color: rgba(224, 90, 39, 1); text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Modular Layout Notice (Pi2 / Development)</strong><br/>
+      On the <strong>modularize</strong> branch, the legacy position select dropdowns and titles below are <strong>ignored</strong>. 
+      The dashboard grid is now fully dynamic and loop-driven. To arrange, add, or rename modules, please use the interactive <strong>Drag-and-Drop Layout Editor</strong> located at the top of this setup screen.
+    </div>
+
   <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
     <path d="M16 14 L16 23 M16 8 L16 10" />
     <circle cx="16" cy="16" r="14" />

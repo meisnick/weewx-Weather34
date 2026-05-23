@@ -59,6 +59,8 @@ function moduleTitle($module, $weather, $lang) {
             return 'UV &amp; Solar';
         case 'webcamsmall.php':
             return 'Webcam';
+        case 'aurora_module.php':
+            return 'Kp-Index | Aurora';
         default:
             return '';
     }
@@ -137,6 +139,10 @@ function modulePopups($module, $vars) {
         case 'solaruvwu.php':
             $out  = '<span class="yearpopup"><a href="uvindexwu.php" data-lity>' . $chartinfo . ' UV Guide</a></span>';
             $out .= '<span class="yearpopup"><a href="pop_solaralmanac.php" data-lity>' . $chartinfo . ' Solar Almanac</a></span>';
+            break;
+        case 'aurora_module.php':
+            $kp_label = isset($kp) && $kp >= 5 ? ' <oorange>Active</oorange>' : '';
+            $out = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Aurora / Kp-Index' . $kp_label . '</a></span>';
             break;
     }
     return $out;

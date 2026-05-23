@@ -1,250 +1,533 @@
 <?php
-//###################################################################################################################
-//	weewx-Weather34 Template maintained by Ian Millard (Steepleian)                                 				#
-//	                                                                                                				#
-//  Contains original legacy code (by agreement) created and developed by Brian Underdown (https://weather34.com)   #
-//  for the (now superseeded) original Weather34 Template which is no longer maintained by its creator              #
-//  © weather34.com original CSS/SVG/PHP 2015-2019                                                                  #
-// 	                                                                                                				#
-//  Contains original code by Ian Millard and collaborators															#
-//  © claydonsweather.org.uk original CSS/SVG/PHP 2020-2021                                                         #
-// 	                                                                                                				#
-// 	Issues for weewx-Weather34 template should be addressed to https://github.com/meisnick/weewx-Weather34/issues #                                                                                              #
-// 	                                                                                                				#
-//###################################################################################################################
-include ('shared.php');
-include ('settings.php');
-// K-INDEX & SOLAR DATA FOR HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
-$str = file_get_contents('jsondata/ki.txt');
-$json = array_reverse(json_decode($str, true));
-$kp = $json[1]['kp'];
-if ($theme === "dark")
-{
-    echo '<style>@font-face{font-family:weathertext;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}html,body{font-size:13px;font-family:"weathertext",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#000}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,2fr));grid-gap:5px;align-items:stretch;color:#f5f7fc}.grid>article{border:1px solid rgba(245,247,252,.02);box-shadow:2px 2px 6px 0 rgba(0,0,0,.6);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.grid>article img{max-width:100%}a:link{color:silver}a:visited{color:silver}a:hover{color:silver}a:active{color:#fff}.weather34darkbrowser{color:#000;position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;color:#000}.weather34darkbrowser[url]:after{content:attr(url);color:#fff;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 10px 0 auto;font-family:arial;height:20px}blue{color:#01a4b4}orange{color:#009bb4}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:#aaa}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#cc0}purple{color:#916392}meteotextshowertext{font-size:1.2rem;color:#009bb4}meteorsvgicon{color:#f5f7fc}.moonphasetext{font-size:1.1rem;color:#f5f7fc;position:absolute;display:inline;left:140px;top:80px}moonphaseriseset{font-size:.9rem}credit{position:relative;font-size:.8em;top:10%}.actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;align-items:center;justify-content:center;margin-bottom:10px;top:0}.actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;border-bottom:2px solid rgba(56,56,60,1);align-items:center;justify-content:center;margin-bottom:10px;top:0}
-    </style>';
-}
-else if ($theme === "light")
-{
-    echo '<style>@font-face{font-family:weathertext;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}html,body{font-size:13px;font-family:"weathertext",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,2fr));grid-gap:5px;align-items:stretch;color:#000}.grid>article{border:1px solid rgba(245,247,252,.02);box-shadow:2px 2px 6px 0 rgba(0,0,0,.6);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.grid>article img{max-width:100%}a:link{color:#000}a:visited{color:#000}a:hover{color:#000}a:active{color:#000}.weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px}.weather34darkbrowser[url]:after{content:attr(url);color:#000;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 10px 0 auto;font-family:arial;height:20px}blue{color:#01a4b4}orange{color:teal}orange1{position:relative;color:teal;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:blue}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#cc0}purple{color:#916392}meteotextshowertext{font-size:1.2rem;color:teal}meteorsvgicon{color:#f5f7fc}.moonphasetext{font-size:1.1rem;color:#f5f7fc;position:absolute;display:inline;left:140px;top:80px}moonphaseriseset{font-size:.9rem}credit{position:relative;font-size:.8em;top:10%}.actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:teal;padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#fff;align-items:center;justify-content:center;margin-bottom:10px;top:0}.actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;border-bottom:2px solid rgba(56,56,60,1);align-items:center;justify-content:center;margin-bottom:10px;top:0}
-    </style>';
-}
-?>
+include('shared.php');
+include('settings.php');
 
+// ── Current Kp ───────────────────────────────────────────────────────────────
+$kp = 0.0; $kp_type = 'estimated';
+if (file_exists('jsondata/ki.txt')) {
+    $entries = json_decode(file_get_contents('jsondata/ki.txt'), true);
+    if (is_array($entries)) {
+        foreach (array_reverse($entries) as $e) {
+            if (in_array($e['observed'], ['observed', 'estimated'])) {
+                $kp = (float)$e['kp']; $kp_type = $e['observed']; break;
+            }
+        }
+    }
+}
+
+// ── NOAA R/S/G scales ────────────────────────────────────────────────────────
+$rsg = ['R' => 0, 'S' => 0, 'G' => 0];
+if (file_exists('jsondata/noaa_scales.json')) {
+    $ns = json_decode(file_get_contents('jsondata/noaa_scales.json'), true);
+    if ($ns && isset($ns['0'])) {
+        foreach (['R', 'S', 'G'] as $k) {
+            $rsg[$k] = max(0, (int)($ns['0'][$k]['Scale'] ?? 0));
+        }
+    }
+}
+
+// ── Hemisphere power → Highcharts series arrays ───────────────────────────────
+$north_pts = []; $south_pts = [];
+$power_ok = file_exists('jsondata/aurora_power.txt')
+         && (time() - filemtime('jsondata/aurora_power.txt') < 600);
+if ($power_ok) {
+    foreach (file('jsondata/aurora_power.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if ($line[0] === '#') continue;
+        $p = preg_split('/\s+/', trim($line));
+        if (count($p) < 4) continue;
+        $ts = strtotime(str_replace('_', ' ', $p[0]) . ' UTC');
+        if (!$ts) continue;
+        $north_pts[] = [$ts * 1000, (int)$p[2]];
+        $south_pts[] = [$ts * 1000, (int)$p[3]];
+    }
+}
+
+// ── 3-day forecast text → structured sections ─────────────────────────────────
+$forecast_issued = '';
+$ap_data = []; $prob_data = []; $kp_rows = []; $kp_days = [];
+$forecast_ok = file_exists('jsondata/aurora_forecast.txt')
+            && (time() - filemtime('jsondata/aurora_forecast.txt') < 7200);
+if ($forecast_ok) {
+    $flines = file('jsondata/aurora_forecast.txt', FILE_IGNORE_NEW_LINES);
+    $sec = null; $kp_hdr_seen = false;
+    foreach ($flines as $line) {
+        $t = trim($line);
+        if (preg_match('/^:Issued:\s*(.+)/i', $t, $m)) { $forecast_issued = $m[1]; }
+        if (!$t || $t[0] === ':' || $t[0] === '#') continue;
+
+        if (stripos($t, 'Ap Index') !== false)            { $sec = 'ap'; continue; }
+        if (stripos($t, 'Probabilities') !== false)        { $sec = 'prob'; continue; }
+        if (stripos($t, 'Kp index forecast') !== false)   { $sec = 'kp'; $kp_hdr_seen = false; continue; }
+
+        if ($sec === 'ap') {
+            // "Observed Ap 22 May 006" — split at last whitespace before trailing digits/dashes
+            if (preg_match('/^(Observed|Estimated|Predicted)\s+Ap\s+(.+?)\s+([\d][\d\-\/]+)\s*$/i', $t, $m)) {
+                $ap_data[] = ['type' => $m[1], 'date' => $m[2], 'val' => str_replace('-', ' / ', $m[3])];
+            }
+        } elseif ($sec === 'prob') {
+            // "Active                15/10/15"
+            if (preg_match('/^(.+?)\s{2,}([\d\/]+)\s*$/', $t, $m)) {
+                $prob_data[] = ['label' => trim($m[1]), 'pcts' => explode('/', trim($m[2]))];
+            }
+        } elseif ($sec === 'kp') {
+            if (!$kp_hdr_seen) {
+                // "             May 24    May 25    May 26"
+                preg_match_all('/\w+ \d+/', $t, $m);
+                $kp_days = $m[0];
+                $kp_hdr_seen = true;
+            } else {
+                // "00-03UT        1.67      1.67      1.33"
+                $p = preg_split('/\s+/', $t);
+                if (count($p) >= 4) {
+                    $kp_rows[] = ['period' => $p[0], 'vals' => array_slice($p, 1, 3)];
+                }
+            }
+        }
+    }
+}
+
+// ── Derived display values ────────────────────────────────────────────────────
+if ($kp >= 7)      { $storm = 'Severe Storm'; $kp_color = '#d35d4e'; }
+elseif ($kp >= 5)  { $storm = 'G1+ Storm';    $kp_color = '#ff7c39'; }
+elseif ($kp >= 4)  { $storm = 'Active';        $kp_color = '#e6a141'; }
+else               { $storm = 'Quiet';          $kp_color = '#90b12a'; }
+
+$is_dark   = ($theme !== 'light');
+$bg        = $is_dark ? '#151819' : '#fff';
+$bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
+$bg_card   = $is_dark ? '#252729' : '#e8eaef';
+$text      = $is_dark ? '#ddd'    : '#222';
+$text_dim  = $is_dark ? '#777'    : '#666';
+$border    = $is_dark ? '#2e3033' : '#ccc';
+$box_none  = $is_dark ? '#393d40' : '#d0d4db';
+$grid_ln   = $is_dark ? '#2a2c2f' : '#e0e2e6';
+
+function rsg_cls(int $s): string {
+    if ($s >= 4) return 'rsg-storm';
+    if ($s >= 2) return 'rsg-active';
+    if ($s >= 1) return 'rsg-minor';
+    return 'rsg-none';
+}
+function kp_color_val(string $v): string {
+    $f = (float)$v;
+    if ($f >= 5) return '#d35d4e';
+    if ($f >= 4) return '#ff7c39';
+    if ($f >= 3) return '#e6a141';
+    return '#90b12a';
+}
+
+$cb = date('YmdH');
+$north_json = json_encode($north_pts);
+$south_json = json_encode($south_pts);
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Radio Aurora/ Northern Lights<br>s</title>
+  <title>Space Weather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
+<style>
+@font-face {
+  font-family: weathertext2;
+  src: url(css/fonts/verbatim-regular.woff) format("woff"),
+       url(css/fonts/verbatim-regular.woff2) format("woff2"),
+       url(css/fonts/verbatim-regular.ttf) format("truetype");
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%; overflow: hidden;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 13px;
+  background: <?php echo $bg; ?>;
+  color: <?php echo $text; ?>;
+  -webkit-font-smoothing: antialiased;
+}
+body { display: flex; flex-direction: column; }
 
-  <div class="weather34darkbrowser" url="Radio Aurora | Northern Lights"></div> 
-  
-<main class="grid">
-  <article>       
- <div class="kpcontainer1"><?php
-if ($kp > 6)
-{
-    echo '<div class=kptoday7>' . number_format($kp, 1) . "<smalluvunit> &nbsp;KP-Index";
+/* ── Header strip ─────────────────────────────────────────────────────────── */
+.pop-header {
+  flex: 0 0 auto;
+  background: <?php echo $bg_chrome; ?>;
+  border-bottom: 1px solid <?php echo $border; ?>;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-else if ($kp > 5)
-{
-    echo '<div class=kptoday6>' . number_format($kp, 1) . "<smalluvunit> &nbsp;KP-Index";
+.pop-title {
+  flex: 1;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .8em;
+  color: <?php echo $text; ?>;
+  letter-spacing: 0.3px;
 }
-else if ($kp > 4)
-{
-    echo '<div class=kptoday4>' . number_format($kp, 1) . "<smalluvunit> &nbsp;KP-Index";
+.pop-kp-badge {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .75em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border-bottom: 3px solid rgba(0,0,0,0.3);
+  background: <?php echo $kp_color; ?>;
+  color: #fff;
+  white-space: nowrap;
 }
-else if ($kp > 0)
-{
-    echo '<div class=kptoday1>' . number_format($kp, 1) . "<smalluvunit> &nbsp;KP-Index";
+.pop-storm {
+  font-size: .65em;
+  color: <?php echo $text_dim; ?>;
+  white-space: nowrap;
+  margin-right: 50px;
 }
-?></smalluvunit></div></div>
-    <div class="kpcaution"><?php
-if ($kp > 6)
-{
-    echo 'Storm';
+.pop-rsg-mini { display: flex; gap: 3px; margin-right: 50px; }
+.rsg-mini {
+  width: 22px; height: 28px;
+  border-radius: 2px;
+  border-bottom: 3px solid rgba(0,0,0,0.3);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1px;
 }
-else if ($kp > 5)
-{
-    echo 'Active';
-}
-else if ($kp > 4)
-{
-    echo 'Active';
-}
-else if ($kp >= 0)
-{
-    echo 'Quiet';
-}
-?><br></div><br>
-<?php echo " \n";
-if ($kp >= 9)
-{
-    echo "<red>G5 Geomagnetic Severe Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 8)
-{
-    echo "<red>G4 Geomagnetic Major Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 7)
-{
-    echo "<red>G3 Geomagnetic Major Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 6)
-{
-    echo "<red>G2 Geomagnetic Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 5)
-{
-    echo "<orange>G1 Geomagnetic Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 4)
-{
-    echo "<orange>Minor G1 Geomagnetic Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 3.5)
-{
-    echo "<green>Weak Geomagnetic Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-}
-else if ($kp >= 0)
-{
-    echo "<green> Quiet No Geomagnetic Storm</span><br>";
-    echo 'KP-PLANETARY INDEX';
-} ?>
+.rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
+.rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
+.rsg-none   { background: <?php echo $box_none; ?>; }
+.rsg-minor  { background: #90b12a; }
+.rsg-active { background: #e6a141; }
+.rsg-storm  { background: #d35d4e; }
 
-</div>               
-</article>  
-  
-  <article>
-<div class="kpcontainer1"><?php
-if ($kp > 8.9)
-{
-    echo '<div class=kptoday7>400<smalluvunit> &nbsp;A-Index';
+/* ── Tab row — matches pop_menu_forecast.php style exactly ───────────────── */
+.pop-tabs {
+  flex: 0 0 auto;
+  background: <?php echo $bg_chrome; ?>;
+  border-bottom: 1px solid <?php echo $border; ?>;
+  padding: 4px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
 }
-else if ($kp > 7.9)
-{
-    echo '<div class=kptoday7>208<smalluvunit> &nbsp;A-Index';
+.tablink {
+  background-color: #555;
+  color: white;
+  border: 2px solid <?php echo $bg_chrome; ?>;
+  border-radius: 5px;
+  margin-top: 0;
+  margin-left: 5px;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-family: Arial, sans-serif;
 }
-else if ($kp > 6.9)
-{
-    echo '<div class=kptoday7>132<smalluvunit> &nbsp;A-Index';
-}
-else if ($kp > 6)
-{
-    echo '<div class=kptoday7>80<smalluvunit> &nbsp;A-Index';
-}
-else if ($kp > 4.9)
-{
-    echo '<div class=kptoday4>' . number_format($kp * 6, 0) . "<smalluvunit> &nbsp;A-Index";
-}
-else if ($kp > 3.9)
-{
-    echo '<div class=kptoday4>' . number_format($kp * 5, 0) . "<smalluvunit> &nbsp;A-Index";
-}
-else if ($kp > 0)
-{
-    echo '<div class=kptoday1>' . number_format($kp * 2, 0) . "<smalluvunit> &nbsp;A-Index";
-}
-?></smalluvunit></div></div>
-    <div class="kpcaution"><?php
-if ($kp > 6)
-{
-    echo 'Storm';
-}
-else if ($kp > 5)
-{
-    echo 'Active';
-}
-else if ($kp > 4)
-{
-    echo 'Active';
-}
-else if ($kp >= 0)
-{
-    echo 'Quiet';
-}
-?></div>    
-<br>
-<?php echo " \n";
-if ($kp >= 9)
-{
-    echo "<red>G5 Severe Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 8)
-{
-    echo "<red>G4 Major Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 7)
-{
-    echo "<red>G3 Major Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 6)
-{
-    echo "<red>G2 Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 5)
-{
-    echo "<orange>G1 Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 4)
-{
-    echo "<orange>Minor G1 Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp >= 3.5)
-{
-    echo "<green>Weak Storm</span><br>";
-    echo 'RADIO AURORA <orange>ACTIVE</orange>';
-}
-else if ($kp > 0)
-{
-    echo "<green>Quiet No Storms</span><br>";
-    echo 'NOT ACTIVE';
-} ?></span>
-          
+.tablink:hover { background-color: #777; }
 
+/* ── Content wrapper ─────────────────────────────────────────────────────── */
+.pop-content {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+.tabcontent {
+  display: none;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+}
 
-  </article> 
-  
-  <article>  
-   <?php echo $info; ?> <orange>Guide</orange><br><green>KP-INDEX</green> figure provides a good indicator of viewing the <green>Aurora Borealis</green> or <green>Northern Lights</green> The greater the KP-Index the higher probability of viewing .The Estimated 3-hour Planetary Kp-index data is collected from ground-based magnetometers. </article> 
-   
-    <article>
-   <?php echo $info; ?> <orange>Guide</orange><br><green>A-INDEX</green> is an indicator of possible enhanced VHF radio signal communication at a range of upto 1000 miles or more. During strong solar activity frequencies from 28 to 433MHZ or higher allowing radio communications to be possible at mid to high latitudes .
- 
-              
-  </article>  
-  
-  <article>
-   <?php echo $info; ?> <orange>Radio Ham Guide</orange><br>Aurora communications can be used by Ham Radio VHF enthusiasts. Using Aurora scatter propagation enables ham radio enthusiasts communications.
-Aurora scatter communications using specialised operating techniques allows communications distances up to 2000 km or more at frequencies of 28MHz/50MHz/144MHz/433MHz .<br>
- 
- 
-              
-  </article> 
-  <article>
-  <div class=actualt>&nbsp;&nbsp &copy; Information</div>  
-  <?php echo $info ?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y'); ?>
-  <br><br><?php echo $info; ?> Data Provided by <a href="https://www.swpc.noaa.gov/products/station-k-and-indices" title="https://www.swpc.noaa.gov/products/station-k-and-indices" target="_blank"><br>NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION</a> 
-  
-        <br>  <br> <br>     
- <?php echo '<svg viewBox="0 0 32 32" width=7 height=7 fill=#9aba2f stroke=#9aba2f stroke-linecap=round stroke-linejoin=round stroke-width=6.25%><path d="M16 14 L16 23 M16 8 L16 10" /><circle cx=16 cy=16 r=14 /></svg>';;
-echo " Last Updated: " . date("H:i:s", filemtime('jsondata/ki.txt')); ?>
+/* ── Shared image layout (Tab 1 + Tab 4) ─────────────────────────────────── */
+.img-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  height: 100%;
+}
+.img-panel {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.img-frame {
+  flex: 1; min-height: 0;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid <?php echo $border; ?>;
+  background: <?php echo $bg_chrome; ?>;
+  overflow: hidden;
+}
+.img-frame img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; display: block;
+}
+.img-label {
+  flex-shrink: 0;
+  font-size: .65em; color: silver;
+  text-align: center; text-transform: uppercase; letter-spacing: 0.5px;
+}
 
-</article> 
+/* ── Tab 2: 3-day forecast ───────────────────────────────────────────────── */
+.forecast-body {
+  height: 100%; overflow-y: auto;
+  padding: 8px 10px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.fcst-card {
+  background: <?php echo $bg_card; ?>;
+  border-radius: 3px; padding: 8px 10px; flex-shrink: 0;
+}
+.fcst-card-title {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .65em; color: silver;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.fcst-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .7em; font-family: Arial, sans-serif;
+}
+.fcst-table th {
+  color: <?php echo $text_dim; ?>; font-weight: normal;
+  padding: 3px 8px; text-align: right; border-bottom: 1px solid <?php echo $border; ?>;
+}
+.fcst-table td { padding: 3px 8px; text-align: right; color: <?php echo $text; ?>; }
+.fcst-table th:first-child, .fcst-table td:first-child { text-align: left; }
+.fcst-table tbody tr:nth-child(even) td { background: rgba(128,128,128,0.06); }
+.fcst-issued {
+  font-size: .6em; color: <?php echo $text_dim; ?>;
+  text-align: right; padding: 2px 0;
+}
 
-</main>
+/* ── Tab 3: Hemisphere Power chart ──────────────────────────────────────── */
+#hemi-chart-wrap { width: 100%; height: 100%; padding: 6px 8px; }
+#hemi-chart { width: 100%; height: 100%; }
+.unavail {
+  display: flex; align-items: center; justify-content: center;
+  height: 100%; font-size: .8em; color: <?php echo $text_dim; ?>;
+  font-family: Arial, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<!-- Header: title + Kp badge + storm + RSG mini-badges -->
+<div class="pop-header">
+  <span class="pop-title">Space Weather</span>
+  <span class="pop-kp-badge">Kp&nbsp;<?php echo number_format($kp, 1); ?></span>
+  <span class="pop-storm"><?php echo ucfirst($kp_type); ?> &mdash; <?php echo $storm; ?></span>
+  <div class="pop-rsg-mini">
+    <?php foreach (['R', 'S', 'G'] as $k):
+      $sc = $rsg[$k]; $cls = rsg_cls($sc); $lbl = $sc > 0 ? ($k.$sc) : '&mdash;';
+    ?>
+    <div class="rsg-mini <?php echo $cls; ?>">
+      <span class="rsg-mini-letter"><?php echo $k; ?></span>
+      <span class="rsg-mini-val"><?php echo $lbl; ?></span>
+    </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<!-- Tab buttons -->
+<div class="pop-tabs">
+  <button class="tablink" onclick="openTab('t1',this)" id="defaultOpen">Viewline</button>
+  <button class="tablink" onclick="openTab('t2',this)">3-Day Forecast</button>
+  <button class="tablink" onclick="openTab('t3',this)">Hem. Power</button>
+  <button class="tablink" onclick="openTab('t4',this)">Ovation</button>
+</div>
+
+<!-- Content panels -->
+<div class="pop-content">
+
+  <!-- Tab 1: Tonight + Tomorrow viewline -->
+  <div id="t1" class="tabcontent">
+    <div class="img-row">
+      <div class="img-panel">
+        <div class="img-frame">
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="Tonight">
+        </div>
+        <div class="img-label">Tonight</div>
+      </div>
+      <div class="img-panel">
+        <div class="img-frame">
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="Tomorrow Night">
+        </div>
+        <div class="img-label">Tomorrow Night</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 2: 3-day forecast text parsed into tables -->
+  <div id="t2" class="tabcontent">
+    <div class="forecast-body">
+      <?php if (!$forecast_ok): ?>
+        <div class="unavail">Forecast data unavailable — refreshes hourly.</div>
+      <?php else: ?>
+
+      <?php if ($ap_data): ?>
+      <div class="fcst-card">
+        <div class="fcst-card-title">Ap Index</div>
+        <table class="fcst-table">
+          <thead><tr><th>Type</th><th>Date</th><th>Ap</th></tr></thead>
+          <tbody>
+            <?php foreach ($ap_data as $r): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($r['type']); ?></td>
+              <td><?php echo htmlspecialchars($r['date']); ?></td>
+              <td><?php echo htmlspecialchars($r['val']); ?></td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <?php endif; ?>
+
+      <?php if ($prob_data && $kp_days): ?>
+      <div class="fcst-card">
+        <div class="fcst-card-title">Geomagnetic Activity Probabilities</div>
+        <table class="fcst-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($prob_data as $r): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($r['label']); ?></td>
+              <?php foreach ($r['pcts'] as $pct): ?>
+              <td><?php echo htmlspecialchars(trim($pct)); ?>%</td>
+              <?php endforeach; ?>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <?php endif; ?>
+
+      <?php if ($kp_rows && $kp_days): ?>
+      <div class="fcst-card">
+        <div class="fcst-card-title">Kp Index Forecast (UT)</div>
+        <table class="fcst-table">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($kp_rows as $r): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($r['period']); ?></td>
+              <?php foreach ($r['vals'] as $v): $col = kp_color_val(trim($v)); ?>
+              <td style="color:<?php echo $col; ?>;font-weight:<?php echo (float)$v >= 4 ? '600' : 'normal'; ?>">
+                <?php echo htmlspecialchars(trim($v)); ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <?php endif; ?>
+
+      <?php if ($forecast_issued): ?>
+      <div class="fcst-issued">Issued: <?php echo htmlspecialchars($forecast_issued); ?> &middot; NOAA SWPC</div>
+      <?php endif; ?>
+
+      <?php endif; ?>
+    </div>
+  </div>
+
+  <!-- Tab 3: Hemisphere power Highcharts -->
+  <div id="t3" class="tabcontent">
+    <?php if (!$power_ok || empty($north_pts)): ?>
+      <div class="unavail">Hemisphere power data unavailable — refreshes every 5 min.</div>
+    <?php else: ?>
+      <div id="hemi-chart-wrap">
+        <div id="hemi-chart"></div>
+      </div>
+    <?php endif; ?>
+  </div>
+
+  <!-- Tab 4: North + South ovation images -->
+  <div id="t4" class="tabcontent">
+    <div class="img-row">
+      <div class="img-panel">
+        <div class="img-frame">
+          <img src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?t=<?php echo $cb; ?>" alt="North Ovation">
+        </div>
+        <div class="img-label">Northern Hemisphere — Ovation</div>
+      </div>
+      <div class="img-panel">
+        <div class="img-frame">
+          <img src="https://services.swpc.noaa.gov/images/animations/ovation/south/latest.jpg?t=<?php echo $cb; ?>" alt="South Ovation">
+        </div>
+        <div class="img-label">Southern Hemisphere — Ovation</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .pop-content -->
+
+<script>
+// ── Tab switching ─────────────────────────────────────────────────────────────
+function openTab(name, el) {
+  document.querySelectorAll('.tabcontent').forEach(function(t){ t.style.display = 'none'; });
+  document.querySelectorAll('.tablink').forEach(function(t){ t.style.backgroundColor = ''; });
+  document.getElementById(name).style.display = 'block';
+  el.style.backgroundColor = 'rgba(194, 102, 58)';
+  if (name === 't3') initHemiChart();
+}
+document.getElementById('defaultOpen').click();
+
+// ── Hemisphere power chart — lazy-loads Highcharts on first tab click ─────────
+var hemiChart = null;
+function initHemiChart() {
+  if (hemiChart) { hemiChart.reflow(); return; }
+  if (typeof Highcharts !== 'undefined') { buildChart(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://code.highcharts.com/highcharts.js';
+  s.onload = buildChart;
+  document.head.appendChild(s);
+}
+
+function buildChart() {
+  hemiChart = Highcharts.chart('hemi-chart', {
+    chart: {
+      type: 'area',
+      backgroundColor: '<?php echo $bg; ?>',
+      style: { fontFamily: 'Arial, sans-serif' },
+      margin: [24, 16, 46, 52],
+      animation: false
+    },
+    title: { text: null },
+    credits: { enabled: false },
+    legend: {
+      enabled: true, align: 'right', verticalAlign: 'top',
+      itemStyle: { color: '<?php echo $text_dim; ?>', fontWeight: 'normal', fontSize: '10px' }
+    },
+    xAxis: {
+      type: 'datetime',
+      labels: { style: { color: '<?php echo $text_dim; ?>' }, format: '{value:%H:%M}', step: 3 },
+      lineColor: '<?php echo $border; ?>', tickColor: '<?php echo $border; ?>',
+      title: { text: 'Observation Time UTC', style: { color: '<?php echo $text_dim; ?>', fontSize: '9px' } }
+    },
+    yAxis: {
+      title: { text: 'GW', style: { color: '<?php echo $text_dim; ?>', fontSize: '10px' } },
+      labels: { style: { color: '<?php echo $text_dim; ?>' } },
+      gridLineColor: '<?php echo $grid_ln; ?>',
+      min: 0
+    },
+    tooltip: {
+      shared: true, xDateFormat: '%H:%M UTC', valueSuffix: ' GW',
+      backgroundColor: '<?php echo $bg_chrome; ?>',
+      borderColor: '<?php echo $border; ?>',
+      style: { color: '<?php echo $text; ?>', fontSize: '10px' }
+    },
+    plotOptions: {
+      area: { marker: { enabled: false }, fillOpacity: 0.12, lineWidth: 1.5 }
+    },
+    series: [
+      { name: 'North (GW)', color: '#90b12a', data: <?php echo $north_json; ?> },
+      { name: 'South (GW)', color: '#e6a141', data: <?php echo $south_json; ?> }
+    ]
+  });
+}
+</script>
+</body>
+</html>

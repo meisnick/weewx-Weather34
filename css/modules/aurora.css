@@ -1,0 +1,200 @@
+/* aurora / space weather module */
+
+/* ── Card wrapper ─────────────────────────────────────────────────────────── */
+/* display:flex overrides weather-item's text-align:center for block content.  */
+/* padding-top (not margin-top) avoids margin-collapse through #grid_N, which  */
+/* would shift the absolute updatedtime's static-position reference downward.  */
+.aurora-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 8px;
+  padding-left: 4px;
+  padding-right: 5px;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Internal header ──────────────────────────────────────────────────────── */
+.aurora-header {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .8em;
+  color: silver;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-align: center;
+  width: 100%;
+  padding: 2px 0 6px;
+  border-bottom: 1px solid var(--bg0);
+  margin-bottom: 8px;
+}
+
+/* ── Two-panel row ────────────────────────────────────────────────────────── */
+.aurora-body {
+  display: flex;
+  gap: 0;
+  width: 100%;
+}
+
+/* ── Section label — matches solarluxtodayword / moonset1 convention ─────── */
+.aurora-sect {
+  font-size: .65em;
+  color: silver;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Left panel: R/S/G scales ─────────────────────────────────────────────── */
+.aurora-left {
+  flex: 0 0 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.aurora-rsg-row {
+  display: flex;
+  gap: 5px;
+}
+
+/* Weather34 pill-style badge — vertical orientation */
+.aurora-rsg-box {
+  width: 30px;
+  height: 46px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+}
+
+.aurora-rsg-letter {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+}
+
+.aurora-rsg-val {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 3px;
+}
+
+/* Scale color states */
+.rsg-g-none   { background: var(--bg0); }
+.rsg-g-minor  { background: var(--green); }
+.rsg-g-active { background: var(--amber); }
+.rsg-g-storm  { background: var(--red); }
+
+/* Sub-labels: Radio / Solar / Geo */
+.aurora-rsg-labels {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+  width: 100%;
+  justify-content: center;
+}
+
+.aurora-rsg-labels span {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: silver;
+  width: 30px;
+  text-align: center;
+}
+
+/* ── Vertical divider ─────────────────────────────────────────────────────── */
+.aurora-vdivider {
+  width: 1px;
+  background: var(--bg0);
+  margin: 2px 4px;
+  align-self: stretch;
+}
+
+/* ── Right panel: 3-day forecast ──────────────────────────────────────────── */
+.aurora-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 2px;
+}
+
+.aurora-fc-grid {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.aurora-day-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aurora-day-name {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: silver;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+/* Kp max pill — Weather34 badge style */
+.aurora-kpmax {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .8em;
+  padding: 3px 5px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  background: var(--bg0);
+  color: var(--text-d);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.aurora-kpmax.kpmax-mid {
+  background: var(--amber);
+  color: #fff;
+}
+
+.aurora-kpmax.kpmax-high {
+  background: var(--orange);
+  color: #fff;
+}
+
+/* ── Kp heatmap ───────────────────────────────────────────────────────────── */
+.aurora-heatmap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: 100%;
+}
+
+.aurora-hm-block {
+  height: 6px;
+  border-radius: 1px;
+}
+
+.hm-green  { background: var(--green); }
+.hm-yellow { background: var(--amber); }
+.hm-orange { background: var(--orange); }
+.hm-red    { background: var(--red); }
+.hm-empty  { background: var(--bg0); opacity: 0.5; }
+
+/* ── Light theme overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .rsg-g-none      { background: #dde0e6; }
+[data-theme="light"] .aurora-kpmax    { background: #e6e8ef; color: #555; border-bottom-color: #c0c4cc; }
+[data-theme="light"] .aurora-vdivider { background: #dde0e6; }
+[data-theme="light"] .hm-empty        { background: #dde0e6; opacity: 1; }

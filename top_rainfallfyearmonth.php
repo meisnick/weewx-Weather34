@@ -1,4 +1,5 @@
 <?php include('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');date_default_timezone_set($TZ);?>
+<div class="mod-rain-totals">
 <div class="topmin">
 
 <?php //rain month 
@@ -20,3 +21,4 @@ else  echo "<topblue1>".$weather["rain_year"]  ;echo "<smallwindunit>".$weather[
 <div class="maxword"><?php echo date('Y')?></div></div>
 <div class="maxtimedate">Total</div> 
 
+</div><!-- /mod-rain-totals -->

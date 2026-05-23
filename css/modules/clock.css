@@ -1,0 +1,74 @@
+﻿/* clock module -- scoped to .mod-clock */
+.mod-clock { display: contents; }
+
+.mod-clock .weather34box.clock {
+  background-repeat: no-repeat;
+  background-position: left 10px bottom 18px;
+  color: #fff
+}
+
+.mod-clock .weather34box.clock span {
+  color: silver;
+  font-weight: 500
+}
+
+.mod-clock .weather34box.clock titlespan {
+  color: var(--green);
+  font-weight: 500
+}
+
+.mod-clock .clock-container {
+  float: left;
+  color: #fff;
+  font: 1em weathertext2;
+  top: 10px;
+  list-style: none;
+  width: 140px;
+  height: 1.55em;
+  right: 137px;
+  border: 0;
+  padding-top: 0;
+  line-height: 16px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  background: rgba(205, 82, 69, .8)
+}
+
+.mod-clock .calendar34 {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  color: rgba(230, 232, 239, .2)
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-clock .clock-container {
+  float: left;
+  color: #fff;
+  top: 10px;
+  list-style: none;
+  width: 140px;
+  height: 1.55em;
+  right: 147px;
+  border: 0;
+  padding-top: 0;
+  line-height: 16px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  background: rgba(205, 82, 69, .8)
+}
+
+[data-theme="light"] .mod-clock .calendar34 {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  color: #e6e8ef
+}
+

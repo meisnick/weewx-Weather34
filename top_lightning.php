@@ -7,6 +7,7 @@
   error_reporting(0);
 ?>
 <body>
+  <div class="mod-top-lightning">
   <div class="wfstrike">
     <?php
       //weather34 lightning
@@ -37,4 +38,4 @@
   if ($lightning['strike_count_3hr'] > 0){
     echo '<img src="img/lightningalert.svg" width="20" height="20" align="right"/>';
   }?>
-</div>
+</div></div><!-- /mod-top-lightning -->

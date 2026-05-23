@@ -208,12 +208,12 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 #col-picker{position:fixed;bottom:55px;right:18px;z-index:9999;display:none;
   align-items:center;gap:3px;background:rgba(33,34,39,.85);
   border:1px solid rgba(84,85,86,.5);padding:4px 8px;font-family:arial,helvetica;font-size:11px;color:silver}
-#col-picker span{color:rgba(150,155,165,.7);margin-right:2px}
+
 #col-picker button{background:0;border:1px solid rgba(84,85,86,.4);color:silver;
   cursor:pointer;padding:3px 7px;font-size:11px;font-family:arial}
 #col-picker button.active{background:rgba(240,94,64,.75);border-color:rgba(240,94,64,.9);color:#fff}
 </style>
-<div id="col-picker"><span>Cols</span>
+<div id="col-picker">
   <button data-cols="auto" onclick="setColumns('auto')">Auto</button>
   <button data-cols="3" onclick="setColumns(3)">3</button>
   <button data-cols="4" onclick="setColumns(4)">4</button>

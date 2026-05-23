@@ -5,6 +5,9 @@ error_reporting(0);
 $topbar = json_decode($_POST['topbar'] ?? '[]', true);
 $grid   = json_decode($_POST['grid']   ?? '[]', true);
 
+$grid_columns = $_POST['grid_columns'] ?? 'auto';
+if (!in_array($grid_columns, ['auto', '3', '4', '6'])) { $grid_columns = 'auto'; }
+
 if (!is_array($topbar) || !is_array($grid)) {
     echo json_encode(['error' => 'Invalid data received']);
     exit;
@@ -62,6 +65,7 @@ $new_grid   = buildArray($grid,   $existing, $defaults);
 
 $php  = "<?php\n";
 $php .= "// modules.php — live module layout (gitignored, auto-created from modules.example.php)\n\n";
+$php .= "\$grid_columns = " . var_export($grid_columns, true) . ";\n\n";
 $php .= "\$topbar_modules = " . var_export($new_topbar, true) . ";\n\n";
 $php .= "\$grid_modules = "   . var_export($new_grid,   true) . ";\n";
 

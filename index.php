@@ -15,6 +15,8 @@ include_once('webserver_ip_address.php');
 include('settings1.php');
 include('settings.php');
 include('modules.php');
+$grid_columns = $grid_columns ?? 'auto';
+$col_style = ($grid_columns === 'auto') ? 'repeat(auto-fill, 320px)' : 'repeat(' . intval($grid_columns) . ', 320px)';
 date_default_timezone_set($TZ);
 header('Content-type: text/html; charset=utf-8');
 error_reporting(0);
@@ -203,7 +205,20 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 #edit-status{position:fixed;bottom:18px;right:160px;z-index:9999;font-size:11px;
   font-family:arial;padding:6px 10px;background:rgba(33,34,39,.85);
   border:1px solid rgba(84,85,86,.4);color:#5a9;display:none}
+#col-picker{position:fixed;bottom:18px;right:148px;z-index:9999;display:none;
+  align-items:center;gap:3px;background:rgba(33,34,39,.85);
+  border:1px solid rgba(84,85,86,.5);padding:4px 8px;font-family:arial,helvetica;font-size:11px;color:silver}
+#col-picker span{color:rgba(150,155,165,.7);margin-right:2px}
+#col-picker button{background:0;border:1px solid rgba(84,85,86,.4);color:silver;
+  cursor:pointer;padding:3px 7px;font-size:11px;font-family:arial}
+#col-picker button.active{background:rgba(240,94,64,.75);border-color:rgba(240,94,64,.9);color:#fff}
 </style>
+<div id="col-picker"><span>Cols</span>
+  <button data-cols="auto" onclick="setColumns('auto')">Auto</button>
+  <button data-cols="3" onclick="setColumns(3)">3</button>
+  <button data-cols="4" onclick="setColumns(4)">4</button>
+  <button data-cols="6" onclick="setColumns(6)">6</button>
+</div>
 <button id="edit-toggle" onclick="toggleEdit()" title="Toggle layout edit mode">
   <span id="edit-icon">&#128274;</span> <span id="edit-label">Edit Layout</span>
 </button>
@@ -232,7 +247,7 @@ foreach ($grid_modules as $i => $mod):
     }
     $popups = modulePopups($file, $popupVars);
     if ($i === 0): ?>
-<div class="weather-container" id="grid-sortable">
+<div class="weather-container" id="grid-sortable" style="grid-template-columns:<?php echo $col_style; ?>">
     <?php endif; ?>
     <div class="weather-item" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="chartforecast"><?php echo $popups; ?></div>
@@ -248,6 +263,7 @@ foreach ($grid_modules as $i => $mod):
 <script>
 var editMode = false;
 var topSort, gridSort;
+var currentCols = <?php echo json_encode($grid_columns); ?>;
 
 function collect(id) {
     return Array.from(document.querySelectorAll('#' + id + ' [data-module]')).map(function(el) {
@@ -263,6 +279,7 @@ function saveOrder() {
     var fd = new FormData();
     fd.append('topbar', JSON.stringify(collect('topbar-sortable')));
     fd.append('grid',   JSON.stringify(collect('grid-sortable')));
+    fd.append('grid_columns', currentCols);
     fetch('module_save.php', {method:'POST', body:fd})
         .then(function(r){return r.json();})
         .then(function(d){
@@ -273,6 +290,18 @@ function saveOrder() {
         .catch(function(){ st.style.color='#e05a27'; st.textContent='Save failed'; });
 }
 
+function setColumns(cols) {
+    currentCols = cols;
+    var grid = document.getElementById('grid-sortable');
+    grid.style.gridTemplateColumns = (cols === 'auto')
+        ? 'repeat(auto-fill, 320px)'
+        : 'repeat(' + cols + ', 320px)';
+    document.querySelectorAll('#col-picker [data-cols]').forEach(function(b) {
+        b.classList.toggle('active', String(b.dataset.cols) === String(cols));
+    });
+    saveOrder();
+}
+
 function toggleEdit() {
     editMode = !editMode;
     document.body.classList.toggle('edit-mode', editMode);
@@ -280,6 +309,11 @@ function toggleEdit() {
     document.getElementById('edit-label').textContent = editMode ? 'Done' : 'Edit Layout';
 
     if (editMode) {
+        var picker = document.getElementById('col-picker');
+        picker.style.display = 'flex';
+        document.querySelectorAll('#col-picker [data-cols]').forEach(function(b) {
+            b.classList.toggle('active', String(b.dataset.cols) === String(currentCols));
+        });
         topSort  = Sortable.create(document.getElementById('topbar-sortable'),
             {animation:150, ghostClass:'sortable-ghost', chosenClass:'sortable-chosen',
              onEnd: saveOrder});
@@ -294,6 +328,7 @@ function toggleEdit() {
         if (topSort)  topSort.destroy();
         if (gridSort) gridSort.destroy();
         document.getElementById('edit-status').style.display = 'none';
+        document.getElementById('col-picker').style.display = 'none';
     }
 }
 </script>

@@ -21,3 +21,5 @@ $grid_modules = [
     ['module' => 'moonphase.php',            'title' => '',                'refresh' => 600],
     ['module' => 'lightning34.php',          'title' => 'Lightning',       'refresh' => 60],
 ];
+
+$grid_columns = 'auto'; // auto | 3 | 4 | 6

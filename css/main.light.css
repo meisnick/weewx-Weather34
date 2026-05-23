@@ -8100,13 +8100,19 @@ spanelightning {
 }
 
 alertadvisory {
-  margin-left: -55px;
-  position: absolute
+  margin-left: -110px;
+  position: absolute;
+  width: 36px;
+  overflow: hidden;
+  line-height: 0
 }
 
 alertadvisory2 {
   margin-left: -75px;
-  position: absolute
+  position: absolute;
+  width: 36px;
+  overflow: hidden;
+  line-height: 0
 }
 
 raiblue {

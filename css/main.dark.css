@@ -8063,13 +8063,19 @@ spanelightning {
 }
 
 alertadvisory {
-  margin-left: -50px;
-  position: absolute
+  margin-left: -105px;
+  position: absolute;
+  width: 36px;
+  overflow: hidden;
+  line-height: 0
 }
 
 alertadvisory2 {
   margin-left: -75px;
-  position: absolute
+  position: absolute;
+  width: 36px;
+  overflow: hidden;
+  line-height: 0
 }
 valuewindunit {
   font-size: .55rem

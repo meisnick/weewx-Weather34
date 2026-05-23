@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 //###################################################################################################################
 //	weewx-Weather34 Template maintained by Ian Millard (Steepleian)                                 				#
@@ -28,7 +28,8 @@ $jsonfile="jsondata/forecast_daily.txt";if(!file_exists($jsonfile)) {return;}
 $forecasturl = file_get_contents("jsondata/forecast_daily.txt");
 if(filesize('jsondata/forecast_daily.txt')<1){echo "".$offline. "";}
 else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
-<div class="forecastforecasthome" ><div class="forecastdiv">
+<div class="forecastforecasthome" ><div class="mod-forecast">
+<div class="forecastdiv">
 <?php //begin ad stuff 
 $jsonIcon = 'jsondata/lookupTable.json';
 $jsonIcon = file_get_contents($jsonIcon);
@@ -135,3 +136,4 @@ else if ($forecastdaynight=='N'){echo '<br><blueu>'.$humidity.'&nbsp;<forecastte
 } // end for loop for icons
 ?>
 </div></div></div>
+</div><!-- /mod-forecast -->

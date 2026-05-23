@@ -164,6 +164,7 @@ function modulePopups($module, $vars) {
 <link href="css/modules/lightning34.css?version=<?php echo filemtime('css/modules/lightning34.css'); ?>" rel="stylesheet">
 <link href="css/modules/barometer.css?version=<?php echo filemtime('css/modules/barometer.css'); ?>" rel="stylesheet">
 <link href="css/modules/wind.css?version=<?php echo filemtime('css/modules/wind.css'); ?>" rel="stylesheet">
+<link href="css/modules/sun.css?version=<?php echo filemtime('css/modules/sun.css'); ?>" rel="stylesheet"><link href="css/modules/moonphase.css?version=<?php echo filemtime('css/modules/moonphase.css'); ?>" rel="stylesheet"><link href="css/modules/conditions.css?version=<?php echo filemtime('css/modules/conditions.css'); ?>" rel="stylesheet"><link href="css/modules/forecast.css?version=<?php echo filemtime('css/modules/forecast.css'); ?>" rel="stylesheet">
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

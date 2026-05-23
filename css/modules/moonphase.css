@@ -1,0 +1,233 @@
+﻿/* moonphase module -- scoped to .mod-moonphase */
+.mod-moonphase { display: contents; }
+
+.mod-moonphase .moonset {
+  padding-top: 5px
+}
+
+.mod-moonphase .moonrise {
+  margin-top: -5px;
+  margin-left: 0;
+  font-size: 12px
+}
+
+.mod-moonphase .moonset {
+  margin-top: -32px;
+  margin-left: 80px
+}
+
+.mod-moonphase .fullmoon {
+  margin-top: -6px;
+  margin-left: 0;
+  font-size: 12px
+}
+
+.mod-moonphase .moonsetblue {
+  width: 65px;
+  line-height: 10px
+}
+
+.mod-moonphase .moonsetblue {
+  font-weight: 600;
+  color: #fff
+}
+
+.mod-moonphase .moonphasemoduleposition {
+  position: relative;
+  left: 100px;
+  margin-top: 3px;
+  font-family: weathertext2
+}
+
+.mod-moonphase .moonset1 span {
+  font-family: weathertext2
+}
+
+.mod-moonphase .moonset1 {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility
+}
+
+.mod-moonphase .moonrise1 {
+  color: silver
+}
+
+.mod-moonphase .newmoon1 {
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center
+}
+
+.mod-moonphase .moonset1 {
+  width: 75px;
+  font-size: .55rem;
+  -moz-osx-font-smoothing: grayscale
+}
+
+.mod-moonphase .newmoon1 {
+  font-size: .55rem;
+  width: 120px
+}
+
+.mod-moonphase .moonrise1 {
+  top: 0;
+  margin-left: -105px
+}
+
+.mod-moonphase .moonrise1 span {
+  color: silver;
+  margin-left: 25px
+}
+
+.mod-moonphase .moonset1 {
+  margin-top: 120px;
+  margin-left: -105px;
+  color: silver
+}
+
+.mod-moonphase .moonset1 span {
+  color: silver;
+  margin-left: 15px
+}
+
+.mod-moonphase .newmoon1 {
+  color: silver;
+  font-family: weathertext2
+}
+
+.mod-moonphase .fullmoon1 {
+  top: 0;
+  margin-left: 105px
+}
+
+.mod-moonphase .fullmoon1 span {
+  margin-left: 8px
+}
+
+.mod-moonphase .newmoon1 {
+  margin-top: 120px;
+  margin-left: 105px
+}
+
+.mod-moonphase .newmoon1 span {
+  margin-left: 5px
+}
+
+.mod-moonphase .meteorshower {
+  margin: 130px auto 110px -5px
+}
+
+.mod-moonphase .weather34moonphasem2 {
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: silver;
+  line-height: 8px;
+  font-size: .65em;
+  margin-top: 65px;
+  font-family: weathertext2
+}
+
+.mod-moonphase .weather34moonphasem2 {
+  align-items: center;
+  justify-content: center;
+  left: -110px
+}
+
+.mod-moonphase .weather34luminancem2 {
+  align-items: center;
+  justify-content: center;
+  left: 100px
+}
+
+.mod-moonphase .weather34moonmodule {
+  margin-left: 35px;
+  margin-top: 45px
+}
+
+.mod-moonphase .weather34moonmodule svg {
+  width: auto;
+  color: rgba(230, 232, 239, .7)
+}
+
+.mod-moonphase .weather34moonmodulepos {
+  position: absolute;
+  top: -20px;
+  left: 75px
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-moonphase .moonsetblue {
+  width: 65px;
+  margin-top: 0;
+  line-height: 10px
+}
+
+[data-theme="light"] .mod-moonphase .moonrisered {
+  position: relative;
+  background: var(--orange-d)
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 {
+  -moz-font-smoothing: antialiased
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 span {
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-moonphase .moonrise1 span {
+  margin-left: 25px
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 {
+  margin-top: 120px;
+  margin-left: -105px
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 span {
+  margin-left: 15px
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  color: #2d3a4b;
+  font-family: weathertext2
+}
+
+[data-theme="light"] .mod-moonphase .fullmoon1 {
+  top: 0;
+  margin-left: 115px;
+  font-size: .55rem;
+  width: 100px
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  font-size: .55rem;
+  width: 110px
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  margin-top: 120px;
+  margin-left: 110px
+}
+
+[data-theme="light"] .mod-moonphase .weather34moonphasem2 {
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: #2d3a4b;
+  line-height: 8px;
+  font-size: .65em;
+  margin-top: 65px;
+  font-family: weathertext2
+}
+
+[data-theme="light"] .mod-moonphase .weather34moonmodule svg {
+  width: auto;
+  color: rgba(230, 232, 239, 1)
+}
+

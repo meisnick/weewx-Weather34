@@ -211,7 +211,7 @@ $theminute =date('i');
 ?>
 
 <style>
-.weather34sunclock {
+.mod-sun .weather34sunclock {
 -webkit-transform: rotate(<?php echo ((($thehour * 15) + ($theminute / 4)) - 86)?>deg);
 transform: rotate(<?php echo ((($thehour * 15) + ($theminute / 4)) - 86)?>deg);
 border: 5px solid rgba(255, 255,255,0);
@@ -220,7 +220,7 @@ height: 110px;
 top: -9px;
 margin-left: 104px }
 
-.weather34sunclock 
+.mod-sun .weather34sunclock 
 #poscircircle {top: 50%;
 left: calc(50% - 55.8%);
 z-index: 1;
@@ -240,7 +240,8 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunaboveweather34>&nbsp;</div>";
 } else if ($elev < 0) { 
 $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }?>
 
-<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div><div class="daylightmoduleposition" >
+<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div><div class="mod-sun">
+<div class="daylightmoduleposition" >
  
 <?php echo 
 '<div class="weather34sunlightday"><weather34daylightdaycircle></weather34daylightdaycircle> '.$daylight.' hrs<br>'.$lang['TotalDaylight'].'</div>
@@ -298,3 +299,4 @@ ctx.strokeStyle = "'.$sn_clr.'";
 ctx.stroke();
   
 </script>'?>
+</div><!-- /mod-sun -->

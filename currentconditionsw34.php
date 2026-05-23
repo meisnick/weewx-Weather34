@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <title>weather34 current conditions</title>
 <style>
 uppercase{ text-transform:capitalize;}
@@ -20,6 +20,7 @@ if ($windunit == 'mph' || $windunit == 'kts') {
 <div class="updatedtimecurrent">
 <?php $forecastime=filemtime('jsondata/me.txt');if(filesize('jsondata/me.txt')<160){echo $online;}
 else echo $online,"";echo " ",date($timeFormat,$forecastime);?></div>
+<div class="mod-conditions">
 <div class="cloudconverter">
 <?php //cloudbase-weather34
 $cloudcoverunit = '%';
@@ -118,3 +119,4 @@ else if($weather["wind_direction_avg"]<=168.75){echo "SSE";}else if($weather["wi
 echo " </oorange><oblue> ".$weather["wind_direction_avg"]."</oblue>°";}
 echo "</oorange><br><oblue>Rainfall</oblue> for the last 3 hours <oblue> " .$weather["rain_last3hours"]."</oblue><valuetext> " .$rainunit;
 ?></valuetext></div></div></div>
+</div><!-- /mod-conditions -->

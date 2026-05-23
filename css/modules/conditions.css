@@ -1,0 +1,161 @@
+﻿/* conditions module -- scoped to .mod-conditions */
+.mod-conditions { display: contents; }
+
+.mod-conditions .updatedtimecurrent {
+  border-radius: 2px
+}
+
+.mod-conditions .forecastnexthours span2 {
+  font-family: arial, helvetica, system;
+  color: silver
+}
+
+.mod-conditions .forecastnexthours span2 {
+  font-size: 12px
+}
+
+.mod-conditions .forecasticoncurrent {
+  postion: relative;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  margin-left: 35px;
+  float: left
+}
+
+.mod-conditions .forecasticoncurrent {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  margin-left: 35px;
+  float: left
+}
+
+.mod-conditions .forecasticoncurrent span1 {
+  font-size: .9em
+}
+
+.mod-conditions .forecastsummary {
+  position: absolute;
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 12px;
+  height: 35px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 125px;
+  max-width: 120px;
+  color: silver
+}
+
+.mod-conditions .forecastnexthours {
+  font-size: .7rem;
+  position: relative;
+  text-align: center;
+  margin: 76px auto auto;
+  width: 240px;
+  line-height: 12px
+}
+
+.mod-conditions .cloudconvertercircle2000 {
+  width: 6.0rem;
+  font-family: weathertext2;
+  height: 1rem;
+  line-height: 16px;
+  overflow: hidden;
+  padding-top: 0
+}
+
+.mod-conditions .cloudconvertercircle {
+  align-items: center;
+  border: 1px solid var(--bg1);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  font-size: .57rem
+}
+
+.mod-conditions .cloudconverter {
+  font-size: 12px;
+  margin-top: 7px;
+  margin-left: 210px
+}
+
+.mod-conditions .cloudconvertercircle2000 {
+  align-items: center;
+  border: 1px solid var(--bg1);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  font-size: .57rem
+}
+
+.mod-conditions .updatedtimecurrent {
+  margin-top: -18px;
+  margin-left: 235px;
+  color: silver;
+  font: .65em weathertext2;
+  line-height: 10px;
+  background: 0;
+  padding: 3px
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-conditions .forecastsummary {
+  position: absolute;
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 12px;
+  height: 35px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 125px;
+  max-width: 120px;
+  color: #555
+}
+
+[data-theme="light"] .mod-conditions .forecastnexthours span2 {
+  font-family: arial, helvetica, system;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 {
+  width: 6.0rem;
+  font-family: weathertext2;
+  height: 1.25rem;
+  line-height: 16px;
+  overflow: hidden;
+  padding-top: 0;
+  color: #fff
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle {
+  align-items: center;
+  background: #4e95a0;
+  border: 2px solid #e6e8ef;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-size: .57rem
+}
+
+[data-theme="light"] .mod-conditions .cloudconverter {
+  position: absolute;
+  font-size: 12px;
+  margin-top: 7px;
+  margin-left: 210px
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 {
+  align-items: center;
+  background: var(--amber);
+  border: 2px solid #e6e8ef;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-size: .57rem
+}
+
+[data-theme="light"] .mod-conditions .updatedtimecurrent {
+  margin-top: -18px;
+  font: .65em weathertext2;
+  line-height: 10px
+}
+

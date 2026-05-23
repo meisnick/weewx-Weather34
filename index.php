@@ -206,8 +206,7 @@ body.edit-mode .weather34box:active{cursor:grabbing}
   font-family:arial;padding:6px 10px;background:rgba(33,34,39,.85);
   border:1px solid rgba(84,85,86,.4);color:#5a9;display:none}
 #col-picker{position:fixed;bottom:55px;right:18px;z-index:9999;display:none;
-  align-items:center;gap:3px;background:rgba(33,34,39,.85);
-  border:1px solid rgba(84,85,86,.5);padding:4px 8px;font-family:arial,helvetica;font-size:11px;color:silver}
+  align-items:center;gap:3px}
 
 #col-picker button{background:0;border:1px solid rgba(84,85,86,.4);color:silver;
   cursor:pointer;padding:3px 7px;font-size:11px;font-family:arial}

@@ -1,0 +1,51 @@
+/* airqualitymodule — individual pollutant pills row */
+
+/*
+ * position:relative + z-index:25 ensures pills render above the gauge circle
+ * (which uses z-index:20). margin-top:5px clears the badge flow footprint.
+ * display:flex counters .weather-item's global text-align:center.
+ */
+.aq-pollutants {
+  position: relative;
+  z-index: 25;
+  display: flex;
+  gap: 3px;
+  padding: 0 4px;
+  margin-top: 5px;
+}
+
+.aq-poll-pill {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 2px;
+  border-radius: 3px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  font-family: weathertext2, Arial, sans-serif;
+  color: #fff;
+}
+
+.aq-poll-val {
+  font-size: .75em;
+  line-height: 1.2;
+}
+
+.aq-poll-lbl {
+  font-size: .55em;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Ring on the dominant pollutant pill */
+.aq-dominant {
+  outline: 1px solid rgba(255, 255, 255, 0.35);
+  outline-offset: -2px;
+}
+
+/* Light theme: soften the pill shadow */
+[data-theme="light"] .aq-poll-pill {
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}

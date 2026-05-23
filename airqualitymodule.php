@@ -1,10 +1,34 @@
 <?php  include('shared.php');include('common.php');
-$json_string             = file_get_contents("jsondata/aq.txt");
-$parsed_json             = json_decode($json_string, true);
-$aqiweather["aqi"]       = $parsed_json['data']['aqi'];
-$aqiweather["aqiozone"]  = 'N/A';
-$aqiweather["time"]     = date($timeFormat,$parsed_json['data']['time']['v']);
-$aqiweather["city"]      = $parsed_json['data']['city']['name'];
+
+// --- Load AQ data safely ---
+$aqiweather = ['aqi' => 0, 'aqiozone' => 'N/A', 'time' => '--', 'city' => '--'];
+$aq_pm25 = null; $aq_pm10 = null; $aq_o3 = null; $aq_no2 = null;
+$aq_dominant = '';
+$aq_file = 'jsondata/aq.txt';
+if (file_exists($aq_file) && (time() - filemtime($aq_file) < 7200)) {
+    $raw = file_get_contents($aq_file);
+    $parsed_json = json_decode($raw, true);
+    if (json_last_error() === JSON_ERROR_NONE && isset($parsed_json['data'])) {
+        $d = $parsed_json['data'];
+        $aqiweather['aqi']  = (int)($d['aqi'] ?? 0);
+        $aqiweather['time'] = date($timeFormat, $d['time']['v'] ?? time());
+        $aqiweather['city'] = $d['city']['name'] ?? '--';
+        $iaqi = $d['iaqi'] ?? [];
+        $aq_pm25     = isset($iaqi['pm25']['v']) ? round((float)$iaqi['pm25']['v']) : null;
+        $aq_pm10     = isset($iaqi['pm10']['v']) ? round((float)$iaqi['pm10']['v']) : null;
+        $aq_o3       = isset($iaqi['o3']['v'])   ? round((float)$iaqi['o3']['v'])   : null;
+        $aq_no2      = isset($iaqi['no2']['v'])  ? round((float)$iaqi['no2']['v'])  : null;
+        $aq_dominant = strtolower($d['dominentpol'] ?? '');
+    }
+}
+
+function aq_pill_bg($val) {
+    if ($val === null) return 'var(--bg0)';
+    if ($val > 150) return 'var(--red)';
+    if ($val > 100) return 'var(--orange)';
+    if ($val > 50)  return 'var(--amber)';
+    return 'var(--green)';
+}
 
 ?>
 <div class="mod-airquality">
@@ -16,7 +40,7 @@ $aqiweather["city"]      = $parsed_json['data']['city']['name'];
                 echo $offline . ' <offline>Offline</offline>';
             }?>
         </span>
-    </div> 
+    </div>
 
     <div class="airqualitywordbig">Air Quality</div>
 
@@ -55,9 +79,9 @@ $aqiweather["city"]      = $parsed_json['data']['city']['name'];
             ?>
         </div>
     </div>
-  
+
     <div class="airsvg">
-        <?php 
+        <?php
         if ($aqiweather["aqi"] > 300) {
             echo "<div class='dottedcirclered'>";
         } else if ($aqiweather["aqi"] > 200) {
@@ -75,7 +99,7 @@ $aqiweather["city"]      = $parsed_json['data']['city']['name'];
             <div class="airvalue">
                 <?php //WEATHER34 AIR QUALITY VALUE
                 echo $aqiweather["aqi"];
-                
+
                 //WEATHER34 air quality description
                 if ($aqiweather["aqi"] > 300) {
                     echo "<br><airdescription><indoorred>&nbsp;" . $lang['Hazordous'] . "</indoorred></airdescription>";
@@ -95,21 +119,24 @@ $aqiweather["city"]      = $parsed_json['data']['city']['name'];
         </div>
     </div>
 
-    <div class="airwarning">
-        <?php 
-        if ($aqiweather["aqi"] > 300) {
-            echo $airalertred;
-        } else if ($aqiweather["aqi"] > 200) {
-            echo $airalertpurple;
-        } else if ($aqiweather["aqi"] > 150) {
-            echo $airalertred;
-        } else if ($aqiweather["aqi"] > 100) {
-            echo $airalertorange;
-        } else if ($aqiweather["aqi"] > 50) {
-            echo $airokyellow;
-        } else {
-            echo $airok;
-        }
+    <div class="aq-pollutants">
+        <?php
+        $polls = [
+            'PM2.5' => $aq_pm25,
+            'PM10'  => $aq_pm10,
+            'O3'    => $aq_o3,
+            'NO₂'   => $aq_no2,
+        ];
+        foreach ($polls as $label => $val):
+            $bg   = aq_pill_bg($val);
+            $disp = ($val !== null) ? $val : '--';
+            $slug = strtolower(str_replace(['₂', '.', ' ', '₃'], ['2', '', '', '3'], $label));
+            $dom  = ($slug === $aq_dominant) ? ' aq-dominant' : '';
         ?>
+        <div class="aq-poll-pill<?php echo $dom; ?>" style="background:<?php echo $bg; ?>">
+            <span class="aq-poll-val"><?php echo $disp; ?></span>
+            <span class="aq-poll-lbl"><?php echo $label; ?></span>
+        </div>
+        <?php endforeach; ?>
     </div>
 </div>

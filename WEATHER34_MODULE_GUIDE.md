@@ -69,16 +69,21 @@ include('shared.php');        // $online, $offline SVGs; unit conversion fns
 include_once('settings1.php'); // $timeFormat, $TZ, $lat, $lon etc.
 // include_once('w34CombinedData.php');  // add if you need $weather[] sensor data
 
-// --- Load your data ---
-$value = 0;
-if (file_exists('jsondata/yourdata.json')) {
-    $data = json_decode(file_get_contents('jsondata/yourdata.json'), true);
-    $value = $data['key'] ?? 0;
+// --- Load your data safely ---
+$value     = '--';   // safe display default — never outputs 0 or blank on failure
+$data_ok   = false;
+$file_path = 'jsondata/yourdata.json';
+
+if (file_exists($file_path) && (time() - filemtime($file_path) < 3600)) {
+    $raw  = file_get_contents($file_path);
+    $data = json_decode($raw, true);
+    if (json_last_error() === JSON_ERROR_NONE) {   // guards against partial curl downloads
+        $value   = $data['key'] ?? '--';
+        $data_ok = true;
+    }
 }
 
-// --- Freshness check ---
-$data_ok = file_exists('jsondata/yourdata.json')
-        && (time() - filemtime('jsondata/yourdata.json') < 3600);
+// $data_ok drives both the updatedtime indicator and any conditional UI below
 ?>
 <div class="updatedtime"><span>
     <?php if ($data_ok):
@@ -218,6 +223,35 @@ and the global CSS handles placement. Only override if you have a specific reaso
 Most original Weather34 modules use `display: contents` on their wrapper (transparent
 to layout, children flow directly into `#grid_N`). The flex wrapper approach (used in
 the Space Weather module) is equally valid for complex layouts — pick based on need.
+
+### 6.5 JavaScript in grid modules
+
+Because grid modules are loaded via jQuery `.load()` (AJAX fragment injection), the
+fragment arrives **after** `DOMContentLoaded` and `$(document).ready()` have already
+fired. `$(document).ready()` inside a module will never execute.
+
+**Rule:** Place any module-specific `<script>` at the **absolute bottom** of
+`module_name.php`. It executes immediately on injection — no wrapper needed.
+
+```php
+<!-- bottom of module_name.php, after all HTML -->
+<script>
+(function () {
+    // IIFE keeps all vars local — avoids polluting window scope
+    // (multiple module loads on refresh would re-declare otherwise)
+    var val = <?php echo json_encode($value); ?>;
+    document.getElementById('ym-readout').textContent = val;
+}());
+</script>
+```
+
+**Rules:**
+- Wrap in an IIFE `(function(){...}())` — the module refreshes on interval, so global
+  var declarations would collide with themselves on the second load.
+- Prefix any IDs used by JavaScript with your module prefix (`ym-`, `aurora-`, etc.)
+  for the same collision reason.
+- Heavy libraries (Highcharts, Chart.js) belong in the **popup**, not the grid card.
+  Keep grid module scripts to a few lines max.
 
 ---
 
@@ -401,6 +435,116 @@ $box_none  = $is_dark ? '#393d40' : '#d0d4db';
 $grid_ln   = $is_dark ? '#2a2c2f' : '#e0e2e6'; // chart gridlines
 ```
 
+### 9.5 Popup PHP skeleton (`pop_yourmodule.php`)
+
+Popups are full HTML pages (unlike grid modules). Start from this skeleton — it wires
+up the no-scroll body, the lity close-button clearance, and the theme variables in one
+block.
+
+```php
+<?php
+include_once('settings1.php');
+include_once('shared.php');
+
+$is_dark   = ($theme !== 'light');
+$bg        = $is_dark ? '#151819' : '#fff';
+$bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
+$bg_card   = $is_dark ? '#252729' : '#e8eaef';
+$text      = $is_dark ? '#ddd'    : '#222';
+$text_dim  = $is_dark ? '#777'    : '#666';
+$border    = $is_dark ? '#2e3033' : '#ccc';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Module Details</title>
+<style>
+html, body {
+  height: 100%; overflow: hidden; margin: 0;
+  background: <?php echo $bg; ?>; color: <?php echo $text; ?>;
+  font-family: Arial, sans-serif; font-size: 13px;
+}
+body { display: flex; flex-direction: column; }
+
+/* Header — always visible at top */
+.pop-header {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px;
+  background: <?php echo $bg_chrome; ?>;
+  border-bottom: 1px solid <?php echo $border; ?>;
+}
+/* Last item must clear the lity close button in the top-right corner */
+.pop-header .pop-last { margin-right: 50px; }
+
+/* Optional tab row */
+.pop-tabs { flex: 0 0 auto; padding: 4px 8px; background: <?php echo $bg_chrome; ?>; }
+.tablink {
+  background-color: #555; color: white;
+  border: 2px solid <?php echo $bg_chrome; ?>; border-radius: 5px;
+  margin-left: 5px; padding: 5px 8px;
+  font-size: 10px; font-family: Arial, sans-serif; cursor: pointer; outline: none;
+}
+.tablink:hover { background-color: #777; }
+
+/* Content area — fills remaining height, no overflow */
+.pop-content {
+  flex: 1; min-height: 0;
+  position: relative; overflow: hidden;
+}
+.tabcontent {
+  display: none;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+}
+
+/* Image fitting inside a flex-grown frame */
+.img-frame { flex: 1; min-height: 0; position: relative; overflow: hidden; }
+.img-frame img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; object-fit: contain;
+}
+</style>
+</head>
+<body>
+
+<div class="pop-header">
+  <div>Your Module Title</div>
+  <div class="pop-last">Updated: <?php echo date($timeFormat); ?></div>
+</div>
+
+<!-- Uncomment if using tabs:
+<div class="pop-tabs">
+  <button class="tablink" onclick="openTab(event,'tab1')">Tab 1</button>
+  <button class="tablink" onclick="openTab(event,'tab2')">Tab 2</button>
+</div>
+-->
+
+<div class="pop-content">
+  <div id="tab1" class="tabcontent" style="display:block; ...">
+    <!-- your content -->
+  </div>
+</div>
+
+<script>
+function openTab(evt, name) {
+  document.querySelectorAll('.tabcontent').forEach(function(t){ t.style.display='none'; });
+  document.querySelectorAll('.tablink').forEach(function(b){ b.style.backgroundColor=''; });
+  document.getElementById(name).style.display = 'block';
+  evt.currentTarget.style.backgroundColor = 'rgba(194,102,58)';
+}
+</script>
+</body>
+</html>
+```
+
+**Key points:**
+- `include_once('settings1.php')` first — it sets `$theme`.
+- `html, body { height:100%; overflow:hidden }` is mandatory — skipping it causes a scrollbar.
+- The `.pop-last` rule (`margin-right: 50px`) must be on the rightmost header element or the lity close button covers it.
+- For single-image popups, omit the tab row entirely and put `.img-frame` directly in `.pop-content`.
+
 ---
 
 ## 10. Adding a New Data Source
@@ -445,6 +589,7 @@ $ok = file_exists('jsondata/yourdata.json')
 - [ ] `updatedtime` div is the **first element** output
 - [ ] Wrapper uses `padding-top`, not `margin-top`
 - [ ] Wrapper uses `display: flex; text-align: left` (or `float: left` on badge) to override global centering
+- [ ] Data loading uses `json_last_error() === JSON_ERROR_NONE` guard; default value is `'--'` not `0`
 - [ ] Create `css/modules/module_name.css` (auto-loaded — no extra step needed)
 - [ ] All CSS class names prefixed to avoid collisions
 - [ ] Font sizes use `em`/`rem` not `px` for labels (`.65em` for sub-labels, `.8em` for headings)
@@ -454,6 +599,7 @@ $ok = file_exists('jsondata/yourdata.json')
 - [ ] Register in `templateSetup.php`: `$grid_available`
 - [ ] Add to `modules.php`: `$grid_modules` with appropriate refresh interval
 - [ ] If new data source: cron script created, deployed, run immediately, added to crontab
+- [ ] If inline JS: wrapped in IIFE `(function(){...}())` and placed at bottom of file
 - [ ] PHP syntax check: `php -l module_name.php`
 - [ ] HTTP smoke test: `curl -s http://localhost/weewx/weather34/module_name.php`
 - [ ] Dashboard loads clean: `curl -s -o /dev/null -w '%{http_code}' http://localhost/weewx/weather34/index.php`

@@ -1,4 +1,4 @@
-<body>
+﻿<body>
 <?php  include('shared.php');include('common.php');
 // PURPLE AIR additional conversion script included by Andrew Billits 24 April 2018
 function pm25_to_aqi($pm25){
@@ -49,6 +49,7 @@ $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
   } else {
   echo $offline. '<offline> Offline </offline>';
   }?></div> 
+<div class="mod-airquality">
 <div class="airqualitywordbig">Air Quality</div>
 <div class="tempconverter2">
 <?php //WEATHER34 AIR QAULITY SVG
@@ -112,3 +113,4 @@ else echo $airok ;?></div>
 
 
 </body>
+</div><!-- /mod-airquality -->

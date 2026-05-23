@@ -1,4 +1,4 @@
-<body>
+﻿<body>
 <?php  include('shared.php');include('common.php');include('serverdata/airqualitydata.php');
 $pm25 = $pm2_5_now_ecowitt;
 
@@ -44,6 +44,7 @@ $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
   } else {
   echo $offline. '<offline> Offline </offline>';
   }?></div> 
+<div class="mod-airquality">
 <div class="airqualitywordbig">AQI</div>
 <div class="tempconverter2">
 <?php //WEATHER34 AIR QAULITY SVG
@@ -107,3 +108,4 @@ else echo $airok ;?></div>
 
 
 </body>
+</div><!-- /mod-airquality -->

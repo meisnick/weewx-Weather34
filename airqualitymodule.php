@@ -1,4 +1,4 @@
-<?php  include('shared.php');include('common.php');
+﻿<?php  include('shared.php');include('common.php');
 $json_string             = file_get_contents("jsondata/aq.txt");
 $parsed_json             = json_decode($json_string, true);
 $aqiweather["aqi"]       = $parsed_json['data']['aqi'];
@@ -12,6 +12,7 @@ $aqiweather["city"]      = $parsed_json['data']['city']['name'];
   } else {
   echo $offline. '<offline> Offline </offline>';
   }?></div> 
+<div class="mod-airquality">
 <div class="airqualitywordbig">Air Quality</div>
 <div class="tempconverter2">
 <?php //WEATHER34 AIR QAULITY SVG
@@ -75,3 +76,4 @@ else echo $airok ;?></div>
 
 
 </body>
+</div><!-- /mod-airquality -->

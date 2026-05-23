@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 require_once('w34CombinedData.php');require_once('common.php');?>
 <meta http-equiv="Content-Type: text/html; charset=UTF-8" />
@@ -9,6 +9,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
 .thearrow1:before{content:'  o o o o';color:rgb(144, 177, 42);font-family:Arial, Helvetica, sans-serif;font-size:4px;width:1px;height:1px;position:absolute;z-index:1;left:3px;top:-4px;border:2px dotted RGBA(255,255,255,0.8);-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
 .avgw{ width:27px; height:27px;	margin-left:35px;-webkit-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-moz-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-o-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-ms-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);}spancalm{postion:relative;font-family:weathertext,Arial;font-size:26px;}</style>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div> <br />
+<div class="mod-wind">
 <div class="windspeedvalues"><div class="windspeedvalue">
 <?php  
 //weather34-windspeed instantaneous
@@ -116,3 +117,4 @@ if ($weather["wind_speed_bft"] == 0) {
 }
 ?>
 </div>
+</div><!-- /mod-wind -->

@@ -1,0 +1,738 @@
+﻿/* barometer module -- scoped to .mod-barometer */
+.mod-barometer { display: contents; }
+
+.mod-barometer .barometergaugegrid {
+  width: 90%;
+  text-align: center;
+  margin: 10px 0 auto
+}
+
+.mod-barometer .barometertrend {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  font: 12px Arial, system;
+  margin: -58px auto auto
+}
+
+.mod-barometer .barometertrend1 {
+  width: 100px;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 120px;
+  text-align: left;
+  color: silver;
+  font: .68em weathertext2;
+  line-height: 9px
+}
+
+.mod-barometer .barometertrend1 hourtrend {
+  font: 500 10px arial, system;
+  color: silver;
+  line-height: 9px;
+  text-align: left;
+  margin-left: 15px
+}
+
+.mod-barometer .barometermax {
+  margin-left: 10px;
+  width: 50px;
+  position: absolute;
+  text-align: center
+}
+
+.mod-barometer .barometermax {
+  margin-top: 10px;
+  color: silver;
+  font: 10px arial, system;
+  line-height: 9px
+}
+
+.mod-barometer .barometermin {
+  margin-top: 124px;
+  position: absolute;
+  text-align: center
+}
+
+.mod-barometer .barometermax span {
+  font: 500 10px arial, system;
+  color: var(--green)
+}
+
+.mod-barometer .barometermax unit {
+  font: 500 10px arial, system;
+  color: silver
+}
+
+.mod-barometer .barometermin {
+  margin-left: 240px;
+  width: 50px;
+  color: silver;
+  font: 10px arial, system;
+  line-height: 9px
+}
+
+.mod-barometer .barometermin unit {
+  font: 500 10px arial, system
+}
+
+.mod-barometer .barometermin span {
+  color: var(--green)
+}
+
+.mod-barometer .barometermin unit {
+  color: silver
+}
+
+.mod-barometer .weather34barometerarrowactual:after {
+  content: ''
+}
+
+.mod-barometer .barometerorange {
+  position: absolute;
+  background: rgba(97, 106, 114, 0);
+  color: silver;
+  width: 60px;
+  border-radius: 2px;
+  padding: 1px;
+  float: left;
+  line-height: 10px
+}
+
+.mod-barometer .barometerblue {
+  margin-top: 5px
+}
+
+.mod-barometer .barometerorange {
+  margin-top: -5px;
+  margin-left: 0
+}
+
+.mod-barometer .barometerblue {
+  margin-left: 5px
+}
+
+.mod-barometer .barometerorange span {
+  font-weight: 600;
+  color: var(--orange)
+}
+
+.mod-barometer .barometerblue span {
+  font-weight: 600
+}
+
+.mod-barometer .barometergreen {
+  color: #fff;
+  background: var(--green);
+  margin-left: 120px;
+  width: 60px
+}
+
+.mod-barometer .barometergreen supunit {
+  font-weight: 600;
+  color: #fff
+}
+
+.mod-barometer .homeweathercompass2 {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  margin-top: -30px;
+  margin-left: 60px
+}
+
+.mod-barometer .homeweathercompass2>.homeweathercompass-line2 {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  bottom: 25px;
+  width: 170px;
+  height: 170px;
+  border: 8px solid;
+  border-top: 8px solid rgba(61, 64, 66, 1);
+  border-right: 8px solid rgba(61, 64, 66, 1);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(-45deg);
+  margin: auto
+}
+
+.mod-barometer .homeweathercompass2 {
+  display: block;
+  text-align: center;
+  font-family: Arial, system;
+  font-weight: 600;
+  line-height: 12px;
+  z-index: 10;
+  margin: 25px 0 auto 40px
+}
+
+.mod-barometer .text2 {
+  font-size: 18px;
+  margin-left: 35px;
+  margin-top: 75px;
+  color: var(--orange)
+}
+
+.mod-barometer .pressuretextfast {
+  position: absolute;
+  font-size: .7rem;
+  color: silver;
+  margin-top: -18px;
+  margin-left: 30px;
+  width: 90px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif, system
+}
+
+.mod-barometer .pressuretextfast {
+  color: var(--orange-d)
+}
+
+.mod-barometer .barometertrend2 {
+  position: absolute;
+  color: silver;
+  padding: 1px;
+  border-radius: 2px;
+  margin-top: 129px;
+  margin-left: 10px;
+  float: left;
+  width: 60px;
+  line-height: 10px;
+  font-size: 10px
+}
+
+.mod-barometer .barometertrend2 span {
+  font-weight: 600;
+  color: var(--green)
+}
+
+.mod-barometer .barometerconv {
+  width: 70px;
+  font: 10px arial, system;
+  line-height: 10px;
+  margin-top: 132px;
+  position: absolute;
+  text-align: center;
+  color: var(--green);
+  font-weight: 600
+}
+
+.mod-barometer .barometerlimits {
+  margin-top: 57px;
+  margin-left: 16px;
+  width: 235px;
+  color: var(--text-m);
+  font-family: Helvetica, Arial
+}
+
+.mod-barometer .weather34barometerarrowmin:after {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.mod-barometer .weather34barometerarrowmin {
+  z-index: 200;
+  -o-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%
+}
+
+.mod-barometer .weather34barometerarrowactual {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+  width: 8px;
+  height: 50%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  transform-origin: 50% 100%
+}
+
+.mod-barometer .weather34barometerarrowactual:after {
+  background-color: 0;
+  -o-transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0;
+  border-color: var(--orange) transparent transparent;
+  transform: translate(-50%, -50%)
+}
+
+.mod-barometer .weather34barometerarrowactual:before {
+  content: 'o o o';
+  width: 0;
+  position: absolute;
+  left: 2px;
+  top: -5px;
+  border: 0;
+  color: var(--orange);
+  font-size: 5px;
+  font-family: Arial, Helvetica, system
+}
+
+.mod-barometer .weather34barometerarrowmin:before {
+  content: '';
+  position: absolute
+}
+
+.mod-barometer .weather34barometerarrowmin {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+  width: 8px;
+  height: 50%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  transform-origin: 50% 100%
+}
+
+.mod-barometer .weather34barometerarrowmin:after {
+  background-color: 0;
+  -o-transform: translate(-50%, -50%);
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgba(102, 188, 199, .8);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.mod-barometer .weather34barometerarrowmin:before {
+  width: 0;
+  left: 2px;
+  top: -5px;
+  border: 0;
+  color: rgba(102, 188, 199, .6);
+  font-size: 5px
+}
+
+.mod-barometer .weather34barometerarrowmax {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+  width: 8px;
+  height: 50%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%
+}
+
+.mod-barometer .weather34barometerarrowmax:after {
+  -webkit-transform: translate(-50%, -50%);
+  background-color: 0;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgba(255, 121, 58, .8);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.mod-barometer .weather34barometerarrowmax:before {
+  width: 0;
+  left: 2px;
+  top: -5px;
+  border: 0;
+  color: rgba(255, 121, 58, .6);
+  font-size: 5px
+}
+
+.mod-barometer .barometerconverter {
+  margin-left: 250px;
+  margin-top: 5px
+}
+
+.mod-barometer .barometertrendx {
+  margin-left: 260px;
+  margin-top: 130px
+}
+
+.mod-barometer .barometerconvertercircleblue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  width: 3.5rem;
+  border: 1px solid var(--bg1);
+  overflow: hidden;
+  border-radius: 2px;
+  color: silver;
+  line-height: 16px;
+  font-family: weathertext2, Helvetica, system;
+  font-size: .85em;
+  right: 10px;
+  background: 0
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-barometer .barometergaugegrid {
+  width: 90%;
+  margin: 10px 0 auto;
+  text-align: center
+}
+
+[data-theme="light"] .mod-barometer .barometertrend {
+  color: var(--text);
+  position: relative;
+  margin: -58px auto auto;
+  text-align: center;
+  z-index: 1;
+  font: 12px Arial, system;
+  -o-font-smoothing: antialiased
+}
+
+[data-theme="light"] .mod-barometer .barometertrend steady {
+  -o-font-smoothing: antialiased;
+  font-family: arial, system
+}
+
+[data-theme="light"] .mod-barometer .barometertrend steady {
+  color: var(--green)
+}
+
+[data-theme="light"] .mod-barometer .barometertrend rising {
+  color: #d65b4a
+}
+
+[data-theme="light"] .mod-barometer .barometertrend falling {
+  color: rgba(18, 109, 193, 1)
+}
+
+[data-theme="light"] .mod-barometer .barometertrend1 {
+  width: 100px;
+  font: 700 12px arial, system;
+  text-align: left;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 130px;
+  color: #d65b4a;
+  line-height: 9px
+}
+
+[data-theme="light"] .mod-barometer .barometertrend1 hourtrend {
+  font: 9px arial, system;
+  color: var(--text);
+  line-height: 9px;
+  text-align: left;
+  margin-left: 15px
+}
+
+[data-theme="light"] .mod-barometer .barometermin {
+  width: 50px;
+  text-align: center
+}
+
+[data-theme="light"] .mod-barometer .barometermax {
+  margin-left: 10px;
+  position: absolute;
+  margin-top: 10px;
+  color: rgba(245, 101, 10, 1);
+  font: 10px arial, system;
+  line-height: 9px
+}
+
+[data-theme="light"] .mod-barometer .barometermax span {
+  font: 700 10px arial, system;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-barometer .barometermax unit {
+  font: 10px arial, system;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-barometer .barometermin {
+  margin-top: 125px;
+  color: #07727d;
+  font: 10px arial, system;
+  line-height: 9px
+}
+
+[data-theme="light"] .mod-barometer .barometermin span {
+  font: 700 10px arial, system;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-barometer .barometermin unit {
+  font: 10px arial, system;
+  color: #38383c
+}
+
+[data-theme="light"] .mod-barometer .text2 span {
+  vertical-align: middle
+}
+
+[data-theme="light"] .mod-barometer .homeweathercompass2>.homeweathercompass-line2 {
+  -webkit-clip-path: polygon(100%0, 100%100%, 100%100%, 0100%, 0);
+  -ms-clip-path: polygon(100%0, 100%100%, 100%100%, 0100%, 0)
+}
+
+[data-theme="light"] .mod-barometer .barometerorange {
+  position: absolute;
+  background: rgba(245, 247, 252, 0);
+  width: 60px;
+  border-radius: 4px;
+  line-height: 10px
+}
+
+[data-theme="light"] .mod-barometer .barometerblue {
+  margin-top: 10px;
+  color: var(--text)
+}
+
+[data-theme="light"] .mod-barometer .barometerorange {
+  margin-top: -5px;
+  color: var(--text);
+  margin-left: 0
+}
+
+[data-theme="light"] .mod-barometer .barometerorange span {
+  font-weight: 600;
+  color: var(--red)
+}
+
+[data-theme="light"] .mod-barometer .barometerblue span {
+  font-weight: 600;
+  color: rgba(0, 154, 171, 1)
+}
+
+[data-theme="light"] .mod-barometer .barometergreen {
+  color: #fff;
+  background: var(--green);
+  border-radius: 4px;
+  margin-left: 120px
+}
+
+[data-theme="light"] .mod-barometer .homeweathercompass2>.homeweathercompass-line2 {
+  right: 25px;
+  -ms-border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  left: 25px;
+  top: 20px;
+  bottom: 25px;
+  width: 170px;
+  height: 170px;
+  border: 8px solid #e9ebf1;
+  border-top: 8px solid #e9ebf1;
+  border-right: 8px solid #e9ebf1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(-45deg);
+  margin: auto
+}
+
+[data-theme="light"] .mod-barometer .homeweathercompass2 {
+  display: block;
+  text-align: center;
+  color: var(--text);
+  font-family: Arial, system;
+  font-weight: 600;
+  line-height: 12px;
+  font-size: 12px;
+  z-index: 10;
+  margin: 25px 0 auto 40px
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowactual:after {
+  -moz-transform: translate(-50%, -50%);
+  background-color: 0
+}
+
+[data-theme="light"] .mod-barometer .pressuretextfast {
+  position: absolute;
+  font-size: .7rem;
+  color: var(--text-d);
+  margin-top: -18px;
+  margin-left: 30px;
+  width: 90px;
+  background: 0;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif, system
+}
+
+[data-theme="light"] .mod-barometer .pressuretextfast {
+  color: var(--red)
+}
+
+[data-theme="light"] .mod-barometer .barometertrend2 {
+  position: absolute;
+  color: var(--text);
+  border-radius: 4px;
+  margin-top: 135px;
+  margin-left: 10px;
+  width: 60px;
+  line-height: 9px;
+  font-size: 10px;
+  background: rgba(245, 247, 252, 0)
+}
+
+[data-theme="light"] .mod-barometer .barometerconv {
+  width: 70px;
+  font: 10px arial, system;
+  line-height: 10px;
+  margin-top: 132px;
+  position: absolute;
+  text-align: center;
+  color: #07727d;
+  font-weight: 600
+}
+
+[data-theme="light"] .mod-barometer .barometerconv span {
+  color: #38383c;
+  display: block
+}
+
+[data-theme="light"] .mod-barometer .barometerlimits {
+  margin-top: 55px;
+  margin-left: 16px;
+  width: 235px;
+  color: var(--text);
+  font-family: Helvetica, Arial
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmin:after {
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  content: ''
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmin {
+  z-index: 200;
+  height: 50%;
+  -webkit-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowactual {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+  width: 8px;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowactual:after {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0;
+  border-color: var(--orange) transparent transparent;
+  transform: translate(-50%, -50%)
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowactual:before {
+  content: 'o o o';
+  width: 0;
+  position: absolute;
+  left: 2px;
+  top: -5px;
+  border: 0;
+  color: var(--orange);
+  font-size: 7px;
+  font-family: Arial, Helvetica, system
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmin:after {
+  background-color: 0;
+  left: 50%;
+  top: 0;
+  border-style: solid;
+  border-width: 3px;
+  position: absolute
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmin {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+  width: 8px;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmin:after {
+  -moz-transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-color: rgba(102, 188, 199, .8);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%)
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowmax:after {
+  -webkit-transform: translate(-50%, -50%);
+  content: '';
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-color: var(--red);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%)
+}
+
+[data-theme="light"] .mod-barometer .barometertrendx {
+  margin-left: 10px;
+  margin-top: 135px
+}
+
+[data-theme="light"] .mod-barometer .barometerconvertercircleblue {
+  background: #4e95a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.1rem;
+  width: 3.5rem;
+  border: 2px solid #e6e8ef;
+  overflow: hidden;
+  border-radius: 3px;
+  color: #fff;
+  line-height: 16px;
+  font-family: weathertext2;
+  font-size: .85em;
+  right: 10px
+}
+

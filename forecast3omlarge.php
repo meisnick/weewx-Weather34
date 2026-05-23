@@ -25,7 +25,7 @@ $json        = 'jsondata/forecast_daily.txt';
 $forecasturl = file_get_contents($json);
 $parsed_json = json_decode($forecasturl, true);
 $pngicon = $parsed_json['response'][0]['periods'][0]['icon'];
-$forecastIcon = $parsed_icon[$pngicon]['icon1'];
+$forecastIcon = $parsed_icon[$pngicon]['icon'];
 
 $Time     = date("H", $parsed_json['response'][0]['periods'][0]['timestamp']);
 $forecastTempHigh = $parsed_json['response'][0]['periods'][0]['maxTempC'];

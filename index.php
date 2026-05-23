@@ -136,7 +136,7 @@ function modulePopups($module, $vars) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?php echo $theme; ?>">
 <head>
 <title><?php echo $stationlocation; ?> Weather Station</title>
 <meta content="Home weather station providing current weather conditions for <?php echo $stationlocation; ?>" name="description">
@@ -158,6 +158,7 @@ function modulePopups($module, $vars) {
 <link rel="preload" href="css/fonts/clock3-webfont.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="css/fonts/verbatim-regular.woff" as="font" type="font/woff" crossorigin>
 <link href="css/main.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/main.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
+<link href="css/modules/temperature.css?version=<?php echo filemtime('css/modules/temperature.css'); ?>" rel="stylesheet">
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

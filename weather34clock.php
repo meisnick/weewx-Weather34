@@ -111,8 +111,8 @@ else if ($theme === "light")
 }
 ?>
 
-<div class="calendar34" style="padding-top: 10px" ><svg id="weather34clock icon" width="60pt" height="60pt" viewBox="0 0 720 720" version="12-10-21" ></svg>
-</div><span id="theTime"></span></div>
+<div class="mod-clock"><div class="calendar34" style="padding-top: 10px" ><svg id="weather34clock icon" width="60pt" height="60pt" viewBox="0 0 720 720" version="12-10-21" ></svg>
+</div><span id="theTime"></span>
 
 <div class="clock"  width="48" height="48" style="position:relative; top: 27px; left: 5px;">
 	<div class="dot"></div>
@@ -122,6 +122,7 @@ else if ($theme === "light")
 	<div class="center"></div>
 </div>
 
+</div><!-- /mod-clock -->
   <script>
   $(document).ready(function() {
 	

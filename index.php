@@ -229,7 +229,11 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 <?php foreach ($topbar_modules as $i => $mod): ?>
     <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($mod['title']); ?></div>
+        <?php if ($mod['module'] === 'weather34clock.php'): ?>
+        <div id="top_<?php echo $i; ?>"></div>
+        <?php else: ?>
         <div class="value"><div id="top_<?php echo $i; ?>"></div></div>
+        <?php endif; ?>
     </div>
 <?php endforeach; ?>
 </div></div>

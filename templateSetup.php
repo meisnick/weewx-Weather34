@@ -1376,7 +1376,6 @@ General template settings with options to choose which type of module to display
             <option>top_temperatureyear.php</option>
             <option>top_lightning.php</option>
             <option>top_aqi_world.php</option>
-            <option>top_aqi_daqi.php</option>
            </select>
         <div class="stationvalue"> Position 2 Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1401,7 +1400,7 @@ General template settings with options to choose which type of module to display
             <option>top_temperatureyear.php</option>
             <option>top_lightning.php</option>
             <option>top_aqi_world.php</option>
-            </select>
+           </select>
      <div class="stationvalue"> Position 3 Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
@@ -1463,15 +1462,20 @@ General template settings with options to choose which type of module to display
         <label name="position12"></label>
         <select id="position12" name="position12" class="choose">
             <option><?php echo $position12 ;?></option>
+            <option>temperaturein.php</option>
             <option>indoortemperature.php</option>
-            <option>airqualitymodule.php</option>
-            <option>purpleairqualitymodule.php</option>
-            <option>webcamsmall.php</option>
+            <option>forecast3om.php</option>
+            <option>forecast3omlarge.php</option>
+            <option>currentconditionsw34.php</option>
+            <option>windspeeddirection.php</option>
+            <option>barometer.php</option>
+            <option>sun3.php</option>
+            <option>rainfall.php</option>
             <option>moonphase.php</option>
-            <option>weather34uvsolar.php</option>
-            <option>solaruv.php</option>
-            <option>solaruvwu.php</option>
             <option>lightning34.php</option>
+            <option>airqualitymodule.php</option>
+            <option>weather34uvsolar.php</option>
+            <option>webcamsmall.php</option>
         </select>
         <div class="stationvalue"> Position 12 Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1492,15 +1496,20 @@ General template settings with options to choose which type of module to display
         <label name="positionlastmodule"></label>
         <select id="positionlastmodule" name="positionlastmodule" class="choose">
             <option><?php echo $positionlastmodule ;?></option>
+            <option>temperaturein.php</option>
             <option>indoortemperature.php</option>
-            <option>airqualitymodule.php</option>
-            <option>purpleairqualitymodule.php</option>
-            <option>webcamsmall.php</option>
+            <option>forecast3om.php</option>
+            <option>forecast3omlarge.php</option>
+            <option>currentconditionsw34.php</option>
+            <option>windspeeddirection.php</option>
+            <option>barometer.php</option>
+            <option>sun3.php</option>
+            <option>rainfall.php</option>
             <option>moonphase.php</option>
-            <option>weather34uvsolar.php</option>
-            <option>solaruv.php</option>
-             <option>solaruvwu.php</option>
             <option>lightning34.php</option>
+            <option>airqualitymodule.php</option>
+            <option>weather34uvsolar.php</option>
+            <option>webcamsmall.php</option>
         </select>
         <div class="stationvalue">Last Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">

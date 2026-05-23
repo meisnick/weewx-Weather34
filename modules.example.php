@@ -4,7 +4,7 @@
 // Each entry: module filename, display title, refresh interval in seconds.
 
 $topbar_modules = [
-    ['module' => 'weather34clock.php',        'title' => 'Station Time',     'refresh' => 60],
+    ['module' => 'weather34clock.php',        'title' => 'Station Time',     'refresh' => 3600],
     ['module' => 'top_rainfallfyearmonth.php', 'title' => 'Rainfall Totals', 'refresh' => 600],
     ['module' => 'top_lightning.php',          'title' => 'Lightning',       'refresh' => 600],
     ['module' => 'top_advisory_nws.php',       'title' => 'Weather Advisory','refresh' => 300],

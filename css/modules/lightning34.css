@@ -20,7 +20,7 @@
 /* ── Top-right energy pill ────────────────────────────────────────────────── */
 .mod-lt-top-pill {
     position: absolute;
-    top: 2px;
+    top: 4px;
     right: 10px;
     border: 1px solid var(--bg0);
     -webkit-border-radius: 2px;

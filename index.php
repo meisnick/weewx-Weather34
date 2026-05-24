@@ -63,6 +63,16 @@ function moduleTitle($module, $weather, $lang) {
             return 'Space Weather';
         case 'radar_module.php':
             return 'NWS Radar';
+        case 'top_temperatureyear.php':
+            return 'Temperature Year';
+        case 'top_rainfallfyearmonth.php':
+            return 'Rainfall Totals';
+        case 'top_advisory_nws.php':
+            return 'Weather Advisory';
+        case 'top_lightning.php':
+            return 'Lightning';
+        case 'weather34clock.php':
+            return 'Station Time';
         default:
             return '';
     }
@@ -233,9 +243,11 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 <!-- ── TOP BAR ─────────────────────────────────────────────────────────────── -->
 <div class="weather2-container">
 <div class="weather34box-toparea" id="topbar-sortable">
-<?php foreach ($topbar_modules as $i => $mod): ?>
+<?php foreach ($topbar_modules as $i => $mod): 
+    $title = $mod['title'] !== '' ? $mod['title'] : moduleTitle($mod['module'], $weather, $lang);
+?>
     <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
-        <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($mod['title']); ?></div>
+        <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($title); ?></div>
         <?php if ($mod['module'] === 'weather34clock.php'): ?>
         <div id="top_<?php echo $i; ?>"></div>
         <?php else: ?>

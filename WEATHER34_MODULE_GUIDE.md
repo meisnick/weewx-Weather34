@@ -310,7 +310,7 @@ The `border-bottom: rgba(0,0,0,0.3)` gives every badge its characteristic "press
 Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Current** and **Strikes** badge layout:
 * **Height:** `4.5rem` (~58px–72px depending on context).
 * **Corner Radius:** `2px` (must include `-webkit-`, `-moz-`, and `-o-` prefixes).
-* **Top Label (`.lbl`):** `font-size: 0.55rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`
+* **Top Label (`.lbl`):** `font-size: 0.65rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`
 * **Badge Value (`.val`):** `font-size: 1.45rem; line-height: 1.1; font-family: weathertext2, Arial, sans-serif; color: #fff;`
 * **Bottom Bar (`.mod-lt-badge-bot` / Solid Border):** 
   - Height of `15px` (`line-height: 15px;` without borders or extra padding).

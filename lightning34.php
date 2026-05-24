@@ -48,8 +48,8 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
     <div class="mod-lt-main">
 
         <div class="mod-lt-left-col">
-            <div class="mod-lt-badge" style="background-color:<?php echo $badge_col; ?>">
-                <div class="mod-lt-badge-top">
+            <div class="mod-lt-badge">
+                <div class="mod-lt-badge-top" style="background-color:<?php echo $badge_col; ?>">
                     <span class="lbl">Strikes</span>
                     <span class="val"><?php echo $strike_3hr; ?></span>
                 </div>

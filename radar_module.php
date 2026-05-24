@@ -6,9 +6,8 @@ include_once('settings1.php');
 
 <div class="mod-radar">
     <img class="mod-radar-img"
-         src=""
-         alt="Radar Loop"
-         onerror="this.style.opacity='0.15'">
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+         alt="Radar Loop">
 </div>
 <script>
 (function(){
@@ -72,10 +71,25 @@ include_once('settings1.php');
 
   // JS owns the src — set from localStorage station
   var station = getStation();
+  
+  // Attach listeners BEFORE setting the src to avoid missing cached loads
+  img.addEventListener('load',  function(){
+    setDefault();
+    if (typeof img.decode === 'function') {
+      img.decode().then(function() {
+        reveal();
+      }).catch(function(err) {
+        console.warn("Radar decode failed, falling back to instant reveal", err);
+        reveal();
+      });
+    } else {
+      reveal();
+    }
+  });
+  img.addEventListener('error', function(){ img.style.opacity = '0.15'; });
+
   img.src = makeSrc(station);
   updatePopLink(station);
-  img.addEventListener('load',  function(){ setDefault(); reveal(); });
-  img.addEventListener('error', function(){ img.style.opacity = '0.15'; });
 
   // Preload the NEXT period's URL immediately and keep it warm near the boundary.
   // makeSrc() returns the CURRENT period; the module reload may land in the next

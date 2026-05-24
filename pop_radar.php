@@ -218,16 +218,22 @@ body{
     crop.style.display='none';
     var probe=new Image();
     probe.onload=function(){
-      img.src=makeSrc(s);
-      img.addEventListener('load',function onNewLoad(){
-        img.removeEventListener('load',onNewLoad);
-        requestAnimationFrame(function(){
+      var onNewLoad = function(){
+        img.removeEventListener('load', onNewLoad);
+        var revealNew = function() {
           updatePS(); resetToDefault();
           crop.style.display='';
           img.style.filter = inv.checked ? 'invert(1)' : '';
           img.style.opacity='1';
-        });
-      });
+        };
+        if (typeof img.decode === 'function') {
+          img.decode().then(revealNew).catch(revealNew);
+        } else {
+          revealNew();
+        }
+      };
+      img.addEventListener('load', onNewLoad);
+      img.src=makeSrc(s);
     };
     probe.onerror=function(){
       staIn.classList.add('error');
@@ -255,8 +261,15 @@ body{
   }
   staIn.value=currentStation;
   setTitle(currentStation);
+  img.addEventListener('load', function(){
+    var runInit = function() { requestAnimationFrame(init); };
+    if (typeof img.decode === 'function') {
+      img.decode().then(runInit).catch(runInit);
+    } else {
+      runInit();
+    }
+  });
   img.src=makeSrc(currentStation);
-  img.addEventListener('load',function(){ requestAnimationFrame(init); });
   window.addEventListener('resize',function(){ updatePS(); render(); });
 })();
 </script>

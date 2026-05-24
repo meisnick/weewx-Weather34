@@ -157,9 +157,9 @@
 }
 
 .lt-lbl {
-    font-size: 0.65em;
+    font-family: weathertext2;
+    font-size: 0.9em;
     color: silver;
-    font-family: Arial, sans-serif;
     margin-bottom: 3px;
 }
 

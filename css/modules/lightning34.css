@@ -150,9 +150,8 @@
 /* ── Right: pill grid ─────────────────────────────────────────────────────── */
 .mod-lt-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4rem 4rem;
     gap: 5px 10px;
-    flex: 1;
 }
 
 .lt-item {

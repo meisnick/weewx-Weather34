@@ -81,6 +81,8 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
+    transform: translateZ(0);
 }
 
 .mod-lt-badge-top {

@@ -110,5 +110,12 @@ $forecastime = filemtime ('jsondata/uk.txt');
 		<td id="CELL11">101 or more</td>
 	</tr>      
 	</tbody>
-  </body>
+</table>
+
+<div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="Historical Air Quality Trends (Weekly PM2.5 / PM10)"></div>
+<br>
+<div class="chart-container">
+  <iframe src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+</div>
+</body>
  

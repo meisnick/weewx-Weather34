@@ -91,3 +91,15 @@ html, body {
 .demo th#CELL10, .demo td#CELL10 { background-color: #b71c1c; color: #fff !important; } /* Very High / Hazardous */
 
 .demo th#CELL11, .demo td#CELL11 { background-color: #8e24aa; color: #fff !important; } /* Very High / Unhealthy */
+
+/* ── Highcharts Chart Container ─────────────────────────────────────────── */
+.chart-container {
+  width: 100%;
+  height: 380px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(210, 214, 219, 0.6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}

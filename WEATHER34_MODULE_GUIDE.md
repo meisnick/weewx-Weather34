@@ -291,6 +291,11 @@ Font families:
 ```
 
 ### Badge / pill style (consistent across all modules)
+
+There are two primary badge styles used in Weather34 modules depending on the design layout:
+
+#### Style A: Pressed Badge (Standard legacy style)
+Used for standard dashboard cards and small-to-medium badges.
 ```css
 {
   border-radius: 3px;
@@ -299,8 +304,19 @@ Font families:
   font-family: weathertext2, Arial, sans-serif;
 }
 ```
-The `border-bottom: rgba(0,0,0,0.3)` gives every badge its characteristic
-"pressed" look. Use `15px` for large badges, `4–6px` for small pills.
+The `border-bottom: rgba(0,0,0,0.3)` gives every badge its characteristic "pressed" look. Use `15px` for large badges, `4–6px` for small pills.
+
+#### Style B: High-Contrast Solid-Bottom Badge (UV & Strikes style)
+Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Current** and **Strikes** badge layout:
+* **Height:** `4.5rem` (~58px–72px depending on context).
+* **Corner Radius:** `2px` (must include `-webkit-`, `-moz-`, and `-o-` prefixes).
+* **Top Label (`.lbl`):** `font-size: 0.55rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`
+* **Badge Value (`.val`):** `font-size: 1.45rem; line-height: 1.1; font-family: weathertext2, Arial, sans-serif; color: #fff;`
+* **Bottom Bar (`.mod-lt-badge-bot` / Solid Border):** 
+  - Height of `15px` (`line-height: 15px;` without borders or extra padding).
+  - Background is set to solid `var(--bg1)` (dark charcoal/gray) to act as a solid bottom bar.
+  - Text is `font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`.
+  - Color is set to `silver` to match other `Last 3 Hrs` text nodes across the dashboard.
 
 ---
 

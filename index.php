@@ -61,6 +61,8 @@ function moduleTitle($module, $weather, $lang) {
             return 'Webcam';
         case 'aurora_module.php':
             return 'Space Weather';
+        case 'radar_module.php':
+            return 'NWS Radar';
         default:
             return '';
     }
@@ -141,6 +143,10 @@ function modulePopups($module, $vars) {
         case 'aurora_module.php':
             $kp_label = isset($kp) && $kp >= 5 ? ' <orange>Active</orange>' : '';
             $out = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Space Weather' . $kp_label . '</a></span>';
+            break;
+        case 'radar_module.php':
+            $out  = '<span class="yearpopup"><a href="pop_radar.php" data-lity>' . $chartinfo . ' Radar Loop (KMKX)</a></span>';
+            $out .= '<span class="monthpopup"><a href="pop_radar_live.php" data-lity>' . $chartinfo . ' Interactive Radar</a></span>';
             break;
     }
     return $out;

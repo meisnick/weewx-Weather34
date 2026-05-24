@@ -22,22 +22,31 @@
     position: absolute;
     top: 2px;
     right: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.15);
-    padding: 3px 8px;
-    font-size: 0.7em;
+    border: 1px solid var(--bg0);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
+    padding: 0 6px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .mod-lt-top-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
+    font-size: 0.65rem;
 }
 
 .mod-lt-top-pill .unit {
     color: silver;
-    margin-left: 3px;
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
+    margin-left: 2px;
 }
 
 /* ── Main row: left col + pill grid ──────────────────────────────────────── */

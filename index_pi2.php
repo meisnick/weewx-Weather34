@@ -290,6 +290,8 @@ foreach ($grid_modules as $i => $mod):
 var editMode = false;
 var topSort, gridSort;
 var currentCols = <?php echo json_encode($grid_columns); ?>;
+document.body.classList.toggle('cols-2', String(currentCols) === '2');
+document.body.classList.toggle('cols-3', String(currentCols) === '3');
 document.body.classList.toggle('cols-6', String(currentCols) === '6');
 
 function collect(id) {
@@ -319,6 +321,8 @@ function saveOrder() {
 
 function setColumns(cols) {
     currentCols = cols;
+    document.body.classList.toggle('cols-2', String(cols) === '2');
+    document.body.classList.toggle('cols-3', String(cols) === '3');
     document.body.classList.toggle('cols-6', String(cols) === '6');
     var grid = document.getElementById('grid-sortable');
     grid.style.gridTemplateColumns = (cols === 'auto')

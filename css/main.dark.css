@@ -448,6 +448,14 @@ h6 {
   margin: 47px auto -3px
 }
 
+body.cols-2 .weather2-container {
+  max-width: 480px;
+}
+
+body.cols-3 .weather2-container {
+  max-width: 960px;
+}
+
 body.cols-6 .weather2-container {
   max-width: 1680px;
 }

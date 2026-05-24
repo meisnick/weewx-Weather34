@@ -102,9 +102,7 @@ function modulePopups($module, $vars) {
             $out = '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' Daylight Map</a></span>';
             break;
         case 'moonphase.php':
-            $out  = '<span class="yearpopup"><a href="pop_cam.php" data-lity>' . $webcamicon . ' Time Lapse Camera</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' Indoor Guide</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
             break;
         case 'rainfall.php':
             $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' Rainfall Almanac and Charts</a></span>';

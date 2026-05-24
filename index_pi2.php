@@ -222,7 +222,7 @@ body.edit-mode .weather-item:active,
 body.edit-mode .weather34box:active{cursor:grabbing}
 .sortable-ghost{opacity:.35}
 .sortable-chosen{outline:2px solid rgba(240,94,64,.8) !important}
-#edit-status{position:fixed;bottom:18px;right:360px;z-index:9999;font-size:11px;
+#edit-status{position:fixed;bottom:8px;right:360px;z-index:9999;font-size:11px;
   font-family:arial;padding:6px 10px;background:rgba(33,34,39,.85);
   border:1px solid rgba(84,85,86,.4);color:#5a9;display:none}
 #col-picker{position:fixed;bottom:55px;right:218px;z-index:9999;display:none;

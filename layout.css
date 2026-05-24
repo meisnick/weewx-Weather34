@@ -1,0 +1,237 @@
+/* Fonts -- must load globally */
+@font-face {
+  font-family: clock;
+  src: url(fonts/clock3-webfont.woff) format('woff'), url(fonts/clock3.ttf) format('truetype');
+}
+@font-face {
+  font-family: weathertext2;
+  src: url(fonts/verbatim-regular.woff) format('woff'),
+       url(fonts/verbatim-regular.woff2) format('woff2'),
+       url(fonts/verbatim-regular.ttf) format('truetype');
+}
+
+/* ── Design tokens — dark (default) ─────────────────────────────────── */
+:root {
+  --bg-page:      #151819;
+  --bg-cell:      rgba(33,34,39,.8);
+  --bg-inset:     rgba(97,106,114,.1);
+  --bg-footer:    rgba(33,34,39,.8);
+  --bg-header:    rgba(33,34,39,.95);
+  --bg-menu:      rgba(37,41,45,.7);
+  --border-cell:  0px solid transparent;
+  --border-box:   2px solid #151718;
+  --border-footer: 1px solid #191b1e;
+  --text-body:    silver;
+  --text-link:    silver;
+  --text-muted:   silver;
+  --scrollbar-track: #eaeaea;
+  --scrollbar-thumb: #90b12a;
+  /* Module design system tokens */
+  --mod-text:     #ccc;
+  --mod-muted:    rgba(150,155,165,1);
+  --mod-border:   rgba(84,85,86,0.3);
+  --mod-bg:       rgba(33,34,39,.8);
+  --mod-inset:    rgba(97,106,114,.1);
+}
+
+/* ── Design tokens — light overrides ────────────────────────────────── */
+[data-theme="light"] {
+  --bg-page:      #fff;
+  --bg-cell:      #fff;
+  --bg-inset:     #f6f8fc;
+  --bg-footer:    #fff;
+  --bg-header:    rgba(33,34,39,1);
+  --bg-menu:      #2d2d2d;
+  --border-cell:  1px solid rgba(230,232,239,.8);
+  --border-box:   1px solid rgba(230,232,239,.8);
+  --border-footer: 1px solid rgba(230,232,239,.8);
+  --text-body:    #2d2d2d;
+  --text-link:    #2d2d2d;
+  --text-muted:   #555;
+  --mod-text:     #333;
+  --mod-muted:    #888;
+  --mod-border:   rgba(230,232,239,.8);
+  --mod-bg:       #fff;
+  --mod-inset:    #f6f8fc;
+}
+
+/* ── Reset / base ────────────────────────────────────────────────────── */
+*, *:before, *:after { box-sizing: border-box }
+html { font-family: arial, system; -moz-font-smoothing: antialiased; font-size: 14px }
+body { background: var(--bg-page); clear: both; font-size: 14px; line-height: 1.42857; color: var(--text-body); cursor: default }
+img  { image-rendering: auto }
+a    { color: var(--text-link); text-decoration: none }
+a:hover { color: #90b12a }
+
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 12px }
+::-webkit-scrollbar-track { background-color: var(--scrollbar-track); border-left: 1px solid silver }
+::-webkit-scrollbar-thumb { background-color: var(--scrollbar-thumb) }
+::-webkit-scrollbar-thumb:hover { background-color: #00adbc }
+
+/* ── Top grid ────────────────────────────────────────────────────────── */
+.weather34box-toparea {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto 0;
+}
+
+/* ── Main grid ───────────────────────────────────────────────────────── */
+.weather-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  grid-auto-rows: 195px;
+  justify-content: center;
+  list-style: none;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  margin: 2px auto;
+  background: 0;
+}
+/* Grid cell — matches original main.dark.css exactly, plus position:relative for module system */
+.weather-item {
+  position: relative;
+  height: 195px;
+  border: 0;
+  border-bottom: 18px solid var(--bg-inset);
+  box-shadow: inset 0 20px var(--bg-inset);
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 2px;
+  padding: 0;
+  background: var(--bg-cell);
+  font-size: 1em;
+}
+
+/* ── Module box (top bar) ────────────────────────────────────────────── */
+.weather34box {
+  border: var(--border-box);
+  color: var(--text-body);
+  padding: 5px;
+  position: relative;
+  height: 83px;
+  margin: -3px 0 0;
+  background-color: var(--bg-cell);
+  box-shadow: inset 0 18px var(--bg-inset);
+  box-sizing: border-box;
+}
+.weather34box.alert,
+.weather34box.clock,
+.weather34box.earthquake,
+.weather34box.indoor {
+  background-color: var(--bg-cell);
+  box-shadow: inset 0 18px var(--bg-inset);
+  box-sizing: border-box;
+}
+.weather34box .title,
+.weather34box .value { position: absolute; float: left; color: var(--text-body) }
+.weather34box .title { font-family: arial, helvetica; font-size: 9px; top: 2px; padding: 1px 5px 0; z-index: 1 }
+.weather34box .value { font-size: 26px; font-weight: lighter; padding: 0 3px; top: 0 }
+
+/* ── mod-box context (top-bar modules using .mod-top) ────────────────── */
+.weather34box.mod-box .value { left: 0; right: 0; bottom: 0; padding: 0; font-size: 11px }
+.weather34box.mod-box .value > div { height: 100% }
+
+/* ── Timestamp — absolute so it never affects module content flow ────── */
+.updatedtime, .updatedtime1, .updatedtimecurrent, .updatedtimeuv {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font: .65em weathertext2;
+  color: var(--mod-muted);
+  line-height: 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+offline { color: #d35d4e; font-size: .6rem }
+
+/* ── Burger navigation ───────────────────────────────────────────────── */
+.menu {
+  width: 220px; margin: 0; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  border-radius: 0; float: left; height: 820%; max-height: 800px;
+  padding: 5px; background: var(--bg-menu);
+  border-right: 1px solid #333; border-top: 0; border-bottom: 1px solid #333;
+}
+.menu li { list-style: none; margin: 0; padding: 0 }
+.menu li a { display: block; padding: 8px 15px; color: silver; font-size: .8em }
+.menu li a:hover, .menu .active { color: #90b12a }
+.menu copyright { color: silver; font-weight: 500; font-size: .7em; padding: 5px 15px }
+
+/* ── Header bar ──────────────────────────────────────────────────────── */
+header { background: var(--bg-header); border-bottom: 1px solid #151718; position: relative; z-index: 100 }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.weatherfooter-container { display: flex; width: 960px; margin: 0 auto 2px }
+.weatherfooter-item { width: 100%; background: var(--bg-footer); height: 90px; font-family: Arial, system; border: var(--border-footer); text-align: center; border-radius: 2px }
+.bottomfooter { color: var(--text-muted); font-size: .7em; text-align: center; padding: 5px }
+.bottomfooter a { color: var(--text-muted) }
+.footertext { justify-content: center; height: 1.5rem; width: 40rem; font-size: .7rem; border: 0; font-weight: 400 }
+
+/* ── Common semantic color tags ──────────────────────────────────────── */
+orange, torange, maxred, windred, agolightning { color: #ff7c39 }
+tred { color: #d35d4e }
+tblue, oblue, minblue { color: #3b9cac }
+tgreen { color: #90b12a }
+grey, darkgrey { color: silver }
+ogreen { color: #90b12a }
+oorange { color: #ff7c39 }
+blueu { color: #3b9cac }
+
+/* ── Common typography tags ──────────────────────────────────────────── */
+valuetext  { font-family: weathertext2, Arial; font-size: .65em }
+valuetext1 { font-family: Arial; font-size: .65em; color: var(--text-muted) }
+valuetextheading1, valuetextheading2 { font-family: Arial; font-size: .65em; color: var(--text-muted); display: block }
+smallrainunit, smallrainunita, smallrainunit2 { font-size: .55em; font-family: Arial }
+smalltempunit, smalltempunit2, smalltempunit4 { font-size: .55em; font-family: Arial }
+smallwindunit { font-size: .45rem; font-family: Arial; padding-left: 2px }
+supmb { font-size: .55rem; font-family: Arial }
+max, value { font-family: weathertext2, Arial }
+weather34bftspan { font-size: .55rem; font-family: Arial }
+weather34windrunspan { font-size: .55rem; font-family: Arial }
+moonm { font-family: weathertext2, Arial; font-size: .9em }
+timeago { font-size: .55rem; font-family: Arial; color: var(--text-muted); display: block }
+
+/* ── Responsive grid ─────────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .weather34box-toparea { grid-template-columns: repeat(2, 1fr) }
+  .weather-container { grid-template-columns: 1fr }
+  .weatherfooter-container, header { display: none }
+}
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+  .weather34box-toparea { grid-template-columns: repeat(2, 1fr) }
+  .weather-container { grid-template-columns: 1fr }
+}
+
+/* ── Grid box height ─────────────────────────────────────────────────── */
+.weather-container .weather34box { height: 195px }
+
+/* ── Lity lightbox ───────────────────────────────────────────────────── */
+.lity { z-index: 9990; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.8) }
+
+/* ── Cell header: chartforecast + moduletitle out of normal flow ─────── */
+/* Without this, #grid_X is pushed down ~40px by these elements,         */
+/* breaking position:absolute modules (temperaturein, rainfall, etc.)    */
+.weather-item .chartforecast {
+  position: absolute;
+  bottom: 3px;
+  left: 8px;
+  right: 8px;
+  font-size: .67em;
+  color: var(--mod-muted);
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.weather-item .moduletitle {
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  font-size: .7em;
+  color: var(--mod-muted);
+  z-index: 2;
+  white-space: nowrap;
+}
+.weather-item > br { display: none }

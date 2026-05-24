@@ -47,3 +47,36 @@ else echo "<div class=luxtoday>".$weather["lux"];?>
 
 <div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
 else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Low';}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Very Low';}?></div>
+
+<script>
+(function () {
+    var container = document.querySelector('.uvcontainer1');
+    if (!container) return;
+    var innerDiv = container.querySelector('.uvtodaydark');
+    if (!innerDiv) return;
+    var attempts = 0;
+    var timer = setInterval(function () {
+        var uvEl = document.querySelector('.forecastforecasthome forecasttemplohome uv');
+        if (uvEl || ++attempts > 20) {
+            clearInterval(timer);
+            if (!uvEl) return;
+            var uvSpan = uvEl.querySelector('uvspan');
+            if (!uvSpan) return;
+            var colorEl = uvSpan.querySelector('purpleu,redu,orangeu,yellowu,greenu');
+            if (!colorEl) return;
+            var uvVal = parseFloat(colorEl.textContent);
+            if (isNaN(uvVal)) return;
+            var cls = uvVal > 10 ? 'uvtoday11'
+                    : uvVal > 8  ? 'uvtoday9-10'
+                    : uvVal > 5  ? 'uvtoday6-8'
+                    : uvVal > 3  ? 'uvtoday4-5'
+                    : uvVal >= 1 ? 'uvtoday1-3'
+                    :              'uvtodaydark';
+            innerDiv.className = cls;
+            innerDiv.innerHTML = uvVal.toFixed(1) + '<smalluvunit>&nbsp;fcst UVI</smalluvunit>';
+            var lbl = document.querySelector('.uvcaution');
+            if (lbl) lbl.innerHTML = '<value>&nbsp;&nbsp;UVI Forecast</value>';
+        }
+    }, 500);
+})();
+</script>

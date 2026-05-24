@@ -1,0 +1,90 @@
+@font-face {
+  font-family: weathertext2;
+  src: url(fonts/verbatim-regular.woff) format("woff"),
+       url(fonts/verbatim-regular.woff2) format("woff2"),
+       url(fonts/verbatim-regular.ttf) format("truetype");
+}
+
+html, body {
+  font-size: 13px;
+  font-family: "weathertext2", Helvetica, Arial, sans-serif;
+  background: #1e2025;
+  color: #c5c6ca;
+  margin: 0;
+  padding: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Header Strip ────────────────────────────────────────────────────────── */
+.weather34darkbrowser {
+  position: relative;
+  background: rgba(33, 34, 39, 0.9);
+  border: 1px solid rgba(84, 85, 86, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  color: silver;
+}
+
+.weather34darkbrowser[url]::after {
+  content: attr(url);
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Table Styling ───────────────────────────────────────────────────────── */
+.demo {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin-bottom: 25px;
+  background: transparent;
+}
+
+.demo th, .demo td {
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.demo th {
+  background: rgba(33, 34, 39, 0.8);
+  font-weight: bold;
+  border: 1px solid rgba(84, 85, 86, 0.2);
+}
+
+.demo td {
+  background: rgba(33, 34, 39, 0.4);
+  color: silver;
+  border: 1px solid rgba(84, 85, 86, 0.1);
+}
+
+/* Label column */
+.demo th#CELL1, .demo td#CELL1 {
+  background: rgba(43, 45, 52, 0.9);
+  color: #fff !important;
+  font-weight: bold;
+  text-align: left;
+  border: 1px solid rgba(84, 85, 86, 0.3);
+  width: 150px;
+}
+
+/* Color codes mapping */
+.demo th#CELL2, .demo td#CELL2 { background-color: #2e7d32; color: #fff !important; } /* Low / Good */
+.demo th#CELL3, .demo td#CELL3 { background-color: #4caf50; color: #fff !important; } /* Low / Good */
+.demo th#CELL4, .demo td#CELL4 { background-color: #81c784; color: #1b5e20 !important; } /* Low / Good */
+
+.demo th#CELL5, .demo td#CELL5 { background-color: #fbc02d; color: #3e2723 !important; } /* Moderate */
+.demo th#CELL6, .demo td#CELL6 { background-color: #fdd835; color: #3e2723 !important; } /* Moderate */
+.demo th#CELL7, .demo td#CELL7 { background-color: #fb8c00; color: #fff !important; } /* Sensitive Groups */
+
+.demo th#CELL8, .demo td#CELL8 { background-color: #e53935; color: #fff !important; } /* High / Unhealthy */
+.demo th#CELL9, .demo td#CELL9 { background-color: #d32f2f; color: #fff !important; } /* High / Unhealthy */
+.demo th#CELL10, .demo td#CELL10 { background-color: #b71c1c; color: #fff !important; } /* Very High / Hazardous */
+
+.demo th#CELL11, .demo td#CELL11 { background-color: #8e24aa; color: #fff !important; } /* Very High / Unhealthy */

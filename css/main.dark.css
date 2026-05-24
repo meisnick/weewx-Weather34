@@ -445,7 +445,7 @@ h6 {
   min-height: 83px;
   height: auto;
   background-color: 0;
-  margin: 55px auto 0px
+  margin: 55px auto -2px
 }
 
 .weather2-item {

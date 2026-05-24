@@ -31,14 +31,18 @@ if (file_exists('jsondata/ki.txt')) {
         }
         $by_date[$date][$slot] = (float)$e['kp'];
     }
+    $utc_today_ts = strtotime(gmdate('Y-m-d'));
+    $local_date   = date('Y-m-d');
     foreach ([0, 1, 2] as $offset) {
-        $d = date('Y-m-d', strtotime("+$offset day"));
+        $target_ts = strtotime("+$offset day", $utc_today_ts);
+        $d = date('Y-m-d', $target_ts);
         if (!isset($by_date[$d])) continue;
         $slots  = $by_date[$d];
         $valid  = array_filter($slots, fn($v) => $v !== null);
         $max_kp = $valid ? (float)max($valid) : 0.0;
+        $label  = ($d === $local_date) ? 'Today' : date('j M', $target_ts);
         $forecast_days[] = [
-            'label'  => $offset === 0 ? 'Today' : date('j M', strtotime("+$offset day")),
+            'label'  => $label,
             'max_kp' => $max_kp,
             'slots'  => $slots,
         ];

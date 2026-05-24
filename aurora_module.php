@@ -56,7 +56,7 @@ if (file_exists('jsondata/aurora_prob.json')) {
     $ap_json = json_decode(file_get_contents('jsondata/aurora_prob.json'), true);
     if ($ap_json && isset($ap_json['probability'])) {
         $aurora_prob = (int)$ap_json['probability'];
-        $prob_ok = (time() - filemtime('jsondata/aurora_prob.json') < 1800); // 30 min freshness
+        $prob_ok = (time() - filemtime('jsondata/aurora_prob.json') < 2700); // 45 min freshness (cron runs every 15 min)
     }
 }
 

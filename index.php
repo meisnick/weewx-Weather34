@@ -99,10 +99,7 @@ function modulePopups($module, $vars) {
             break;
         case 'sun3.php':
         case 'w34skymap.php':
-            $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' Meteor Showers</a></span>';
-            $kp_label = isset($kp) && $kp >= 5 ? ' <oorange>Active</oorange>' : '';
-            $out .= '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Aurora' . $kp_label . '</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' Daylight Map</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' Daylight Map</a></span>';
             break;
         case 'moonphase.php':
             $out  = '<span class="yearpopup"><a href="pop_cam.php" data-lity>' . $webcamicon . ' Time Lapse Camera</a></span>';
@@ -142,7 +139,8 @@ function modulePopups($module, $vars) {
             break;
         case 'aurora_module.php':
             $kp_label = isset($kp) && $kp >= 5 ? ' <orange>Active</orange>' : '';
-            $out = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Space Weather' . $kp_label . '</a></span>';
+            $out  = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Space Weather' . $kp_label . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' Meteor Showers</a></span>';
             break;
         case 'radar_module.php':
             $out  = '<span class="yearpopup"><a href="pop_radar.php" data-lity>' . $chartinfo . ' Radar Loop (KMKX)</a></span>';

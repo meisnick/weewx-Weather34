@@ -1,18 +1,17 @@
 <?php //weather34 solar and uvindex module 27th Jan 2017 //
 include_once('w34CombinedData.php');include('common.php');
-$hi = 0;
+// Prefer live sensor; fall back to first hourly forecast only when sensor reads 0
 $forecasthourlyuv = 0;
-if (isset($forecasthourlyCond) && is_array($forecasthourlyCond)) {
+$uv_label = isset($lang['Current']) ? $lang['Current'] : 'Current';
+if (isset($weather["uv"]) && $weather["uv"] > 0) {
+    $forecasthourlyuv = $weather["uv"];
+} elseif (isset($forecasthourlyCond) && is_array($forecasthourlyCond)) {
     foreach ($forecasthourlyCond as $cond) {
-        $forecasthourlyuv = $cond['uvIndex']; 
-        if ($hi++ == 0) break; 
+        $forecasthourlyuv = $cond['uvIndex'];
+        break;
     }
-}
-$uv_label = isset($lang['Forecast']) ? $lang['Forecast'] : 'Forecast';
-if (empty($forecasthourlyuv) || $forecasthourlyuv == 0) {
-    if (isset($weather["uv"]) && $weather["uv"] > 0) {
-        $forecasthourlyuv = $weather["uv"];
-        $uv_label = isset($lang['Current']) ? $lang['Current'] : 'Current';
+    if ($forecasthourlyuv > 0) {
+        $uv_label = isset($lang['Forecast']) ? $lang['Forecast'] : 'Forecast';
     }
 }
 $weather["uv3"] = $forecasthourlyuv;

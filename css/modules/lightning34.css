@@ -2,7 +2,7 @@
 
 /*
  * padding-top (not margin-top) prevents margin collapse through #grid_N.
- * position:relative on wrapper establishes containing block for .mod-lt-topstats.
+ * position:relative establishes containing block for .mod-lt-top-pill.
  * display:flex + text-align:left overrides .weather-item's global centering.
  */
 .mod-lt {
@@ -17,51 +17,57 @@
     position: relative;
 }
 
-/* ── Top-right: distance & energy ─────────────────────────────────────────── */
-.mod-lt-topstats {
+/* ── Top-right energy pill ────────────────────────────────────────────────── */
+.mod-lt-top-pill {
     position: absolute;
-    top: 8px;
+    top: 0px;
     right: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 3px;
-    padding: 4px 6px;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 3px 8px;
+    font-size: 0.7em;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 3px;
+    align-items: baseline;
 }
 
-.mod-lt-topstats .stat-row {
-    font-size: 0.65em;
-    color: silver;
-    font-family: Arial, sans-serif;
-    line-height: 1;
-}
-
-.mod-lt-topstats .stat-row .val {
+.mod-lt-top-pill .val {
     color: var(--orange);
-    font-size: 1.1em;
 }
 
-/* ── Main row: badge + history ────────────────────────────────────────────── */
+.mod-lt-top-pill .unit {
+    color: silver;
+    margin-left: 3px;
+}
+
+/* ── Main row: left col + pill grid ──────────────────────────────────────── */
 .mod-lt-main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
-    margin-top: 35px;
+    margin-top: 14px;
 }
 
-/* Strike count badge */
-.mod-lt-badge {
+/* ── Left column: badge + distance pill ──────────────────────────────────── */
+.mod-lt-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
     width: 85px;
+    flex-shrink: 0;
+}
+
+.mod-lt-badge {
+    width: 100%;
     height: 80px;
     border-radius: 4px;
     border-bottom: 4px solid rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .mod-lt-badge-top {
@@ -87,7 +93,6 @@
     color: #fff;
 }
 
-/* Dark value strip pinned to bottom of badge */
 .mod-lt-badge-bot {
     background-color: rgba(0, 0, 0, 0.25);
     width: 100%;
@@ -98,39 +103,79 @@
     font-family: Arial, sans-serif;
 }
 
-/* Historical records box */
-.mod-lt-history {
-    flex: 1;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 8px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.mod-lt-distance-pill {
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    padding: 3px 0;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.mod-lt-history .title {
+.mod-lt-distance-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    color: var(--orange);
+    font-size: 0.9rem;
+}
+
+.mod-lt-distance-pill .unit {
+    color: silver;
+    font-size: 0.65rem;
+    margin-left: 2px;
+}
+
+/* ── Right: pill grid ─────────────────────────────────────────────────────── */
+.mod-lt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 6px;
+    flex: 1;
+}
+
+.lt-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lt-full-width {
+    grid-column: span 2;
+}
+
+.lt-lbl {
     font-size: 0.65em;
     color: silver;
     font-family: Arial, sans-serif;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
-.mod-lt-history .row {
-    font-size: 0.7em;
-    color: silver;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: space-between;
+.lt-pill {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 3px 0;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.mod-lt-history .row .val {
+.lt-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
+    font-size: 0.9rem;
 }
 
-/* Last strike time row — slightly smaller to stay compact */
-.mod-lt-lasttime .val {
-    font-size: 0.9em;
+/* Last strike uses proportional Arial so date text isn't compressed */
+.lt-pill .val.date-text {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+}
+
+.lt-pill .unit {
+    color: silver;
+    font-size: 0.65rem;
+    margin-left: 2px;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
@@ -138,13 +183,9 @@
     border-bottom-color: rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="light"] .mod-lt-topstats,
-[data-theme="light"] .mod-lt-history {
+[data-theme="light"] .mod-lt-top-pill,
+[data-theme="light"] .mod-lt-distance-pill,
+[data-theme="light"] .lt-pill {
     border-color: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="light"] .mod-lt-topstats .stat-row,
-[data-theme="light"] .mod-lt-history .title,
-[data-theme="light"] .mod-lt-history .row {
-    color: #666;
+    background-color: rgba(0, 0, 0, 0.05);
 }

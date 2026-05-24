@@ -492,9 +492,10 @@ h6 {
   margin: 0 2px 2px 0;
   padding: 0 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  box-sizing: border-box
+  box-sizing: border-box;
+  position: relative
 }
 
 .barometergaugegrid {
@@ -1922,11 +1923,14 @@ lightningrain {
 }
 
 .hardwarelogo1 {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
-  flex-shrink: 0
 }
 
 .hardwarelogo1text {
@@ -1943,18 +1947,19 @@ lightningrain {
 .hardwarelogo3 {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  position: static;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 0;
   margin: 0
 }
 
 .hardwarelogo2 {
-  margin: 0
+  right: 30px;
 }
 
 .hardwarelogo3 {
-  margin: 0
+  right: 30px;
 }
 
 .footertext-center {
@@ -1962,7 +1967,6 @@ lightningrain {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
   text-align: center
 }
 

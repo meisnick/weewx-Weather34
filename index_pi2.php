@@ -377,11 +377,13 @@ elseif ($weatherhardware == 'Weatherflow Air-Sky')
 else
     echo '<a href="https://weather34.com/homeweatherstation/" target="_blank"><br><img src="img/weather34logo.svg" width="40px" class="homeweatherstationlogo"><weather34>designed by weather34 2015-' . date('Y') . '</weather34></a>';
 ?></div>
+<div class="footertext-center">
 <div class=footertext>&nbsp;<?php echo $info; ?>&nbsp;(<value><?php echo $templateversion; ?></value>)&nbsp;
 <?php echo "WeeWX"; ?>-(<value><maxred><?php echo $weather["swversion"]; ?></maxred></value>)&nbsp;
 <?php echo $info . "&nbsp;" . $weatherhardware; ?></div>
 <div class=footertext><a href="https://github.com/meisnick/weewx-Weather34"><?php echo $github; ?>&nbsp; WeeWX Version Repository at https://github.com/meisnick/weewx-Weather34 &nbsp; <img src="img/flags/<?php echo $flag; ?>.svg" width="20px"></a></div>
 <div class=footertext><a href="https://hjelp.yr.no/hc/en-us/articles/203786121-Weather-symbols-on-Yr">Weather Symbols by <img src="img/yr.svg" width="14px"></a></div>
+</div>
 </div></div>
 
 <div id=lightningalert></div>

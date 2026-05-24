@@ -490,7 +490,11 @@ h6 {
   -ms-border-radius: 2px;
   border-radius: 2px;
   margin: 0 2px 2px 0;
-  padding: 15px
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box
 }
 
 .barometergaugegrid {
@@ -1918,9 +1922,11 @@ lightningrain {
 }
 
 .hardwarelogo1 {
-  margin: -5px 0 0;
+  margin: 0;
   padding: 0;
-  float: left
+  display: flex;
+  align-items: center;
+  flex-shrink: 0
 }
 
 .hardwarelogo1text {
@@ -1935,25 +1941,37 @@ lightningrain {
 
 .hardwarelogo2,
 .hardwarelogo3 {
-  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: static;
   padding: 0;
-  margin-right: 20px
+  margin: 0
 }
 
 .hardwarelogo2 {
-  margin-top: -10px;
-  margin-left: 760px
+  margin: 0
 }
 
 .hardwarelogo3 {
-  margin-top: 13px;
-  margin-left: 800px
+  margin: 0
+}
+
+.footertext-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center
 }
 
 .footertext {
   position: relative;
-  float: left;
-  margin-left: 25px
+  margin: 2px 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: silver
 }
 
 .feelstemp,

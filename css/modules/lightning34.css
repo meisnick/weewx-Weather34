@@ -116,12 +116,12 @@
 .mod-lt-distance-pill .val {
     font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
-    font-size: 0.9rem;
+    font-size: .85em;
 }
 
 .mod-lt-distance-pill .unit {
     color: silver;
-    font-size: 0.65rem;
+    font-size: .65em;
     margin-left: 2px;
 }
 
@@ -163,18 +163,18 @@
 .lt-pill .val {
     font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
-    font-size: 0.9rem;
+    font-size: .85em;
 }
 
 /* Last strike uses proportional Arial so date text isn't compressed */
 .lt-pill .val.date-text {
     font-family: Arial, sans-serif;
-    font-size: 0.75rem;
+    font-size: .7em;
 }
 
 .lt-pill .unit {
     color: silver;
-    font-size: 0.65rem;
+    font-size: .65em;
     margin-left: 2px;
 }
 

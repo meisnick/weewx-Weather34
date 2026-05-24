@@ -318,6 +318,27 @@ Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Curren
   - Text is `font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`.
   - Color is set to `silver` to match other `Last 3 Hrs` text nodes across the dashboard.
 
+#### Style C: Minimalist Transparent Data Pill (Rain & Lightning style)
+Used for inline grid sub-data fields (e.g., Year/Month/Last Strike counts, sensor distances, and energy top-pills):
+* **Outer Container (`.rainmodulehome` / `.lt-pill` / `.mod-lt-distance-pill` / `.mod-lt-top-pill`):**
+  - **Height:** `1.1rem`
+  - **Width:** `4rem` (or `width: auto; padding: 0 6px;` to safely handle longer values like 5-digit measurements).
+  - **Border:** `1px solid var(--bg0)` (card-theme border; resolves to `#393d40` in dark theme).
+  - **Corner Radius:** `2px` (include `-webkit-border-radius: 2px;` for layout engine support).
+  - **Background:** `transparent` (for clean card integration).
+  - **Display:** `display: flex; align-items: center; justify-content: center; overflow: hidden; box-sizing: border-box; line-height: 16px;`.
+  - *Light theme override:* `border-color: #e6e8ef; background-color: transparent;`
+* **Value Element (`.val` / `raiblue`):**
+  - **Font Size:** `0.65rem`
+  - **Font Family:** `weathertext2, Arial, sans-serif`
+  - **Color:** Thematic color (e.g., `var(--teal)` for rain, `var(--orange)` for lightning).
+  - *Note:* Date strings (`.date-text`) use `Arial, sans-serif` and a reduced size of `0.55rem` to avoid compression.
+* **Unit Element (`.unit` / `smallrainunit2`):**
+  - **Font Size:** `0.5rem`
+  - **Font Family:** `Arial, Helvetica, system`
+  - **Color:** `silver` (`#c0c0c0`)
+  - **Margin:** `margin-left: 2px;`
+
 ---
 
 ## 8. Registering a New Module

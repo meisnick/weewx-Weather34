@@ -55,13 +55,6 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 </div>
                 <div class="mod-lt-badge-bot">Last 3 Hrs</div>
             </div>
-            <div class="mod-lt-distance-pill">
-                <?php if ($dist_mi !== null): ?>
-                <span class="val"><?php echo $dist_mi; ?></span><span class="unit">mi</span>
-                <?php else: ?>
-                <span class="val">--</span>
-                <?php endif; ?>
-            </div>
         </div>
 
         <div class="mod-lt-grid">
@@ -73,7 +66,17 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 <div class="lt-lbl"><?php echo date('M'); ?></div>
                 <div class="lt-pill"><span class="val"><?php echo $strikes_mo; ?></span></div>
             </div>
-            <div class="lt-item lt-full-width">
+            <div class="lt-item">
+                <div class="lt-lbl">Distance</div>
+                <div class="lt-pill">
+                    <?php if ($dist_mi !== null): ?>
+                    <span class="val"><?php echo $dist_mi; ?></span><span class="unit">mi</span>
+                    <?php else: ?>
+                    <span class="val">--</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="lt-item">
                 <div class="lt-lbl">Last Strike</div>
                 <div class="lt-pill">
                     <span class="val date-text"><?php echo $last_time ?? '--'; ?></span>

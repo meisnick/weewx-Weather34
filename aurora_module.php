@@ -49,7 +49,26 @@ if (file_exists('jsondata/ki.txt')) {
     }
 }
 
+// --- Real-time Aurora Probability from Ovation grid ---
+$aurora_prob = null;
+$prob_ok = false;
+if (file_exists('jsondata/aurora_prob.json')) {
+    $ap_json = json_decode(file_get_contents('jsondata/aurora_prob.json'), true);
+    if ($ap_json && isset($ap_json['probability'])) {
+        $aurora_prob = (int)$ap_json['probability'];
+        $prob_ok = (time() - filemtime('jsondata/aurora_prob.json') < 1800); // 30 min freshness
+    }
+}
+
 // --- Helpers ---
+function aurora_prob_class(int $prob): string {
+    if ($prob >= 50) return 'prob-red';
+    if ($prob >= 25) return 'prob-orange';
+    if ($prob >= 10) return 'prob-amber';
+    if ($prob > 0)   return 'prob-green';
+    return 'prob-none';
+}
+
 function aurora_rsg_class(int $scale): string {
     if ($scale >= 4) return 'rsg-g-storm';
     if ($scale >= 2) return 'rsg-g-active';
@@ -104,6 +123,12 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
     </div>
     <div class="aurora-rsg-labels">
       <span>Radio</span><span>Solar</span><span>Geo</span>
+    </div>
+    <div class="aurora-prob-container">
+      <span class="aurora-prob-lbl">Aurora Prob</span>
+      <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
+        <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
+      </span>
     </div>
   </div>
 

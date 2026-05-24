@@ -26,6 +26,16 @@ if (file_exists('jsondata/noaa_scales.json')) {
     }
 }
 
+// ── Real-time Aurora Probability from Ovation grid ──────────────────────────
+$aurora_prob = null; $prob_ok = false;
+if (file_exists('jsondata/aurora_prob.json')) {
+    $ap_json = json_decode(file_get_contents('jsondata/aurora_prob.json'), true);
+    if ($ap_json && isset($ap_json['probability'])) {
+        $aurora_prob = (int)$ap_json['probability'];
+        $prob_ok = (time() - filemtime('jsondata/aurora_prob.json') < 1800);
+    }
+}
+
 // ── Hemisphere power → Highcharts series arrays ───────────────────────────────
 $north_pts = []; $south_pts = [];
 $power_ok = file_exists('jsondata/aurora_power.txt')
@@ -171,6 +181,16 @@ body { display: flex; flex-direction: column; }
   color: #fff;
   white-space: nowrap;
 }
+.pop-prob-badge {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .75em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border-bottom: 3px solid rgba(0,0,0,0.3);
+  background: <?php echo ($aurora_prob >= 50) ? '#d35d4e' : (($aurora_prob >= 25) ? '#ff7c39' : (($aurora_prob >= 10) ? '#e6a141' : (($aurora_prob > 0) ? '#90b12a' : $box_none))); ?>;
+  color: #fff;
+  white-space: nowrap;
+}
 .pop-storm {
   font-size: .65em;
   color: <?php echo $text_dim; ?>;
@@ -307,6 +327,7 @@ body { display: flex; flex-direction: column; }
 <!-- Header: title + Kp badge + storm + RSG mini-badges -->
 <div class="pop-header">
   <span class="pop-title">Space Weather</span>
+  <span class="pop-prob-badge">Ovation&nbsp;<?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?></span>
   <span class="pop-kp-badge">Kp&nbsp;<?php echo number_format($kp, 1); ?></span>
   <span class="pop-storm"><?php echo ucfirst($kp_type); ?> &mdash; <?php echo $storm; ?></span>
   <div class="pop-rsg-mini">

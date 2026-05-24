@@ -65,6 +65,8 @@ function moduleTitle($module, $weather, $lang) {
             return 'NWS Radar';
         case 'top_temperatureyear.php':
             return 'Temperature Year';
+        case 'top_windgustyear.php':
+            return 'Wind Gust Year';
         case 'top_rainfallfyearmonth.php':
             return 'Rainfall Totals';
         case 'top_advisory_nws.php':

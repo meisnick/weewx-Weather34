@@ -317,6 +317,10 @@ Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Curren
   - Background is set to solid `var(--bg1)` (dark charcoal/gray) to act as a solid bottom bar.
   - Text is `font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`.
   - Color is set to `silver` to match other `Last 3 Hrs` text nodes across the dashboard.
+* **Anti-Aliasing & Color Bleed Prevention (Critical for WebKit/Blink):**
+  - **Dynamic Background Rule:** To prevent background color leakage behind the grey bottom bar, never apply the dynamic background color (e.g., orange/amber) to the outer `.mod-lt-badge` wrapper.
+  - **The Fix:** Leave the outer wrapper's background transparent. Apply the inline `style="background-color: ..."` rule exclusively to the **top** container (`.mod-lt-badge-top`).
+  - **Sub-Element Radiuses:** Define top corner radiuses (`2px` top-left/top-right) on `.mod-lt-badge-top` and bottom corner radiuses (`2px` bottom-left/bottom-right) on `.mod-lt-badge-bot` to align perfectly with the parent container clipping mask.
 
 #### Style C: Minimalist Transparent Data Pill (Rain & Lightning style)
 Used for inline grid sub-data fields (e.g., Year/Month/Last Strike counts, sensor distances, and energy top-pills):

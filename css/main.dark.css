@@ -2052,7 +2052,7 @@ lightningrain {
   grid-template-columns: repeat(auto-fill, 240px);
   justify-content: center;
   width: 100%;
-  margin: 0 auto -10px
+  margin: 0 auto 0
 }
 
 .weather34box {

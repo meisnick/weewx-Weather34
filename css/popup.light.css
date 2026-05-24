@@ -100,9 +100,10 @@ html, body {
 .demo th#CELL11, .demo td#CELL11 { background-color: #8e24aa; color: #fff !important; } /* Very High / Unhealthy */
 
 .chart-container {
+  flex: 1;
+  min-height: 0;
   width: 100%;
-  height: 380px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   border-radius: 4px;
   overflow: hidden;
   background: #ffffff;
@@ -147,13 +148,18 @@ html, body {
 
 .tabcontent {
   display: none;
-  height: calc(100% - 60px);
+  height: calc(100% - 50px);
   overflow: hidden;
   animation: fadeIn 0.3s ease-in-out;
 }
 
-#historical-tab {
-  overflow: hidden;
+.tabcontent.active {
+  display: block;
+}
+
+#historical-tab.tabcontent.active {
+  display: flex;
+  flex-direction: column;
 }
 
 #help-tab {

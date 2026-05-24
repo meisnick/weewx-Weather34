@@ -15,7 +15,6 @@ $forecastime = filemtime ('jsondata/uk.txt');
 <!-- TAB 1: HISTORICAL TRENDS HIGHCHART -->
 <div id="historical-tab" class="tabcontent">
   <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="Historical Air Quality Trends (Weekly PM2.5 / PM10)"></div>
-  <br>
   <div class="chart-container">
     <iframe src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </div>
@@ -126,13 +125,13 @@ function openTab(tabId, btn) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+    tabcontent[i].classList.remove("active");
   }
   tablinks = document.getElementsByClassName("tablink");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].classList.remove("active");
   }
-  document.getElementById(tabId).style.display = "block";
+  document.getElementById(tabId).classList.add("active");
   btn.classList.add("active");
 }
 document.getElementById("defaultOpen").click();

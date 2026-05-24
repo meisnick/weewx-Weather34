@@ -121,7 +121,7 @@ function modulePopups($module, $vars) {
             $out = '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' Indoor Guide</a></span>';
             break;
         case 'airqualitymodule.php':
-            $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' Air Quality | Cloudbase</a></span>';
+            $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' Air Quality</a></span>';
             break;
         case 'purpleairqualitymodule.php':
         case 'ew_airqualitymodule.php':

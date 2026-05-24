@@ -1,31 +1,59 @@
-﻿<?php include('w34CombinedData.php');date_default_timezone_set($TZ);?>
-<div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>
-<div class="mod-lightning34">
-<div class="simsekcontainer">
-<div class="simsekdata">Strikes</div>
-<?php
-// Detected Lightning Last 3 Hours
-echo '<div class=simsek>'.$lightning["strike_count_3hr"];?></div>
-<div class="simsektoday"><valuetext>Last 3 Hrs</valuetext></div>
+<?php include('w34CombinedData.php'); date_default_timezone_set($TZ);
+
+$strike_3hr = (int)($lightning['strike_count_3hr'] ?? 0);
+$distance   = $lightning['light_last_distance'] ?? '--';
+$energy     = rand(6452, 28864); // no energy sensor; preserved from original
+$strikes_mo = str_replace(',', '', $weather['lightningmonth'] ?? '0');
+$strikes_yr = str_replace(',', '', $weather['lightningyear']  ?? '0');
+$last_time  = (isset($lightning['last_time']) && $lightning['last_time'] >= 1)
+              ? date('j M H:i', $lightning['last_time']) : null;
+
+// Badge colour: amber when quiet, orange when strikes active in last 3hr
+$badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
+?>
+<div class="updatedtime"><span>
+    <?php if (file_exists($livedata) && time() - filemtime($livedata) > 300):
+        echo $offline . '<offline> Offline </offline>';
+    else:
+        echo $online . ' ' . $weather['time'];
+    endif; ?>
+</span></div>
+
+<div class="mod-lt">
+
+    <div class="mod-lt-topstats">
+        <div class="stat-row"><span class="val"><?php echo htmlspecialchars((string)$distance); ?></span> km</div>
+        <div class="stat-row"><span class="val"><?php echo $energy; ?></span> MJ/m</div>
+    </div>
+
+    <div class="mod-lt-main">
+
+        <div class="mod-lt-badge" style="background-color:<?php echo $badge_col; ?>">
+            <div class="mod-lt-badge-top">
+                <span class="lbl">Strikes</span>
+                <span class="val"><?php echo $strike_3hr; ?></span>
+            </div>
+            <div class="mod-lt-badge-bot">Last 3 Hrs</div>
+        </div>
+
+        <div class="mod-lt-history">
+            <div class="title">Strikes Recorded</div>
+            <div class="row">
+                <span><?php echo date('M Y'); ?>:</span>
+                <span class="val"><?php echo $strikes_mo; ?></span>
+            </div>
+            <div class="row">
+                <span>Total <?php echo date('Y'); ?>:</span>
+                <span class="val"><?php echo $strikes_yr; ?></span>
+            </div>
+            <?php if ($last_time): ?>
+            <div class="row mod-lt-lasttime">
+                <span>Last:</span>
+                <span class="val"><?php echo $last_time; ?></span>
+            </div>
+            <?php endif; ?>
+        </div>
+
+    </div>
+
 </div>
-<div class="lightninginfo">Strikes Recorded
-<?php
-// Lightning Month Current
-echo "<lightningannualx>".date('F Y').":<orange> " .str_replace(",","",$weather["lightningmonth"])." </orange></lightningannual>";?>
-<?php
-// Lightning Year Current
-echo "<lightningannualx1> Total ".date('Y').":<orange> " .str_replace(",","",$weather["lightningyear"])." </orange>";?>
-<?php
-// Last Strike Detected
-if ($lightning['last_time']>=1) echo "<timeago>Last Strike Detected<br> <agolightning><orange>".date('jS M H:i',$lightning['last_time'])." </orange> ";?></div>
-<div class="rainconverter">
-<?php
-// Last Distance Detected
-echo "<div class=tempconvertercircleyellow><orange> " .$lightning["light_last_distance"]."</orange><smallrainunit>&nbsp; km</smallrainunit>";?></div>
-<?php
-// Last Strike Energy (Random)
-echo "<div class=tempconvertercircleyellow><orange> ";?><?php echo rand(6452,28864);?><?php echo "</orange><smallrainunit>&nbsp; MJ/m</smallrainunit>";?></div>
-<lightningiconx>
-<?php if ($lightning['strike_count_3hr'] > 0) echo '<img src="img/lightningalert.svg" width="20" height="20" align="right"/>';?>
-</lightningiconx>
-</div><!-- /mod-lightning34 -->

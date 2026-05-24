@@ -1,327 +1,150 @@
-﻿/* lightning34 module -- scoped to .mod-lightning34 */
-.mod-lightning34 { display: contents; }
+/* lightning34 — redesigned module */
 
-.mod-lightning34 .lightninginfo {
-  position: absolute;
-
-  margin-left: 125px;
-
-  padding: 5px;
-
-  text-align: left;
-
-  color: silver
-
+/*
+ * padding-top (not margin-top) prevents margin collapse through #grid_N.
+ * position:relative on wrapper establishes containing block for .mod-lt-topstats.
+ * display:flex + text-align:left overrides .weather-item's global centering.
+ */
+.mod-lt {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.mod-lightning34 .lightninginfo {
-  margin-top: 52px;
-
-  border-radius: 2px;
-
-  border: 1px solid rgba(95, 96, 97, .4);
-
-  width: 140px;
-
-  font-size: .7rem
-
+/* ── Top-right: distance & energy ─────────────────────────────────────────── */
+.mod-lt-topstats {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    padding: 4px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
 }
 
-.mod-lightning34 .tempconvertercircleyellow {
-  align-items: center;
-
-  width: 4.2rem;
-
-  color: silver;
-
-  font-family: weathertext2;
-
-  height: 1rem;
-
-  line-height: 16px;
-
-  overflow: hidden
-
+.mod-lt-topstats .stat-row {
+    font-size: 0.65em;
+    color: silver;
+    font-family: Arial, sans-serif;
+    line-height: 1;
 }
 
-.mod-lightning34 .rainconverter {
-  position: absolute;
-
-  font-size: 12px
-
+.mod-lt-topstats .stat-row .val {
+    color: var(--orange);
+    font-size: 1.1em;
 }
 
-.mod-lightning34 .rainconvertercircle {
-  display: flex;
-
-  justify-content: center;
-
-  border: 1px solid var(--bg1);
-
-  border-radius: 2px;
-
-  font-size: .85em
-
+/* ── Main row: badge + history ────────────────────────────────────────────── */
+.mod-lt-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-top: 35px;
 }
 
-.mod-lightning34 .tempconvertercircleyellow {
-  display: flex;
-
-  justify-content: center;
-
-  border: 1px solid var(--bg1);
-
-  border-radius: 2px;
-
-  font-size: .85em  
-
+/* Strike count badge */
+.mod-lt-badge {
+    width: 85px;
+    height: 80px;
+    border-radius: 4px;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.mod-lightning34 .simsekcontainer {
-  font-family: weathertext2;
-
-  position: relative;
-
-  margin: 40px 10px 10px 40px;
-
-  top: 13px
-
+.mod-lt-badge-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4px;
 }
 
-.mod-lightning34 .simsek {
-  font-size: 1.45rem;
-
-  padding-top: 12px;
-
-  color: #f8f8f8;
-
-  border-bottom: 15px solid var(--bg1);
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 2px
-
+.mod-lt-badge-top .lbl {
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: Arial, sans-serif;
+    margin-bottom: 2px;
 }
 
-.mod-lightning34 .simsektoday {
-  position: absolute;
-
-  font-size: .7rem
-
+.mod-lt-badge-top .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: #fff;
 }
 
-.mod-lightning34 .simsektoday {
-  margin-top: -15px;
-
-  margin-left: 1.65rem;
-
-  text-align: center;
-
-  z-index: auto;
-
-  color: silver;
-
-  font-family: Arial, system
-
+/* Dark value strip pinned to bottom of badge */
+.mod-lt-badge-bot {
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    text-align: center;
+    padding: 4px 0;
+    font-size: 0.65em;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Arial, sans-serif;
 }
 
-.mod-lightning34 .simsekdata {
-  font-family: Arial, Helvetica, system;
-
-  color: #fff;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin: 4px auto auto;
-
-  left: 28.1%
-
+/* Historical records box */
+.mod-lt-history {
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.mod-lightning34 .rainconvertercircleblue1 {
-  justify-content: center;
-
-  height: 1rem;
-
-  width: 3.55rem;
-
-  border: 1px solid var(--bg1);
-
-  border-radius: 2px;
-
-  line-height: 16px;
-
-  font-size: .85em;
-
-  color: var(--teal);
-
-  background: 0
-
+.mod-lt-history .title {
+    font-size: 0.65em;
+    color: silver;
+    font-family: Arial, sans-serif;
+    margin-bottom: 2px;
 }
 
-
-/* -- Light theme overrides -- */
-[data-theme="light"] .mod-lightning34 .lightninginfo {
-  position: absolute;
-
-  margin-left: 125px;
-
-  padding: 5px;
-
-  text-align: left
-
+.mod-lt-history .row {
+    font-size: 0.7em;
+    color: silver;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
 }
 
-[data-theme="light"] .mod-lightning34 .lightninginfo {
-  margin-top: 52px;
-
-  border-radius: 3px;
-
-  border: 1px solid rgba(95, 96, 97, .2);
-
-  width: 140px;
-
-  font-size: .7rem
-
+.mod-lt-history .row .val {
+    color: var(--orange);
 }
 
-[data-theme="light"] .mod-lightning34 .tempconvertercircleyellow {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  height: 1.1rem;
-
-  width: 3.4rem;
-
-  border: 2px solid #e6e8ef;
-
-  overflow: hidden;
-
-  border-radius: 4px;
-
-  color: #fff;
-
-  line-height: 16px;
-
-  font-family: weathertext2;
-
-  font-size: .85em
-
+/* Last strike time row — slightly smaller to stay compact */
+.mod-lt-lasttime .val {
+    font-size: 0.9em;
 }
 
-[data-theme="light"] .mod-lightning34 .tempconvertercircleyellow {
-  background: rgba(var(--amber-rgb), .8)
-
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] .mod-lt-badge {
+    border-bottom-color: rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="light"] .mod-lightning34 .simsekcontainer {
-  font-family: weathertext2;
-
-  position: relative;
-
-  margin: 40px 10px 10px 40px;
-
-  left: -10px;
-
-  top: 12px
-
+[data-theme="light"] .mod-lt-topstats,
+[data-theme="light"] .mod-lt-history {
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="light"] .mod-lightning34 .simsek {
-  font-size: 1.45rem;
-
-  padding-top: 12px;
-
-  color: var(--bg1);
-
-  border-bottom: 15px solid #e6e8ef;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 3px
-
+[data-theme="light"] .mod-lt-topstats .stat-row,
+[data-theme="light"] .mod-lt-history .title,
+[data-theme="light"] .mod-lt-history .row {
+    color: #666;
 }
-
-[data-theme="light"] .mod-lightning34 .simsektoday {
-  margin-top: -15px;
-
-  margin-left: 1.65rem;
-
-  text-align: center;
-
-  z-index: auto;
-
-  color: #2d3a4b;
-
-  font-family: Arial, system
-
-}
-
-[data-theme="light"] .mod-lightning34 .rainconvertercircle {
-  background: #4e95a0;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 3.2rem;
-
-  border: 2px solid #e6e8ef;
-
-  overflow: hidden;
-
-  border-radius: 3px;
-
-  color: #fff;
-
-  line-height: 16px;
-
-  font-size: .85em
-
-}
-
-[data-theme="light"] .mod-lightning34 .rainconverter {
-  position: absolute;
-
-  font-size: 12px;
-
-  margin-left: 255px
-
-}
-
-[data-theme="light"] .mod-lightning34 .rainconvertercircleblue1 {
-  align-items: center;
-
-  justify-content: center;
-
-  width: 3.6rem;
-
-  border: 2px solid #e6e8ef;
-
-  overflow: hidden;
-
-  border-radius: 3px;
-
-  line-height: 16px;
-
-  font-family: weathertext2;
-
-  font-size: .85em;
-
-  color: #fff;
-
-  background: #4e95a0
-
-}
-

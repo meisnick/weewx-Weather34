@@ -151,7 +151,7 @@
 .mod-lt-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px 6px;
+    gap: 5px 10px;
     flex: 1;
 }
 

@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --green:     #90b12a;
   --green2:    #9aba2f;
   --amber:     #e6a141;
@@ -440,8 +440,10 @@ h6 {
   display: -webkit-box;
   display: -moz-box;
   display: flex;
-  width: 960px;
-  height: 100px;
+  width: 100%;
+  max-width: 960px;
+  min-height: 83px;
+  height: auto;
   background-color: 0;
   margin: 50px auto -20px
 }

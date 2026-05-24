@@ -78,4 +78,8 @@ if (file_put_contents($path, $php) === false) {
     exit;
 }
 
+if (function_exists('opcache_invalidate')) {
+    opcache_invalidate($path, true);
+}
+
 echo json_encode(['success' => true, 'topbar' => count($new_topbar), 'grid' => count($new_grid)]);

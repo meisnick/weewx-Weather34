@@ -1,51 +1,129 @@
-/* airqualitymodule — individual pollutant pills row */
+/* airqualitymodule — two-column redesign */
 
 /*
- * position:relative + z-index:25 ensures pills render above the gauge circle
- * (which uses z-index:20). margin-top:5px clears the badge flow footprint.
- * display:flex counters .weather-item's global text-align:center.
+ * padding-top (not margin-top) prevents margin collapse through #grid_N.
+ * display:flex + text-align:left overrides .weather-item's global centering.
+ * height:100% + box-sizing:border-box fills the 157px #grid_N exactly.
  */
-.aq-pollutants {
-  position: relative;
-  z-index: 25;
-  display: flex;
-  gap: 3px;
-  padding: 0 4px;
-  margin-top: 5px;
+.mod-aq {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.aq-poll-pill {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3px 2px;
-  border-radius: 3px;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
-  font-family: weathertext2, Arial, sans-serif;
-  color: #fff;
+/* ── Left column: main AQI badge ──────────────────────────────────────────── */
+.mod-aq-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
 }
 
-.aq-poll-val {
-  font-size: .75em;
-  line-height: 1.2;
+.mod-aq-badge {
+    width: 100%;
+    border-radius: 4px;
+    border-bottom: 8px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0 0 0;
+    overflow: hidden;
 }
 
-.aq-poll-lbl {
-  font-size: .55em;
-  line-height: 1.1;
-  color: rgba(255, 255, 255, 0.8);
+.mod-aq-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 2px;
+    opacity: 0.9;
 }
 
-/* Ring on the dominant pollutant pill */
-.aq-dominant {
-  outline: 1px solid rgba(255, 255, 255, 0.35);
-  outline-offset: -2px;
+.mod-aq-val-strip {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+    padding: 4px 0;
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
 }
 
-/* Light theme: soften the pill shadow */
-[data-theme="light"] .aq-poll-pill {
-  border-bottom-color: rgba(0, 0, 0, 0.15);
+/* .65em + color set inline matches the Weather34 sub-label convention */
+.mod-aq-desc {
+    margin-top: 6px;
+    font-size: .65em;
+    font-family: weathertext2, Arial, sans-serif;
+    text-align: center;
+}
+
+/* ── Right column: pollutants grid ────────────────────────────────────────── */
+.mod-aq-details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mod-aq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.mod-aq-heading {
+    font-size: .65em;
+    color: silver;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+
+.mod-aq-dominant-tag {
+    font-size: .65em;
+    font-family: Arial, sans-serif;
+}
+
+.mod-aq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    flex: 1;
+}
+
+.mod-aq-pill {
+    border-radius: 3px;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.mod-aq-pill.dominant {
+    outline: 1px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 1px;
+}
+
+.mod-aq-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: .9em;
+    line-height: 1.2;
+}
+
+.mod-aq-pill .lbl {
+    font-size: .55em;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.1;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] .mod-aq-badge,
+[data-theme="light"] .mod-aq-pill {
+    border-bottom-color: rgba(0, 0, 0, 0.15);
 }

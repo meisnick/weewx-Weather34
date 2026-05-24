@@ -1,28 +1,30 @@
-<?php  include('shared.php');include('common.php');
+<?php include('shared.php'); include('common.php');
 
 // --- Load AQ data safely ---
-$aqiweather = ['aqi' => 0, 'aqiozone' => 'N/A', 'time' => '--', 'city' => '--'];
+$aq_file = 'jsondata/aq.txt';
+$aqi = 0;
 $aq_pm25 = null; $aq_pm10 = null; $aq_o3 = null; $aq_no2 = null;
 $aq_dominant = '';
-$aq_file = 'jsondata/aq.txt';
+$data_ok = false;
+
 if (file_exists($aq_file) && (time() - filemtime($aq_file) < 7200)) {
     $raw = file_get_contents($aq_file);
-    $parsed_json = json_decode($raw, true);
-    if (json_last_error() === JSON_ERROR_NONE && isset($parsed_json['data'])) {
-        $d = $parsed_json['data'];
-        $aqiweather['aqi']  = (int)($d['aqi'] ?? 0);
-        $aqiweather['time'] = date($timeFormat, $d['time']['v'] ?? time());
-        $aqiweather['city'] = $d['city']['name'] ?? '--';
-        $iaqi = $d['iaqi'] ?? [];
+    $parsed = json_decode($raw, true);
+    if (json_last_error() === JSON_ERROR_NONE && isset($parsed['data'])) {
+        $d = $parsed['data'];
+        $aqi         = (int)($d['aqi'] ?? 0);
+        $iaqi        = $d['iaqi'] ?? [];
         $aq_pm25     = isset($iaqi['pm25']['v']) ? round((float)$iaqi['pm25']['v']) : null;
         $aq_pm10     = isset($iaqi['pm10']['v']) ? round((float)$iaqi['pm10']['v']) : null;
         $aq_o3       = isset($iaqi['o3']['v'])   ? round((float)$iaqi['o3']['v'])   : null;
         $aq_no2      = isset($iaqi['no2']['v'])  ? round((float)$iaqi['no2']['v'])  : null;
         $aq_dominant = strtolower($d['dominentpol'] ?? '');
+        $data_ok     = true;
     }
 }
 
-function aq_pill_bg($val) {
+// Colour for a given AQI sub-index value
+function aq_color($val) {
     if ($val === null) return 'var(--bg0)';
     if ($val > 150) return 'var(--red)';
     if ($val > 100) return 'var(--orange)';
@@ -30,113 +32,74 @@ function aq_pill_bg($val) {
     return 'var(--green)';
 }
 
+// Main badge colour and icon based on composite AQI
+if ($aqi > 300)      { $badge_col = '#8b3a8b'; $icon = 'css/aqi/hazair.svg'; }
+elseif ($aqi > 200)  { $badge_col = '#a475cb'; $icon = 'css/aqi/vhair.svg';  }
+elseif ($aqi > 150)  { $badge_col = 'var(--red)';    $icon = 'css/aqi/uhair.svg';   }
+elseif ($aqi > 100)  { $badge_col = 'var(--orange)'; $icon = 'css/aqi/uhfsair.svg'; }
+elseif ($aqi > 50)   { $badge_col = 'var(--amber)';  $icon = 'css/aqi/modair.svg';  }
+else                 { $badge_col = 'var(--green)';  $icon = 'css/aqi/goodair.svg'; }
+
+// AQI description text
+if ($aqi > 300)     $aqi_desc = $lang['Hazordous']    ?? 'Hazardous';
+elseif ($aqi > 200) $aqi_desc = $lang['VeryUnhealthy'] ?? 'Very Unhealthy';
+elseif ($aqi > 150) $aqi_desc = $lang['Unhealthy']     ?? 'Unhealthy';
+elseif ($aqi > 100) $aqi_desc = $lang['UnhealthyFS']   ?? 'Unhealthy for Some';
+elseif ($aqi > 50)  $aqi_desc = $lang['Moderate']      ?? 'Moderate';
+else                $aqi_desc = $lang['Good']           ?? 'Good';
+
+// Dominant pollutant display label and its colour
+$dom_labels = ['pm25' => 'PM2.5', 'pm10' => 'PM10', 'o3' => 'O3', 'no2' => 'NO₂'];
+$dom_label  = $dom_labels[$aq_dominant] ?? strtoupper($aq_dominant);
+$dom_vals   = ['pm25' => $aq_pm25, 'pm10' => $aq_pm10, 'o3' => $aq_o3, 'no2' => $aq_no2];
+$dom_color  = aq_color($dom_vals[$aq_dominant] ?? null);
+
+$polls = [
+    'PM2.5' => ['val' => $aq_pm25, 'slug' => 'pm25'],
+    'PM10'  => ['val' => $aq_pm10, 'slug' => 'pm10'],
+    'O3'    => ['val' => $aq_o3,   'slug' => 'o3'],
+    'NO₂'   => ['val' => $aq_no2,  'slug' => 'no2'],
+];
 ?>
-<div class="mod-airquality">
-    <div class="updatedtime">
-        <span>
-            <?php if(file_exists('jsondata/aq.txt') && time() - filemtime('jsondata/aq.txt') < 7200) {
-                echo $online . " " . date($timeFormat, filemtime('jsondata/aq.txt'));
-            } else {
-                echo $offline . ' <offline>Offline</offline>';
-            }?>
-        </span>
+<div class="updatedtime"><span>
+    <?php if ($data_ok):
+        echo $online . ' ' . date($timeFormat, filemtime($aq_file));
+    else:
+        echo $offline . ' <offline>Offline</offline>';
+    endif; ?>
+</span></div>
+
+<div class="mod-aq">
+
+    <!-- Left: main AQI badge -->
+    <div class="mod-aq-main">
+        <div class="mod-aq-badge" style="background-color:<?php echo $badge_col; ?>">
+            <img class="mod-aq-icon" src="<?php echo $icon; ?>?ver=1.4" alt="AQI">
+            <div class="mod-aq-val-strip"><?php echo $aqi; ?></div>
+        </div>
+        <div class="mod-aq-desc" style="color:<?php echo $badge_col; ?>"><?php echo $aqi_desc; ?></div>
     </div>
 
-    <div class="airqualitywordbig">Air Quality</div>
-
-    <div class="tempconverter2">
-        <?php //WEATHER34 AIR QUALITY SVG
-        if ($aqiweather["aqi"] > 200) {
-            echo "<div class='tempconvertercirclepurple'>PM2.5</div>";
-        } else if ($aqiweather["aqi"] > 150) {
-            echo "<div class='tempconvertercirclered'>PM2.5</div>";
-        } else if ($aqiweather["aqi"] > 100) {
-            echo "<div class='tempconvertercircleorange'>PM2.5</div>";
-        } else if ($aqiweather["aqi"] > 50) {
-            echo "<div class='tempconvertercircleyellow'>PM2.5</div>";
-        } else if ($aqiweather["aqi"] >= 0) {
-            echo "<div class='tempconvertercirclegreen'>PM2.5</div>";
-        }
-        ?>
-    </div>
-
-    <div class="airqualitymoduleposition">
-        <div class="tempcontainer">
-            <?php //WEATHER34 AIR QUALITY SVG
-            if ($aqiweather["aqi"] > 300) {
-                echo "<div class='air300'><img src='css/aqi/hazair.svg?ver=1.4' width='110px' height='100px' alt='weather34 hazardous air quality' title='weather34 hazardous air quality'></div>";
-            } else if ($aqiweather["aqi"] > 200) {
-                echo "<div class='air200'><img src='css/aqi/vhair.svg?ver=1.4' width='110px' height='100px' alt='weather34 very unhealthy air quality' title='weather34 very unhealthy air quality'></div>";
-            } else if ($aqiweather["aqi"] > 150) {
-                echo "<div class='air150'><img src='css/aqi/uhair.svg?ver=1.4' width='110px' height='100px' alt='weather34 unhealthy air quality' title='weather34 unhealthy air quality'></div>";
-            } else if ($aqiweather["aqi"] > 100) {
-                echo "<div class='air100'><img src='css/aqi/uhfsair.svg?ver=1.4' width='110px' height='100px' alt='weather34 unhealthy for some air quality' title='weather34 unhealthy for some air quality'></div>";
-            } else if ($aqiweather["aqi"] > 50) {
-                echo "<div class='air50'><img src='css/aqi/modair.svg?ver=1.4' width='110px' height='100px' alt='weather34 moderate air quality' title='weather34 moderate air quality'></div>";
-            } else if ($aqiweather["aqi"] >= 0) {
-                echo "<div class='air0'><img src='css/aqi/goodair.svg?ver=1.4' width='110px' height='100px' alt='weather34 good air quality' title='weather34 good air quality'></div>";
-            }
+    <!-- Right: pollutant grid -->
+    <div class="mod-aq-details">
+        <div class="mod-aq-header">
+            <span class="mod-aq-heading">Pollutants</span>
+            <?php if ($dom_label): ?>
+            <span class="mod-aq-dominant-tag" style="color:<?php echo $dom_color; ?>"><?php echo htmlspecialchars($dom_label); ?> &#x29C9;</span>
+            <?php endif; ?>
+        </div>
+        <div class="mod-aq-grid">
+            <?php foreach ($polls as $label => $p):
+                $col  = aq_color($p['val']);
+                $disp = ($p['val'] !== null) ? $p['val'] : '--';
+                $dom  = ($p['slug'] === $aq_dominant) ? ' dominant' : '';
             ?>
-        </div>
-    </div>
-
-    <div class="airsvg">
-        <?php
-        if ($aqiweather["aqi"] > 300) {
-            echo "<div class='dottedcirclered'>";
-        } else if ($aqiweather["aqi"] > 200) {
-            echo "<div class='dottedcirclepurple'>";
-        } else if ($aqiweather["aqi"] > 150) {
-            echo "<div class='dottedcirclered'>";
-        } else if ($aqiweather["aqi"] > 100) {
-            echo "<div class='dottedcircleorange'>";
-        } else if ($aqiweather["aqi"] > 50) {
-            echo "<div class='dottedcircleyellow'>";
-        } else if ($aqiweather["aqi"] >= 0) {
-            echo "<div class='dottedcirclegreen'>";
-        }
-        ?>
-            <div class="airvalue">
-                <?php //WEATHER34 AIR QUALITY VALUE
-                echo $aqiweather["aqi"];
-
-                //WEATHER34 air quality description
-                if ($aqiweather["aqi"] > 300) {
-                    echo "<br><airdescription><indoorred>&nbsp;" . $lang['Hazordous'] . "</indoorred></airdescription>";
-                } else if ($aqiweather["aqi"] > 200) {
-                    echo "<br><airdescription><indoorpurple>" . $lang['VeryUnhealthy'] . "</indoorpurple></airdescription>";
-                } else if ($aqiweather["aqi"] > 150) {
-                    echo "<br><airdescription><indoorred>&nbsp;" . $lang['Unhealthy'] . "</indoorred></airdescription>";
-                } else if ($aqiweather["aqi"] > 100) {
-                    echo "<br><airdescription><indoororange>" . $lang['UnhealthyFS'] . "</indoororange></airdescription>";
-                } else if ($aqiweather["aqi"] > 50) {
-                    echo "<br><airdescription><indooryellow>&nbsp;" . $lang['Moderate'] . "</indooryellow></airdescription>";
-                } else if ($aqiweather["aqi"] >= 0) {
-                    echo "<br><airdescription><indoorgreen>&nbsp; &nbsp;" . $lang['Good'] . "</indoorgreen></airdescription>";
-                }
-                ?>
+            <div class="mod-aq-pill<?php echo $dom; ?>" style="background-color:<?php echo $col; ?>">
+                <span class="val"><?php echo $disp; ?></span>
+                <span class="lbl"><?php echo $label; ?></span>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
-    <div class="aq-pollutants">
-        <?php
-        $polls = [
-            'PM2.5' => $aq_pm25,
-            'PM10'  => $aq_pm10,
-            'O3'    => $aq_o3,
-            'NO₂'   => $aq_no2,
-        ];
-        foreach ($polls as $label => $val):
-            $bg   = aq_pill_bg($val);
-            $disp = ($val !== null) ? $val : '--';
-            $slug = strtolower(str_replace(['₂', '.', ' ', '₃'], ['2', '', '', '3'], $label));
-            $dom  = ($slug === $aq_dominant) ? ' aq-dominant' : '';
-        ?>
-        <div class="aq-poll-pill<?php echo $dom; ?>" style="background:<?php echo $bg; ?>">
-            <span class="aq-poll-val"><?php echo $disp; ?></span>
-            <span class="aq-poll-lbl"><?php echo $label; ?></span>
-        </div>
-        <?php endforeach; ?>
-    </div>
 </div>

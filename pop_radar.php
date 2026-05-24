@@ -34,6 +34,11 @@ body{
 .rp-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;flex:1;text-align:center}
 .rp-controls{display:flex;align-items:center;gap:10px;font-size:.7rem;margin-left:auto}
 .rp-controls input[type=range]{width:110px;cursor:pointer;accent-color:#ffca32}
+.rp-invert-lbl{
+  display:flex;align-items:center;gap:5px;font-size:.68rem;
+  cursor:pointer;user-select:none;
+}
+.rp-invert-lbl input{cursor:pointer;accent-color:#ffca32}
 .rp-reset{
   background:rgba(255,255,255,.1);border:none;color:silver;
   font-size:.65rem;padding:3px 9px;border-radius:3px;
@@ -78,6 +83,7 @@ body{
     <span>Zoom</span>
     <input type="range" id="rp-sl" min="0.3" max="3" step="0.02">
     <span id="rp-zv">1.00&times;</span>
+    <label class="rp-invert-lbl"><input type="checkbox" id="rp-inv"> Invert</label>
     <button class="rp-reset" id="rp-rst">Reset</button>
     <button class="rp-save" id="rp-sav">Save</button>
   </div>
@@ -100,6 +106,7 @@ body{
   var zv    = document.getElementById('rp-zv');
   var rst   = document.getElementById('rp-rst');
   var sav   = document.getElementById('rp-sav');
+  var inv   = document.getElementById('rp-inv');
   var staIn = document.getElementById('rp-sta');
   var loadB = document.getElementById('rp-load');
   var title = document.getElementById('rp-title');
@@ -165,6 +172,18 @@ body{
   });
   document.addEventListener('mouseup',function(){ dragging=false; });
 
+  function applyInvert(on){
+    img.style.filter = on ? 'invert(1)' : '';
+    localStorage.setItem('radar_invert', on ? '1' : '0');
+    try {
+      var tImg = window.parent.document.querySelector('.mod-radar-img');
+      if (tImg) tImg.style.filter = on ? 'invert(1)' : '';
+    } catch(e){}
+  }
+  inv.checked = localStorage.getItem('radar_invert') === '1';
+  img.style.filter = inv.checked ? 'invert(1)' : '';
+  inv.addEventListener('change', function(){ applyInvert(this.checked); });
+
   sl.addEventListener('input',  function(){ setZoom(parseFloat(this.value)); });
   rst.addEventListener('click', resetToDefault);
   ws.addEventListener('wheel',function(e){
@@ -205,6 +224,7 @@ body{
         requestAnimationFrame(function(){
           updatePS(); resetToDefault();
           crop.style.display='';
+          img.style.filter = inv.checked ? 'invert(1)' : '';
           img.style.opacity='1';
         });
       });

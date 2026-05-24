@@ -1229,6 +1229,7 @@ General template settings with options to choose which type of module to display
     'webcamsmall.php'            => 'Webcam / Moonphase (night)',
     'pop_sensors.php'            => 'Sensor Status',
     'aurora_module.php'          => 'Space Weather',
+    'radar_module.php'             => 'NWS Radar Loop (KMKX)',
   ];
 
   // Combined for label lookups (modItem uses this)

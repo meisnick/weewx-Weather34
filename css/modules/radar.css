@@ -1,0 +1,20 @@
+/* radar — scoped to .mod-radar */
+
+.mod-radar {
+  position: relative;
+  width: 100%;
+  height: 155px;
+  overflow: hidden;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.mod-radar-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  transform-origin: 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

@@ -441,11 +441,15 @@ h6 {
   display: -moz-box;
   display: flex;
   width: 100%;
-  max-width: 1680px;
+  max-width: 1200px;
   min-height: 83px;
   height: auto;
   background-color: 0;
   margin: 47px auto -3px
+}
+
+body.cols-6 .weather2-container {
+  max-width: 1680px;
 }
 
 .weather2-item {

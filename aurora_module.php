@@ -104,8 +104,6 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
 
 <div class="aurora-card">
 
-  <div class="aurora-header">Space Weather</div>
-
   <div class="aurora-body">
   <div class="aurora-left">
     <div class="aurora-sect">Latest Observed</div>

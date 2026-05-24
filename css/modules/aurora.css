@@ -16,20 +16,6 @@
   box-sizing: border-box;
 }
 
-/* ── Internal header ──────────────────────────────────────────────────────── */
-.aurora-header {
-  font-family: weathertext2, Arial, sans-serif;
-  font-size: .8em;
-  color: silver;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  text-align: center;
-  width: 100%;
-  padding: 2px 0 6px;
-  border-bottom: 1px solid var(--bg0);
-  margin-bottom: 8px;
-}
-
 /* ── Two-panel row ────────────────────────────────────────────────────────── */
 .aurora-body {
   display: flex;

@@ -60,7 +60,7 @@ function moduleTitle($module, $weather, $lang) {
         case 'webcamsmall.php':
             return 'Webcam';
         case 'aurora_module.php':
-            return 'Kp-Index | Aurora';
+            return 'Space Weather';
         default:
             return '';
     }
@@ -141,8 +141,8 @@ function modulePopups($module, $vars) {
             $out .= '<span class="yearpopup"><a href="pop_solaralmanac.php" data-lity>' . $chartinfo . ' Solar Almanac</a></span>';
             break;
         case 'aurora_module.php':
-            $kp_label = isset($kp) && $kp >= 5 ? ' <oorange>Active</oorange>' : '';
-            $out = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Aurora / Kp-Index' . $kp_label . '</a></span>';
+            $kp_label = isset($kp) && $kp >= 5 ? ' <orange>Active</orange>' : '';
+            $out = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Space Weather' . $kp_label . '</a></span>';
             break;
     }
     return $out;

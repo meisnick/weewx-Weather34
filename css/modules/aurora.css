@@ -198,34 +198,39 @@
 [data-theme="light"] .aurora-kpmax    { background: #e6e8ef; color: #555; border-bottom-color: #c0c4cc; }
 [data-theme="light"] .aurora-vdivider { background: #dde0e6; }
 [data-theme="light"] .hm-empty        { background: #dde0e6; opacity: 1; }
+[data-theme="light"] .aurora-footer   { border-top-color: #dde0e6; }
 
-/* ── Aurora Probability Pill Styles ───────────────────────────────────────── */
-.aurora-prob-container {
+/* ── Aurora Probability Horizontal Footer Styles ──────────────────────────── */
+.aurora-footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-top: 6px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 9px;
   width: 100%;
+  padding-top: 5px;
+  border-top: 1px solid var(--bg0);
+  box-sizing: border-box;
 }
 .aurora-prob-lbl {
   font-family: Arial, sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   color: silver;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  margin-bottom: 3px;
 }
 .aurora-prob-val {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 3px;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 2px;
   background: var(--bg0);
   color: silver;
   border: 1px solid var(--bg0);
-  border-bottom: 3px solid rgba(0,0,0,0.3);
+  border-bottom: 2px solid rgba(0,0,0,0.3);
   text-align: center;
-  min-width: 54px;
+  min-width: 44px;
   box-sizing: border-box;
 }
 .aurora-prob-val.prob-none   { background: var(--bg0); color: silver; border-color: var(--bg0); }

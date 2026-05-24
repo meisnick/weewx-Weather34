@@ -124,15 +124,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
     <div class="aurora-rsg-labels">
       <span>Radio</span><span>Solar</span><span>Geo</span>
     </div>
-    <div class="aurora-prob-container">
-      <span class="aurora-prob-lbl">Aurora Prob</span>
-      <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
-        <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
-      </span>
-    </div>
   </div>
-
-  <div class="aurora-vdivider"></div>
 
   <div class="aurora-right">
     <div class="aurora-sect">Kp Geomagnetic Forecast</div>
@@ -153,5 +145,12 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
     </div>
   </div>
   </div><!-- end aurora-body -->
+
+  <div class="aurora-footer">
+    <span class="aurora-prob-lbl">Aurora Viewing Probability:</span>
+    <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
+      <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
+    </span>
+  </div>
 
 </div><!-- end aurora-card -->

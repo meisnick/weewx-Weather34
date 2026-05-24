@@ -1,12 +1,32 @@
 <?php include('w34CombinedData.php'); date_default_timezone_set($TZ);
 
 $strike_3hr = (int)($lightning['strike_count_3hr'] ?? 0);
-$distance   = $lightning['light_last_distance'] ?? null;
-$energy     = rand(6452, 28864); // no energy sensor; preserved from original
+$energy     = rand(6452, 28864); // no energy sensor; DB lightning_energy is NULL
+
+// Distance: sensor gives km — convert to miles
+$dist_km  = (float)($lightning['light_last_distance'] ?? 0);
+$dist_mi  = ($dist_km > 0) ? round($dist_km * 0.621371, 1) : null;
+
 $strikes_mo = str_replace(',', '', $weather['lightningmonth'] ?? '0');
 $strikes_yr = str_replace(',', '', $weather['lightningyear']  ?? '0');
-$last_time  = (isset($lightning['last_time']) && $lightning['last_time'] >= 1)
-              ? date('j M, H:i', $lightning['last_time']) : null;
+
+// Last strike: prefer live sensor; fall back to most recent archive row with strikes
+$last_time = null;
+if (isset($lightning['last_time']) && $lightning['last_time'] >= 1) {
+    $last_time = date('j M, H:i', (int)$lightning['last_time']);
+} else {
+    try {
+        $ltdb = new SQLite3('/var/lib/weewx/weewx.sdb', SQLITE3_OPEN_READONLY);
+        $row  = $ltdb->querySingle(
+            'SELECT dateTime FROM archive WHERE lightning_strike_count > 0 ORDER BY dateTime DESC LIMIT 1',
+            true
+        );
+        $ltdb->close();
+        if ($row && isset($row['dateTime'])) {
+            $last_time = date('j M, H:i', (int)$row['dateTime']);
+        }
+    } catch (Exception $e) { /* fail silently */ }
+}
 
 // Badge colour: amber when quiet, orange when active strikes in last 3hr
 $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
@@ -36,8 +56,8 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 <div class="mod-lt-badge-bot">Last 3 Hrs</div>
             </div>
             <div class="mod-lt-distance-pill">
-                <?php if ($distance !== null): ?>
-                <span class="val"><?php echo htmlspecialchars((string)$distance); ?></span><span class="unit">km</span>
+                <?php if ($dist_mi !== null): ?>
+                <span class="val"><?php echo $dist_mi; ?></span><span class="unit">mi</span>
                 <?php else: ?>
                 <span class="val">--</span>
                 <?php endif; ?>

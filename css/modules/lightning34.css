@@ -111,24 +111,30 @@
 }
 
 .mod-lt-distance-pill {
-    background-color: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-    padding: 3px 0;
-    text-align: center;
+    border: 1px solid var(--bg0);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .mod-lt-distance-pill .val {
     font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
-    font-size: .85em;
+    font-size: 0.65rem;
 }
 
 .mod-lt-distance-pill .unit {
     color: silver;
-    font-size: .65em;
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
     margin-left: 2px;
 }
 
@@ -158,30 +164,36 @@
 }
 
 .lt-pill {
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.15);
-    padding: 3px 0;
+    border: 1px solid var(--bg0);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
     width: 100%;
-    text-align: center;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .lt-pill .val {
     font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
-    font-size: .85em;
+    font-size: 0.65rem;
 }
 
 /* Last strike uses proportional Arial so date text isn't compressed */
 .lt-pill .val.date-text {
     font-family: Arial, sans-serif;
-    font-size: .7em;
+    font-size: 0.55rem;
 }
 
 .lt-pill .unit {
     color: silver;
-    font-size: .65em;
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
     margin-left: 2px;
 }
 
@@ -193,6 +205,6 @@
 [data-theme="light"] .mod-lt-top-pill,
 [data-theme="light"] .mod-lt-distance-pill,
 [data-theme="light"] .lt-pill {
-    border-color: rgba(0, 0, 0, 0.15);
-    background-color: rgba(0, 0, 0, 0.05);
+    border-color: #e6e8ef;
+    background-color: transparent;
 }

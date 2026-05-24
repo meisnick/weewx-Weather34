@@ -6,14 +6,21 @@
 }
 
 html, body {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
   font-size: 13px;
   font-family: "weathertext2", Helvetica, Arial, sans-serif;
   background: #1e2025;
   color: #c5c6ca;
   margin: 0;
-  padding: 15px;
+  padding: 10px 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* ── Header Strip ────────────────────────────────────────────────────────── */
@@ -136,7 +143,18 @@ html, body {
 
 .tabcontent {
   display: none;
+  height: calc(100% - 60px);
+  overflow: hidden;
   animation: fadeIn 0.3s ease-in-out;
+}
+
+#historical-tab {
+  overflow: hidden;
+}
+
+#help-tab {
+  overflow-y: auto;
+  padding-right: 5px;
 }
 
 @keyframes fadeIn {

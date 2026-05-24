@@ -339,6 +339,27 @@ Used for inline grid sub-data fields (e.g., Year/Month/Last Strike counts, senso
   - **Color:** `silver` (`#c0c0c0`)
   - **Margin:** `margin-left: 2px;`
 
+#### Grid Card Layout & Spacing Rules
+For dual-column grid modules combining a left-side badge with a right-side 2x2 pill grid (e.g. Strikes/Lightning modules), follow these spacing rules to ensure pixel-perfect alignment and balance:
+
+1. **The Main Row Wrapper (`.mod-lt-main`):**
+   - **Display:** `display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 15px;`
+   - **Vertical Centering Offset:** Set `margin-top: 44px;` to shift the core contents downwards and center them vertically inside the card container.
+
+2. **The Left Column / Badge Container (`.mod-lt-left-col`):**
+   - **Display:** `display: flex; flex-direction: column; gap: 6px; align-items: center; width: 85px; flex-shrink: 0;`
+   - **Offset Nudge:** Use `position: relative; left: 10px;` to shift the badge container rightward, reducing excess horizontal whitespace.
+
+3. **The 2x2 Data Grid (`.mod-lt-grid`):**
+   - **Display & Template:** `display: grid; grid-template-columns: 4rem 4rem; gap: 5px 10px;`
+     - *Rule:* Always size grid columns explicitly using the exact pill width (e.g. `4rem 4rem`) instead of fractional sizing (`1fr 1fr`). This keeps the pills tight and prevents them from stretching.
+     - *Column Gap:* Must be set to exactly **`10px`** to achieve standard close-column styling.
+   - **Offset Nudge:** Use `position: relative; left: -10px;` to shift the grid leftward, bringing it into perfect visual symmetry with the left badge.
+
+4. **Top-Right Card Pill (`.mod-lt-top-pill`):**
+   - **Positioning:** `position: absolute; top: 4px; right: 10px;` (shifted down exactly `2px` from legacy layout to center with the header).
+   - **Style:** Always styled using **Style C** pill conventions (transparent background, card-themed border, and auto-centering).
+
 ---
 
 ## 8. Registering a New Module

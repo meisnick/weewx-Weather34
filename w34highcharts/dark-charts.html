@@ -20,8 +20,9 @@
             var vars = {};
             window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {vars[key.replace(/%27/g,"")] = value.replace(/%27/g,"");});
             document.title = vars['chart'] + " chart";
+            var chartHeight = vars['height'] ? parseInt(vars['height']) : 460;
             if(vars['chart'] != 'windroseplot'){
-                $("#plot_div").css("height", 460);
+                $("#plot_div").css("height", chartHeight);
                 (function(vars){new plot_js({temp:vars['temp'], pressure:vars['pressure'], wind:vars['wind'], rain:vars['rain']}, vars['chart'], vars['span'], "plot_div");}(vars));
             }else{
                 $("#plot_div").css("display", "none");

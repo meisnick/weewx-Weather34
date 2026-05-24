@@ -67,6 +67,8 @@
     align-items: center;
     width: 85px;
     flex-shrink: 0;
+    position: relative;
+    left: 10px;
 }
 
 .mod-lt-badge {

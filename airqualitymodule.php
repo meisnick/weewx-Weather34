@@ -40,13 +40,13 @@ elseif ($aqi > 100)  { $badge_col = 'var(--orange)'; $icon = 'css/aqi/uhfsair.sv
 elseif ($aqi > 50)   { $badge_col = 'var(--amber)';  $icon = 'css/aqi/modair.svg';  }
 else                 { $badge_col = 'var(--green)';  $icon = 'css/aqi/goodair.svg'; }
 
-// AQI description text
-if ($aqi > 300)     $aqi_desc = $lang['Hazordous']    ?? 'Hazardous';
-elseif ($aqi > 200) $aqi_desc = $lang['VeryUnhealthy'] ?? 'Very Unhealthy';
-elseif ($aqi > 150) $aqi_desc = $lang['Unhealthy']     ?? 'Unhealthy';
-elseif ($aqi > 100) $aqi_desc = $lang['UnhealthyFS']   ?? 'Unhealthy for Some';
-elseif ($aqi > 50)  $aqi_desc = $lang['Moderate']      ?? 'Moderate';
-else                $aqi_desc = $lang['Good']           ?? 'Good';
+// AQI description text (shortened to fit the 85px badge)
+if ($aqi > 300)      $aqi_desc = 'Hazardous';
+elseif ($aqi > 200)  $aqi_desc = 'V. Unhealthy';
+elseif ($aqi > 150)  $aqi_desc = 'Unhealthy';
+elseif ($aqi > 100)  $aqi_desc = 'Unhealthy FS';
+elseif ($aqi > 50)   $aqi_desc = 'Moderate';
+else                 $aqi_desc = 'Good';
 
 // Dominant pollutant display label and its colour
 $dom_labels = ['pm25' => 'PM2.5', 'pm10' => 'PM10', 'o3' => 'O3', 'no2' => 'NO₂'];

@@ -5,12 +5,13 @@
 
 ## Branches
 
-| Branch | WeeWX | PHP | Python | OS | Status |
-|--------|-------|-----|--------|----|--------|
-| `main` | **5.3.1** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active |
-| `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen |
+| Branch | WeeWX | PHP | Python | OS | Status | Description |
+|--------|-------|-----|--------|----|--------|-------------|
+| `main` | **5.3.1** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | Upstream-compatible standard layout |
+| `modularize` | **5.3.1** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | **Enhanced with dynamic layout engine & modular CSS** |
+| `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen | Traditional steepleian-style releases |
 
-## System Requirements (main branch)
+## System Requirements (main and modularize branches)
 
 - **WeeWX:** 5.x (tested 5.3.1)
 - **PHP:** 8.2+ (tested 8.4)
@@ -193,6 +194,48 @@ The settings page has been substantially overhauled:
 - Earthquake module removed (API dead since 2023); `notifyEarthquake`/`notifyMagnitude` variables cleaned from `settings1.php`
 - All hardcoded credentials, API keys, and coordinates removed from committed files
 - `top_advisory_eu.php`, `pop_europealerts.php`: null guard added for empty `awa.txt` (EU alerts not applicable for US stations)
+
+---
+
+### Modularization & Dynamic Layout Engine (modularize branch)
+
+The `modularize` branch introduces an extensive, modern overhaul of the layout, styling, and customization engine of the Weather34 skin, moving away from rigid templates to a highly dynamic, scalable system.
+
+#### 1. Dynamic Layout System & Live Customization
+- **CSS Grid Conversion**: The entire page and dashboard layout has been converted from a static rigid container to a modern, flexible **CSS Grid**, facilitating seamless alignment across different viewport resolutions.
+- **Drag-and-Drop Dashboard Editor**: Integrated a live interactive dashboard layout customization page (`templateSetup_pi2.php` and `templateSetup.php`) powered by **SortableJS**. Users can toggle into edit mode, drag-and-drop modules directly on the dashboard grid to rearrange them, and lock/unlock the layout. Arrangements are saved instantly via the new `module_save.php` endpoint.
+- **Dynamic Layout Column Controls**: Added support for locking/configuring grid layout columns (3 / 4 / 6 / auto) on the fly via layout settings.
+- **Grid Module Dropdown Filters**: Scoped and separated layout dropdown options in settings to ensure top-bar slots and primary grid slots only display their respective permitted modules.
+
+#### 2. Modular & Scoped Stylesheets
+- **Theme Consolidation**: Consolidated and cleaned up styling by removing the bulky, redundant `main.light.css` and unifying light and dark theme rules into `css/main.dark.css` using modern CSS variables.
+- **Scoped Sub-stylesheets**: Extracted bulky card-specific CSS from the monolithic main stylesheet into highly organized, scoped stylesheets under `css/modules/` (e.g., `rainfall.css`, `temperature.css`, `wind.css`, `airquality.css`, `aurora.css`, `lightning34.css`, `barometer.css`, `conditions.css`, `forecast.css`, `moonphase.css`, `sun.css`, `top-lightning.css`).
+- **Dynamic CSS Glob Loader**: Built a dynamic PHP glob importer that automatically loads only the CSS stylesheets belonging to modules that are currently active on the dashboard, significantly optimizing page weight and browser rendering times.
+- **Module Wrapping & Isolation**: Scoped individual PHP fragments inside dedicated container classes (e.g. `.mod-lightning34`, `.mod-airquality`, `.mod-rainfall`, `.mod-temperature`) to completely prevent style collisions or unexpected element alignment bleed.
+
+#### 3. Redesigned & Enhanced Modules
+- **Air Quality (AQ) Module**:
+  - Re-architected into a clean **two-column layout** with an inset shadow depth and a comprehensive grid of pollutant pills (PM2.5, PM10, NO2, SO2, O3, CO) styled with specific range badges.
+  - Overhauled the details popup (`aqipopup.php`) into a smooth **Tabbed Layout** to prevent overflow scrollbars.
+  - Added a historical AQI trend Highcharts graph in the popup, using Flexbox scaling to eliminate clipping.
+- **Lightning Module**:
+  - Overhauled to v2, showcasing a brand-new high-contrast badge + historical strikes layout.
+  - Displays actual live/latest lightning strike statistics from the archive database, with distances automatically formatted in miles.
+  - Migrated styling from absolute `rem` units to self-contained `em` units to ensure excellent responsive scalability.
+  - Solved corner-bleeding, alignment, and WebKit/Safari border-radius rendering quirks.
+- **Space Weather Module (formerly Aurora)**:
+  - Rebranded the legacy "aurora" module into the full **Space Weather Module** (`aurora_module.php` and `pop_aurora.php`).
+  - Integrated real-time NOAA OVATION 30-minute auroral visibility forecast probability using custom background scripts.
+  - Fixed Kp forecast timezone-shifting bugs and repositioned status pills for visual alignment.
+- **NWS Radar Module**:
+  - Built a brand new, extremely polished NWS Radar module (`radar_module.php`) with real-time station picking and dark mode inversion.
+  - Designed double-buffered, zero-flash transition logic in JavaScript to completely eliminate the harsh white background flashes during radar loop updates.
+  - Paired with an interactive, scroll-and-pan radar viewer popup (`pop_radar.php`).
+- **Forecast Discussion (AI Integration)**:
+  - Added a **Forecast Discussion** module (`forecastdiscussion.php`, `css/modules/forecastdiscussion.css`) powered by a custom **Ollama-based NWS Area Forecast Discussion (AFD) summarizer** script (`ollama_afd_summarizer.py`), allowing local LLM summaries of weather agency discussions to be read right on the dashboard.
+
+#### 4. Developer Reference
+- Added [WEATHER34_MODULE_GUIDE.md](WEATHER34_MODULE_GUIDE.md) to serve as a comprehensive, repeatable design system documentation and development reference for creators building new grid cards, popups, and badges in the Weather34 template.
 
 ---
 

@@ -1,4 +1,52 @@
 <?php
+// Prevent altering settings from outside the local network
+$client_ip = $_SERVER['REMOTE_ADDR'];
+// If behind Cloudflare Tunnel or reverse proxy, check forwarding headers to get the actual public IP
+if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+    $client_ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ips = array_map('trim', explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
+    $client_ip = end($ips); // get client IP
+}
+
+// Function to check if an IP is local/private
+// Prevent altering settings from outside the local network
+function is_local_ip($ip) {
+    if ($ip === '127.0.0.1' || $ip === '::1') {
+        return true;
+    }
+    // Check local IPv6 private/link-local ranges (fe80::, fc00::, fd00::)
+    if (strpos($ip, ':') !== false) {
+        $ip_lower = strtolower($ip);
+        if (strpos($ip_lower, 'fe80:') === 0 || strpos($ip_lower, 'fc00:') === 0 || strpos($ip_lower, 'fd00:') === 0) {
+            return true;
+        }
+        return false;
+    }
+    // Check standard IPv4 private subnets (192.168.x.x, 10.x.x.x, 172.16.x.x - 172.31.x.x)
+    $ip_num = ip2long($ip);
+    if ($ip_num !== false) {
+        $private_ranges = [
+            ['10.0.0.0', '10.255.255.255'],
+            ['172.16.0.0', '172.31.255.255'],
+            ['192.168.0.0', '192.168.255.255'],
+        ];
+        foreach ($private_ranges as $range) {
+            $min = ip2long($range[0]);
+            $max = ip2long($range[1]);
+            if ($ip_num >= $min && $ip_num <= $max) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+if (!is_local_ip($client_ip)) {
+    http_response_code(403);
+    die('Access Denied: Setup and configuration is only allowed from the local network.');
+}
+
 include('settings1.php');
 $defaultlanguage = 'en';
 $iicon = '<svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">

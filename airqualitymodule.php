@@ -71,16 +71,16 @@ $polls = [
 
 <div class="mod-aq">
 
-    <!-- Left: main AQI badge -->
-    <div class="mod-aq-main">
-        <div class="mod-aq-badge" style="background-color:<?php echo $badge_col; ?>">
+    <!-- Left: Main AQI Badge -->
+    <div class="mod-aq-badge">
+        <div class="mod-aq-badge-top" style="background-color:<?php echo $badge_col; ?>">
             <img class="mod-aq-icon" src="<?php echo $icon; ?>?ver=1.4" alt="AQI">
-            <div class="mod-aq-val-strip"><?php echo $aqi; ?></div>
+            <span class="val"><?php echo $aqi; ?></span>
         </div>
-        <div class="mod-aq-desc" style="color:<?php echo $badge_col; ?>"><?php echo $aqi_desc; ?></div>
+        <div class="mod-aq-badge-bot"><?php echo $aqi_desc; ?></div>
     </div>
 
-    <!-- Right: pollutant grid -->
+    <!-- Right: Refined Pollutants Grid -->
     <div class="mod-aq-details">
         <div class="mod-aq-header">
             <span class="mod-aq-heading">Pollutants</span>

@@ -1,94 +1,98 @@
-/* airqualitymodule — two-column redesign */
+/* airqualitymodule — redesigned to match Lightning architecture */
 
-/*
- * padding-top (not margin-top) prevents margin collapse through #grid_N.
- * display:flex + text-align:left overrides .weather-item's global centering.
- * height:100% + box-sizing:border-box fills the 157px #grid_N exactly.
- */
 .mod-aq {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: space-between;
     text-align: left;
-    padding-top: 12px;
-    padding-left: 8px;
-    padding-right: 12px;
+    padding-top: 50px; /* Pushes content down to align properly */
+    padding-left: 20px;
+    padding-right: 15px;
     height: 100%;
     box-sizing: border-box;
 }
 
 /* ── Left column: main AQI badge ──────────────────────────────────────────── */
-.mod-aq-main {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 16px;
-}
-
 .mod-aq-badge {
-    width: 100%;
-    height: 90px;
+    width: 85px; /* Locked to exact Lightning badge width */
+    height: 80px; /* Locked to exact Lightning badge height */
     border-radius: 4px;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow: hidden;
 }
 
-.mod-aq-icon {
-    width: 55px;
-    height: 55px;
-    margin: 4px auto 0 auto;
-    opacity: 0.9;
+.mod-aq-badge-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
 }
 
-/* Dark banner pinned to the bottom of the badge by space-between */
-.mod-aq-val-strip {
-    background-color: rgba(0, 0, 0, 0.25);
+.mod-aq-badge-top .mod-aq-icon {
+    width: 42px;
+    height: 42px;
+    opacity: 0.9;
+    margin-bottom: 0px;
+}
+
+.mod-aq-badge-top .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.mod-aq-badge-bot {
+    background-color: var(--bg1);
     width: 100%;
     text-align: center;
-    padding: 3px 0;
-    font-family: weathertext2, Arial, sans-serif;
-    font-size: 1.4rem;
-    color: #fff;
-    line-height: 1;
-}
-
-.mod-aq-desc {
-    margin-top: 8px;
-    font-size: 0.7em;
-    text-align: center;
-    font-family: weathertext2, Arial, sans-serif;
+    height: 16px;
+    line-height: 15px;
+    font-size: 0.55rem;
+    color: silver;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
 }
 
 /* ── Right column: pollutants grid ────────────────────────────────────────── */
 .mod-aq-details {
-    width: 180px;
+    width: 155px; /* Locked to exact Lightning grid width */
     display: flex;
     flex-direction: column;
+    margin-top: -2px; /* Slight optical adjustment */
 }
 
 .mod-aq-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: 5px;
     padding-right: 2px;
 }
 
 .mod-aq-heading {
-    font-size: 0.65em;
+    font-size: 0.6em;
     color: silver;
-    font-family: Arial, sans-serif;
     text-transform: uppercase;
-    letter-spacing: .03em;
+    letter-spacing: 0.5px;
 }
 
 .mod-aq-dominant-tag {
     font-size: 0.65em;
-    font-family: Arial, sans-serif;
     cursor: pointer;
 }
 
@@ -100,36 +104,46 @@
 
 .mod-aq-pill {
     border-radius: 3px;
-    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3); /* Slimmed down from 6px to match sleek look */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px 0 3px 0;
+    padding: 3px 0 2px 0;
     color: #fff;
-    height: 38px;
+    height: 28px;
     box-sizing: border-box;
 }
 
-/* inset shadow stays inside pill bounds — outline bleeds into neighbors */
+/* The Dominant Pollutant */
 .mod-aq-pill.dominant {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 }
 
 .mod-aq-pill .val {
     font-family: weathertext2, Arial, sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.65rem;
     line-height: 1;
     margin-bottom: 1px;
 }
 
 .mod-aq-pill .lbl {
-    font-size: 0.55rem;
+    font-size: 0.52rem;
     color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
-[data-theme="light"] .mod-aq-badge,
+[data-theme="light"] .mod-aq-badge {
+    border: 1px solid #e6e8ef;
+}
+
+[data-theme="light"] .mod-aq-badge-bot {
+    background-color: #f0f2f5;
+    color: #666;
+}
+
 [data-theme="light"] .mod-aq-pill {
     border-bottom-color: rgba(0, 0, 0, 0.15);
 }

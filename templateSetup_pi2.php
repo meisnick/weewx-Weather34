@@ -1228,7 +1228,7 @@ General template settings with options to choose which type of module to display
     'weather34uvsolar.php'       => 'UV & Solar (AerisWeather)',
     'webcamsmall.php'            => 'Webcam / Moonphase (night)',
     'pop_sensors.php'            => 'Sensor Status',
-    'aurora_module.php'          => 'Space Weather',
+    'aurora_module.php'          => 'Kp-Index / Aurora',
     'forecastdiscussion.php'     => 'Forecast Discussion (LLM)',
   ];
 

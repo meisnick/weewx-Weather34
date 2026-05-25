@@ -1,0 +1,216 @@
+/* forecastdiscussion — Narrative Forecast Card Scoped CSS */
+
+.mod-fct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px; /* Optimized padding for concise text layout */
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* --- List: Parsed Narrative Lines --- */
+.mod-fct-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; /* Proportional gap for 4 distinct bullets with concise text */
+    width: 100%;
+}
+
+.fct-line {
+    font-size: 0.64rem; /* Enlarged from 0.58rem for improved legibility */
+    color: silver;
+    text-align: center;
+    line-height: 1.25; /* Clean and legible line height */
+    width: 98%;
+}
+
+/* --- Utility Classes for PHP Keyword Highlighting --- */
+.hl-orange { color: var(--orange); font-weight: bold; }
+.hl-blue   { color: var(--blue);   font-weight: bold; }
+.hl-red    { color: var(--red);    font-weight: bold; }
+.hl-amber  { color: var(--amber);  font-weight: bold; }
+.hl-green  { color: var(--green);  font-weight: bold; }
+
+/* ── Light theme overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .fct-line {
+    color: #444;
+}
+
+/* --- Popout Modal styling --- */
+.fct-clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fct-clickable:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.fct-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999; /* Higher than dashboard cards */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.fct-modal.fct-modal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.fct-modal-content {
+    background: rgba(25, 25, 25, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.fct-modal.fct-modal-active .fct-modal-content {
+    transform: scale(1);
+}
+
+.fct-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(15, 15, 15, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fct-modal-title {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #efefef;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.fct-modal-close {
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+.fct-modal-close:hover {
+    color: #fff;
+}
+
+.fct-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.fct-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .fct-grid {
+        grid-template-columns: 1fr;
+    }
+    .fct-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+.fct-section-card {
+    background: rgba(35, 35, 35, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.fct-section-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+}
+
+.fct-section-text {
+    font-size: 0.72rem;
+    color: #b0b0b0;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+/* Borders and header colors for each type */
+.border-red { border-left: 3px solid var(--red); }
+.border-amber { border-left: 3px solid var(--amber); }
+.border-blue { border-left: 3px solid var(--blue); }
+.border-green { border-left: 3px solid var(--green); }
+
+.text-red { color: var(--red); }
+.text-amber { color: var(--amber); }
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
+
+/* --- Light theme overrides for modal --- */
+[data-theme="light"] .fct-modal {
+    background: rgba(220, 220, 220, 0.7);
+}
+[data-theme="light"] .fct-modal-content {
+    background: #fbfbfb;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+}
+[data-theme="light"] .fct-modal-header {
+    background: #f0f0f0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+[data-theme="light"] .fct-modal-title {
+    color: #222;
+}
+[data-theme="light"] .fct-modal-close {
+    color: #666;
+}
+[data-theme="light"] .fct-modal-close:hover {
+    color: #000;
+}
+[data-theme="light"] .fct-section-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .fct-section-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .fct-section-text {
+    color: #333;
+}

@@ -31,6 +31,8 @@ function moduleTitle($module, $weather, $lang) {
         case 'forecast3wu.php':
         case 'forecast3wularge.php':
             return 'Forecast (<valuetitleunit>&deg;' . $weather['temp_units'] . '</valuetitleunit>)';
+        case 'forecastdiscussion.php':
+            return 'Area Forecast Discussion (LLM)';
         case 'currentconditionsw34.php':
             return $lang['Currentsky'];
         case 'windspeeddirection.php':
@@ -141,6 +143,9 @@ function modulePopups($module, $vars) {
             break;
         case 'airqualitymodule.php':
             $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' Air Quality</a></span>';
+            break;
+        case 'forecastdiscussion.php':
+            $out = '<span class="yearpopup"><a href="afdpopup.php" data-lity>' . $chartinfo . ' Forecast Discussion Details</a></span>';
             break;
         case 'purpleairqualitymodule.php':
         case 'ew_airqualitymodule.php':

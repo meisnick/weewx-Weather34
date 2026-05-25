@@ -1,17 +1,28 @@
 <?php //weather34 solar and uvindex module 27th Jan 2017 //
 include_once('w34CombinedData.php');include('common.php');
-// Prefer live sensor; fall back to first hourly forecast only when sensor reads 0
+// Prefer live sensor during daytime; fall back to daily forecast max at night (when live is 0) or if hardware is missing
 $forecasthourlyuv = 0;
 $uv_label = isset($lang['Current']) ? $lang['Current'] : 'Current';
 $has_uv_hardware = isset($weather["uv"]) && is_numeric($weather["uv"]) && $weather["uv"] !== 'NULL' && $weather["uv"] !== '';
-if ($has_uv_hardware) {
+
+if ($has_uv_hardware && $weather["uv"] > 0) {
     $forecasthourlyuv = $weather["uv"];
-} elseif (isset($forecasthourlyCond) && is_array($forecasthourlyCond)) {
-    foreach ($forecasthourlyCond as $cond) {
-        $forecasthourlyuv = $cond['uvIndex'];
-        break;
+} else {
+    // Fall back to upcoming daytime forecast UV index at night or if hardware is missing
+    $forecast_uvi = 0;
+    if (file_exists('jsondata/forecast_daily.txt')) {
+        $forecast_data = json_decode(file_get_contents('jsondata/forecast_daily.txt'), true);
+        if (isset($forecast_data['response'][0]['periods']) && is_array($forecast_data['response'][0]['periods'])) {
+            foreach ($forecast_data['response'][0]['periods'] as $period) {
+                if (isset($period['uvi']) && $period['uvi'] > 0) {
+                    $forecast_uvi = $period['uvi'];
+                    break;
+                }
+            }
+        }
     }
-    if ($forecasthourlyuv > 0) {
+    if ($forecast_uvi > 0) {
+        $forecasthourlyuv = $forecast_uvi;
         $uv_label = isset($lang['Forecast']) ? $lang['Forecast'] : 'Forecast';
     }
 }
@@ -49,7 +60,6 @@ else echo "<div class=luxtoday>".$weather["lux"];?>
 <div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
 else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Low';}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Very Low';}?></div>
 
-<?php if (!$has_uv_hardware): ?>
 <script>
 (function () {
     var container = document.querySelector('.uvcontainer1');
@@ -82,4 +92,3 @@ else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizo
     }, 500);
 })();
 </script>
-<?php endif; ?>

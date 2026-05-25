@@ -306,21 +306,26 @@ Used for standard dashboard cards and small-to-medium badges.
 ```
 The `border-bottom: rgba(0,0,0,0.3)` gives every badge its characteristic "pressed" look. Use `15px` for large badges, `4–6px` for small pills.
 
-#### Style B: High-Contrast Solid-Bottom Badge (UV & Strikes style)
-Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Current** and **Strikes** badge layout:
-* **Height:** `4.5rem` (~58px–72px depending on context).
+#### Style B: High-Contrast Solid-Bottom Badge (UV, Strikes & AQI style)
+Redesigned for cleaner visual weight, perfectly mirroring the modern **UV Current**, **Strikes**, and **Air Quality Index (AQI)** badge layouts:
+* **Height:** `4.5rem` (~72px).
+* **Width:** `85px` (Locked to exact Lightning/UV/AQI badge width to align left columns).
 * **Corner Radius:** `2px` (must include `-webkit-`, `-moz-`, and `-o-` prefixes).
 * **Top Label (`.lbl`):** `font-size: 0.65rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`
 * **Badge Value (`.val`):** `font-size: 1.45rem; line-height: 1.1; font-family: weathertext2, Arial, sans-serif; color: #fff;`
-* **Bottom Bar (`.mod-lt-badge-bot` / Solid Border):** 
+* **Bottom Bar (`.mod-lt-badge-bot` / `.mod-aq-badge-bot`):** 
   - Height of `15px` (`line-height: 15px;` without borders or extra padding).
   - Background is set to solid `var(--bg1)` (dark charcoal/gray) to act as a solid bottom bar.
   - Text is `font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, Helvetica, sans-serif;`.
-  - Color is set to `silver` to match other `Last 3 Hrs` text nodes across the dashboard.
+  - Color is set to `silver` to match other label text nodes across the dashboard.
+  - **Label Length Constraint:** Text labels displayed in the bottom bar must be strictly shortened (e.g. in PHP) to fit the `85px` badge width without truncation (e.g. `'V. Unhealthy'` instead of `'Very Unhealthy'`, `'Unhealthy FS'` instead of `'Unhealthy for Some'`).
 * **Anti-Aliasing & Color Bleed Prevention (Critical for WebKit/Blink):**
-  - **Dynamic Background Rule:** To prevent background color leakage behind the grey bottom bar, never apply the dynamic background color (e.g., orange/amber) to the outer `.mod-lt-badge` wrapper.
-  - **The Fix:** Leave the outer wrapper's background transparent. Apply the inline `style="background-color: ..."` rule exclusively to the **top** container (`.mod-lt-badge-top`).
-  - **Sub-Element Radiuses:** Define top corner radiuses (`2px` top-left/top-right) on `.mod-lt-badge-top` and bottom corner radiuses (`2px` bottom-left/bottom-right) on `.mod-lt-badge-bot` to align perfectly with the parent container clipping mask.
+  - **Dynamic Background Rule:** To prevent background color leakage behind the grey bottom bar, never apply the dynamic background color (e.g., orange/amber) to the outer `.mod-lt-badge` / `.mod-aq-badge` wrapper.
+  - **The Fix:** Leave the outer wrapper's background transparent. Apply the inline `style="background-color: ..."` rule exclusively to the **top** container (`.mod-lt-badge-top` / `.mod-aq-badge-top`).
+  - **Sub-Element Radiuses:** Define top corner radiuses (`2px` top-left/top-right) on `.mod-lt-badge-top` / `.mod-aq-badge-top` and bottom corner radiuses (`2px` bottom-left/bottom-right) on `.mod-lt-badge-bot` / `.mod-aq-badge-bot` to align perfectly with the parent container clipping mask.
+* **Light Theme Override:** 
+  - Outer Badge Border: `1px solid #e6e8ef;`
+  - Bottom Bar Background: `#f0f2f5; color: #666;`
 
 #### Style C: Minimalist Transparent Data Pill (Rain & Lightning style)
 Used for inline grid sub-data fields (e.g., Year/Month/Last Strike counts, sensor distances, and energy top-pills):
@@ -344,25 +349,47 @@ Used for inline grid sub-data fields (e.g., Year/Month/Last Strike counts, senso
   - **Margin:** `margin-left: 2px;`
 
 #### Grid Card Layout & Spacing Rules
-For dual-column grid modules combining a left-side badge with a right-side 2x2 pill grid (e.g. Strikes/Lightning modules), follow these spacing rules to ensure pixel-perfect alignment and balance:
+For dual-column grid modules combining a left-side badge with a right-side grid, follow these spacing rules to ensure pixel-perfect alignment and balance:
 
+##### A. Strikes / Lightning Module Spacing (Badge + 2x2 Pill Grid)
 1. **The Main Row Wrapper (`.mod-lt-main`):**
    - **Display:** `display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 15px;`
    - **Vertical Centering Offset:** Set `margin-top: 44px;` to shift the core contents downwards and center them vertically inside the card container.
-
 2. **The Left Column / Badge Container (`.mod-lt-left-col`):**
    - **Display:** `display: flex; flex-direction: column; gap: 6px; align-items: center; width: 85px; flex-shrink: 0;`
    - **Offset Nudge:** Use `position: relative; left: 10px;` to shift the badge container rightward, reducing excess horizontal whitespace.
-
 3. **The 2x2 Data Grid (`.mod-lt-grid`):**
    - **Display & Template:** `display: grid; grid-template-columns: 4rem 4rem; gap: 5px 10px;`
      - *Rule:* Always size grid columns explicitly using the exact pill width (e.g. `4rem 4rem`) instead of fractional sizing (`1fr 1fr`). This keeps the pills tight and prevents them from stretching.
      - *Column Gap:* Must be set to exactly **`10px`** to achieve standard close-column styling.
    - **Offset Nudge:** Use `position: relative; left: -10px;` to shift the grid leftward, bringing it into perfect visual symmetry with the left badge.
-
 4. **Top-Right Card Pill (`.mod-lt-top-pill`):**
    - **Positioning:** `position: absolute; top: 4px; right: 10px;` (shifted down exactly `2px` from legacy layout to center with the header).
    - **Style:** Always styled using **Style C** pill conventions (transparent background, card-themed border, and auto-centering).
+
+##### B. Air Quality Module Spacing (Badge + 2x2 Pollutant Pill Grid)
+1. **The Main Row Wrapper (`.mod-aq`):**
+   - **Display:** `display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; height: 100%; box-sizing: border-box;`
+   - **Vertical Centering Offset:** Set `padding-top: 50px; padding-left: 20px; padding-right: 15px;` to push content down and align perfectly within the `#grid_N` container.
+2. **The Left Column / Badge Container (`.mod-aq-badge`):**
+   - Styled exactly using **Style B** badge rules (width `85px`, height `4.5rem`).
+3. **The Right Column Grid Container (`.mod-aq-details`):**
+   - **Width:** `155px` — Locked to exact design specs.
+   - **Offset Nudge:** Set `margin-top: -2px;` for a slight optical adjustment to nudge it upward.
+   - **Header (`.mod-aq-header`):** `display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5px; padding-right: 2px;`
+   - **Heading (`.mod-aq-heading`):** `font-size: 0.6em; color: silver; text-transform: uppercase; letter-spacing: 0.5px;`
+   - **Dominant Pollutant Tag (`.mod-aq-dominant-tag`):** Displays the active dominant pollutant (e.g. `PM2.5 ⧉`), colored based on its specific AQI sub-index category severity.
+4. **The 2x2 Pollutant Grid (`.mod-aq-grid`):**
+   - **Display & Template:** `display: grid; grid-template-columns: 1fr 1fr; gap: 6px;`
+   - **Pill (`.mod-aq-pill`):**
+     - **Border radius:** `3px`
+     - **Border bottom:** `3px solid rgba(0, 0, 0, 0.3)` (slimmed down from 6px to match the sleek card aesthetic).
+     - **Height:** `28px` (`box-sizing: border-box;`)
+     - **Display:** `display: flex; flex-direction: column; align-items: center; justify-content: center;`
+     - **Padding:** `3px 0 2px 0`
+     - **Value (`.val`):** `font-family: weathertext2, Arial, sans-serif; font-size: 0.65rem; line-height: 1; margin-bottom: 1px; color: #fff;`
+     - **Label (`.lbl`):** `font-size: 0.52rem; color: rgba(255, 255, 255, 0.85); text-transform: uppercase; letter-spacing: 0.3px;`
+     - **Dominant Pill Highlight:** The active dominant pollutant pill gets highlighted with an internal white glow: `box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);` to immediately stand out.
 
 ---
 

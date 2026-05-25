@@ -115,14 +115,18 @@ sudo touch /var/log/{aurora_prob,afd_summarizer}.log
 sudo chown www-data:www-data /var/log/{aurora_prob,afd_summarizer}.log
 ```
 
-Open your root cron tab (`sudo crontab -e`) and append the following schedules:
+Open the root cron tab (`sudo crontab -e`) and the web-server user's cron tab (`sudo crontab -u www-data -e`) respectively, and append the following schedules:
 
+**Root Cron (`sudo crontab -e`):**
 ```text
 # Space Weather (Aurora) Probability Generator - NOAA OVATION Parser (runs every 5 minutes)
 */5 * * * *     php /var/www/html/weewx/weather34/update_aurora_prob.php >> /var/log/aurora_prob.log 2>&1
+```
 
-# LLM Forecast Discussion Summarizer (runs every 2 hours)
-0 */2 * * *     /usr/bin/python3 /var/www/html/weewx/weather34/ollama_afd_summarizer.py >> /var/log/afd_summarizer.log 2>&1
+**Web Server User Cron (`sudo crontab -u www-data -e`):**
+```text
+# LLM Forecast Discussion Summarizer (runs hourly at 10 past the hour)
+10 * * * *     /usr/bin/python3 /var/www/html/weewx/weather34/ollama_afd_summarizer.py >> /var/log/ollama_afd_summarizer.log 2>&1
 ```
 
 ---

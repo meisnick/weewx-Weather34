@@ -190,16 +190,14 @@ def query_section(section_text, section_key, retries=2):
 
 def apply_highlights(text):
     rules = [
-        (r'\b(Dense Fog Advisory|Fog Advisory|Advisory|Warning|Watch|High Wind|Hazard)\b', 'red'),
-        (r'\b(rain|showers|thunderstorms|storms|precipitation|snow|flurries)\b',           'blue'),
-        (r'\b(upper 80s|near 90|90 degrees|excessive heat|heat index)\b',                  'orange'),
-        (r'\b(low 80s|mid 80s|warm|above normal)\b',                                       'amber'),
-        (r'\b(mostly dry|dry|quiet|cool|below normal)\b',                                  'green'),
+        (r'\b(swim risk|advisory|warning|watch|hazard|high wind|danger)\b',                'red'),
+        (r'\b(rain|showers?|thunderstorms?|storms?|precip|precipitation|snow|flurries)\b',  'blue'),
+        (r'\b(upper 80s|near 90|90 degrees|excessive heat|heat index|hotter|hot)\b',       'orange'),
+        (r'\b(warm|warming|fronts?|backdoor cold front|cold front|warm front|above normal|low 80s|mid 80s)\b', 'amber'),
+        (r'\b(mostly dry|dry|quiet|cools?|cooling|cool|below normal|pleasant)\b',          'green'),
     ]
     for pattern, color in rules:
         text = re.sub(pattern, rf'<span class="hl-{color}">\g<0></span>', text, flags=re.IGNORECASE)
-        if f'hl-{color}' in text:
-            break  # one highlight per bullet, first match wins
     return text
 
 def main():

@@ -9,6 +9,7 @@
     padding-right: 10px;
     height: 100%;
     box-sizing: border-box;
+    --blue: var(--teal);
 }
 
 /* --- List: Parsed Narrative Lines --- */
@@ -30,7 +31,7 @@
 
 /* --- Utility Classes for PHP Keyword Highlighting --- */
 .hl-orange { color: var(--orange); font-weight: bold; }
-.hl-blue   { color: var(--blue);   font-weight: bold; }
+.hl-blue   { color: var(--blue, var(--teal));   font-weight: bold; }
 .hl-red    { color: var(--red);    font-weight: bold; }
 .hl-amber  { color: var(--amber);  font-weight: bold; }
 .hl-green  { color: var(--green);  font-weight: bold; }
@@ -174,12 +175,12 @@
 /* Borders and header colors for each type */
 .border-red { border-left: 3px solid var(--red); }
 .border-amber { border-left: 3px solid var(--amber); }
-.border-blue { border-left: 3px solid var(--blue); }
+.border-blue { border-left: 3px solid var(--blue, var(--teal)); }
 .border-green { border-left: 3px solid var(--green); }
 
 .text-red { color: var(--red); }
 .text-amber { color: var(--amber); }
-.text-blue { color: var(--blue); }
+.text-blue { color: var(--blue, var(--teal)); }
 .text-green { color: var(--green); }
 
 /* --- Light theme overrides for modal --- */

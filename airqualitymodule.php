@@ -74,7 +74,7 @@ $polls = [
     <!-- Left: Main AQI Badge -->
     <div class="mod-aq-badge">
         <div class="mod-aq-badge-top" style="background-color:<?php echo $badge_col; ?>">
-            <img class="mod-aq-icon" src="<?php echo $icon; ?>?ver=1.4" alt="AQI">
+            <span class="lbl">AQI</span>
             <span class="val"><?php echo $aqi; ?></span>
         </div>
         <div class="mod-aq-badge-bot"><?php echo $aqi_desc; ?></div>

@@ -14,6 +14,8 @@ This guide covers a fresh installation of the Weather34 WeeWX skin on a Raspberr
 - Apache web server access
 - A nearby airport ICAO code (for METAR current conditions)
 - NWS forecast zone codes for your location (US stations — find at [weather.gov/pfl](https://www.weather.gov/pfl/))
+- **Ollama (for modularize branch forecast discussion):** Local installation with `gemma3:1b` model pulled
+- **PHP CLI (`php-cli`):** For executing PHP background processes
 
 ---
 
@@ -174,6 +176,49 @@ Add to root crontab (`sudo crontab -e`):
 15 * * * *      /usr/bin/python3 /usr/local/bin/nws_forecast_update.py >> /var/log/nws_forecast.log 2>&1
 */15 * * * *    /usr/bin/python3 /usr/local/bin/metar_update.py >> /var/log/metar_update.log 2>&1
 */5 * * * *     /usr/bin/python3 /usr/local/bin/nws_alerts_update.py >> /var/log/nws_alerts.log 2>&1
+```
+
+---
+
+## 7b. Additional Setup for modularize Branch (Space Weather & LLM Forecast Discussion)
+
+The `modularize` branch introduces two highly dynamic modules that require secondary setup: the **Space Weather** auroral probability generator and the **Forecast Discussion** LLM summarizer.
+
+### A. Install Ollama & Pull the Model (for Forecast Discussion)
+If you wish to use the Area Forecast Discussion (AFD) summarizer, install Ollama and retrieve the required lightweight LLM model:
+
+```bash
+# Install Ollama locally
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Pull the lightweight, high-performance Gemma 3 1B parameter model
+ollama pull gemma3:1b
+```
+
+### B. Setup Background Scripts & Cron Jobs
+Unlike other scripts, these run inside the deployed skin root folder (e.g., `/var/www/html/weewx/weather34/`) to resolve relative layout configuration files (`settings1.php`) and write directly to `jsondata/` cached endpoints.
+
+Install the `php-cli` tool if it is not already installed on your system:
+
+```bash
+sudo apt install -y php-cli
+```
+
+Set up logging permissions:
+
+```bash
+sudo touch /var/log/{aurora_prob,afd_summarizer}.log
+sudo chown www-data:www-data /var/log/{aurora_prob,afd_summarizer}.log
+```
+
+Open your root cron tab (`sudo crontab -e`) and append the following schedules:
+
+```text
+# Space Weather (Aurora) Probability Generator - NOAA OVATION Parser (runs every 5 minutes)
+*/5 * * * *     php /var/www/html/weewx/weather34/update_aurora_prob.php >> /var/log/aurora_prob.log 2>&1
+
+# LLM Forecast Discussion Summarizer (runs every 2 hours)
+0 */2 * * *     /usr/bin/python3 /var/www/html/weewx/weather34/ollama_afd_summarizer.py >> /var/log/afd_summarizer.log 2>&1
 ```
 
 ---

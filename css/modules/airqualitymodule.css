@@ -54,13 +54,13 @@
     background-color: var(--bg1);
     width: 100%;
     text-align: center;
-    height: 18px;
-    line-height: 18px;
-    font-size: 0.58rem;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.52rem;
     color: silver;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

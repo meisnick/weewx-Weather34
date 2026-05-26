@@ -456,6 +456,32 @@ def main():
     print("Fetching Open-Meteo forecast...")
     data = fetch_json(OM_URL)
 
+    # Fetch UV Index from Air Quality API as fallback since main forecast API returns null
+    try:
+        print("Fetching Air Quality UV Index...")
+        aq_url = "https://air-quality-api.open-meteo.com/v1/air-quality?" + urllib.parse.urlencode({
+            "latitude":   LAT,
+            "longitude":  LON,
+            "timezone":   TZ,
+            "hourly":     "uv_index",
+        })
+        aq_data = fetch_json(aq_url)
+        if aq_data and "hourly" in aq_data and "uv_index" in aq_data["hourly"]:
+            data["hourly"]["uv_index"] = aq_data["hourly"]["uv_index"]
+            # Synthesize uv_index_max for each day
+            daily_uv_max = []
+            for date_str in data["daily"]["time"]:
+                day_uvs = [
+                    val for j, val in enumerate(aq_data["hourly"]["uv_index"])
+                    if j < len(aq_data["hourly"]["time"]) and aq_data["hourly"]["time"][j].startswith(date_str)
+                    and val is not None
+                ]
+                daily_uv_max.append(max(day_uvs) if day_uvs else 0)
+            data["daily"]["uv_index_max"] = daily_uv_max
+            print("Successfully merged Air Quality UV Index into forecast data.")
+    except Exception as e:
+        print(f"Warning: Could not fetch Air Quality UV Index: {e}", file=sys.stderr)
+
     print("Building forecast_daily.txt (daily)...")
     awd = build_awd(data)
     write_atomic(FORECAST_DAILY_PATH, awd)

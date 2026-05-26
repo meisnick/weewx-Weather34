@@ -644,6 +644,7 @@ class Webserver():
                 if key not in save_entries:
                     del config_dict['StdReport'][key]
             config_dict['StdReport']['w34Highcharts']['skin'] = 'w34Highcharts-day'
+            config_dict['StdReport']['w34Highcharts']['enable'] = 'true'
             config_dict['StdReport']['w34Highcharts']['CheetahGenerator'] =  {'search_list_extensions': 'user.w34highchartsSearchX.w34highcharts_' + args[2].split('/')[-1].split('.')[0], 'encoding': 'strict_ascii', 'ToDate': {'DayJSON': {'template': args[2],'HTML_ROOT': html_root}}}
             try:
                 binding = config_dict['StdArchive']['data_binding']

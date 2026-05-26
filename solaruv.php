@@ -40,14 +40,20 @@ $has_solar_hardware = isset($weather["solar"]) && is_numeric($weather["solar"]) 
 if ($has_solar_hardware && $weather["solar"] > 0) {
     $solar_val = $weather["solar"];
 } else {
-    // Fall back to upcoming hourly forecast solar radiation
+    // Fall back to upcoming hourly forecast solar radiation for the current hour
     $forecast_solar = 0;
     if (file_exists('jsondata/forecast_hourly.txt')) {
         $forecast_data = json_decode(file_get_contents('jsondata/forecast_hourly.txt'), true);
         if (isset($forecast_data['response'][0]['periods']) && is_array($forecast_data['response'][0]['periods'])) {
-            $current_period = $forecast_data['response'][0]['periods'][0];
-            if (isset($current_period['solar']) && $current_period['solar'] > 0) {
-                $forecast_solar = $current_period['solar'];
+            $current_hour = date('H');
+            foreach ($forecast_data['response'][0]['periods'] as $period) {
+                $period_hour = substr($period['validTime'], 11, 2);
+                if ($period_hour == $current_hour) {
+                    if (isset($period['solar'])) {
+                        $forecast_solar = $period['solar'];
+                    }
+                    break;
+                }
             }
         }
     }

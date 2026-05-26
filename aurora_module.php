@@ -70,10 +70,12 @@ function aurora_prob_class(int $prob): string {
 }
 
 function aurora_rsg_class(int $scale): string {
-    if ($scale >= 4) return 'rsg-g-storm';
-    if ($scale >= 2) return 'rsg-g-active';
-    if ($scale >= 1) return 'rsg-g-minor';
-    return 'rsg-g-none';
+    if ($scale >= 5) return 'rsg-scale-5';
+    if ($scale == 4) return 'rsg-scale-4';
+    if ($scale == 3) return 'rsg-scale-3';
+    if ($scale == 2) return 'rsg-scale-2';
+    if ($scale == 1) return 'rsg-scale-1';
+    return 'rsg-scale-0';
 }
 
 function aurora_hm_class(?float $kp): string {

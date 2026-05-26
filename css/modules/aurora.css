@@ -77,10 +77,25 @@
 }
 
 /* Scale color states */
-.rsg-g-none   { background: var(--bg0); }
-.rsg-g-minor  { background: var(--green); }
-.rsg-g-active { background: var(--amber); }
-.rsg-g-storm  { background: var(--red); }
+.rsg-scale-0 { background: var(--bg0); }
+.rsg-scale-1 { background: #ebd825; }
+.rsg-scale-2 { background: var(--amber); }
+.rsg-scale-3 { background: var(--orange); }
+.rsg-scale-4 { background: var(--red); }
+.rsg-scale-5 { background: #8d2315; }
+
+/* Contrast overrides for lighter backgrounds */
+.rsg-scale-1 .aurora-rsg-letter,
+.rsg-scale-2 .aurora-rsg-letter,
+.rsg-scale-3 .aurora-rsg-letter {
+  color: #111111;
+}
+
+.rsg-scale-1 .aurora-rsg-val,
+.rsg-scale-2 .aurora-rsg-val,
+.rsg-scale-3 .aurora-rsg-val {
+  color: rgba(0, 0, 0, 0.75);
+}
 
 /* Sub-labels: Radio / Solar / Geo */
 .aurora-rsg-labels {
@@ -180,7 +195,7 @@
 .hm-empty  { background: var(--bg0); opacity: 0.5; }
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
-[data-theme="light"] .rsg-g-none      { background: #dde0e6; }
+[data-theme="light"] .rsg-scale-0      { background: #dde0e6; }
 [data-theme="light"] .aurora-kpmax    { background: #e6e8ef; color: #555; border-bottom-color: #c0c4cc; }
 [data-theme="light"] .aurora-vdivider { background: #dde0e6; }
 [data-theme="light"] .hm-empty        { background: #dde0e6; opacity: 1; }

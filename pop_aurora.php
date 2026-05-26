@@ -113,10 +113,12 @@ $box_none  = $is_dark ? '#393d40' : '#d0d4db';
 $grid_ln   = $is_dark ? '#2a2c2f' : '#e0e2e6';
 
 function rsg_cls(int $s): string {
-    if ($s >= 4) return 'rsg-storm';
-    if ($s >= 2) return 'rsg-active';
-    if ($s >= 1) return 'rsg-minor';
-    return 'rsg-none';
+    if ($s >= 5) return 'rsg-scale-5';
+    if ($s == 4) return 'rsg-scale-4';
+    if ($s == 3) return 'rsg-scale-3';
+    if ($s == 2) return 'rsg-scale-2';
+    if ($s == 1) return 'rsg-scale-1';
+    return 'rsg-scale-0';
 }
 function kp_color_val(string $v): string {
     $f = (float)$v;
@@ -207,10 +209,24 @@ body { display: flex; flex-direction: column; }
 }
 .rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
 .rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
-.rsg-none   { background: <?php echo $box_none; ?>; }
-.rsg-minor  { background: #90b12a; }
-.rsg-active { background: #e6a141; }
-.rsg-storm  { background: #d35d4e; }
+.rsg-scale-0 { background: <?php echo $box_none; ?>; }
+.rsg-scale-1 { background: #ebd825; }
+.rsg-scale-2 { background: #e6a141; }
+.rsg-scale-3 { background: #ff7c39; }
+.rsg-scale-4 { background: #d35d4e; }
+.rsg-scale-5 { background: #8d2315; }
+
+.rsg-scale-1 .rsg-mini-letter,
+.rsg-scale-2 .rsg-mini-letter,
+.rsg-scale-3 .rsg-mini-letter {
+  color: #111111;
+}
+
+.rsg-scale-1 .rsg-mini-val,
+.rsg-scale-2 .rsg-mini-val,
+.rsg-scale-3 .rsg-mini-val {
+  color: rgba(0, 0, 0, 0.75);
+}
 
 /* ── Tab row — matches pop_menu_forecast.php style exactly ───────────────── */
 .pop-tabs {

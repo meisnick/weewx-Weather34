@@ -1154,6 +1154,7 @@ class Weather34RealTime(StdService):
         fields.append(self.format(data, 'lightning_noise_count'))     # 61 *
         fields.append(self.format(data, 'lightning_disturber_count')) # 62 *
         fields.append(self.format(data, '10min_avg_gust', 1))         # 63 *
+        fields.append(self.format(data, 'luminosity', 0))             # 64 *
         return ' '.join(fields)
       
       

@@ -61,16 +61,11 @@ for ($k = 0;$k < 14;$k++)
         $forecastTime[10] = $nameDay[10];
         $forecastTime[11] = $nameDay[11] . " Night";
         $forecastTime[12] = $nameDay[12];
-        $forecastTime[12] = $nameDay[12] . " Night";
-        $forecastTime[13] = $nameDay[13];
         $forecastTime[13] = $nameDay[13] . " Night";
         $forecastTime[14] = $nameDay[14];
-        $forecastTime[14] = $nameDay[14] . " Night";
-        $forecastTime[15] = $nameDay[15];
         $forecastTime[15] = $nameDay[15] . " Night";
         $forecastTime[16] = $nameDay[16];
-        $forecastTime[16] = $nameDay[16] . " Night";
-        $forecastTime[17] = $nameDay[17];
+        $forecastTime[17] = $nameDay[17] . " Night";
     }
     else if ($Time[0] === "19")
     {

@@ -32,11 +32,36 @@ $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);}?>
 <div class="updatedtime"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
+<?php
+$solar_val = 0;
+$solar_label = 'Solar Radiation';
+$has_solar_hardware = isset($weather["solar"]) && is_numeric($weather["solar"]) && $weather["solar"] !== 'NULL' && $weather["solar"] !== '';
+
+if ($has_solar_hardware && $weather["solar"] > 0) {
+    $solar_val = $weather["solar"];
+} else {
+    // Fall back to upcoming hourly forecast solar radiation
+    $forecast_solar = 0;
+    if (file_exists('jsondata/forecast_hourly.txt')) {
+        $forecast_data = json_decode(file_get_contents('jsondata/forecast_hourly.txt'), true);
+        if (isset($forecast_data['response'][0]['periods']) && is_array($forecast_data['response'][0]['periods'])) {
+            $current_period = $forecast_data['response'][0]['periods'][0];
+            if (isset($current_period['solar']) && $current_period['solar'] > 0) {
+                $forecast_solar = $current_period['solar'];
+            }
+        }
+    }
+    if ($forecast_solar > 0) {
+        $solar_val = $forecast_solar;
+        $solar_label = 'Solar Forecast';
+    }
+}
+?>
 <div class="weather34solarword"><valuetext>W/m&sup2 </valuetext> </div><div class="weather34solarvalue">
 <div class="solartodaycontainer1"><?php 
-if ($weather["solar"]==0){echo "<div class=solarluxtodaydark>".$weather["solar"];}
-else if ($weather["solar"]>0){echo "<div class=solarluxtoday>".$weather["solar"];}?></div></div></div>
-<div class="solarluxtodayword"><valuetext>Solar Radiation</valuetext></div><div class="solarwrap"></div>
+if ($solar_val==0){echo "<div class=solarluxtodaydark>".$solar_val;}
+else if ($solar_val>0){echo "<div class=solarluxtoday>".$solar_val;}?></div></div></div>
+<div class="solarluxtodayword"><valuetext><?php echo $solar_label;?></valuetext></div><div class="solarwrap"></div>
 
 
 <div class="uvcontainer1"><?php 

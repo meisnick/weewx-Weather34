@@ -52,6 +52,7 @@ OM_URL = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode({
         "winddirection_10m",
         "uv_index",
         "is_day",
+        "shortwave_radiation",
     ]),
 })
 
@@ -387,6 +388,7 @@ def build_awh(data):
         wind_dir = deg_to_cardinal(wind_deg)
         wind_kph = mph_to_kph(wind_mph)
         gust_kph = mph_to_kph(gust_mph)
+        solar_wm2 = (hourly["shortwave_radiation"] or [0]*200)[i] or 0
         uvi      = (hourly["uv_index"] or [0]*200)[i] or 0
         is_day   = bool((hourly["is_day"] or [1]*200)[i])
         icon_code = wmo_icon(wcode, is_day)
@@ -427,6 +429,7 @@ def build_awh(data):
             "windGustKPH":      gust_kph,
             "windGustMPH":      gust_mph,
             "uvi":              uvi,
+            "solar":            solar_wm2,
             "weatherPrimary":   summary,
             "icon":             icon_code,
             "isDay":            is_day,

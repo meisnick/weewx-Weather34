@@ -400,7 +400,7 @@ else if ($forecastWindGustDay[$k] < 25)
 
 if ($forecastUV[$k] > 0)
 {
-    echo '<grey>' . $sunlight2 . ' UVI ';
+    echo '<grey>' . $sunlight . ' UVI ';
 }
 if ($forecastUV[$k] > 10)
 {

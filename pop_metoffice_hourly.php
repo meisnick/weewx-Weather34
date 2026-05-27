@@ -307,7 +307,7 @@ if ($forecastnight[$k] == 'N')
 //uvi
 else if ($forecastUV[$k] > 0)
 {
-    echo '<div class=uvforecast><grey>' . $sunlight2 . ' UVI ';
+    echo '<div class=uvforecast><grey>' . $sunlight . ' UVI ';
 }
 if ($forecastUV[$k] > 10)
 {

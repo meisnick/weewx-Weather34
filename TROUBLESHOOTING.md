@@ -134,15 +134,39 @@ This scans the local network for Ecowitt gateways and prints their IP addresses.
 
 ## Permission denied writing to serverdata or jsondata
 
-WeeWX runs as the `weewx` user and needs write access to the skin's data directories:
+WeeWX runs as the `weewx` user, background data-fetch tasks run under `root` via cron, and developers or administrators may run scripts manually under their local user account (e.g. `pi`). All three contexts need write access to `/var/www/html/weewx/weather34/jsondata/`.
+
+### 1. Align Group Memberships
+Make sure all users who need to execute scripts are in the `www-data` group:
 
 ```bash
 sudo usermod -a -G www-data weewx
+sudo usermod -a -G www-data pi  # Replace 'pi' with your local login username
+```
+
+> [!IMPORTANT]
+> Group membership changes only take effect on your next login. If you added your current user, log out and log back in before continuing.
+
+### 2. Set Directory Permissions (with setgid)
+Enforce the directory permissions and set the **setgid bit** (`chmod g+s` or `2775`) on `jsondata`. This ensures that all new files created inside the directory—even those written by a root cron job or your local user—automatically belong to the `www-data` group instead of the creating user's primary group:
+
+```bash
 sudo chown -R weewx:www-data /var/www/html/weewx/weather34/serverdata
 sudo chown -R weewx:www-data /var/www/html/weewx/weather34/jsondata
 sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
-sudo chmod -R 775 /var/www/html/weewx/weather34/jsondata
+sudo chmod -R 2775 /var/www/html/weewx/weather34/jsondata
 sudo systemctl restart weewx
+```
+
+### 3. File Permissions (Atomic Writes and Cron)
+Cron jobs running under `root` use the system default umask (`022`), creating files with `644` (`-rw-r--r--`) permissions. Any subsequent script executing atomic writes (e.g., writing a `.tmp` file and using `os.replace` or `mv` to replace a data file) will destroy the original `664` permissions and lock out the web server (`www-data`) and other users from writing to it.
+
+All built-in Weather34 scripts (`nws_forecast_update.py`, `metar_update.py`, `nws_alerts_update.py`, `update_aurora_prob.php`, and `update_noaa_scales.sh` / `update_aurora_power.sh`) have been updated to explicitly enforce group-writable **`664` (`-rw-rw-r--`)** permissions on output files. If you run your own data-gathering scripts, ensure they set `umask 002` or run `chmod 664` on their output endpoints.
+
+If permissions on existing files have been reset to `644`, you can restore group write access with:
+
+```bash
+sudo chmod 664 /var/www/html/weewx/weather34/jsondata/*
 ```
 
 

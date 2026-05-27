@@ -73,6 +73,7 @@ $res = file_put_contents($target_file, json_encode($output, JSON_PRETTY_PRINT));
 if ($res === false) {
     die("Error: Failed to write output to $target_file.\n");
 }
+@chmod($target_file, 0664);
 
 echo "Success: Localized aurora probability calculated as $probability% for coordinates [$lat, $lon]. Saved to $target_file.\n";
 ?>

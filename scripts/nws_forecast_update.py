@@ -479,7 +479,15 @@ def write_atomic(path, data):
     tmp = path + ".tmp"
     with open(tmp, "w") as f:
         json.dump(data, f)
+    try:
+        os.chmod(tmp, 0o664)
+    except Exception:
+        pass
     os.replace(tmp, path)
+    try:
+        os.chmod(path, 0o664)
+    except Exception:
+        pass
     print(f"Written: {path}")
 
 

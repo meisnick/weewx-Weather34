@@ -27,8 +27,10 @@ foreach ($all_modules as $mod):
 ?>
 (function($){ $(document).ready(function(){
     var el = $("#<?php echo $mod['id']; ?>");
-    el.load("<?php echo $mod['module']; ?>");
-    <?php if ($ms > 0): ?>setTimeout(function f(){ el.load("<?php echo $mod['module']; ?>"); setTimeout(f, <?php echo $ms; ?>); }, <?php echo $ms; ?>);<?php endif; ?>
+    var url = "<?php echo $mod['module']; ?>";
+    var bust = function() { return url + (url.indexOf('?') >= 0 ? '&' : '?') + "_=" + new Date().getTime(); };
+    el.load(bust());
+    <?php if ($ms > 0): ?>setTimeout(function f(){ el.load(bust()); setTimeout(f, <?php echo $ms; ?>); }, <?php echo $ms; ?>);<?php endif; ?>
 }); })(jQuery);
 <?php endforeach; ?>
 

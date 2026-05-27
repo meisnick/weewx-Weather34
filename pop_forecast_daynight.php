@@ -260,7 +260,7 @@ for ($k = 0;$k < 12;$k++)
     //uvi
     else if ($forecastUV[$k] > 0)
     {
-        echo '<div class=uvforecast><grey>' . $sunlight2 . ' UVI ';
+        echo '<div class=uvforecast><grey>' . $sunlight . ' UVI ';
     }
     if ($forecastUV[$k] > 10)
     {
@@ -283,9 +283,9 @@ for ($k = 0;$k < 12;$k++)
         echo "<greenu>" . $forecastUV[$k] . '</greenu><grey> ';
     }
     //snow
-    if ($forecastacumm[$k] > 0)
+    if ($forecastsnow[$k] > 0)
     {
-        echo '&nbsp;' . $snowflakesvg[$k] . '<valuer>Snow  <bluer>' . $forecastacumm[$k] . 'cm</bluer>';
+        echo '&nbsp;' . $snowflakesvg[$k] . '<valuer>Snow  <bluer>' . $forecastsnow[$k] . 'cm</bluer>';
     }
     //rain — only show when there is a signal (amount or probability)
     else if ($forecastPrecipProb[$k] > 0 || $forecastprecipIntensity[$k] > 0)

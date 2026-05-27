@@ -141,12 +141,19 @@ def wmo_icon(code, is_day):
 def wmo_primary(code):
     return WMO_MAP.get(code, ("3", "2", "Partly Cloudy"))[2]
 
-def to_ts(dt_str):
-    """Parse Open-Meteo datetime string (no timezone, local) to UTC Unix timestamp."""
+def safe_get(lst, idx, default=0):
+    if lst is None or idx >= len(lst) or lst[idx] is None:
+        return default
+    return lst[idx]
+
+def to_ts(dt_str, utc_offset_seconds=None):
+    """Parse Open-Meteo datetime string (no timezone, local) to UTC Unix timestamp using response offset."""
     try:
-        # Open-Meteo returns local time strings like "2026-05-16T07:00"
-        # We parse as naive then attach local offset from utc_offset_seconds
-        return int(datetime.fromisoformat(dt_str).timestamp())
+        dt = datetime.fromisoformat(dt_str)
+        if utc_offset_seconds is not None:
+            tz = timezone(timedelta(seconds=utc_offset_seconds))
+            dt = dt.replace(tzinfo=tz)
+        return int(dt.timestamp())
     except Exception:
         return 0
 
@@ -157,6 +164,7 @@ def build_awd(data):
     to match the alternating structure forecast3om.php expects.
     """
     daily    = data["daily"]
+    utc_offset_seconds = data.get("utc_offset_seconds", 0)
     times    = daily["time"]           # ["2026-05-16", ...]
     sunrises = daily.get("sunrise", [])
     sunsets  = daily.get("sunset", [])
@@ -217,7 +225,7 @@ def build_awd(data):
 
         # Day period
         day_iso  = f"{date_str}T07:00:00"
-        day_ts   = to_ts(day_iso)
+        day_ts   = to_ts(day_iso, utc_offset_seconds)
         day_code = wmo_icon(wcode, True)
         day_summary = wmo_primary(wcode)
 
@@ -284,7 +292,7 @@ def build_awd(data):
 
         # Night period
         night_iso = f"{date_str}T19:00:00"
-        night_ts  = to_ts(night_iso)
+        night_ts  = to_ts(night_iso, utc_offset_seconds)
         night_code = wmo_icon(wcode, False)
         night_summary = day_summary.replace('Sunny', 'Clear')
 
@@ -364,33 +372,53 @@ def build_awd(data):
 def build_awh(data):
     """
     Build forecast_hourly.txt from Open-Meteo hourly arrays.
-    Open-Meteo returns 192 hourly values (8 days). We emit 24.
+    Open-Meteo returns 192 hourly values (8 days).
+    We dynamically locate the current/upcoming hour to emit 24 periods.
     """
     hourly   = data["hourly"]
     times    = hourly["time"]           # ["2026-05-16T00:00", ...]
+    utc_offset_seconds = data.get("utc_offset_seconds", 0)
     out_periods = []
 
-    for i in range(min(24, len(times))):
+    # Find the starting index corresponding to the current time minus 1 hour for context
+    current_ts = int(datetime.now(timezone.utc).timestamp())
+    start_index = 0
+    for idx, dt_iso in enumerate(times):
+        ts = to_ts(dt_iso, utc_offset_seconds)
+        # Give 1 hour of past context
+        if ts >= (current_ts - 3600):
+            start_index = idx
+            break
+
+    # Ensure we fit exactly 24 periods
+    end_index = min(start_index + 24, len(times))
+    if end_index - start_index < 24:
+        start_index = max(0, len(times) - 24)
+        end_index = len(times)
+
+    for i in range(start_index, end_index):
         dt_iso   = times[i]
-        ts       = to_ts(dt_iso)
-        wcode    = (hourly["weathercode"] or [0]*200)[i] or 0
-        temp_f   = (hourly["temperature_2m"] or [None]*200)[i]
+        ts       = to_ts(dt_iso, utc_offset_seconds)
+        
+        # Safely retrieve all variables using the safe_get helper
+        wcode    = safe_get(hourly.get("weathercode"), i, 0)
+        temp_f   = safe_get(hourly.get("temperature_2m"), i, None)
         temp_c   = f_to_c(temp_f)
-        dew_c    = (hourly["dewpoint_2m"] or [None]*200)[i]
+        dew_c    = safe_get(hourly.get("dewpoint_2m"), i, None)
         dew_f    = round(dew_c * 9/5 + 32, 1) if dew_c is not None else None
-        humidity = (hourly["relativehumidity_2m"] or [0]*200)[i] or 0
-        precip_in = (hourly["precipitation"] or [0]*200)[i] or 0
+        humidity = safe_get(hourly.get("relativehumidity_2m"), i, 0)
+        precip_in = safe_get(hourly.get("precipitation"), i, 0.0)
         precip_mm = in_to_mm(precip_in)
-        pop      = (hourly["precipitation_probability"] or [0]*200)[i] or 0
-        wind_mph = (hourly["windspeed_10m"] or [0]*200)[i] or 0
-        gust_mph = (hourly["windgusts_10m"] or [0]*200)[i] or 0
-        wind_deg = (hourly["winddirection_10m"] or [0]*200)[i] or 0
+        pop      = safe_get(hourly.get("precipitation_probability"), i, 0)
+        wind_mph = safe_get(hourly.get("windspeed_10m"), i, 0.0)
+        gust_mph = safe_get(hourly.get("windgusts_10m"), i, 0.0)
+        wind_deg = safe_get(hourly.get("winddirection_10m"), i, 0)
         wind_dir = deg_to_cardinal(wind_deg)
         wind_kph = mph_to_kph(wind_mph)
         gust_kph = mph_to_kph(gust_mph)
-        solar_wm2 = (hourly["shortwave_radiation"] or [0]*200)[i] or 0
-        uvi      = (hourly["uv_index"] or [0]*200)[i] or 0
-        is_day   = bool((hourly["is_day"] or [1]*200)[i])
+        solar_wm2 = safe_get(hourly.get("shortwave_radiation"), i, 0)
+        uvi      = safe_get(hourly.get("uv_index"), i, 0)
+        is_day   = bool(safe_get(hourly.get("is_day"), i, 1))
         icon_code = wmo_icon(wcode, is_day)
         summary  = wmo_primary(wcode)
 

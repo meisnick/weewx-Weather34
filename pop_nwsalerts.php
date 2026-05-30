@@ -1,6 +1,6 @@
 <?php
-include('w34CombinedData.php');
-include('settings1.php');
+include_once('settings1.php');
+include_once('shared.php');
 error_reporting(0);
 
 $_raw    = @file_get_contents('jsondata/nws_alerts.txt');
@@ -18,26 +18,57 @@ $_alerts = array_values(array_filter($_alerts, function($a) use ($_now) {
     } catch (Exception $e) { return true; }
 }));
 
-// Text color helper based on theme
-$text_color = ($theme === 'dark') ? 'silver' : 'black';
+$is_dark   = ($theme !== 'light');
+$bg        = $is_dark ? '#151819' : '#fff';
+$bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
+$bg_card   = $is_dark ? '#252729' : '#e8eaef';
+$text      = $is_dark ? '#ddd'    : '#222';
+$text_dim  = $is_dark ? '#777'    : '#666';
+$border    = $is_dark ? '#2e3033' : '#ccc';
 ?>
-<link href="css/popup.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/popup.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NWS Weather Alerts</title>
 <style>
-/* Custom premium enhancements for alerts popout */
-.alert-card {
-    margin: 15px 0;
-    padding: 18px;
-    border-radius: 6px;
-    background: rgba(33, 34, 39, 0.4);
-    border: 1px solid rgba(84, 85, 86, 0.2);
-    border-left-width: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+html, body {
+  height: 100%; overflow: hidden; margin: 0;
+  background: <?php echo $bg; ?>; color: <?php echo $text; ?>;
+  font-family: Arial, sans-serif; font-size: 13px;
 }
-.theme-light .alert-card {
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-left-width: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+body { display: flex; flex-direction: column; }
+
+/* Header — always visible at top */
+.pop-header {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px;
+  background: <?php echo $bg_chrome; ?>;
+  border-bottom: 1px solid <?php echo $border; ?>;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 13px;
+}
+/* Last item must clear the lity close button in the top-right corner */
+.pop-header .pop-last { margin-right: 50px; color: <?php echo $text_dim; ?>; font-size: 11px; }
+
+/* Content area — fills remaining height, scrollable */
+.pop-content {
+  flex: 1; min-height: 0;
+  position: relative; 
+  overflow-y: auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Premium Alert Cards */
+.alert-card {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background: <?php echo $bg_card; ?>;
+    border: 1px solid <?php echo $border; ?>;
+    border-left-width: 5px;
 }
 .alert-card.severity-extreme { border-left-color: #d9534f; }
 .alert-card.severity-severe  { border-left-color: #e8822a; }
@@ -49,21 +80,22 @@ $text_color = ($theme === 'dark') ? 'silver' : 'black';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(84, 85, 86, 0.3);
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+    border-bottom: 1px solid <?php echo $border; ?>;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
 }
 .alert-event-name {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
 }
 .alert-badge {
-    padding: 3px 10px;
-    font-size: 10px;
+    padding: 2px 8px;
+    font-size: 9px;
     font-weight: bold;
-    border-radius: 12px;
+    border-radius: 3px;
     text-transform: uppercase;
+    font-family: Arial, sans-serif;
 }
 .alert-badge.severity-extreme { background: #d9534f; color: #fff; }
 .alert-badge.severity-severe  { background: #e8822a; color: #fff; }
@@ -71,52 +103,44 @@ $text_color = ($theme === 'dark') ? 'silver' : 'black';
 .alert-badge.severity-minor    { background: #5bc0de; color: #000; }
 .alert-badge.severity-unknown  { background: #aaaaaa; color: #000; }
 
-.alert-meta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px;
+.alert-meta-row {
     font-size: 11px;
-    opacity: 0.85;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
+    color: <?php echo $text_dim; ?>;
 }
-.alert-meta-item strong {
-    color: var(--orange, #e8822a);
+.alert-meta-row strong {
+    color: <?php echo $is_dark ? 'silver' : '#444'; ?>;
 }
-.alert-description-container {
-    background: rgba(10, 10, 12, 0.5);
-    border: 1px solid rgba(84, 85, 86, 0.15);
-    border-radius: 4px;
-    padding: 12px;
-    font-family: 'Courier New', Courier, monospace;
+.alert-description {
+    background: <?php echo $is_dark ? '#1a1d1f' : '#f5f6f8'; ?>;
+    border: 1px solid <?php echo $border; ?>;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: monospace;
     font-size: 11px;
-    line-height: 1.5;
+    line-height: 1.4;
     white-space: pre-wrap;
-    max-height: 300px;
-    overflow-y: auto;
-    color: #e0e0e0;
+    color: <?php echo $text; ?>;
+    margin-top: 10px;
 }
-.theme-light .alert-description-container {
-    background: rgba(240, 240, 245, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: #222;
-}
-.no-alerts-placeholder {
+.no-alerts {
     text-align: center;
-    padding: 40px;
-    font-size: 14px;
-    opacity: 0.8;
+    padding: 30px;
+    color: <?php echo $text_dim; ?>;
+    font-size: 13px;
 }
 </style>
+</head>
+<body>
 
-<body class="theme-<?php echo $theme; ?>">
-<div class="weather34darkbrowser" style="color:<?php echo $text_color; ?>;" url="National Weather Service — Active Alert Advisories for <?php echo htmlspecialchars($stationlocation); ?>"></div>
+<div class="pop-header">
+  <div>Active NWS Weather Alerts<?php if (!empty($stationName)) echo ' for ' . htmlspecialchars($stationName); ?></div>
+  <div class="pop-last">Updated: <?php echo date($timeFormat); ?></div>
+</div>
 
-<div style="padding: 10px 15px;">
-
+<div class="pop-content">
 <?php if (count($_alerts) === 0): ?>
-  <div class="no-alerts-placeholder" style="color:<?php echo $text_color; ?>;">
-    No Active NWS Weather Alerts at present.
-  </div>
+  <div class="no-alerts">No Active Weather Alerts at present.</div>
 <?php else: ?>
   <?php foreach ($_alerts as $a):
     $sev = $a['severity'] ?? 'Unknown';
@@ -124,25 +148,24 @@ $text_color = ($theme === 'dark') ? 'silver' : 'black';
   ?>
   <div class="alert-card <?php echo $sev_class; ?>">
     <div class="alert-header">
-      <span class="alert-event-name" style="color:<?php echo $text_color; ?>;"><?php echo htmlspecialchars($a['event']); ?></span>
+      <span class="alert-event-name"><?php echo htmlspecialchars($a['event']); ?></span>
       <span class="alert-badge <?php echo $sev_class; ?>"><?php echo htmlspecialchars($sev); ?></span>
     </div>
     
-    <div class="alert-meta-grid" style="color:<?php echo $text_color; ?>;">
-      <div class="alert-meta-item"><strong>Headline:</strong> <?php echo htmlspecialchars($a['headline']); ?></div>
-      <?php if (!empty($a['effective'])): ?>
-      <div class="alert-meta-item"><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['effective']))); ?></div>
-      <?php endif; ?>
-      <?php if (!empty($a['expires'])): ?>
-      <div class="alert-meta-item"><strong>Expires:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['expires']))); ?></div>
-      <?php endif; ?>
-      <div class="alert-meta-item"><strong>Issuer:</strong> <?php echo htmlspecialchars($a['sender']); ?></div>
-    </div>
+    <div class="alert-meta-row"><strong>Headline:</strong> <?php echo htmlspecialchars($a['headline']); ?></div>
+    <?php if (!empty($a['effective'])): ?>
+    <div class="alert-meta-row"><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['effective']))); ?></div>
+    <?php endif; ?>
+    <?php if (!empty($a['expires'])): ?>
+    <div class="alert-meta-row"><strong>Expires:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['expires']))); ?></div>
+    <?php endif; ?>
+    <div class="alert-meta-row" style="margin-bottom: 0;"><strong>Issued by:</strong> <?php echo htmlspecialchars($a['sender']); ?></div>
     
-    <div class="alert-description-container"><?php echo htmlspecialchars(trim($a['description'])); ?></div>
+    <div class="alert-description"><?php echo htmlspecialchars(trim($a['description'])); ?></div>
   </div>
   <?php endforeach; ?>
 <?php endif; ?>
-
 </div>
+
 </body>
+</html>

@@ -39,6 +39,15 @@ $_sevcolour = [
     $col  = $_sevcolour[$a['severity']] ?? '#aaaaaa';
     $evt  = htmlspecialchars($a['event']);
     
+    // Dynamic font-size scaling based on length to prevent truncation cutoff
+    $font_style = '';
+    $evt_len = strlen($evt);
+    if ($evt_len > 22) {
+        $font_style = 'font-size:0.82em;line-height:1.2;';
+    } elseif ($evt_len > 16) {
+        $font_style = 'font-size:0.9em;';
+    }
+    
     // Construct the second line: "Until [Day] [Time] ([NWS Station])"
     $expires_str = '';
     if (!empty($a['expires'])) {
@@ -69,7 +78,7 @@ $_sevcolour = [
 <spanelightning>
 <alertadvisory><a alt="Alerts" title="Alerts" href="pop_nwsalerts.php" data-lity><?php echo $newalert; ?></a></alertadvisory>
 <alertvalue style="color:<?php echo $col; ?>;display:block;overflow:hidden;">
-<span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $evt; ?><?php echo $more; ?></span>
+<span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;<?php echo $font_style; ?>"><?php echo $evt; ?><?php echo $more; ?></span>
 <span style="font-size:0.75em;color:#ccc;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $expires_str; ?></span>
 </alertvalue>
 </spanelightning>

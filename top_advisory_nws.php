@@ -76,7 +76,7 @@ $_sevcolour = [
     $more = $_count > 1 ? ' <orange>(+'.(($_count-1)).' more)</orange>' : '';
 ?>
 <spanelightning>
-<alertadvisory><a alt="Alerts" title="Alerts" href="pop_nwsalerts.php" data-lity><?php echo $newalert; ?></a></alertadvisory>
+<alertadvisory><a alt="Alerts" title="Alerts" href="pop_nwsalerts.php" data-lity><?php echo str_replace('#3b9cad', '#c94c4c', $newalert); ?></a></alertadvisory>
 <alertvalue style="color:<?php echo $col; ?>;display:block;overflow:hidden;">
 <span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;<?php echo $font_style; ?>"><?php echo $evt; ?><?php echo $more; ?></span>
 <span style="font-size:0.75em;color:#ccc;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $expires_str; ?></span>

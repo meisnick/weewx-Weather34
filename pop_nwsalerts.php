@@ -1,6 +1,6 @@
 <?php
-include_once('settings1.php');
-include_once('shared.php');
+include('w34CombinedData.php');
+include('settings1.php');
 error_reporting(0);
 
 $_raw    = @file_get_contents('jsondata/nws_alerts.txt');
@@ -25,146 +25,160 @@ $bg_card   = $is_dark ? '#252729' : '#e8eaef';
 $text      = $is_dark ? '#ddd'    : '#222';
 $text_dim  = $is_dark ? '#777'    : '#666';
 $border    = $is_dark ? '#2e3033' : '#ccc';
+
+$_count = count($_alerts);
+$_issued = $_data['fetched'] ?? '';
+if ($_issued) {
+    $_issued = date($timeFormat, strtotime($_issued));
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NWS Weather Alerts</title>
 <style>
+@font-face {
+  font-family: weathertext2;
+  src: url(css/fonts/verbatim-regular.woff) format("woff"),
+       url(css/fonts/verbatim-regular.woff2) format("woff2"),
+       url(css/fonts/verbatim-regular.ttf) format("truetype");
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
-  height: 100%; overflow: hidden; margin: 0;
-  background: <?php echo $bg; ?>; color: <?php echo $text; ?>;
-  font-family: Arial, sans-serif; font-size: 13px;
+  height: 100%; overflow: hidden;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  background: <?php echo $bg; ?>;
+  color: <?php echo $text; ?>;
+  -webkit-font-smoothing: antialiased;
 }
 body { display: flex; flex-direction: column; }
 
-/* Header — always visible at top */
+/* ── Header strip ─────────────────────────────────────────────────────────── */
 .pop-header {
   flex: 0 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 6px 10px;
   background: <?php echo $bg_chrome; ?>;
   border-bottom: 1px solid <?php echo $border; ?>;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pop-title {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 13px;
+  font-size: .8em;
+  color: <?php echo $text; ?>;
+  letter-spacing: 0.3px;
 }
-/* Last item must clear the lity close button in the top-right corner */
-.pop-header .pop-last { margin-right: 50px; color: <?php echo $text_dim; ?>; font-size: 11px; }
+.pop-issued {
+  font-size: .65em;
+  color: <?php echo $text_dim; ?>;
+  white-space: nowrap;
+  margin-right: 50px; /* clear lity close button */
+}
 
-/* Content area — fills remaining height, scrollable */
+/* ── Content wrapper ─────────────────────────────────────────────────────── */
 .pop-content {
-  flex: 1; min-height: 0;
-  position: relative; 
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+.discussion-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
   overflow-y: auto;
-  padding: 15px;
-  box-sizing: border-box;
+  
+  /* Hide scrollbar completely */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.discussion-body::-webkit-scrollbar {
+  display: none;
 }
 
-/* Premium Alert Cards */
-.alert-card {
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 4px;
-    background: <?php echo $bg_card; ?>;
-    border: 1px solid <?php echo $border; ?>;
-    border-left-width: 5px;
+.fcst-card {
+  background: <?php echo $bg_card; ?>;
+  border-radius: 3px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  flex: 0 0 auto;
 }
-.alert-card.severity-extreme { border-left-color: #d9534f; }
-.alert-card.severity-severe  { border-left-color: #e8822a; }
-.alert-card.severity-moderate { border-left-color: #e8c22a; }
-.alert-card.severity-minor    { border-left-color: #5bc0de; }
-.alert-card.severity-unknown  { border-left-color: #aaaaaa; }
+.fcst-card.severity-extreme { border-left: 5px solid #d9534f; }
+.fcst-card.severity-severe  { border-left: 5px solid #e8822a; }
+.fcst-card.severity-moderate { border-left: 5px solid #e8c22a; }
+.fcst-card.severity-minor    { border-left: 5px solid #5bc0de; }
+.fcst-card.severity-unknown  { border-left: 5px solid #aaaaaa; }
 
-.alert-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid <?php echo $border; ?>;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
+.fcst-card-title {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .75em;
+  color: silver;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.alert-event-name {
-    font-family: weathertext2, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-}
-.alert-badge {
-    padding: 2px 8px;
-    font-size: 9px;
-    font-weight: bold;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: Arial, sans-serif;
-}
-.alert-badge.severity-extreme { background: #d9534f; color: #fff; }
-.alert-badge.severity-severe  { background: #e8822a; color: #fff; }
-.alert-badge.severity-moderate { background: #e8c22a; color: #000; }
-.alert-badge.severity-minor    { background: #5bc0de; color: #000; }
-.alert-badge.severity-unknown  { background: #aaaaaa; color: #000; }
-
-.alert-meta-row {
-    font-size: 11px;
-    margin-bottom: 6px;
-    color: <?php echo $text_dim; ?>;
-}
-.alert-meta-row strong {
-    color: <?php echo $is_dark ? 'silver' : '#444'; ?>;
-}
-.alert-description {
-    background: <?php echo $is_dark ? '#1a1d1f' : '#f5f6f8'; ?>;
-    border: 1px solid <?php echo $border; ?>;
-    border-radius: 3px;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 11px;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    color: <?php echo $text; ?>;
-    margin-top: 10px;
+.fcst-card-text {
+  font-family: Arial, sans-serif;
+  font-size: .85em;
+  color: <?php echo $text; ?>;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  text-align: left;
+  padding-right: 2px;
 }
 .no-alerts {
-    text-align: center;
-    padding: 30px;
-    color: <?php echo $text_dim; ?>;
-    font-size: 13px;
+  text-align: center;
+  padding: 30px;
+  color: <?php echo $text_dim; ?>;
+  font-size: 13px;
 }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <div class="pop-header">
-  <div>Active NWS Weather Alerts<?php if (!empty($stationName)) echo ' for ' . htmlspecialchars($stationName); ?></div>
-  <div class="pop-last">Updated: <?php echo date($timeFormat); ?></div>
+  <span class="pop-title">Active NWS Weather Alerts</span>
+  <span class="pop-issued">Fetched: <?php echo htmlspecialchars($_issued); ?></span>
 </div>
 
 <div class="pop-content">
-<?php if (count($_alerts) === 0): ?>
-  <div class="no-alerts">No Active Weather Alerts at present.</div>
-<?php else: ?>
-  <?php foreach ($_alerts as $a):
-    $sev = $a['severity'] ?? 'Unknown';
-    $sev_class = 'severity-' . strtolower($sev);
-  ?>
-  <div class="alert-card <?php echo $sev_class; ?>">
-    <div class="alert-header">
-      <span class="alert-event-name"><?php echo htmlspecialchars($a['event']); ?></span>
-      <span class="alert-badge <?php echo $sev_class; ?>"><?php echo htmlspecialchars($sev); ?></span>
+  <div class="discussion-body">
+  <?php if ($_count === 0): ?>
+    <div class="no-alerts">No Active Weather Alerts at present.</div>
+  <?php else: ?>
+    <?php foreach ($_alerts as $a):
+      $sev = $a['severity'] ?? 'Unknown';
+      $sev_class = 'severity-' . strtolower($sev);
+    ?>
+    <div class="fcst-card <?php echo $sev_class; ?>">
+      <div class="fcst-card-title">
+        <span><?php echo htmlspecialchars($a['event']); ?></span>
+        <span style="font-size:0.8em;opacity:0.8;color:<?php echo $is_dark ? '#ccc' : '#444'; ?>;"><?php echo htmlspecialchars($sev); ?> Severity</span>
+      </div>
+      
+      <div style="font-size:0.7em;color:<?php echo $text_dim; ?>;margin-bottom:8px;line-height:1.4;border-bottom:1px solid <?php echo $border; ?>;padding-bottom:6px;">
+        <strong>Headline:</strong> <?php echo htmlspecialchars($a['headline']); ?><br>
+        <?php if (!empty($a['effective'])): ?><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
+        <?php if (!empty($a['expires'])): ?><strong>Expires:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?><?php endif; ?>
+      </div>
+      
+      <div class="fcst-card-text"><?php echo nl2br(htmlspecialchars(trim($a['description']))); ?></div>
     </div>
-    
-    <div class="alert-meta-row"><strong>Headline:</strong> <?php echo htmlspecialchars($a['headline']); ?></div>
-    <?php if (!empty($a['effective'])): ?>
-    <div class="alert-meta-row"><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['effective']))); ?></div>
-    <?php endif; ?>
-    <?php if (!empty($a['expires'])): ?>
-    <div class="alert-meta-row"><strong>Expires:</strong> <?php echo htmlspecialchars(date('D, M j, Y, g:i A', strtotime($a['expires']))); ?></div>
-    <?php endif; ?>
-    <div class="alert-meta-row" style="margin-bottom: 0;"><strong>Issued by:</strong> <?php echo htmlspecialchars($a['sender']); ?></div>
-    
-    <div class="alert-description"><?php echo htmlspecialchars(trim($a['description'])); ?></div>
+    <?php endforeach; ?>
+  <?php endif; ?>
   </div>
-  <?php endforeach; ?>
-<?php endif; ?>
 </div>
 
 </body>

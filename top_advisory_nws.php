@@ -38,15 +38,39 @@ $_sevcolour = [
 <?php else: $a = $_alerts[0];
     $col  = $_sevcolour[$a['severity']] ?? '#aaaaaa';
     $evt  = htmlspecialchars($a['event']);
-    $head = htmlspecialchars($a['headline'] ?: $evt);
-    if (strlen($head) > 60) { $head = substr($head, 0, 57) . '…'; }
+    
+    // Construct the second line: "Until [Day] [Time] ([NWS Station])"
+    $expires_str = '';
+    if (!empty($a['expires'])) {
+        $exp_ts = strtotime($a['expires']);
+        if ($exp_ts) {
+            $expires_str = 'Until ' . date('D g:i A', $exp_ts);
+        }
+    }
+    
+    $sender = $a['sender'] ?? '';
+    if ($sender) {
+        $sender = str_replace('NWS ', '', $sender);
+        // Shorten "Milwaukee/Sullivan WI" to "Milwaukee"
+        $parts = explode('/', $sender);
+        $sender_short = trim($parts[0]);
+        if ($sender_short) {
+            $expires_str .= ' (' . htmlspecialchars($sender_short) . ')';
+        }
+    }
+    
+    if (empty($expires_str)) {
+        $expires_str = htmlspecialchars($a['headline'] ?: $evt);
+        if (strlen($expires_str) > 60) { $expires_str = substr($expires_str, 0, 57) . '…'; }
+    }
+    
     $more = $_count > 1 ? ' <orange>(+'.(($_count-1)).' more)</orange>' : '';
 ?>
 <spanelightning>
 <alertadvisory><a alt="Alerts" title="Alerts" href="pop_nwsalerts.php" data-lity><?php echo $newalert; ?></a></alertadvisory>
 <alertvalue style="color:<?php echo $col; ?>;display:block;overflow:hidden;">
 <span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $evt; ?><?php echo $more; ?></span>
-<span style="font-size:0.75em;color:#ccc;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $head; ?></span>
+<span style="font-size:0.75em;color:#ccc;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $expires_str; ?></span>
 </alertvalue>
 </spanelightning>
 <?php endif; ?>

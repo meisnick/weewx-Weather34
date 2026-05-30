@@ -2,7 +2,7 @@
 include('shared.php');
 include_once('settings1.php');
 ?>
-<div class="updatedtime"><span><?php echo $online; ?> Live</span></div>
+<div class="updatedtime"><span><?php echo $online; ?> <span class="radar-time-text">Live</span></span></div>
 
 <div class="mod-radar">
     <img class="mod-radar-img img-active"
@@ -20,6 +20,23 @@ include_once('settings1.php');
   var activeImg = img1;
   var bufferImg = img2;
   var TW = 310, TH = 155;
+  var clockFormat = <?php echo json_encode($clockformat ?? '24'); ?>;
+
+  function formatTime(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var ampm = '';
+    if (clockFormat === '12') {
+      ampm = hours >= 12 ? ' pm' : ' am';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+    }
+    if (minutes < 10) minutes = '0' + minutes;
+    if (seconds < 10) seconds = '0' + seconds;
+    if (hours < 10 && clockFormat === '24') hours = '0' + hours;
+    return hours + ':' + minutes + ':' + seconds + ampm;
+  }
 
   function getStation(){ return (localStorage.getItem('radar_station') || 'KMKX').toUpperCase(); }
   function updatePopLink(sta){
@@ -72,6 +89,11 @@ include_once('settings1.php');
         var temp = activeImg;
         activeImg = bufferImg;
         bufferImg = temp;
+
+        var timeText = container.parentElement.querySelector('.radar-time-text');
+        if (timeText) {
+          timeText.textContent = formatTime(new Date());
+        }
       };
       
       if (typeof bufferImg.decode === 'function') {

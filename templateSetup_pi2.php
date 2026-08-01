@@ -1278,6 +1278,7 @@ General template settings with options to choose which type of module to display
     'pop_sensors.php'            => 'Sensor Status',
     'aurora_module.php'          => 'Kp-Index / Aurora',
     'forecastdiscussion.php'     => 'Forecast Discussion (LLM)',
+    'localforecast.php'          => 'Local Nowcast (LLM)',
   ];
 
   // Combined for label lookups (modItem uses this)

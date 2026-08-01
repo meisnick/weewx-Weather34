@@ -1,0 +1,91 @@
+<?php
+// localforecast.php — Hyperlocal Short-Term Forecast Card (LLM Analogue Matching)
+include('shared.php');
+include_once('settings1.php');
+
+$file_path = 'jsondata/local_forecast.json';
+$data_ok   = false;
+$forecast  = 'No hyperlocal nowcast available.';
+$wind_out  = 'Calm';
+$rain_pct  = 0;
+$rain_class = 'ym-quiet';
+$rain_status = 'Dry';
+
+if (file_exists($file_path)) {
+    $raw  = @file_get_contents($file_path);
+    $data = @json_decode($raw, true);
+    if (json_last_error() === JSON_ERROR_NONE && !empty($data['forecast'])) {
+        $forecast = $data['forecast'];
+        
+        // Wind Label
+        $wind_label = $data['wind_label'] ?? '';
+        if ($wind_label) {
+            $wind_out = $wind_label . ' Wind';
+        }
+        
+        // Rain classification
+        $rain_pct = intval($data['rain_pct_6h'] ?? 0);
+        if ($rain_pct === 0) {
+            $rain_class = 'ym-quiet';
+            $rain_status = 'Dry';
+        } elseif ($rain_pct < 30) {
+            $rain_class = 'ym-minor';
+            $rain_status = 'Slight';
+        } elseif ($rain_pct < 60) {
+            $rain_class = 'ym-active';
+            $rain_status = 'Chance';
+        } else {
+            $rain_class = 'ym-storm';
+            $rain_status = 'Likely';
+        }
+        
+        // Dynamic Winter Precipitation Check
+        $is_freezing = false;
+        $raw_temp = $data['current_temp_f'] ?? null;
+        if ($raw_temp !== null && $raw_temp <= 32.0) {
+            $is_freezing = true;
+        }
+        $badge_label = $is_freezing ? 'Snow 6h' : 'Rain 6h';
+        
+        $data_ok = true;
+    }
+}
+?>
+<!-- Status Time Indicator -->
+<div class="updatedtime"><span>
+    <?php if ($data_ok):
+        echo $online . ' ' . date($timeFormat, filemtime($file_path));
+    else:
+        echo $offline . ' <offline>Offline</offline>';
+    endif; ?>
+</div>
+
+<!-- Nowcast Content -->
+<div class="mod-localforecast">
+    <div class="mod-lf-header">
+        <div class="mod-lf-header-left">
+            <span class="mod-lf-term">6h Nowcast</span>
+            <span class="mod-lf-wind"><?php echo htmlspecialchars($wind_out); ?></span>
+        </div>
+        
+        <div class="mod-lf-header-right">
+            <!-- Style B (High-Contrast Solid-Bottom Badge, scaled for grid size) -->
+            <div class="ym-badge <?php echo $rain_class; ?>">
+                <div class="ym-badge-top">
+                    <span class="ym-lbl"><?php echo $badge_label; ?></span>
+                    <span class="ym-val"><?php echo $rain_pct; ?>%</span>
+                </div>
+                <div class="ym-badge-bot">
+                    <span><?php echo $rain_status; ?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Narrative Text Card -->
+    <div class="nowcast-text-card">
+        <span class="nowcast-quote">“</span>
+        <span class="nowcast-sentence"><?php echo htmlspecialchars($forecast); ?></span>
+        <span class="nowcast-quote">”</span>
+    </div>
+</div>

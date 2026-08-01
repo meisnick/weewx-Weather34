@@ -1,0 +1,165 @@
+/* localforecast.css — Scoped styling for the Local Nowcast dashboard card */
+
+.mod-localforecast {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Top Header Strip ─────────────────────────────────────────────────────── */
+.mod-lf-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.mod-lf-header-left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.mod-lf-term {
+  font-family: weathertext2, Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  color: silver;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.mod-lf-wind {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65em;
+  color: silver;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 4px;
+}
+
+/* ── Rain Risk Badge (Style B Scaled) ─────────────────────────────────────── */
+.ym-badge {
+  border-radius: 2px;
+  height: 32px;
+  width: 62px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ym-badge-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.ym-lbl {
+  font-size: 0.52em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+
+.ym-val {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 0.85em;
+  color: #fff;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+.ym-badge-bot {
+  height: 11px;
+  background: var(--bg1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: silver;
+  font-size: 0.52em;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 11px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* Color states using standard Weather34 color variables */
+.ym-quiet .ym-badge-top  { background: var(--green); }
+.ym-minor .ym-badge-top  { background: var(--amber); }
+.ym-active .ym-badge-top { background: var(--orange); }
+.ym-storm .ym-badge-top  { background: var(--red); }
+
+/* ── Nowcast Narrative Text Card ─────────────────────────────────────────── */
+.nowcast-text-card {
+  background: rgba(33, 34, 39, 0.35);
+  border: 1px solid rgba(84, 85, 86, 0.12);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-height: 52px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+
+.nowcast-quote {
+  font-family: weathertext2, Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--orange);
+  line-height: 0.9;
+  opacity: 0.7;
+  width: 8px;
+  display: inline-block;
+}
+
+.nowcast-sentence {
+  font-family: Arial, sans-serif;
+  font-size: 0.73em;
+  color: var(--text-d);
+  line-height: 1.35;
+  text-align: left;
+  padding: 0 2px;
+  flex: 1;
+}
+
+/* ── Light Theme Overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .mod-lf-term {
+  color: #222;
+}
+
+[data-theme="light"] .ym-badge {
+  border: 1px solid #e6e8ef;
+}
+
+[data-theme="light"] .ym-badge-bot {
+  background: #f0f2f5;
+  color: #666;
+}
+
+[data-theme="light"] .nowcast-text-card {
+  background: rgba(232, 234, 239, 0.4);
+  border-color: rgba(200, 202, 207, 0.4);
+}
+
+[data-theme="light"] .nowcast-sentence {
+  color: #222;
+}

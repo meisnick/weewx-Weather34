@@ -31,10 +31,10 @@ if (file_exists('jsondata/ki.txt')) {
         }
         $by_date[$date][$slot] = (float)$e['kp'];
     }
-    $utc_today_ts = strtotime(gmdate('Y-m-d'));
+    $local_today_ts = strtotime(date('Y-m-d'));
     $local_date   = date('Y-m-d');
     foreach ([0, 1, 2] as $offset) {
-        $target_ts = strtotime("+$offset day", $utc_today_ts);
+        $target_ts = strtotime("+$offset day", $local_today_ts);
         $d = date('Y-m-d', $target_ts);
         if (!isset($by_date[$d])) continue;
         $slots  = $by_date[$d];
@@ -147,7 +147,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
   </div><!-- end aurora-body -->
 
   <div class="aurora-footer">
-    <span class="aurora-prob-lbl">Aurora Viewing Probability:</span>
+    <span class="aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements">Aurora Nowcast (30m):</span>
     <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
       <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
     </span>

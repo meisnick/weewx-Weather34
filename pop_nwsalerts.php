@@ -26,6 +26,15 @@ $text      = $is_dark ? '#ddd'    : '#222';
 $text_dim  = $is_dark ? '#777'    : '#666';
 $border    = $is_dark ? '#2e3033' : '#ccc';
 
+// Curated premium desaturated color palette
+$sev_colors = [
+    'extreme'  => '#c84b4b', // Deep Crimson
+    'severe'   => '#d0702c', // Warm Amber-Orange
+    'moderate' => '#bfa128', // Golden Ochre (e.g. Beach Hazards)
+    'minor'    => '#4a8b9f', // Muted Teal-Blue
+    'unknown'  => '#76828a', // Slate-Gray
+];
+
 $_count = count($_alerts);
 $_issued = $_data['fetched'] ?? '';
 if ($_issued) {
@@ -110,11 +119,7 @@ body { display: flex; flex-direction: column; }
   margin-bottom: 10px;
   flex: 0 0 auto;
 }
-.fcst-card.severity-extreme { border-left: 5px solid #d9534f; }
-.fcst-card.severity-severe  { border-left: 5px solid #e8822a; }
-.fcst-card.severity-moderate { border-left: 5px solid #e8c22a; }
-.fcst-card.severity-minor    { border-left: 5px solid #5bc0de; }
-.fcst-card.severity-unknown  { border-left: 5px solid #aaaaaa; }
+
 
 .fcst-card-title {
   font-family: weathertext2, Arial, sans-serif;
@@ -160,18 +165,20 @@ body { display: flex; flex-direction: column; }
   <?php else: ?>
     <?php foreach ($_alerts as $a):
       $sev = $a['severity'] ?? 'Unknown';
-      $sev_class = 'severity-' . strtolower($sev);
+      $sev_lower = strtolower($sev);
+      $sev_class = 'severity-' . $sev_lower;
+      $col = $sev_colors[$sev_lower] ?? $sev_colors['unknown'];
     ?>
     <div class="fcst-card <?php echo $sev_class; ?>">
       <div class="fcst-card-title">
-        <span><?php echo htmlspecialchars($a['event']); ?></span>
-        <span style="font-size:0.8em;opacity:0.8;color:<?php echo $is_dark ? '#ccc' : '#444'; ?>;"><?php echo htmlspecialchars($sev); ?> Severity</span>
+        <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars($a['event']); ?></span>
+        <span style="font-size:0.75em;opacity:0.9;background-color:<?php echo $col; ?>;color:#fff;padding:2px 6px;border-radius:3px;font-family:Arial,sans-serif;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;"><?php echo htmlspecialchars($sev); ?></span>
       </div>
       
       <div style="font-size:0.7em;color:<?php echo $text_dim; ?>;margin-bottom:8px;line-height:1.4;border-bottom:1px solid <?php echo $border; ?>;padding-bottom:6px;">
-        <strong>Headline:</strong> <?php echo htmlspecialchars($a['headline']); ?><br>
+        <strong>Headline:</strong> <span style="color: <?php echo $is_dark ? '#eee' : '#222'; ?>;"><?php echo htmlspecialchars($a['headline']); ?></span><br>
         <?php if (!empty($a['effective'])): ?><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
-        <?php if (!empty($a['expires'])): ?><strong>Expires:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?><?php endif; ?>
+        <?php if (!empty($a['expires'])): ?><strong>Expires:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
       </div>
       
       <div class="fcst-card-text"><?php echo nl2br(htmlspecialchars(trim($a['description']))); ?></div>

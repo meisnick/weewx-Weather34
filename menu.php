@@ -5,6 +5,43 @@
     <div class="weather34toolbar">
       <div class="weather34toolbar__left">
         <button class="weather34btn weather34btn--primary"></button>
+<?php
+  // Sensor health check-engine light. Reads persisted signal/battery columns
+  // from the archive -- see [GW1000] field_map_extensions in weewx.conf.
+  include_once('sensor_health.php');
+  $w34h    = w34_sensor_health();
+  $w34hTip = $w34h['state'] === 'ok'
+           ? 'All sensors reporting normally'
+           : implode(' | ', $w34h['issues']);
+  $w34hTxt = $w34h['state'] === 'ok' ? 'SENSORS' : strtoupper($w34h['state']);
+?>
+        <weather34mbhealth id="w34health" class="is-<?php echo $w34h['state']; ?>"
+          title="<?php echo htmlspecialchars($w34hTip, ENT_QUOTES); ?>">
+          <a href="pop_sensors.php" data-lity>
+            <span class="w34health__dot"></span>
+            <span class="w34health__txt"><?php echo $w34hTxt; ?></span>
+          </a>
+        </weather34mbhealth>
+        <script>
+        (function () {
+          var el = document.getElementById('w34health');
+          if (!el) return;
+          function poll() {
+            fetch('sensor_health.php', { cache: 'no-store' })
+              .then(function (r) { return r.json(); })
+              .then(function (d) {
+                el.className = 'is-' + d.state;
+                el.title = d.state === 'ok'
+                  ? 'All sensors reporting normally'
+                  : d.issues.join(' | ');
+                var t = el.querySelector('.w34health__txt');
+                if (t) t.textContent = d.state === 'ok' ? 'SENSORS' : d.state.toUpperCase();
+              })
+              .catch(function () { /* leave last known state on the light */ });
+          }
+          setInterval(poll, 60000);
+        })();
+        </script>
       </div>
       <div class="weather34toolbar__center">
         <button class="weather34btn weather34btn--primary">

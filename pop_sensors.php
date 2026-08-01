@@ -80,6 +80,7 @@ if ($theme === 'dark') {
 .ok{color:#5a9;font-weight:bold}
 .low{color:#e08020;font-weight:bold}
 .unk{color:rgba(100,105,115,1)}
+.dead{color:#e0625a;font-weight:bold}
 .reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
 </style>';
 } else {
@@ -100,6 +101,7 @@ if ($theme === 'dark') {
 .ok{color:#3a8;font-weight:bold}
 .low{color:#c70;font-weight:bold}
 .unk{color:#bbb}
+.dead{color:#c2352d;font-weight:bold}
 .reg{color:#bbb;font-size:10px;line-height:1.9}
 </style>';
 }
@@ -124,7 +126,21 @@ if (!empty($active)) {
         $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
         if ($s['battOK'] === 'ok')      { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; $note = ''; }
         elseif ($s['battOK'] === 'low') { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; $note = ''; }
-        else                            { $bClass = 'unk'; $bLabel = '—'; $note = 'battery not reported by hardware'; }
+        elseif ($s['battVal'] === null || strcasecmp($s['battVal'], 'None') === 0) {
+            // Hardware genuinely cannot report battery (e.g. WH40 rain gauge).
+            $bClass = 'unk'; $bLabel = '—'; $note = 'battery not reported by hardware';
+        } else {
+            // Out-of-range value: the gateway reports a sentinel (15/0x0F) for a
+            // sensor it can no longer hear. That is a dead sensor, not "unknown".
+            $bClass = 'dead'; $bLabel = htmlspecialchars($s['battVal']) . ' FAULT';
+            $note = 'battery failed or sensor not responding';
+        }
+        // A registered sensor at signal 0 is offline regardless of battery.
+        if ($s['signal'] === 0) {
+            $bClass = 'dead';
+            if ($bLabel === '—') $bLabel = 'OFFLINE';
+            $note = 'not being received (signal 0)';
+        }
         echo "<div class='row'>"
            . "<div class='left'>"
            .   "<span class='sname'>" . htmlspecialchars($s['name']) . "</span>"

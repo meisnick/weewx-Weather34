@@ -2,6 +2,38 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [2026-08-11] — Fix frozen popup charts (modularize branch)
+
+Popup charts (temperature/humidity/etc.) rendered months-old data — the weekly chart
+JSON under `w34highcharts/json/` had been frozen since mid-May. Three stacked causes,
+all fixed:
+
+### WeeWX report generation
+- `weewx5.conf.example`: `[[w34Highcharts]]` set `enable = true` and added the
+  `skin = w34Highcharts` key. On WeeWX 5.x the report thread dies with `KeyError: 'skin'`
+  if the skin key is absent, and with `enable = false` the weekly JSON is never generated —
+  either way the popup charts freeze at the last-written date.
+
+### Filesystem permissions (INSTALLATION.md §4)
+- Documented the missing write-permission step for `w34highcharts/json` and
+  `w34highcharts/json_day`. The report runs as the `weewx` user; these dirs are commonly
+  left `www-data`-owned with no group write (e.g. after a `chown -R www-data:www-data`
+  for git), so weewx hits `PermissionError` on the `.tmp` files and the CheetahGenerator
+  crashes every cycle. Fixed with `chown weewx:www-data` + `chmod 2775` (setgid), matching
+  the existing `jsondata`/`serverdata` treatment.
+
+### Browser caching (INSTALLATION.md §8)
+- Extended the Apache `no-cache` headers beyond `w34highcharts/` to also cover
+  `serverdata/` and `jsondata/`. The dashboard fetches all data feeds with jQuery and no
+  cache-buster, so any feed that stops updating earns a multi-day heuristic browser-cache
+  lifetime and keeps showing stale data even after the server recovers. Requires
+  `a2enmod headers`.
+
+> Deploy note: live pi2 serves from the stock `000-default.conf` (DocumentRoot =
+> `.../weewx/weather34`) rather than the `weather34.conf` vhost shown in §8; the same
+> `<Directory>` header blocks were applied there. Config lives outside the repo (contains
+> API keys) and is not committed.
+
 ## [2026-05-17] — WeeWX 5.x Migration (main branch)
 
 ### Branch Structure

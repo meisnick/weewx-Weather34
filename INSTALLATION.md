@@ -108,6 +108,14 @@ sudo chown -R weewx:www-data /var/www/html/weewx/weather34/serverdata
 sudo chown -R weewx:www-data /var/www/html/weewx/weather34/jsondata
 sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
 sudo chmod -R 2775 /var/www/html/weewx/weather34/jsondata  # 2775 (setgid) ensures all new files inherit the www-data group
+# The w34Highcharts report writes weekly + on-demand day chart JSON here and runs as the
+# weewx user. If these dirs are owned www-data with no group write (e.g. after a
+# `chown -R www-data:www-data` for git), weewx hits PermissionError and the popup charts
+# freeze at the last successful write. Same setgid treatment as jsondata:
+sudo chown -R weewx:www-data /var/www/html/weewx/weather34/w34highcharts/json
+sudo chown -R weewx:www-data /var/www/html/weewx/weather34/w34highcharts/json_day
+sudo chmod -R 2775 /var/www/html/weewx/weather34/w34highcharts/json
+sudo chmod -R 2775 /var/www/html/weewx/weather34/w34highcharts/json_day
 sudo mkdir -p /tmp/weather34
 sudo chown weewx:weewx /tmp/weather34
 ```
@@ -237,7 +245,21 @@ sudo tee /etc/apache2/sites-available/weather34.conf > /dev/null << 'EOF'
         Require all granted
         Options -Indexes
     </Directory>
+    # Force revalidation on all regenerated data feeds. The dashboard fetches these with
+    # jQuery (no cache-buster), so a file that ever stops updating gets a long heuristic
+    # browser-cache lifetime and the page keeps showing stale/frozen data even after the
+    # server recovers. no-cache lets the browser revalidate (cheap 304s) every load.
     <Directory /var/www/html/weewx/weather34/w34highcharts>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </Directory>
+    <Directory /var/www/html/weewx/weather34/serverdata>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </Directory>
+    <Directory /var/www/html/weewx/weather34/jsondata>
         Header set Cache-Control "no-cache, no-store, must-revalidate"
         Header set Pragma "no-cache"
         Header set Expires "0"

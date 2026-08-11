@@ -60,8 +60,14 @@ version = 5.3.1
                 group_rainrate = mm_per_hour
                 group_speed = meter_per_second
     [[w34Highcharts]]
+        # skin key is REQUIRED on WeeWX 5.x — without it the report thread dies at
+        # startup with "KeyError: 'skin'" and no weekly chart JSON is ever generated.
+        skin = w34Highcharts
         HTML_ROOT = /var/www/html/weewx/weather34/w34highcharts
-        enable = false
+        # enable = true generates the weekly chart JSON (temp_week.json, wind_week.json, …)
+        # every archive cycle. If false, the dashboard popup charts freeze at the last
+        # date the files were written. weather34.py also requires this section to exist.
+        enable = true
 
     [[RSYNC]]
         enable = false

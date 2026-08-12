@@ -1,4 +1,4 @@
-﻿/* barometer module -- scoped to .mod-barometer */
+/* barometer module -- scoped to .mod-barometer */
 .mod-barometer { display: contents; }
 
 .mod-barometer .barometergaugegrid {
@@ -736,3 +736,12 @@
   right: 10px
 }
 
+
+.mod-barometer .weather34-barometerruler {
+  position: absolute;
+  width: 135px;
+  height: 1px;
+  border: 1px dashed rgba(53, 56, 58, 1);
+  margin-left: 65px;
+  margin-top: 62px
+}

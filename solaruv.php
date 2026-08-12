@@ -32,6 +32,7 @@ $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);}?>
 <div class="updatedtime"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
+<div class="mod-solaruv">
 <?php
 $solar_val = 0;
 $solar_label = 'Solar Radiation';
@@ -123,3 +124,4 @@ else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizo
     }, 500);
 })();
 </script>
+</div><!-- /mod-solaruv -->

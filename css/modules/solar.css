@@ -1,0 +1,218 @@
+/* solaruv module — scoped to .mod-solaruv */
+/* Extracted from css/main.dark.css & css/main.light.css so this card has zero
+   dependency on main.*.css. Selectors scoped under .mod-solaruv.
+   Dark base rules (shared var-driven values) */
+
+.mod-solaruv { display: contents; }
+
+.mod-solaruv .weather34luxvalue,
+.mod-solaruv .weather34solarvalue { position: absolute; }
+
+.mod-solaruv .weather34solarvalue { line-height: 10px; }
+
+.mod-solaruv .weather34luxvalue {
+  margin-left: 251px;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 10px;
+  text-align: center;
+  max-width: 20px;
+  z-index: 1;
+}
+
+.mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
+
+.mod-solaruv .uvtoday1-3 { background: var(--green); }
+.mod-solaruv .uvtodaydark { background: #4a636f; }
+
+.mod-solaruv .uvcontainer1 { font-family: weathertext2; }
+
+.mod-solaruv .uvcontainer1 {
+  position: relative;
+  margin: 40px 10px 10px 40px;
+  top: 15px;
+}
+
+.mod-solaruv .uvtoday1,
+.mod-solaruv .uvtoday1-3,
+.mod-solaruv .uvtoday11,
+.mod-solaruv .uvtoday4-5,
+.mod-solaruv .uvtoday6-8,
+.mod-solaruv .uvtoday9-10,
+.mod-solaruv .uvtodaydark {
+  font-family: weathertext2;
+  width: 5rem;
+  height: 4.5rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  display: flex;
+}
+
+.mod-solaruv .uvtoday1,
+.mod-solaruv .uvtoday1-3,
+.mod-solaruv .uvtoday11,
+.mod-solaruv .uvtoday4-5,
+.mod-solaruv .uvtoday6-8,
+.mod-solaruv .uvtoday9-10,
+.mod-solaruv .uvtodaydark {
+  font-size: 1.45rem;
+  padding-top: 7px;
+  color: #fff;
+  border-bottom: 15px solid var(--bg1);
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.mod-solaruv .uvcaution,
+.mod-solaruv .uvtrend { position: absolute; font-size: .65rem; }
+
+.mod-solaruv .uvcaution time { font-size: .55rem; }
+
+.mod-solaruv .uvtoday4-5 { background: var(--amber); }
+.mod-solaruv .uvtoday6-8 { background: rgba(255, 124, 57, .8); }
+.mod-solaruv .uvtoday9-10 { background: rgba(211, 93, 78, .8); }
+.mod-solaruv .uvtoday11 { background: rgba(204, 135, 248, .7); }
+
+.mod-solaruv .uvcaution {
+  margin-left: 33px;
+  margin-top: 112px;
+  font-family: Arial, Helvetica, system;
+}
+
+.mod-solaruv .uvtrend {
+  margin-left: 47px;
+  margin-top: 60px;
+  z-index: 1;
+  color: #fff;
+}
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtoday,
+.mod-solaruv .solarluxtodaydark {
+  height: 1.75rem;
+  display: flex;
+  border-bottom: 11px solid var(--bg1);
+  font-family: weathertext2;
+}
+
+.mod-solaruv .solartodaycontainer1 { position: relative; left: 110px; top: 70px; }
+
+.mod-solaruv .solarluxtoday,
+.mod-solaruv .solarluxtodaydark {
+  width: 3.15rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  font-size: .75rem;
+  padding-top: 0;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: rgba(255, 124, 57, .8);
+}
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtodaydark {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+
+.mod-solaruv .solarluxtodayword {
+  margin-left: 133px;
+  margin-top: 110px;
+  font-size: .65em;
+  color: var(--text-d);
+  position: absolute;
+  z-index: 10;
+  padding: 2px;
+}
+
+.mod-solaruv .luxtodaycontainer1 { position: relative; left: -26px; top: 70px; }
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark {
+  width: 3.17rem;
+  -o-border-radius: 2px;
+  font-size: .75rem;
+  padding-top: 0;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: rgba(255, 124, 57, .8);
+}
+
+.mod-solaruv .luxtodayword,
+.mod-solaruv .weather34luxword,
+.mod-solaruv .weather34solarword {
+  font-size: .65em;
+  color: var(--text-d);
+  position: absolute;
+  z-index: 10;
+}
+
+.mod-solaruv .luxtodayword { margin-left: 228px; margin-top: 110px; padding: 2px; }
+
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtodaydark { background: #4a636f; }
+
+.mod-solaruv .weather34luxword,
+.mod-solaruv .weather34solarword { margin-top: 92px; }
+
+.mod-solaruv .weather34solarvalue {
+  margin-left: 30px;
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+  max-width: 20px;
+  z-index: 1;
+}
+
+.mod-solaruv .weather34solarvalue span { font-size: 10px; display: block; z-index: 1; }
+
+.mod-solaruv .weather34luxword { margin-left: 242px; }
+.mod-solaruv .weather34solarword { margin-left: 153px; }
+
+.mod-solaruv .luxwrap,
+.mod-solaruv .solarwrap {
+  position: absolute;
+  border: 1px solid rgba(86, 95, 103, .3);
+  border-bottom: 3px solid rgba(86, 95, 103, .3);
+  width: 44pt;
+  padding: 0;
+  height: 30pt;
+  margin-top: 70px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mod-solaruv .solarwrap { margin-left: 136px; }
+.mod-solaruv .luxwrap { margin-left: 221px; }
+
+.mod-solaruv .uvcautionbig {
+  display: flex;
+  height: 1rem;
+  width: 5.3rem;
+  border: 1px solid var(--bg1);
+  font-size: .6rem;
+  position: absolute;
+  margin-left: 220px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  margin-top: 5px;
+  color: silver;
+}
+
+.mod-solaruv .uvcautionbig span { color: var(--orange); padding-right: 3px; }
+
+/* Light theme overrides (color only differences) */
+[data-theme="light"] .mod-solaruv .uvcautionbig { color: var(--text); }

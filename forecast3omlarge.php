@@ -65,7 +65,7 @@ if (filesize('jsondata/forecast_daily.txt') < 1) {
     echo $online, "";
 echo " ", date($timeFormat, $forecastime);
 ?></div>
-<div class="wulargeforecasthome"><div class="wulargediv">
+<div class="mod-forecast"><div class="wulargeforecasthome"><div class="wulargediv">
 <?php //begin aw stuff 
 //convert lightning index
 if ($forecastthunderidx == 0) {
@@ -287,4 +287,4 @@ else if ($forecastUV1 > 6) {
 //else
 //    echo $lightningalert8 . "&nbsp;No Cautions";
 echo '</div>';
-?></div></div></div>
+?></div></div></div></div><!-- /mod-forecast -->

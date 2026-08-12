@@ -1,4 +1,4 @@
-﻿/* temperature module — scoped to .mod-temperature */
+/* temperature module — scoped to .mod-temperature */
 .mod-temperature { display: contents; }
 
 /* ============================================================
@@ -1678,4 +1678,41 @@
 
 [data-theme="light"] .mod-temperature .temptrendx {
   color: #2d3a4b !important;
+}
+
+/* indoor-temperature card (scoped under .mod-temperature) */
+.mod-temperature .indoorhomesvg1 {
+  margin-top: -12px;
+  left: 0;
+  margin-left: -86px;
+  color: var(--bg1)
+}
+
+.mod-temperature .indoorhomevalue1 {
+  position: relative;
+  margin-top: -93px;
+  left: 0;
+  font-size: 1.1em
+}
+
+.mod-temperature .indoortrendhouse1 {
+  position: absolute;
+  margin-left: 97px;
+  margin-top: 65px;
+  font-size: .55rem;
+  z-index: 1;
+  color: #fff
+}
+
+.mod-temperature .weather34indoorword {
+  margin-left: 93px;
+  margin-top: 26px;
+  color: silver;
+  font-size: .55rem;
+  font-family: arial, system;
+  position: absolute
+}
+
+[data-theme="light"] .mod-temperature .weather34indoorword {
+  color: var(--text);
 }

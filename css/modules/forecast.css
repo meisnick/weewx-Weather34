@@ -1,4 +1,4 @@
-﻿/* forecast module -- scoped to .mod-forecast */
+/* forecast module -- scoped to .mod-forecast */
 .mod-forecast { display: contents; }
 
 .mod-forecast .forecastforecastinghome {
@@ -151,3 +151,206 @@
   margin-bottom: 0
 }
 
+
+/* forecast-large (wularge) card -- scoped to .mod-forecast */
+.mod-forecast .wulargediv,
+.mod-forecast .wulargeforecasthome,
+.mod-forecast .wulargeforecastinghome {
+font-family: weathertext2;
+  color: silver
+}
+}
+.mod-forecast .wulargeforecasthome {
+position: absolute;
+  width: 308px;
+  background: 0;
+  margin: 0 auto 0 10px;
+  font-size: .65rem;
+  display: block;
+  border-radius: 3px;
+  overflow: hidden
+}
+}
+.mod-forecast .wulargediv,
+.mod-forecast .wulargeforecastinghome {
+overflow: hidden
+}
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span2,
+.mod-forecast .wulargeweekdayhome {
+font-family: weathertext2;
+  font-size: .65rem;
+  color: silver
+}
+}
+.mod-forecast .wulargediv {
+width: 310px;
+  height: 180px;
+  margin-top: 3px
+}
+}
+.mod-forecast .wulargeforecastinghome {
+float: left;
+  display: inline;
+  width: 290px;
+  border-radius: 2px;
+  margin: 0 0 100px 1%;
+  height: 140px;
+  padding: 0;
+  background: 0;
+  border: 0px solid rgba(153, 155, 156, .1);
+  color: silver
+}
+}
+.mod-forecast .wulargeweekdayhome {
+position: absolutue;
+  text-align: left;
+  padding: 1px;
+  color: silver;
+  margin: 0 0 0 5px;
+  background: 0
+}
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetemplohome {
+margin-top: 0;
+  margin-left: 1%;
+  font-weight: 500
+}
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome span {
+font-size: .7rem;
+  color: var(--orange)
+}
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome {
+font-size: 12px;
+  color: var(--orange)
+}
+}
+.mod-forecast .wulargeforecasthome wulargetempwindhome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span4 {
+position: absolute;
+  color: #07727d;
+  font-family: weathertext2;
+  font-size: .7rem;
+  float: left
+}
+}
+.mod-forecast wulargetemplohome uv {
+font-weight: 500
+}
+}
+.mod-forecast wulargeforecasthome wulargetemplohome,
+.mod-forecast wulargetemplohome {
+font-size: .7rem;
+  font-weight: 500
+}
+}
+.mod-forecast wulargetemplohome uvspan {
+font-weight: 400
+}
+}
+.mod-forecast .wulargerain,
+.mod-forecast .wulargewindspeedicon {
+display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute
+}
+}
+.mod-forecast .wulargewindspeedicon,
+.mod-forecast wulargetempdesc {
+margin-top: 5px;
+  float: left;
+  font-size: 11px  
+}
+}
+.mod-forecast .wulargehomeicons {
+margin-bottom: -5px;
+  float: left;
+  margin-left: 10px
+}
+}
+.mod-forecast .wulargewindspeedicon {
+margin-left: 10px
+}
+}
+.mod-forecast .wulargerain {
+float: left;
+  margin-left: 10px;
+  margin-top: 30px;
+  font-size: 11px
+}
+}
+.mod-forecast .wulargeheatindex,
+.mod-forecast .wulargeuvindex {
+font-size: .7rem;
+  float: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute
+}
+}
+.mod-forecast .wulargeuvindex {
+margin-top: 5px
+}
+}
+.mod-forecast .wulargeuvindex wuinfo {
+position: absolute;
+  display: inline;
+  left: 98px;
+  text-align: left;
+  width: 8rem;
+  top: 0
+}
+}
+.mod-forecast .wulargeheatindex {
+margin-top: 27px
+}
+}
+.mod-forecast .wulargeheatindex wuinfo {
+position: absolute;
+  display: inline;
+  left: 5px;
+  width: 6em
+}
+}
+[data-theme="light"] .mod-forecast .wulargediv,
+.mod-forecast .wulargeforecasthome,
+.mod-forecast .wulargeforecastinghome {
+font-family: weathertext2;
+  color: var(--text)
+}
+}
+[data-theme="light"] .mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span2,
+.mod-forecast .wulargeweekdayhome {
+font-family: weathertext2;
+  font-size: .65rem;
+  color: var(--text)
+}
+}
+[data-theme="light"] .mod-forecast .wulargeforecastinghome {
+float: left;
+  display: inline;
+  width: 290px;
+  border-radius: 2px;
+  margin: 0 0 100px 1%;
+  height: 140px;
+  padding: 0;
+  background: 0;
+  border: 0px solid rgba(153, 155, 156, .1);
+  color: var(--text)
+}
+}
+[data-theme="light"] .mod-forecast .wulargeweekdayhome {
+position: absolutue;
+  text-align: left;
+  padding: 1px;
+  color: var(--text);
+  margin: 0 0 0 5px;
+  background: 0
+}
+}

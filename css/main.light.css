@@ -5870,14 +5870,7 @@ smallwindunit {
   left: -16px
 }
 
-.windunitgust,
-.windunitspeed {
-  color: var(--text);
-  margin-top: 7px;
-  font-size: 10px;
-  position: absolute;
-  margin-left: 15px
-}
+
 
 .davisfooterlogo {
   margin-top: 5px

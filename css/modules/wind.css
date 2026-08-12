@@ -271,7 +271,8 @@
   left: -16px
 }
 
-.mod-wind .windunitspeed {
+.mod-wind .windunitspeed,
+.mod-wind .windunitgust {
   color: silver;
   margin-top: 7px;
   font-size: 10px;
@@ -596,7 +597,8 @@
   margin-left: -16px
 }
 
-[data-theme="light"] .mod-wind .windunitspeed {
+[data-theme="light"] .mod-wind .windunitspeed,
+[data-theme="light"] .mod-wind .windunitgust {
   color: #2d3a4b;
   margin-top: 7px;
   font-size: 10px;

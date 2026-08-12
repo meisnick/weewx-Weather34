@@ -317,6 +317,44 @@ http://<your-pi-ip>/weewx/weather34/templateSetup.php
 
 ---
 
+## Appendix: Clean-Clone Deploy Notes
+
+Lessons captured from provisioning a fresh box (Debian 13 Trixie, arm64) end-to-end.
+These are the things that bite a from-scratch deploy that the steps above assume.
+
+### Runtime write-dirs now ship as tracked, empty dirs
+`serverdata/`, `w34highcharts/json/`, and `w34highcharts/json_day/` are kept in the repo
+via `.gitkeep` placeholders (their generated contents stay gitignored). Before this, a
+fresh clone had no such dirs, so the `chown`/`chmod` commands in §4 silently did nothing
+and weewx threw **`FileNotFoundError: .../w34highcharts/json/temp_week.json.tmp` every
+archive cycle** (systemd forwards it to the physical console), popup highcharts stayed
+frozen, and the AFD summarizer had nowhere to cache. The dirs now exist on clone — just
+apply the §4 group/mode. `jsondata/` has always existed on clone via the tracked
+`jsondata/lookupTable.json`.
+
+### Minimum apt packages a bare box needed (beyond weewx's own deps)
+- `python3-six`, `python3-packaging` — imported by the GW1000 driver and `user/weather34.py`;
+  without them weewx won't start (`ModuleNotFoundError`). (Already in §1.)
+- `sqlite3` — CLI, for DB inspection and consistent `.backup` snapshots when cloning data.
+- `python3-samba` (pulls `ldb`/`talloc`/`tdb`) — only if you run `backup_weewx_smb.sh`.
+
+### Web-dir group **must be `www-data`, not `weewx`**
+Symptom: `PermissionError` writing `jsondata/*.json`, and the AFD module stuck on
+**"Offline / No summary generated yet."** The write-dirs must be `weewx:www-data` mode
+`2775` (setgid). A stray `chown -R www-data:www-data` or a dir that comes up
+`weewx:weewx` breaks writes for the www-data-run PHP/scripts. Fix:
+`sudo chgrp www-data serverdata jsondata json w34highcharts/json w34highcharts/json_day && sudo chmod 2775 <same>`.
+
+### The AFD "Forecast Discussion (LLM)" summarizer is triggered **on-demand**
+`ollama_afd_summarizer.py` is invoked by the dashboard PHP (`afdpopup.php` /
+`forecastdiscussion.php`) and caches to `jsondata/afd_summary.json`. The §7b cron is an
+optional pre-warm — it is **not** required for the module to work, and a fresh box has no
+such cron. The first generation is slow (~3–4 min, CPU-only: four sequential `gemma3:1b`
+calls), so the module reads "Offline / No summary generated yet" until that first cache
+file exists. Requires Ollama running **and** `jsondata/` writable by `www-data` (above).
+
+---
+
 ## Data Source Reference
 
 | Data | Source | Update Interval |

@@ -401,6 +401,7 @@ else
 </div></div>
 
 <div id=lightningalert></div>
+<?php include_once('notify.php'); ?>
 </body>
 <?php include_once('updater.php'); include_once('menu.php'); ?>
 </html>

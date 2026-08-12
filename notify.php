@@ -1,5 +1,6 @@
 <?php
-if ($notifications == 'yes') {
+$uvisvg = $uvisvg ?? '';
+if (($notifications ?? 'yes') == 'yes') {
 
     # Check battery levels
     if (($notifyBattery ?? 'yes') == 'yes' && ($weather['consoleLowBattery'] || $weather['stationLowBattery'])) {?>

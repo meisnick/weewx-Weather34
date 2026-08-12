@@ -242,3 +242,19 @@
 
 [data-theme="light"] .aurora-prob-val.prob-none { background: #dde0e6; color: #777; border-color: #dde0e6; }
 
+/* Darken on-tile caption/label text for light mode.
+   Kept white where text sits on colored scale badges (rsg box),
+   Kp badges, heatmap cells, and colored probability chips. */
+[data-theme="light"] .aurora-sect {
+  color: #2d3a4b;
+}
+[data-theme="light"] .aurora-rsg-labels span {
+  color: #2d3a4b;
+}
+[data-theme="light"] .aurora-day-name {
+  color: #2d3a4b;
+}
+[data-theme="light"] .aurora-prob-lbl {
+  color: #2d3a4b;
+}
+

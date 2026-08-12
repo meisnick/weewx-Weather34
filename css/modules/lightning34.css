@@ -230,3 +230,16 @@
     border-color: #e6e8ef;
     background-color: transparent;
 }
+
+/* Darken on-tile lightning pill labels for light mode. Keep white on colored badge. */
+[data-theme="light"] .mod-lt-top-pill .unit,
+[data-theme="light"] .mod-lt-distance-pill .unit,
+[data-theme="light"] .lt-pill .unit {
+  color: #2d3a4b;
+}
+[data-theme="light"] .mod-lt-badge-bot {
+  color: #666;
+}
+[data-theme="light"] .lt-lbl {
+  color: #2d3a4b;
+}

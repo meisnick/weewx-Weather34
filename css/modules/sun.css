@@ -831,3 +831,11 @@
   margin-top: 45px
 }
 
+
+/* Darken on-tile text for light mode. */
+[data-theme="light"] .mod-sun .daylight {
+  color: #2d3a4b;
+}
+[data-theme="light"] .mod-sun .daylightvalue minutes {
+  color: #2d3a4b;
+}

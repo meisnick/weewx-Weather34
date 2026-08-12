@@ -231,3 +231,10 @@
   color: rgba(230, 232, 239, 1)
 }
 
+
+/* Darken on-tile moon phase labels for light mode. */
+[data-theme="light"] .mod-moonphase .moonrise1,
+[data-theme="light"] .mod-moonphase .moonrise1 span,
+[data-theme="light"] .mod-moonphase .moonset1 {
+  color: #2d3a4b;
+}

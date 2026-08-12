@@ -130,3 +130,8 @@
   width: 50px
 }
 
+
+/* Darken on-tile strike label for light mode. */
+[data-theme="light"] .mod-top-lightning .wfstrikes {
+  color: #2d3a4b;
+}

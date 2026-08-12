@@ -159,3 +159,8 @@
   line-height: 10px
 }
 
+
+/* Darken on-tile timestamp text for light mode. */
+[data-theme="light"] .mod-conditions .updatedtimecurrent {
+  color: var(--text-d);
+}

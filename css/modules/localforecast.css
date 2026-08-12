@@ -163,3 +163,8 @@
 [data-theme="light"] .nowcast-sentence {
   color: #222;
 }
+
+/* Darken on-tile local-forecast wind label for light mode. */
+[data-theme="light"] .mod-lf-wind {
+  color: #222;
+}

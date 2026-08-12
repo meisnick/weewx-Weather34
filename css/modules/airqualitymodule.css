@@ -157,3 +157,8 @@
 [data-theme="light"] .mod-aq-pill {
     border-bottom-color: rgba(0, 0, 0, 0.15);
 }
+
+/* Darken on-tile AQ heading for light mode. */
+[data-theme="light"] .mod-aq-heading {
+  color: #2d3a4b;
+}

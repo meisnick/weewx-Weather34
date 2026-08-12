@@ -1,5 +1,6 @@
 <?php
 include('w34CombinedData.php'); error_reporting(0);
+include('common.php');
 
 $summary_file = 'jsondata/afd_summary.json';
 $raw_sections = [];
@@ -31,7 +32,7 @@ $border    = $is_dark ? '#2e3033' : '#ccc';
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Area Forecast Discussion</title>
+<title><?php echo $lang['AreaForecastDiscussion']; ?></title>
 <style>
 @font-face {
   font-family: weathertext2;
@@ -161,16 +162,16 @@ body { display: flex; flex-direction: column; }
 
 <!-- Header -->
 <div class="pop-header">
-  <span class="pop-title">Area Forecast Discussion</span>
-  <span class="pop-issued">Issued: <?php echo htmlspecialchars($issued); ?></span>
+  <span class="pop-title"><?php echo $lang['AreaForecastDiscussion']; ?></span>
+  <span class="pop-issued"><?php echo $lang['Issued']; ?>: <?php echo htmlspecialchars($issued); ?></span>
 </div>
 
 <!-- Tab buttons -->
 <div class="pop-tabs">
-  <button class="tablink" onclick="openTab('t1', this)" id="defaultOpen">Key Messages</button>
-  <button class="tablink" onclick="openTab('t2', this)">Short Term</button>
-  <button class="tablink" onclick="openTab('t3', this)">Long Term</button>
-  <button class="tablink" onclick="openTab('t4', this)">Outlook Trend</button>
+  <button class="tablink" onclick="openTab('t1', this)" id="defaultOpen"><?php echo $lang['KeyMessages']; ?></button>
+  <button class="tablink" onclick="openTab('t2', this)"><?php echo $lang['ShortTerm']; ?></button>
+  <button class="tablink" onclick="openTab('t3', this)"><?php echo $lang['LongTerm']; ?></button>
+  <button class="tablink" onclick="openTab('t4', this)"><?php echo $lang['OutlookTrend']; ?></button>
 </div>
 
 <!-- Content panels -->
@@ -180,8 +181,8 @@ body { display: flex; flex-direction: column; }
   <div id="t1" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">Key Messages</div>
-        <div class="fcst-card-text"><?php echo !empty($raw_sections['key_messages']) ? nl2br(htmlspecialchars($raw_sections['key_messages'])) : 'No source text available.'; ?></div>
+        <div class="fcst-card-title"><?php echo $lang['KeyMessages']; ?></div>
+        <div class="fcst-card-text"><?php echo !empty($raw_sections['key_messages']) ? nl2br(htmlspecialchars($raw_sections['key_messages'])) : $lang['NoSourceText']; ?></div>
       </div>
     </div>
   </div>
@@ -190,8 +191,8 @@ body { display: flex; flex-direction: column; }
   <div id="t2" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">Short Term Discussion</div>
-        <div class="fcst-card-text"><?php echo !empty($raw_sections['short_term']) ? nl2br(htmlspecialchars($raw_sections['short_term'])) : 'No source text available.'; ?></div>
+        <div class="fcst-card-title"><?php echo $lang['ShortTermDiscussion']; ?></div>
+        <div class="fcst-card-text"><?php echo !empty($raw_sections['short_term']) ? nl2br(htmlspecialchars($raw_sections['short_term'])) : $lang['NoSourceText']; ?></div>
       </div>
     </div>
   </div>
@@ -200,8 +201,8 @@ body { display: flex; flex-direction: column; }
   <div id="t3" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">Long Term Discussion</div>
-        <div class="fcst-card-text"><?php echo !empty($raw_sections['long_term']) ? nl2br(htmlspecialchars($raw_sections['long_term'])) : 'No source text available.'; ?></div>
+        <div class="fcst-card-title"><?php echo $lang['LongTermDiscussion']; ?></div>
+        <div class="fcst-card-text"><?php echo !empty($raw_sections['long_term']) ? nl2br(htmlspecialchars($raw_sections['long_term'])) : $lang['NoSourceText']; ?></div>
       </div>
     </div>
   </div>
@@ -210,8 +211,8 @@ body { display: flex; flex-direction: column; }
   <div id="t4" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">Outlook Trend</div>
-        <div class="fcst-card-text"><?php echo !empty($raw_sections['outlook']) ? nl2br(htmlspecialchars($raw_sections['outlook'])) : 'No source text available.'; ?></div>
+        <div class="fcst-card-title"><?php echo $lang['OutlookTrend']; ?></div>
+        <div class="fcst-card-text"><?php echo !empty($raw_sections['outlook']) ? nl2br(htmlspecialchars($raw_sections['outlook'])) : $lang['NoSourceText']; ?></div>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<?php include('w34CombinedData.php'); date_default_timezone_set($TZ);
+<?php include('w34CombinedData.php'); include('common.php'); date_default_timezone_set($TZ);
 
 $strike_3hr = (int)($lightning['strike_count_3hr'] ?? 0);
 $energy     = rand(6452, 28864); // no energy sensor; DB lightning_energy is NULL
@@ -50,10 +50,10 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
         <div class="mod-lt-left-col">
             <div class="mod-lt-badge">
                 <div class="mod-lt-badge-top" style="background-color:<?php echo $badge_col; ?>">
-                    <span class="lbl">Strikes</span>
+                    <span class="lbl"><?php echo $lang['Strikes']; ?></span>
                     <span class="val"><?php echo $strike_3hr; ?></span>
                 </div>
-                <div class="mod-lt-badge-bot">Last 3 Hrs</div>
+                <div class="mod-lt-badge-bot"><?php echo $lang['Last3Hrs']; ?></div>
             </div>
         </div>
 
@@ -67,17 +67,17 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 <div class="lt-pill"><span class="val"><?php echo $strikes_mo; ?></span></div>
             </div>
             <div class="lt-item">
-                <div class="lt-lbl">Distance</div>
+                <div class="lt-lbl"><?php echo $lang['Distance']; ?></div>
                 <div class="lt-pill">
                     <?php if ($dist_mi !== null): ?>
-                    <span class="val"><?php echo $dist_mi; ?></span><span class="unit">mi</span>
+                    <span class="val"><?php echo $dist_mi; ?></span><span class="unit"><?php echo $lang['Miles']; ?></span>
                     <?php else: ?>
                     <span class="val">--</span>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="lt-item">
-                <div class="lt-lbl">Last Strike</div>
+                <div class="lt-lbl"><?php echo $lang['LastStrike']; ?></div>
                 <div class="lt-pill">
                     <span class="val date-text"><?php echo $last_time ?? '--'; ?></span>
                 </div>

@@ -1,9 +1,9 @@
 <?php include('shared.php'); include('common.php');
 $summary_file = 'jsondata/afd_summary.json';
 $bullets = [
-    '<span class="hl-red">No summary</span> generated yet.',
-    'Check background script execution.',
-    'Confirm <span class="hl-orange">Ollama status</span> on Pi.'
+    '<span class="hl-red">'.$lang['NoSummary'].'</span> '.$lang['GeneratedYet'],
+    $lang['CheckBackgroundScript'],
+    $lang['ConfirmOllamaStatus']
 ];
 $raw_sections = [];
 $issued = '--';
@@ -23,7 +23,7 @@ if (file_exists($summary_file)) {
     <?php if ($data_ok):
         echo $online . ' ' . $issued;
     else:
-        echo $offline . ' <offline>Offline</offline>';
+        echo $offline . ' <offline>'.$lang['Offline'].'</offline>';
     endif; ?>
 </span></div>
 

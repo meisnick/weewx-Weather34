@@ -63,33 +63,33 @@ if (file_exists('jsondata/aurora_prob.json')) {
 
 // --- Helpers ---
 function aurora_prob_class(int $prob): string {
-    if ($prob >= 50) return 'prob-red';
-    if ($prob >= 25) return 'prob-orange';
-    if ($prob >= 10) return 'prob-amber';
-    if ($prob > 0)   return 'prob-green';
-    return 'prob-none';
+    if ($prob >= 50) return 'mod-aurora-prob-red';
+    if ($prob >= 25) return 'mod-aurora-prob-orange';
+    if ($prob >= 10) return 'mod-aurora-prob-amber';
+    if ($prob > 0)   return 'mod-aurora-prob-green';
+    return 'mod-aurora-prob-none';
 }
 
 function aurora_rsg_class(int $scale): string {
-    if ($scale >= 5) return 'rsg-scale-5';
-    if ($scale == 4) return 'rsg-scale-4';
-    if ($scale == 3) return 'rsg-scale-3';
-    if ($scale == 2) return 'rsg-scale-2';
-    if ($scale == 1) return 'rsg-scale-1';
-    return 'rsg-scale-0';
+    if ($scale >= 5) return 'mod-aurora-rsg-scale-5';
+    if ($scale == 4) return 'mod-aurora-rsg-scale-4';
+    if ($scale == 3) return 'mod-aurora-rsg-scale-3';
+    if ($scale == 2) return 'mod-aurora-rsg-scale-2';
+    if ($scale == 1) return 'mod-aurora-rsg-scale-1';
+    return 'mod-aurora-rsg-scale-0';
 }
 
 function aurora_hm_class(?float $kp): string {
-    if ($kp === null) return 'hm-empty';
-    if ($kp >= 5)     return 'hm-red';
-    if ($kp >= 4)     return 'hm-orange';
-    if ($kp >= 3)     return 'hm-yellow';
-    return 'hm-green';
+    if ($kp === null) return 'mod-aurora-hm-empty';
+    if ($kp >= 5)     return 'mod-aurora-hm-red';
+    if ($kp >= 4)     return 'mod-aurora-hm-orange';
+    if ($kp >= 3)     return 'mod-aurora-hm-yellow';
+    return 'mod-aurora-hm-green';
 }
 
 function aurora_pill_class(float $kp): string {
-    if ($kp >= 5) return 'kpmax-high';
-    if ($kp >= 4) return 'kpmax-mid';
+    if ($kp >= 5) return 'mod-aurora-kpmax-high';
+    if ($kp >= 4) return 'mod-aurora-kpmax-mid';
     return '';
 }
 
@@ -105,53 +105,53 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
     endif; ?>
 </span></div>
 
-<div class="aurora-card">
+<div class="mod-aurora">
 
-  <div class="aurora-body">
-  <div class="aurora-left">
-    <div class="aurora-sect"><?php echo $lang['LatestObserved'];?></div>
-    <div class="aurora-rsg-row">
+  <div class="mod-aurora-body">
+  <div class="mod-aurora-left">
+    <div class="mod-aurora-sect"><?php echo $lang['LatestObserved'];?></div>
+    <div class="mod-aurora-rsg-row">
       <?php foreach (['R', 'S', 'G'] as $letter):
         $sc  = $rsg[$letter]['scale'];
         $cls = aurora_rsg_class($sc);
         $lbl = $sc > 0 ? ($letter . $sc) : '&mdash;';
       ?>
-      <div class="aurora-rsg-box <?php echo $cls; ?>">
-        <span class="aurora-rsg-letter"><?php echo $letter; ?></span>
-        <span class="aurora-rsg-val"><?php echo $lbl; ?></span>
+      <div class="mod-aurora-rsg-box <?php echo $cls; ?>">
+        <span class="mod-aurora-rsg-letter"><?php echo $letter; ?></span>
+        <span class="mod-aurora-rsg-val"><?php echo $lbl; ?></span>
       </div>
       <?php endforeach; ?>
     </div>
-    <div class="aurora-rsg-labels">
+    <div class="mod-aurora-rsg-labels">
       <span><?php echo $lang['Radio'];?></span><span><?php echo $lang['Solar'];?></span><span><?php echo $lang['Geo'];?></span>
     </div>
   </div>
 
-  <div class="aurora-right">
-    <div class="aurora-sect"><?php echo $lang['KpGeomagneticForecast'];?></div>
-    <div class="aurora-fc-grid">
+  <div class="mod-aurora-right">
+    <div class="mod-aurora-sect"><?php echo $lang['KpGeomagneticForecast'];?></div>
+    <div class="mod-aurora-fc-grid">
       <?php foreach ($forecast_days as $day): ?>
-      <div class="aurora-day-col">
-        <div class="aurora-day-name"><?php echo $day['label']; ?></div>
-        <div class="aurora-kpmax <?php echo aurora_pill_class($day['max_kp']); ?>">
+      <div class="mod-aurora-day-col">
+        <div class="mod-aurora-day-name"><?php echo $day['label']; ?></div>
+        <div class="mod-aurora-kpmax <?php echo aurora_pill_class($day['max_kp']); ?>">
           <?php echo $lang['Kp'];?>&nbsp;<?php echo number_format($day['max_kp'], 1); ?>
         </div>
-        <div class="aurora-heatmap">
+        <div class="mod-aurora-heatmap">
           <?php foreach ($day['slots'] as $kp): ?>
-          <div class="aurora-hm-block <?php echo aurora_hm_class($kp); ?>"></div>
+          <div class="mod-aurora-hm-block <?php echo aurora_hm_class($kp); ?>"></div>
           <?php endforeach; ?>
         </div>
       </div>
       <?php endforeach; ?>
     </div>
   </div>
-  </div><!-- end aurora-body -->
+  </div><!-- end mod-aurora-body -->
 
-  <div class="aurora-footer">
-    <span class="aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements"><?php echo $lang['AuroraNowcast'];?></span>
-    <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
+  <div class="mod-aurora-footer">
+    <span class="mod-aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements"><?php echo $lang['AuroraNowcast'];?></span>
+    <span class="mod-aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'mod-aurora-prob-none'; ?>">
       <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
     </span>
   </div>
 
-</div><!-- end aurora-card -->
+</div><!-- end mod-aurora -->

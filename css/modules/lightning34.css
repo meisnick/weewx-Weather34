@@ -168,24 +168,24 @@
     left: -10px;
 }
 
-.lt-item {
+.mod-lt-item {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.lt-full-width {
+.mod-lt-full-width {
     grid-column: span 2;
 }
 
-.lt-lbl {
+.mod-lt-lbl {
     font-family: weathertext2;
     font-size: 0.65em;
     color: silver;
     margin-bottom: 3px;
 }
 
-.lt-pill {
+.mod-lt-pill {
     border: 1px solid var(--bg0);
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -200,19 +200,19 @@
     overflow: hidden;
 }
 
-.lt-pill .val {
+.mod-lt-pill .val {
     font-family: weathertext2, Arial, sans-serif;
     color: var(--orange);
     font-size: 0.65rem;
 }
 
 /* Last strike uses proportional Arial so date text isn't compressed */
-.lt-pill .val.date-text {
+.mod-lt-pill .val.date-text {
     font-family: Arial, sans-serif;
     font-size: 0.55rem;
 }
 
-.lt-pill .unit {
+.mod-lt-pill .unit {
     color: silver;
     font-size: 0.5rem;
     font-family: Arial, Helvetica, system;
@@ -226,7 +226,7 @@
 
 [data-theme="light"] .mod-lt-top-pill,
 [data-theme="light"] .mod-lt-distance-pill,
-[data-theme="light"] .lt-pill {
+[data-theme="light"] .mod-lt-pill {
     border-color: #e6e8ef;
     background-color: transparent;
 }
@@ -234,12 +234,12 @@
 /* Darken on-tile lightning pill labels for light mode. Keep white on colored badge. */
 [data-theme="light"] .mod-lt-top-pill .unit,
 [data-theme="light"] .mod-lt-distance-pill .unit,
-[data-theme="light"] .lt-pill .unit {
+[data-theme="light"] .mod-lt-pill .unit {
   color: #2d3a4b;
 }
 [data-theme="light"] .mod-lt-badge-bot {
   color: #666;
 }
-[data-theme="light"] .lt-lbl {
+[data-theme="light"] .mod-lt-lbl {
   color: #2d3a4b;
 }

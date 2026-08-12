@@ -21,7 +21,7 @@
     width: 100%;
 }
 
-.fct-line {
+.mod-fct-line {
     font-size: 0.64rem; /* Enlarged from 0.58rem for improved legibility */
     color: silver;
     text-align: center;
@@ -29,7 +29,9 @@
     width: 98%;
 }
 
-/* --- Utility Classes for PHP Keyword Highlighting --- */
+/* --- Utility Classes for PHP Keyword Highlighting ---
+   NOTE: .hl-* are SHARED helpers (used by the language files, e.g.
+   languages/lang.en.php ConfirmOllamaStatus) — deliberately left unprefixed. */
 .hl-orange { color: var(--orange); font-weight: bold; }
 .hl-blue   { color: var(--blue, var(--teal));   font-weight: bold; }
 .hl-red    { color: var(--red);    font-weight: bold; }
@@ -37,21 +39,21 @@
 .hl-green  { color: var(--green);  font-weight: bold; }
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
-[data-theme="light"] .fct-line {
+[data-theme="light"] .mod-fct-line {
     color: #444;
 }
 
 /* --- Popout Modal styling --- */
-.fct-clickable {
+.mod-fct-clickable {
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.fct-clickable:hover {
+.mod-fct-clickable:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.fct-modal {
+.mod-fct-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -69,12 +71,12 @@
     transition: opacity 0.3s ease;
 }
 
-.fct-modal.fct-modal-active {
+.mod-fct-modal.mod-fct-modal-active {
     opacity: 1;
     pointer-events: auto;
 }
 
-.fct-modal-content {
+.mod-fct-modal-content {
     background: rgba(25, 25, 25, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -89,11 +91,11 @@
     overflow: hidden;
 }
 
-.fct-modal.fct-modal-active .fct-modal-content {
+.mod-fct-modal.mod-fct-modal-active .mod-fct-modal-content {
     transform: scale(1);
 }
 
-.fct-modal-header {
+.mod-fct-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,7 +104,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.fct-modal-title {
+.mod-fct-modal-title {
     margin: 0;
     font-size: 0.95rem;
     color: #efefef;
@@ -110,39 +112,39 @@
     letter-spacing: 0.5px;
 }
 
-.fct-modal-close {
+.mod-fct-modal-close {
     font-size: 1.5rem;
     color: #888;
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s ease;
 }
-.fct-modal-close:hover {
+.mod-fct-modal-close:hover {
     color: #fff;
 }
 
-.fct-modal-body {
+.mod-fct-modal-body {
     padding: 20px;
     overflow-y: auto;
 }
 
-.fct-grid {
+.mod-fct-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
 @media (max-width: 768px) {
-    .fct-grid {
+    .mod-fct-grid {
         grid-template-columns: 1fr;
     }
-    .fct-modal-content {
+    .mod-fct-modal-content {
         width: 95%;
         max-height: 90vh;
     }
 }
 
-.fct-section-card {
+.mod-fct-section-card {
     background: rgba(35, 35, 35, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
@@ -154,7 +156,7 @@
     overflow-y: auto;
 }
 
-.fct-section-title {
+.mod-fct-section-title {
     font-size: 0.78rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -164,7 +166,7 @@
     text-align: left;
 }
 
-.fct-section-text {
+.mod-fct-section-text {
     font-size: 0.72rem;
     color: #b0b0b0;
     line-height: 1.4;
@@ -173,45 +175,45 @@
 }
 
 /* Borders and header colors for each type */
-.border-red { border-left: 3px solid var(--red); }
-.border-amber { border-left: 3px solid var(--amber); }
-.border-blue { border-left: 3px solid var(--blue, var(--teal)); }
-.border-green { border-left: 3px solid var(--green); }
+.mod-fct-border-red { border-left: 3px solid var(--red); }
+.mod-fct-border-amber { border-left: 3px solid var(--amber); }
+.mod-fct-border-blue { border-left: 3px solid var(--blue, var(--teal)); }
+.mod-fct-border-green { border-left: 3px solid var(--green); }
 
-.text-red { color: var(--red); }
-.text-amber { color: var(--amber); }
-.text-blue { color: var(--blue, var(--teal)); }
-.text-green { color: var(--green); }
+.mod-fct-text-red { color: var(--red); }
+.mod-fct-text-amber { color: var(--amber); }
+.mod-fct-text-blue { color: var(--blue, var(--teal)); }
+.mod-fct-text-green { color: var(--green); }
 
 /* --- Light theme overrides for modal --- */
-[data-theme="light"] .fct-modal {
+[data-theme="light"] .mod-fct-modal {
     background: rgba(220, 220, 220, 0.7);
 }
-[data-theme="light"] .fct-modal-content {
+[data-theme="light"] .mod-fct-modal-content {
     background: #fbfbfb;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 10px 35px rgba(0,0,0,0.15);
 }
-[data-theme="light"] .fct-modal-header {
+[data-theme="light"] .mod-fct-modal-header {
     background: #f0f0f0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-[data-theme="light"] .fct-modal-title {
+[data-theme="light"] .mod-fct-modal-title {
     color: #222;
 }
-[data-theme="light"] .fct-modal-close {
+[data-theme="light"] .mod-fct-modal-close {
     color: #666;
 }
-[data-theme="light"] .fct-modal-close:hover {
+[data-theme="light"] .mod-fct-modal-close:hover {
     color: #000;
 }
-[data-theme="light"] .fct-section-card {
+[data-theme="light"] .mod-fct-section-card {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
-[data-theme="light"] .fct-section-title {
+[data-theme="light"] .mod-fct-section-title {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
-[data-theme="light"] .fct-section-text {
+[data-theme="light"] .mod-fct-section-text {
     color: #333;
 }

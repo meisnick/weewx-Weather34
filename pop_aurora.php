@@ -114,12 +114,12 @@ $box_none  = $is_dark ? '#393d40' : '#d0d4db';
 $grid_ln   = $is_dark ? '#2a2c2f' : '#e0e2e6';
 
 function rsg_cls(int $s): string {
-    if ($s >= 5) return 'rsg-scale-5';
-    if ($s == 4) return 'rsg-scale-4';
-    if ($s == 3) return 'rsg-scale-3';
-    if ($s == 2) return 'rsg-scale-2';
-    if ($s == 1) return 'rsg-scale-1';
-    return 'rsg-scale-0';
+    if ($s >= 5) return 'mod-aurora-rsg-scale-5';
+    if ($s == 4) return 'mod-aurora-rsg-scale-4';
+    if ($s == 3) return 'mod-aurora-rsg-scale-3';
+    if ($s == 2) return 'mod-aurora-rsg-scale-2';
+    if ($s == 1) return 'mod-aurora-rsg-scale-1';
+    return 'mod-aurora-rsg-scale-0';
 }
 function kp_color_val(string $v): string {
     $f = (float)$v;
@@ -201,31 +201,31 @@ body { display: flex; flex-direction: column; }
   margin-right: 50px;
 }
 .pop-rsg-mini { display: flex; gap: 3px; margin-right: 50px; }
-.rsg-mini {
+.mod-aurora-rsg-mini {
   width: 22px; height: 28px;
   border-radius: 2px;
   border-bottom: 3px solid rgba(0,0,0,0.3);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 1px;
 }
-.rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
-.rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
-.rsg-scale-0 { background: <?php echo $box_none; ?>; }
-.rsg-scale-1 { background: #ebd825; }
-.rsg-scale-2 { background: #e6a141; }
-.rsg-scale-3 { background: #ff7c39; }
-.rsg-scale-4 { background: #d35d4e; }
-.rsg-scale-5 { background: #8d2315; }
+.mod-aurora-rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
+.mod-aurora-rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
+.mod-aurora-rsg-scale-0 { background: <?php echo $box_none; ?>; }
+.mod-aurora-rsg-scale-1 { background: #ebd825; }
+.mod-aurora-rsg-scale-2 { background: #e6a141; }
+.mod-aurora-rsg-scale-3 { background: #ff7c39; }
+.mod-aurora-rsg-scale-4 { background: #d35d4e; }
+.mod-aurora-rsg-scale-5 { background: #8d2315; }
 
-.rsg-scale-1 .rsg-mini-letter,
-.rsg-scale-2 .rsg-mini-letter,
-.rsg-scale-3 .rsg-mini-letter {
+.mod-aurora-rsg-scale-1 .mod-aurora-rsg-mini-letter,
+.mod-aurora-rsg-scale-2 .mod-aurora-rsg-mini-letter,
+.mod-aurora-rsg-scale-3 .mod-aurora-rsg-mini-letter {
   color: #111111;
 }
 
-.rsg-scale-1 .rsg-mini-val,
-.rsg-scale-2 .rsg-mini-val,
-.rsg-scale-3 .rsg-mini-val {
+.mod-aurora-rsg-scale-1 .mod-aurora-rsg-mini-val,
+.mod-aurora-rsg-scale-2 .mod-aurora-rsg-mini-val,
+.mod-aurora-rsg-scale-3 .mod-aurora-rsg-mini-val {
   color: rgba(0, 0, 0, 0.75);
 }
 
@@ -351,9 +351,9 @@ body { display: flex; flex-direction: column; }
     <?php foreach (['R', 'S', 'G'] as $k):
       $sc = $rsg[$k]; $cls = rsg_cls($sc); $lbl = $sc > 0 ? ($k.$sc) : '&mdash;';
     ?>
-    <div class="rsg-mini <?php echo $cls; ?>">
-      <span class="rsg-mini-letter"><?php echo $k; ?></span>
-      <span class="rsg-mini-val"><?php echo $lbl; ?></span>
+    <div class="mod-aurora-rsg-mini <?php echo $cls; ?>">
+      <span class="mod-aurora-rsg-mini-letter"><?php echo $k; ?></span>
+      <span class="mod-aurora-rsg-mini-val"><?php echo $lbl; ?></span>
     </div>
     <?php endforeach; ?>
   </div>

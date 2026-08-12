@@ -38,7 +38,7 @@ if (file_exists($summary_file)) {
             $b = str_replace('<strong>Long Term</strong>', '<strong>Long Term <span style="font-size:0.55rem; color:#888; font-weight:normal;">(3-7 Days)</span></strong>', $b);
             $b = str_replace('<strong>Outlook</strong>', '<strong>Outlook <span style="font-size:0.55rem; color:#888; font-weight:normal;">(Days 7+)</span></strong>', $b);
         ?>
-        <div class="fct-line">
+        <div class="mod-fct-line">
             <?php echo $b; ?>
         </div>
         <?php endforeach; ?>

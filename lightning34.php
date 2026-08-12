@@ -58,17 +58,17 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
         </div>
 
         <div class="mod-lt-grid">
-            <div class="lt-item">
-                <div class="lt-lbl"><?php echo date('Y'); ?></div>
-                <div class="lt-pill"><span class="val"><?php echo $strikes_yr; ?></span></div>
+            <div class="mod-lt-item">
+                <div class="mod-lt-lbl"><?php echo date('Y'); ?></div>
+                <div class="mod-lt-pill"><span class="val"><?php echo $strikes_yr; ?></span></div>
             </div>
-            <div class="lt-item">
-                <div class="lt-lbl"><?php echo date('M'); ?></div>
-                <div class="lt-pill"><span class="val"><?php echo $strikes_mo; ?></span></div>
+            <div class="mod-lt-item">
+                <div class="mod-lt-lbl"><?php echo date('M'); ?></div>
+                <div class="mod-lt-pill"><span class="val"><?php echo $strikes_mo; ?></span></div>
             </div>
-            <div class="lt-item">
-                <div class="lt-lbl"><?php echo $lang['Distance']; ?></div>
-                <div class="lt-pill">
+            <div class="mod-lt-item">
+                <div class="mod-lt-lbl"><?php echo $lang['Distance']; ?></div>
+                <div class="mod-lt-pill">
                     <?php if ($dist_mi !== null): ?>
                     <span class="val"><?php echo $dist_mi; ?></span><span class="unit"><?php echo $lang['Miles']; ?></span>
                     <?php else: ?>
@@ -76,9 +76,9 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="lt-item">
-                <div class="lt-lbl"><?php echo $lang['LastStrike']; ?></div>
-                <div class="lt-pill">
+            <div class="mod-lt-item">
+                <div class="mod-lt-lbl"><?php echo $lang['LastStrike']; ?></div>
+                <div class="mod-lt-pill">
                     <span class="val date-text"><?php echo $last_time ?? '--'; ?></span>
                 </div>
             </div>

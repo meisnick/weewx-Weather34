@@ -1658,7 +1658,7 @@
 
 
 
-/* Remove dark bottom border on outside temp tiles in light mode */
+/* Temperature tile dark bottom bar matching lightning/UV badges */
 [data-theme="light"] .mod-temperature .outside0-5,
 [data-theme="light"] .mod-temperature .outside11-15,
 [data-theme="light"] .mod-temperature .outside16-20,
@@ -1673,5 +1673,9 @@
 [data-theme="light"] .mod-temperature .outsideminus10,
 [data-theme="light"] .mod-temperature .outsideminus5,
 [data-theme="light"] .mod-temperature .outsidezero {
-  border-bottom: 0 !important;
+  border-bottom: 18px solid #38383c !important;
+}
+
+[data-theme="light"] .mod-temperature .temptrendx {
+  color: #ffffff !important;
 }

@@ -101,7 +101,7 @@ for ($k=0;$k<=2;$k++)
 	//icon + day
 	echo '<div class="forecastforecastinghome" style="border:0px">';echo '<div class="forecastweekdayhome">'.$forecastdayTime[$k].'</div><div class=forecasthomeicons>';
 	echo '<img src="css/svg/' . $forecastIcon[$k] . '" width="45%" ></img>';	
-	echo '</div><div class="forecasttempdesc" style="font-size: 0.53rem"}>'.$forecastdaysummary.'</div>';
+	echo '</div><div class="forecasttempdesc" style="font-size: 0.53rem">'.$forecastdaysummary.'</div>';
 	//temp non metric
 	if($tempunit=='F' && $forecastdayTempHigh<44.6){echo '<forecasttemphihome><bluet>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</bluet></forecasttemphihome>';}
 	else if($tempunit=='F' && $forecastdayTempHigh>104){echo '<forecasttemphihome><purplet>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</purplet></forecasttemphihome>';}

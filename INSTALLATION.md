@@ -97,14 +97,15 @@ Copy the WeeWX skin templates:
 sudo cp -r /var/www/html/weewx/weather34/skins/Weather34 /etc/weewx/skins/
 ```
 
-Set the correct group on the serverdata directory so WeeWX can write to it:
+Set the correct group on the serverdata and jsondata directories so WeeWX, root crons, and your local user can write to them:
 
 ```bash
 sudo usermod -a -G www-data weewx
+sudo usermod -a -G www-data pi  # Replace 'pi' with your local admin username (e.g., your login user)
 sudo chown -R weewx:www-data /var/www/html/weewx/weather34/serverdata
-sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
 sudo chown -R weewx:www-data /var/www/html/weewx/weather34/jsondata
-sudo chmod -R 775 /var/www/html/weewx/weather34/jsondata
+sudo chmod -R 775 /var/www/html/weewx/weather34/serverdata
+sudo chmod -R 2775 /var/www/html/weewx/weather34/jsondata  # 2775 (setgid) ensures all new files inherit the www-data group
 sudo mkdir -p /tmp/weather34
 sudo chown weewx:weewx /tmp/weather34
 ```

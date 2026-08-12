@@ -164,3 +164,13 @@
 [data-theme="light"] .mod-conditions .updatedtimecurrent {
   color: var(--text-d);
 }
+
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle tyellow,
+[data-theme="light"] .mod-conditions .cloudconvertercircle tblue,
+[data-theme="light"] .mod-conditions .cloudconvertercircle smalltempunit2,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 tyellow,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 tblue,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 smalltempunit2 {
+  color: #ffffff !important;
+}

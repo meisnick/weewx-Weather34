@@ -1656,3 +1656,22 @@
 }
 
 
+
+
+/* Remove dark bottom border on outside temp tiles in light mode */
+[data-theme="light"] .mod-temperature .outside0-5,
+[data-theme="light"] .mod-temperature .outside11-15,
+[data-theme="light"] .mod-temperature .outside16-20,
+[data-theme="light"] .mod-temperature .outside21-25,
+[data-theme="light"] .mod-temperature .outside26-30,
+[data-theme="light"] .mod-temperature .outside31-35,
+[data-theme="light"] .mod-temperature .outside36-40,
+[data-theme="light"] .mod-temperature .outside41-45,
+[data-theme="light"] .mod-temperature .outside50,
+[data-theme="light"] .mod-temperature .outside6-10,
+[data-theme="light"] .mod-temperature .outsideminus,
+[data-theme="light"] .mod-temperature .outsideminus10,
+[data-theme="light"] .mod-temperature .outsideminus5,
+[data-theme="light"] .mod-temperature .outsidezero {
+  border-bottom: 0 !important;
+}

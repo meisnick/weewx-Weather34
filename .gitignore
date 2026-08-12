@@ -1,13 +1,17 @@
-# Runtime generated data — never commit these
-serverdata/
+# Runtime generated data — never commit contents, but keep the dir (.gitkeep)
+# so a fresh clone self-creates the write targets weewx/PHP need
+serverdata/*
+!serverdata/.gitkeep
 jsondata/
 
 # jsondata exception — static lookup table must be tracked
 !jsondata/lookupTable.json
 
-# Highcharts runtime data
-w34highcharts/json/
-w34highcharts/json_day/
+# Highcharts runtime data — track the dir (.gitkeep), ignore the generated json
+w34highcharts/json/*
+!w34highcharts/json/.gitkeep
+w34highcharts/json_day/*
+!w34highcharts/json_day/.gitkeep
 w34highcharts/w34_reports/__pycache__/
 
 # Station-specific config — never commit

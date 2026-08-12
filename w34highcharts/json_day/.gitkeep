@@ -1,0 +1,2 @@
+# Keeps this directory in a fresh clone. Contents are runtime-generated (daily
+# highcharts json) and gitignored. Deploy perms: www-data:www-data, mode 2775.

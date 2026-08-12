@@ -2,14 +2,15 @@
 // localforecast.php — Hyperlocal Short-Term Forecast Card (LLM Analogue Matching)
 include('shared.php');
 include_once('settings1.php');
+include('common.php');
 
 $file_path = 'jsondata/local_forecast.json';
 $data_ok   = false;
-$forecast  = 'No hyperlocal nowcast available.';
-$wind_out  = 'Calm';
+$forecast  = $lang['NoHyperlocalNowcast'];
+$wind_out  = $lang['Calm'];
 $rain_pct  = 0;
 $rain_class = 'ym-quiet';
-$rain_status = 'Dry';
+$rain_status = $lang['Dry'];
 
 if (file_exists($file_path)) {
     $raw  = @file_get_contents($file_path);
@@ -20,23 +21,23 @@ if (file_exists($file_path)) {
         // Wind Label
         $wind_label = $data['wind_label'] ?? '';
         if ($wind_label) {
-            $wind_out = $wind_label . ' Wind';
+            $wind_out = $wind_label . ' ' . $lang['Wind'];
         }
         
         // Rain classification
         $rain_pct = intval($data['rain_pct_6h'] ?? 0);
         if ($rain_pct === 0) {
             $rain_class = 'ym-quiet';
-            $rain_status = 'Dry';
+            $rain_status = $lang['Dry'];
         } elseif ($rain_pct < 30) {
             $rain_class = 'ym-minor';
-            $rain_status = 'Slight';
+            $rain_status = $lang['Slight'];
         } elseif ($rain_pct < 60) {
             $rain_class = 'ym-active';
-            $rain_status = 'Chance';
+            $rain_status = $lang['Chance'];
         } else {
             $rain_class = 'ym-storm';
-            $rain_status = 'Likely';
+            $rain_status = $lang['Likely'];
         }
         
         // Dynamic Winter Precipitation Check
@@ -45,7 +46,7 @@ if (file_exists($file_path)) {
         if ($raw_temp !== null && $raw_temp <= 32.0) {
             $is_freezing = true;
         }
-        $badge_label = $is_freezing ? 'Snow 6h' : 'Rain 6h';
+        $badge_label = $is_freezing ? $lang['Snow6h'] : $lang['Rain6h'];
         
         $data_ok = true;
     }
@@ -56,7 +57,7 @@ if (file_exists($file_path)) {
     <?php if ($data_ok):
         echo $online . ' ' . date($timeFormat, filemtime($file_path));
     else:
-        echo $offline . ' <offline>Offline</offline>';
+        echo $offline . ' <offline>' . $lang['Offline'] . '</offline>';
     endif; ?>
 </div>
 
@@ -64,7 +65,7 @@ if (file_exists($file_path)) {
 <div class="mod-localforecast">
     <div class="mod-lf-header">
         <div class="mod-lf-header-left">
-            <span class="mod-lf-term">6h Nowcast</span>
+            <span class="mod-lf-term"><?php echo $lang['Nowcast6h']; ?></span>
             <span class="mod-lf-wind"><?php echo htmlspecialchars($wind_out); ?></span>
         </div>
         

@@ -1,6 +1,7 @@
 <?php
 include('shared.php');
 include('settings.php');
+include('common.php');
 
 // ── Current Kp ───────────────────────────────────────────────────────────────
 $kp = 0.0; $kp_type = 'estimated';
@@ -97,10 +98,10 @@ if ($forecast_ok) {
 }
 
 // ── Derived display values ────────────────────────────────────────────────────
-if ($kp >= 7)      { $storm = 'Severe Storm'; $kp_color = '#d35d4e'; }
-elseif ($kp >= 5)  { $storm = 'G1+ Storm';    $kp_color = '#ff7c39'; }
-elseif ($kp >= 4)  { $storm = 'Active';        $kp_color = '#e6a141'; }
-else               { $storm = 'Quiet';          $kp_color = '#90b12a'; }
+if ($kp >= 7)      { $storm = $lang['SevereStorm']; $kp_color = '#d35d4e'; }
+elseif ($kp >= 5)  { $storm = $lang['G1PlusStorm'];  $kp_color = '#ff7c39'; }
+elseif ($kp >= 4)  { $storm = $lang['Active'];        $kp_color = '#e6a141'; }
+else               { $storm = $lang['Quiet'];          $kp_color = '#90b12a'; }
 
 $is_dark   = ($theme !== 'light');
 $bg        = $is_dark ? '#151819' : '#fff';
@@ -136,7 +137,7 @@ $south_json = json_encode($south_pts);
 <html lang="en" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
-  <title>Space Weather</title>
+  <title><?php echo $lang['SpaceWeather']; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @font-face {
@@ -342,9 +343,9 @@ body { display: flex; flex-direction: column; }
 
 <!-- Header: title + Kp badge + storm + RSG mini-badges -->
 <div class="pop-header">
-  <span class="pop-title">Space Weather</span>
-  <span class="pop-prob-badge">Ovation&nbsp;<?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?></span>
-  <span class="pop-kp-badge">Kp&nbsp;<?php echo number_format($kp, 1); ?></span>
+  <span class="pop-title"><?php echo $lang['SpaceWeather']; ?></span>
+  <span class="pop-prob-badge"><?php echo $lang['Ovation']; ?>&nbsp;<?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?></span>
+  <span class="pop-kp-badge"><?php echo $lang['Kp']; ?>&nbsp;<?php echo number_format($kp, 1); ?></span>
   <span class="pop-storm"><?php echo ucfirst($kp_type); ?> &mdash; <?php echo $storm; ?></span>
   <div class="pop-rsg-mini">
     <?php foreach (['R', 'S', 'G'] as $k):
@@ -360,10 +361,10 @@ body { display: flex; flex-direction: column; }
 
 <!-- Tab buttons -->
 <div class="pop-tabs">
-  <button class="tablink" onclick="openTab('t1',this)" id="defaultOpen">Viewline</button>
-  <button class="tablink" onclick="openTab('t2',this)">3-Day Forecast</button>
-  <button class="tablink" onclick="openTab('t3',this)">Hem. Power</button>
-  <button class="tablink" onclick="openTab('t4',this)">Ovation</button>
+  <button class="tablink" onclick="openTab('t1',this)" id="defaultOpen"><?php echo $lang['ViewLine']; ?></button>
+  <button class="tablink" onclick="openTab('t2',this)"><?php echo $lang['Forecast3Day']; ?></button>
+  <button class="tablink" onclick="openTab('t3',this)"><?php echo $lang['HemPower']; ?></button>
+  <button class="tablink" onclick="openTab('t4',this)"><?php echo $lang['Ovation']; ?></button>
 </div>
 
 <!-- Content panels -->
@@ -374,15 +375,15 @@ body { display: flex; flex-direction: column; }
     <div class="img-row">
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="Tonight">
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="<?php echo $lang['Tonight']; ?>">
         </div>
-        <div class="img-label">Tonight</div>
+        <div class="img-label"><?php echo $lang['Tonight']; ?></div>
       </div>
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="Tomorrow Night">
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png?t=<?php echo $cb; ?>" alt="<?php echo $lang['Tomorrownight']; ?>">
         </div>
-        <div class="img-label">Tomorrow Night</div>
+        <div class="img-label"><?php echo $lang['Tomorrownight']; ?></div>
       </div>
     </div>
   </div>
@@ -391,14 +392,14 @@ body { display: flex; flex-direction: column; }
   <div id="t2" class="tabcontent">
     <div class="forecast-body">
       <?php if (!$forecast_ok): ?>
-        <div class="unavail">Forecast data unavailable — refreshes hourly.</div>
+        <div class="unavail"><?php echo $lang['ForecastUnavailable']; ?></div>
       <?php else: ?>
 
       <?php if ($ap_data): ?>
       <div class="fcst-card">
-        <div class="fcst-card-title">Ap Index</div>
+        <div class="fcst-card-title"><?php echo $lang['ApIndex']; ?></div>
         <table class="fcst-table">
-          <thead><tr><th>Type</th><th>Date</th><th>Ap</th></tr></thead>
+          <thead><tr><th><?php echo $lang['Type']; ?></th><th><?php echo $lang['Date']; ?></th><th><?php echo $lang['Ap']; ?></th></tr></thead>
           <tbody>
             <?php foreach ($ap_data as $r): ?>
             <tr>
@@ -414,11 +415,11 @@ body { display: flex; flex-direction: column; }
 
       <?php if ($prob_data && $kp_days): ?>
       <div class="fcst-card">
-        <div class="fcst-card-title">Geomagnetic Activity Probabilities</div>
+        <div class="fcst-card-title"><?php echo $lang['GeomagneticActivityProbabilities']; ?></div>
         <table class="fcst-table">
           <thead>
             <tr>
-              <th>Level</th>
+              <th><?php echo $lang['Level']; ?></th>
               <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
             </tr>
           </thead>
@@ -438,11 +439,11 @@ body { display: flex; flex-direction: column; }
 
       <?php if ($kp_rows && $kp_days): ?>
       <div class="fcst-card">
-        <div class="fcst-card-title">Kp Index Forecast (UT)</div>
+        <div class="fcst-card-title"><?php echo $lang['KpIndexForecast']; ?></div>
         <table class="fcst-table">
           <thead>
             <tr>
-              <th>Period</th>
+              <th><?php echo $lang['Period']; ?></th>
               <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
             </tr>
           </thead>
@@ -463,7 +464,7 @@ body { display: flex; flex-direction: column; }
       <?php endif; ?>
 
       <?php if ($forecast_issued): ?>
-      <div class="fcst-issued">Issued: <?php echo htmlspecialchars($forecast_issued); ?> &middot; NOAA SWPC</div>
+      <div class="fcst-issued"><?php echo $lang['Issued']; ?>: <?php echo htmlspecialchars($forecast_issued); ?> &middot; NOAA SWPC</div>
       <?php endif; ?>
 
       <?php endif; ?>
@@ -473,7 +474,7 @@ body { display: flex; flex-direction: column; }
   <!-- Tab 3: Hemisphere power Highcharts -->
   <div id="t3" class="tabcontent">
     <?php if (!$power_ok || empty($north_pts)): ?>
-      <div class="unavail">Hemisphere power data unavailable — refreshes every 5 min.</div>
+      <div class="unavail"><?php echo $lang['HemispherePowerUnavailable']; ?></div>
     <?php else: ?>
       <div id="hemi-chart-wrap">
         <div id="hemi-chart"></div>
@@ -486,15 +487,15 @@ body { display: flex; flex-direction: column; }
     <div class="img-row">
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?t=<?php echo $cb; ?>" alt="North Ovation">
+          <img src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['NorthernHemisphereOvation']; ?>">
         </div>
-        <div class="img-label">Northern Hemisphere — Ovation</div>
+        <div class="img-label"><?php echo $lang['NorthernHemisphereOvation']; ?></div>
       </div>
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/images/animations/ovation/south/latest.jpg?t=<?php echo $cb; ?>" alt="South Ovation">
+          <img src="https://services.swpc.noaa.gov/images/animations/ovation/south/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['SouthernHemisphereOvation']; ?>">
         </div>
-        <div class="img-label">Southern Hemisphere — Ovation</div>
+        <div class="img-label"><?php echo $lang['SouthernHemisphereOvation']; ?></div>
       </div>
     </div>
   </div>
@@ -542,7 +543,7 @@ function buildChart() {
       type: 'datetime',
       labels: { style: { color: '<?php echo $text_dim; ?>' }, format: '{value:%H:%M}', step: 3 },
       lineColor: '<?php echo $border; ?>', tickColor: '<?php echo $border; ?>',
-      title: { text: 'Observation Time UTC', style: { color: '<?php echo $text_dim; ?>', fontSize: '9px' } }
+      title: { text: '<?php echo $lang['ObservationTimeUTC']; ?>', style: { color: '<?php echo $text_dim; ?>', fontSize: '9px' } }
     },
     yAxis: {
       title: { text: 'GW', style: { color: '<?php echo $text_dim; ?>', fontSize: '10px' } },
@@ -560,8 +561,8 @@ function buildChart() {
       area: { marker: { enabled: false }, fillOpacity: 0.12, lineWidth: 1.5 }
     },
     series: [
-      { name: 'North (GW)', color: '#90b12a', data: <?php echo $north_json; ?> },
-      { name: 'South (GW)', color: '#e6a141', data: <?php echo $south_json; ?> }
+      { name: '<?php echo $lang['NorthGW']; ?>', color: '#90b12a', data: <?php echo $north_json; ?> },
+      { name: '<?php echo $lang['SouthGW']; ?>', color: '#e6a141', data: <?php echo $south_json; ?> }
     ]
   });
 }

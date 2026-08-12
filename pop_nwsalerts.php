@@ -1,6 +1,7 @@
 <?php
 include('w34CombinedData.php');
 include('settings1.php');
+include('common.php');
 error_reporting(0);
 
 $_raw    = @file_get_contents('jsondata/nws_alerts.txt');
@@ -46,7 +47,7 @@ if ($_issued) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NWS Weather Alerts</title>
+<title><?php echo $lang['NwsWeatherAlerts']; ?></title>
 <style>
 @font-face {
   font-family: weathertext2;
@@ -154,17 +155,17 @@ body { display: flex; flex-direction: column; }
 
 <!-- Header -->
 <div class="pop-header">
-  <span class="pop-title">Active NWS Weather Alerts</span>
-  <span class="pop-issued">Fetched: <?php echo htmlspecialchars($_issued); ?></span>
+  <span class="pop-title"><?php echo $lang['ActiveNwsWeatherAlerts']; ?></span>
+  <span class="pop-issued"><?php echo $lang['Fetched']; ?>: <?php echo htmlspecialchars($_issued); ?></span>
 </div>
 
 <div class="pop-content">
   <div class="discussion-body">
   <?php if ($_count === 0): ?>
-    <div class="no-alerts">No Active Weather Alerts at present.</div>
+    <div class="no-alerts"><?php echo $lang['NoActiveWeatherAlerts']; ?></div>
   <?php else: ?>
     <?php foreach ($_alerts as $a):
-      $sev = $a['severity'] ?? 'Unknown';
+      $sev = $a['severity'] ?? $lang['Unknown'];
       $sev_lower = strtolower($sev);
       $sev_class = 'severity-' . $sev_lower;
       $col = $sev_colors[$sev_lower] ?? $sev_colors['unknown'];
@@ -176,9 +177,9 @@ body { display: flex; flex-direction: column; }
       </div>
       
       <div style="font-size:0.7em;color:<?php echo $text_dim; ?>;margin-bottom:8px;line-height:1.4;border-bottom:1px solid <?php echo $border; ?>;padding-bottom:6px;">
-        <strong>Headline:</strong> <span style="color: <?php echo $is_dark ? '#eee' : '#222'; ?>;"><?php echo htmlspecialchars($a['headline']); ?></span><br>
-        <?php if (!empty($a['effective'])): ?><strong>Effective:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
-        <?php if (!empty($a['expires'])): ?><strong>Expires:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
+        <strong><?php echo $lang['Headline']; ?>:</strong> <span style="color: <?php echo $is_dark ? '#eee' : '#222'; ?>;"><?php echo htmlspecialchars($a['headline']); ?></span><br>
+        <?php if (!empty($a['effective'])): ?><strong><?php echo $lang['Effective']; ?>:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
+        <?php if (!empty($a['expires'])): ?><strong><?php echo $lang['Expires']; ?>:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
       </div>
       
       <div class="fcst-card-text"><?php echo nl2br(htmlspecialchars(trim($a['description']))); ?></div>

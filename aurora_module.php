@@ -1,6 +1,7 @@
 <?php
 include('shared.php');
 include_once('settings1.php');
+include('common.php');
 
 // --- NOAA current R/S/G scales ---
 $rsg = [
@@ -100,7 +101,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
     <?php if ($scales_ok && $ki_ok):
         echo $online . ' ' . date($timeFormat, filemtime('jsondata/noaa_scales.json'));
     else:
-        echo $offline . ' <offline>Offline</offline>';
+        echo $offline . ' <offline>'.$lang['Offline'].'</offline>';
     endif; ?>
 </span></div>
 
@@ -108,7 +109,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
 
   <div class="aurora-body">
   <div class="aurora-left">
-    <div class="aurora-sect">Latest Observed</div>
+    <div class="aurora-sect"><?php echo $lang['LatestObserved'];?></div>
     <div class="aurora-rsg-row">
       <?php foreach (['R', 'S', 'G'] as $letter):
         $sc  = $rsg[$letter]['scale'];
@@ -122,18 +123,18 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
       <?php endforeach; ?>
     </div>
     <div class="aurora-rsg-labels">
-      <span>Radio</span><span>Solar</span><span>Geo</span>
+      <span><?php echo $lang['Radio'];?></span><span><?php echo $lang['Solar'];?></span><span><?php echo $lang['Geo'];?></span>
     </div>
   </div>
 
   <div class="aurora-right">
-    <div class="aurora-sect">Kp Geomagnetic Forecast</div>
+    <div class="aurora-sect"><?php echo $lang['KpGeomagneticForecast'];?></div>
     <div class="aurora-fc-grid">
       <?php foreach ($forecast_days as $day): ?>
       <div class="aurora-day-col">
         <div class="aurora-day-name"><?php echo $day['label']; ?></div>
         <div class="aurora-kpmax <?php echo aurora_pill_class($day['max_kp']); ?>">
-          Kp&nbsp;<?php echo number_format($day['max_kp'], 1); ?>
+          <?php echo $lang['Kp'];?>&nbsp;<?php echo number_format($day['max_kp'], 1); ?>
         </div>
         <div class="aurora-heatmap">
           <?php foreach ($day['slots'] as $kp): ?>
@@ -147,7 +148,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
   </div><!-- end aurora-body -->
 
   <div class="aurora-footer">
-    <span class="aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements">Aurora Nowcast (30m):</span>
+    <span class="aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements"><?php echo $lang['AuroraNowcast'];?></span>
     <span class="aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'prob-none'; ?>">
       <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
     </span>

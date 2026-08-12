@@ -76,7 +76,7 @@ if ($weather["barometer_units"]=='mb' OR $weather["barometer_units"]=="hPa"){
 else if ($weather["barometer_units"]=="kPa"){
     echo "<weather34-barometerlimitmin><value>95</weather34-barometerlimitmin><weather34-barometerlimitmax><value>105</weather34-barometerlimitmax>";
 } else {
-    echo "<weather34-barometerlimitminf><value>28</barometerlimitminf><weather34-barometerlimitmaxf><value>31</weather34-barometerlimitmaxf>";
+    echo "<weather34-barometerlimitminf><value>28</weather34-barometerlimitminf><weather34-barometerlimitmaxf><value>31</weather34-barometerlimitmaxf>";
 }?>
 </div></div>
 </div><!-- /mod-barometer -->

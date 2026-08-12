@@ -49,10 +49,6 @@ else if ($weather["wind_units"]=="m/s" && $weather["wind_gust_speed"]*$toKnots<1
 if($weather["wind_direction"]<=11.25){echo $lang['Northdir'] ;}else if($weather["wind_direction"]<=33.75){echo $lang['NNEdir'];}else if($weather["wind_direction"]<=56.25){echo $lang['NEdir'];}else if($weather["wind_direction"]<=78.75){echo $lang['ENEdir'];}else if($weather["wind_direction"]<=101.25){echo $lang['Eastdir'];}else if($weather["wind_direction"]<=123.75){echo $lang['ESEdir'];}else if($weather["wind_direction"]<=146.25){echo $lang['SEdir'];}else if($weather["wind_direction"]<=168.75){echo $lang['SSEdir'];}else if($weather["wind_direction"]<=191.25){echo $lang['Southdir'];}  else if($weather["wind_direction"]<=213.75){echo $lang['SSWdir'];}else if($weather["wind_direction"]<=236.25){echo $lang['SWdir'];}else if($weather["wind_direction"]<=258.75){echo $lang['WSWdir'];}else if($weather["wind_direction"]<=281.25){echo $lang['Westdir'];}else if($weather["wind_direction"]<=303.75){echo $lang['WNWdir'];}else if($weather["wind_direction"]<=326.25){echo $lang['NWdir'];}else if($weather["wind_direction"]<=348.75){echo $lang['NWNdir'];}else {echo $lang['Northdir'];}?>
  </div></div> 
 <?php 
-if ($weather["wind_units"] == 'mph'){$weather["windrun"]=$weather["windrun"]*0.621371;}
-else if ($weather["wind_units"] == 'kts'){$weather["windrun"]=$weather["windrun"]*0.621371;}
-else {$weather["windrun"]=$weather["windrun"]*1;}
-
 echo ' <div class=weather34windrun>'.$windrunicon.' &nbsp;<grey><valuetext1>',number_format($weather["windrun"],1);?>
 <grey><weather34windrunspan></valuetext>
 <?php if ($weather["wind_units"] == 'mph') echo 'mi'; else if ($weather["wind_units"] == 'm/s') echo 'km'; else if ($weather["wind_units"] == 'kts') echo 'mi';else echo 'km';?></weather34windrunspan>
@@ -89,31 +85,31 @@ if ($weather["wind_speed_bft"] >= 12) {
  <weather34bftspan>BFT<weather34bftspan></div>
 <div class="beaufort1"><?php
 if ($weather["wind_speed_bft"] == 0) {
-  echo "Calm";
+  echo $lang['Calm'];
 } else if ($weather["wind_speed_bft"] == 1) {
-  echo "Light Air";
+  echo $lang['Lightair'] ?? 'Light Air';
 } else if ($weather["wind_speed_bft"] == 2) {
-  echo "Light Breeze";
+  echo $lang['Lightbreeze'] ?? 'Light Breeze';
 } else if ($weather["wind_speed_bft"] == 3) {
-  echo "Gentle Breeze";
+  echo $lang['Gentelbreeze'] ?? 'Gentle Breeze';
 } else if ($weather["wind_speed_bft"] == 4) {
-  echo "Moderate Breeze";
+  echo $lang['Moderatebreeze'] ?? 'Moderate Breeze';
 } else if ($weather["wind_speed_bft"] == 5) {
-  echo "Fresh Breeze";
+  echo $lang['Freshbreeze'] ?? 'Fresh Breeze';
 } else if ($weather["wind_speed_bft"] == 6) {
-  echo "Strong Breeze";
+  echo $lang['Strongbreeze'] ?? 'Strong Breeze';
 } else if ($weather["wind_speed_bft"] == 7) {
-  echo "Near Gale " . $alert . "";
+  echo ($lang['Neargale'] ?? 'Near Gale') . " " . $alert;
 } else if ($weather["wind_speed_bft"] == 8) {
-  echo "Gale Force " . $alert . "";
+  echo ($lang['Galeforce'] ?? 'Gale Force') . " " . $alert;
 } else if ($weather["wind_speed_bft"] == 9) {
-  echo "Strong Gale " . $alert . "";
+  echo ($lang['Stronggale'] ?? 'Strong Gale') . " " . $alert;
 } else if ($weather["wind_speed_bft"] == 10) {
-  echo "Storm Force " . $alert . "";
+  echo ($lang['Storm'] ?? 'Storm Force') . " " . $alert;
 } else if ($weather["wind_speed_bft"] == 11) {
-  echo "Violent Storm " . $alert . "";
+  echo ($lang['Violentstorm'] ?? 'Violent Storm') . " " . $alert;
 } else if ($weather["wind_speed_bft"] >= 12) {
-  echo "Hurricane Force " . $alert . "";
+  echo ($lang['Hurricane'] ?? 'Hurricane Force') . " " . $alert;
 }
 ?>
 </div>

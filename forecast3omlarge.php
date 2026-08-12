@@ -117,31 +117,31 @@ echo '<img src="css/svg/'.$forecastIcon.'" width="52px" height="41px"  ></img>';
 echo '</div><wulargetempdesc><value>' . $forecastdesc . '<value></wulargetempdesc><br><br>';
 //temp non metric aw
 if ($tempunit == 'F' && $forecastTempHigh < 44.6) {
-    echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></bluewu></wulargetemphihome>';
+    echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></bluewu></wulargetemphihome>';
 } else if ($tempunit == 'F' && $forecastTempHigh > 104) {
-    echo '<wulargetemphihome><purplewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></purplewu></wulargetemphihome>';
+    echo '<wulargetemphihome><purplewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></purplewu></wulargetemphihome>';
 } else if ($tempunit == 'F' && $forecastTempHigh > 80.6) {
-    echo '<wulargetemphihome><redwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></redwu></wulargetemphihome>';
+    echo '<wulargetemphihome><redwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></redwu></wulargetemphihome>';
 } else if ($tempunit == 'F' && $forecastTempHigh > 64.4) {
-    echo '<wulargetemphihome><orangewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></orangewu></wulargetemphihome>';
+    echo '<wulargetemphihome><orangewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></orangewu></wulargetemphihome>';
 } else if ($tempunit == 'F' && $forecastTempHigh > 55) {
-    echo '<wulargetemphihome><yellowwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></yellowwu></wulargetemphihome>';
+    echo '<wulargetemphihome><yellowwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></yellowwu></wulargetemphihome>';
 } else if ($tempunit == 'F' && $forecastTempHigh >= 44.6) {
-    echo '<wulargetemphihome><greenwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>F</wuunits></greenwu></wulargetemphihome>';
+    echo '<wulargetemphihome><greenwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></greenwu></wulargetemphihome>';
 }
 //temp metric wu
 else if ($forecastTempHigh < 7) {
-    echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></bluewu></wulargetemphihome>';
+    echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></bluewu></wulargetemphihome>';
 } else if ($forecastTempHigh > 40) {
-    echo '<wulargetemphihome><purplewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></purplewu></wulargetemphihome>';
+    echo '<wulargetemphihome><purplewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></purplewu></wulargetemphihome>';
 } else if ($forecastTempHigh > 27) {
-    echo '<wulargetemphihome><redwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></redwu></wulargetemphihome>';
+    echo '<wulargetemphihome><redwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></redwu></wulargetemphihome>';
 } else if ($forecastTempHigh > 18) {
-    echo '<wulargetemphihome><orangewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></orangewu></wulargetemphihome>';
+    echo '<wulargetemphihome><orangewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></orangewu></wulargetemphihome>';
 } else if ($forecastTempHigh > 12.7) {
-    echo '<wulargetemphihome><yellowwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></yellowwu></wulargetemphihome>';
+    echo '<wulargetemphihome><yellowwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></yellowwu></wulargetemphihome>';
 } else if ($forecastTempHigh >= 7) {
-    echo '<wulargetemphihome><greenwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>C</wuunits></greenwu></wulargetemphihome>';
+    echo '<wulargetemphihome><greenwu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></greenwu></wulargetemphihome>';
 }
 //wind aw
 echo "<div class='wulargewindspeedicon'> Winds from  <blueu>";

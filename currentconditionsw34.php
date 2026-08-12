@@ -105,18 +105,18 @@ echo "<oblue>Cloud Cover</oblue><ogreen> " .$weather["cloud_cover"]."</ogreen><v
 }
 
 
-echo "<br>Average <oorange>Temperature</oorange> last 60 minutes ";if($weather["temp_avg"]>=20){echo "<oorange>" .$weather["temp_avg"]."</oorange>°<valuetext>".$tempunit;} else if($weather["temp_avg"]<=10){echo "<oblue>" .$weather["temp_avg"]."</oblue>°<valuetext>".$tempunit;}else if($weather["temp_avg"]<20){echo "<ogreen>" .$weather["temp_avg"]."</ogreen>°<valuetext>".$tempunit;}echo "</valuetext><br>";
+echo "<br>Average <oorange>Temperature</oorange> last 60 minutes ";if($weather["temp_avg"]>=20){echo "<oorange>" .$weather["temp_avg"]."</oorange>°<valuetext>".$weather['temp_units'];} else if($weather["temp_avg"]<=10){echo "<oblue>" .$weather["temp_avg"]."</oblue>°<valuetext>".$weather['temp_units'];}else if($weather["temp_avg"]<20){echo "<ogreen>" .$weather["temp_avg"]."</ogreen>°<valuetext>".$weather['temp_units'];}echo "</valuetext><br>";
 echo  "Max <oblue>Wind Gust</oblue> ";
-if ($windunit=='kts'){$windunit="kn";}
-if($weather["wind_gust_60min"]>=50){echo "<ored>" ,number_format(round($weather["wind_gust_60min"],1))."</ored> ".$windunit;}
-else if($weather["wind_gust_60min"]>=30){echo "<oorange>" ,number_format(round($weather["wind_gust_60min"],1))."</oorange><valuetext> ".$windunit;}
-else if($weather["wind_gust_60min"]>=0){echo "<ogreen>" ,number_format(round($weather["wind_gust_60min"],1))."</ogreen><valuetext> ".$windunit;}echo " </valuetext>last 60 minutes ";
-echo  " <br>Average <oblue>Wind Speed</oblue> last 10 minutes ";if($weather["wind_speed_avg"]>=30){echo "<ored>" ,number_format(round($weather["wind_speed_avg"]))."</ored> ".$windunit;}else if($weather["wind_speed_avg"]>=20){echo "<oorange>" .$weather["wind_speed_avg"]."</oorange><valuetext> ".$windunit;}
-else if($weather["wind_speed_avg"]>=0){echo "<ogreen>" ,number_format(round($weather["wind_speed_avg"]))."</ogreen><valuetext> ".$windunit;}
+$wu_display = $weather['wind_units'] === 'kts' ? 'kn' : $weather['wind_units'];
+if($weather["wind_gust_60min"]>=50){echo "<ored>" ,number_format(round($weather["wind_gust_60min"],1))."</ored> ".$wu_display;}
+else if($weather["wind_gust_60min"]>=30){echo "<oorange>" ,number_format(round($weather["wind_gust_60min"],1))."</oorange><valuetext> ".$wu_display;}
+else if($weather["wind_gust_60min"]>=0){echo "<ogreen>" ,number_format(round($weather["wind_gust_60min"],1))."</ogreen><valuetext> ".$wu_display;}echo " </valuetext>last 60 minutes ";
+echo  " <br>Average <oblue>Wind Speed</oblue> last 10 minutes ";if($weather["wind_speed_avg"]>=30){echo "<ored>" ,number_format(round($weather["wind_speed_avg"]))."</ored> ".$wu_display;}else if($weather["wind_speed_avg"]>=20){echo "<oorange>" .$weather["wind_speed_avg"]."</oorange><valuetext> ".$wu_display;}
+else if($weather["wind_speed_avg"]>=0){echo "<ogreen>" ,number_format(round($weather["wind_speed_avg"]))."</ogreen><valuetext> ".$wu_display;}
 echo "</valuetext>";
-if($weather["wind_direction_avg"]>0){echo "<br>Average Direction <oorange>"; if($weather["wind_direction_avg"]<=11.25){echo "North";}else if($weather["wind_direction_avg"]<=33.75){echo "NNE";}else if($weather["wind_direction_avg"]<=56.25){echo "NE";}else if($weather["wind_direction_avg"]<=78.75){echo "ENE";}else if($weather["wind_direction_avg"]<=101.25){echo "East";}else if($weather["wind_direction_avg"]<=123.75){echo "ESE";}else if($weather["wind_direction_avg"]<=146.25){echo "SE";}
-else if($weather["wind_direction_avg"]<=168.75){echo "SSE";}else if($weather["wind_direction_avg"]<=191.25){echo "South";}else if($weather["wind_direction_avg"]<=213.75){echo "SSW";}else if($weather["wind_direction_avg"]<=236.25){echo "SW";}else if($weather["wind_direction_avg"]<=258.75){echo "WSW";}else if($weather["wind_direction_avg"]<=281.25){echo "West";}else if($weather["wind_direction_avg"]<=303.75){echo "WNW";}else if($weather["wind_direction_avg"]<=326.25){echo "NW";}else if($weather["wind_direction_avg"]<=348.75){echo "NNW";}else{echo "North";}
+if($weather["wind_direction_avg"]>0){echo "<br>Average Direction <oorange>"; if($weather["wind_direction_avg"]<=11.25){echo $lang['Northdir'];}else if($weather["wind_direction_avg"]<=33.75){echo $lang['NNEdir'];}else if($weather["wind_direction_avg"]<=56.25){echo $lang['NEdir'];}else if($weather["wind_direction_avg"]<=78.75){echo $lang['ENEdir'];}else if($weather["wind_direction_avg"]<=101.25){echo $lang['Eastdir'];}else if($weather["wind_direction_avg"]<=123.75){echo $lang['ESEdir'];}else if($weather["wind_direction_avg"]<=146.25){echo $lang['SEdir'];}
+else if($weather["wind_direction_avg"]<=168.75){echo $lang['SSEdir'];}else if($weather["wind_direction_avg"]<=191.25){echo $lang['Southdir'];}else if($weather["wind_direction_avg"]<=213.75){echo $lang['SSWdir'];}else if($weather["wind_direction_avg"]<=236.25){echo $lang['SWdir'];}else if($weather["wind_direction_avg"]<=258.75){echo $lang['WSWdir'];}else if($weather["wind_direction_avg"]<=281.25){echo $lang['Westdir'];}else if($weather["wind_direction_avg"]<=303.75){echo $lang['WNWdir'];}else if($weather["wind_direction_avg"]<=326.25){echo $lang['NWdir'];}else if($weather["wind_direction_avg"]<=348.75){echo $lang['NWNdir'];}else{echo $lang['Northdir'];}
 echo " </oorange><oblue> ".$weather["wind_direction_avg"]."</oblue>°";}
-echo "</oorange><br><oblue>Rainfall</oblue> for the last 3 hours <oblue> " .$weather["rain_last3hours"]."</oblue><valuetext> " .$rainunit;
+echo "</oorange><br><oblue>Rainfall</oblue> for the last 3 hours <oblue> " .$weather["rain_last3hours"]."</oblue><valuetext> " .$weather['rain_units'];
 ?></valuetext></div></div></div>
 </div><!-- /mod-conditions -->

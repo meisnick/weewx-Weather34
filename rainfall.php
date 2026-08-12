@@ -2,7 +2,7 @@
 include_once('w34CombinedData.php');?><div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
 <div class="mod-rainfall">
 <div class="weather34i-rairate-bar"><div id="raincontainer"><div id="weather34rainbeaker">
-<div id="weather34rainwater" style="height:<?php if ($weather["rain_units"] =='mm' && $weather["rain_today"]){echo $weather["rain_today"]*2.5+1;}else if ($weather["rain_units"] =='in' && $weather["rain_today"]){echo $weather["rain_today"]*25.4*2.5;}?>px;">      
+<div id="weather34rainwater" style="height:<?php $rain_mm = ($weather["rain_units"] == 'in' ? $weather["rain_today"] * 25.4 : $weather["rain_today"]); echo number_format($rain_mm > 0 ? ($rain_mm * 2.5 + 1) : 0, 1); ?>px;">      
 </div></div></div></div>  
 <div class="raincontainer1">
 <?php if ($weather["rain_units"] =='in'){	echo '<div class=raintoday1>'.number_format($weather["rain_today"],2)."<sup><smallrainunita> ".$weather["rain_units"];}else if ($weather["rain_units"] =='mm' && $weather["rain_today"]<10){echo '<div class=raintoday1>'.number_format($weather["rain_today"],2)."<sup><smallrainunita>".$weather["rain_units"];}else if ($weather["rain_units"] =='mm'){echo '<div class=raintoday1>'.number_format($weather["rain_today"],1)."<sup><smallrainunita>".$weather["rain_units"];}

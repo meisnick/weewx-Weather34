@@ -85,13 +85,12 @@ for ($k=0;$k<=4;$k++) {if(empty($parsed_forecastjson->{'daypart'}[0]->{'iconCode
 	echo $forecastdayWinddircardinal; 
 	echo " ".number_format($forecastdayWindGust,0)," <valuewindunit>".$windunit;echo  '</div>';'<br>';
 	//snow
-	if ( $forecastdaysnow>0 && $rainunit=='in'){ echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'.$forecastdaysnow.'</oblue><valuewindunit> in</valuewindunit></forecastwindhome></span></precip>';}
-	else if ( $forecastdaysnow>0 && $rainunit=='mm'){ echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'.$forecastdaysnow.'</oblue><valuewindunit> cm</valuewindunit></forecastwindhome></span></precip>';}
-	
-	
-	//rain
-	else if ($forecastdayPrecipType='rain' && $rainunit=='in'){echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'. number_format($forecastdayprecipIntensity,2).'</oblue>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';}
-	else if ($forecastdayPrecipType='rain' && $rainunit=='mm'){echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'. number_format($forecastdayprecipIntensity,2).'</oblue>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';}
+	if ($forecastdaysnow > 0) {
+		$snow_unit_str = ($rainunit == 'in' ? ' in' : ' cm');
+		echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'.$forecastdaysnow.'</oblue><valuewindunit>'.$snow_unit_str.'</valuewindunit></forecastwindhome></span></precip>';
+	} else if ($forecastdayprecipIntensity > 0) {
+		echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'. number_format($forecastdayprecipIntensity, 2).'</oblue>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';
+	}
 	//uvi
 if ($forecastdaynight=='D'){echo '<br><forecasttemplohome><uv>UV <uvspan>';if ($forecastdayUV>=10){echo "<purpleu>".$forecastdayUV. '</purpleu><greyu> '.$forecastdayUVdesc;}else  if ($forecastdayUV>=7){echo "<redu>".$forecastdayUV. '</redu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>5){ echo "<orangeu>".$forecastdayUV. '</orangeu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>2){  echo "<yellowu>".$forecastdayUV. '</yellowu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>=0){ echo "<greenu>".$forecastdayUV. '</greenu><greyu> '.$forecastdayUVdesc;}echo '</uvspan></uv>';}
 	//lightning

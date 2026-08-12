@@ -20,7 +20,7 @@ else if( $weather["temp_units"]=='C' && anyToC($weather["temp_indoor"])<10){echo
 <div class="indoorhomevalue1">
 <?php //temperture indoor celsius
  if (anyToC($weather["temp_indoor"]) >30){echo "<indoorred1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else if (anyToC($weather["temp_indoor"]) >24){echo "<indoororange1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else if (anyToC($weather["temp_indoor"]) >20){echo "<indooryellow1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }
- else if (anyToC($weather["temp_indoor"]) >15){ echo "<indoorgreen1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else if (anyToC($weather["temp_indoor"]) >0){ echo "<indoorblue1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }?></div>
+ else if (anyToC($weather["temp_indoor"]) >15){ echo "<indoorgreen1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else { echo "<indoorblue1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }?></div>
 <div class="mod-temperature">
 <div class="weather34indoorword">
 <?php if($weather["temp_indoor_trend"] >0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp; '.$risingsymbol;else if($weather["temp_indoor_trend"]<0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp;'.$fallingsymbol;else if($weather["temp_indoor_trend"] ==0)echo 'Steady'; ?></div>

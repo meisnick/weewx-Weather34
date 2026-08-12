@@ -9577,3 +9577,48 @@ weather34mbhealth.is-fault .w34health__dot {
   /* keep just the dot on small screens, the label crowds the station title */
   weather34mbhealth.is-ok .w34health__txt { display: none }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   LIGHT-THEME CONTENT-TILE FIXES
+   In main.dark.css the module tile layer carries hardcoded translucent
+   dark backgrounds (rgba(33,34,39,…), #212428, …) that composite to grey
+   over a white page. This block is appended to MAIN.LIGHT.CSS ONLY, so it
+   only ever applies in light mode: it repaints the content tiles light,
+   matching layout.css's [data-theme="light"] design tokens. The header
+   and menu stay dark by design (per layout.css --bg-header/--bg-menu).
+   ════════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .weather34box {
+  background-color: var(--bg-cell, #fff);
+  border: 2px solid var(--border-box, rgba(230,232,239,.8));
+  border-top: 1px;
+  border-bottom: 1px;
+  color: var(--text-body, #2d2d2d);
+}
+[data-theme="light"] .weather34box.alert,
+[data-theme="light"] .weather34box.clock,
+[data-theme="light"] .weather34box.earthquake,
+[data-theme="light"] .weather34box.indoor {
+  background-color: var(--bg-cell, #fff);
+}
+[data-theme="light"] .weather34box .title,
+[data-theme="light"] .weather34box .value {
+  color: var(--text-body, #2d2d2d);
+}
+[data-theme="light"] .weather34box.indoor span {
+  color: var(--text-body, #2d2d2d);
+}
+[data-theme="light"] .weather-item {
+  background: var(--bg-cell, #fff);
+}
+[data-theme="light"] .weather2-alert,
+[data-theme="light"] .weather2-clock,
+[data-theme="light"] .weatherfooter-item {
+  background: var(--bg-cell, #fff);
+  color: var(--text-body, #2d2d2d);
+}
+[data-theme="light"] .bottomfooter {
+  background: var(--bg-footer, #fff);
+}
+[data-theme="light"] .lity-iframe-container iframe {
+  background: #fff;
+}

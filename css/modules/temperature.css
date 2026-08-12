@@ -979,9 +979,7 @@
   width: 6rem;
   height: 5.5rem;
   font-size: 1.6rem;
-  padding-top: 12px;
-  color: var(--bg1);
-  border-bottom: 18px solid #e6e8ef;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

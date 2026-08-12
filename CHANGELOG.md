@@ -2,7 +2,37 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
-## [2026-08-11] — Fix frozen popup charts (modularize branch)
+## [2026-08-12] — Full Modularization, Light/Dark Theme Engine, Unit & i18n Fixes (modularize branch)
+
+Complete overhaul of the Weather34 layout, stylesheet system, internationalization framework, unit conversion logic, and notification popup pipeline.
+
+### 1. Modular CSS Architecture & Light Mode System
+- **Theme-Aware Main Stylesheets**: Created dedicated `css/main.light.css` alongside `css/main.dark.css`. Updated `index.php` `<link>` tag to load `css/main.<?php echo $theme1; ?>.css` dynamically.
+- **Scoped Module CSS Namespaces**: Re-architected all component stylesheets under `css/modules/` (`temperature.css`, `sun.css`, `wind.css`, `aurora.css`, `forecastdiscussion.css`, `localforecast.css`, `lightning34.css`, `airqualitymodule.css`, `barometer.css`, `conditions.css`, `moonphase.css`, `rainfall.css`, `top-lightning.css`) with normalized `.mod-<module>` container namespaces to isolate layout rules.
+- **Light Theme Contrast & Alignment**: Corrected invalid `color-adjust` CSS syntax, fixed wind direction text contrast in light theme, restored dark bottom bar styling on temperature tiles, corrected sun dial ring duplication, and aligned lightning/UV badge borders.
+
+### 2. Complete i18n / Multi-Language Coverage
+- **Phase B Internationalization**: Wired all remaining hardcoded module titles and internal labels to `$lang[...]` lookups across language files (`lang.en.php`, `lang.fr.php`, `lang.blank.php`).
+- **Localized Title Management**: Shifted default module title ownership to `moduleTitle()` in `index.php` using localized `$lang[...]` string lookups.
+- **Beaufort Scale Translation**: Replaced hardcoded English Beaufort scale strings in `windspeeddirection.php` with localized `$lang['Calm']`, `$lang['Lightbreeze']`, etc.
+
+### 3. Unit Conversion & Math Normalization
+- **`windspeeddirection.php`**: Removed duplicate `windrun` multiplier (previously re-multiplying values already converted to miles/km by `w34CombinedData.php`).
+- **`barometer.php`**: Fixed malformed closing HTML tag `</weather34-barometerlimitminf>` and removed redundant in-place `kPa` array conversions.
+- **`rainfall.php`**: Fixed rainwater beaker height formula so zero-rain states (`rain_today = 0`) output valid `0.0px` heights instead of invalid `px;` CSS.
+- **`indoortemperature.php`**: Corrected threshold logic so sub-freezing indoor readings (≤ 0°C) render in blue badges instead of being skipped.
+- **`max-minwind.php`**: Decoupled max gust circle rendering from temperature unit checks so gusts render under both C and F preferences.
+- **`forecast3omlarge.php`**: Made high temperature tags output dynamic `$tempunit` instead of hardcoded F/C labels.
+- **`currentconditionsw34.php`**: Standardized on `$weather['temp_units']`, `$weather['wind_units']`, `$weather['rain_units']`, and localized cardinal directions (`$lang['Northdir']`, `$lang['NEdir']`, etc.).
+
+### 4. Dashboard Overlay Notifications (`notify.php`)
+- **Restored Overlay Alerts**: Wired previously orphaned `notify.php` directly into `index.php` footer.
+- **Alert Trigger Checks**: Re-enabled dashboard toast alerts for low console/station battery, high UV index caution, heat exhaustion risk, wind advisory/warning, wind chill, and freezing dewpoints.
+- **PHP 8.4 Null-Coalescing Guards**: Added `??` guards for `$uvisvg` and `$notifications` in `notify.php`.
+
+### 5. Template Setup UI Audit (`templateSetup.php`)
+- **Security & Setup Verification**: Audited local IP security restrictions, settings persistence to `settings1.php`, ICAO airport auto-detection (`icao_lookup.php`), NWS alert zone auto-lookup (`nws_zone_lookup.php`), and drag-and-drop module layout builder (`module_save.php`).
+- **Obsolete Settings Documented**: Documented dead legacy keys (WeatherFlow Tempest API, Weather Underground API notice, USA Weather Finder).
 
 Popup charts (temperature/humidity/etc.) rendered months-old data — the weekly chart
 JSON under `w34highcharts/json/` had been frozen since mid-May. Three stacked causes,

@@ -247,10 +247,10 @@ The `modularize` branch introduces an extensive, modern overhaul of the layout, 
 - **Grid Module Dropdown Filters**: Scoped and separated layout dropdown options in settings to ensure top-bar slots and primary grid slots only display their respective permitted modules.
 
 #### 2. Modular & Scoped Stylesheets
-- **Theme Consolidation**: Consolidated and cleaned up styling by removing the bulky, redundant `main.light.css` and unifying light and dark theme rules into `css/main.dark.css` using modern CSS variables.
-- **Scoped Sub-stylesheets**: Extracted bulky card-specific CSS from the monolithic main stylesheet into highly organized, scoped stylesheets under `css/modules/` (e.g., `rainfall.css`, `temperature.css`, `wind.css`, `airquality.css`, `aurora.css`, `lightning34.css`, `barometer.css`, `conditions.css`, `forecast.css`, `moonphase.css`, `sun.css`, `top-lightning.css`).
-- **Dynamic CSS Glob Loader**: Built a dynamic PHP glob importer that automatically loads only the CSS stylesheets belonging to modules that are currently active on the dashboard, significantly optimizing page weight and browser rendering times.
-- **Module Wrapping & Isolation**: Scoped individual PHP fragments inside dedicated container classes (e.g. `.mod-lightning34`, `.mod-airquality`, `.mod-rainfall`, `.mod-temperature`) to completely prevent style collisions or unexpected element alignment bleed.
+- **Theme-Aware Stylesheet Engine**: Added full `css/main.light.css` and `css/main.dark.css` theme stylesheet pairs. `index.php` dynamically loads `css/main.<?php echo $theme1; ?>.css` to ensure full-page theme consistency in both light and dark modes.
+- **Scoped Sub-stylesheets**: Extracted card-specific CSS into organized, scoped stylesheets under `css/modules/` (e.g., `rainfall.css`, `temperature.css`, `wind.css`, `airquality.css`, `aurora.css`, `lightning34.css`, `barometer.css`, `conditions.css`, `forecast.css`, `moonphase.css`, `sun.css`, `top-lightning.css`).
+- **Normalized Module Namespaces**: Applied `.mod-<module>` container classes across all PHP module templates to completely prevent CSS selector bleed or unexpected layout overlap between cards.
+- **Dynamic CSS Loader**: Built a dynamic PHP glob importer that automatically loads only the CSS stylesheets belonging to modules active on the dashboard.
 
 #### 3. Redesigned & Enhanced Modules
 - **Air Quality (AQ) Module**:
@@ -270,8 +270,21 @@ The `modularize` branch introduces an extensive, modern overhaul of the layout, 
   - Built a brand new, extremely polished NWS Radar module (`radar_module.php`) with real-time station picking and dark mode inversion.
   - Designed double-buffered, zero-flash transition logic in JavaScript to completely eliminate the harsh white background flashes during radar loop updates.
   - Paired with an interactive, scroll-and-pan radar viewer popup (`pop_radar.php`).
-- **Forecast Discussion (AI Integration)**:
+- **Forecast Discussion & Local Nowcast (AI Integration)**:
   - Added a **Forecast Discussion** module (`forecastdiscussion.php`, `css/modules/forecastdiscussion.css`) powered by a custom **Ollama-based NWS Area Forecast Discussion (AFD) summarizer** script (`ollama_afd_summarizer.py`), allowing local LLM summaries of weather agency discussions to be read right on the dashboard.
+  - Added a **Local Nowcast** module (`localforecast.php`, `css/modules/localforecast.css`) providing short-term 6-hour precipitation and wind trend summaries.
+
+#### 4. i18n, Unit Conversion & Notification Restoration
+- **Comprehensive Internationalization**: Localized module titles via `$lang[...]` lookups in `moduleTitle()`. Replaced hardcoded Beaufort scale descriptions in `windspeeddirection.php` with localized `$lang['Calm']`, `$lang['Lightbreeze']`, etc.
+- **Unit Conversion Normalization**:
+  - Corrected `windrun` double-multiplier bug in `windspeeddirection.php`.
+  - Fixed HTML closing tag typo `</weather34-barometerlimitminf>` and removed redundant in-place `kPa` conversions in `barometer.php`.
+  - Fixed rainwater beaker height formula in `rainfall.php` so zero-rain states (`rain_today = 0`) render valid `0.0px` heights.
+  - Fixed sub-freezing indoor temperature badge conditions (≤ 0°C) in `indoortemperature.php`.
+  - Decoupled wind gust max display from temperature unit settings in `max-minwind.php`.
+  - Made forecast high-temperature units dynamic (`$tempunit`) in `forecast3omlarge.php`.
+  - Standardized on `$weather['temp_units']`, `$weather['wind_units']`, `$weather['rain_units']`, and localized cardinal direction strings in `currentconditionsw34.php`.
+- **Restored Dashboard Overlay Notifications**: Wired orphaned `notify.php` into `index.php`. Toast alerts now pop up on the dashboard top-right when low battery, UV index caution, heat exhaustion, wind advisory/warning, wind chill, or freezing dewpoint thresholds are met.
 
 #### 4. Developer Reference
 - Added [WEATHER34_MODULE_GUIDE.md](WEATHER34_MODULE_GUIDE.md) to serve as a comprehensive, repeatable design system documentation and development reference for creators building new grid cards, popups, and badges in the Weather34 template.

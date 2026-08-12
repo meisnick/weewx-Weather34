@@ -1146,13 +1146,13 @@
 
   top: -9px;
 
-  margin-left: 104px;
+  margin-top: 15px;
 
-  margin-top: 0;
+  margin-left: 104px;
 
   position: absolute;
 
-  border: 0;
+  border: 5px solid rgba(255, 255, 255, 0) !important;
 
   transform-origin: 50% 50%
 

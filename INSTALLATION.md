@@ -345,6 +345,32 @@ Symptom: `PermissionError` writing `jsondata/*.json`, and the AFD module stuck o
 `weewx:weewx` breaks writes for the www-data-run PHP/scripts. Fix:
 `sudo chgrp www-data serverdata jsondata json w34highcharts/json w34highcharts/json_day && sudo chmod 2775 <same>`.
 
+### Webroot tree must stay `www-data`, or `git pull`/`merge` breaks
+Git on these boxes runs as the `www-data` user (`sudo -u www-data git -c safe.directory=<webroot> ...`).
+If the webroot dir or its tracked files come up owned `weewx:weewx` — which can happen once as a
+deploy artifact of the initial clone/chown sequence — a later `git pull` fails with
+**`error: unable to unlink old '.gitignore': Permission denied`** and the update aborts. weewx
+itself does NOT cause this (it never chowns the tree; report runs and restarts leave the webroot
+`www-data`), so it is a one-time normalization, not a recurring fault. Normalize once at deploy and
+it stays put:
+
+```bash
+cd /var/www/html/weewx/weather34
+# whole tree www-data-owned, webroot dir setgid so new items inherit the www-data group
+sudo chown -R www-data:www-data .
+sudo chmod 2775 .
+# then restore the runtime write-dirs (weewx writes here as the weewx user)
+sudo chown weewx:www-data serverdata jsondata json w34highcharts/json w34highcharts/json_day
+sudo chmod  2775          serverdata jsondata json w34highcharts/json w34highcharts/json_day
+# one-time git config so www-data can operate the repo
+sudo chown -R www-data:www-data .git
+sudo -u www-data git -c safe.directory="$PWD" config core.filemode false
+sudo -u www-data git -c safe.directory="$PWD" config --add safe.directory "$PWD"
+```
+
+The setgid bit (`2775`) on the webroot is what keeps it fixed: even a file weewx creates at the top
+level inherits group `www-data`, so www-data can always unlink it and git stays operable.
+
 ### The AFD "Forecast Discussion (LLM)" summarizer is triggered **on-demand**
 `ollama_afd_summarizer.py` is invoked by the dashboard PHP (`afdpopup.php` /
 `forecastdiscussion.php`) and caches to `jsondata/afd_summary.json`. The §7b cron is an

@@ -226,7 +226,7 @@ body {
   clear: both;
   font-size: 14px;
   line-height: 1.42857143;
-  color: silver;
+  color: var(--text);
   cursor:default
  
 }
@@ -269,7 +269,7 @@ body {
   line-height: 6px;
   font-family: Arial, Helvetica, sans-serif, system;
   font-size: .8em;
-  color: silver;
+  color: var(--text);
   background: rgba(86, 95, 103, .4);
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -349,7 +349,7 @@ h6 {
 .barometertrend steady,
 .logo,
 .logo span {
-  color: silver
+  color: var(--text)
 }
 
 .h1 .small,
@@ -365,7 +365,7 @@ h4 .small,
 h5 .small,
 h6 .small {
   line-height: 1;
-  color: silver
+  color: var(--text)
 }
 
 .h1,
@@ -577,7 +577,7 @@ mb {
 .heading1,
 supmb,
 supunit {
-  color: silver
+  color: var(--text)
 }
 
 .indoorlocation,
@@ -594,7 +594,7 @@ supunit {
 }
 
 .indoortitles {
-  color: silver;
+  color: var(--text);
   margin-top: 5px;
   text-align: center;
   font: 1.2em arial, system
@@ -648,7 +648,7 @@ eq {
 }
 
 .heatcircle-content {
-  color: silver;
+  color: var(--text);
   float: left;
   margin-left: -4px;
   padding: 0;
@@ -711,7 +711,7 @@ supraindropw {
 
 .humidity,
 a {
-  color: silver
+  color: var(--text)
 }
 
 suprain,
@@ -724,7 +724,7 @@ suprain2 {
 .chartforecast {
   margin-left: 0;
   font-size: .67em;
-  color: silver;
+  color: var(--text);
   margin-top: 175px;
   width: 300px;
   padding-left: 10px;
@@ -734,7 +734,7 @@ suprain2 {
 .chartforecastlink {
   margin-left: 0;
   font-size: .67em;
-  color: silver;
+  color: var(--text);
   margin-top: 155px;
   width: 300px;
   padding-left: 10px;
@@ -768,7 +768,7 @@ humiditycolor {
 }
 
 .windgustheading {
-  color: silver;
+  color: var(--text);
   font: 1em weathertext2
 }
 
@@ -844,7 +844,7 @@ mb {
 }
 
 .daylight {
-  color: silver;
+  color: var(--text);
   font-family: arial, system;
   top: 50px;
   margin-left: 360px;
@@ -887,7 +887,7 @@ wm2 {
 
 .feels,
 .feels1 {
-  color: silver;
+  color: var(--text);
   margin-left: auto
 }
 
@@ -924,7 +924,7 @@ supdavis {
 }
 
 .outlooktitle span {
-  color: silver;
+  color: var(--text);
   font-family: arial, system
 }
 
@@ -932,14 +932,14 @@ supdavis {
 #dayaftertomo,
 #night,
 #tomo {
-  color: silver;
+  color: var(--text);
   padding: 5px;
   border-bottom: 0 solid #e9ebf1;
   text-align: left
 }
 
 .beaufortconditions {
-  color: silver;
+  color: var(--text);
   width: 140px
 }
 
@@ -950,7 +950,7 @@ supdavis {
   margin-left: 235px;
   padding: 0;
   margin-top: -15px;
-  color: silver;
+  color: var(--text);
   line-height: 10px
 }
 
@@ -968,14 +968,14 @@ supdavis {
   margin-left: 10px;
   margin-top: 120px;
   text-align: left;
-  color: silver;
+  color: var(--text);
   font: .68em weathertext2;
   line-height: 9px
 }
 
 .barometertrend1 hourtrend {
   font: 500 10px arial, system;
-  color: silver;
+  color: var(--text);
   line-height: 9px;
   text-align: left;
   margin-left: 15px
@@ -990,12 +990,12 @@ supdavis {
 }
 
 barometerinfo {
-  color: silver
+  color: var(--text)
 }
 
 .barometermax {
   margin-top: 10px;
-  color: silver;
+  color: var(--text);
   font: 10px arial, system;
   line-height: 9px
 }
@@ -1014,13 +1014,13 @@ barometerinfo {
 
 .barometermax unit {
   font: 500 10px arial, system;
-  color: silver
+  color: var(--text)
 }
 
 .barometermin {
   margin-left: 240px;
   width: 50px;
-  color: silver;
+  color: var(--text);
   font: 10px arial, system;
   line-height: 9px
 }
@@ -1035,7 +1035,7 @@ barometerinfo {
 }
 
 .barometermin unit {
-  color: silver
+  color: var(--text)
 }
 
 .barometertrend falling,
@@ -1090,7 +1090,7 @@ sup {
 .text,
 .windvalue {
   font-size: 26px;
-  color: silver
+  color: var(--text)
 }
 
 sub {
@@ -1229,7 +1229,7 @@ hr {
 .homeweathercompass>.windirectiontext {
   display: block;
   text-align: center;
-  color: silver;
+  color: var(--text);
   font-family: Arial, system;
   font-weight: 600;
   line-height: 12px;
@@ -1252,7 +1252,7 @@ hr {
 }
 
 .raintext1 span {
-  color: silver;
+  color: var(--text);
   font-size: 1em
 }
 
@@ -1276,7 +1276,7 @@ hr {
 .sunrisehome period,
 .sunsethome,
 .sunsethome period {
-  color: silver
+  color: var(--text)
 }
 
 .wi-daylight:before {
@@ -1341,7 +1341,7 @@ supraindrop,
 supsolar,
 suptemp1,
 suptempindoor {
-  color: silver
+  color: var(--text)
 }
 
 .outlook,
@@ -1451,7 +1451,7 @@ suptemp {
 .updatedtimecurrent span,
 .updatedtimedir span {
   margin-bottom: 0;
-  color: silver;
+  color: var(--text);
   font-family: weathertext2;
   text-rendering: optimizeLegibility
 }
@@ -1460,21 +1460,21 @@ suptemp {
 .temperatureindoor span {
   margin-bottom: 0;
   font-size: .4em;
-  color: silver;
+  color: var(--text);
   font-family: weathertext2
 }
 
 .windalarm span,
 .windcondition span {
   margin-bottom: 0;
-  color: silver;
+  color: var(--text);
   font-weight: 600;
   font-family: arial, system
 }
 
 .windalarm,
 .windcondition {
-  color: silver;
+  color: var(--text);
   font: 600 9px arial, system;
   position: absolute;
   width: 100px;
@@ -1493,7 +1493,7 @@ suptemp {
 
 .gustspeedtrend,
 .gustspeedtrend span {
-  color: silver
+  color: var(--text)
 }
 
 .gustspeedtrend,
@@ -1534,7 +1534,7 @@ suptemp {
 
 .windspeedtrend span {
   margin-bottom: 0;
-  color: silver;
+  color: var(--text);
   font-family: arial, system
 }
 
@@ -1546,7 +1546,7 @@ suptemp {
 .windvalue1 {
   font-family: weathertext2;
   font-size: 1.45rem;
-  color: silver
+  color: var(--text)
 }
 
 .windvalue1 {
@@ -1645,7 +1645,7 @@ suptemp {
 .homeweathercompass1>.windirectiontext1 {
   display: block;
   text-align: center;
-  color: silver;
+  color: var(--text);
   font-family: Arial, system;
   font-weight: 600;
   line-height: 12px;
@@ -1680,7 +1680,7 @@ suptemp {
 }
 
 .windunits {
-  color: silver
+  color: var(--text)
 }
 
 .beaufort {
@@ -1694,7 +1694,7 @@ suptemp {
 .windspeedvalue {
   font-size: 1.55rem;
   margin-top: 50px;
-  color: silver
+  color: var(--text)
 }
 
 .windspeedvalues {
@@ -1746,7 +1746,7 @@ suptemp {
 
 .windspeedtrend1,
 .windspeedtrend1 span {
-  color: silver;
+  color: var(--text);
   font: 10px arial, system;
   line-height: 9px
 }
@@ -1779,7 +1779,7 @@ suptemp {
 
 suptemp1,
 suptemp3 {
-  color: silver
+  color: var(--text)
 }
 
 .weather34menulisting {
@@ -1846,7 +1846,7 @@ suptemp3 {
   width: 303px;
   background-color: #f05e40;
   border-radius: 5px;
-  color: silver
+  color: var(--text)
 }
 
 .Circle1 {
@@ -1930,7 +1930,7 @@ lightningrain {
 
 .footertext,
 .online {
-  color: silver;
+  color: var(--text);
   font-size: 12px
 }
 
@@ -1947,7 +1947,7 @@ lightningrain {
 
 .hardwarelogo1text {
   position: absolute;
-  color: silver;
+  color: var(--text);
   font-size: 10px;
   width: 65px;
   line-height: 10px;
@@ -1987,7 +1987,7 @@ lightningrain {
   margin: 2px 0;
   font-size: 11px;
   line-height: 1.4;
-  color: silver
+  color: var(--text)
 }
 
 .feelstemp,
@@ -2056,7 +2056,7 @@ lightningrain {
 }
 
 .lightningrain {
-  color: silver;
+  color: var(--text);
   margin-top: 142px;
   margin-left: 0
 }
@@ -2069,7 +2069,7 @@ lightningrain {
 .rainaverage {
   margin-top: 143px;
   width: 100px;
-  color: silver;
+  color: var(--text);
   margin-left: 200px
 }
 
@@ -2093,7 +2093,7 @@ lightningrain {
   border: 2px solid #151718;
   border-top: 1px;
   border-bottom: 1px;
-  color: silver;
+  color: var(--text);
   padding: 5px;
   position: relative;
   height: 83px;
@@ -2109,7 +2109,7 @@ lightningrain {
 .weather34box .value {
   position: absolute;
   float: left;
-  color: silver
+  color: var(--text)
 }
 
 .weather34box .title {
@@ -2133,7 +2133,7 @@ spanm2 {
 }
 
 .weather34box.indoor span {
-  color: silver;
+  color: var(--text);
   font-weight: 500
 }
 
@@ -2149,7 +2149,7 @@ spanm2 {
 }
 
 .weather34box.clock span {
-  color: silver;
+  color: var(--text);
   font-weight: 500
 }
 
@@ -2171,7 +2171,7 @@ spanm,
 spanm2,
 spanm4,
 spanm5 {
-  color: silver
+  color: var(--text)
 }
 
 spanm {
@@ -2221,7 +2221,7 @@ spanm5 {
 }
 
 .homeindoordate {
-  color: silver;
+  color: var(--text);
   text-transform: none;
   top: 23px;
   right: 40px;
@@ -2261,7 +2261,7 @@ red {
 nav,
 nav li,
 nav ul {
-  color: silver
+  color: var(--text)
 }
 
 .rainblue1,
@@ -2312,7 +2312,7 @@ oredh1 {
 .main-menu li>a,
 .main-menu menu {
   font-size: 12px;
-  color: silver
+  color: var(--text)
 }
 
 .main-menu {
@@ -2419,7 +2419,7 @@ ogreenh1 {
 
 infogrey,
 ogreyh1 {
-  color: silver
+  color: var(--text)
 }
 
 hiti,
@@ -2554,7 +2554,7 @@ dayi {
   width: 5.5rem;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--text);
   justify-content: center;
   font-size: .85em;
   border: 1px solid var(--bg0);
@@ -2633,7 +2633,7 @@ greenuv {
 
 greyuv,
 solartrend {
-  color: silver
+  color: var(--text)
 }
 
 purpleuv {
@@ -2708,7 +2708,7 @@ yellow1 {
 }
 
 .tempgreen {
-  color: silver
+  color: var(--text)
 }
 
 .tempgreen span {
@@ -2717,7 +2717,7 @@ yellow1 {
 }
 
 .temporange {
-  color: silver
+  color: var(--text)
 }
 
 .temporange span {
@@ -2731,7 +2731,7 @@ tempyellow {
 }
 
 .tempred {
-  color: silver
+  color: var(--text)
 }
 
 .tempred span {
@@ -2741,7 +2741,7 @@ tempyellow {
 
 .tempblue,
 .tempgreenfeels {
-  color: silver
+  color: var(--text)
 }
 
 .tempblue span {
@@ -2752,7 +2752,7 @@ tempyellow {
 .tempgreendew,
 .temporangedew,
 .tempreddew {
-  color: silver;
+  color: var(--text);
   margin-top: -5px;
   float: left;
   width: 60px
@@ -2778,7 +2778,7 @@ tempyellow {
 }
 
 .temporangefeels {
-  color: silver
+  color: var(--text)
 }
 
 .temporangefeels span {
@@ -2787,7 +2787,7 @@ tempyellow {
 }
 
 .tempredfeels {
-  color: silver
+  color: var(--text)
 }
 
 .tempredfeels span {
@@ -2796,7 +2796,7 @@ tempyellow {
 }
 
 .tempbluefeels {
-  color: silver
+  color: var(--text)
 }
 
 .tempbluefeels span {
@@ -2826,7 +2826,7 @@ tempyellow {
 .barometerorange {
   position: absolute;
   background: rgba(97, 106, 114, 0);
-  color: silver;
+  color: var(--text);
   width: 60px;
   border-radius: 2px;
   padding: 1px;
@@ -2894,7 +2894,7 @@ tempyellow {
 .daylightgreen span,
 .daylightred,
 .daylightred span {
-  color: silver
+  color: var(--text)
 }
 
 .daylightblue,
@@ -2916,7 +2916,7 @@ tempyellow {
 }
 
 .rainrateblue span {
-  color: silver;
+  color: var(--text);
   font-size: 10px
 }
 
@@ -2934,7 +2934,7 @@ tempyellow {
 .homeweathercompass2,
 .raintodayblue span,
 todayrain {
-  color: silver;
+  color: var(--text);
   font-size: 12px
 }
 
@@ -3001,7 +3001,7 @@ tsteady {
 .pressuretextfast {
   position: absolute;
   font-size: .7rem;
-  color: silver;
+  color: var(--text);
   margin-top: -18px;
   margin-left: 30px;
   width: 90px;
@@ -3016,7 +3016,7 @@ tsteady {
 .text2 span,
 .text3 {
   font-size: 11px;
-  color: silver
+  color: var(--text)
 }
 
 .thearrow4,
@@ -3054,7 +3054,7 @@ tsteady {
 
 .barometertrend2 {
   position: absolute;
-  color: silver;
+  color: var(--text);
   padding: 1px;
   border-radius: 2px;
   margin-top: 129px;
@@ -3089,7 +3089,7 @@ tsteady {
 
 .barometerconv span,
 convtext {
-  color: silver;
+  color: var(--text);
   display: block;
   font-weight: 500
 }
@@ -3161,7 +3161,7 @@ convtext {
 .hoursgoneby {
   top: 40px;
   left: 27px;
-  color: silver;
+  color: var(--text);
   border: 0
 }
 
@@ -3172,7 +3172,7 @@ convtext {
   line-height: 20px;
   width: 100px;
   position: absolute;
-  color: silver;
+  color: var(--text);
   border: 0
 }
 
@@ -3189,7 +3189,7 @@ convtext {
 
 .daylightvalue span {
   position: absolute;
-  color: silver;
+  color: var(--text);
   font-size: 3px;
   left: 67px;
   top: 0;
@@ -3209,7 +3209,7 @@ convtext {
 
 .daylightvalue dayperiod {
   position: absolute;
-  color: silver;
+  color: var(--text);
   font-size: 10px;
   left: 15px;
   top: 20px;
@@ -3220,7 +3220,7 @@ convtext {
 .daylightvalue hrs,
 .daylightvalue min {
   position: absolute;
-  color: silver;
+  color: var(--text);
   font-size: 9px;
   top: -17px;
   letter-spacing: normal
@@ -3276,7 +3276,7 @@ convtext {
 .weather34menulisting {
   width: 250px;
   padding: 5px;
-  color: silver;
+  color: var(--text);
   height: 800px;
   position: absolute;
   left: 0;
@@ -3293,11 +3293,11 @@ convtext {
   float: left;
   text-align: left;
   margin-left: 5px;
-  color: silver
+  color: var(--text)
 }
 
 .weather34menulistings a {
-  color: silver
+  color: var(--text)
 }
 
 .weather34menulistings a:hover {
@@ -3382,7 +3382,7 @@ convtext {
 .sunsetday {
   width: 100px;
   position: absolute;
-  color: silver
+  color: var(--text)
 }
 
 .daylightvalue1,
@@ -3432,7 +3432,7 @@ convtext {
 .daylightvalue1 min {
   font-size: 9px;
   top: -17px;
-  color: silver;
+  color: var(--text);
   letter-spacing: normal;
   position: absolute
 }
@@ -3512,7 +3512,7 @@ convtext {
 .daylightcompass2 {
   display: block;
   text-align: center;
-  color: silver;
+  color: var(--text);
   font-family: Arial, system;
   font-weight: 600;
   line-height: 12px;
@@ -3542,7 +3542,7 @@ smallicon {
 smallicon {
   margin-top: -12px;
   margin-left: 10px;
-  color: silver;
+  color: var(--text);
   font-size: 10px
 }
 
@@ -3562,7 +3562,7 @@ wfred {
 }
 
 aurora {
-  color: silver
+  color: var(--text)
 }
 
 wforange {
@@ -3583,7 +3583,7 @@ wfred {
 }
 
 .uvimax span {
-  color: silver;
+  color: var(--text);
   font: 10px arial, system
 }
 
@@ -3754,7 +3754,7 @@ input[type=checkbox] {
 
 .weather34sidebarMenuInner li {
   list-style: none;
-  color: silver;
+  color: var(--text);
   padding: 0px 5px 3px 14px;
   cursor: pointer;
   border-bottom: 0;
@@ -3781,14 +3781,14 @@ rainu {
 .weather34sidebarMenuInner li span {
   display: block;
   font-size: 12px;
-  color: silver;
+  color: var(--text);
   float: left;
   width: 240px;
   font-weight: 500
 }
 
 .weather34sidebarMenuInner li a {
-  color: silver;
+  color: var(--text);
   cursor: pointer;
   text-decoration: none;
   float: left;
@@ -3904,7 +3904,7 @@ input[type=checkbox] {
   position: absolute;
   height: 3px;
   width: 100%;
-  background-color: silver
+  background-color: var(--text)
 }
 
 .weather34cross.part-1,
@@ -3961,7 +3961,7 @@ uptime {
 .wfstrikes {
   font-size: 9px;
   top: -12px;
-  color: silver
+  color: var(--text)
 }
 
 .daylightmoduleposition {
@@ -3973,13 +3973,13 @@ uptime {
 highestrecorded {
   margin-top: -25px;
   display: block;
-  color: silver;
+  color: var(--text);
   margin-left: 10px
 }
 
 .averagetemp {
   font-size: .6em;
-  color: silver;
+  color: var(--text);
   display: block;
   top: 8px;
   width: 30px;
@@ -4005,7 +4005,7 @@ tempred {
 }
 
 suplight {
-  color: silver;
+  color: var(--text);
   left: 3px;
   font-size: .7em
 }
@@ -4039,7 +4039,7 @@ suplight {
 .forecastweekdayhome {
   font-family: weathertext2;
   font-size: .93em;
-  color: silver
+  color: var(--text)
 }
 
 .forecastdiv {
@@ -4058,14 +4058,14 @@ suplight {
   padding: 1px;
   background: 0;
   border: 1px solid rgba(153, 155, 156, .1);
-  color: silver
+  color: var(--text)
 }
 
 .forecastweekdayhome {
   position: absolutue;
   text-align: center;
   padding: 1px;
-  color: silver;
+  color: var(--text);
   margin: 0;
   background: 0
 }
@@ -4120,7 +4120,7 @@ smalluvunit {
 .forecastnexthours span1,
 .forecastnexthours span2 {
   font-family: arial, helvetica, system;
-  color: silver
+  color: var(--text)
 }
 
 .forecastnexthours span1,
@@ -4134,7 +4134,7 @@ thunder {
   font-size: 9px;
   font-weight: 500;
   top: -2px;
-  color: silver
+  color: var(--text)
 }
 
 .forecasticoncurrent {
@@ -4159,7 +4159,7 @@ thunder {
 }
 
 heatindex {
-  color: silver;
+  color: var(--text);
   margin-top: -25px;
   display: block;
   font-size: 12px
@@ -4178,7 +4178,7 @@ heatindex {
   margin: 20px auto 0;
   left: 45px;
   font-size: .7rem;
-  color: silver;
+  color: var(--text);
   font-family: weathertext2;
   text-align: center;
   width: 200px;
@@ -4203,7 +4203,7 @@ heatindex {
   margin-top: 20px;
   margin-left: 125px;
   max-width: 120px;
-  color: silver
+  color: var(--text)
 }
 
 .forecastnexthours {
@@ -4281,7 +4281,7 @@ lightningannual {
   top: 0;
   left: -15px;
   display: block;
-  color: silver
+  color: var(--text)
 }
 
 .smallf {
@@ -4311,7 +4311,7 @@ lightningannual {
   margin-left: 125px;
   padding: 5px;
   text-align: left;
-  color: silver
+  color: var(--text)
 }
 
 .wfstrikes1 {
@@ -4319,7 +4319,7 @@ lightningannual {
   font-size: 9px;
   top: -12px;
   left: 12px;
-  color: silver
+  color: var(--text)
 }
 
 agolightning,
@@ -4361,7 +4361,7 @@ lightningannualx1 {
   top: 0;
   left: 0;
   display: block;
-  color: silver
+  color: var(--text)
 }
 
 lorange1 {
@@ -4371,7 +4371,7 @@ lorange1 {
 timeago {
   display: block;
   font-size: .7rem;
-  color: silver
+  color: var(--text)
 }
 
 agolightning {
@@ -4569,7 +4569,7 @@ luxratespan {
 }
 
 darkgrey {
-  color: silver
+  color: var(--text)
 }
 
 supmb {
@@ -4955,7 +4955,7 @@ chartinfocolor {
   top: 24px;
   left: 40px;
   letter-spacing: normal;
-  color: silver
+  color: var(--text)
 }
 
 .daylightvalue1 hrs {
@@ -5014,7 +5014,7 @@ body {
 
 .consoleoutlook {
   position: relative;
-  color: silver;
+  color: var(--text);
   font-size: .42em;
   margin-top: 1.5rem;
   line-height: 1em;
@@ -5155,7 +5155,7 @@ redtime {
   font-size: 14px;
   font-weight: lighter;
   padding: 0 3px;
-  color: silver;
+  color: var(--text);
   float: left;
   top: 30px;
   display: block;
@@ -5171,7 +5171,7 @@ redtime {
 .tempconvertercircleyellow {
   align-items: center;
   width: 4.2rem;
-  color: silver;
+  color: var(--text);
   font-family: weathertext2;
   height: 1rem;
   line-height: 16px;
@@ -5245,7 +5245,7 @@ smallrainunit {
 }
 
 smallsup {
-  color: silver;
+  color: var(--text);
   font-size: .5rem;
   font-family: Arial, Helvetica, system
 }
@@ -5321,7 +5321,7 @@ smallsup {
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: silver;
+  color: var(--text);
   background: 0
 }
 
@@ -5346,7 +5346,7 @@ smalltempunit4 {
   border: 1px solid var(--bg1);
   overflow: hidden;
   border-radius: 2px;
-  color: silver;
+  color: var(--text);
   line-height: 16px;
   font-family: weathertext2, Helvetica, system;
   font-size: .85em;
@@ -5482,7 +5482,7 @@ smalltempunit4 {
   text-align: center;
   z-index: auto;
   font-size: 0;
-  color: silver;
+  color: var(--text);
   font-family: Arial, system
 }
 
@@ -5640,7 +5640,7 @@ wfstriketoday {
   margin-left: 1.65rem;
   text-align: center;
   z-index: auto;
-  color: silver;
+  color: var(--text);
   font-family: Arial, system
 }
 
@@ -5824,7 +5824,7 @@ topyellow2 {
   margin-top: 61px;
   font-size: .54rem;
   z-index: 1;
-  color: silver;
+  color: var(--text);
   width: 50px
 }
 
@@ -5853,7 +5853,7 @@ smallwindunit {
 }
 
 .windunitidspeed {
-  color: silver;
+  color: var(--text);
   margin-top: -35px;
   font-size: 10px;
   position: absolute;
@@ -5862,7 +5862,7 @@ smallwindunit {
 }
 
 .windunitidgust {
-  color: silver;
+  color: var(--text);
   margin-top: -35px;
   font-size: 10px;
   position: absolute;
@@ -5872,7 +5872,7 @@ smallwindunit {
 
 .windunitgust,
 .windunitspeed {
-  color: silver;
+  color: var(--text);
   margin-top: 7px;
   font-size: 10px;
   position: absolute;
@@ -5924,7 +5924,7 @@ canvas {
 .elevationword {
   font-size: .6rem;
   position: absolute;
-  color: silver
+  color: var(--text)
 }
 
 .sundialcontainerdiv2 {
@@ -6163,7 +6163,7 @@ canvas {
   justify-content: center;
   border-radius: 2px;
   margin-top: 5px;
-  color: silver
+  color: var(--text)
 }
 
 .uvcautionbig span {
@@ -6349,7 +6349,7 @@ weather34bftspan {
   margin-left: 3px;
   font-size: .55rem;
   font-family: Arial, Helvetica, system;
-  color: silver
+  color: var(--text)
 }
 
 .weather34windrun {
@@ -6369,7 +6369,7 @@ weather34bftspan {
 .beaufort1,
 .windrun1,
 weather34windrunspan {
-  color: silver;
+  color: var(--text);
   font-family: Arial, Helvetica, system
 }
 
@@ -6465,7 +6465,7 @@ topblue1 {
 }
 
 .feelslikebig span {
-  color: silver;
+  color: var(--text);
   padding-right: 3px
 }
 
@@ -6527,7 +6527,7 @@ tblue {
 
 forecasttemplohome uv {
   font-size: .6rem;
-  color: silver
+  color: var(--text)
 }
 
 #weather34rainbeaker:before {
@@ -6536,7 +6536,7 @@ forecasttemplohome uv {
 
 rainu {
   font-size: 10px;
-  color: silver;
+  color: var(--text);
   left: 3px
 }
 
@@ -6671,20 +6671,20 @@ wfstriketoday {
 
 .rainratesmall {
   top: 1px;
-  color: silver;
+  color: var(--text);
   font-size: 9px;
   line-height: 12px;
   left: 40px
 }
 
 smallrainunit {
-  color: silver
+  color: var(--text)
 }
 
 smallrainunit2,
 smallrainunit3 {
   font-size: .5rem;
-  color: silver;
+  color: var(--text);
   font-family: Arial, Helvetica, system
 }
 
@@ -6768,7 +6768,7 @@ minblue {
 }
 
 units {
-  color: silver
+  color: var(--text)
 }
 
 valuetext,
@@ -6817,7 +6817,7 @@ valuetextstrikes {
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: silver
+  color: var(--text)
 }
 
 .footertext,
@@ -6827,7 +6827,7 @@ valuetextstrikes {
   line-height: 16px;
   font-family: weathertext2;
   font-weight: 400;
-  color: silver
+  color: var(--text)
 }
 
 .temphumcircle60-80 {
@@ -6884,14 +6884,14 @@ valuetextheading1 {
   margin-left: 10px;
   font-family: weathertext2;
   font-size: .9em;
-  color: silver
+  color: var(--text)
 }
 
 valuetextheading2 {
   margin-left: 0px;
   font-family: weathertext2;
   font-size: .9em;
-  color: silver
+  color: var(--text)
 }
 
 .tempconverter,
@@ -6920,12 +6920,12 @@ valuetextheading2 {
 
 menutextheading1 {
   font-family: weathertext2;
-  color: silver
+  color: var(--text)
 }
 
 rainratetextheading {
   font-family: weathertext2;
-  color: silver;
+  color: var(--text);
   font-size: .75em
 }
 
@@ -6961,7 +6961,7 @@ rainratetextheading {
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--text);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -7005,7 +7005,7 @@ rainratetextheading {
   font-family: weathertext2;
   font-size: .65rem;
   font-weight: 400;
-  color: silver;
+  color: var(--text);
   border: 1px solid var(--bg0)
 }
 
@@ -7041,7 +7041,7 @@ rainratetextheading {
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--text);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -7076,7 +7076,7 @@ rainratetextheading {
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--text);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -7109,7 +7109,7 @@ rainratetextheading {
   line-height: 16px;
   font-family: weathertext2;
   font-size: .65rem;
-  color: silver;
+  color: var(--text);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -7165,7 +7165,7 @@ raiblue {
   line-height: 16px;
   font-family: weathertext2;
   font-size: .65rem;
-  color: silver;
+  color: var(--text);
   font-weight: 400;
   display: flex;
   overflow: hidden
@@ -7324,7 +7324,7 @@ wfstriketoday {
 .eqt {
   margin-left: 10px;
   margin-top: -15px;
-  color: silver;
+  color: var(--text);
   font-size: .65rem
 }
 
@@ -7383,7 +7383,7 @@ wfstriketoday {
 
 .mooncircle1,
 .mooncircle1:after {
-  color: silver;
+  color: var(--text);
   margin-left: 0;
   padding-top: 40px;
   padding-bottom: 10px;
@@ -7420,14 +7420,14 @@ wfstriketoday {
   position: absolute;
   font-size: .65rem;
   margin-top: -17px;
-  color: silver;
+  color: var(--text);
   display: block;
   text-align: center;
   margin-left: 25px
 }
 
 .mooncircle1 span {
-  color: silver;
+  color: var(--text);
   text-align: center;
   display: block;
   margin-left: 0;
@@ -7446,7 +7446,7 @@ wfstriketoday {
 
 .moonphase,
 .moonrise1 {
-  color: silver
+  color: var(--text)
 }
 
 .moonphase {
@@ -7499,25 +7499,25 @@ wfstriketoday {
 }
 
 .moonrise1 span {
-  color: silver;
+  color: var(--text);
   margin-left: 25px
 }
 
 .moonset1 {
   margin-top: 120px;
   margin-left: -105px;
-  color: silver
+  color: var(--text)
 }
 
 .moonset1 span {
-  color: silver;
+  color: var(--text);
   margin-left: 15px
 }
 
 .fullmoon1,
 .meteorshower,
 .newmoon1 {
-  color: silver;
+  color: var(--text);
   font-family: weathertext2
 }
 
@@ -7861,7 +7861,7 @@ indoorgreen1 {
 .weather34indoorword {
   margin-left: 93px;
   margin-top: 26px;
-  color: silver;
+  color: var(--text);
   font-size: .55rem;
   font-family: arial, system;
   position: absolute
@@ -7990,7 +7990,7 @@ topblue1 {
 .updatedtimeuv {
   font: .65em weathertext2;
   margin-left: 235px;
-  color: silver;
+  color: var(--text);
   background: 0;
   padding: 3px
 }
@@ -8007,13 +8007,13 @@ updatedtime1 {
 }
 
 .updatedtimeuv span {
-  color: silver
+  color: var(--text)
 }
 
 .updatedtimecurrent {
   margin-top: -18px;
   margin-left: 235px;
-  color: silver;
+  color: var(--text);
   font: .65em weathertext2;
   line-height: 10px;
   background: 0;
@@ -8023,7 +8023,7 @@ updatedtime1 {
 .updatedtimealert {
   margin-top: 5px;
   margin-left: 215px;
-  color: silver;
+  color: var(--text);
   font: .65em weathertext2;
   line-height: 10px
 }
@@ -8032,7 +8032,7 @@ updatedtime1 {
   margin-top: -25px;
   margin-left: 135px;
   position: absolute;
-  color: silver;
+  color: var(--text);
   font: .65em weathertext2;
   line-height: 10px;
   border-radius: 2px;
@@ -8049,7 +8049,7 @@ updatedtime {
 .updatedtimecurrent span,
 .updatedtimedir span {
   margin-bottom: 0;
-  color: silver;
+  color: var(--text);
   font-family: weathertext2;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -8109,7 +8109,7 @@ valuewindunit {
 
 .inheatcircle-content {
   position: absolute;
-  color: silver;
+  color: var(--text);
   float: left;
   margin-left: -4px;
   padding: 0;
@@ -8130,7 +8130,7 @@ valuewindunit {
 
 .inheatcircle2-content {
   position: absolute;
-  color: silver;
+  color: var(--text);
   float: left;
   margin-top: 35px;
   margin-left: -5px;
@@ -8164,7 +8164,7 @@ valuewindunit {
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: silver
+  color: var(--text)
 }
 
 .intemphumcircle60-80 {
@@ -8220,7 +8220,7 @@ valuewindunit {
 greyu {
   font-size: .55rem;
   font-family: weathertext2;
-  color: silver
+  color: var(--text)
 }
 
 valuetitleunit {
@@ -8285,7 +8285,7 @@ purplet {
   overflow: hidden;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  color: silver;
+  color: var(--text);
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
@@ -8364,7 +8364,7 @@ blueu {
   height: 2.1rem;
   width: 6.4rem;
   overflow: hidden;
-  color: silver;
+  color: var(--text);
   line-height: 8px;
   font-family: weathertext2;
   font-size: .6em;
@@ -8389,7 +8389,7 @@ blueu {
   height: 5.1rem;
   width: 8.2rem;
   overflow: hidden;
-  color: silver;
+  color: var(--text);
   line-height: 8px;
   font-family: weathertext2;
   font-size: .6em;
@@ -8414,7 +8414,7 @@ blueu {
   height: 4.1rem;
   width: 7.4rem;
   overflow: hidden;
-  color: silver;
+  color: var(--text);
   line-height: 8px;
   font-family: weathertext2;
   font-size: .6em;
@@ -8439,7 +8439,7 @@ blueu {
   height: 4.1rem;
   width: 7.4rem;
   overflow: hidden;
-  color: silver;
+  color: var(--text);
   line-height: 8px;
   font-size: .65em;
   margin-top: 65px;
@@ -8554,7 +8554,7 @@ topbarmetric {
 .wulargeforecasthome,
 .wulargeforecastinghome {
   font-family: weathertext2;
-  color: silver
+  color: var(--text)
 }
 
 .wulargeforecasthome {
@@ -8579,7 +8579,7 @@ topbarmetric {
 .wulargeweekdayhome {
   font-family: weathertext2;
   font-size: .65rem;
-  color: silver
+  color: var(--text)
 }
 
 .wulargediv {
@@ -8598,14 +8598,14 @@ topbarmetric {
   padding: 0;
   background: 0;
   border: 0px solid rgba(153, 155, 156, .1);
-  color: silver
+  color: var(--text)
 }
 
 .wulargeweekdayhome {
   position: absolutue;
   text-align: left;
   padding: 1px;
-  color: silver;
+  color: var(--text);
   margin: 0 0 0 5px;
   background: 0
 }
@@ -8663,7 +8663,7 @@ wulargetemplohome uvspan {
   width: 8.5rem;
   height: 1rem;
   font-size: 10px;
-  color: silver;
+  color: var(--text);
   justify-content: center;
   margin-left: 140px;
   margin-top: 27px
@@ -8957,7 +8957,7 @@ wuthunder2 {
   width: 8.5em;
   height: 1rem;
   font-size: 10px;
-  color: silver;
+  color: var(--text);
   justify-content: center;
   margin-top: -18px;
   line-height: 10px;
@@ -9018,7 +9018,7 @@ wuheatindex {
 }
 
 .weather34btn--primary {
-  color: silver;
+  color: var(--text);
   background-color: rgba(86, 95, 103, 0);
   max-height: 22px;
   font-family: Arial, Helvetica, sans-serif;
@@ -9030,7 +9030,7 @@ wuheatindex {
 
 .weather34btn--primary a {
   position: relative;
-  color: silver;
+  color: var(--text);
   font-size: 0.85em;
   font-weight: 500;
   left: 65px;
@@ -9126,7 +9126,7 @@ weather34menumarkerorange {
   align-items: center;
   justify-content: center;
   border: 0;
-  color: silver;
+  color: var(--text);
   line-height: 12px
 }
 
@@ -9179,12 +9179,12 @@ weather34menumarkerlight {
   }
 
   .weather34btn--primary {
-    color: silver;
+    color: var(--text);
     background-color: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.9em;
     padding: 0;
-    color: silver;
+    color: var(--text);
   }
 
   .weather34admin__header {
@@ -9198,10 +9198,10 @@ weather34menumarkerlight {
   }
 
   .weather34btn--primary a {
-    color: silver;
+    color: var(--text);
     font-size: 0.85em;
     font-weight: 500;
-    color: silver;
+    color: var(--text);
   }
 
   weather34toptitle {
@@ -9457,7 +9457,7 @@ body:hover {
   margin-top: 61px;
   font-size: .54rem;
   z-index: 1;
-  color: silver;
+  color: var(--text);
   width: 50px
 }
 
@@ -9621,4 +9621,38 @@ weather34mbhealth.is-fault .w34health__dot {
 }
 [data-theme="light"] .lity-iframe-container iframe {
   background: #fff;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   LIGHT-THEME TEXT-RESTORE FOR DARK CHROME
+   We converted every `color: silver` to `var(--text)` (dark) for readable
+   text on the now-light content tiles. But the header, menu bar and
+   navigation surfaces intentionally STAY DARK in light mode (layout.css
+   --bg-header/--bg-menu), so they must keep light text or they become
+   dark-on-dark. Restore light text on those chrome elements only.
+   ════════════════════════════════════════════════════════════════════ */
+[data-theme="light"] header,
+[data-theme="light"] header *,
+[data-theme="light"] .menu,
+[data-theme="light"] .menu *,
+[data-theme="light"] .main-menu,
+[data-theme="light"] nav ul,
+[data-theme="light"] .weather34sidebarMenuInner li,
+[data-theme="light"] .weather34sidebarMenuInner li a,
+[data-theme="light"] .weather34sidebarMenuInner li span,
+[data-theme="light"] .weather34menulistings,
+[data-theme="light"] .weather34menulisting,
+[data-theme="light"] .weather34menulistings a,
+[data-theme="light"] .menucolor a,
+[data-theme="light"] menutextheading1,
+[data-theme="light"] .weather34btn--primary,
+[data-theme="light"] .weather34btn--primary a,
+[data-theme="light"] weather34menumarkerlight,
+[data-theme="light"] weather34menumarkerorange,
+[data-theme="light"] .logo span,
+[data-theme="light"] .hardwarelogo1text {
+  color: var(--chrome-text, #e8e8e8) !important;
+}
+[data-theme="light"] .logo span {
+  color: var(--chrome-text, #e8e8e8) !important;
 }

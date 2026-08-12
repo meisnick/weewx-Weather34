@@ -30,9 +30,9 @@ function moduleTitle($module, $weather, $lang) {
         case 'forecast3omlarge.php':
         case 'forecast3wu.php':
         case 'forecast3wularge.php':
-            return 'Forecast (<valuetitleunit>&deg;' . $weather['temp_units'] . '</valuetitleunit>)';
+            return $lang['Forecast'] . ' (<valuetitleunit>&deg;' . $weather['temp_units'] . '</valuetitleunit>)';
         case 'forecastdiscussion.php':
-            return 'Area Forecast Discussion (LLM)';
+            return $lang['AreaForecastDiscussion'] . ' (LLM)';
         case 'currentconditionsw34.php':
             return $lang['Currentsky'];
         case 'windspeeddirection.php':
@@ -46,37 +46,37 @@ function moduleTitle($module, $weather, $lang) {
         case 'rainfall.php':
             return $lang['Rainfalltoday'] . ' (<valuetitleunit>' . $weather['rain_units'] . '</valuetitleunit>)';
         case 'moonphase.php':
-            return 'Moon Phase';
+            return $lang['MoonPhase'];
         case 'lightning34.php':
-            return 'Lightning';
+            return $lang['Lightning'];
         case 'indoortemperature.php':
-            return 'Indoor';
+            return $lang['Indoor'];
         case 'airqualitymodule.php':
         case 'purpleairqualitymodule.php':
         case 'ew_airqualitymodule.php':
-            return 'Air Quality';
+            return $lang['AirQuality'];
         case 'weather34uvsolar.php':
         case 'solaruv.php':
         case 'solaruvwu.php':
-            return 'UV &amp; Solar';
+            return $lang['UVSolar'];
         case 'webcamsmall.php':
-            return 'Webcam';
+            return $lang['Webcam'];
         case 'aurora_module.php':
             return 'Kp-Index | Aurora';
         case 'radar_module.php':
-            return 'NWS Radar';
+            return $lang['NwsRadar'];
         case 'top_temperatureyear.php':
-            return 'Temperature Year';
+            return $lang['TemperatureYear'];
         case 'top_windgustyear.php':
-            return 'Wind Gust Year';
+            return $lang['WindGustYear'];
         case 'top_rainfallfyearmonth.php':
-            return 'Rainfall Totals';
+            return $lang['RainfallTotals'];
         case 'top_advisory_nws.php':
-            return 'Weather Advisory';
+            return $lang['WeatherAdvisory'];
         case 'top_lightning.php':
-            return 'Lightning';
+            return $lang['Lightning'];
         case 'weather34clock.php':
-            return 'Station Time';
+            return $lang['StationTime'];
         default:
             return '';
     }

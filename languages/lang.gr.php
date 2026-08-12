@@ -314,4 +314,17 @@ $lang['notifyHighWindWarning']   = "High Wind Warning";
 $lang['notifySustainedAvg']      = "Sustained avg";
 $lang['notifyWindAdvisory']      = "Wind Advisory";
 $lang['notifyFreezing']          = "Below Freezing";
+$lang['StationTime']             = 'Ώρα σταθμού';
+$lang['MoonPhase']               = 'Φάση σελήνης';
+$lang['LocalNowcast']            = 'Τοπική πρόγνωση';
+$lang['Lightning']               = 'Κεραυνός';
+$lang['AirQuality']              = 'Ποιότητα αέρα';
+$lang['UVSolar']                 = 'UV & ηλιακό';
+$lang['Webcam']                  = 'Webcam';
+$lang['SpaceWeather']            = 'Διαστημικός καιρός';
+$lang['NwsRadar']                = 'NWS Radar';
+$lang['TemperatureYear']         = 'Θερμοκρασία έτους';
+$lang['WindGustYear']            = 'Ριπές ανέμου έτους';
+$lang['RainfallTotals']          = 'Σύνολα βροχόπτωσης';
+$lang['WeatherAdvisory']         = 'Καιρική προειδοποίηση';
 ?>

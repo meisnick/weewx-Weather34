@@ -314,4 +314,17 @@ $lang['notifyHighWindWarning']   = "High Wind Warning";
 $lang['notifySustainedAvg']      = "Sustained avg";
 $lang['notifyWindAdvisory']      = "Wind Advisory";
 $lang['notifyFreezing']          = "Below Freezing";
+$lang['StationTime']             = 'Czas stacji';
+$lang['MoonPhase']               = 'Faza księżyca';
+$lang['LocalNowcast']            = 'Prognoza lokalna';
+$lang['Lightning']               = 'Błyskawica';
+$lang['AirQuality']              = 'Jakość powietrza';
+$lang['UVSolar']                 = 'UV i słońce';
+$lang['Webcam']                  = 'Kamera internetowa';
+$lang['SpaceWeather']            = 'Pogoda kosmiczna';
+$lang['NwsRadar']                = 'NWS Radar';
+$lang['TemperatureYear']         = 'Temperatura roczna';
+$lang['WindGustYear']            = 'Porywy wiatru roczne';
+$lang['RainfallTotals']          = 'Sumy opadów';
+$lang['WeatherAdvisory']         = 'Ostrzeżenie pogodowe';
 ?>

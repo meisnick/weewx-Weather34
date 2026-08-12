@@ -315,4 +315,17 @@ $lang['notifyHighWindWarning']   = "High Wind Warning";
 $lang['notifySustainedAvg']      = "Sustained avg";
 $lang['notifyWindAdvisory']      = "Wind Advisory";
 $lang['notifyFreezing']          = "Below Freezing";
+$lang['StationTime']             = 'Állomás ideje';
+$lang['MoonPhase']               = 'Holdfázis';
+$lang['LocalNowcast']            = 'Helyi előrejelzés';
+$lang['Lightning']               = 'Villámlás';
+$lang['AirQuality']              = 'Levegőminőség';
+$lang['UVSolar']                 = 'UV & nap';
+$lang['Webcam']                  = 'Webkamera';
+$lang['SpaceWeather']            = 'Űridőjárás';
+$lang['NwsRadar']                = 'NWS Radar';
+$lang['TemperatureYear']         = 'Hőmérséklet éves';
+$lang['WindGustYear']            = 'Széllökések éves';
+$lang['RainfallTotals']          = 'Csapadék összesen';
+$lang['WeatherAdvisory']         = 'Időjárási figyelmeztetés';
 ?>

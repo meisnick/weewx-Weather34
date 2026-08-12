@@ -315,4 +315,17 @@ $lang['notifySustainedAvg']      = "Sustained avg";
 $lang['notifyWindAdvisory']      = "Wind Advisory";
 $lang['notifyFreezing']          = "Below Freezing";
 
+$lang['StationTime']             = 'Station Time';
+$lang['MoonPhase']               = 'Moon Phase';
+$lang['LocalNowcast']            = 'Local Nowcast';
+$lang['Lightning']               = 'Lightning';
+$lang['AirQuality']              = 'Air Quality';
+$lang['UVSolar']                 = 'UV & Solar';
+$lang['Webcam']                  = 'Webcam';
+$lang['SpaceWeather']            = 'Space Weather';
+$lang['NwsRadar']                = 'NWS Radar';
+$lang['TemperatureYear']         = 'Temperature Year';
+$lang['WindGustYear']            = 'Wind Gust Year';
+$lang['RainfallTotals']          = 'Rainfall Totals';
+$lang['WeatherAdvisory']         = 'Weather Advisory';
 ?>

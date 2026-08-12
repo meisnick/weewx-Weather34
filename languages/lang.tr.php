@@ -314,4 +314,17 @@ $lang['notifyHighWindWarning']   = "High Wind Warning";
 $lang['notifySustainedAvg']      = "Sustained avg";
 $lang['notifyWindAdvisory']      = "Wind Advisory";
 $lang['notifyFreezing']          = "Below Freezing";
+$lang['StationTime']             = 'İstasyon Saati';
+$lang['MoonPhase']               = 'Ay Fazı';
+$lang['LocalNowcast']            = 'Yerel Tahmin';
+$lang['Lightning']               = 'Yıldırım';
+$lang['AirQuality']              = 'Hava Kalitesi';
+$lang['UVSolar']                 = 'UV & Güneş';
+$lang['Webcam']                  = 'Web Kamerası';
+$lang['SpaceWeather']            = 'Uzay Havası';
+$lang['NwsRadar']                = 'NWS Radar';
+$lang['TemperatureYear']         = 'Sıcaklık Yılı';
+$lang['WindGustYear']            = 'Rüzgar Hamlesi Yılı';
+$lang['RainfallTotals']          = 'Yağış Toplamları';
+$lang['WeatherAdvisory']         = 'Hava Uyarısı';
 ?>

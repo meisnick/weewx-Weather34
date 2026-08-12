@@ -8,6 +8,8 @@ Complete overhaul of the Weather34 layout, stylesheet system, internationalizati
 
 ### 1. Modular CSS Architecture & Light Mode System
 - **Theme-Aware Main Stylesheets**: Created dedicated `css/main.light.css` alongside `css/main.dark.css`. Updated `index.php` `<link>` tag to load `css/main.<?php echo $theme1; ?>.css` dynamically.
+- **Legacy Duplicate Pruning**: Safely pruned 418 duplicate legacy card rule blocks (~8,000 lines) out of `main.dark.css` and `main.light.css`, leaving only core framework, grid, font-face, menu, popup, and notification styles.
+- **Brace Balance Normalization**: Resolved historical unclosed `@media` and `@keyframes` block brace depth mismatches in main stylesheets (`open == close`).
 - **Scoped Module CSS Namespaces**: Re-architected all component stylesheets under `css/modules/` (`temperature.css`, `sun.css`, `wind.css`, `aurora.css`, `forecastdiscussion.css`, `localforecast.css`, `lightning34.css`, `airqualitymodule.css`, `barometer.css`, `conditions.css`, `moonphase.css`, `rainfall.css`, `top-lightning.css`) with normalized `.mod-<module>` container namespaces to isolate layout rules.
 - **Light Theme Contrast & Alignment**: Corrected invalid `color-adjust` CSS syntax, fixed wind direction text contrast in light theme, restored dark bottom bar styling on temperature tiles, corrected sun dial ring duplication, and aligned lightning/UV badge borders.
 

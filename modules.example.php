@@ -4,10 +4,10 @@
 // Each entry: module filename, display title, refresh interval in seconds.
 
 $topbar_modules = [
-    ['module' => 'weather34clock.php',        'title' => 'Station Time',     'refresh' => 3600],
-    ['module' => 'top_rainfallfyearmonth.php', 'title' => 'Rainfall Totals', 'refresh' => 600],
-    ['module' => 'top_lightning.php',          'title' => 'Lightning',       'refresh' => 600],
-    ['module' => 'top_advisory_nws.php',       'title' => 'Weather Advisory','refresh' => 300],
+    ['module' => 'weather34clock.php',        'title' => '',                'refresh' => 3600],
+    ['module' => 'top_rainfallfyearmonth.php', 'title' => '',                'refresh' => 600],
+    ['module' => 'top_lightning.php',          'title' => '',                'refresh' => 600],
+    ['module' => 'top_advisory_nws.php',       'title' => '',                'refresh' => 300],
 ];
 
 $grid_modules = [
@@ -19,7 +19,7 @@ $grid_modules = [
     ['module' => 'sun3.php',                 'title' => '',                'refresh' => 3600],
     ['module' => 'rainfall.php',             'title' => '',                'refresh' => 60],
     ['module' => 'moonphase.php',            'title' => '',                'refresh' => 600],
-    ['module' => 'lightning34.php',          'title' => 'Lightning',       'refresh' => 60],
+    ['module' => 'lightning34.php',          'title' => '',                'refresh' => 60],
 ];
 
 $grid_columns = 'auto'; // auto | 3 | 4 | 6

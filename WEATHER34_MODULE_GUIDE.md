@@ -686,6 +686,37 @@ $ok = file_exists('jsondata/yourdata.json')
 
 ---
 
+## 10. CSS Modularization & Refactoring Guidelines
+
+### A. Style Boundaries: Framework vs. Module
+To maintain visual stability while refactoring Weather34 CSS:
+
+1. **Global Framework (`css/main.dark.css` and `css/main.light.css`)**:
+   - **CSS Custom Properties**: `:root`, `:root[data-theme="light"]` (color variables, fonts)
+   - **Page Shell**: `html`, `body`, `header`, logo, status clock, navigation flyout menu, footer
+   - **Dashboard Grid System**: `.weather2-container`, `.weather2-item`, `.cols-2`, `.cols-3`, `.cols-4`, `.cols-6`
+   - **Popups & Modals**: `.lity`, `#weatherpopup`, `.weather34popup-*`
+   - **Toast Notifications**: `#weather34lightningdialog-notify`
+   - **Base Structural Defaults**: Base card height (`195px`), box-shadows, default typography fallbacks.
+
+2. **Scoped Module Stylesheets (`css/modules/<module>.css`)**:
+   - All rules MUST be scoped inside the `.mod-<module>` container namespace (e.g., `.mod-wind`, `.mod-temperature`, `.mod-barometer`).
+   - Module-internal layout: flex/grid containers, badge dimensions, pill borders, indicator dots, ranges, thresholds, and internal text alignment.
+   - Module-specific theme overrides using `[data-theme="light"] .mod-<module>`.
+
+### B. Module-by-Module Refactoring Procedure (Safe Migration)
+**DO NOT** run automated regex scripts to perform bulk deletions across `main.dark.css` or `main.light.css`. Always follow this module-by-module process:
+
+1. **Isolate a Single Module**: Focus on one card at a time (e.g., `windspeeddirection.php`).
+2. **Audit Class Usage**: List all HTML classes and IDs used inside that PHP card fragment.
+3. **Verify Scoped Self-Containment**:
+   - Inspect `css/modules/<module>.css` and confirm every required selector is explicitly defined under `.mod-<module>`.
+   - If an element relies on an unscoped legacy property in `main.dark.css` (e.g., `position: absolute`, `top`, `left`, `margin`), copy that rule into `css/modules/<module>.css` under the `.mod-<module>` namespace.
+4. **Targeted Legacy Rule Removal**: Only after `css/modules/<module>.css` is 100% self-contained, remove the legacy unscoped rules specific to *that single module* from `main.dark.css` and `main.light.css`.
+5. **Browser Parity Check**: Load the dashboard in both dark and light modes on the dev box (`PiDevE`) and visually verify that card layout, font size, positioning, and color state match 100% before proceeding to the next card.
+
+---
+
 ## 11. New Module Checklist
 
 - [ ] Create `module_name.php` (fragment, starts with `include('shared.php')`)

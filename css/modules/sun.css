@@ -1150,7 +1150,7 @@
 
   position: absolute;
 
-  border: 4px solid rgba(59, 60, 63, 1);
+  border: 0;
 
   transform-origin: 50% 50%
 
@@ -1225,7 +1225,7 @@
 
   height: 109px;
 
-  border: 6px solid rgba(59, 60, 63, 1);
+  border: 6px solid #b0b5c0;
 
   position: absolute;
 

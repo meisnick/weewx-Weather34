@@ -868,10 +868,6 @@
 
 /* ── Light theme overrides ── */
 
-[data-theme="light"] .mod-temperature .tempcontainer,
-
-[data-theme="light"] .mod-temperature .tempcontainer1,
-
 [data-theme="light"] .mod-temperature .tempconvertercircleblue,
 
 [data-theme="light"] .mod-temperature .tempconvertercirclegreen,
@@ -979,7 +975,9 @@
   width: 6rem;
   height: 5.5rem;
   font-size: 1.6rem;
+  padding-top: 10px;
   color: #fff;
+  border-bottom: 18px solid #2d3238;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -996,7 +994,7 @@
   text-align: center;
   z-index: auto;
   font-size: 0;
-  color: #2d3a4b;
+  color: #fff;
   font-family: Arial, system
 }
 
@@ -1006,7 +1004,7 @@
   font-size: .8em;
   color: #fff;
   font-weight: 400;
-  margin: 4px auto auto;
+  margin: 5px auto auto;
   left: 18%
 }
 

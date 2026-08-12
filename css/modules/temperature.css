@@ -1658,7 +1658,7 @@
 
 
 
-/* Temperature tile dark bottom bar matching lightning/UV badges */
+/* Temperature tile light bottom bar matching lightning/UV badges in light mode */
 [data-theme="light"] .mod-temperature .outside0-5,
 [data-theme="light"] .mod-temperature .outside11-15,
 [data-theme="light"] .mod-temperature .outside16-20,
@@ -1673,9 +1673,9 @@
 [data-theme="light"] .mod-temperature .outsideminus10,
 [data-theme="light"] .mod-temperature .outsideminus5,
 [data-theme="light"] .mod-temperature .outsidezero {
-  border-bottom: 18px solid #38383c !important;
+  border-bottom: 18px solid var(--bg1) !important;
 }
 
 [data-theme="light"] .mod-temperature .temptrendx {
-  color: #ffffff !important;
+  color: #2d3a4b !important;
 }

@@ -1,9 +1,9 @@
-# WeeWX 5.3.1 — Weather34 Skin — Ecowitt GW1000/GW2000
+# WeeWX 5.5.0 — Weather34 Skin — Ecowitt GW1000/GW2000
 debug = 0
 log_success = True
 log_failure = True
 socket_timeout = 20
-version = 5.3.1
+version = 5.5.0
 
 [Station]
     location = "Your Station Name, State"

@@ -7,13 +7,13 @@
 
 | Branch | WeeWX | PHP | Python | OS | Status | Description |
 |--------|-------|-----|--------|----|--------|-------------|
-| `main` | **5.3.1** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | Upstream-compatible standard layout |
-| `modularize` | **5.3.1** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | **Enhanced with dynamic layout engine & modular CSS** |
+| `main` | **5.5.0** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | Upstream-compatible standard layout |
+| `modularize` | **5.5.0** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | **Enhanced with dynamic layout engine & modular CSS** |
 | `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen | Traditional steepleian-style releases |
 
 ## System Requirements (main and modularize branches)
 
-- **WeeWX:** 5.x (tested 5.3.1)
+- **WeeWX:** 5.x (tested 5.5.0)
 - **PHP:** 8.2+ (tested 8.4 with `php-cli`)
 - **Python:** 3.9+ (tested 3.13)
 - **OS:** Debian 12 Bookworm or 13 Trixie (64-bit recommended)

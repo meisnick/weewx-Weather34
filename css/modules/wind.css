@@ -677,3 +677,14 @@
   color: #2d3a4b
 }
 
+
+
+/* Light theme wind direction text contrast */
+[data-theme="light"] .mod-wind .windvalue,
+[data-theme="light"] .mod-wind .windvalue1,
+[data-theme="light"] .mod-wind .windirectiontext,
+[data-theme="light"] .mod-wind .homeweathercompass > .windirectiontext,
+[data-theme="light"] .mod-wind .homeweathercompass1 > .windirectiontext1,
+[data-theme="light"] .mod-wind .text1 {
+  color: #2d3a4b !important;
+}

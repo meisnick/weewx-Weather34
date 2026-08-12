@@ -99,7 +99,7 @@ sup,
 suprain2,
 suptemp {
   text-rendering: optimizeLegibility;
-  color-adjust: [exact];
+  color-adjust: exact;
   -webkit-osx-font-smoothing: grayscale;
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: grayscale
@@ -173,7 +173,7 @@ a,
 body,
 h3 {
   text-rendering: optimizeLegibility;
-  color-adjust: [exact]
+  color-adjust: exact
 }
 
 #beaker,
@@ -4494,7 +4494,7 @@ notifyred {
 }
 
 body {
-  color-adjust: [exact]
+  color-adjust: exact
 }
 
 .vp2container {

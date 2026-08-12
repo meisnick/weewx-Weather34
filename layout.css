@@ -1,13 +1,13 @@
 /* Fonts -- must load globally */
 @font-face {
   font-family: clock;
-  src: url(fonts/clock3-webfont.woff) format('woff'), url(fonts/clock3.ttf) format('truetype');
+  src: url(css/fonts/clock3-webfont.woff) format('woff'), url(css/fonts/clock3.ttf) format('truetype');
 }
 @font-face {
   font-family: weathertext2;
-  src: url(fonts/verbatim-regular.woff) format('woff'),
-       url(fonts/verbatim-regular.woff2) format('woff2'),
-       url(fonts/verbatim-regular.ttf) format('truetype');
+  src: url(css/fonts/verbatim-regular.woff) format('woff'),
+       url(css/fonts/verbatim-regular.woff2) format('woff2'),
+       url(css/fonts/verbatim-regular.ttf) format('truetype');
 }
 
 /* ── Design tokens — dark (default) ─────────────────────────────────── */
@@ -229,6 +229,7 @@ timeago { font-size: .55rem; font-family: Arial; color: var(--text-muted); displ
   position: absolute;
   top: 2px;
   left: 8px;
+  font-family: weathertext2, Arial, sans-serif;
   font-size: .7em;
   color: var(--mod-muted);
   z-index: 2;

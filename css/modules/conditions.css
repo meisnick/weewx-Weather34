@@ -75,6 +75,7 @@
 }
 
 .mod-conditions .cloudconverter {
+  position: absolute;
   font-size: 12px;
   margin-top: 7px;
   margin-left: 210px

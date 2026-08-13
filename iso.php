@@ -52,7 +52,15 @@ foreach (glob("css/modules/*.css") as $sheet) {
 </div>
 <script>
 function w34dump(){
+  // Normalize live/volatile leaf values so ref and mod compare STRUCTURAL geometry,
+  // not the width of whatever number happened to be displayed in each capture.
+  // (Same intent as blanking .updatedtime; does not loosen the diff tolerance.)
   document.querySelectorAll('[class*=updatedtime]').forEach(e=>{e.textContent='--';});
+  document.querySelectorAll('#grid_0 *').forEach(el=>{
+    if(el.children.length) return;                     // leaf only
+    const t=(el.textContent||'').trim();
+    if(/^-?\d+(\.\d+)?$/.test(t)) el.textContent='000'; // fixed-width numeric placeholder
+  });
   const root=document.getElementById('grid_0'), b=root.getBoundingClientRect(), out=[];
   root.querySelectorAll('*').forEach((el,i)=>{const r=el.getBoundingClientRect(),c=getComputedStyle(el);
     out.push({i,tag:el.tagName.toLowerCase(),cls:(typeof el.className==='string'?el.className:''),

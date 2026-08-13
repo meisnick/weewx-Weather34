@@ -9523,3 +9523,41 @@ weather34mbhealth.is-fault .w34health__dot {
   /* keep just the dot on small screens, the label crowds the station title */
   weather34mbhealth.is-ok .w34health__txt { display: none }
 }
+/* restored for real-page cascade */
+
+
+.barometerconverter,
+.barometertrendx,
+.tempavg60,
+.tempindoorconverter {
+  font-size: 12px;
+  position: absolute
+}
+
+.tempindoorconverter {
+  margin-left: 245px;
+  margin-top: -15px
+}
+
+.indoortrendhouse1 {
+  position: absolute;
+  margin-left: 97px;
+  margin-top: 65px;
+  font-size: .55rem;
+  z-index: 1;
+  color: #fff
+}
+
+.indoorhomevalue1 {
+  position: relative;
+  margin-top: -93px;
+  left: 0;
+  font-size: 1.1em
+}
+
+.indoorhomesvg1 {
+  margin-top: -12px;
+  left: 0;
+  margin-left: -86px;
+  color: var(--bg1)
+}

@@ -1,0 +1,102 @@
+/* topyears.module — shared topbar YEAR-cards kernel, scoped to .mod-topyear
+ * Used by: top_rainfallfyearmonth.php, top_windgustyear.php, top_temperatureyear.php
+ * (the live topbar year family). Extracted from main/framework so these cards do
+ * not depend on main.dark/light.css. AQI topbar badges (top_aqi_*) are a separate
+ * family and stay in framework. */
+.mod-topyear { display: contents; }
+
+/* Topbar value badge geometry + color states */
+.mod-topyear .topmin,
+.mod-topyear .topmax {
+  position: absolute;
+  margin-top: 39px;
+  font-size: 12px;
+  padding-right: 4px;
+  padding-left: 0
+}
+
+.mod-topyear .topmax { left: 10px }
+
+.mod-topyear .maxword,
+.mod-topyear .minword,
+.mod-topyear .minwordl {
+  margin-top: 35px;
+  font-size: .55rem;
+  color: #fff;
+  z-index: 1;
+  position: absolute
+}
+
+.mod-topyear .maxwordlow,
+.mod-topyear .minwordlow {
+  margin-top: 35px;
+  font-size: .55rem;
+  color: var(--bg1);
+  z-index: 1;
+  position: absolute
+}
+
+.mod-topyear .maxword { margin-left: 157px }
+.mod-topyear .maxwordlow { margin-left: 157px }
+.mod-topyear .minword { margin-left: 48px }
+.mod-topyear .minwordlow { margin-left: 48px }
+.mod-topyear .minwordl { margin-left: 30px }
+
+.mod-topyear .maxtimedate,
+.mod-topyear .mintimedate {
+  position: absolute;
+  margin-top: 61px;
+  font-size: .54rem;
+  z-index: 1;
+  color: silver;
+  width: 50px
+}
+
+.mod-topyear .maxtimedate { margin-left: 140px }
+.mod-topyear .mintimedate { margin-left: 30px }
+
+.mod-topyear .yearwordbig {
+  position: absolute;
+  margin-left: 11px;
+  margin-top: 40px;
+  font-size: 1.2rem
+}
+
+.mod-topyear smallwindunit {
+  font-size: .45rem;
+  font-family: Arial, Helvetica, system;
+  padding-left: 2px
+}
+
+/* Badge size + base (shared with lightning wfstrike* in main but scoped here) */
+.mod-topyear topred1,
+.mod-topyear topgreen1,
+.mod-topyear toporange1,
+.mod-topyear topblue1,
+.mod-topyear topyellow1,
+.mod-topyear topyellow2 {
+  font-family: weathertext2;
+  width: 3.3rem;
+  height: 2.4rem;
+  font-size: .9em;
+  padding-top: 7px;
+  color: #fff;
+  border-bottom: 11px solid var(--bg1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  position: absolute;
+  margin-left: 133px;
+  top: -5px
+}
+
+.mod-topyear topred1 { background: var(--red) }
+.mod-topyear toporange1 { background: var(--orange-d) }
+.mod-topyear topblue1 { background: var(--teal) }
+.mod-topyear topgreen1 { background: var(--green) }
+.mod-topyear topyellow1 { background: var(--amber) }
+.mod-topyear topyellow2 { background: rgba(233, 171, 74, .8) }

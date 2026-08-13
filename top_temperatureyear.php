@@ -1,4 +1,5 @@
 <?php include('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');date_default_timezone_set($TZ);?>
+<div class="mod-topyear">
 <div class="topmin">
 <?php //temperture min year
  if ($weather["temp_units"]=='C' && $weather["tempymin"]>30){echo "<topred1>",$weather["tempymin"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }
@@ -42,3 +43,4 @@
 </div></smalluvunit>
 <div class="maxword">Max</div></div>
 <div class="maxtimedate"><?php echo $weather["tempymaxtime2"]?></oorange></div> 
+</div><!-- /mod-topyear -->

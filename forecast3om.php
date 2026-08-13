@@ -28,7 +28,7 @@ $jsonfile="jsondata/forecast_daily.txt";if(!file_exists($jsonfile)) {return;}
 $forecasturl = file_get_contents("jsondata/forecast_daily.txt");
 if(filesize('jsondata/forecast_daily.txt')<1){echo "".$offline. "";}
 else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
-<div class="forecastforecasthome" ><div class="mod-forecast">
+<div class="mod-forecast"><div class="forecastforecasthome" >
 <div class="forecastdiv">
 <?php //begin ad stuff 
 $jsonIcon = 'jsondata/lookupTable.json';

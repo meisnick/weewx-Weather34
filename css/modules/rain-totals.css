@@ -124,7 +124,7 @@
   margin-top: 61px;
   font-size: .54rem;
   z-index: 1;
-  color: #2d3a4b;
+  color: var(--text);
   width: 50px
 }
 
@@ -133,7 +133,7 @@
   margin-left: 11px;
   margin-top: 40px;
   font-size: 1.2rem;
-  color: rgba(86, 95, 103, .1);
+  color: rgba(86, 95, 103, .4);
   width: 200px;
   font-family: weathertext2
 }

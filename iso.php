@@ -40,14 +40,16 @@ $modf = 'css/modules/' . ($modcss[$card] ?? $card) . '.css';
 <?php if ($mode === 'ref'): ?>
   <link href="css/main.<?php echo $theme; ?>.css" rel="stylesheet">
 <?php else: ?>
-  <link href="css/kernel.<?php echo $theme; ?>.css" rel="stylesheet">
+  <link href="css/framework.<?php echo $theme; ?>.css" rel="stylesheet">
   <link href="<?php echo $modf; ?>" rel="stylesheet">
 <?php endif; ?>
-<style>body{margin:0;padding:0}#grid_0{width:<?php echo $w; ?>px}</style>
+<style>body{margin:0;padding:0}#grid_0{width:<?php echo $w; ?>px}<?php if ($mode==='ref'): ?>.mod-<?php echo $card; ?>{display:contents}<?php endif; ?></style>
 </head>
 <body>
-<div id="grid_0" class="weather-item<?php echo $mode==='mod' ? ' mod-'.$card : ''; ?>">
+<div id="grid_0" class="weather-item">
+<div class="mod-<?php echo $card; ?>">
 <?php if ($src && file_exists($src)) { include($src); } ?>
+</div>
 </div>
 <script>
 function w34dump(){

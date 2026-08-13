@@ -9640,3 +9640,21 @@ weather34mbhealth.is-fault .w34health__dot {
   margin-left: -86px;
   color: var(--bg1)
 }
+/* restored for real-page cascade */
+
+
+.heatcircle6 {
+  padding: 0;
+  width: 170px;
+  position: absolute;
+  margin-top: -35px;
+  margin-left: 140px
+}
+
+.heatcircle7 {
+  padding: 0;
+  width: 170px;
+  position: relative;
+  margin-top: 50px;
+  margin-left: 49px
+}

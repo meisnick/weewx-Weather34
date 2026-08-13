@@ -41,6 +41,8 @@ $modmap = [
     'solaruv'           => 'css/modules/solar.css',
 ];
 $modcss = $modmap[$module] ?? '';
+// ctxt=full => load ALL css/modules/*.css (real page cascade) but render one card
+$ctxt = $_GET['ctxt'] ?? 'single';
 
 $phpfile = [
     'wind' => 'windspeeddirection.php',
@@ -74,7 +76,16 @@ $phpsrc = $phpfile[$module] ?? '';
 <head>
 <meta charset="utf-8">
 <link href="<?php echo $css_main; ?>" rel="stylesheet">
-<?php if ($modcss): ?><link href="<?php echo $modcss; ?>" rel="stylesheet"><?php endif; ?>
+<?php
+if ($ctxt === 'full') {
+    // load every module css exactly like index2.php does (real cascade order)
+    foreach (glob("css/modules/*.css") as $sheet) {
+        echo '<link href="' . $sheet . '" rel="stylesheet">' . "\n";
+    }
+} elseif ($modcss) {
+    echo '<link href="' . $modcss . '" rel="stylesheet">' . "\n";
+}
+?>
 <style>
   body { margin:0; padding:0; }
   #harness-frame { width:320px; padding:0; background:#26262b; }

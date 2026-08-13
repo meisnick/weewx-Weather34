@@ -1,11 +1,14 @@
 <?php
 /* iso.php — render ONE card off-dashboard for explicit-geometry A/B (DEV ONLY).
  *   ?card=<name>&mode=ref|mod&theme=dark|light&w=<px>
- *   ref : reference — main.<theme>.css, card unwrapped (exactly how index.php styles it).
- *   mod : self-contained module — kernel.<theme>.css + css/modules/<card>.css only,
- *         card wrapped in .mod-<card> (how a finished module must stand on its own).
- * Emits a hidden <pre id="__LAYOUT__"> with every element's box + key computed styles,
- * so `chromium --dump-dom` yields structured geometry (read the layout, not pixels).
+ *   ref : exactly what index.php serves for this card — main.<theme>.css +
+ *         ALL css/modules/*.css (the template self-scopes with its own .mod-X).
+ *   mod : exactly what index2.php serves for this card — framework.<theme>.css +
+ *         ALL css/modules/*.css.
+ * The ONLY difference between the two modes is main vs framework, which is the
+ * entire point: it isolates the kernel reduction's effect on this one card.
+ * Emits a hidden <pre id="__LAYOUT__"> with every element's box + key computed
+ * styles, so `chromium --dump-dom` yields structured geometry (not pixels).
  */
 $card  = preg_replace('/[^a-z0-9\-]/i', '', $_GET['card'] ?? 'temperature');
 $mode  = ($_GET['mode'] ?? 'ref') === 'mod' ? 'mod' : 'ref';
@@ -23,16 +26,14 @@ $phpfile = [
   'rain-totals'=>'top_rainfallfyearmonth.php','airqualitymodule'=>'airqualitymodule.php',
   'radar'=>'radar_module.php','solaruv'=>'solaruv.php',
 ];
-$modcss = [
-  'wind'=>'wind','barometer'=>'barometer','rainfall'=>'rainfall','temperature'=>'temperature',
-  'indoor'=>'temperature','moonphase'=>'moonphase','sun'=>'sun','lightning34'=>'lightning34',
-  'conditions'=>'conditions','forecast'=>'forecast','forecastdiscussion'=>'forecastdiscussion',
-  'localforecast'=>'localforecast','aurora'=>'aurora','clock'=>'clock','advisory'=>'advisory',
-  'windgustyear'=>'topyears','temperatureyear'=>'topyears','top-lightning'=>'top-lightning',
-  'rain-totals'=>'rain-totals','airqualitymodule'=>'airqualitymodule','radar'=>'radar','solaruv'=>'solar',
-];
-$src  = $phpfile[$card] ?? '';
-$modf = 'css/modules/' . ($modcss[$card] ?? $card) . '.css';
+$src = $phpfile[$card] ?? '';
+
+// All module sheets, exactly like index.php / index2.php glob-loader. Card CSS is
+// reached through the template's own self-scoped .mod-X wrapper.
+$mods = '';
+foreach (glob("css/modules/*.css") as $sheet) {
+    $mods .= '<link href="' . $sheet . '" rel="stylesheet">' . "\n";
+}
 ?>
 <!DOCTYPE html>
 <html data-theme="<?php echo $theme; ?>" style="background:#26262b;color:#ccc;">
@@ -41,15 +42,13 @@ $modf = 'css/modules/' . ($modcss[$card] ?? $card) . '.css';
   <link href="css/main.<?php echo $theme; ?>.css" rel="stylesheet">
 <?php else: ?>
   <link href="css/framework.<?php echo $theme; ?>.css" rel="stylesheet">
-  <link href="<?php echo $modf; ?>" rel="stylesheet">
 <?php endif; ?>
-<style>body{margin:0;padding:0}#grid_0{width:<?php echo $w; ?>px}<?php if ($mode==='ref'): ?>.mod-<?php echo $card; ?>{display:contents}<?php endif; ?></style>
+<?php echo $mods; ?>
+<style>body{margin:0;padding:0}#grid_0{width:<?php echo $w; ?>px}</style>
 </head>
 <body>
 <div id="grid_0" class="weather-item">
-<div class="mod-<?php echo $card; ?>">
 <?php if ($src && file_exists($src)) { include($src); } ?>
-</div>
 </div>
 <script>
 function w34dump(){

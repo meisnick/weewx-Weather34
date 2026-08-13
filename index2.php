@@ -21,33 +21,6 @@ date_default_timezone_set($TZ);
 header('Content-type: text/html; charset=utf-8');
 error_reporting(0);
 
-// ── Module file -> .mod-X scope map (mirrors iso.php $modcss).
-// The card's content is loaded into the #top_N / #grid_N shell; the matching
-// .mod-<card> class on that shell is what lets css/modules/<card>.css scope reach it.
-$modwrap = [
-  'windspeeddirection.php'=>'wind','barometer.php'=>'barometer','rainfall.php'=>'rainfall',
-  'temperaturein.php'=>'temperature','indoortemperature.php'=>'temperature','moonphase.php'=>'moonphase',
-  'sun3.php'=>'sun','lightning34.php'=>'lightning34','currentconditionsw34.php'=>'conditions',
-  'forecast3om.php'=>'forecast','forecast3omlarge.php'=>'forecast','forecast3wu.php'=>'forecast',
-  'forecast3wularge.php'=>'forecast','forecastdiscussion.php'=>'forecastdiscussion',
-  'localforecast.php'=>'localforecast','aurora_module.php'=>'aurora','weather34clock.php'=>'clock',
-  'top_advisory_nws.php'=>'advisory','top_windgustyear.php'=>'topyears',
-  'top_temperatureyear.php'=>'topyears','top_rainfallfyearmonth.php'=>'rain-totals',
-  'top_lightning.php'=>'top-lightning','airqualitymodule.php'=>'airqualitymodule',
-  'radar_module.php'=>'radar','solaruv.php'=>'solar','solaruvwu.php'=>'solar',
-  'weather34uvsolar.php'=>'solar','webcamsmall.php'=>'moonphase',
-];
-// ACTIVE wrapper scopes: a card is only wrapped in .mod-X once its module is
-// verified isodiff-CLEAN (both themes). Wrapping activates module CSS on the real
-// page, so an unverified module would drift the page. Wrap verified cards only.
-$activeModwrap = ['rain-totals'=>1];
-function modClass($file, $modwrap, $activeModwrap) {
-    $mc = $modwrap[$file] ?? '';
-    if ($mc === '' || !isset($activeModwrap[$mc])) return '';
-    return $mc;
-}
-
-
 // ── Module title lookup ──────────────────────────────────────────────────────
 function moduleTitle($module, $weather, $lang) {
     switch ($module) {
@@ -289,11 +262,10 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 ?>
     <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($title); ?></div>
-        <?php $mc = modClass($mod['module'], $modwrap, $activeModwrap); ?>
         <?php if ($mod['module'] === 'weather34clock.php'): ?>
-        <div id="top_<?php echo $i; ?>" class="<?php echo $mc ? 'mod-'.$mc : ''; ?>"></div>
+        <div id="top_<?php echo $i; ?>"></div>
         <?php else: ?>
-        <div class="value"><div id="top_<?php echo $i; ?>" class="<?php echo $mc ? 'mod-'.$mc : ''; ?>"></div></div>
+        <div class="value"><div id="top_<?php echo $i; ?>"></div></div>
         <?php endif; ?>
     </div>
 <?php endforeach; ?>
@@ -316,7 +288,7 @@ foreach ($grid_modules as $i => $mod):
     <div class="weather-item" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="chartforecast"><?php echo $popups; ?></div>
         <span class='moduletitle'><?php echo $title; ?></span><br />
-        <div id="grid_<?php echo $i; ?>" class="<?php $gmc = modClass($mod['module'], $modwrap, $activeModwrap); echo $gmc ? 'mod-'.$gmc : ''; ?>"></div>
+        <div id="grid_<?php echo $i; ?>"></div>
     </div>
     <?php if ($i === count($grid_modules) - 1): ?>
 </div>

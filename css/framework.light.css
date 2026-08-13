@@ -5208,10 +5208,7 @@ smallrainunit {
   font-size: .85em  
 }
 
-.barometerconverter,
-.barometertrendx,
-.tempavg60,
-.tempindoorconverter {
+.barometerconverter, .barometertrendx, .tempavg60{
   font-size: 12px;
   position: absolute
 }
@@ -5222,11 +5219,6 @@ smallrainunit {
 
 .uvtodaydark {
   background: #4a636f
-}
-
-.tempindoorconverter {
-  margin-left: 245px;
-  margin-top: -15px
 }
 
 .tempavg60 {
@@ -7800,22 +7792,6 @@ indoortrends {
   font-family: arial, system
 }
 
-.indoortrendhouse1 {
-  position: absolute;
-  margin-left: 97px;
-  margin-top: 65px;
-  font-size: .55rem;
-  z-index: 1;
-  color: #fff
-}
-
-.indoorhomevalue1 {
-  position: relative;
-  margin-top: -93px;
-  left: 0;
-  font-size: 1.1em
-}
-
 indoorblue1,
 indoorgreen1,
 indoororange1,
@@ -7963,13 +7939,6 @@ topblue1 {
   background: var(--teal)
 }
 
-.indoorhomesvg1 {
-  margin-top: -12px;
-  left: 0;
-  margin-left: -86px;
-  color: var(--bg1)
-}
-
 .updatedtime,
 .updatedtimealert,
 .updatedtimecurrent,
@@ -8113,14 +8082,6 @@ valuewindunit {
   line-height: 15px
 }
 
-.heatcircle6 {
-  padding: 0;
-  width: 170px;
-  position: absolute;
-  margin-top: -35px;
-  margin-left: 140px
-}
-
 .inheatcircle2-content {
   position: absolute;
   color: var(--text);
@@ -8133,14 +8094,6 @@ valuewindunit {
   font: 500 11px weathertext2;
   display: block;
   line-height: 15px
-}
-
-.heatcircle7 {
-  padding: 0;
-  width: 170px;
-  position: relative;
-  margin-top: 50px;
-  margin-left: 49px
 }
 
 .intemphumcircle0-25,

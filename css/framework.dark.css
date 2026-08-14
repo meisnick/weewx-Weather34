@@ -7233,10 +7233,6 @@ topbarmetric {
 
 .title {
   text-transform: uppercase
-}.wulargeforecasthome wulargetemphihome {
-  font-family: weathertext2;
-  font-size: .65rem;
-  color: silver
 }
 
 .wuhumidity,
@@ -7244,20 +7240,6 @@ topbarmetric {
   padding-top: 0;
   display: flex;
   align-items: center
-}.wulargeforecasthome wulargetemphihome {
-  margin-top: 0;
-  margin-left: 1%;
-  font-weight: 500
-}
-
-.wulargeforecasthome wulargetemphihome span {
-  font-size: .7rem;
-  color: var(--orange)
-}
-
-.wulargeforecasthome wulargetemphihome {
-  font-size: 12px;
-  color: var(--orange)
 }.wulargeforecasthome wulargetempwindhome {
   position: absolute;
   color: #07727d;

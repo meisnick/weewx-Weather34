@@ -922,10 +922,6 @@ supdavis {
   margin-bottom: 10px
 }
 
-.updatedtimecurrent {
-  border-radius: 2px
-}
-
 .barometertrend1 {
   width: 100px;
   position: absolute;
@@ -3623,19 +3619,6 @@ smalluvunit {
   font-weight: 400
 }
 
-.forecasticoncurrent span1,
-.forecastnexthours,
-.forecastnexthours span1,
-.forecastnexthours span2 {
-  font-family: arial, helvetica, system;
-  color: silver
-}
-
-.forecastnexthours span1,
-.forecastnexthours span2 {
-  font-size: 12px
-}
-
 thunder {
   display: inline-block;
   position: relative;
@@ -3671,19 +3654,6 @@ heatindex {
   width: 200px;
   padding: 5px;
   line-height: 18px
-}
-
-.forecastsummary {
-  position: absolute;
-  font-family: Arial;
-  font-size: 12px;
-  line-height: 12px;
-  height: 35px;
-  padding: 5px;
-  margin-top: 20px;
-  margin-left: 125px;
-  max-width: 120px;
-  color: silver
 }
 
 indoorblue,
@@ -5651,18 +5621,7 @@ rainu {
   max-height: 90px;
   overflow: hidden;
   width: 92px
-}
-
-.cloudconverter,
-.eqcaution,
-.eqt,
-.rainrateextra,
-.rainratesmall,
-.sundown34,
-.sunup34,
-.wflaststrike,
-.wfstrike,
-wfstriketoday {
+}.eqcaution, .eqt, .rainrateextra, .rainratesmall, .sundown34, .sunup34, .wflaststrike, .wfstrike, wfstriketoday {
   position: absolute
 }
 
@@ -5736,38 +5695,12 @@ smallrainunita {
   background: 0
 }
 
-.cloudconvertercircle,
-.cloudconvertercircle2000 {
-  width: 6.0rem;
-  font-family: weathertext2;
-  height: 1rem;
-  line-height: 16px;
-  overflow: hidden;
-  padding-top: 0
-}
-
 .sundown34,
 .sunup34 {
   height: 4px;
   width: 8px;
   top: 3px;
   position: absolute
-}
-
-.cloudconvertercircle {
-  align-items: center;
-  border: 1px solid var(--bg1);
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  font-size: .57rem
-}
-
-.cloudconvertercircle2000 {
-  align-items: center;
-  border: 1px solid var(--bg1);
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  font-size: .57rem
 }
 
 value {
@@ -6933,13 +6866,7 @@ weather34feelsrate {
 indoorblue1,
 topblue1 {
   background: var(--teal)
-}
-
-.updatedtime,
-.updatedtimealert,
-.updatedtimecurrent,
-.updatedtimedir,
-.updatedtimeuv {
+}.updatedtime, .updatedtimealert, .updatedtimedir, .updatedtimeuv {
   width: 75px;
   text-align: center
 }
@@ -6966,16 +6893,6 @@ updatedtime1 {
 
 .updatedtimeuv span {
   color: silver
-}
-
-.updatedtimecurrent {
-  margin-top: -18px;
-  margin-left: 235px;
-  color: silver;
-  font: .65em weathertext2;
-  line-height: 10px;
-  background: 0;
-  padding: 3px
 }
 
 .updatedtimealert {

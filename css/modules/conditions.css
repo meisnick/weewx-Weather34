@@ -175,3 +175,35 @@
 [data-theme="light"] .mod-conditions .cloudconvertercircle2000 smalltempunit2 {
   color: #ffffff !important;
 }
+
+
+/* conditions comma-group first-selector base rules (lost during generation) */
+.mod-conditions .cloudconvertercircle {
+  width: 6.0rem;
+  font-family: weathertext2;
+  height: 1rem;
+  line-height: 16px;
+  overflow: hidden;
+  padding-top: 0
+}
+
+.mod-conditions .forecasticoncurrent span1 {
+  font-family: arial, helvetica, system;
+  color: silver
+}
+
+.mod-conditions .forecastnexthours {
+  font-family: arial, helvetica, system;
+  color: silver
+}
+
+.mod-conditions .forecastnexthours span1 {
+  font-family: arial, helvetica, system;
+  color: silver;
+  font-size: 12px
+}
+
+.mod-conditions .updatedtimecurrent {
+  width: 75px;
+  text-align: center
+}

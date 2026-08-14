@@ -17,10 +17,9 @@ if ($windunit == 'mph' || $windunit == 'kts') {
     $visibility = $metar34viskm . " km";
 }
 ?>
-<div class="updatedtimecurrent">
+<div class="mod-conditions"><div class="updatedtimecurrent">
 <?php $forecastime=filemtime('jsondata/me.txt');if(filesize('jsondata/me.txt')<160){echo $online;}
 else echo $online,"";echo " ",date($timeFormat,$forecastime);?></div>
-<div class="mod-conditions">
 <div class="cloudconverter">
 <?php //cloudbase-weather34
 $cloudcoverunit = '%';

@@ -94,3 +94,12 @@
   top: 20px;
   color: #e6e8ef
 }
+
+
+.mod-clock .weather34box.clock {
+  background-color: rgba(33, 34, 39, .8);
+  -webkit-box-shadow: inset 0 18px rgba(97, 106, 114, .1);
+  box-shadow: inset 0 18px rgba(97, 106, 114, .1);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}

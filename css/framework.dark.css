@@ -1900,12 +1900,7 @@ lightningrain {
 
 .blank {
   display: none
-}
-
-.weather34box.alert,
-.weather34box.clock,
-.weather34box.earthquake,
-.weather34box.indoor {
+}.weather34box.alert, .weather34box.earthquake, .weather34box.indoor {
   background-color: rgba(33, 34, 39, .8);
   -webkit-box-shadow: inset 0 18px rgba(97, 106, 114, .1);
   box-shadow: inset 0 18px rgba(97, 106, 114, .1);
@@ -2004,22 +1999,6 @@ spanm2 {
 }
 
 .weather34box.indoor titlespan {
-  color: var(--green);
-  font-weight: 500
-}
-
-.weather34box.clock {
-  background-repeat: no-repeat;
-  background-position: left 10px bottom 18px;
-  color: #fff
-}
-
-.weather34box.clock span {
-  color: silver;
-  font-weight: 500
-}
-
-.weather34box.clock titlespan {
   color: var(--green);
   font-weight: 500
 }
@@ -3022,15 +3001,7 @@ convtext {
   header {
     display: block;
     height: 0
-  }
-
-  .clock-container,
-  .homeindoordate,
-  .menuclock,
-  .w34logo,
-  oblueh1,
-  ogreenh1,
-  ogreyh1 {
+  }.homeindoordate, .menuclock, .w34logo, oblueh1, ogreenh1, ogreyh1 {
     display: none
   }
 
@@ -3051,15 +3022,7 @@ convtext {
   header {
     display: block;
     height: 0
-  }
-
-  .clock-container,
-  .homeindoordate,
-  .menuclock,
-  .w34logo,
-  oblueh1,
-  ogreenh1,
-  ogreyh1 {
+  }.homeindoordate, .menuclock, .w34logo, oblueh1, ogreenh1, ogreyh1 {
     display: none
   }
 
@@ -3117,15 +3080,7 @@ convtext {
   padding: 4px;
   line-height: 0;
   position: relative
-}
-
-.clock-container,
-.luxrate,
-.luxrate span,
-.timeago,
-.uvimax,
-memclock,
-smallicon {
+}.luxrate, .luxrate span, .timeago, .uvimax, memclock, smallicon {
   position: absolute
 }
 
@@ -3210,26 +3165,6 @@ tempred {
   margin-top: 5px;
   margin-bottom: -70px;
   color: #fff
-}
-
-.clock-container {
-  float: left;
-  color: #fff;
-  font: 1em weathertext2;
-  top: 10px;
-  list-style: none;
-  width: 140px;
-  height: 1.55em;
-  right: 137px;
-  border: 0;
-  padding-top: 0;
-  line-height: 16px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  background: rgba(205, 82, 69, .8)
 }
 
 body,

@@ -216,3 +216,11 @@
 
 /* Light theme overrides (color only differences) */
 [data-theme="light"] .mod-solaruv .uvcautionbig { color: var(--text); }
+
+
+.mod-solaruv .uvcontainer1 {
+  right: 0;
+  left: -10px;
+  float: left;
+  bottom: 0
+}

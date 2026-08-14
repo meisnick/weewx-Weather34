@@ -3769,15 +3769,7 @@ agolightning {
   margin-top: 3px;
   font-size: .9rem;
   font-family: weathertext2
-}
-
-.azimuth,
-.elevation,
-.luxratedark,
-.solarsun,
-.weather34luxvalue,
-.weather34solarvalue,
-nosun1 {
+}.azimuth, .elevation, .luxratedark, .solarsun, nosun1 {
   position: absolute
 }
 
@@ -3892,11 +3884,7 @@ talert {
   font-weight: strong;
   margin-top: 145px;
   color: var(--text-m)
-}
-
-.luxratedark,
-.weather34luxrate,
-.weather34solarvalue {
+}.luxratedark, .weather34luxrate {
   line-height: 10px
 }
 
@@ -3990,22 +3978,6 @@ verticalline {
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%)
-}
-
-.weather34luxvalue {
-  margin-left: 251px;
-  margin-top: 5px;
-  font-size: 11px;
-  line-height: 10px;
-  text-align: center;
-  max-width: 20px;
-  z-index: 1
-}
-
-.weather34luxvalue span {
-  font-size: 10px;
-  display: block;
-  z-index: 1
 }
 
 solarluxvalue {
@@ -4310,14 +4282,6 @@ smallrainunit {
   position: absolute
 }
 
-.uvtoday1-3 {
-  background: var(--green)
-}
-
-.uvtodaydark {
-  background: #4a636f
-}
-
 .tempavg60 {
   margin-left: 0;
   margin-top: 105px
@@ -4570,10 +4534,7 @@ trendmovementrisingx {
   color: var(--text-d);
   font-size: .7rem;
   font-family: Arial, system
-}
-
-.maxdata,
-.uvcontainer1 {
+}.maxdata {
   font-family: weathertext2
 }
 
@@ -4588,35 +4549,17 @@ trendmovementsteadyx {
   color: #fff;
   margin: 5px auto auto;
   left: 18%
-}
-
-.simsekcontainer,
-.uvcontainer1 {
+}.simsekcontainer {
   right: 0;
   left: -10px;
   float: left;
   bottom: 0
 }
 
-.uvcontainer1 {
-  position: relative;
-  margin: 40px 10px 10px 40px;
-  top: 15px
-}
-
 smalluvunit {
   font-size: .55rem;
   font-family: Arial, Helvetica, system
-}
-
-.simsek,
-.uvtoday1,
-.uvtoday1-3,
-.uvtoday11,
-.uvtoday4-5,
-.uvtoday6-8,
-.uvtoday9-10,
-.uvtodaydark {
+}.simsek {
   font-family: weathertext2;
   width: 5rem;
   height: 4.5rem;
@@ -4624,48 +4567,6 @@ smalluvunit {
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
   display: flex
-}
-
-.uvtoday1,
-.uvtoday1-3,
-.uvtoday11,
-.uvtoday4-5,
-.uvtoday6-8,
-.uvtoday9-10,
-.uvtodaydark {
-  font-size: 1.45rem;
-  padding-top: 7px;
-  color: #fff;
-  border-bottom: 15px solid var(--bg1);
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px
-}
-
-.uvcaution,
-.uvtrend {
-  position: absolute;
-  font-size: .65rem
-}
-
-.uvcaution time {
-  font-size: .55rem
-}
-
-.uvtoday4-5 {
-  background: var(--amber)
-}
-
-.uvtoday6-8 {
-  background: rgba(255, 124, 57, .8)
-}
-
-.uvtoday9-10 {
-  background: rgba(211, 93, 78, .8)
-}
-
-.uvtoday11 {
-  background: rgba(204, 135, 248, .7)
 }
 
 .simsek,
@@ -4676,19 +4577,6 @@ topyellow1 {
 toporange1,
 wfstriketoday {
   background: var(--orange-d)
-}
-
-.uvcaution {
-  margin-left: 33px;
-  margin-top: 112px;
-  font-family: Arial, Helvetica, system
-}
-
-.uvtrend {
-  margin-left: 47px;
-  margin-top: 60px;
-  z-index: 1;
-  color: #fff
 }
 
 .simsekcontainer {
@@ -5017,165 +4905,6 @@ canvas {
   font-size: .65rem;
   margin-left: 1px;
   color: rgba(68, 166, 181, 1)
-}
-
-.luxtoday,
-.luxtodaydark,
-.solarluxtoday,
-.solarluxtodaydark {
-  height: 1.75rem;
-  display: flex;
-  border-bottom: 11px solid var(--bg1);
-  font-family: weathertext2
-}
-
-.solartodaycontainer1 {
-  position: relative;
-  left: 110px;
-  top: 70px
-}
-
-.solarluxtoday,
-.solarluxtodaydark {
-  width: 3.15rem;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  font-size: .75rem;
-  padding-top: 0;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  background: rgba(255, 124, 57, .8)
-}
-
-.luxtoday,
-.luxtodaydark,
-.solarluxtodaydark {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px
-}
-
-.solarluxtodayword {
-  margin-left: 133px;
-  margin-top: 110px;
-  font-size: .65em;
-  color: var(--text-d);
-  position: absolute;
-  z-index: 10;
-  padding: 2px
-}
-
-.luxtodaycontainer1 {
-  position: relative;
-  left: -26px;
-  top: 70px
-}
-
-.luxtoday,
-.luxtodaydark {
-  width: 3.17rem;
-  -o-border-radius: 2px;
-  font-size: .75rem;
-  padding-top: 0;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  background: rgba(255, 124, 57, .8)
-}
-
-.luxtodayword,
-.weather34luxword,
-.weather34solarword {
-  font-size: .65em;
-  color: var(--text-d);
-  position: absolute;
-  z-index: 10
-}
-
-.luxtodayword {
-  margin-left: 228px;
-  margin-top: 110px;
-  padding: 2px
-}
-
-.luxtodaydark,
-.solarluxtodaydark {
-  background: #4a636f
-}
-
-.weather34luxword,
-.weather34solarword {
-  margin-top: 92px
-}
-
-.weather34solarvalue {
-  margin-left: 30px;
-  margin-top: 5px;
-  font-size: 12px;
-  text-align: center;
-  max-width: 20px;
-  z-index: 1
-}
-
-.weather34solarvalue span {
-  font-size: 10px;
-  display: block;
-  z-index: 1
-}
-
-.weather34luxword {
-  margin-left: 242px
-}
-
-.weather34solarword {
-  margin-left: 153px
-}
-
-.luxwrap,
-.solarwrap {
-  position: absolute;
-  border: 1px solid rgba(86, 95, 103, .3);
-  border-bottom: 3px solid rgba(86, 95, 103, .3);
-  width: 44pt;
-  padding: 0;
-  height: 30pt;
-  margin-top: 70px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px
-}
-
-.solarwrap {
-  margin-left: 136px
-}
-
-.luxwrap {
-  margin-left: 221px
-}
-
-.uvcautionbig {
-  display: flex;
-  height: 1rem;
-  width: 5.3rem;
-  border: 1px solid var(--bg1);
-  font-size: .6rem;
-  position: absolute;
-  margin-left: 220px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  margin-top: 5px;
-  color: silver
-}
-
-.uvcautionbig span {
-  color: var(--orange);
-  padding-right: 3px
 }
 
 currentmoonrise,

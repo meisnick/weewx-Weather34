@@ -1340,3 +1340,168 @@
 [data-theme="light"] .mod-sun .daylightvalue minutes {
   color: #2d3a4b;
 }
+
+/* ── comma-group first-selector base rules (lost during module generation) ── */
+.mod-sun .weather34sundarkday {
+  position: absolute;
+  height: 2.1rem;
+  width: 6.4rem;
+  overflow: hidden;
+  color: silver;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 1px
+}
+
+.mod-sun .weather34sunriseday {
+  position: absolute;
+  height: 5.1rem;
+  width: 8.2rem;
+  overflow: hidden;
+  color: silver;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 118px
+}
+
+.mod-sun .weather34luminancem {
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: silver;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 45px
+}
+
+.mod-sun .sunaboveweather34 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  display: inline;
+  margin-top: 3px;
+  margin-left: 2px;
+  position: absolute
+}
+
+.mod-sun .daylightword {
+  font-size: .6rem;
+  position: absolute;
+  color: silver
+}
+
+[data-theme="light"] .mod-sun .weather34sundarkday {
+  position: absolute;
+  height: 2.1rem;
+  width: 6.4rem;
+  overflow: hidden;
+  color: #2d3a4b;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 1px
+}
+
+[data-theme="light"] .mod-sun .weather34sunriseday {
+  position: absolute;
+  height: 5.1rem;
+  width: 8.2rem;
+  overflow: hidden;
+  color: #2d3a4b;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 118px
+}
+
+[data-theme="light"] .mod-sun .weather34luminancem {
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: #2d3a4b;
+  line-height: 8px;
+  font-family: weathertext2;
+  font-size: .6em;
+  margin-top: 45px
+}
+
+[data-theme="light"] .mod-sun .sunaboveweather34 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  display: inline;
+  margin-top: 3px;
+  margin-left: 2px
+}
+
+[data-theme="light"] .mod-sun .daylightword {
+  font-size: .6rem;
+  position: absolute;
+  color: #2d3a4b
+}
+
+/* ── .daylightvalue1 comma-group base (width/position/color lost during generation) ── */
+.mod-sun .daylightvalue1 {
+  width: 100px;
+  position: absolute;
+  color: silver
+}
+
+.mod-sun .daylightvalue1 minutes {
+  width: 100px;
+  position: absolute;
+  color: silver
+}
+
+.mod-sun .daylightvalue1 dayperiod {
+  width: 100px;
+  position: absolute;
+  color: silver
+}
+
+[data-theme="light"] .mod-sun .daylightvalue1 {
+  width: 100px;
+  position: absolute;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-sun .daylightvalue1 minutes {
+  width: 100px;
+  position: absolute;
+  color: #2d3a4b
+}
+
+[data-theme="light"] .mod-sun .daylightvalue1 dayperiod {
+  width: 100px;
+  position: absolute;
+  color: #2d3a4b
+}
+
+/* ── .daylightvalue1 hrs base (comma-group first-selector lost) ── */
+.mod-sun .daylightvalue1 {
+  font-family: weathertext2;
+  line-height: 20px;
+  border: 0
+}
+
+.mod-sun .daylightvalue1 hrs {
+  font-size: 9px;
+  top: -17px;
+  color: silver;
+  letter-spacing: normal;
+  position: absolute
+}
+
+[data-theme="light"] .mod-sun .daylightvalue1 hrs {
+  font-size: 9px;
+  top: -17px;
+  color: #2d3a4b;
+  letter-spacing: normal;
+  position: absolute
+}

@@ -177,9 +177,9 @@ $darkhours = 23 - $lighthours; $darkminutes = 60 - $lightmins;
 if ($darkminutes<10) $darkminutes= '0' .$darkminutes;
 $thehour=date('H');$theminute=date('i');
 ?>
-<style>.weather34sunclock {-webkit-transform:rotate(<?php echo ((($thehour*15)+($theminute/4))-86)?>deg);transform:rotate(<?php echo ((($thehour*15)+($theminute/4))-86)?>deg);border:5px solid rgba(255, 255,255,0);width:110px; height:110px;top:-9px;margin-left:104px}.weather34sunclock #poscircircle {display:none;}</style>
+<style>.mod-sun .weather34sunclock {-webkit-transform:rotate(<?php echo ((($thehour*15)+($theminute/4))-86)?>deg);transform:rotate(<?php echo ((($thehour*15)+($theminute/4))-86)?>deg);border:5px solid rgba(255, 255,255,0);width:110px; height:110px;top:-9px;margin-left:104px}.mod-sun .weather34sunclock #poscircircle {display:none;}</style>
 <?php if($elev>=0){$elev1=$_SunPos->elevation."&deg;<div class=sunaboveweather34>&nbsp;</div>";}else if($elev<0){$elev1=$_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>";}?>
-<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div>
+<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div><div class="mod-sun">
 <div class="daylightmoduleposition" >
 <?php echo '
 <div class="weather34sunlightday"><weather34daylightdaycircle></weather34daylightdaycircle> '.$daylight.' hrs<br>Daylight</div>
@@ -198,3 +198,4 @@ if ($positionlastmodule == 'moonphase.php'){echo '';} else echo'
 
 
 $d_crcl = 24*60/2;function clc_crcl ($integer){  global $d_crcl ;$h= (int) date ('H',$integer);$m = (int) date ('i',$integer);$calc = $m + $h*60; $calc= (float) 0.5 + ($calc / $d_crcl );if ($calc > 2.0) { $calc = $calc - 2;}return round ($calc,5);}$start  = clc_crcl ($result['sunrise']);$end    = clc_crcl ($result['sunset']);$pos    = clc_crcl ($now);if ($now > $result['sunset'] || $now < $result['sunrise'] ){$sn_clr = 'rgba(86,95,103,0)';}else {$sn_clr = 'rgba(255, 112,50,1)';}echo '<script>var c = document.getElementById("sundial");var ctx = c.getContext("2d");ctx.imageSmoothingEnabled =false;ctx.beginPath();ctx.arc(63, 65, 55, 0, 2 * Math.PI);ctx.lineWidth = 0;ctx.strokeStyle = "#565f67";ctx.stroke();ctx.beginPath();ctx.arc(63, 65, 55, '.$start.' * Math.PI, '.$end.' * Math.PI);ctx.lineWidth = 2;ctx.strokeStyle ="#3b9cac";ctx.stroke();ctx.beginPath();ctx.arc(63, 65, 55, '.$pos.'* Math.PI, '.$pos.' * Math.PI);ctx.lineWidth = 0;ctx.strokeStyle = "'.$sn_clr.'";ctx.stroke();</script> ';?>
+</div><!-- /mod-sun -->

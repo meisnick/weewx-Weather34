@@ -9085,3 +9085,50 @@ weather34mbhealth.is-fault .w34health__dot {
   font-size: 12px;
   position: absolute
 }
+/* restored for real-page cascade */
+
+
+.raincontainer1 {
+  position: relative;
+  margin: 40px 10px 10px 40px;
+  float: left;
+  bottom: 0;
+  right: 0;
+  left: 15px;
+  top: 47px
+}
+
+.rainrateextra {
+  margin-left: 227px;
+  margin-top: 130px
+}
+
+.heatcircle6 {
+  padding: 0;
+  width: 170px;
+  position: absolute;
+  margin-top: -35px;
+  margin-left: 140px
+}
+
+.heatcircle7 {
+  padding: 0;
+  width: 170px;
+  position: relative;
+  margin-top: 50px;
+  margin-left: 49px
+}
+/* restored for real-page cascade */
+
+
+topred1 {
+  background: var(--red)
+}
+
+topgreen1 {
+  background: var(--green)
+}
+
+topyellow2 {
+  background: rgba(233, 171, 74, .8)
+}

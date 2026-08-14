@@ -3596,94 +3596,14 @@ suplight {
   color: var(--text);
   left: 3px;
   font-size: .7em
-}
-
-.forecastdiv,
-.forecastforecasthome,
-.forecastforecastinghome {
-  font-family: weathertext2;
-  color: #07727d
-}
-
-.forecastforecasthome {
-  position: absolute;
-  width: 305px;
-  background: 0;
-  margin: 0px auto 0 5px;
-  font-size: .65rem;
-  display: block;
-  border-radius: 3px;
-  overflow: hidden
-}
-
-.forecastdiv,
-.forecastforecastinghome {
-  overflow: hidden
-}
-
-.forecastforecasthome forecasttemphihome,
-.forecastforecasthome forecasttempwindhome span,
-.forecastforecasthome forecasttempwindhome span2,
-.forecastweekdayhome {
+}.forecastforecasthome forecasttempwindhome span, .forecastforecasthome forecasttempwindhome span2 {
   font-family: weathertext2;
   font-size: .93em;
   color: var(--text)
-}
-
-.forecastdiv {
-  width: 305px;
-  height: 180px;
-  margin-top: 0
-}
-
-.forecastforecastinghome {
-  float: left;
-  display: inline;
-  width: 29%;
-  border-radius: 3px;
-  margin: 5px 0 100px 3.25%;
-  height: 140px;
-  padding: 1px;
-  background: 0;
-  border: 1px solid rgba(153, 155, 156, .1);
-  color: var(--text)
-}
-
-.forecastweekdayhome {
-  position: absolutue;
-  text-align: center;
-  padding: 1px;
-  color: var(--text);
-  margin: 0;
-  background: 0
-}
-
-.forecastforecasthome forecasttemphihome,
-.forecastforecasthome forecasttemplohome {
-  margin-top: 0;
-  margin-left: 1%;
-  font-weight: 500
-}
-
-.forecastforecasthome forecasttemphihome span {
-  font-size: .7rem;
-  color: var(--orange)
-}
-
-.forecastforecasthome forecasttemphihome {
-  font-size: 12px;
-  color: var(--orange)
-}
-
-.forecastforecasthome forecasttempwindhome,
-.forecastforecasthome forecasttempwindhome span4 {
+}.forecastforecasthome forecasttempwindhome {
   color: #07727d;
   font-family: weathertext2;
   font-size: .65rem
-}
-
-.forecastforecasthome forecasttemplohome span {
-  font-size: .7rem
 }
 
 .smallf,
@@ -5560,35 +5480,7 @@ weather34windrunspan {
 .beaufort1,
 .raintoday1 {
   justify-content: center
-}
-
-.barometerblue span,
-.forecastforecasthome,
-.forecastforecasthome forecasttemplohome,
-.forecastforecasthome forecasttemplohome span,
-.rainaverage span,
-.rainblue1,
-.raintodayblue,
-.tempblue span,
-.tempbluedew span,
-.tempbluefeels span,
-.weather34windrun,
-.yearrain,
-.yearrain span,
-blue,
-fall,
-lowtempspan,
-lowtemptitle,
-monthrainspan,
-oblue,
-oblueh1,
-rainblue,
-rainblue1,
-rainrateblue,
-tempblue,
-tfalling,
-wfblue,
-windchill {
+}.barometerblue span, .rainaverage span, .rainblue1, .raintodayblue, .tempblue span, .tempbluedew span, .tempbluefeels span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
   color: var(--teal)
 }
 
@@ -7342,10 +7234,6 @@ purplet {
   background: 0
 }
 
-.forecasthomeicons {
-  margin-bottom: -4px
-}
-
 bluetds,
 greentds,
 orangetds,
@@ -7493,66 +7381,10 @@ topbarmetric {
 
 .title {
   text-transform: uppercase
-}
-
-.wulargediv,
-.wulargeforecasthome,
-.wulargeforecastinghome {
-  font-family: weathertext2;
-  color: var(--text)
-}
-
-.wulargeforecasthome {
-  position: absolute;
-  width: 308px;
-  background: 0;
-  margin: 0 auto 0 10px;
-  font-size: .65rem;
-  display: block;
-  border-radius: 3px;
-  overflow: hidden
-}
-
-.wulargediv,
-.wulargeforecastinghome {
-  overflow: hidden
-}
-
-.wulargeforecasthome wulargetemphihome,
-.wulargeforecasthome wulargetempwindhome span,
-.wulargeforecasthome wulargetempwindhome span2,
-.wulargeweekdayhome {
+}.wulargeforecasthome wulargetemphihome {
   font-family: weathertext2;
   font-size: .65rem;
   color: var(--text)
-}
-
-.wulargediv {
-  width: 310px;
-  height: 180px;
-  margin-top: 3px
-}
-
-.wulargeforecastinghome {
-  float: left;
-  display: inline;
-  width: 290px;
-  border-radius: 2px;
-  margin: 0 0 100px 1%;
-  height: 140px;
-  padding: 0;
-  background: 0;
-  border: 0px solid rgba(153, 155, 156, .1);
-  color: var(--text)
-}
-
-.wulargeweekdayhome {
-  position: absolutue;
-  text-align: left;
-  padding: 1px;
-  color: var(--text);
-  margin: 0 0 0 5px;
-  background: 0
 }
 
 .wuhumidity,
@@ -7560,10 +7392,7 @@ topbarmetric {
   padding-top: 0;
   display: flex;
   align-items: center
-}
-
-.wulargeforecasthome wulargetemphihome,
-.wulargeforecasthome wulargetemplohome {
+}.wulargeforecasthome wulargetemphihome {
   margin-top: 0;
   margin-left: 1%;
   font-weight: 500
@@ -7577,10 +7406,7 @@ topbarmetric {
 .wulargeforecasthome wulargetemphihome {
   font-size: 12px;
   color: var(--orange)
-}
-
-.wulargeforecasthome wulargetempwindhome,
-.wulargeforecasthome wulargetempwindhome span4 {
+}.wulargeforecasthome wulargetempwindhome {
   position: absolute;
   color: #07727d;
   font-family: weathertext2;
@@ -7590,10 +7416,7 @@ topbarmetric {
 
 wulargetemplohome uv {
   font-weight: 500
-}
-
-wulargeforecasthome wulargetemplohome,
-wulargetemplohome {
+}wulargeforecasthome wulargetemplohome {
   font-size: .7rem;
   font-weight: 500
 }
@@ -7612,29 +7435,15 @@ wulargetemplohome uvspan {
   justify-content: center;
   margin-left: 140px;
   margin-top: 27px
-}
-
-.wulargerain,
-.wulargewindspeedicon {
+}.wulargerain {
   display: block;
   font-family: Arial, Helvetica, sans-serif;
   position: absolute
 }
 
-.wulargewindspeedicon,
-wulargetempdesc {
-  margin-top: 5px;
-  float: left;
-  font-size: 11px  
-}
-
 .wulargehomeicons {
   margin-bottom: -5px;
   float: left;
-  margin-left: 10px
-}
-
-.wulargewindspeedicon {
   margin-left: 10px
 }
 
@@ -7709,18 +7518,11 @@ wuhumidityword {
   top: 20px;
   color: #2d3a4b;
   font-family: Arial, Helvetica, sans-serif
-}
-
-.wulargeheatindex,
-.wulargeuvindex {
+}.wulargeheatindex {
   font-size: .7rem;
   float: none;
   font-family: Arial, Helvetica, sans-serif;
   position: absolute
-}
-
-.wulargeuvindex {
-  margin-top: 5px
 }
 
 .wulargeuvindex wuinfo {

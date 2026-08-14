@@ -104,7 +104,7 @@ $parsed_weather34wujson = json_decode($weather34wuurl,false);
 	 
 	 }?>
 <div class="updatedtime1"><?php $forecastime=filemtime('jsondata/wu.txt');$weather34wuurl = file_get_contents("jsondata/wu.txt");if(filesize('jsondata/wu.txt')<1){echo "".$offline. "";}else echo $online,"";echo " ",date($timeFormat,$forecastime);	?></div>
-<div class="wulargeforecasthome"><div class="wulargediv">
+<div class="mod-forecast"><div class="wulargeforecasthome"><div class="wulargediv">
 <?php //begin wu stuff 
 //convert lightning index
 if ( $wuskythunderidx==0 ){$wuskythunder=$lightningalert8.' &nbsp;No Thunder Storm';}else if ( $wuskythunderidx==1 ){$wuskythunder=$lightningalert8.' &nbsp;Thunder Storm Risk';}
@@ -241,3 +241,4 @@ else if ($wuskydayUV7>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime7
 else if ($wuskydayUV8>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
 else echo $lightningalert8. "&nbsp;No Cautions";
 echo '</div>';?></div></div></div>
+</div><!-- /mod-forecast -->

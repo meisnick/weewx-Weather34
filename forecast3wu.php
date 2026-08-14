@@ -16,7 +16,7 @@ if ($windunit=='kts'){$windunit="kn";}
 $jsonfile="jsondata/wu.txt";if(!file_exists($jsonfile)) {return;}
 ?>
 <div class="updatedtime1"><?php $forecastime=filemtime('jsondata/wu.txt');$forecasturl = file_get_contents("jsondata/wu.txt");if(filesize('jsondata/wu.txt')<1){echo "".$offline. "";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
-<div class="forecastforecasthome" ><div class="forecastdiv">
+<div class="mod-forecast"><div class="forecastforecasthome" ><div class="forecastdiv">
 <?php //begin wu stuff 
 $forecasturl=file_get_contents($jsonfile);$parsed_forecastjson = json_decode($forecasturl,false);$wucount = 0;
 for ($k=0;$k<=4;$k++) {if(empty($parsed_forecastjson->{'daypart'}[0]->{'iconCode'}[$k])) { continue; }if($wucount > 3) {break; }
@@ -98,3 +98,4 @@ if ($forecastdaynight=='D'){echo '<br><forecasttemplohome><uv>UV <uvspan>';if ($
 } // end for loop for icons
 ?>
 </div></div></div>
+</div><!-- /mod-forecast -->

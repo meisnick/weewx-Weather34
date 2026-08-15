@@ -61,7 +61,7 @@ body {
 }
 
 header {
-  background: rgba(33, 34, 39, .8);
+  background: var(--header-bg);
   border: 0;
   -webkit-box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
   -moz-box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
@@ -134,14 +134,14 @@ h6 .small {
 
 trendmovementfalling,
 trendmovementrising {
-  color: #fff;
+  color: var(--accent-ink);
   font-size: 13px;
   margin-left: 15px;
   font-family: weathertext2
 }
 
 trendmovementsteady {
-  color: #fff;
+  color: var(--accent-ink);
   font-size: 12px;
   margin-left: 10px
 }
@@ -392,7 +392,7 @@ suptempindoor {
 
 .gustspeedtrend1 max,
 .windspeedtrend1 max {
-  color: #ff9350
+  color: var(--warn-2)
 }
 
 .footertext,
@@ -692,7 +692,7 @@ uv8 {
   height: 43px;
   width: 43px;
   border-radius: 50%;
-  color: #fff;
+  color: var(--accent-ink);
   line-height: 10px;
   padding-top: 0;
   font-family: weathertext2, Helvetica, system;
@@ -705,7 +705,7 @@ uv3 {
 }
 
 uv10 {
-  background-color: #a475cb;
+  background-color: var(--uv-purple);
   font-size: 1.2em
 }
 
@@ -750,13 +750,13 @@ weather34-barometerlimitmaxf {
 notifyblue,
 notifyorange,
 notifyred {
-  color: #fff;
+  color: var(--accent-ink);
   padding: 0 2px;
   font-weight: 600
 }
 
 notifyblue {
-  background: #44a6b5;
+  background: var(--info-5);
   border-radius: 2px
 }
 
@@ -938,7 +938,7 @@ topdaqi10 {
   height: 2.4rem;
   font-size: .9em;
   padding-top: 7px;
-  color: #fff;
+  color: var(--accent-ink);
   border-bottom: 11px solid var(--bg1);
   display: flex;
   align-items: center;
@@ -953,43 +953,43 @@ topdaqi10 {
 }
 
 topdaqi1 {
-  background: #9cff9c
+  background: var(--aqi-good)
 }
 
 topdaqi2 {
-  background: #31ff00
+  background: var(--aqi-good-2)
 }
 
 topdaqi3 {
-  background: #31cf00
+  background: var(--aqi-good-3)
 }
 
 topdaqi4 {
-  background: #ff0
+  background: var(--aqi-moderate)
 }
 
 topdaqi5 {
-  background: #ffcf00
+  background: var(--aqi-moderate-2)
 }
 
 topdaqi6 {
-  background: #ff9a00
+  background: var(--aqi-usg)
 }
 
 topdaqi7 {
-  background: #ff6464
+  background: var(--aqi-unhealthy)
 }
 
 topdaqi8 {
-  background: red
+  background: var(--danger)
 }
 
 topdaqi9 {
-  background: #900
+  background: var(--aqi-vu)
 }
 
 topdaqi10 {
-  background: #ce30ff
+  background: var(--aqi-hazard)
 }
 
 .maxtimedate,
@@ -1095,7 +1095,7 @@ valuetextstrikes {
 }
 
 smallrainunita {
-  color: #fff;
+  color: var(--accent-ink);
   font-size: .45rem
 }
 
@@ -1194,7 +1194,7 @@ rainratetextheading {
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #8781bd;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1216,7 +1216,7 @@ rainratetextheading {
 .tempmodulehome-10-0c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #487ea9;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cool);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1295,7 +1295,7 @@ rainratetextheading {
 
 .tempmodulehome20-25c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ec5a34;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1330,7 +1330,7 @@ rainratetextheading {
 
 .tempmodulehome30-35c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #d65b4a;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1339,7 +1339,7 @@ rainratetextheading {
 .tempmodulehome35-40c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #dc4953;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1365,7 +1365,7 @@ rainratetextheading {
   justify-content: center;
   width: 4rem;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #e26870;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
   font-weight: 400
@@ -1401,7 +1401,7 @@ wfstriketoday {
   height: 2.45rem;
   font-size: .8rem;
   padding-top: 9px;
-  color: #fff;
+  color: var(--accent-ink);
   border-bottom: 11px solid var(--bg0);
   align-items: center;
   justify-content: center;
@@ -1446,7 +1446,7 @@ indooryellow1 {
   width: 3.4rem;
   height: 2.6rem;
   padding-top: 7px;
-  color: #fff;
+  color: var(--accent-ink);
   border-bottom: 11px solid var(--bg1);
   display: flex;
   align-items: center;
@@ -1461,7 +1461,7 @@ indooryellow1 {
 }
 
 indoorred1 {
-  background: rgba(211, 93, 78, 1)
+  background: var(--temp-hot-4-solid)
 }
 
 indoororange1 {
@@ -1620,7 +1620,7 @@ valuetitleunit {
 }
 
 bluetds {
-  background: #01a4b5
+  background: var(--info-2)
 }
 
 yellowtds {
@@ -1636,13 +1636,13 @@ greentds {
 }
 
 redtds {
-  background: -webkit-linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7));
-  background: linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7))
+  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
 }
 
 purpletds {
-  background: -webkit-linear-gradient(90deg, var(--red-l), rgba(157, 59, 165, .4));
-  background: linear-gradient(90deg, var(--red-l), rgba(157, 59, 165, .4))
+  background: -webkit-linear-gradient(90deg, var(--red-l), var(--purple-2));
+  background: linear-gradient(90deg, var(--red-l), var(--purple-2))
 }
 
 weather34darkdaycircle,
@@ -1723,7 +1723,7 @@ feelswugreen {
   position: absolute;
   font-family: weathertext2;
   padding-top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1747,14 +1747,14 @@ yellowwu {
   position: absolute;
   font-family: weathertext2;
   padding-top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   display: flex
 }
 
 windchillwu {
   justify-content: center;
   border-radius: 2px;
-  background: #009bab
+  background: var(--info-3)
 }
 
 bluewu,
@@ -1774,7 +1774,7 @@ yellowwu {
 
 bluewu,
 bluewuv {
-  background: #01a4b5
+  background: var(--info-2)
 }
 
 feelswuyellow,
@@ -1797,7 +1797,7 @@ greenwuv {
 
 purplewu,
 purplewuv {
-  background: #c282c5
+  background: var(--purple-3)
 }
 
 bluewuv,
@@ -1813,7 +1813,7 @@ yellowwuv {
   height: .9rem;
   font-size: .9em;
   padding-top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1841,7 +1841,7 @@ wuuvicon {
   border-radius: 2px;
   margin-left: -1px;
   top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   background: var(--orange-d);
   padding-left: 2px;
   padding-right: 2px;
@@ -1893,7 +1893,7 @@ weather34mbuptime {
   display: inline;
   right: 115px;
   top: 13px;
-  color: #c0c0c0;
+  color: var(--health-ok);
   font-size: .75em;
   font-family: weathertext2
 }
@@ -1938,7 +1938,7 @@ weather34menumarkerorange {
 }
 
 weather34menumarkerblue {
-  background: #44a6b5
+  background: var(--info-5)
 }
 
 weather34menumarkerorange {
@@ -2080,33 +2080,33 @@ body {
 }
 /* ── Light mode direct overrides ───────────────────────────────────────── */
 [data-theme="light"] body {
-  background: #fff;
+  background: var(--page-bg);
 }
 
 [data-theme="light"] .weather34box {
-  border: 1px solid rgba(230, 232, 239, .8);
-  background-color: #fff;
+  border: 1px solid var(--card-line);
+  background-color: var(--card-bg);
   -webkit-box-shadow: inset 0 20px var(--bg0);
   box-shadow: inset 0 20px var(--bg0);
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }
 
 [data-theme="light"] .weather34box .title,
 [data-theme="light"] .weather34box .value {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }
 
 /* ── Sensor health "check engine" light ──────────────────────────────────────
    Top-left counterpart to weather34mbuptime: identical font, size and colour
    when healthy, so it reads as part of the same status row. Only a real fault
-   changes the colour. Always visible -- a steady green dot is proof the check
+   changes the colour. Always visible -- a steady var(--good) dot is proof the check
    itself is still running. */
 weather34mbhealth {
   position: absolute;
   display: inline;
   left: 48px;
   top: 13px;
-  color: #c0c0c0;
+  color: var(--health-ok);
   font-size: .75em;
   font-family: weathertext2;
   white-space: nowrap;
@@ -2139,36 +2139,36 @@ weather34mbhealth a:hover {
    and menu stay dark by design (per layout.css --bg-header/--bg-menu).
    ════════════════════════════════════════════════════════════════════ */
 [data-theme="light"] .weather34box {
-  background-color: var(--bg-cell, #fff);
+  background-color: var(--bg-cell, var(--accent-ink));
   border: 2px solid var(--border-box, rgba(230,232,239,.8));
   border-top: 1px;
   border-bottom: 1px;
-  color: var(--text-body, #2d2d2d);
+  color: var(--text-body, var(--card-ink));
 }
 [data-theme="light"] .weather34box.alert,
 [data-theme="light"] .weather34box.clock,
 [data-theme="light"] .weather34box.earthquake,
 [data-theme="light"] .weather34box.indoor {
-  background-color: var(--bg-cell, #fff);
+  background-color: var(--bg-cell, var(--accent-ink));
 }
 [data-theme="light"] .weather34box .title,
 [data-theme="light"] .weather34box .value {
-  color: var(--text-body, #2d2d2d);
+  color: var(--text-body, var(--card-ink));
 }
 [data-theme="light"] .weather34box.indoor span {
-  color: var(--text-body, #2d2d2d);
+  color: var(--text-body, var(--card-ink));
 }
 [data-theme="light"] .weather-item {
-  background: var(--bg-cell, #fff);
+  background: var(--bg-cell, var(--accent-ink));
 }
 [data-theme="light"] .weather2-alert,
 [data-theme="light"] .weather2-clock,
 [data-theme="light"] .weatherfooter-item {
-  background: var(--bg-cell, #fff);
-  color: var(--text-body, #2d2d2d);
+  background: var(--bg-cell, var(--accent-ink));
+  color: var(--text-body, var(--card-ink));
 }
 [data-theme="light"] .lity-iframe-container iframe {
-  background: #fff;
+  background: var(--card-bg);
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -2216,5 +2216,5 @@ topgreen1 {
 }
 
 topyellow2 {
-  background: rgba(233, 171, 74, .8)
+  background: var(--warn-8)
 }

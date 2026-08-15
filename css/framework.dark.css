@@ -237,25 +237,6 @@ body {
   margin-bottom: 0
 }
 
-.w34uptime {
-  float: right;
-  margin-right: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 125px;
-  overflow: hidden;
-  line-height: 6px;
-  font-family: Arial, Helvetica, sans-serif, system;
-  font-size: .8em;
-  color: silver;
-  background: rgba(86, 95, 103, .4);
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  margin-top: -27px
-}
-
 .weather-item,
 body,
 header {
@@ -403,14 +384,6 @@ h6 {
   background: rgba(33, 34, 39, .8)
 }
 
-.weather2-item {
-  padding-left: 10px;
-  text-align: left;
-  text-transform: none;
-  height: 80px;
-  display: none
-}
-
 .weather2-container {
   -ms-text-size-adjust: 100%;
   -moz-font-smoothing: antialiased;
@@ -440,16 +413,6 @@ body.cols-6 .weather2-container {
   max-width: 1680px;
 }
 
-.weather2-item {
-  width: 33.3333%;
-  margin: 0 2px 2px 0;
-  font-smoothing: antialiased;
-  background-color: #fff;
-  border: 0 solid #e9ebf1;
-  float: left;
-  font-size: .9em
-}
-
 .weather2-alert,
 .weather2-clock,
 .weatherfooter-item {
@@ -460,11 +423,6 @@ body.cols-6 .weather2-container {
 .weatherfooter-container,
 .weatherfooter-item {
   font-family: Arial, system
-}
-
-.alerttopicons svg {
-  margin-top: 33px;
-  opacity: .5
 }
 
 .weatherfooter-container {
@@ -1305,12 +1263,6 @@ suptemp {
   -ms-animation: rotate 1.5s both linear
 }
 
-.Circle1,
-.Circle2 {
-  animation: enlarge;
-  animation-iteration-count: infinite
-}
-
 .windunits {
   color: silver
 }
@@ -1423,43 +1375,6 @@ suptemp3 {
   }
 }
 
-.Circle1 {
-  z-index: 100;
-  height: 80px;
-  width: 80px;
-  right: -20px;
-  top: -30px;
-  border-radius: 50%;
-  background-color: rgba(241, 125, 45, .9);
-  animation-duration: 5s
-}
-
-.Circle2,
-.Circle3 {
-  right: -50px;
-  border-radius: 50%
-}
-
-.Circle2 {
-  z-index: 80;
-  height: 150px;
-  width: 150px;
-  top: -70px;
-  background-color: rgba(241, 125, 45, .8);
-  animation-duration: 7s
-}
-
-.Circle3 {
-  z-index: 50;
-  height: 200px;
-  width: 200px;
-  top: -100px;
-  background-color: rgba(241, 125, 45, .7);
-  animation: enlarge;
-  animation-duration: 10s;
-  animation-iteration-count: infinite
-}
-
 .sun {
   z-index: 1000;
   font-size: 15px
@@ -1487,19 +1402,6 @@ suptemp3 {
 .weather34text,
 lightningrain {
   font-family: weathertext2
-}
-
-.designedby {
-  position: absolute;
-  margin-top: 15px;
-  margin-left: 10px;
-  padding: 5px;
-  font-size: 8px;
-  width: 100px;
-  line-height: 9px;
-  margin-right: 30px;
-  color: #555;
-  opacity: .7
 }
 
 .footertext,
@@ -1544,10 +1446,6 @@ lightningrain {
   right: 30px;
 }
 
-.hardwarelogo3 {
-  right: 30px;
-}
-
 .footertext-center {
   display: flex;
   flex-direction: column;
@@ -1573,31 +1471,6 @@ lightningrain {
 .online span {
   color: var(--green);
   font-weight: 600
-}
-
-.weatheroffline {
-  border-radius: 60px;
-  border: 0 solid var(--text-m);
-  height: 70px;
-  width: 70px;
-  position: relative;
-  top: 35%;
-  top: -webkit-calc(50% - 43px);
-  top: calc(50% - 43px);
-  left: 35%;
-  left: -webkit-calc(50% - 43px);
-  left: calc(50% - 43px);
-  color: var(--text-m);
-  font-size: 10px
-}
-
-.weatheroffline:after,
-.weatheroffline:before {
-  content: "";
-  left: 48%;
-  width: 2px;
-  border-radius: 5px;
-  position: absolute
 }
 
 .blank {
@@ -1712,13 +1585,6 @@ raingrey {
 
 spanm5 {
   font-size: 12px
-}
-
-.clockiconsvg {
-  position: relative;
-  top: 25px;
-  margin-left: 150px;
-  opacity: .5
 }
 
 red,
@@ -1965,12 +1831,6 @@ windui {
 
 dayi {
   font-size: 11px
-}
-
-.w34logo {
-  float: right;
-  margin-right: 20px;
-  margin-top: -30px
 }
 
 spanunit {
@@ -3057,20 +2917,6 @@ timeago {
   position: absolute
 }
 
-.bottomfooter {
-  height: 3.8em;
-  background: rgba(30, 31, 35, 1);
-  width: 100%;
-  margin-top: 5px
-}
-
-.bottomfooter a {
-  color: var(--text-d);
-  padding: 5px 15px 5px 5px;
-  float: right;
-  font-size: 14px
-}
-
 .azimuth,
 .elevation {
   color: var(--text-d)
@@ -3607,11 +3453,6 @@ smallsup {
   margin-left: 75px
 }
 
-.heatcircle5 {
-  margin-top: 120px;
-  margin-left: 100px
-}
-
 .windconvertercircleblue1,
 .windconvertercirclegreen1,
 .windconvertercircleorange1,
@@ -4045,12 +3886,6 @@ smallwindunit {
   position: absolute;
   width: 85px;
   left: -16px
-}
-
-
-
-.davisfooterlogo {
-  margin-top: 5px
 }
 
 img {

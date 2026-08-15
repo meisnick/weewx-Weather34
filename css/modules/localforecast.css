@@ -101,10 +101,10 @@
 }
 
 /* Color states using standard Weather34 color variables */
-.ym-quiet .ym-badge-top  { background: var(--green); }
-.ym-minor .ym-badge-top  { background: var(--amber); }
-.ym-active .ym-badge-top { background: var(--orange); }
-.ym-storm .ym-badge-top  { background: var(--red); }
+.ym-quiet .ym-badge-top  { background: var(--good); }
+.ym-minor .ym-badge-top  { background: var(--warn); }
+.ym-active .ym-badge-top { background: var(--caution); }
+.ym-storm .ym-badge-top  { background: var(--danger); }
 
 /* ── Nowcast Narrative Text Card ─────────────────────────────────────────── */
 .nowcast-text-card {
@@ -124,7 +124,7 @@
 .nowcast-quote {
   font-family: weathertext2, Georgia, serif;
   font-size: 1.2rem;
-  color: var(--orange);
+  color: var(--caution);
   line-height: 0.9;
   opacity: 0.7;
   width: 8px;

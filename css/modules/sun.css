@@ -92,7 +92,7 @@
 
   border: 0;
 
-  color: var(--orange)
+  color: var(--caution)
 
 }
 
@@ -137,7 +137,7 @@
 }
 
 .mod-sun .daylightvalue:before {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -360,7 +360,7 @@
 
   top: -3px;
 
-  color: var(--orange);
+  color: var(--caution);
 
   font-size: 26px;
 
@@ -877,7 +877,7 @@
 
   border: 0;
 
-  color: var(--red)
+  color: var(--danger)
 
 }
 
@@ -912,7 +912,7 @@
 }
 
 [data-theme="light"] .mod-sun .daylightvalue:before {
-  color: var(--red)
+  color: var(--danger)
 
 }
 
@@ -1196,7 +1196,7 @@
 }
 
 [data-theme="light"] .mod-sun .elevationword span {
-  color: var(--red)
+  color: var(--danger)
 
 }
 

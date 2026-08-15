@@ -235,7 +235,7 @@
 [data-theme="light"] .mod-conditions .cloudconvertercircle2000 {
   align-items: center;
 
-  background: var(--amber);
+  background: var(--warn);
 
   border: 2px solid var(--line-light);
 

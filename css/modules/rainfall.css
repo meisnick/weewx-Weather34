@@ -334,7 +334,7 @@
 
   font-size: .85em;
 
-  color: var(--teal);
+  color: var(--info-cool);
 
   background: 0
 
@@ -694,7 +694,7 @@
 
   color: var(--card-ink-blue);
 
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--info-cool);
 
   overflow: hidden
 

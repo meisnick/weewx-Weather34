@@ -40,7 +40,9 @@
   /* ---- status (semantic, separate from accent) ---- */
   --good:           var(--green);
   --warn:           var(--amber);
+  --caution:        var(--orange);
   --danger:         var(--red);
+  --danger-soft:    var(--red-l);
   --info:           var(--teal-b);
 
   /* ---- weather scale: temperature (cold -> hot) ---- */
@@ -52,6 +54,7 @@
   --temp-chilly:    #087883;
   --temp-mild:      #88b04b;
   --temp-mild-2:    var(--green);
+  --temp-mild-3:    var(--green2);
   --temp-warm:      var(--amber);
   --temp-warm-2:    var(--orange);
   --temp-warm-3:    #efa80f;
@@ -97,6 +100,7 @@
   --hum-wet:        #4e95a0;
 
   /* ---- status shades (info = teal family) ---- */
+  --info-cool:      var(--teal);
   --info-2:         #01a4b5;
   --info-3:         #009bab;
   --info-4:         #07727d;
@@ -241,7 +245,7 @@
   --warn-strong:    rgba(245, 101, 10, 1);
   --warn-5-soft:    rgba(208, 95, 45, .7);
   --ink-teal-soft:  rgba(74, 99, 111, .8);
-  --danger-soft:    rgba(211, 93, 78, .8);
+  --red-fade:       rgba(211, 93, 78, .8);
   --purple-4:       rgba(204, 135, 248, .7);
   --aurora-yellow:  #ebd825;
   --aurora-red:     #8d2315;

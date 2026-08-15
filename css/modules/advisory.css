@@ -41,14 +41,14 @@
 .mod-advisory .wulargeforecasthome wulargetemphihome span {
   font-size: .7rem;
 
-  color: var(--orange)
+  color: var(--caution)
 
 }
 
 .mod-advisory .wulargeforecasthome wulargetemphihome {
   font-size: 12px;
 
-  color: var(--orange)
+  color: var(--caution)
 
 }
 

@@ -265,7 +265,7 @@
 }
 
 .mod-wind .windirectiontext1 span {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -483,22 +483,22 @@
 }
 
 .mod-wind .weather34beaufort1-3 {
-  color: var(--green)
+  color: var(--good)
 
 }
 
 .mod-wind .weather34beaufort3-4 {
-  color: var(--amber)
+  color: var(--warn)
 
 }
 
 .mod-wind .weather34beaufort4-5 {
-  color: var(--orange)
+  color: var(--caution)
 
 }
 
 .mod-wind .weather34beaufort6 {
-  color: var(--red)
+  color: var(--danger)
 
 }
 
@@ -580,7 +580,7 @@
 [data-theme="light"] .mod-wind .windspeedtrend {
   margin-left: 45px;
 
-  color: var(--green);
+  color: var(--good);
 
   font: 700 12px arial, system;
 
@@ -591,12 +591,12 @@
 [data-theme="light"] .mod-wind .windspeedtrend span {
   margin-bottom: 0;
 
-  color: var(--green)
+  color: var(--good)
 
 }
 
 [data-theme="light"] .mod-wind .windunits {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -642,7 +642,7 @@
 }
 
 [data-theme="light"] .mod-wind .windirectiontext span {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -850,7 +850,7 @@
 }
 
 [data-theme="light"] .mod-wind .windspeedtrend1 max {
-  color: var(--red-l);
+  color: var(--danger-soft);
 
   font-weight: 600
 
@@ -884,7 +884,7 @@
 }
 
 [data-theme="light"] .mod-wind .windconvertercircleyellow1 {
-  background: var(--amber)
+  background: var(--warn)
 
 }
 
@@ -894,7 +894,7 @@
 }
 
 [data-theme="light"] .mod-wind .windconvertercirclered1 {
-  background: var(--red)
+  background: var(--danger)
 
 }
 
@@ -904,7 +904,7 @@
 }
 
 [data-theme="light"] .mod-wind .windconvertercirclegreen1 {
-  background: var(--green)
+  background: var(--good)
 
 }
 
@@ -995,12 +995,12 @@
 }
 
 [data-theme="light"] .mod-wind .weather34beaufort1-3 {
-  background: var(--green)
+  background: var(--good)
 
 }
 
 [data-theme="light"] .mod-wind .weather34beaufort3-4 {
-  background: var(--amber)
+  background: var(--warn)
 
 }
 

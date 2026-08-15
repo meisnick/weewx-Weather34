@@ -38,7 +38,7 @@
 
 .mod-lt-top-pill .val {
     font-family: weathertext2, Arial, sans-serif;
-    color: var(--orange);
+    color: var(--caution);
     font-size: 0.65rem;
 }
 
@@ -148,7 +148,7 @@
 
 .mod-lt-distance-pill .val {
     font-family: weathertext2, Arial, sans-serif;
-    color: var(--orange);
+    color: var(--caution);
     font-size: 0.65rem;
 }
 
@@ -202,7 +202,7 @@
 
 .mod-lt-pill .val {
     font-family: weathertext2, Arial, sans-serif;
-    color: var(--orange);
+    color: var(--caution);
     font-size: 0.65rem;
 }
 

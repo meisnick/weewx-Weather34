@@ -89,7 +89,7 @@
 .mod-barometer .barometermax span {
   font: 500 10px arial, system;
 
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -119,7 +119,7 @@
 }
 
 .mod-barometer .barometermin span {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -172,7 +172,7 @@
 .mod-barometer .barometerorange span {
   font-weight: 600;
 
-  color: var(--orange)
+  color: var(--caution)
 
 }
 
@@ -184,7 +184,7 @@
 .mod-barometer .barometergreen {
   color: var(--accent-ink);
 
-  background: var(--green);
+  background: var(--good);
 
   margin-left: 120px;
 
@@ -273,7 +273,7 @@
 
   margin-top: 75px;
 
-  color: var(--orange)
+  color: var(--caution)
 
 }
 
@@ -327,7 +327,7 @@
 .mod-barometer .barometertrend2 span {
   font-weight: 600;
 
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -344,7 +344,7 @@
 
   text-align: center;
 
-  color: var(--green);
+  color: var(--good);
 
   font-weight: 600
 
@@ -421,7 +421,7 @@
 
   border-width: 10px 5px 0;
 
-  border-color: var(--orange) transparent transparent;
+  border-color: var(--caution) transparent transparent;
 
   transform: translate(-50%, -50%)
 
@@ -440,7 +440,7 @@
 
   border: 0;
 
-  color: var(--orange);
+  color: var(--caution);
 
   font-size: 5px;
 
@@ -672,7 +672,7 @@
 }
 
 [data-theme="light"] .mod-barometer .barometertrend steady {
-  color: var(--green)
+  color: var(--good)
 
 }
 
@@ -823,7 +823,7 @@
 [data-theme="light"] .mod-barometer .barometerorange span {
   font-weight: 600;
 
-  color: var(--red)
+  color: var(--danger)
 
 }
 
@@ -837,7 +837,7 @@
 [data-theme="light"] .mod-barometer .barometergreen {
   color: var(--accent-ink);
 
-  background: var(--green);
+  background: var(--good);
 
   border-radius: 4px;
 
@@ -938,7 +938,7 @@
 }
 
 [data-theme="light"] .mod-barometer .pressuretextfast {
-  color: var(--red)
+  color: var(--danger)
 
 }
 
@@ -1058,7 +1058,7 @@
 
   border-width: 10px 5px 0;
 
-  border-color: var(--orange) transparent transparent;
+  border-color: var(--caution) transparent transparent;
 
   transform: translate(-50%, -50%)
 
@@ -1077,7 +1077,7 @@
 
   border: 0;
 
-  color: var(--orange);
+  color: var(--caution);
 
   font-size: 7px;
 
@@ -1151,7 +1151,7 @@
 
   height: 0;
 
-  border-color: var(--red);
+  border-color: var(--danger);
 
   -webkit-border-radius: 50%;
 

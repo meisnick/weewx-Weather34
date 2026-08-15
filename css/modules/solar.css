@@ -22,7 +22,7 @@
 
 .mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
 
-.mod-solaruv .uvtoday1-3 { background: var(--green); }
+.mod-solaruv .uvtoday1-3 { background: var(--good); }
 .mod-solaruv .uvtodaydark { background: var(--ink-teal-dark); }
 
 .mod-solaruv .uvcontainer1 { font-family: weathertext2; }
@@ -70,9 +70,9 @@
 
 .mod-solaruv .uvcaution time { font-size: .55rem; }
 
-.mod-solaruv .uvtoday4-5 { background: var(--amber); }
+.mod-solaruv .uvtoday4-5 { background: var(--warn); }
 .mod-solaruv .uvtoday6-8 { background: var(--warn-soft); }
-.mod-solaruv .uvtoday9-10 { background: var(--danger-soft); }
+.mod-solaruv .uvtoday9-10 { background: var(--red-fade); }
 .mod-solaruv .uvtoday11 { background: var(--purple-4); }
 
 .mod-solaruv .uvcaution {
@@ -212,7 +212,7 @@
   color: var(--card-ink-blue);
 }
 
-.mod-solaruv .uvcautionbig span { color: var(--orange); padding-right: 3px; }
+.mod-solaruv .uvcautionbig span { color: var(--caution); padding-right: 3px; }
 
 /* Light theme overrides (color only differences) */
 [data-theme="light"] .mod-solaruv .uvcautionbig { color: var(--card-ink-strong); }

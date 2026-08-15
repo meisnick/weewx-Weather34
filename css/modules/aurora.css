@@ -79,9 +79,9 @@
 /* Scale color states */
 .mod-aurora-rsg-scale-0 { background: var(--card-surface); }
 .mod-aurora-rsg-scale-1 { background: var(--aurora-yellow); }
-.mod-aurora-rsg-scale-2 { background: var(--amber); }
-.mod-aurora-rsg-scale-3 { background: var(--orange); }
-.mod-aurora-rsg-scale-4 { background: var(--red); }
+.mod-aurora-rsg-scale-2 { background: var(--warn); }
+.mod-aurora-rsg-scale-3 { background: var(--caution); }
+.mod-aurora-rsg-scale-4 { background: var(--danger); }
 .mod-aurora-rsg-scale-5 { background: var(--aurora-red); }
 
 /* Contrast overrides for lighter backgrounds */
@@ -166,12 +166,12 @@
 }
 
 .mod-aurora-kpmax.mod-aurora-kpmax-mid {
-  background: var(--amber);
+  background: var(--warn);
   color: var(--accent-ink);
 }
 
 .mod-aurora-kpmax.mod-aurora-kpmax-high {
-  background: var(--orange);
+  background: var(--caution);
   color: var(--accent-ink);
 }
 
@@ -188,10 +188,10 @@
   border-radius: 1px;
 }
 
-.mod-aurora-hm-green  { background: var(--green); }
-.mod-aurora-hm-yellow { background: var(--amber); }
-.mod-aurora-hm-orange { background: var(--orange); }
-.mod-aurora-hm-red    { background: var(--red); }
+.mod-aurora-hm-green  { background: var(--good); }
+.mod-aurora-hm-yellow { background: var(--warn); }
+.mod-aurora-hm-orange { background: var(--caution); }
+.mod-aurora-hm-red    { background: var(--danger); }
 .mod-aurora-hm-empty  { background: var(--card-surface); opacity: 0.5; }
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
@@ -235,10 +235,10 @@
   box-sizing: border-box;
 }
 .mod-aurora-prob-val.mod-aurora-prob-none   { background: var(--card-surface); color: var(--card-ink-blue); border-color: var(--card-surface); }
-.mod-aurora-prob-val.mod-aurora-prob-green  { background: var(--green); color: var(--accent-ink); border-color: var(--green); }
-.mod-aurora-prob-val.mod-aurora-prob-amber  { background: var(--amber); color: var(--accent-ink); border-color: var(--amber); }
-.mod-aurora-prob-val.mod-aurora-prob-orange { background: var(--orange); color: var(--accent-ink); border-color: var(--orange); }
-.mod-aurora-prob-val.mod-aurora-prob-red    { background: var(--red); color: var(--accent-ink); border-color: var(--red); }
+.mod-aurora-prob-val.mod-aurora-prob-green  { background: var(--good); color: var(--accent-ink); border-color: var(--good); }
+.mod-aurora-prob-val.mod-aurora-prob-amber  { background: var(--warn); color: var(--accent-ink); border-color: var(--warn); }
+.mod-aurora-prob-val.mod-aurora-prob-orange { background: var(--caution); color: var(--accent-ink); border-color: var(--caution); }
+.mod-aurora-prob-val.mod-aurora-prob-red    { background: var(--danger); color: var(--accent-ink); border-color: var(--danger); }
 
 [data-theme="light"] .mod-aurora-prob-val.mod-aurora-prob-none { background: var(--line-light-2); color: var(--card-ink-soft); border-color: var(--line-light-2); }
 

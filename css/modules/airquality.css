@@ -117,11 +117,11 @@
 }
 
 .mod-airquality .air0 {
-  background: var(--green)
+  background: var(--good)
 }
 
 .mod-airquality .air50 {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 .mod-airquality .air100 {
@@ -129,7 +129,7 @@
 }
 
 .mod-airquality .air150 {
-  background: var(--red)
+  background: var(--danger)
 }
 
 .mod-airquality .air300 {
@@ -190,11 +190,11 @@
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclered {
-  background: var(--red)
+  background: var(--temp-hot-4-solid)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclegreen {
-  background: var(--green)
+  background: var(--temp-mild-2)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclepurple {

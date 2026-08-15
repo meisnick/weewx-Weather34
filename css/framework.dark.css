@@ -284,7 +284,7 @@ sup {
 .menu li a:hover,
 .temptrendrising,
 a:hover {
-  color: var(--green)
+  color: var(--good)
 }
 
 #temp,
@@ -448,13 +448,13 @@ suptempindoor {
 }
 
 .weather34box.indoor titlespan {
-  color: var(--green);
+  color: var(--good);
   font-weight: 500
 }
 
 .weather34box.alert span,
 .weather34box.earthquake span {
-  color: var(--orange);
+  color: var(--caution);
   font-weight: 500
 }
 
@@ -701,7 +701,7 @@ uv8 {
 }
 
 uv3 {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 uv10 {
@@ -744,7 +744,7 @@ weather34-barometerlimitmaxf {
   margin-top: 0;
   left: 163px;
   font-size: 11px;
-  color: var(--orange)
+  color: var(--caution)
 }
 
 notifyblue,
@@ -761,13 +761,13 @@ notifyblue {
 }
 
 notifyorange {
-  background: var(--orange);
+  background: var(--caution);
   -webkit-border-radius: 2px;
   border-radius: 2px
 }
 
 notifyred {
-  background: var(--red);
+  background: var(--danger);
   -webkit-border-radius: 2px;
   border-radius: 2px
 }
@@ -889,7 +889,7 @@ smalluvunit {
 
 .simsek,
 topyellow1 {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 toporange1,
@@ -1044,13 +1044,13 @@ weather34windrunspan {
   margin-left: 3px;
   font-size: .5rem
 }.barometerblue span, .rainaverage span, .rainblue1, .raintodayblue, .tempblue span, .tempbluedew span, .tempbluefeels span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
-  color: var(--teal)
+  color: var(--info-cool)
 }
 
 .raintoday1,
 .suncircleblue,
 topblue1 {
-  background: var(--teal)
+  background: var(--info-cool)
 }
 
 forecasttemplohome uv {
@@ -1234,7 +1234,7 @@ rainratetextheading {
 
 .tempmodulehome0-5c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1258,7 +1258,7 @@ rainratetextheading {
 
 .tempmodulehome5-10c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1276,7 +1276,7 @@ rainratetextheading {
 .tempmodulehome10-15c,
 .tempmodulehome15-20c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1429,7 +1429,7 @@ wfstriketoday {
 
 .feelsindoorcircleyellow,
 indooryellow1 {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 indoortrends {
@@ -1465,11 +1465,11 @@ indoorred1 {
 }
 
 indoororange1 {
-  background: var(--orange)
+  background: var(--caution)
 }
 
 indoorgreen1 {
-  background: var(--green)
+  background: var(--good)
 }
 
 .feelsindoorcircleblue,
@@ -1477,7 +1477,7 @@ indoorgreen1 {
 .suncircleblue,
 indoorblue1,
 topblue1 {
-  background: var(--teal)
+  background: var(--info-cool)
 }
 
 .updatedtime,
@@ -1624,7 +1624,7 @@ bluetds {
 }
 
 yellowtds {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 orangetds {
@@ -1632,17 +1632,17 @@ orangetds {
 }
 
 greentds {
-  background: var(--green)
+  background: var(--good)
 }
 
 redtds {
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
+  background: -webkit-linear-gradient(90deg, var(--danger-soft), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--danger-soft), var(--temp-hot-4))
 }
 
 purpletds {
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--purple-2));
-  background: linear-gradient(90deg, var(--red-l), var(--purple-2))
+  background: -webkit-linear-gradient(90deg, var(--danger-soft), var(--purple-2));
+  background: linear-gradient(90deg, var(--danger-soft), var(--purple-2))
 }
 
 weather34darkdaycircle,
@@ -1656,7 +1656,7 @@ weather34daylightdaycircle {
 
 weather34daylightdaycircle {
   left: 25px;
-  background: var(--teal-b)
+  background: var(--info)
 }
 
 weather34darkdaycircle {
@@ -1698,7 +1698,7 @@ topbarmetric {
 heatindexwu,
 redwu,
 redwuv {
-  background: var(--red-l)
+  background: var(--danger-soft)
 }
 
 heatindexwu,
@@ -1780,7 +1780,7 @@ bluewuv {
 feelswuyellow,
 yellowwu,
 yellowwuv {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 feelswuorange,
@@ -1792,7 +1792,7 @@ orangewuv {
 feelswugreen,
 greenwu,
 greenwuv {
-  background: var(--green)
+  background: var(--good)
 }
 
 purplewu,
@@ -1946,11 +1946,11 @@ weather34menumarkerorange {
 }
 
 weather34menumarkeryellow {
-  background: var(--amber)
+  background: var(--warn)
 }
 
 weather34menumarkergreen {
-  background: var(--green)
+  background: var(--good)
 }
 
 weather34menumarkerbluegrey {
@@ -1958,7 +1958,7 @@ weather34menumarkerbluegrey {
 }
 
 weather34menumarkerred {
-  background: var(--red)
+  background: var(--danger)
 }
 
 weather34menumarkerlight {
@@ -2132,11 +2132,11 @@ weather34mbhealth a:hover {
 
 
 topred1 {
-  background: var(--red)
+  background: var(--danger)
 }
 
 topgreen1 {
-  background: var(--green)
+  background: var(--good)
 }
 
 topyellow2 {

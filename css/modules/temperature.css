@@ -193,47 +193,47 @@
 }
 
 .mod-temperature .outsideminus5 {
-  background: var(--teal);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--teal));
-  background: linear-gradient(45deg, var(--temp-cold), var(--teal))
+  background: var(--temp-cool);
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
+  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
 }
 
 .mod-temperature .outsideminus,
 
 .mod-temperature .outsidezero {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-cool-3));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-cool-3))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
 }
 
 .mod-temperature .outside0-5 {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
 }
 
 .mod-temperature .outside6-10 {
   background: var(--temp-mild);
-  background: -webkit-linear-gradient(90deg, var(--teal-b), var(--temp-mild));
-  background: linear-gradient(90deg, var(--teal-b), var(--temp-mild))
+  background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
+  background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
 }
 
 .mod-temperature .outside11-15 {
-  background: var(--amber);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
-  background: linear-gradient(90deg, var(--green), var(--amber))
+  background: var(--temp-warm);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
 }
 
 .mod-temperature .outside16-20 {
-  background: var(--orange);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--orange));
-  background: linear-gradient(90deg, var(--green), var(--orange))
+  background: var(--temp-warm-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
 }
 
 .mod-temperature .outside21-25 {
   background: var(--temp-warm-3);
-  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--red-l));
-  background: linear-gradient(90deg, var(--temp-warm-3), var(--red-l))
+  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
+  background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
 }
 
 .mod-temperature .outside26-30 {
@@ -243,9 +243,9 @@
 }
 
 .mod-temperature .outside31-35 {
-  background: var(--red-l);
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
+  background: var(--temp-hot);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
 }
 
 .mod-temperature .outside36-40 {
@@ -343,7 +343,7 @@
 .mod-temperature .temphumcircle60-80 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -363,7 +363,7 @@
 .mod-temperature .temphumcircle35-60 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -383,7 +383,7 @@
 .mod-temperature .temphumcircle0-25 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -466,7 +466,7 @@
 
 .mod-temperature .tempmodulehome0-5c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -492,7 +492,7 @@
 
 .mod-temperature .tempmodulehome5-10c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -513,7 +513,7 @@
 
 .mod-temperature .tempmodulehome15-20c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -652,7 +652,7 @@
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -661,7 +661,7 @@
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -675,7 +675,7 @@
   justify-content: center;
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -777,7 +777,7 @@
 .mod-temperature .intemphumcircle60-80 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -797,7 +797,7 @@
 .mod-temperature .intemphumcircle35-60 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -817,7 +817,7 @@
 .mod-temperature .intemphumcircle0-25 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -902,11 +902,11 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercirclered {
-  background: var(--red)
+  background: var(--temp-hot-4-solid)
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercirclegreen {
-  background: var(--green)
+  background: var(--temp-mild-2)
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercirclepurple {
@@ -1041,11 +1041,11 @@
 
 [data-theme="light"] .mod-temperature .tempconvertercircleblue {
   background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: -o-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: -moz-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: -ms-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: -o-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: -moz-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: -ms-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
 }
 
 [data-theme="light"] .mod-temperature .tempindoorextra {
@@ -1110,7 +1110,7 @@
   background: 0;
   border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1132,7 +1132,7 @@
   background: 0;
   border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1154,7 +1154,7 @@
   background: 0;
   border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1211,7 +1211,7 @@
 [data-theme="light"] .mod-temperature .tempmodulehome0-5c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1235,7 +1235,7 @@
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1255,7 +1255,7 @@
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1368,7 +1368,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome0-5c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1386,7 +1386,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1407,7 +1407,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome15-20c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1492,7 +1492,7 @@
 [data-theme="light"] .mod-temperature .intemphumcircle60-80 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1512,7 +1512,7 @@
 [data-theme="light"] .mod-temperature .intemphumcircle35-60 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1532,7 +1532,7 @@
 [data-theme="light"] .mod-temperature .intemphumcircle0-25 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1586,47 +1586,47 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
-  background: var(--teal);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--teal));
-  background: linear-gradient(45deg, var(--temp-cold), var(--teal))
+  background: var(--temp-cool);
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
+  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleminus,
 
 [data-theme="light"] .mod-temperature .tempconvertercirclezero {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-cool-3));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-cool-3))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle0-5 {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle6-10 {
   background: var(--temp-mild);
-  background: -webkit-linear-gradient(90deg, var(--teal-b), var(--temp-mild));
-  background: linear-gradient(90deg, var(--teal-b), var(--temp-mild))
+  background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
+  background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle11-15 {
-  background: var(--amber);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
-  background: linear-gradient(90deg, var(--green), var(--amber))
+  background: var(--temp-warm);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle16-20 {
-  background: var(--orange);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--orange));
-  background: linear-gradient(90deg, var(--green), var(--orange))
+  background: var(--temp-warm-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle21-25 {
   background: var(--temp-warm-3);
-  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--red-l));
-  background: linear-gradient(90deg, var(--temp-warm-3), var(--red-l))
+  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
+  background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle26-30 {
@@ -1636,9 +1636,9 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle31-35 {
-  background: var(--red-l);
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
+  background: var(--temp-hot);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle36-40 {

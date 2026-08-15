@@ -94,9 +94,9 @@
   top: -5px
 }
 
-.mod-topyear topred1 { background: var(--red) }
+.mod-topyear topred1 { background: var(--danger) }
 .mod-topyear toporange1 { background: var(--temp-hot-2) }
-.mod-topyear topblue1 { background: var(--teal) }
-.mod-topyear topgreen1 { background: var(--green) }
-.mod-topyear topyellow1 { background: var(--amber) }
+.mod-topyear topblue1 { background: var(--info-cool) }
+.mod-topyear topgreen1 { background: var(--good) }
+.mod-topyear topyellow1 { background: var(--warn) }
 .mod-topyear topyellow2 { background: var(--warn-8) }

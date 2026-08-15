@@ -30,7 +30,9 @@
   /* ---- status (semantic, separate from accent) ---- */
   --good:           var(--green);
   --warn:           var(--amber);
+  --caution:        var(--orange);
   --danger:         var(--red);
+  --danger-soft:    var(--red-l);
   --info:           var(--teal-b);
 
   /* ---- weather scale: temperature (cold -> hot) ---- */
@@ -42,6 +44,7 @@
   --temp-chilly:    #087883;
   --temp-mild:      #88b04b;
   --temp-mild-2:    var(--green);
+  --temp-mild-3:    var(--green2);
   --temp-warm:      var(--amber);
   --temp-warm-2:    var(--orange);
   --temp-warm-3:    #efa80f;
@@ -87,6 +90,7 @@
   --hum-wet:        #4e95a0;
 
   /* ---- status shades (info = teal family) ---- */
+  --info-cool:      var(--teal);
   --info-2:         #01a4b5;
   --info-3:         #009bab;
   --info-4:         #07727d;
@@ -231,7 +235,7 @@
   --warn-strong:    rgba(245, 101, 10, 1);
   --warn-5-soft:    rgba(208, 95, 45, .7);
   --ink-teal-soft:  rgba(74, 99, 111, .8);
-  --danger-soft:    rgba(211, 93, 78, .8);
+  --red-fade:       rgba(211, 93, 78, .8);
   --purple-4:       rgba(204, 135, 248, .7);
   --aurora-yellow:  #ebd825;
   --aurora-red:     #8d2315;
@@ -762,7 +766,7 @@ wm2 {
 
 .barometermax span {
   font: 500 10px arial, system;
-  color: var(--green)
+  color: var(--good)
 }
 
 .barometermin span,
@@ -771,7 +775,7 @@ wm2 {
 }
 
 .barometermin span {
-  color: var(--green)
+  color: var(--good)
 }
 
 .barometertrend falling,
@@ -914,7 +918,7 @@ hr {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background: var(--orange)
+  background: var(--caution)
 }
 
 .thearrow1:after,
@@ -990,7 +994,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--green)
+  background-color: var(--good)
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -1003,7 +1007,7 @@ html {
 }
 
 ::-moz-scrollbar-thumb {
-  background-color: var(--green)
+  background-color: var(--good)
 }
 
 ::-moz-scrollbar-thumb:hover {
@@ -1016,7 +1020,7 @@ html {
 }
 
 ::-o-scrollbar-thumb {
-  background-color: var(--green)
+  background-color: var(--good)
 }
 
 ::-o-scrollbar-thumb:hover {
@@ -1029,7 +1033,7 @@ html {
 }
 
 ::scrollbar-thumb {
-  background-color: var(--green)
+  background-color: var(--good)
 }
 
 ::scrollbar-thumb:hover {
@@ -1082,7 +1086,7 @@ suptemp {
 }
 
 .windirectiontext1 span {
-  color: var(--green)
+  color: var(--good)
 }
 
 .animated1 .thearrow1 {
@@ -1243,7 +1247,7 @@ lightningrain {
 }
 
 .online span {
-  color: var(--green);
+  color: var(--good);
   font-weight: 600
 }
 
@@ -1310,13 +1314,13 @@ ogreen {
 oorange,
 orange,
 rise {
-  color: var(--orange);
+  color: var(--caution);
 }
 
 ored,
 ored1,
 red {
-  color:var(--red);
+  color:var(--danger);
 }
 
 .main-menu:hover,
@@ -1395,7 +1399,7 @@ nav ul {
 greenfi,
 ogreen,
 ogreenh1 {
-  color: var(--green)
+  color: var(--good)
 }
 
 @media screen and (max-width:1024px) {
@@ -1439,15 +1443,15 @@ wfgreen {
 }
 
 windred {
-  color: var(--red-l)
+  color: var(--danger-soft)
 }
 
 windorange {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 windgreen {
-  color: var(--green)
+  color: var(--good)
 }
 
 adv {
@@ -1463,7 +1467,7 @@ adv {
 }
 
 .weather34solarrate {
-  color: var(--orange);
+  color: var(--caution);
   margin-left: 36px;
   margin-top: 27px
 }
@@ -1480,7 +1484,7 @@ adv {
 }
 
 .weather34uvrate {
-  color: var(--orange);
+  color: var(--caution);
   margin-left: 238px;
   margin-top: 17px
 }
@@ -1491,7 +1495,7 @@ adv {
 
 greenf,
 greenuv {
-  color: var(--green)
+  color: var(--good)
 }
 
 purpleuv {
@@ -1503,7 +1507,7 @@ reduv {
 }
 
 orangeuv {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 uppercase {
@@ -1535,7 +1539,7 @@ yellow1 {
 
 .barometerorange span {
   font-weight: 600;
-  color: var(--orange)
+  color: var(--caution)
 }
 
 .barometerblue span {
@@ -1543,11 +1547,11 @@ yellow1 {
 }
 
 trising {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 tsteady {
-  color: var(--green)
+  color: var(--good)
 }
 
 .text2,
@@ -1558,7 +1562,7 @@ tsteady {
 
 .barometertrend2 span {
   font-weight: 600;
-  color: var(--green)
+  color: var(--good)
 }
 
 .barometerconv {
@@ -1568,7 +1572,7 @@ tsteady {
   margin-top: 132px;
   position: absolute;
   text-align: center;
-  color: var(--green);
+  color: var(--good);
   font-weight: 600
 }
 
@@ -1797,7 +1801,7 @@ rainu {
 }
 
 .weather34sidebarMenuInner li a:hover {
-  color: var(--orange);
+  color: var(--caution);
   cursor: pointer;
   text-decoration: none;
   float: left;
@@ -1950,19 +1954,19 @@ spanewind2 {
 }
 
 indoorred {
-  color: var(--red)
+  color: var(--danger)
 }
 
 indoororange {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 indoorgreen {
-  color: var(--green)
+  color: var(--good)
 }
 
 indooryellow {
-  color: var(--amber)
+  color: var(--warn)
 }
 
 .orangeclock,
@@ -2012,11 +2016,11 @@ notifyblue {
 }
 
 uv0 {
-  background-color: var(--green)
+  background-color: var(--good)
 }
 
 uv5 {
-  background-color: var(--orange-h)
+  background-color: var(--warn-strong)
 }
 
 uv8 {
@@ -2034,7 +2038,7 @@ uv8 {
 }
 
 .weather34luxrate {
-  color: var(--orange-h);
+  color: var(--warn-strong);
   margin-left: 250px;
   margin-top: 27px;
   font-size: 12px;
@@ -2055,7 +2059,7 @@ luxrate {
 
 .luxrate {
   text-align: left;
-  color: var(--orange-h);
+  color: var(--warn-strong);
   font-size: 12px
 }
 
@@ -2087,7 +2091,7 @@ luxrate {
 }
 
 .luxratedark {
-  color: var(--orange-h);
+  color: var(--warn-strong);
   display: inline-block;
   left: -5px
 }
@@ -2112,7 +2116,7 @@ weather34-barometerlimitmin {
 
 weather34-barometerlimitmax {
   left: 140px;
-  color: var(--orange)
+  color: var(--caution)
 }
 
 weather34-barometerlimitminf {
@@ -2349,46 +2353,46 @@ weather34-barometerlimitminf {
 }
 
 .outsideminus5 {
-  background: var(--teal);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--teal));
-  background: linear-gradient(45deg, var(--temp-cold), var(--teal))
+  background: var(--temp-cool);
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
+  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
 }
 
 .outsideminus,
 .outsidezero {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-cool-3));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-cool-3))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
 }
 
 .outside0-5 {
-  background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
 }
 
 .outside6-10 {
   background: var(--temp-mild);
-  background: -webkit-linear-gradient(90deg, var(--teal-b), var(--temp-mild));
-  background: linear-gradient(90deg, var(--teal-b), var(--temp-mild))
+  background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
+  background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
 }
 
 .outside11-15 {
-  background: var(--amber);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
-  background: linear-gradient(90deg, var(--green), var(--amber))
+  background: var(--temp-warm);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
 }
 
 .outside16-20 {
-  background: var(--orange);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--orange));
-  background: linear-gradient(90deg, var(--green), var(--orange))
+  background: var(--temp-warm-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
+  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
 }
 
 .outside21-25 {
   background: var(--temp-warm-3);
-  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--red-l));
-  background: linear-gradient(90deg, var(--temp-warm-3), var(--red-l))
+  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
+  background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
 }
 
 .outside26-30 {
@@ -2398,9 +2402,9 @@ weather34-barometerlimitminf {
 }
 
 .outside31-35 {
-  background: var(--red-l);
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
+  background: var(--temp-hot);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
 }
 
 .outside36-40 {
@@ -2606,7 +2610,7 @@ moonrisecolor {
 }
 
 moonsetcolor {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 .weather34beaufort1-3,
@@ -2629,19 +2633,19 @@ moonsetcolor {
 }
 
 .weather34beaufort1-3 {
-  color: var(--green)
+  color: var(--good)
 }
 
 .weather34beaufort3-4 {
-  color: var(--amber)
+  color: var(--warn)
 }
 
 .weather34beaufort4-5 {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 .weather34beaufort6 {
-  color: var(--red)
+  color: var(--danger)
 }
 
 .weather34windrun {
@@ -2692,24 +2696,24 @@ moonsetcolor {
 forecasttemplohome uvspan,
 gustorange,
 torange {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 tred {
-  color: var(--red)
+  color: var(--danger)
 }
 
 tyellow {
-  color: var(--amber)
+  color: var(--warn)
 }
 
 tgreen {
-  color: var(--green)
+  color: var(--good)
 }
 
 oblue,
 tblue {
-  color: var(--teal)
+  color: var(--info-cool)
 }
 
 .tempindoorextra {
@@ -2819,17 +2823,17 @@ tblue {
 }
 
 maxred {
-  color: var(--orange)
+  color: var(--caution)
 }
 
 minblue {
-  color: var(--teal)
+  color: var(--info-cool)
 }
 
 .temphumcircle60-80 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -2849,7 +2853,7 @@ minblue {
 .temphumcircle35-60 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
+  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -2869,7 +2873,7 @@ minblue {
 .temphumcircle0-25 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -2911,7 +2915,7 @@ minblue {
 }
 
 raiblue {
-  color: var(--teal)
+  color: var(--info-cool)
 }
 
 .intempmodulehome0-5c,
@@ -2923,7 +2927,7 @@ raiblue {
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--teal);
+  box-shadow: inset 4px 0 0 0 var(--temp-cool);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -2934,7 +2938,7 @@ raiblue {
   justify-content: center;
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
+  box-shadow: inset 4px 0 0 0 var(--temp-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -2997,7 +3001,7 @@ raiblue {
 
 .eqtext color,
 .eqtext depth {
-  color: var(--green)
+  color: var(--good)
 }
 
 .mooninfo img,
@@ -3084,12 +3088,12 @@ orangeu {
 
 greent,
 greenu {
-  color: var(--green)
+  color: var(--good)
 }
 
 yellowt,
 yellowu {
-  color: var(--amber)
+  color: var(--warn)
 }
 
 redu {
@@ -3105,7 +3109,7 @@ bluet {
 }
 
 redt {
-  color: var(--red-l)
+  color: var(--danger-soft)
 }
 
 purplet {
@@ -3141,8 +3145,8 @@ blueu {
 }
 
 topbarimperial {
-  border: 1px solid var(--orange);
-  color: var(--orange)
+  border: 1px solid var(--caution);
+  color: var(--caution)
 }
 
 topbarmetric {
@@ -3252,7 +3256,7 @@ wulargetemplohome uvspan {
 }
 
 wuheatindex {
-  color: var(--red)
+  color: var(--danger)
 }
 
 .weather34admin {
@@ -3299,8 +3303,8 @@ wuheatindex {
 }
 
 topbarimperialf {
-  border: 1px solid var(--orange);
-  color: var(--orange)
+  border: 1px solid var(--caution);
+  color: var(--caution)
 }
 
 topbarmetricc {

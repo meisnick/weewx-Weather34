@@ -9,7 +9,7 @@
     padding-right: 10px;
     height: 100%;
     box-sizing: border-box;
-    --blue: var(--teal);
+    --blue: var(--info-cool);
 }
 
 /* --- List: Parsed Narrative Lines --- */
@@ -32,11 +32,11 @@
 /* --- Utility Classes for PHP Keyword Highlighting ---
    NOTE: .hl-* are SHARED helpers (used by the language files, e.g.
    languages/lang.en.php ConfirmOllamaStatus) — deliberately left unprefixed. */
-.hl-orange { color: var(--orange); font-weight: bold; }
-.hl-blue   { color: var(--blue, var(--teal));   font-weight: bold; }
-.hl-red    { color: var(--red);    font-weight: bold; }
-.hl-amber  { color: var(--amber);  font-weight: bold; }
-.hl-green  { color: var(--green);  font-weight: bold; }
+.hl-orange { color: var(--caution); font-weight: bold; }
+.hl-blue   { color: var(--blue, var(--info-cool));   font-weight: bold; }
+.hl-red    { color: var(--danger);    font-weight: bold; }
+.hl-amber  { color: var(--warn);  font-weight: bold; }
+.hl-green  { color: var(--good);  font-weight: bold; }
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .mod-fct-line {
@@ -175,15 +175,15 @@
 }
 
 /* Borders and header colors for each type */
-.mod-fct-border-red { border-left: 3px solid var(--red); }
-.mod-fct-border-amber { border-left: 3px solid var(--amber); }
-.mod-fct-border-blue { border-left: 3px solid var(--blue, var(--teal)); }
-.mod-fct-border-green { border-left: 3px solid var(--green); }
+.mod-fct-border-red { border-left: 3px solid var(--danger); }
+.mod-fct-border-amber { border-left: 3px solid var(--warn); }
+.mod-fct-border-blue { border-left: 3px solid var(--blue, var(--info-cool)); }
+.mod-fct-border-green { border-left: 3px solid var(--good); }
 
-.mod-fct-text-red { color: var(--red); }
-.mod-fct-text-amber { color: var(--amber); }
-.mod-fct-text-blue { color: var(--blue, var(--teal)); }
-.mod-fct-text-green { color: var(--green); }
+.mod-fct-text-red { color: var(--danger); }
+.mod-fct-text-amber { color: var(--warn); }
+.mod-fct-text-blue { color: var(--blue, var(--info-cool)); }
+.mod-fct-text-green { color: var(--good); }
 
 /* --- Light theme overrides for modal --- */
 [data-theme="light"] .mod-fct-modal {

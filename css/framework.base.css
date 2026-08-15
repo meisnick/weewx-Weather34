@@ -2687,6 +2687,10 @@ moonsetcolor {
   justify-content: center
 }
 
+.beaufort1 {
+  border-radius: 2px   /* prod parity: main.dark .beaufort1 { border-radius:2px } */
+}
+
 .indoorhomevalue1,
 .wfstrike {
   padding-right: 4px;

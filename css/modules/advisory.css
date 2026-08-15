@@ -1,6 +1,18 @@
 /* advisory module -- scoped to .mod-advisory */
 .mod-advisory { display: contents; }
 
+/* prod parity: main.dark sets weathertext2 on the WU-large card containers (unscoped) and the
+   regional-earthquake divs inherit it; the .mod-advisory scope dropped both, falling back to arial. */
+.mod-advisory .wulargediv,
+.mod-advisory .wulargeforecasthome,
+.mod-advisory .wulargeforecastinghome {
+  font-family: weathertext2;
+}
+.mod-advisory .eqcirclehomeregional,
+.mod-advisory .eqtexthomeregional {
+  font-family: weathertext2;
+}
+
 .mod-advisory .wulargeforecasthome {
   position: absolute;
 

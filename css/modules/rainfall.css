@@ -630,7 +630,9 @@
 
   width: 3.2rem;
 
-  border: 2px solid var(--line-light);
+  /* 1px (matches dark) so the fixed circle clips no worse than the accepted dark/prod baseline;
+     at 2px the extra border under border-box shaved the bottom of the "0.0" reading */
+  border: 1px solid var(--line-light);
 
   overflow: hidden;
 

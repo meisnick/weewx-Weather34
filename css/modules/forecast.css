@@ -342,7 +342,7 @@ position: absolutue;
 .mod-forecast .forecastforecasthome forecasttemphihome {
   font-family: weathertext2;
   font-size: 12px;
-  color: var(--card-ink-blue);
+  color: var(--caution);   /* prod parity: main.dark uses var(--orange) (==--caution) here; number colour is on the child tag */
   margin-top: 0;
   margin-left: 1%;
   font-weight: 500

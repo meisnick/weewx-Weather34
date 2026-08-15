@@ -74,7 +74,7 @@ function UpdateClock() {
 // Populate immediately (setInterval's first tick is +500ms), and start as soon as the DOM is
 // parsed -- the old window.onload gated the clock behind every image/webcam/AJAX finishing.
 function StartClock() { UpdateClock(); clockID = setInterval(UpdateClock, 500); }
-function KillClock()  { clearTimeout(clockID); }
+function KillClock()  { clearInterval(clockID); }
 if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', StartClock); }
 else { StartClock(); }
 </script>

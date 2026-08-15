@@ -1865,38 +1865,11 @@ lightningrain {
   box-sizing: border-box
 }
 
-.lightningrain,
-.rainaverage {
-  position: absolute;
-  font-size: 10px;
-  line-height: 12px;
-  font-weight: 700
-}
-
-.lightningrain {
-  color: silver;
-  margin-top: 142px;
-  margin-left: 0
-}
-
-.lightningrain span {
-  color: var(--orange);
-  font-weight: 700
-}
-
 .rainaverage {
   margin-top: 143px;
   width: 100px;
   color: silver;
   margin-left: 200px
-}
-
-lightningrain {
-  color: var(--orange);
-  font-size: 18px;
-  line-height: 17px;
-  display: block;
-  font-weight: 500
 }
 
 .weather34box-toparea {
@@ -3429,13 +3402,6 @@ uptime {
   top: 62px
 }
 
-.lightningstrikes {
-  margin-left: 9px;
-  margin-top: 50px;
-  width: 15px;
-  font-size: .3em
-}
-
 .wfstrikes {
   font-size: 9px;
   top: -12px;
@@ -3585,32 +3551,12 @@ indooryellow {
   color: var(--amber)
 }
 
-.lightningalerticon,
-.rainalerticon {
-  margin-top: -55px;
-  padding: 4px;
-  line-height: 20px;
-  position: relative
-}
-
 .homeweatheralert {
   top: 40px
 }
 
 .rainalerticon {
   margin-left: 150px
-}
-
-.lightningalerticon {
-  margin-left: 165px
-}
-
-lightningannual {
-  position: relative;
-  top: 0;
-  left: -15px;
-  display: block;
-  color: silver
 }
 
 .smallf {
@@ -3626,35 +3572,12 @@ lightningannual {
   left: 16px
 }
 
-.lightningstrikes1 {
-  position: absolute;
-  font-size: .7rem;
-  margin-left: 50px;
-  margin-top: 95px;
-  width: 15px
-}
-
-.homeindoorfeels1,
-.lightninginfo {
-  position: absolute;
-  margin-left: 125px;
-  padding: 5px;
-  text-align: left;
-  color: silver
-}
-
 .wfstrikes1 {
   position: absolute;
   font-size: 9px;
   top: -12px;
   left: 12px;
   color: silver
-}
-
-agolightning,
-lorange,
-lorange1 {
-  color: var(--orange)
 }
 
 .homeindoorfeels1 {
@@ -3665,32 +3588,9 @@ lorange1 {
   font-size: 14px
 }
 
-.lightninginfo {
-  margin-top: 45px;
-  border-radius: 2px;
-  border: 1px solid rgba(95, 96, 97, .4);
-  width: 140px;
-  font-size: .7rem
-}
-
-.lightningbox {
-  padding: 10px;
-  border-radius: 2px;
-  border: 1px solid solid
-}
-
 .orangeclock,
 notifyblue {
   -webkit-border-radius: 2px
-}
-
-lightningannualx,
-lightningannualx1 {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: block;
-  color: silver
 }
 
 lorange1 {
@@ -3701,10 +3601,6 @@ timeago {
   display: block;
   font-size: .7rem;
   color: silver
-}
-
-agolightning {
-  font-size: .7rem
 }
 
 .orangeclock {
@@ -7477,12 +7373,6 @@ body:hover {
   display: inline;
   right: -95px;
   margin-top: 25px;
-}
-.lightningiconx {
-  position: absolute;
-  display: inline;
-  right: 587px;
-  margin-top: 15px;
 }
 .maxtimedate,
 .mintimedatex {

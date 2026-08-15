@@ -623,10 +623,6 @@ a {
   padding-top: 5px
 }
 
-supraindropw {
-  color: #f8f8f8
-}
-
 .rainfalltext color {
   font-size: 1em;
   color: #387791
@@ -635,13 +631,6 @@ supraindropw {
 .humidity,
 a {
   color: silver
-}
-
-suprain,
-suprain1,
-suprain2 {
-  font-size: .4em;
-  font-weight: 800
 }
 
 .chartforecast {
@@ -1070,24 +1059,6 @@ hr {
   font-size: 12px;
   z-index: 10;
   margin: 0 0 auto
-}
-
-.rainvalue span {
-  font-size: .6em
-}
-
-.raintext1 {
-  font-size: 10px;
-  color: var(--teal-bb);
-  margin-left: 0;
-  margin-top: 1%;
-  line-height: 10px;
-  font-family: Arial, system
-}
-
-.raintext1 span {
-  color: silver;
-  font-size: 1em
 }
 
 .sunimage {
@@ -1692,13 +1663,6 @@ lightningrain {
   box-sizing: border-box
 }
 
-.rainaverage {
-  margin-top: 143px;
-  width: 100px;
-  color: silver;
-  margin-left: 200px
-}
-
 .weather34box-toparea {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
@@ -1871,10 +1835,6 @@ nav ul {
 grey,
 rainblue1 {
   font-size: 10px
-}
-
-rainblue {
-  font-size: 12px
 }
 
 .main-menu:hover,
@@ -2168,11 +2128,6 @@ orangeuv {
   color: var(--orange)
 }
 
-.rainrateblue,
-.raintodayblue {
-  font-family: weathertext2
-}
-
 uppercase {
   text-transform: capitalize
 }
@@ -2361,12 +2316,6 @@ tempyellow {
 .barometerorange {
   margin-top: -5px;
   margin-left: 0
-}.barometergreen, .daylightblue, .moonrisered, .rainrateblue {
-  margin-top: 0;
-  position: relative;
-  border-radius: 2px;
-  padding: 1px;
-  float: left
 }
 
 .barometerblue {
@@ -2403,28 +2352,6 @@ tempyellow {
 }.moonrisered, .moonrisered span {
   font-weight: 600;
   color: #fff
-}
-
-.rainrateblue {
-  margin-left: -5px;
-  width: 45px;
-  font-size: 12px
-}
-
-.rainrateblue span {
-  color: silver;
-  font-size: 10px
-}
-
-.raintodayblue {
-  position: relative;
-  padding: 1px;
-  border-radius: 2px;
-  margin-top: -7px;
-  margin-left: 5px;
-  float: left;
-  width: 55px;
-  font-size: 14px
 }
 
 .homeweathercompass2,
@@ -2745,11 +2672,6 @@ wfgreen {
 
 wfred {
   color: #ff5c41
-}
-
-.weather34todayraintext {
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%
 }
 
 .uvimax span {
@@ -3208,10 +3130,6 @@ indooryellow {
 
 .homeweatheralert {
   top: 40px
-}
-
-.rainalerticon {
-  margin-left: 150px
 }
 
 .smallf {
@@ -4578,13 +4496,6 @@ topblue1 {
   color: var(--orange)
 }
 
-.rainconvertercircleblue1,
-.rainratecirclehome {
-  align-items: center;
-  display: flex;
-  overflow: hidden
-}
-
 .feelslikebig span {
   color: silver;
   padding-right: 3px
@@ -4744,18 +4655,6 @@ rainu {
   border-radius: 2px
 }
 
-.rainratecirclehome {
-  line-height: 17px;
-  justify-content: left;
-  height: 1.4rem;
-  width: 4rem;
-  border: 1px solid var(--bg0);
-  border-radius: 2px;
-  font-size: .65rem;
-  color: #4a636f;
-  padding-top: 5px
-}
-
 .rainratesmall {
   top: 1px;
   color: silver;
@@ -4787,18 +4686,6 @@ valuetextstrikes {
 smallrainunita {
   color: #fff;
   font-size: .45rem
-}
-
-.rainconvertercircleblue1 {
-  justify-content: center;
-  height: 1rem;
-  width: 3.55rem;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  line-height: 16px;
-  font-size: .85em;
-  color: var(--teal);
-  background: 0
 }
 
 .sundown34,

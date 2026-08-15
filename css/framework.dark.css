@@ -3842,12 +3842,6 @@ canvas {
   color: rgba(68, 166, 181, 1)
 }
 
-currentmoonrise,
-currentmoonset {
-  font-size: .55rem;
-  position: absolute
-}
-
 .percent0,
 .percent10,
 .percent100,
@@ -3931,19 +3925,8 @@ currentdarkness {
   background: #4a636f
 }
 
-currentmoonrise {
-  left: 25px;
-  top: 22px
-}
-
 moonrisecolor {
   color: #44a6b5
-}
-
-currentmoonset {
-  left: -43px;
-  top: 6px;
-  width: 60px
 }
 
 .beaufort1,
@@ -4786,65 +4769,6 @@ wfstriketoday {
   font: .9em weathertext2
 }.mooncircle1, .mooncircle1 moonhead1, .mooncircle1 span, .mooncircle1:after, .moonphase {
   font-family: weathertext2
-}
-
-.mooncircle1,
-.mooncircle1:after {
-  color: silver;
-  margin-left: 0;
-  padding-top: 40px;
-  padding-bottom: 10px;
-  font-size: 1.3rem;
-  background: 0
-}.mooncircle1 moonhead1 {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility
-}
-
-.mooncircle1 {
-  position: absolute;
-  border-radius: 50%;
-  width: 112px;
-  height: 112px;
-  border: 4px solid rgba(59, 60, 63, 1)
-}
-
-.mooncircle1:after {
-  position: absolute;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  border: 4px solid rgba(59, 60, 63, 1)
-}
-
-.mooncircle1 luminance1 {
-  position: absolute;
-  font-size: .65rem;
-  margin-top: -17px;
-  color: silver;
-  display: block;
-  text-align: center;
-  margin-left: 25px
-}
-
-.mooncircle1 span {
-  color: silver;
-  text-align: center;
-  display: block;
-  margin-left: 0;
-  margin-top: -5px
-}
-
-.mooncircle1 moonhead1 {
-  position: absolute;
-  color: rgba(255, 112, 50, 1);
-  text-align: center;
-  font-size: 15px;
-  -moz-osx-font-smoothing: grayscale;
-  margin-top: 25px;
-  margin-left: -45px
 }.moonphase {
   color: silver
 }
@@ -4855,34 +4779,6 @@ wfstriketoday {
   display: block;
   padding-top: 5px;
   line-height: 14px
-}
-
-.moonphasebox {
-  width: 100%;
-  margin: 10px 0 0 85px
-}
-
-.moonposition {
-  font-size: 15px;
-  line-height: 20px;
-  padding-top: 2px
-}
-
-.luminance1 {
-  padding-top: 0;
-  margin-top: 0;
-  font: .9em weathertext2;
-  width: 300px
-}
-
-.luminance1:before {
-  content: "";
-  font-family: arial, system;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-smoothing: antialiased;
-  color: var(--teal-bb)
 }
 
 .moonrise {

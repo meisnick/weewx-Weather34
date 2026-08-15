@@ -5760,35 +5760,6 @@ updatedtime1 {
   line-height: 10px
 }
 
-.updatedtimeuv {
-  margin-top: -112px;
-  line-height: 10px
-}
-
-.updatedtimeuv span {
-  color: var(--text)
-}
-
-.updatedtimealert {
-  margin-top: 5px;
-  margin-left: 215px;
-  color: var(--text);
-  font: .65em weathertext2;
-  line-height: 10px
-}
-
-.updatedtimedir {
-  margin-top: -25px;
-  margin-left: 135px;
-  position: absolute;
-  color: var(--text);
-  font: .65em weathertext2;
-  line-height: 10px;
-  border-radius: 2px;
-  background: 0;
-  padding: 3px
-}
-
 updatedtime {
   position: absolute
 }

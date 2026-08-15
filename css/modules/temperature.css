@@ -16,7 +16,7 @@
 .mod-temperature .heatcircle2,
 
 .mod-temperature .heatcircle-content {
-  color: silver;
+  color: var(--card-ink-blue);
   float: left;
   margin-left: -4px;
   padding: 0;
@@ -40,7 +40,7 @@
 .mod-temperature .tempconvertercircleyellow {
   align-items: center;
   width: 4.2rem;
-  color: silver;
+  color: var(--card-ink-blue);
   font-family: weathertext2;
   height: 1rem;
   line-height: 16px;
@@ -175,7 +175,7 @@
   height: 5.5rem;
   font-size: 1.6rem;
   padding-top: 10px;
-  color: #f8f8f8;
+  color: var(--ink-bright);
   border-bottom: 18px solid var(--bg1);
   display: flex;
   align-items: center;
@@ -187,35 +187,35 @@
 }
 
 .mod-temperature .outsideminus10 {
-  background: #3369e7;
-  background: -webkit-linear-gradient(45deg, #ab49de, #3369e7);
-  background: linear-gradient(45deg, #ab49de, #3369e7)
+  background: var(--temp-cold-2);
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2));
+  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2))
 }
 
 .mod-temperature .outsideminus5 {
   background: var(--teal);
-  background: -webkit-linear-gradient(45deg, #ab49de, var(--teal));
-  background: linear-gradient(45deg, #ab49de, var(--teal))
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--teal));
+  background: linear-gradient(45deg, var(--temp-cold), var(--teal))
 }
 
 .mod-temperature .outsideminus,
 
 .mod-temperature .outsidezero {
   background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1));
-  background: linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1))
+  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-cool-3));
+  background: linear-gradient(270deg, var(--teal-b), var(--temp-cool-3))
 }
 
 .mod-temperature .outside0-5 {
   background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
-  background: linear-gradient(270deg, var(--teal-b), #087883)
+  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
 }
 
 .mod-temperature .outside6-10 {
-  background: #88b04b;
-  background: -webkit-linear-gradient(90deg, var(--teal-b), #88b04b);
-  background: linear-gradient(90deg, var(--teal-b), #88b04b)
+  background: var(--temp-mild);
+  background: -webkit-linear-gradient(90deg, var(--teal-b), var(--temp-mild));
+  background: linear-gradient(90deg, var(--teal-b), var(--temp-mild))
 }
 
 .mod-temperature .outside11-15 {
@@ -231,35 +231,35 @@
 }
 
 .mod-temperature .outside21-25 {
-  background: #efa80f;
-  background: -webkit-linear-gradient(90deg, #efa80f, var(--red-l));
-  background: linear-gradient(90deg, #efa80f, var(--red-l))
+  background: var(--temp-warm-3);
+  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--red-l));
+  background: linear-gradient(90deg, var(--temp-warm-3), var(--red-l))
 }
 
 .mod-temperature .outside26-30 {
   background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1));
-  background: linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1))
+  background: -webkit-linear-gradient(90deg, var(--orange-d), var(--temp-hot-3));
+  background: linear-gradient(90deg, var(--orange-d), var(--temp-hot-3))
 }
 
 .mod-temperature .outside31-35 {
   background: var(--red-l);
-  background: -webkit-linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7));
-  background: linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7))
+  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
 }
 
 .mod-temperature .outside36-40 {
-  background: #fd7641;
-  background: -webkit-linear-gradient(90deg, #fd7641, #637ff6);
-  background: linear-gradient(90deg, #fd7641, #637ff6)
+  background: var(--temp-hot-5);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue));
+  background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue))
 }
 
 .mod-temperature .outside41-45,
 
 .mod-temperature .outside50 {
-  background: #de2c52;
-  background: -webkit-linear-gradient(90deg, #de2c52, #637ff6);
-  background: linear-gradient(90deg, #de2c52, #637ff6)
+  background: var(--temp-extreme);
+  background: -webkit-linear-gradient(90deg, var(--temp-extreme), var(--temp-blue));
+  background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue))
 }
 
 .mod-temperature .temptrendx {
@@ -269,7 +269,7 @@
   text-align: center;
   z-index: auto;
   font-size: 0;
-  color: silver;
+  color: var(--card-ink-blue);
   font-family: Arial, system
 }
 
@@ -278,7 +278,7 @@
 .mod-temperature .maxdata {
   position: absolute;
   font-size: .75em;
-  color: #fff;
+  color: var(--accent-ink);
   margin: 5px auto auto;
   left: 18%
 }
@@ -328,7 +328,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-temperature .tempmodulehome-50-10c {
@@ -337,7 +337,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-weight: 400;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-temperature .temphumcircle60-80 {
@@ -373,7 +373,7 @@
 .mod-temperature .temphumcircle80-100 {
   border: 1px solid var(--bg0);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #4e95a0;
+  box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -424,7 +424,7 @@
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #8781bd;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -439,7 +439,7 @@
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--card-ink-blue);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -447,7 +447,7 @@
 .mod-temperature .tempmodulehome-10-0c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #487ea9;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cool);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -486,7 +486,7 @@
   font-family: weathertext2;
   font-size: .65rem;
   font-weight: 400;
-  color: silver;
+  color: var(--card-ink-blue);
   border: 1px solid var(--bg0)
 }
 
@@ -526,14 +526,14 @@
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--card-ink-blue);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
 
 .mod-temperature .tempmodulehome20-25c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ec5a34;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -563,14 +563,14 @@
   align-items: center;
   line-height: 16px;
   font-family: weathertext2;
-  color: silver;
+  color: var(--card-ink-blue);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
 
 .mod-temperature .tempmodulehome30-35c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #d65b4a;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -579,7 +579,7 @@
 .mod-temperature .tempmodulehome35-40c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #dc4953;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -594,7 +594,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .65rem;
-  color: silver;
+  color: var(--card-ink-blue);
   border: 1px solid var(--bg0);
   font-weight: 400
 }
@@ -614,7 +614,7 @@
   justify-content: center;
   width: 4rem;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #e26870;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
   font-weight: 400
@@ -636,7 +636,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .65rem;
-  color: silver;
+  color: var(--card-ink-blue);
   font-weight: 400;
   display: flex;
   overflow: hidden
@@ -692,7 +692,7 @@
   justify-content: center;
   border: 1px solid var(--bg0);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ec5a34;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -712,7 +712,7 @@
 
 .mod-temperature .inheatcircle-content {
   position: absolute;
-  color: silver;
+  color: var(--card-ink-blue);
   float: left;
   margin-left: -4px;
   padding: 0;
@@ -733,7 +733,7 @@
 
 .mod-temperature .inheatcircle2-content {
   position: absolute;
-  color: silver;
+  color: var(--card-ink-blue);
   float: left;
   margin-top: 35px;
   margin-left: -5px;
@@ -771,7 +771,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-temperature .intemphumcircle60-80 {
@@ -807,7 +807,7 @@
 .mod-temperature .intemphumcircle80-100 {
   border: 1px solid var(--bg0);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #4e95a0;
+  box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -858,7 +858,7 @@
   overflow: hidden;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  color: silver;
+  color: var(--card-ink-blue);
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
@@ -884,10 +884,10 @@
   justify-content: center;
   height: 1.1rem;
   width: 3.4rem;
-  border: 2px solid #e6e8ef;
+  border: 2px solid var(--line-light);
   overflow: hidden;
   border-radius: 4px;
-  color: #fff;
+  color: var(--accent-ink);
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em
@@ -898,7 +898,7 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleorange {
-  background: rgba(255, 124, 57, 1)
+  background: var(--temp-warm-2)
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercirclered {
@@ -910,7 +910,7 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercirclepurple {
-  background: #a475cb
+  background: var(--uv-purple)
 }
 
 [data-theme="light"] .mod-temperature .tempindoorconverter {
@@ -976,8 +976,8 @@
   height: 5.5rem;
   font-size: 1.6rem;
   padding-top: 10px;
-  color: #fff;
-  border-bottom: 18px solid #2d3238;
+  color: var(--accent-ink);
+  border-bottom: 18px solid var(--line-dark-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -994,7 +994,7 @@
   text-align: center;
   z-index: auto;
   font-size: 0;
-  color: #fff;
+  color: var(--accent-ink);
   font-family: Arial, system
 }
 
@@ -1002,7 +1002,7 @@
   position: absolute;
   font-family: weathertext2;
   font-size: .8em;
-  color: #fff;
+  color: var(--accent-ink);
   font-weight: 400;
   margin: 5px auto auto;
   left: 18%
@@ -1013,7 +1013,7 @@
 }
 
 [data-theme="light"] .mod-temperature .heatcircle-content {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
   float: left;
   margin-left: -4px;
   padding: 0;
@@ -1040,12 +1040,12 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleblue {
-  background: rgba(0, 164, 180, 1);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -o-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -moz-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -ms-linear-gradient(270deg, var(--teal-b), #087883);
-  background: linear-gradient(270deg, var(--teal-b), #087883)
+  background: var(--temp-cool-2);
+  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: -o-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: -moz-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: -ms-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
 }
 
 [data-theme="light"] .mod-temperature .tempindoorextra {
@@ -1075,7 +1075,7 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
@@ -1108,7 +1108,7 @@
 
 [data-theme="light"] .mod-temperature .temphumcircle60-80 {
   background: 0;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 3px;
@@ -1119,7 +1119,7 @@
 
 [data-theme="light"] .mod-temperature .temphumcircle25-35 {
   background: 0;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
   -webkit-border-top-right-radius: 3px;
@@ -1130,7 +1130,7 @@
 
 [data-theme="light"] .mod-temperature .temphumcircle35-60 {
   background: 0;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
   -webkit-border-top-right-radius: 3px;
@@ -1141,9 +1141,9 @@
 
 [data-theme="light"] .mod-temperature .temphumcircle80-100 {
   background: 0;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #4e95a0;
+  box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1152,7 +1152,7 @@
 
 [data-theme="light"] .mod-temperature .temphumcircle0-25 {
   background: 0;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
   -webkit-border-top-right-radius: 3px;
@@ -1168,15 +1168,15 @@
 [data-theme="light"] .mod-temperature .tempmodulehome0-5c {
   display: flex;
   width: 4rem;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .tempmodulehome-50-10c {
   align-items: center;
   justify-content: center;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #8781bd;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1187,13 +1187,13 @@
 [data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
 
 [data-theme="light"] .mod-temperature .tempmodulehome0-5c {
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   align-items: center
 }
 
 [data-theme="light"] .mod-temperature .tempmodulehome-10-0c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #487ea9;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-cool);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1224,8 +1224,8 @@
 [data-theme="light"] .mod-temperature .tempmodulehome20-25c,
 
 [data-theme="light"] .mod-temperature .tempmodulehome5-10c {
-  border: 1px solid #e6e8ef;
-  color: #2d3a4b;
+  border: 1px solid var(--line-light);
+  color: var(--card-ink-blue);
   width: 4rem;
   display: flex;
   font-weight: 400
@@ -1264,7 +1264,7 @@
   align-items: center;
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ec5a34;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1277,12 +1277,12 @@
   display: flex;
   align-items: center;
   width: 4rem;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .tempmodulehome25-30c {
   justify-content: center;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
   -webkit-border-top-right-radius: 2px;
@@ -1294,9 +1294,9 @@
 
 [data-theme="light"] .mod-temperature .tempmodulehome30-35c {
   justify-content: center;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #d65b4a;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1310,8 +1310,8 @@
   display: flex;
   align-items: center;
   width: 4rem;
-  color: #2d3a4b;
-  border: 1px solid #e6e8ef;
+  color: var(--card-ink-blue);
+  border: 1px solid var(--line-light);
   font-weight: 400
 }
 
@@ -1332,13 +1332,13 @@
   line-height: 16px;
   font-size: .65rem;
   font-family: weathertext2;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .tempmodulehome35-40c {
   justify-content: center;
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #dc4953;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-2);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1353,7 +1353,7 @@
 
 [data-theme="light"] .mod-temperature .tempmodulehome40-50c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #e26870;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-3);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1363,7 +1363,7 @@
 [data-theme="light"] .mod-temperature .intempmodulehome5-10c {
   display: flex;
   align-items: center;
-  border: 1px solid #e6e8ef
+  border: 1px solid var(--line-light)
 }
 
 [data-theme="light"] .mod-temperature .intempmodulehome0-5c {
@@ -1398,7 +1398,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome20-25c {
   align-items: center;
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
   display: flex;
   font-weight: 400
 }
@@ -1422,7 +1422,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome20-25c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ec5a34;
+  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }
@@ -1448,7 +1448,7 @@
   text-align: center;
   display: block;
   padding: 0;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .inheatcircle-content {
@@ -1486,11 +1486,11 @@
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-temperature .intemphumcircle60-80 {
-  border: 1px solid #393d40;
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -1500,7 +1500,7 @@
 }
 
 [data-theme="light"] .mod-temperature .intemphumcircle25-35 {
-  border: 1px solid #393d40;
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--orange-d);
   -webkit-border-top-right-radius: 2px;
@@ -1510,7 +1510,7 @@
 }
 
 [data-theme="light"] .mod-temperature .intemphumcircle35-60 {
-  border: 1px solid #393d40;
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
   -webkit-border-top-right-radius: 2px;
@@ -1520,9 +1520,9 @@
 }
 
 [data-theme="light"] .mod-temperature .intemphumcircle80-100 {
-  border: 1px solid #393d40;
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 #4e95a0;
+  box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1530,7 +1530,7 @@
 }
 
 [data-theme="light"] .mod-temperature .intemphumcircle0-25 {
-  border: 1px solid #393d40;
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
   -webkit-border-top-right-radius: 2px;
@@ -1569,46 +1569,46 @@
   justify-content: center;
   height: 1.1rem;
   width: 3.4rem;
-  border: 2px solid #e6e8ef;
+  border: 2px solid var(--line-light);
   overflow: hidden;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: #fff;
+  color: var(--accent-ink);
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleminus10 {
-  background: #3369e7;
-  background: -webkit-linear-gradient(45deg, #ab49de, #3369e7);
-  background: linear-gradient(45deg, #ab49de, #3369e7)
+  background: var(--temp-cold-2);
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2));
+  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
   background: var(--teal);
-  background: -webkit-linear-gradient(45deg, #ab49de, var(--teal));
-  background: linear-gradient(45deg, #ab49de, var(--teal))
+  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--teal));
+  background: linear-gradient(45deg, var(--temp-cold), var(--teal))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleminus,
 
 [data-theme="light"] .mod-temperature .tempconvertercirclezero {
   background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1));
-  background: linear-gradient(270deg, var(--teal-b), rgba(80, 69, 188, 1))
+  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-cool-3));
+  background: linear-gradient(270deg, var(--teal-b), var(--temp-cool-3))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle0-5 {
   background: var(--teal-b);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
-  background: linear-gradient(270deg, var(--teal-b), #087883)
+  background: -webkit-linear-gradient(270deg, var(--teal-b), var(--temp-chilly));
+  background: linear-gradient(270deg, var(--teal-b), var(--temp-chilly))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle6-10 {
-  background: #88b04b;
-  background: -webkit-linear-gradient(90deg, var(--teal-b), #88b04b);
-  background: linear-gradient(90deg, var(--teal-b), #88b04b)
+  background: var(--temp-mild);
+  background: -webkit-linear-gradient(90deg, var(--teal-b), var(--temp-mild));
+  background: linear-gradient(90deg, var(--teal-b), var(--temp-mild))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle11-15 {
@@ -1624,35 +1624,35 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle21-25 {
-  background: #efa80f;
-  background: -webkit-linear-gradient(90deg, #efa80f, var(--red-l));
-  background: linear-gradient(90deg, #efa80f, var(--red-l))
+  background: var(--temp-warm-3);
+  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--red-l));
+  background: linear-gradient(90deg, var(--temp-warm-3), var(--red-l))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle26-30 {
   background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1));
-  background: linear-gradient(90deg, var(--orange-d), rgba(236, 102, 21, 1))
+  background: -webkit-linear-gradient(90deg, var(--orange-d), var(--temp-hot-3));
+  background: linear-gradient(90deg, var(--orange-d), var(--temp-hot-3))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle31-35 {
   background: var(--red-l);
-  background: -webkit-linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7));
-  background: linear-gradient(90deg, var(--red-l), rgba(211, 93, 78, .7))
+  background: -webkit-linear-gradient(90deg, var(--red-l), var(--temp-hot-4));
+  background: linear-gradient(90deg, var(--red-l), var(--temp-hot-4))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle36-40 {
-  background: #fd7641;
-  background: -webkit-linear-gradient(90deg, #fd7641, #637ff6);
-  background: linear-gradient(90deg, #fd7641, #637ff6)
+  background: var(--temp-hot-5);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue));
+  background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle41-45,
 
 [data-theme="light"] .mod-temperature .tempconvertercircle50 {
-  background: #de2c52;
-  background: -webkit-linear-gradient(90deg, #de2c52, #637ff6);
-  background: linear-gradient(90deg, #de2c52, #637ff6)
+  background: var(--temp-extreme);
+  background: -webkit-linear-gradient(90deg, var(--temp-extreme), var(--temp-blue));
+  background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue))
 }
 
 
@@ -1677,7 +1677,7 @@
 }
 
 [data-theme="light"] .mod-temperature .temptrendx {
-  color: #2d3a4b !important;
+  color: var(--card-ink-blue) !important;
 }
 
 /* indoor-temperature card (scoped under .mod-temperature) */
@@ -1701,13 +1701,13 @@
   margin-top: 65px;
   font-size: .55rem;
   z-index: 1;
-  color: #fff
+  color: var(--accent-ink)
 }
 
 .mod-temperature .weather34indoorword {
   margin-left: 93px;
   margin-top: 26px;
-  color: silver;
+  color: var(--card-ink-blue);
   font-size: .55rem;
   font-family: arial, system;
   position: absolute

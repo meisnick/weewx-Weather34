@@ -651,13 +651,7 @@ a {
   margin-top: -32px;
   margin-left: 212px;
   padding: 2px
-}
-
-.chartforecast,
-.chartforecastlink,
-.fullmoon,
-.moonrise,
-.moonset {
+}.chartforecast, .chartforecastlink {
   padding-top: 5px
 }
 
@@ -771,23 +765,6 @@ humiditycolor {
 daylighthours:before {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased
-}
-
-.moonrise {
-  margin-top: -5px;
-  margin-left: 0;
-  font-size: 12px
-}
-
-.moonset {
-  margin-top: -32px;
-  margin-left: 80px
-}
-
-.fullmoon {
-  margin-top: -6px;
-  margin-left: 0;
-  font-size: 12px
 }
 
 in,
@@ -2666,7 +2643,7 @@ tempyellow {
 .barometerorange {
   margin-top: -5px;
   margin-left: 0
-}.barometergreen, .daylightblue, .moonrisered, .moonsetblue, .rainrateblue {
+}.barometergreen, .daylightblue, .moonrisered, .rainrateblue {
   margin-top: 0;
   position: relative;
   border-radius: 2px;
@@ -2692,7 +2669,7 @@ tempyellow {
   background: var(--green);
   margin-left: 120px;
   width: 60px
-}.daylightblue, .moonrisered, .moonsetblue {
+}.daylightblue, .moonrisered {
   width: 65px;
   line-height: 10px
 }
@@ -2705,11 +2682,7 @@ tempyellow {
   color: silver
 }.daylightblue {
   margin-left: 20px
-}
-
-.moonrisered,
-.moonrisered span,
-.moonsetblue {
+}.moonrisered, .moonrisered span {
   font-weight: 600;
   color: #fff
 }
@@ -5913,18 +5886,7 @@ wfstriketoday {
   content: "";
   color: var(--teal-bb);
   font: .9em weathertext2
-}
-
-.fullmoon1,
-.mooncircle1,
-.mooncircle1 moonhead1,
-.mooncircle1 span,
-.mooncircle1:after,
-.moonphase,
-.moonrise1,
-.moonrise1 span,
-.moonset1,
-.moonset1 span {
+}.mooncircle1, .mooncircle1 moonhead1, .mooncircle1 span, .mooncircle1:after, .moonphase {
   font-family: weathertext2
 }
 
@@ -5936,11 +5898,7 @@ wfstriketoday {
   padding-bottom: 10px;
   font-size: 1.3rem;
   background: 0
-}
-
-.mooncircle1 moonhead1,
-.moonrise1,
-.moonset1 {
+}.mooncircle1 moonhead1 {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility
 }
@@ -5989,10 +5947,7 @@ wfstriketoday {
   -moz-osx-font-smoothing: grayscale;
   margin-top: 25px;
   margin-left: -45px
-}
-
-.moonphase,
-.moonrise1 {
+}.moonphase {
   color: silver
 }
 
@@ -6015,62 +5970,6 @@ wfstriketoday {
   padding-top: 2px
 }
 
-.fullmoon1,
-.meteorshower,
-.moonrise1,
-.moonset1,
-.newmoon1 {
-  position: absolute;
-  padding-top: 5px;
-  line-height: 10px;
-  text-align: center
-}
-
-.moonrise1,
-.moonset1 {
-  width: 75px;
-  font-size: .55rem;
-  -moz-osx-font-smoothing: grayscale
-}
-
-.fullmoon1,
-.meteorshower,
-.newmoon1 {
-  font-size: .55rem;
-  width: 120px
-}
-
-.moonrise1 span {
-  color: silver;
-  margin-left: 25px
-}
-
-.moonset1 {
-  margin-top: 120px;
-  margin-left: -105px;
-  color: silver
-}
-
-.moonset1 span {
-  color: silver;
-  margin-left: 15px
-}
-
-.fullmoon1,
-.meteorshower,
-.newmoon1 {
-  color: silver;
-  font-family: weathertext2
-}
-
-.fullmoon1 span {
-  margin-left: 8px
-}
-
-.newmoon1 span {
-  margin-left: 5px
-}
-
 .luminance1 {
   padding-top: 0;
   margin-top: 0;
@@ -6086,6 +5985,23 @@ wfstriketoday {
   -moz-osx-font-smoothing: grayscale;
   -moz-font-smoothing: antialiased;
   color: var(--teal-bb)
+}
+
+.moonrise {
+  margin-top: -5px;
+  margin-left: 0;
+  font-size: 12px
+}
+
+.moonset {
+  margin-top: -32px;
+  margin-left: 80px
+}
+
+.fullmoon {
+  margin-top: -6px;
+  margin-left: 0;
+  font-size: 12px
 }
 
 .airhouse {
@@ -6702,19 +6618,6 @@ blueu {
   color: #01a4b5
 }
 
-.weather34luminancem2,
-.weather34moonphasem2 {
-  position: absolute;
-  height: 4.1rem;
-  width: 7.4rem;
-  overflow: hidden;
-  color: silver;
-  line-height: 8px;
-  font-size: .65em;
-  margin-top: 65px;
-  font-family: weathertext2
-}
-
 weather34darkdaycircle,
 weather34daylightdaycircle {
   top: 2px;
@@ -6752,11 +6655,6 @@ weather34daylightdaycircle {
 weather34darkdaycircle {
   left: 71px;
   background: #565f67
-}
-
-.weather34moonmodule svg {
-  width: auto;
-  color: rgba(230, 232, 239, .7)
 }
 
 topbarimperial,

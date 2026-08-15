@@ -71,8 +71,18 @@
 }
 
 .mod-moonphase .moonrise1 {
-  top: 0;
-  margin-left: -105px
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  width: 75px;
+  font-size: .55rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: silver;
+  top: 0;
+  margin-left: -105px
 }
 
 .mod-moonphase .moonrise1 span {
@@ -81,9 +91,18 @@
 }
 
 .mod-moonphase .moonset1 {
-  margin-top: 120px;
-  margin-left: -105px;
-  color: silver
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  width: 75px;
+  font-size: .55rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin-top: 120px;
+  margin-left: -105px;
+  color: silver
 }
 
 .mod-moonphase .moonset1 span {
@@ -97,8 +116,16 @@
 }
 
 .mod-moonphase .fullmoon1 {
-  top: 0;
-  margin-left: 105px
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  font-size: .55rem;
+  width: 120px;
+  color: silver;
+  font-family: weathertext2;
+  top: 0;
+  margin-left: 105px
 }
 
 .mod-moonphase .fullmoon1 span {
@@ -115,7 +142,15 @@
 }
 
 .mod-moonphase .meteorshower {
-  margin: 130px auto 110px -5px
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  font-size: .55rem;
+  width: 120px;
+  color: silver;
+  font-family: weathertext2;
+  margin: 130px auto 110px -5px
 }
 
 .mod-moonphase .weather34moonphasem2 {
@@ -137,9 +172,18 @@
 }
 
 .mod-moonphase .weather34luminancem2 {
-  align-items: center;
-  justify-content: center;
-  left: 100px
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: silver;
+  line-height: 8px;
+  font-size: .65em;
+  margin-top: 65px;
+  font-family: weathertext2;
+  align-items: center;
+  justify-content: center;
+  left: 100px;
 }
 
 .mod-moonphase .weather34moonmodule {

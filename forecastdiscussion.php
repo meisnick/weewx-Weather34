@@ -1,4 +1,4 @@
-<?php include('shared.php'); include('common.php');
+<?php include('shared_core.php'); include('common.php');
 $summary_file = 'jsondata/afd_summary.json';
 $bullets = [
     '<span class="hl-red">'.$lang['NoSummary'].'</span> '.$lang['GeneratedYet'],

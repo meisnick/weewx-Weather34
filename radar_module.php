@@ -1,5 +1,5 @@
 <?php
-include('shared.php');
+include('shared_core.php');
 include_once('settings1.php');
 ?>
 <div class="updatedtime"><span><?php echo $online; ?> <span class="radar-time-text">Live</span></span></div>

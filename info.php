@@ -1,4 +1,4 @@
-<?php include('shared.php')?>
+<?php include('shared_core.php')?>
 
 <!DOCTYPE html>
 <html >

@@ -1,5 +1,5 @@
 <?php
-include('shared.php');
+include('shared_core.php');
 include_once('settings1.php');
 include('common.php');
 

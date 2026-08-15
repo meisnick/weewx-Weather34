@@ -1,4 +1,4 @@
-<?php include('shared.php'); include('common.php');
+<?php include('shared_core.php'); include('common.php');
 
 // --- Load AQ data safely ---
 $aq_file = 'jsondata/aq.txt';

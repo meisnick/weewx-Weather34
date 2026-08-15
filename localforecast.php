@@ -1,6 +1,6 @@
 <?php
 // localforecast.php — Hyperlocal Short-Term Forecast Card (LLM Analogue Matching)
-include('shared.php');
+include('shared_core.php');
 include_once('settings1.php');
 include('common.php');
 

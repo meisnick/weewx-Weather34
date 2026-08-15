@@ -1,4 +1,4 @@
-<?php  include('shared.php');include('common.php');include('serverdata/w34combinedData.php');
+<?php  include('shared_core.php');include('common.php');include('serverdata/w34combinedData.php');
 error_reporting(-1);
 $aqiweather["pm_units"] = "μg/m<sup><b>3</b></sup>";
 $json_string             = file_get_contents("jsondata/aqiJson.txt");

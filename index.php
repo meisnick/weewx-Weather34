@@ -192,7 +192,8 @@ function modulePopups($module, $vars) {
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link rel="preload" href="css/fonts/clock3-webfont.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="css/fonts/verbatim-regular.woff" as="font" type="font/woff" crossorigin>
-<link href="css/main.<?php echo $theme1; ?>.css?version=<?php clearstatcache(); echo filemtime('css/main.'.$theme1.'.css'); ?>" rel="stylesheet prefetch">
+<link href="css/framework.base.css?version=<?php clearstatcache(); echo filemtime('css/framework.base.css'); ?>" rel="stylesheet prefetch">
+<link href="css/framework.<?php echo $theme1; ?>.css?version=<?php clearstatcache(); echo filemtime('css/framework.'.$theme1.'.css'); ?>" rel="stylesheet prefetch">
 <?php
 // Scoped CSS modules dynamic glob loader (Plug-and-Play architecture)
 foreach (glob("css/modules/*.css") as $sheet) {

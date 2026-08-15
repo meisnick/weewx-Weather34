@@ -151,27 +151,7 @@ h6 {
   -ms-text-size-adjust: 100%;
   -moz-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased
-}
-
-.heading1,
-.indoorlocation,
-.indoortitles,
-.indoortrend,
-.tempcontainer,
-.tempcontainer1,
-.weather-container,
-.weather-item,
-.weather2-alert,
-.weather2-alert.weatherfooter-item,
-.weather2-clock,
-.weather2-container,
-.weather2-indoor,
-.weather2-item,
-.weatherfooter-container,
-.weatherfooter-item,
-a,
-body,
-h3 {
+}.heading1, .indoorlocation, .indoortitles, .indoortrend, .tempcontainer1, .weather-container, .weather-item, .weather2-alert, .weather2-alert.weatherfooter-item, .weather2-clock, .weather2-container, .weather2-indoor, .weather2-item, .weatherfooter-container, .weatherfooter-item, a, body, h3 {
   text-rendering: optimizeLegibility;
   color-adjust: exact
 }
@@ -4234,15 +4214,7 @@ redtime {
   top: 30px;
   display: block;
   text-align: left
-}
-
-.rainconvertercircle,
-.tempconvertercircleblue,
-.tempconvertercirclegreen,
-.tempconvertercircleorange,
-.tempconvertercirclepurple,
-.tempconvertercirclered,
-.tempconvertercircleyellow {
+}.rainconvertercircle, .tempconvertercircleblue, .tempconvertercirclegreen, .tempconvertercircleorange, .tempconvertercirclepurple, .tempconvertercirclered {
   align-items: center;
   width: 4.2rem;
   color: silver;
@@ -4262,14 +4234,7 @@ redtime {
 
 smallrainunit {
   font-size: .7em
-}
-
-.tempconvertercircleblue,
-.tempconvertercirclegreen,
-.tempconvertercircleorange,
-.tempconvertercirclepurple,
-.tempconvertercirclered,
-.tempconvertercircleyellow {
+}.tempconvertercircleblue, .tempconvertercirclegreen, .tempconvertercircleorange, .tempconvertercirclepurple, .tempconvertercirclered {
   display: flex;
   justify-content: center;
   border: 1px solid var(--bg1);
@@ -4395,23 +4360,6 @@ smalltempunit4 {
   font-size: .85em;
   right: 10px;
   background: 0
-}
-
-.tempcontainer {
-  float: left;
-  font-family: weathertext2;
-  bottom: 0;
-  right: 0;
-  position: relative;
-  margin: 25px 10px 10px 40px;
-  left: -5px;
-  top: -4px
-}
-
-.tempcontainerx {
-  position: relative;
-  left: -20px;
-  top: -11px
 }
 
 .outside0-5,
@@ -5505,10 +5453,7 @@ valuetextheading2 {
   font-family: weathertext2;
   font-size: .9em;
   color: silver
-}
-
-.tempconverter,
-.tempconverter2 {
+}.tempconverter {
   position: absolute;
   margin-top: 5px;
   font-size: 12px
@@ -5516,10 +5461,6 @@ valuetextheading2 {
 
 .tempconverter {
   margin-left: 10px
-}
-
-.tempconverter2 {
-  margin-left: 240px
 }
 
 .footertext {
@@ -6147,75 +6088,14 @@ wfstriketoday {
   color: var(--teal-bb)
 }
 
-.airqualitymoduleposition {
-  position: relative;
-  left: 75px;
-  top: 10px
-}
-
 .airhouse {
   margin-top: -10px;
   margin-left: 7px;
   background: 0
-}
-
-.airsvg {
-  margin-top: -12px;
-  left: 20px
-}
-
-.dottedcirclegreen,
-.dottedcircleorange,
-.dottedcirclepurple,
-.dottedcirclered,
-.dottedcircleyellow {
-  width: 100px;
-  height: 100px;
-  margin-top: 25px;
-  z-index: 20;
-  position: absolute;
-  border: 0;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%
-}
-
-.air0,
-.air100,
-.air150,
-.air200,
-.air300,
-.air50,
-airdescription {
+}.air200 {
   font-family: weathertext2, Helvetica, system;
   display: flex
-}
-
-.airvalue {
-  position: relative;
-  margin-top: 75px;
-  left: 5px;
-  top: 5px;
-  font-size: .9rem
-}
-
-airdescription {
-  width: 300px;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  left: -105px;
-  line-height: 26px;
-  margin-top: 0
-}
-
-.air0,
-.air100,
-.air150,
-.air200,
-.air300,
-.air50 {
+}.air200 {
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -6229,61 +6109,14 @@ airdescription {
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px
-}
-
-.air0 {
-  background: var(--green)
-}
-
-.air50 {
-  background: var(--amber)
-}
-
-.air100 {
-  background: var(--orange-d)
-}
-
-.air150 {
-  background: var(--red)
-}
-
-.air200,
-.air250,
-.air300 {
+}.air200, .air250 {
   background: #a475cb
-}
-
-.airhouse,
-.airsvg,
-.indoorhomemax,
-.indoorhomemin,
-.svgfeels,
-airdescription {
+}.airhouse, .indoorhomemax, .indoorhomemin, .svgfeels {
   position: absolute
-}
-
-.airwarning {
-  position: absolute;
-  margin-left: 150px;
-  margin-top: 45px
-}
-
-.airwarning1,
-.circlegreen,
-.circleorange,
-.circlepurple,
-.circlered,
-.circleyellow {
+}.circlegreen, .circleorange, .circlepurple, .circlered, .circleyellow {
   margin-top: 0;
   position: absolute
-}
-
-.airwarning1 {
-  margin-left: -60px
-}
-
-.airwarning2,
-.airwarning21 {
+}.airwarning2 {
   position: absolute
 }
 
@@ -6852,10 +6685,7 @@ redtds {
 purpletds {
   background: -webkit-linear-gradient(90deg, var(--red-l), rgba(157, 59, 165, .4));
   background: linear-gradient(90deg, var(--red-l), rgba(157, 59, 165, .4))
-}
-
-.airqualitywordbig,
-.uvsolarwordbig {
+}.uvsolarwordbig {
   position: absolute;
   font-size: 1.4rem;
   color: rgba(86, 95, 103, .2);
@@ -6866,11 +6696,6 @@ purpletds {
 .uvsolarwordbig {
   margin-left: 115px;
   margin-top: 35px
-}
-
-.airqualitywordbig {
-  margin-left: 50px;
-  margin-top: 15px
 }
 
 blueu {

@@ -5689,111 +5689,14 @@ wfstriketoday {
   position: absolute
 }
 
-.humindoorcircleblue,
-.humindoorcirclegreen,
-.humindoorcircleorange,
-.humindoorcirclered,
-.humindooryellow {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  border: 2px solid rgba(56, 56, 60, 1);
-  overflow: hidden;
-  border-radius: 2px;
-  color: #fff;
-  line-height: 16px;
-  font-family: weathertext2, Helvetica, system;
-  font-size: .9em;
-  margin-top: -30px;
-  margin-left: 165px
-}
-
-.humindoorcircleorange {
-  background: var(--orange-d)
-}
-
-.humindoorcirclegreen {
-  background: var(--green)
-}
-
-.humindoorcircleblue,
-.humindoorcirclered {
-  background: var(--teal)
-}
-
-.feelsindoorcircleblue,
-.feelsindoorcirclegreen,
-.feelsindoorcircleorange,
-.feelsindoorcirclered,
-.feelsindoorcircleyellow {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  border: 2px solid rgba(56, 56, 60, 1);
-  overflow: hidden;
-  border-radius: 2px;
-  color: #fff;
-  line-height: 16px;
-  font-family: weathertext2, Helvetica, system;
-  font-size: .9em;
-  margin-top: 15px;
-  margin-left: -57px
-}
-
-.feelsindoorcirclered {
-  background: rgba(211, 93, 78, 1)
-}
-
-.feelsindoorcircleorange {
-  background: var(--orange-d)
-}
-
-.feelsindoorcircleblue,
-.feelsindoorcirclegreen {
-  background: var(--teal)
-}
-
 .feelsindoorcircleyellow,
 indooryellow1 {
   background: var(--amber)
 }
 
-.weather34feelsword,
-.weather34humidityword {
-  color: #999;
-  font-size: 10px;
-  font-family: arial, system;
-  position: absolute
-}
-
-.weather34humidityword {
-  margin-left: 200px;
-  margin-top: -15px
-}
-
-.weather34feelsword {
-  margin-left: 198px;
-  margin-top: 30px
-}
-
 indoortrends {
   color: rgba(230, 232, 239, 1);
   margin-left: 35px
-}
-
-.weather34feelsrate,
-.weather34indoorhumrate {
-  position: absolute;
-  margin-top: -5px;
-  font-size: 12px;
-  max-height: 100px;
-  font-family: arial, system
 }
 
 indoorblue1,
@@ -5829,101 +5732,6 @@ indoororange1 {
 
 indoorgreen1 {
   background: var(--green)
-}
-
-.homeindoorhum0-25,
-.homeindoorhum25-35,
-.homeindoorhum35-60,
-.homeindoorhum60-80,
-.homeindoorhum80-100 {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  border: 2px solid rgba(56, 56, 60, 1);
-  overflow: hidden;
-  border-radius: 2px;
-  color: #fff;
-  line-height: 16px;
-  font-family: weathertext2, Helvetica, system;
-  font-size: .9em;
-  margin-top: -30px;
-  margin-left: 165px
-}
-
-.homeindoorhum80-100 {
-  background: rgba(0, 164, 180, 1);
-  background: -webkit-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -o-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -moz-linear-gradient(270deg, var(--teal-b), #087883);
-  background: -ms-linear-gradient(270deg, var(--teal-b), #087883);
-  background: linear-gradient(270deg, var(--teal-b), #087883)
-}
-
-.homeindoorhum60-80 {
-  background: var(--teal);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--teal));
-  background: -o-linear-gradient(90deg, var(--green), var(--teal));
-  background: -moz-linear-gradient(90deg, var(--green), var(--teal));
-  background: -ms-linear-gradient(90deg, var(--green), var(--teal));
-  background: linear-gradient(90deg, var(--green), var(--teal))
-}
-
-.homeindoorhum35-60 {
-  background: var(--green);
-  background: -webkit-linear-gradient(90deg, var(--green), var(--amber));
-  background: -o-linear-gradient(90deg, var(--green), var(--amber));
-  background: -moz-linear-gradient(90deg, var(--green), var(--amber));
-  background: -ms-linear-gradient(90deg, var(--green), var(--amber));
-  background: linear-gradient(90deg, var(--green), var(--amber))
-}
-
-.homeindoorhum25-35 {
-  background: -webkit-linear-gradient(90deg, var(--red-l), var(--green));
-  background: -o-linear-gradient(90deg, var(--red-l), var(--green));
-  background: -moz-linear-gradient(90deg, var(--red-l), var(--green));
-  background: -ms-linear-gradient(90deg, var(--red-l), var(--green));
-  background: linear-gradient(90deg, var(--red-l), var(--green))
-}
-
-.homeindoorhum0-25 {
-  background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--red), var(--orange-d));
-  background: -o-linear-gradient(90deg, var(--red), var(--orange-d));
-  background: -moz-linear-gradient(90deg, var(--red), var(--orange-d));
-  background: -ms-linear-gradient(90deg, var(--red), var(--orange-d));
-  background: linear-gradient(90deg, var(--red), var(--orange-d))
-}
-
-.weather34indoorhumrate,
-weather34feelsrate {
-  position: absolute;
-  margin-top: -5px;
-  font-size: 12px;
-  max-height: 100px;
-  font-family: arial, system
-}
-
-.weather34indoorhumrate {
-  color: var(--text-d);
-  margin-left: 24px
-}
-
-.weather34indoorhumrate span {
-  color: var(--text-d);
-  font-family: arial, system
-}
-
-.weather34feelsrate {
-  color: var(--text-d);
-  margin-left: 246px
-}
-
-.weather34feelsrate span {
-  color: var(--text-d);
-  font-family: arial, system
 }
 
 .feelsindoorcircleblue,
@@ -6068,73 +5876,6 @@ valuewindunit {
   font: 500 11px weathertext2;
   display: block;
   line-height: 15px
-}
-
-.intemphumcircle0-25,
-.intemphumcircle25-35,
-.intemphumcircle35-60,
-.intemphumcircle60-80,
-.intemphumcircle80-100 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: silver
-}
-
-.intemphumcircle60-80 {
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--amber);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.intemphumcircle25-35 {
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.intemphumcircle35-60 {
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.intemphumcircle80-100 {
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 #4e95a0;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.intemphumcircle0-25 {
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--red);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
 }
 
 greyu {

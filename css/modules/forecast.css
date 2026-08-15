@@ -341,7 +341,7 @@ position: absolutue;
 
 .mod-forecast .forecastforecasthome forecasttemphihome {
   font-family: weathertext2;
-  font-size: .93em;
+  font-size: 12px;
   color: var(--card-ink-blue);
   margin-top: 0;
   margin-left: 1%;

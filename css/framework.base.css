@@ -968,6 +968,9 @@ hr {
   font-family: weathertext2
 }
 
+/* Shared primitive (base API): `.updatedtime` (12 cards) / `.updatedtime1` (3 cards)
+   are the "updated N min ago" labels. Defined once here in base.css; consuming
+   modules reference this class and MUST NOT redeclare it. */
 .outlook,
 .updatedtime {
   position: absolute
@@ -2272,6 +2275,9 @@ weather34-barometerlimitminf {
   margin-top: 0
 }
 
+/* Shared primitive (base API): the gauge family (`.heatcircle`, `heatcircle2-5`,
+   `.heatcircle-content`), shared by rainfall + temperature. Defined once here;
+   consuming modules reference it and do NOT redeclare it. */
 .heatcircle,
 .heatcircle2,
 .heatcircle3,
@@ -2450,6 +2456,9 @@ weather34-barometerlimitminf {
   border-radius: 2px
 }
 
+/* Shared primitive (base API): the year-record fields (`.topmin .topmax .minword
+   .maxword .mintimedate .maxtimedate .yearwordbig`), shared by the 3 top-year
+   cards. Defined once here; modules reference, never redeclare. */
 .topmin,
 .wfstrike {
   left: -100px

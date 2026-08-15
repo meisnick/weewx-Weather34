@@ -29,8 +29,11 @@ foreach ($all_modules as $mod):
     var el = $("#<?php echo $mod['id']; ?>");
     var url = "<?php echo $mod['module']; ?>";
     var bust = function() { return url + (url.indexOf('?') >= 0 ? '&' : '?') + "_=" + new Date().getTime(); };
-    el.load(bust());
-    <?php if ($ms > 0): ?>setTimeout(function f(){ el.load(bust()); setTimeout(f, <?php echo $ms; ?>); }, <?php echo $ms; ?>);<?php endif; ?>
+    // The clock's #theTime span lives INSIDE the AJAX-loaded module, so it doesn't exist until this
+    // load completes; fill it in the load callback instead of waiting for the next 500ms interval tick.
+    var cb = <?php echo ($mod['module'] === 'weather34clock.php') ? 'function(){ if (typeof UpdateClock === "function") UpdateClock(); }' : 'undefined'; ?>;
+    el.load(bust(), cb);
+    <?php if ($ms > 0): ?>setTimeout(function f(){ el.load(bust(), cb); setTimeout(f, <?php echo $ms; ?>); }, <?php echo $ms; ?>);<?php endif; ?>
 }); })(jQuery);
 <?php endforeach; ?>
 
@@ -62,13 +65,18 @@ function UpdateClock() {
     if (a < 10) a = "0" + a;
     if (g < 10) g = "0" + g;
     if (c < 10) c = "0" + c;
-    document.getElementById("theTime").innerHTML =
+    var el = document.getElementById("theTime");
+    if (!el) return;
+    el.innerHTML =
         "<div class='weatherclock34'> " + i + " " + b + " " + h + " " + f +
         "<div class='orangeclock'>" + c + ":" + a + ":" + g + amorpm;
 }
-function StartClock() { clockID = setInterval(UpdateClock, 500); }
+// Populate immediately (setInterval's first tick is +500ms), and start as soon as the DOM is
+// parsed -- the old window.onload gated the clock behind every image/webcam/AJAX finishing.
+function StartClock() { UpdateClock(); clockID = setInterval(UpdateClock, 500); }
 function KillClock()  { clearTimeout(clockID); }
-window.onload = function() { StartClock(); };
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', StartClock); }
+else { StartClock(); }
 </script>
 <?php endif; ?>
 <!-- end updater.php -->

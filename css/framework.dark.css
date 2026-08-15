@@ -1642,14 +1642,6 @@ nav.main-menu.expanded {
   font-family: Arial, system
 }
 
-oblueh1,
-ogreenh1,
-ogrey,
-oorangeh1,
-oredh1 {
-  font-family: weathertext2, Helvetica
-}
-
 .settings {
   height: 73px;
   float: right;
@@ -1723,17 +1715,6 @@ ogreenh1 {
   color: var(--green)
 }
 
-infogrey,
-ogreyh1 {
-  color: silver
-}
-
-hiti,
-oorangeh1,
-orangefi {
-  color: var(--orange)
-}
-
 @media screen and (max-width:1024px) {
   .main-menu {
     background: 0
@@ -1766,29 +1747,6 @@ orangefi {
   max-height: 100px
 }
 
-oredh1 {
-  color: #ff5c41
-}
-
-ogreyh1 {
-  margin: -5px auto 0;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  max-width: 400px;
-  line-height: 6px;
-  font-family: Arial, Helvetica, sans-serif, system;
-  font-size: .8em;
-  background: rgba(86, 95, 103, .4);
-  -webkit-border-radius: 2px;
-  border-radius: 2px
-}
-
-ogrey {
-  color: var(--text-d);
-  font-size: 1em
-}
-
 adv,
 bluefi,
 chancei,
@@ -1799,14 +1757,6 @@ orangefi {
   font-size: 12px
 }
 
-bluefi,
-hiti,
-lowti,
-orangefi {
-  padding: 2px;
-  font-weight: 700
-}
-
 .menucolor a,
 .weather34solarrate,
 solarwm2,
@@ -1815,22 +1765,12 @@ wfgreen {
   font-weight: 500
 }
 
-bluefi,
-chancei,
-lowti {
-  color: #01a4b5
-}
-
 raini,
 rainui,
 tempui,
 windui {
   font-size: 12px;
   font-family: Arial, Helvetica
-}
-
-dayi {
-  font-size: 11px
 }
 
 spanunit {
@@ -1916,12 +1856,6 @@ orangeuv {
 
 uppercase {
   text-transform: capitalize
-}
-
-greenf {
-  font-size: 12px;
-  padding: 2px;
-  font-weight: 700
 }
 
 solartrend {
@@ -2065,29 +1999,6 @@ tempyellow {
 
 .barometerblue span {
   font-weight: 600
-}
-
-.barometergreen {
-  color: #fff;
-  background: var(--green);
-  margin-left: 120px;
-  width: 60px
-}.daylightblue, .moonrisered {
-  width: 65px;
-  line-height: 10px
-}
-
-.barometergreen span,
-.barometergreen supunit {
-  font-weight: 600;
-  color: #fff
-}.daylightblue, .daylightgreen span {
-  color: silver
-}.daylightblue {
-  margin-left: 20px
-}.moonrisered, .moonrisered span {
-  font-weight: 600;
-  color: #fff
 }
 
 .homeweathercompass2,
@@ -2379,13 +2290,6 @@ smallicon {
   font-size: 10px
 }
 
-wfblue,
-wfgreen,
-wforange,
-wfred {
-  font-size: 15px
-}
-
 .timeago {
   display: inline;
   margin-top: 12px;
@@ -2396,18 +2300,6 @@ wfred {
 
 aurora {
   color: silver
-}
-
-wforange {
-  color: var(--orange)
-}
-
-wfgreen {
-  color: var(--green)
-}
-
-wfred {
-  color: #ff5c41
 }
 
 .uvimax span {
@@ -2715,12 +2607,6 @@ uptime {
   top: 62px
 }
 
-.wfstrikes {
-  font-size: 9px;
-  top: -12px;
-  color: silver
-}
-
 highestrecorded {
   margin-top: -25px;
   display: block;
@@ -2873,14 +2759,6 @@ indooryellow {
   font-size: 9px;
   line-height: 13px;
   left: 16px
-}
-
-.wfstrikes1 {
-  position: absolute;
-  font-size: 9px;
-  top: -12px;
-  left: 12px;
-  color: silver
 }
 
 .orangeclock,
@@ -4294,12 +4172,6 @@ rainu {
   position: absolute;
   top: 0;
   width: 10px
-}
-
-.wfstrikes,
-.wftemp {
-  left: 12px;
-  position: absolute
 }
 
 #weather34rainbeaker:after {

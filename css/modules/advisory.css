@@ -1,44 +1,67 @@
-﻿/* advisory module -- scoped to .mod-advisory */
+/* advisory module -- scoped to .mod-advisory */
 .mod-advisory { display: contents; }
 
 .mod-advisory .wulargeforecasthome {
-  position: absolute;
-  width: 308px;
-  background: 0;
-  margin: 0 auto 0 10px;
-  font-size: .65rem;
-  display: block;
-  border-radius: 3px;
-  overflow: hidden
+  position: absolute;
+
+  width: 308px;
+
+  background: 0;
+
+  margin: 0 auto 0 10px;
+
+  font-size: .65rem;
+
+  display: block;
+
+  border-radius: 3px;
+
+  overflow: hidden
+
 }
 
 .mod-advisory .wulargediv {
-  width: 310px;
-  height: 180px;
-  margin-top: 3px
+  width: 310px;
+
+  height: 180px;
+
+  margin-top: 3px
+
 }
 
 .mod-advisory .wulargeforecasthome wulargetemplohome {
-  margin-top: 0;
-  margin-left: 1%;
-  font-weight: 500
+  margin-top: 0;
+
+  margin-left: 1%;
+
+  font-weight: 500
+
 }
 
 .mod-advisory .wulargeforecasthome wulargetemphihome span {
-  font-size: .7rem;
-  color: var(--orange)
+  font-size: .7rem;
+
+  color: var(--orange)
+
 }
 
 .mod-advisory .wulargeforecasthome wulargetemphihome {
-  font-size: 12px;
-  color: var(--orange)
+  font-size: 12px;
+
+  color: var(--orange)
+
 }
 
 .mod-advisory .wulargeforecasthome wulargetempwindhome span4 {
-  position: absolute;
-  color: #07727d;
-  font-family: weathertext2;
-  font-size: .7rem;
-  float: left
+  position: absolute;
+
+  color: var(--info-4);
+
+  font-family: weathertext2;
+
+  font-size: .7rem;
+
+  float: left
+
 }
 

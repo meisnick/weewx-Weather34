@@ -22,7 +22,7 @@
 .mod-topyear .minwordl {
   margin-top: 35px;
   font-size: .55rem;
-  color: #fff;
+  color: var(--accent-ink);
   z-index: 1;
   position: absolute
 }
@@ -48,7 +48,7 @@
   margin-top: 61px;
   font-size: .54rem;
   z-index: 1;
-  color: silver;
+  color: var(--card-ink-blue);
   width: 50px
 }
 
@@ -80,7 +80,7 @@
   height: 2.4rem;
   font-size: .9em;
   padding-top: 7px;
-  color: #fff;
+  color: var(--accent-ink);
   border-bottom: 11px solid var(--bg1);
   display: flex;
   align-items: center;
@@ -99,4 +99,4 @@
 .mod-topyear topblue1 { background: var(--teal) }
 .mod-topyear topgreen1 { background: var(--green) }
 .mod-topyear topyellow1 { background: var(--amber) }
-.mod-topyear topyellow2 { background: rgba(233, 171, 74, .8) }
+.mod-topyear topyellow2 { background: var(--warn-8) }

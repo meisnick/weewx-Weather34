@@ -1,137 +1,204 @@
-﻿/* top-lightning module -- scoped to .mod-top-lightning */
+/* top-lightning module -- scoped to .mod-top-lightning */
 .mod-top-lightning { display: contents; }
 
 .mod-top-lightning .wfstrikes {
-  font-size: 9px;
-  top: -12px;
-  color: silver
+  font-size: 9px;
+
+  top: -12px;
+
+  color: var(--card-ink-blue)
+
 }
 
 .mod-top-lightning .wfstrikes1 {
-  position: absolute;
-  font-size: 9px;
-  top: -12px;
-  left: 12px;
-  color: silver
+  position: absolute;
+
+  font-size: 9px;
+
+  top: -12px;
+
+  left: 12px;
+
+  color: var(--card-ink-blue)
+
 }
 
 .mod-top-lightning .wfstrike {
-  left: -100px
+  left: -100px
+
 }
 
 .mod-top-lightning .minwordl {
-  margin-top: 35px; 
-  font-size: .55rem;
-  color: #fff;
-  z-index: 1;
-  position: absolute          
+  margin-top: 35px; 
+
+  font-size: .55rem;
+
+  color: var(--accent-ink);
+
+  z-index: 1;
+
+  position: absolute          
+
 }
 
 .mod-top-lightning .minwordlow {
-  margin-top: 35px;    
-  font-size: .55rem;
-  color: var(--bg1);
-  z-index: 1;
-  position: absolute    
+  margin-top: 35px;    
+
+  font-size: .55rem;
+
+  color: var(--bg1);
+
+  z-index: 1;
+
+  position: absolute    
+
 }
 
 .mod-top-lightning .minwordlow {
-  margin-left: 48px
+  margin-left: 48px
+
 }
 
 .mod-top-lightning .minwordl {
-  margin-left: 30px
+  margin-left: 30px
+
 }
 
 .mod-top-lightning .wfstrike {
-  padding-right: 4px;
-  padding-left: 0
+  padding-right: 4px;
+
+  padding-left: 0
+
 }
 
 .mod-top-lightning .wflaststrike {
-  margin-left: 55px;
-  margin-top: 33px;
-  font-size: .55rem;
-  width: 200px
+  margin-left: 55px;
+
+  margin-top: 33px;
+
+  font-size: .55rem;
+
+  width: 200px
+
 }
 
 .mod-top-lightning .wfstrike {
-  margin-top: 39px;
-  font-size: 0
+  margin-top: 39px;
+
+  font-size: 0
+
 }
 
 .mod-top-lightning .lightningicon {
-  position: absolute;
-  display: inline;
-  right: -95px;
-  margin-top: 25px;
+  position: absolute;
+
+  display: inline;
+
+  right: -95px;
+
+  margin-top: 25px;
+
 }
 
 .mod-top-lightning .mintimedatex {
-  position: absolute;
-  margin-top: 61px;
-  font-size: .54rem;
-  z-index: 1;
-  color: silver;
-  width: 50px
+  position: absolute;
+
+  margin-top: 61px;
+
+  font-size: .54rem;
+
+  z-index: 1;
+
+  color: var(--card-ink-blue);
+
+  width: 50px
+
 }
 
 .mod-top-lightning .mintimedatex {
-  margin-left: 17px
+  margin-left: 17px
+
 }
 
 
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-top-lightning .wfstrikes {
-  font-size: 9px
+  font-size: 9px
+
 }
 
 [data-theme="light"] .mod-top-lightning .wfstrikes1 {
-  position: absolute;
-  font-size: 9px;
-  top: -12px;
-  left: 12px;
-  color: var(--text)
+  position: absolute;
+
+  font-size: 9px;
+
+  top: -12px;
+
+  left: 12px;
+
+  color: var(--text)
+
 }
 
 [data-theme="light"] .mod-top-lightning .minwordlow {
-  margin-top: 35px;
-  font-size: .55rem;
-  color: #2d3a4b;
-  z-index: 1;
-  position: absolute
+  margin-top: 35px;
+
+  font-size: .55rem;
+
+  color: var(--card-ink-blue);
+
+  z-index: 1;
+
+  position: absolute
+
 }
 
 [data-theme="light"] .mod-top-lightning .minwordlow {
-  margin-left: 49px
+  margin-left: 49px
+
 }
 
 [data-theme="light"] .mod-top-lightning .wflaststrike {
-  position: absolute;
-  margin-left: 55px;
-  margin-top: 33px;
-  font-size: .55rem;
-  width: 200px
+  position: absolute;
+
+  margin-left: 55px;
+
+  margin-top: 33px;
+
+  font-size: .55rem;
+
+  width: 200px
+
 }
 
 [data-theme="light"] .mod-top-lightning .wfstrike {
-  position: absolute;
-  margin-top: 39px;
-  font-size: 0;
-  left: -100px
+  position: absolute;
+
+  margin-top: 39px;
+
+  font-size: 0;
+
+  left: -100px
+
 }
 
 [data-theme="light"] .mod-top-lightning .mintimedatex {
-  position: absolute;
-  margin-top: 61px;
-  font-size: .54rem;
-  z-index: 1;
-  color: #2d3a4b;;
-  width: 50px
+  position: absolute;
+
+  margin-top: 61px;
+
+  font-size: .54rem;
+
+  z-index: 1;
+
+  color: var(--card-ink-blue);;
+
+  width: 50px
+
 }
 
 
 /* Darken on-tile strike label for light mode. */
 [data-theme="light"] .mod-top-lightning .wfstrikes {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }

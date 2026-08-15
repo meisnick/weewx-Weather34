@@ -3,7 +3,7 @@
 
 .mod-forecast .forecastforecastinghome {
   font-family: weathertext2;
-  color: #07727d
+  color: var(--info-4)
 }
 
 .mod-forecast .forecastforecasthome {
@@ -24,7 +24,7 @@
 .mod-forecast .forecastweekdayhome {
   font-family: weathertext2;
   font-size: .93em;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-forecast .forecastdiv {
@@ -42,15 +42,15 @@
   height: 140px;
   padding: 1px;
   background: 0;
-  border: 1px solid rgba(153, 155, 156, .1);
-  color: silver
+  border: 1px solid var(--line-faint);
+  color: var(--card-ink-blue)
 }
 
 .mod-forecast .forecastweekdayhome {
   position: absolutue;
   text-align: center;
   padding: 1px;
-  color: silver;
+  color: var(--card-ink-blue);
   margin: 0;
   background: 0
 }
@@ -72,7 +72,7 @@
 }
 
 .mod-forecast .forecastforecasthome forecasttempwindhome span4 {
-  color: #07727d;
+  color: var(--info-4);
   font-family: weathertext2;
   font-size: .65rem
 }
@@ -108,7 +108,7 @@
 [data-theme="light"] .mod-forecast .forecastweekdayhome {
   font-family: weathertext2;
   font-size: .93em;
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-forecast .forecastdiv {
@@ -126,15 +126,15 @@
   height: 143px;
   padding: 1px;
   background: 0;
-  border: 1px solid rgba(153, 155, 156, .1);
-  color: #2d3a4b
+  border: 1px solid var(--line-faint);
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-forecast .forecastweekdayhome {
   position: absolutue;
   text-align: center;
   padding: 1px;
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
   margin: 0;
   background: 0
 }
@@ -157,7 +157,7 @@
 .mod-forecast .wulargeforecasthome,
 .mod-forecast .wulargeforecastinghome {
 font-family: weathertext2;
-  color: silver
+  color: var(--card-ink-blue)
 }
 .mod-forecast .wulargeforecasthome {
 position: absolute;
@@ -179,7 +179,7 @@ overflow: hidden
 .mod-forecast .wulargeweekdayhome {
 font-family: weathertext2;
   font-size: .65rem;
-  color: silver
+  color: var(--card-ink-blue)
 }
 .mod-forecast .wulargediv {
 width: 310px;
@@ -195,14 +195,14 @@ float: left;
   height: 140px;
   padding: 0;
   background: 0;
-  border: 0px solid rgba(153, 155, 156, .1);
-  color: silver
+  border: 0px solid var(--line-faint);
+  color: var(--card-ink-blue)
 }
 .mod-forecast .wulargeweekdayhome {
 position: absolutue;
   text-align: left;
   padding: 1px;
-  color: silver;
+  color: var(--card-ink-blue);
   margin: 0 0 0 5px;
   background: 0
 }
@@ -223,7 +223,7 @@ font-size: 12px;
 .mod-forecast .wulargeforecasthome wulargetempwindhome,
 .mod-forecast .wulargeforecasthome wulargetempwindhome span4 {
 position: absolute;
-  color: #07727d;
+  color: var(--info-4);
   font-family: weathertext2;
   font-size: .7rem;
   float: left
@@ -315,7 +315,7 @@ float: left;
   height: 140px;
   padding: 0;
   background: 0;
-  border: 0px solid rgba(153, 155, 156, .1);
+  border: 0px solid var(--line-faint);
   color: var(--text)
 }
 [data-theme="light"] .mod-forecast .wulargeweekdayhome {
@@ -330,7 +330,7 @@ position: absolutue;
 /* ── forecast comma-group first-selector base rules (lost during generation) ── */
 .mod-forecast .forecastdiv {
   font-family: weathertext2;
-  color: #07727d;
+  color: var(--info-4);
   overflow: hidden
 }
 
@@ -342,7 +342,7 @@ position: absolutue;
 .mod-forecast .forecastforecasthome forecasttemphihome {
   font-family: weathertext2;
   font-size: .93em;
-  color: silver;
+  color: var(--card-ink-blue);
   margin-top: 0;
   margin-left: 1%;
   font-weight: 500
@@ -351,17 +351,17 @@ position: absolutue;
 .mod-forecast .forecastforecasthome forecasttempwindhome span {
   font-family: weathertext2;
   font-size: .93em;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-forecast .forecastforecasthome forecasttempwindhome span2 {
   font-family: weathertext2;
   font-size: .93em;
-  color: silver
+  color: var(--card-ink-blue)
 }
 
 .mod-forecast .forecastforecasthome forecasttempwindhome {
-  color: #07727d;
+  color: var(--info-4);
   font-family: weathertext2;
   font-size: .65rem
 }
@@ -388,13 +388,13 @@ position: absolutue;
 }
 
 [data-theme="light"] .mod-forecast .forecastforecasthome forecasttemphihome {
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-forecast .forecastforecasthome forecasttempwindhome span {
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }
 
 [data-theme="light"] .mod-forecast .forecastforecasthome forecasttempwindhome span2 {
-  color: #2d3a4b
+  color: var(--card-ink-blue)
 }

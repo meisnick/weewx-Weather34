@@ -30,7 +30,7 @@
 .mod-lf-term {
   font-family: weathertext2, Helvetica, Arial, sans-serif;
   font-size: 0.9em;
-  color: silver;
+  color: var(--card-ink-blue);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1.2;
@@ -39,7 +39,7 @@
 .mod-lf-wind {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.65em;
-  color: silver;
+  color: var(--card-ink-blue);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   margin-top: 4px;
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px var(--shadow-mid);
 }
 
 .ym-badge-top {
@@ -69,7 +69,7 @@
 
 .ym-lbl {
   font-size: 0.52em;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--white-soft);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   font-family: Arial, Helvetica, sans-serif;
@@ -79,7 +79,7 @@
 .ym-val {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 0.85em;
-  color: #fff;
+  color: var(--accent-ink);
   line-height: 1.1;
   margin-top: 1px;
 }
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: silver;
+  color: var(--card-ink-blue);
   font-size: 0.52em;
   text-transform: uppercase;
   letter-spacing: 0.4px;
@@ -108,8 +108,8 @@
 
 /* ── Nowcast Narrative Text Card ─────────────────────────────────────────── */
 .nowcast-text-card {
-  background: rgba(33, 34, 39, 0.35);
-  border: 1px solid rgba(84, 85, 86, 0.12);
+  background: var(--card-bg-faint);
+  border: 1px solid var(--line-faint-2);
   border-radius: 4px;
   padding: 6px 8px;
   min-height: 52px;
@@ -143,28 +143,28 @@
 
 /* ── Light Theme Overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .mod-lf-term {
-  color: #222;
+  color: var(--ink-dark);
 }
 
 [data-theme="light"] .ym-badge {
-  border: 1px solid #e6e8ef;
+  border: 1px solid var(--line-light);
 }
 
 [data-theme="light"] .ym-badge-bot {
-  background: #f0f2f5;
-  color: #666;
+  background: var(--surface-light);
+  color: var(--ink-muted);
 }
 
 [data-theme="light"] .nowcast-text-card {
-  background: rgba(232, 234, 239, 0.4);
-  border-color: rgba(200, 202, 207, 0.4);
+  background: var(--line-faint-4);
+  border-color: var(--line-faint-5);
 }
 
 [data-theme="light"] .nowcast-sentence {
-  color: #222;
+  color: var(--ink-dark);
 }
 
 /* Darken on-tile local-forecast wind label for light mode. */
 [data-theme="light"] .mod-lf-wind {
-  color: #222;
+  color: var(--ink-dark);
 }

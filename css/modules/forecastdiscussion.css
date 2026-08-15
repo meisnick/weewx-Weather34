@@ -23,7 +23,7 @@
 
 .mod-fct-line {
     font-size: 0.64rem; /* Enlarged from 0.58rem for improved legibility */
-    color: silver;
+    color: var(--card-ink-blue);
     text-align: center;
     line-height: 1.25; /* Clean and legible line height */
     width: 98%;
@@ -40,7 +40,7 @@
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .mod-fct-line {
-    color: #444;
+    color: var(--ink-dark-2);
 }
 
 /* --- Popout Modal styling --- */
@@ -50,7 +50,7 @@
 }
 .mod-fct-clickable:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px var(--shadow-mid-2);
 }
 
 .mod-fct-modal {
@@ -59,7 +59,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 10, 10, 0.75);
+    background: var(--dialog-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 999999; /* Higher than dashboard cards */
@@ -77,15 +77,15 @@
 }
 
 .mod-fct-modal-content {
-    background: rgba(25, 25, 25, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--dialog-bg-3);
+    border: 1px solid var(--white-faint);
     border-radius: 12px;
     width: 85%;
     max-width: 900px;
     max-height: 85vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px var(--shadow-heavy);
     transform: scale(0.95);
     transition: transform 0.3s ease;
     overflow: hidden;
@@ -100,27 +100,27 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: rgba(15, 15, 15, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--dialog-bg-2);
+    border-bottom: 1px solid var(--white-faint-2);
 }
 
 .mod-fct-modal-title {
     margin: 0;
     font-size: 0.95rem;
-    color: #efefef;
+    color: var(--line-light-3);
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
 .mod-fct-modal-close {
     font-size: 1.5rem;
-    color: #888;
+    color: var(--card-ink-soft);
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s ease;
 }
 .mod-fct-modal-close:hover {
-    color: #fff;
+    color: var(--accent-ink);
 }
 
 .mod-fct-modal-body {
@@ -145,8 +145,8 @@
 }
 
 .mod-fct-section-card {
-    background: rgba(35, 35, 35, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--dialog-bg-4);
+    border: 1px solid var(--white-faint-4);
     border-radius: 8px;
     padding: 15px;
     display: flex;
@@ -162,13 +162,13 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding-bottom: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--white-faint-3);
     text-align: left;
 }
 
 .mod-fct-section-text {
     font-size: 0.72rem;
-    color: #b0b0b0;
+    color: var(--ink-faint-7);
     line-height: 1.4;
     white-space: pre-wrap;
     text-align: left;
@@ -187,33 +187,33 @@
 
 /* --- Light theme overrides for modal --- */
 [data-theme="light"] .mod-fct-modal {
-    background: rgba(220, 220, 220, 0.7);
+    background: var(--dialog-line);
 }
 [data-theme="light"] .mod-fct-modal-content {
-    background: #fbfbfb;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    background: var(--surface-light-2);
+    border: 1px solid var(--shadow-mid);
+    box-shadow: 0 10px 35px var(--shadow-mid);
 }
 [data-theme="light"] .mod-fct-modal-header {
-    background: #f0f0f0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--line-light-4);
+    border-bottom: 1px solid var(--card-shadow);
 }
 [data-theme="light"] .mod-fct-modal-title {
-    color: #222;
+    color: var(--ink-dark);
 }
 [data-theme="light"] .mod-fct-modal-close {
-    color: #666;
+    color: var(--ink-muted);
 }
 [data-theme="light"] .mod-fct-modal-close:hover {
-    color: #000;
+    color: var(--black);
 }
 [data-theme="light"] .mod-fct-section-card {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    border: 1px solid var(--shadow-faint);
 }
 [data-theme="light"] .mod-fct-section-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--shadow-faint);
 }
 [data-theme="light"] .mod-fct-section-text {
-    color: #333;
+    color: var(--menu-line);
 }

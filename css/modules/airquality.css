@@ -9,7 +9,7 @@
 .mod-airquality .tempconvertercircleyellow {
   align-items: center;
   width: 4.2rem;
-  color: silver;
+  color: var(--card-ink-blue);
   font-family: weathertext2;
   height: 1rem;
   line-height: 16px;
@@ -106,8 +106,8 @@
   height: 4.68rem;
   font-size: 1.4rem;
   padding-top: 0;
-  color: #fff;
-  border-bottom: 15px solid rgba(56, 56, 60, 1);
+  color: var(--accent-ink);
+  border-bottom: 15px solid var(--line-dark-2);
   align-items: center;
   justify-content: center;
   -webkit-border-radius: 2px;
@@ -133,7 +133,7 @@
 }
 
 .mod-airquality .air300 {
-  background: #a475cb
+  background: var(--uv-purple)
 }
 
 .mod-airquality .airwarning {
@@ -172,10 +172,10 @@
   justify-content: center;
   height: 1.1rem;
   width: 3.4rem;
-  border: 2px solid #e6e8ef;
+  border: 2px solid var(--line-light);
   overflow: hidden;
   border-radius: 4px;
-  color: #fff;
+  color: var(--accent-ink);
   line-height: 16px;
   font-family: weathertext2;
   font-size: .85em
@@ -186,7 +186,7 @@
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleorange {
-  background: rgba(255, 124, 57, 1)
+  background: var(--temp-warm-2)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclered {
@@ -198,7 +198,7 @@
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercirclepurple {
-  background: #a475cb
+  background: var(--uv-purple)
 }
 
 [data-theme="light"] .mod-airquality .tempcontainer {
@@ -219,8 +219,8 @@
   height: 4.68rem;
   font-size: 1.4rem;
   padding-top: 0;
-  color: #fff;
-  border-bottom: 15px solid #e6e8ef;
+  color: var(--accent-ink);
+  border-bottom: 15px solid var(--line-light);
   align-items: center;
   justify-content: center;
   -webkit-border-radius: 2px;

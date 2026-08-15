@@ -43,7 +43,7 @@
 }
 
 .mod-lt-top-pill .unit {
-    color: silver;
+    color: var(--card-ink-blue);
     font-size: 0.5rem;
     font-family: Arial, Helvetica, system;
     margin-left: 2px;
@@ -100,7 +100,7 @@
 
 .mod-lt-badge-top .lbl {
     font-size: 0.65rem;
-    color: #fff;
+    color: var(--accent-ink);
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 0px;
     text-transform: uppercase;
@@ -111,7 +111,7 @@
     font-family: weathertext2, Arial, sans-serif;
     font-size: 1.45rem;
     line-height: 1.1;
-    color: #fff;
+    color: var(--accent-ink);
 }
 
 .mod-lt-badge-bot {
@@ -121,7 +121,7 @@
     height: 15px;
     line-height: 15px;
     font-size: 0.55rem;
-    color: silver;
+    color: var(--card-ink-blue);
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -153,7 +153,7 @@
 }
 
 .mod-lt-distance-pill .unit {
-    color: silver;
+    color: var(--card-ink-blue);
     font-size: 0.5rem;
     font-family: Arial, Helvetica, system;
     margin-left: 2px;
@@ -181,7 +181,7 @@
 .mod-lt-lbl {
     font-family: weathertext2;
     font-size: 0.65em;
-    color: silver;
+    color: var(--card-ink-blue);
     margin-bottom: 3px;
 }
 
@@ -213,7 +213,7 @@
 }
 
 .mod-lt-pill .unit {
-    color: silver;
+    color: var(--card-ink-blue);
     font-size: 0.5rem;
     font-family: Arial, Helvetica, system;
     margin-left: 2px;
@@ -221,25 +221,25 @@
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
 [data-theme="light"] .mod-lt-badge {
-    border-bottom-color: rgba(0, 0, 0, 0.15);
+    border-bottom-color: var(--shadow-mid);
 }
 
 [data-theme="light"] .mod-lt-top-pill,
 [data-theme="light"] .mod-lt-distance-pill,
 [data-theme="light"] .mod-lt-pill {
-    border-color: #e6e8ef;
+    border-color: var(--line-light);
     background-color: transparent;
 }
 
-/* Darken on-tile lightning pill labels for light mode. Keep white on colored badge. */
+/* Darken on-tile lightning pill labels for light mode. Keep var(--white) on colored badge. */
 [data-theme="light"] .mod-lt-top-pill .unit,
 [data-theme="light"] .mod-lt-distance-pill .unit,
 [data-theme="light"] .mod-lt-pill .unit {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }
 [data-theme="light"] .mod-lt-badge-bot {
-  color: #666;
+  color: var(--ink-muted);
 }
 [data-theme="light"] .mod-lt-lbl {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }

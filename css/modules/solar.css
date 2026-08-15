@@ -23,7 +23,7 @@
 .mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
 
 .mod-solaruv .uvtoday1-3 { background: var(--green); }
-.mod-solaruv .uvtodaydark { background: #4a636f; }
+.mod-solaruv .uvtodaydark { background: var(--ink-teal-dark); }
 
 .mod-solaruv .uvcontainer1 { font-family: weathertext2; }
 
@@ -58,7 +58,7 @@
 .mod-solaruv .uvtodaydark {
   font-size: 1.45rem;
   padding-top: 7px;
-  color: #fff;
+  color: var(--accent-ink);
   border-bottom: 15px solid var(--bg1);
   align-items: center;
   justify-content: center;
@@ -71,9 +71,9 @@
 .mod-solaruv .uvcaution time { font-size: .55rem; }
 
 .mod-solaruv .uvtoday4-5 { background: var(--amber); }
-.mod-solaruv .uvtoday6-8 { background: rgba(255, 124, 57, .8); }
-.mod-solaruv .uvtoday9-10 { background: rgba(211, 93, 78, .8); }
-.mod-solaruv .uvtoday11 { background: rgba(204, 135, 248, .7); }
+.mod-solaruv .uvtoday6-8 { background: var(--warn-soft); }
+.mod-solaruv .uvtoday9-10 { background: var(--danger-soft); }
+.mod-solaruv .uvtoday11 { background: var(--purple-4); }
 
 .mod-solaruv .uvcaution {
   margin-left: 33px;
@@ -85,7 +85,7 @@
   margin-left: 47px;
   margin-top: 60px;
   z-index: 1;
-  color: #fff;
+  color: var(--accent-ink);
 }
 
 .mod-solaruv .luxtoday,
@@ -108,11 +108,11 @@
   -o-border-radius: 2px;
   font-size: .75rem;
   padding-top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   align-items: center;
   justify-content: center;
   border-radius: 2px;
-  background: rgba(255, 124, 57, .8);
+  background: var(--warn-soft);
 }
 
 .mod-solaruv .luxtoday,
@@ -140,11 +140,11 @@
   -o-border-radius: 2px;
   font-size: .75rem;
   padding-top: 0;
-  color: #fff;
+  color: var(--accent-ink);
   align-items: center;
   justify-content: center;
   border-radius: 2px;
-  background: rgba(255, 124, 57, .8);
+  background: var(--warn-soft);
 }
 
 .mod-solaruv .luxtodayword,
@@ -159,7 +159,7 @@
 .mod-solaruv .luxtodayword { margin-left: 228px; margin-top: 110px; padding: 2px; }
 
 .mod-solaruv .luxtodaydark,
-.mod-solaruv .solarluxtodaydark { background: #4a636f; }
+.mod-solaruv .solarluxtodaydark { background: var(--ink-teal-dark); }
 
 .mod-solaruv .weather34luxword,
 .mod-solaruv .weather34solarword { margin-top: 92px; }
@@ -181,8 +181,8 @@
 .mod-solaruv .luxwrap,
 .mod-solaruv .solarwrap {
   position: absolute;
-  border: 1px solid rgba(86, 95, 103, .3);
-  border-bottom: 3px solid rgba(86, 95, 103, .3);
+  border: 1px solid var(--line-faint-3);
+  border-bottom: 3px solid var(--line-faint-3);
   width: 44pt;
   padding: 0;
   height: 30pt;
@@ -209,7 +209,7 @@
   justify-content: center;
   border-radius: 2px;
   margin-top: 5px;
-  color: silver;
+  color: var(--card-ink-blue);
 }
 
 .mod-solaruv .uvcautionbig span { color: var(--orange); padding-right: 3px; }

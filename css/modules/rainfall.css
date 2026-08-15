@@ -1,478 +1,775 @@
-﻿/* rainfall module — scoped to .mod-rainfall */
+/* rainfall module — scoped to .mod-rainfall */
 .mod-rainfall { display: contents; }
 
 .mod-rainfall .heatcircle-content {
-  color: silver;
-  float: left;
-  margin-left: -4px;
-  padding: 0;
-  text-align: center;
-  width: 160px;
-  font: 500 11px weathertext2;
-  display: block;
-  line-height: 15px
+  color: var(--card-ink-blue);
+
+  float: left;
+
+  margin-left: -4px;
+
+  padding: 0;
+
+  text-align: center;
+
+  width: 160px;
+
+  font: 500 11px weathertext2;
+
+  display: block;
+
+  line-height: 15px
+
 }
 
 .mod-rainfall .raintodayblue {
-  font-family: weathertext2
+  font-family: weathertext2
+
 }
 
 .mod-rainfall .raintodayblue {
-  position: relative;
-  padding: 1px;
-  border-radius: 2px;
-  margin-top: -7px;
-  margin-left: 5px;
-  float: left;
-  width: 55px;
-  font-size: 14px
+  position: relative;
+
+  padding: 1px;
+
+  border-radius: 2px;
+
+  margin-top: -7px;
+
+  margin-left: 5px;
+
+  float: left;
+
+  width: 55px;
+
+  font-size: 14px
+
 }
 
 .mod-rainfall .tempconverter {
-  margin-top: 5px;
-  margin-left: 237px
+  margin-top: 5px;
+
+  margin-left: 237px
+
 }
 
 .mod-rainfall .rainconverter {
-  position: absolute;
-  font-size: 12px
+  position: absolute;
+
+  font-size: 12px
+
 }
 
 .mod-rainfall .rainconvertercircle {
-  display: flex;
-  justify-content: center;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  font-size: .85em
+  display: flex;
+
+  justify-content: center;
+
+  border: 1px solid var(--bg1);
+
+  border-radius: 2px;
+
+  font-size: .85em
+
 }
 
 .mod-rainfall .tempconverter1 {
-  margin-left: 53px;
-  margin-top: 0
+  margin-left: 53px;
+
+  margin-top: 0
+
 }
 
 .mod-rainfall .heatcircle5 {
-  padding: 0;
-  width: 170px;
-  position: absolute;
-  float: left
+  padding: 0;
+
+  width: 170px;
+
+  position: absolute;
+
+  float: left
+
 }
 
 .mod-rainfall .heatcircle {
-  margin-top: 30px;
-  margin-left: 100px
+  margin-top: 30px;
+
+  margin-left: 100px
+
 }
 
 .mod-rainfall .heatcircle2 {
-  margin-top: 0;
-  margin-left: 75px
+  margin-top: 0;
+
+  margin-left: 75px
+
 }
 
 .mod-rainfall .heatcircle4 {
-  margin-top: 40px
+  margin-top: 40px
+
 }
 
 .mod-rainfall .heatcircle3 {
-  margin-left: 0
+  margin-left: 0
+
 }
 
 .mod-rainfall .heatcircle4 {
-  margin-left: 75px
+  margin-left: 75px
+
 }
 
 .mod-rainfall .heatcircle5 {
-  margin-top: 120px;
-  margin-left: 100px
+  margin-top: 120px;
+
+  margin-left: 100px
+
 }
 
 .mod-rainfall .raintoday1 {
-  font-family: weathertext2
+  font-family: weathertext2
+
 }
 
 .mod-rainfall .raintoday1 {
-  justify-content: center
+  justify-content: center
+
 }
 
 .mod-rainfall #weather34rainbeaker:before {
-  left: -10px
+  left: -10px
+
 }
 
 .mod-rainfall .weather34i-rairate-bar {
-  position: absolute;
-  height: 100px;
-  width: 130px;
-  margin-left: 35px;
-  margin-top: 40px
+  position: absolute;
+
+  height: 100px;
+
+  width: 130px;
+
+  margin-left: 35px;
+
+  margin-top: 40px
+
 }
 
 .mod-rainfall #raincontainer {
-  height: 170px;
-  overflow: hidden;
-  position: absolute;
-  width: 208px;
-  margin-top: -70px;
-  left: -20px
+  height: 170px;
+
+  overflow: hidden;
+
+  position: absolute;
+
+  width: 208px;
+
+  margin-top: -70px;
+
+  left: -20px
+
 }
 
 .mod-rainfall #raincontainer div {
-  position: absolute
+  position: absolute
+
 }
 
 .mod-rainfall #weather34rainbeaker {
-  border: 4px solid var(--bg0);
-  border-top: 0;
-  -webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  -o-border-radius: 0 0 2px 2px;
-  -ms-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  height: 100px;
-  left: 14px;
-  bottom: 0;
-  width: 100px;
-  background: url(../rain/rainmarker.svg) no-repeat
+  border: 4px solid var(--bg0);
+
+  border-top: 0;
+
+  -webkit-border-radius: 0 0 2px 2px;
+
+  -moz-border-radius: 0 0 2px 2px;
+
+  -o-border-radius: 0 0 2px 2px;
+
+  -ms-border-radius: 0 0 2px 2px;
+
+  border-radius: 0 0 2px 2px;
+
+  height: 100px;
+
+  left: 14px;
+
+  bottom: 0;
+
+  width: 100px;
+
+  background: url(../rain/rainmarker.svg) no-repeat
+
 }
 
 .mod-rainfall #weather34rainbeaker:before {
-  border: 5px solid var(--bg0);
-  border-bottom: 0;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  content: '';
-  height: 5px;
-  position: absolute;
-  top: 0;
-  width: 10px
+  border: 5px solid var(--bg0);
+
+  border-bottom: 0;
+
+  -webkit-border-radius: 2px;
+
+  -moz-border-radius: 2px;
+
+  -o-border-radius: 2px;
+
+  -ms-border-radius: 2px;
+
+  border-radius: 2px;
+
+  content: '';
+
+  height: 5px;
+
+  position: absolute;
+
+  top: 0;
+
+  width: 10px
+
 }
 
 .mod-rainfall #weather34rainbeaker:after {
-  right: -10px
+  right: -10px
+
 }
 
 .mod-rainfall #weather34rainwater {
-  background-color: rgba(0, 154, 171, .6);
-  border: 0;
-  webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  -o-border-radius: 0 0 2px 2px;
-  -ms-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  bottom: 0;
-  max-height: 90px;
-  overflow: hidden;
-  width: 92px
+  background-color: var(--info-9);
+
+  border: 0;
+
+  webkit-border-radius: 0 0 2px 2px;
+
+  -moz-border-radius: 0 0 2px 2px;
+
+  -o-border-radius: 0 0 2px 2px;
+
+  -ms-border-radius: 0 0 2px 2px;
+
+  border-radius: 0 0 2px 2px;
+
+  bottom: 0;
+
+  max-height: 90px;
+
+  overflow: hidden;
+
+  width: 92px
+
 }
 
 .mod-rainfall .raincontainer1 {
-  position: relative;
-  margin: 40px 10px 10px 40px;
-  float: left;
-  bottom: 0;
-  right: 0;
-  left: 15px;
-  top: 47px
+  position: relative;
+
+  margin: 40px 10px 10px 40px;
+
+  float: left;
+
+  bottom: 0;
+
+  right: 0;
+
+  left: 15px;
+
+  top: 47px
+
 }
 
 .mod-rainfall .raintoday1 {
-  width: 3.1rem;
-  height: 2.5rem;
-  font-size: .75rem;
-  padding-top: 7px;
-  color: #fff;
-  border-bottom: 8px solid var(--bg1);
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px
+  width: 3.1rem;
+
+  height: 2.5rem;
+
+  font-size: .75rem;
+
+  padding-top: 7px;
+
+  color: var(--accent-ink);
+
+  border-bottom: 8px solid var(--bg1);
+
+  -webkit-border-radius: 2px;
+
+  -moz-border-radius: 2px;
+
+  -o-border-radius: 2px;
+
+  border-radius: 2px
+
 }
 
 .mod-rainfall .rainrateextra {
-  margin-left: 227px;
-  margin-top: 130px
+  margin-left: 227px;
+
+  margin-top: 130px
+
 }
 
 .mod-rainfall .rainratesmall {
-  top: 1px;
-  color: silver;
-  font-size: 9px;
-  line-height: 12px;
-  left: 40px
+  top: 1px;
+
+  color: var(--card-ink-blue);
+
+  font-size: 9px;
+
+  line-height: 12px;
+
+  left: 40px
+
 }
 
 .mod-rainfall .rainconvertercircleblue1 {
-  justify-content: center;
-  height: 1rem;
-  width: 3.55rem;
-  border: 1px solid var(--bg1);
-  border-radius: 2px;
-  line-height: 16px;
-  font-size: .85em;
-  color: var(--teal);
-  background: 0
+  justify-content: center;
+
+  height: 1rem;
+
+  width: 3.55rem;
+
+  border: 1px solid var(--bg1);
+
+  border-radius: 2px;
+
+  line-height: 16px;
+
+  font-size: .85em;
+
+  color: var(--teal);
+
+  background: 0
+
 }
 
 .mod-rainfall .tempconverter {
-  margin-left: 10px
+  margin-left: 10px
+
 }
 
 .mod-rainfall .rainratemodulehome {
-  justify-content: center;
-  width: 4.5rem;
-  -webkit-border-radius: 2px;
-  border-radius: 2px
+  justify-content: center;
+
+  width: 4.5rem;
+
+  -webkit-border-radius: 2px;
+
+  border-radius: 2px
+
 }
 
 .mod-rainfall .rainmodulehome {
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  -webkit-border-radius: 2px;
-  border-radius: 2px
+  align-items: center;
+
+  justify-content: center;
+
+  width: 4rem;
+
+  -webkit-border-radius: 2px;
+
+  border-radius: 2px
+
 }
 
 .mod-rainfall .inheatcircle-content {
-  position: absolute;
-  color: silver;
-  float: left;
-  margin-left: -4px;
-  padding: 0;
-  text-align: center;
-  width: 160px;
-  font: 500 11px weathertext2;
-  display: block;
-  line-height: 15px
+  position: absolute;
+
+  color: var(--card-ink-blue);
+
+  float: left;
+
+  margin-left: -4px;
+
+  padding: 0;
+
+  text-align: center;
+
+  width: 160px;
+
+  font: 500 11px weathertext2;
+
+  display: block;
+
+  line-height: 15px
+
 }
 
 .mod-rainfall .heatcircle6 {
-  padding: 0;
-  width: 170px;
-  position: absolute;
-  margin-top: -35px;
-  margin-left: 140px
+  padding: 0;
+
+  width: 170px;
+
+  position: absolute;
+
+  margin-top: -35px;
+
+  margin-left: 140px
+
 }
 
 .mod-rainfall .heatcircle7 {
-  padding: 0;
-  width: 170px;
-  position: relative;
-  margin-top: 50px;
-  margin-left: 49px
-}
+  padding: 0;
+
+  width: 170px;
+
+  position: relative;
+
+  margin-top: 50px;
+
+  margin-left: 49px
+
+}
+
 
 
 
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-rainfall .raintodayblue {
-  position: relative;
-  background: rgba(0, 154, 171, .7);
-  border-radius: 4px;
-  font-weight: 600;
-  color: #fff;
-  margin-top: -7px;
-  margin-left: 2px;
-  width: 55px;
-  font-size: 12px
+  position: relative;
+
+  background: var(--info-9-soft);
+
+  border-radius: 4px;
+
+  font-weight: 600;
+
+  color: var(--accent-ink);
+
+  margin-top: -7px;
+
+  margin-left: 2px;
+
+  width: 55px;
+
+  font-size: 12px
+
 }
 
 [data-theme="light"] .mod-rainfall .raintodayblue span {
-  color: #fff;
-  font-size: 12px
+  color: var(--accent-ink);
+
+  font-size: 12px
+
 }
 
 [data-theme="light"] .mod-rainfall .tempconverter {
-  margin-top: 5px;
-  margin-left: 253px
+  margin-top: 5px;
+
+  margin-left: 253px
+
 }
 
 [data-theme="light"] .mod-rainfall .tempconverter1 {
-  position: absolute;
-  margin-left: 53px;
-  margin-top: 0;
-  font-size: 12px
+  position: absolute;
+
+  margin-left: 53px;
+
+  margin-top: 0;
+
+  font-size: 12px
+
 }
 
 [data-theme="light"] .mod-rainfall .heatcircle {
-  float: left;
-  margin-top: 30px;
-  margin-left: 100px;
-  padding: 0;
-  width: 170px;
-  position: absolute
+  float: left;
+
+  margin-top: 30px;
+
+  margin-left: 100px;
+
+  padding: 0;
+
+  width: 170px;
+
+  position: absolute
+
 }
 
 [data-theme="light"] .mod-rainfall .heatcircle {
-  background: 0
+  background: 0
+
 }
 
 [data-theme="light"] .mod-rainfall .heatcircle-content {
-  color: #2d3a4b;
-  float: left;
-  margin-left: -4px;
-  padding: 0;
-  text-align: center;
-  width: 160px;
-  font-size: 11px;
-  display: block;
-  line-height: 15px
+  color: var(--card-ink-blue);
+
+  float: left;
+
+  margin-left: -4px;
+
+  padding: 0;
+
+  text-align: center;
+
+  width: 160px;
+
+  font-size: 11px;
+
+  display: block;
+
+  line-height: 15px
+
 }
 
 [data-theme="light"] .mod-rainfall .heatcircle4 {
-  padding: 0;
-  width: 170px;
-  position: absolute;
-  float: left
+  padding: 0;
+
+  width: 170px;
+
+  position: absolute;
+
+  float: left
+
 }
 
 [data-theme="light"] .mod-rainfall #weather34rainbeaker {
-  border: 4px solid #e9ebf1;
-  border-top: 0;
-  -webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  -o-border-radius: 0 0 2px 2px;
-  -ms-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  height: 100px;
-  left: 14px;
-  bottom: 0;
-  width: 100px;
-  background: url(../rain/rainmarker.svg) no-repeat
+  border: 4px solid var(--line-soft);
+
+  border-top: 0;
+
+  -webkit-border-radius: 0 0 2px 2px;
+
+  -moz-border-radius: 0 0 2px 2px;
+
+  -o-border-radius: 0 0 2px 2px;
+
+  -ms-border-radius: 0 0 2px 2px;
+
+  border-radius: 0 0 2px 2px;
+
+  height: 100px;
+
+  left: 14px;
+
+  bottom: 0;
+
+  width: 100px;
+
+  background: url(../rain/rainmarker.svg) no-repeat
+
 }
 
 [data-theme="light"] .mod-rainfall #weather34rainbeaker:before {
-  border: 5px solid #e9ebf1;
-  border-bottom: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  content: '';
-  height: 5px;
-  position: absolute;
-  top: 0;
-  width: 10px
+  border: 5px solid var(--line-soft);
+
+  border-bottom: 0;
+
+  -webkit-border-radius: 4px;
+
+  -moz-border-radius: 4px;
+
+  -o-border-radius: 4px;
+
+  -ms-border-radius: 4px;
+
+  border-radius: 4px;
+
+  content: '';
+
+  height: 5px;
+
+  position: absolute;
+
+  top: 0;
+
+  width: 10px
+
 }
 
 [data-theme="light"] .mod-rainfall .raintoday1 {
-  width: 3.1rem;
-  height: 2.5rem;
-  font-size: .8rem;
-  padding-top: 7px;
-  color: #fff;
-  border-bottom: 8px solid #e9ebf1;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px
+  width: 3.1rem;
+
+  height: 2.5rem;
+
+  font-size: .8rem;
+
+  padding-top: 7px;
+
+  color: var(--accent-ink);
+
+  border-bottom: 8px solid var(--line-soft);
+
+  -webkit-border-radius: 3px;
+
+  -moz-border-radius: 3px;
+
+  -o-border-radius: 3px;
+
+  border-radius: 3px
+
 }
 
 [data-theme="light"] .mod-rainfall .rainrateextra {
-  position: absolute;
-  margin-left: 227px;
-  margin-top: 135px
+  position: absolute;
+
+  margin-left: 227px;
+
+  margin-top: 135px
+
 }
 
 [data-theme="light"] .mod-rainfall .rainratesmall {
-  position: absolute;
-  top: 1px;
-  color: #2d3a4b;
-  font-size: 9px;
-  line-height: 12px;
-  left: 40px
+  position: absolute;
+
+  top: 1px;
+
+  color: var(--card-ink-blue);
+
+  font-size: 9px;
+
+  line-height: 12px;
+
+  left: 40px
+
 }
 
 [data-theme="light"] .mod-rainfall .rainconvertercircle {
-  background: #4e95a0;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 3px;
-  color: #fff;
-  line-height: 16px;
-  font-size: .85em
+  background: var(--hum-wet);
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 3.2rem;
+
+  border: 2px solid var(--line-light);
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+  color: var(--accent-ink);
+
+  line-height: 16px;
+
+  font-size: .85em
+
 }
 
 [data-theme="light"] .mod-rainfall .rainconverter {
-  position: absolute;
-  font-size: 12px;
-  margin-left: 255px
+  position: absolute;
+
+  font-size: 12px;
+
+  margin-left: 255px
+
 }
 
 [data-theme="light"] .mod-rainfall .rainconvertercircleblue1 {
-  align-items: center;
-  justify-content: center;
-  width: 3.6rem;
-  border: 2px solid #e6e8ef;
-  overflow: hidden;
-  border-radius: 3px;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: #fff;
-  background: #4e95a0
+  align-items: center;
+
+  justify-content: center;
+
+  width: 3.6rem;
+
+  border: 2px solid var(--line-light);
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+  line-height: 16px;
+
+  font-family: weathertext2;
+
+  font-size: .85em;
+
+  color: var(--accent-ink);
+
+  background: var(--hum-wet)
+
 }
 
 [data-theme="light"] .mod-rainfall .rainratemodulehome {
-  display: flex;
-  align-items: center;
-  border: 1px solid #e6e8ef
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid var(--line-light)
+
 }
 
 [data-theme="light"] .mod-rainfall .rainratemodulehome {
-  height: 1.1rem;
-  font-size: .65rem;
-  color: #2d3a4b;
-  box-shadow: inset 4px 0 0 0 var(--teal);
-  overflow: hidden
+  height: 1.1rem;
+
+  font-size: .65rem;
+
+  color: var(--card-ink-blue);
+
+  box-shadow: inset 4px 0 0 0 var(--teal);
+
+  overflow: hidden
+
 }
 
 [data-theme="light"] .mod-rainfall .rainratemodulehome {
-  justify-content: center;
-  width: 4.5rem;
-  line-height: 16px;
-  font-family: weathertext2;
-  border-left: 0;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
+  justify-content: center;
+
+  width: 4.5rem;
+
+  line-height: 16px;
+
+  font-family: weathertext2;
+
+  border-left: 0;
+
+  -webkit-border-top-right-radius: 2px;
+
+  -webkit-border-bottom-right-radius: 2px;
+
+  border-top-right-radius: 2px;
+
+  border-bottom-right-radius: 2px;
+
+  font-weight: 400
+
 }
 
 [data-theme="light"] .mod-rainfall .rainmodulehome {
-  align-items: center;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-weight: 400;
-  display: flex
+  align-items: center;
+
+  line-height: 16px;
+
+  font-family: weathertext2;
+
+  font-weight: 400;
+
+  display: flex
+
 }
 
 [data-theme="light"] .mod-rainfall .rainmodulehome {
-  justify-content: center;
-  width: 4rem;
-  border: 1px solid #e6e8ef;
-  border-left: 0;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
+  justify-content: center;
+
+  width: 4rem;
+
+  border: 1px solid var(--line-light);
+
+  border-left: 0;
+
+  -webkit-border-top-right-radius: 2px;
+
+  -webkit-border-bottom-right-radius: 2px;
+
+  border-top-right-radius: 2px;
+
+  border-bottom-right-radius: 2px
+
 }
 
 [data-theme="light"] .mod-rainfall .inheatcircle-content {
-  position: absolute;
-  margin-left: -4px;
-  width: 160px;
-  font: 500 11px weathertext2;
-  line-height: 15px
+  position: absolute;
+
+  margin-left: -4px;
+
+  width: 160px;
+
+  font: 500 11px weathertext2;
+
+  line-height: 15px
+
 }
 
 
 /* Darken on-tile rain heatcircle text for light mode. */
 [data-theme="light"] .mod-rainfall .inheatcircle-content {
-  color: #2d3a4b;
+  color: var(--card-ink-blue);
 }

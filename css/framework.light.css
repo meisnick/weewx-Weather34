@@ -925,14 +925,6 @@ hr {
   background: var(--orange)
 }
 
-.thearrow3 {
-  width: 10px;
-  height: 50%;
-  -moz-transform-origin: 50% 100%;
-  -o-transform-origin: 50% 100%;
-  transform-origin: 50% 100%
-}
-
 .thearrow1:after,
 .thearrow3:after {
   -webkit-transform: translate(-50%, -50%)
@@ -1898,32 +1890,6 @@ tsteady {
   color: var(--text)
 }
 
-.thearrow4,
-.thearrow7 {
-  position: absolute;
-  z-index: 200;
-  top: 0;
-  left: 43%;
-  margin-left: -6px;
-  width: 10px;
-  height: 50%;
-  -webkit-transform-origin: 50% 100%;
-  -moz-transform-origin: 50% 100%;
-  -o-transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  transform-origin: 50% 100%
-}
-
-.thearrow3:after,
-.thearrow4:after,
-.thearrow7:after {
-  content: '';
-  background-color: 0;
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
-}
-
 .barometertrend2 span {
   font-weight: 600;
   color: var(--green)
@@ -1951,50 +1917,6 @@ convtext {
   color: var(--text);
   display: block;
   font-weight: 500
-}
-
-.thearrow3:after {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 10px 5px 0;
-  border-color: rgba(255, 121, 58, 1) transparent transparent;
-  transform: translate(-50%, -50%)
-}
-
-.thearrow3:before {
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  z-index: 9;
-  left: 2px;
-  top: -5px;
-  border: 2px solid #e0dfdf;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%
-}
-
-.thearrow4:after,
-.thearrow7:after {
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%)
-}
-
-.thearrow4:after,
-.thearrow7:after {
-  position: absolute;
-  border-style: solid;
-  border-width: 3px;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-color: var(--green)
 }
 
 convtext {
@@ -2704,29 +2626,6 @@ supmb {
 supunit {
   font-size: .7em;
   color: rgba(18, 109, 193, 1)
-}
-
-.thearrow4:after,
-.thearrow7:after {
-  left: 50%;
-  top: 0;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 0
-}
-
-.thearrow7:after {
-  border-radius: 0;
-  border-bottom: 5px solid rgba(255, 124, 57, .7)
-}
-
-.thearrow4:after {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  border-bottom: 5px solid rgba(102, 188, 199, .7)
 }
 
 .weather34barometerarrowactual:after,

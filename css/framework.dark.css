@@ -5693,55 +5693,9 @@ wfstriketoday {
   top: -5px
 }
 
-.eqcontainer1 {
-  margin-left: 30px;
-  margin-top: 30px
-}
-
-.eqtoday1,
-.eqtoday1-3,
-.eqtoday11,
-.eqtoday4-5,
-.eqtoday6-8,
-.eqtoday9-10 {
-  font-family: weathertext2, Helvetica, system;
-  display: flex;
-  width: 5rem;
-  height: 4.5rem;
-  font-size: 1.45rem;
-  color: #fff;
-  border-bottom: 15px solid rgba(56, 56, 60, 1);
-  justify-content: center;
-  border-radius: 2px;
-  padding-top: 17px
-}
-
 .eqcaution,
 .eqt {
   font-family: Arial, Helvetica, system
-}
-
-.eqtoday1-3 {
-  background: var(--green)
-}
-
-.eqtoday4-5 {
-  background: var(--amber)
-}
-
-.eqtoday6-8 {
-  background: var(--orange-d)
-}
-
-.eqtoday11 {
-  background: rgba(204, 135, 248, .7)
-}
-
-.eqcaution {
-  margin-left: 15px;
-  margin-top: 5px;
-  color: #fff;
-  font-size: .7rem
 }
 
 .eqt {
@@ -6252,11 +6206,6 @@ weather34 {
   margin-left: 45px;
   display: block;
   width: 100px
-}
-
-valueearthquake {
-  font-size: .55rem;
-  line-height: 10px
 }
 
 alertvalue {

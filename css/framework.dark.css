@@ -490,12 +490,6 @@ body.cols-6 .weather2-container {
   position: relative
 }
 
-.barometergaugegrid {
-  width: 90%;
-  text-align: center;
-  margin: 10px 0 auto
-}
-
 .barometertrend {
   position: relative;
   text-align: center;
@@ -684,16 +678,6 @@ suprain2 {
   width: 300px;
   padding-left: 10px;
   text-align: left
-}
-
-.chartforecastlink {
-  margin-left: 0;
-  font-size: .67em;
-  color: silver;
-  margin-top: 155px;
-  width: 300px;
-  padding-left: 10px;
-  text-align: left
 }.feels, .feels1, .h2uv, .max, .outlooktitle, .sun, daylighthours {
   text-align: center
 }
@@ -716,13 +700,6 @@ humiditycolor {
 .windgustheading {
   color: silver;
   font: 1em weathertext2
-}
-
-.iconsize {
-  font-size: 0;
-  width: 50%;
-  height: 50%;
-  margin-left: 10px
 }
 
 .homeweathercompass>.homeweathercompass-line {
@@ -836,12 +813,6 @@ supdavis {
   color: #fff;
   margin-bottom: 50px;
   margin-right: 150px
-}
-
-.centered {
-  float: none;
-  margin-left: auto;
-  margin-right: auto
 }
 
 .outlooktitle span {
@@ -6297,10 +6268,6 @@ wuunits {
   font-size: .65em
 }
 
-displaynone {
-  display: none
-}
-
 wuuvicon {
   width: 3.3rem;
   height: 1.1rem;
@@ -6411,35 +6378,6 @@ weather34mbuptime {
   color: #c0c0c0;
   font-size: .75em;
   font-family: weathertext2
-}
-
-.weather34themeicon {
-  position: absolute;
-  margin: 0;
-  left: 23px;
-  top: 15px;
-  max-height: 12px
-}
-
-.weather34thememonitor {
-  width: 15px;
-  height: 11px;
-  background: #ff832f;
-  border-radius: 2px
-}
-
-.weather34thememonitor li {
-  position: absolute;
-  list-style: none
-}
-
-.weather34thememonitor .weather34themefirst {
-  width: 13px;
-  height: 8px;
-  background: #4b545c;
-  top: 1px;
-  left: 1px;
-  z-index: 3
 }
 
 topbarimperialf,
@@ -6737,12 +6675,6 @@ weather34menumarkerlight {
 .lity-close::-moz-focus-inner{padding:0;border:0}
 .lity-close:active,.lity-close:focus,.lity-close:hover,.lity-close:visited{padding:0;color:#fff;border:0;background:0;outline:0;-webkit-box-shadow:none;box-shadow:none;text-align:center;text-decoration:none;font-family:headingtext;font-size:25px;font-style:normal;line-height:25px;background:#3d8b96;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px}
 .lity-close:active{color:#565f67}
-.lity-image img {
-  max-width: 100%;
-  display: block;
-  line-height: 0;
-  border: 0
-}
 
 .lity-iframe .lity-container {
   width: 100%;

@@ -70,7 +70,7 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 <div class="mod-lt-lbl"><?php echo $lang['Distance']; ?></div>
                 <div class="mod-lt-pill">
                     <?php if ($dist_mi !== null): ?>
-                    <span class="val"><?php echo $dist_mi; ?></span><span class="unit"><?php echo $lang['Miles']; ?></span>
+                    <span class="val"><?php echo $dist_mi; ?></span><span class="unit">mi</span>
                     <?php else: ?>
                     <span class="val">--</span>
                     <?php endif; ?>

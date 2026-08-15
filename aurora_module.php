@@ -148,7 +148,7 @@ $ki_ok     = file_exists('jsondata/ki.txt')           && (time() - filemtime('js
   </div><!-- end mod-aurora-body -->
 
   <div class="mod-aurora-footer">
-    <span class="mod-aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements"><?php echo $lang['AuroraNowcast'];?></span>
+    <span class="mod-aurora-prob-lbl" title="30-minute real-time nowcast based on L1 solar wind measurements"><?php echo $lang['AuroraNowcast'];?> (30m):</span>
     <span class="mod-aurora-prob-val <?php echo $prob_ok ? aurora_prob_class($aurora_prob) : 'mod-aurora-prob-none'; ?>">
       <?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?>
     </span>

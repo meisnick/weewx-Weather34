@@ -124,7 +124,7 @@ for ($k=0;$k<=2;$k++)
 	if ($forecastdaysnow > 0) {
 		$snow_unit_str = ($rainunit == 'in' ? ' in' : ' cm');
 		echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'.$forecastdaysnow.'</oblue><valuewindunit>'.$snow_unit_str.'</valuewindunit></forecastwindhome></span></precip>';
-	} else if ($forecastdayprecipIntensity > 0) {
+	} else {
 		echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'. number_format($forecastdayprecipIntensity, 2).'</oblue>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';
 	}
 	//uvi

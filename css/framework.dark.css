@@ -540,30 +540,6 @@ supunit {
   color: silver
 }
 
-.indoorlocation,
-.stationlocationtime {
-  padding: 2px 4px 2px 2px;
-  margin-left: 35px;
-  width: auto
-}
-
-.stationlocationtime {
-  margin-top: 41px;
-  text-align: left;
-  font: 10px arial, system
-}
-
-.indoortitles {
-  color: silver;
-  margin-top: 5px;
-  text-align: center;
-  font: 1.2em arial, system
-}
-
-.indoorvalues {
-  margin-top: -15px
-}
-
 .heading1 {
   font: 1em/15px arial, system
 }
@@ -575,11 +551,6 @@ a:visited {
 suptemp,
 suptemp1 {
   font-size: .5em
-}
-
-suptempindoor {
-  font-size: .4em;
-  margin-left: -5px
 }
 
 supsolar {
@@ -873,10 +844,6 @@ suprain2,
 suptemp {
   -webkit-font-smoothing: antialiased;
   -o-font-smoothing: antialiased
-}
-
-.feelstemp {
-  font: 500 10px arial, system
 }
 
 .max,
@@ -1400,14 +1367,6 @@ suptemp {
   margin-bottom: 10px
 }
 
-.feels1 {
-  position: relative;
-  margin-left: auto;
-  z-index: auto;
-  margin-top: 30px;
-  font: .7em arial, system
-}
-
 suptemp1,
 suptemp3 {
   color: silver
@@ -1462,18 +1421,6 @@ suptemp3 {
   header {
     display: none
   }
-}
-
-.indoorcontainer {
-  position: absolute;
-  overflow: hidden;
-  z-index: 10;
-  margin: 17px 0 0 -5px;
-  height: 74px;
-  width: 303px;
-  background-color: #f05e40;
-  border-radius: 5px;
-  color: silver
 }
 
 .Circle1 {
@@ -1772,27 +1719,6 @@ spanm5 {
   top: 25px;
   margin-left: 150px;
   opacity: .5
-}
-
-.homeindoordate,
-.hoursago {
-  width: 200px;
-  position: absolute
-}
-
-.hoursago {
-  font-size: 12px;
-  margin-top: -30px;
-  margin-left: 30px
-}
-
-.homeindoordate {
-  color: silver;
-  text-transform: none;
-  top: 23px;
-  right: 40px;
-  font-family: Arial, system;
-  list-style: none
 }
 
 red,
@@ -2214,11 +2140,6 @@ tempyellow {
   color: #ff5c41
 }
 
-.tempblue,
-.tempgreenfeels {
-  color: silver
-}
-
 .tempblue span {
   font-weight: 600
 }
@@ -2231,51 +2152,6 @@ tempyellow {
   margin-top: -5px;
   float: left;
   width: 60px
-}
-
-.tempbluefeels,
-.tempgreenfeels,
-.temporangefeels,
-.tempredfeels {
-  position: relative;
-  padding: 1px;
-  border-radius: 2px;
-  margin-left: 44px;
-  float: left;
-  width: 60px;
-  margin-bottom: 8px;
-  margin-top: 0
-}
-
-.tempgreenfeels span {
-  font-weight: 600;
-  color: var(--green)
-}
-
-.temporangefeels {
-  color: silver
-}
-
-.temporangefeels span {
-  font-weight: 600;
-  color: var(--orange)
-}
-
-.tempredfeels {
-  color: silver
-}
-
-.tempredfeels span {
-  font-weight: 600;
-  color: #ff5c41
-}
-
-.tempbluefeels {
-  color: silver
-}
-
-.tempbluefeels span {
-  font-weight: 600
 }
 
 .tempgreendew span {
@@ -3001,12 +2877,6 @@ highestrecorded {
   left: 6px
 }
 
-.hometemperatureindoortrend1 {
-  margin-left: 18px;
-  margin-top: 125px;
-  width: 15px
-}
-
 temporange {
   color: var(--orange)
 }
@@ -3151,14 +3021,6 @@ indooryellow {
   top: -12px;
   left: 12px;
   color: silver
-}
-
-.homeindoorfeels1 {
-  margin-top: 25px;
-  border-radius: 2px;
-  border: 1px solid rgba(95, 96, 97, .4);
-  width: 170px;
-  font-size: 14px
 }
 
 .orangeclock,
@@ -4484,23 +4346,6 @@ topblue1 {
   background: var(--teal)
 }
 
-.feelslikebig {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border: 0;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  margin-top: 40px;
-  color: var(--orange)
-}
-
-.feelslikebig span {
-  color: silver;
-  padding-right: 3px
-}
-
 .indoorhomevalue1,
 .wfstrike {
   padding-right: 4px;
@@ -5111,17 +4956,6 @@ raiblue {
   justify-content: center;
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--teal);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.intempmodulehome5-10c {
-  align-items: center;
-  justify-content: center;
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--green2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px
 }

@@ -189,6 +189,67 @@
   --white:          #fff;
   --ink-bright:     #f8f8f8;
   --black:          #000;
+
+  /* ---- module colours (batch 2..N) ---- */
+  --ink-muted:      #666;
+  --ink-dark:       #222;
+  --ink-dark-2:     #444;
+  --ink-dark-3:     #555;
+  --ink-dark-4:     #111111;
+  --ink-faint-6:    #878a8c;
+  --ink-faint-7:    #b0b0b0;
+  --ink-faint-8:    #c0c4cc;
+  --ink-teal-dark:  #4a636f;
+  --line-light-2:   #dde0e6;
+  --line-light-3:   #efefef;
+  --line-light-4:   #f0f0f0;
+  --surface-light:  #f0f2f5;
+  --surface-light-2:#fbfbfb;
+  --line-dark-4:    rgba(61, 64, 66, 1);
+  --line-dark-5:    rgba(59, 60, 63, 1);
+  --line-dark-6:    rgba(53, 56, 58, 1);
+  --line-faint:     rgba(153, 155, 156, .1);
+  --line-faint-2:   rgba(84, 85, 86, .12);
+  --line-faint-3:   rgba(86, 95, 103, .3);
+  --line-faint-4:   rgba(232, 234, 239, .4);
+  --line-faint-5:   rgba(200, 202, 207, .4);
+  --line-soft-3:    rgba(230, 232, 239, .7);
+  --line-soft-4:    rgba(230, 232, 239, .2);
+  --card-bg-faint:  rgba(33, 34, 39, .35);
+  --shadow-mid:     rgba(0, 0, 0, 0.15);
+  --shadow-mid-2:   rgba(0, 0, 0, 0.2);
+  --shadow-heavy:   rgba(0, 0, 0, 0.5);
+  --shadow-heavy-2: rgba(0, 0, 0, 0.75);
+  --shadow-faint:   rgba(0, 0, 0, 0.08);
+  --white-soft:     rgba(255, 255, 255, 0.85);
+  --white-soft-2:   rgba(255, 255, 255, 0.6);
+  --white-faint:    rgba(255, 255, 255, 0.1);
+  --white-faint-2:  rgba(255, 255, 255, 0.08);
+  --white-faint-3:  rgba(255, 255, 255, 0.06);
+  --white-faint-4:  rgba(255, 255, 255, 0.05);
+  --transparent-white: rgba(255, 255, 255, 0);
+  --transparent-4:  rgba(245, 247, 252, 0);
+  --info-soft:      rgba(102, 188, 199, .8);
+  --info-soft-2:    rgba(102, 188, 199, .6);
+  --info-9-soft:    rgba(0, 154, 171, .7);
+  --info-9-solid:   rgba(0, 154, 171, 1);
+  --info-5-solid:   rgba(68, 166, 181, 1);
+  --info-blue:      rgba(18, 109, 193, 1);
+  --warn-soft:      rgba(255, 124, 57, .8);
+  --warn-soft-2:    rgba(255, 121, 58, .8);
+  --warn-soft-3:    rgba(255, 121, 58, .6);
+  --warn-strong:    rgba(245, 101, 10, 1);
+  --warn-5-soft:    rgba(208, 95, 45, .7);
+  --ink-teal-soft:  rgba(74, 99, 111, .8);
+  --danger-soft:    rgba(211, 93, 78, .8);
+  --purple-4:       rgba(204, 135, 248, .7);
+  --aurora-yellow:  #ebd825;
+  --aurora-red:     #8d2315;
+  --dialog-bg:      rgba(10, 10, 10, 0.75);
+  --dialog-bg-2:    rgba(15, 15, 15, 0.6);
+  --dialog-bg-3:    rgba(25, 25, 25, 0.95);
+  --dialog-bg-4:    rgba(35, 35, 35, 0.4);
+  --dialog-line:    rgba(220, 220, 220, 0.7);
 }
 
 :root[data-theme="light"] {

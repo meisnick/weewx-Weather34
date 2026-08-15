@@ -614,37 +614,11 @@ eq {
   line-height: 15px
 }
 
-.baromcircle-content {
-  float: left;
-  line-height: 1;
-  margin-top: -.9em;
-  padding-top: 50%;
-  text-align: center;
-  width: 100%;
-  color: #76797c;
-  font-family: arial, system;
-  font-weight: 900
-}
-
 .chartforecast,
 .chartforecastlink,
 a {
   font-family: arial, system;
   z-index: 20 
-}
-
-.baromcircle {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-  float: right;
-  border-top: .1rem solid rgba(76, 59, 131, .1);
-  border-right: .1rem solid rgba(76, 59, 131, .1);
-  border-left: .1rem solid rgba(68, 59, 155, .1);
-  border-bottom: .1rem solid rgba(68, 145, 155, .1);
-  margin-top: -32px;
-  margin-left: 212px;
-  padding: 2px
 }.chartforecast, .chartforecastlink {
   padding-top: 5px
 }
@@ -845,35 +819,12 @@ supdavis {
   margin-bottom: 10px
 }
 
-.barometertrend1 {
-  width: 100px;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 120px;
-  text-align: left;
-  color: silver;
-  font: .68em weathertext2;
-  line-height: 9px
-}
-
-.barometertrend1 hourtrend {
-  font: 500 10px arial, system;
-  color: silver;
-  line-height: 9px;
-  text-align: left;
-  margin-left: 15px
-}
-
 .barometeravg,
 .barometermax {
   margin-left: 10px;
   width: 50px;
   position: absolute;
   text-align: center
-}
-
-barometerinfo {
-  color: silver
 }
 
 .barometermax {
@@ -2509,10 +2460,6 @@ tsteady {
   font-family: Arial, Helvetica, sans-serif, system
 }
 
-.pressuretextfast {
-  color: var(--orange-d)
-}
-
 .text2 span,
 .text3 {
   font-size: 11px;
@@ -3827,11 +3774,6 @@ smallrainunit {
 .tempavg60 {
   margin-left: 0;
   margin-top: 105px
-}
-
-.barometertrendx {
-  margin-left: 260px;
-  margin-top: 130px
 }
 
 smallsup {

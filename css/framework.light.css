@@ -957,16 +957,6 @@ hr {
   margin: 0 0 auto
 }
 
-.sunimage {
-  left: 55px;
-  color: #f8f8f8;
-  line-height: 20px;
-  z-index: 1;
-  position: absolute;
-  font-size: 10px;
-  top: 4px
-}
-
 .fgtext,
 .hrstillsunset,
 .hrstillsunset period,
@@ -978,10 +968,6 @@ hr {
 .sunsethome,
 .sunsethome period {
   color: var(--text)
-}
-
-.wi-daylight:before {
-  content: "\f06e"
 }
 
 .thearrow1:after,
@@ -1919,54 +1905,8 @@ convtext {
   font-weight: 500
 }
 
-convtext {
-  font-weight: 500
-}
-
 #daylight {
   border: 6px solid rgba(95, 96, 97, .5)
-}
-
-.hoursgoneby {
-  top: 40px;
-  left: 27px;
-  color: var(--text);
-  border: 0
-}
-
-.hrstillsunset,
-.hrswassunrise {
-  width: 100px;
-  position: absolute;
-  font-size: 10px;
-  margin-left: 120px
-}
-
-.hrswassunrise {
-  margin-top: -120px;
-  line-height: 12px
-}
-
-.hrstillsunset {
-  margin-top: -20px;
-  line-height: 12px
-}
-
-.sunrisehome,
-.sunsethome {
-  width: 100px;
-  font-size: 10px;
-  margin-left: -95px;
-  line-height: 12px;
-  position: absolute
-}
-
-.sunrisehome {
-  margin-top: -120px
-}
-
-.sunsethome {
-  margin-top: -20px
 }
 
 @media screen and (max-width:768px) {
@@ -3450,42 +3390,6 @@ canvas {
   left: 5px
 }
 
-.sunelevation {
-  color: var(--text-d);
-  font-family: Arial, Helvetica, sans-serif;
-  position: absolute;
-  font-size: .55rem;
-  width: 110px;
-  margin-left: 106px;
-  top: 27px
-}
-
-.sunelevation span {
-  font-family: weathertext2, Arial, Helvetica, sans-serif;
-  font-size: .65rem;
-  margin-left: 1px;
-  color: rgba(68, 166, 181, 1)
-}
-
-currentdarkness,
-currentdaylight {
-  position: absolute;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  height: 6px;
-  width: 6px;
-  display: inline
-}
-
-currentdaylight {
-  background: rgba(68, 166, 181, 1)
-}
-
-currentdarkness {
-  background: #4a636f
-}
-
 moonrisecolor {
   color: #44a6b5
 }
@@ -3784,14 +3688,6 @@ smallrainunita {
   font-size: .45rem
 }
 
-.sundown34,
-.sunup34 {
-  height: 4px;
-  width: 8px;
-  top: 3px;
-  position: absolute
-}
-
 value {
   font-size: .95em;
   font-weight: 500
@@ -3819,20 +3715,6 @@ valuetext1 {
   font-size: .95em;
   font-weight: 500;
   color: var(--text-d)
-}
-
-.sunup34 {
-  border-top-left-radius: 90px;
-  border-top-right-radius: 90px;
-  background: rgba(var(--amber-rgb), .8);
-  left: 23px
-}
-
-.sundown34 {
-  border-bottom-left-radius: 90px;
-  border-bottom-right-radius: 90px;
-  background: rgba(211, 93, 78, .8);
-  left: 68px
 }
 
 .temphumcircle0-25,
@@ -4681,26 +4563,6 @@ weather34daylightdaycircle {
   width: 5px;
   border-radius: 45px;
   position: absolute
-}
-
-weather34sunupcircle {
-  top: 1px;
-  left: 38px;
-  position: absolute;
-  height: 4px;
-  width: 8px;
-  border-radius: 10px 10px 0 0;
-  background: var(--orange)
-}
-
-weather34sundowncircle {
-  top: 2px;
-  left: 83px;
-  position: absolute;
-  height: 4px;
-  width: 8px;
-  border-radius: 0 0 10px 10px;
-  background: var(--red)
 }
 
 weather34daylightdaycircle {

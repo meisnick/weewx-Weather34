@@ -4246,31 +4246,6 @@ wfstriketoday {
   border-radius: 2px
 }
 
-.simsekdata,
-.simsektoday {
-  position: absolute;
-  font-size: .7rem
-}
-
-.simsektoday {
-  margin-top: -15px;
-  margin-left: 1.65rem;
-  text-align: center;
-  z-index: auto;
-  color: var(--text);
-  font-family: Arial, system
-}
-
-.simsekdata {
-  font-family: Arial, Helvetica, system;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 4px auto auto;
-  left: 28.1%
-}
-
 .topmin,
 .wfstrike {
   left: -100px

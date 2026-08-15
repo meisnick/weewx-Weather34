@@ -126,7 +126,10 @@ else if ($theme === "light")
   <script>
   $(document).ready(function() {
 	
-	setInterval(function(){
+	// This inline <script> re-runs on every el.load() refresh (refresh=3600); without a guard each
+	// reload stacks another 50ms interval and the page gets heavier the longer it is open.
+	if (window._clockHandsTimer) { clearInterval(window._clockHandsTimer); }
+	window._clockHandsTimer = setInterval(function(){
 		getTime();
 	}, 50);
 	

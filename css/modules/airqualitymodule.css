@@ -146,6 +146,9 @@
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
 [data-theme="light"] .mod-aq-badge {
+    /* border-box would shrink the fixed 4.5rem interior by 2px and clip the fixed
+       bottom bar; content-box keeps the interior identical to dark (border outside) */
+    box-sizing: content-box;
     border: 1px solid var(--line-light);
 }
 

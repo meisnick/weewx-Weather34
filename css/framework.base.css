@@ -134,6 +134,8 @@
   --line-dark-2:    rgba(56, 56, 60, 1);
   --line-soft:      #e9ebf1;
   --line-soft-2:    #eee;
+  --line-light:     #e6e8ef;
+  --line-dark-3:    #2d3238;
   --line-white:     rgba(255, 255, 255, .3);
   --line-compass:   rgba(95, 96, 97, .5);
   --line-compass-2: rgba(95, 96, 97, .8);

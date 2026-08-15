@@ -16,6 +16,179 @@
   --text-d:    #bbb;
   --text-m:    #777;
   --text:      #e8e8e8;
+
+
+  /* ---- structure / ink (values per-theme; defaults = dark here) ---- */
+  --page-bg:        #151819;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        rgba(33, 34, 39, .8);
+  --card-bg-2:      #38383c;
+  --card-surface:   #393d40;
+  --card-ink:       silver;
+  --card-ink-blue:  silver;
+  --card-ink-soft:  #777;
+  --card-ink-dim:   #bbb;
+  --card-ink-strong:#e8e8e8;
+  --card-line:      #151718;
+  --card-shadow:    rgba(0, 0, 0, .1);
+  --card-shadow-soft: rgba(97, 106, 114, .1);
+
+  /* ---- accent (brand) ---- */
+  --accent:         var(--teal-bb);
+  --accent-ink:     #fff;
+
+  /* ---- status (semantic, separate from accent) ---- */
+  --good:           var(--green);
+  --warn:           var(--amber);
+  --danger:         var(--red);
+  --info:           var(--teal-b);
+
+  /* ---- weather scale: temperature (cold -> hot) ---- */
+  --temp-cold:      #ab49de;
+  --temp-cold-2:    #3369e7;
+  --temp-cool:      var(--teal);
+  --temp-cool-2:    var(--teal-b);
+  --temp-cool-3:    rgba(80, 69, 188, 1);
+  --temp-chilly:    #087883;
+  --temp-mild:      #88b04b;
+  --temp-mild-2:    var(--green);
+  --temp-warm:      var(--amber);
+  --temp-warm-2:    var(--orange);
+  --temp-warm-3:    #efa80f;
+  --temp-hot:       var(--red-l);
+  --temp-hot-2:     var(--orange-d);
+  --temp-hot-3:     rgba(236, 102, 21, 1);
+  --temp-hot-4:     rgba(211, 93, 78, .7);
+  --temp-hot-5:     #fd7641;
+  --temp-extreme:   #de2c52;
+  --temp-blue:      #637ff6;
+
+  /* ---- weather scale: AQI ---- */
+  --aqi-good:       #9cff9c;
+  --aqi-good-2:     #31ff00;
+  --aqi-good-3:     #31cf00;
+  --aqi-moderate:   #ff0;
+  --aqi-moderate-2: #ffcf00;
+  --aqi-usg:        #ff9a00;
+  --aqi-unhealthy:  #ff6464;
+  --aqi-vu:         #900;
+  --aqi-hazard:     #ce30ff;
+
+  /* ---- weather scale: UV ---- */
+  --uv-purple:      #a475cb;
+  --uv-red:         #ef5350;
+  --uv-red-2:       rgba(215, 64, 73, 1);
+
+  /* ---- health (weather34mbhealth) ---- */
+  --health-ok:      #c0c0c0;
+  --health-warn:    #e08020;
+  --health-fault:   #e0625a;
+
+  /* ---- weather scale: temperature (home/indoor display) ---- */
+  --temp-home-cold:   #8781bd;
+  --temp-home-cool:   #487ea9;
+  --temp-home-warm:   #ec5a34;
+  --temp-home-hot:    #d65b4a;
+  --temp-home-hot-2:  #dc4953;
+  --temp-home-hot-3:  #e26870;
+  --temp-hot-4-solid: rgba(211, 93, 78, 1);
+
+  /* ---- weather scale: humidity ---- */
+  --hum-wet:        #4e95a0;
+
+  /* ---- status shades (info = teal family) ---- */
+  --info-2:         #01a4b5;
+  --info-3:         #009bab;
+  --info-4:         #07727d;
+  --info-5:         #44a6b5;
+  --info-6:         #3d8b96;
+  --info-7:         #387791;
+  --info-8:         rgba(77, 175, 189, 1);
+  --info-9:         rgba(0, 154, 171, .6);
+
+  /* ---- status shades (warn = amber/orange family) ---- */
+  --warn-2:         #ff9350;
+  --warn-3:         #ff8841;
+  --warn-4:         #ddb549;
+  --warn-5:         rgba(208, 95, 45, 1);
+  --warn-6:         #a8650a;
+  --warn-7:         rgba(236, 87, 27, 1);
+  --warn-8:         rgba(233, 171, 74, .8);
+
+  /* ---- status shades (danger = red family) ---- */
+  --danger-2:       #cd5245;
+  --danger-3:       #de7b6e;
+  --danger-4:       #c2352d;
+  --danger-5:       rgba(205, 82, 69, .8);
+  --health-fault-bg: #d9453d;
+
+  /* ---- menu chrome ---- */
+  --menu-bg:        #151718;
+  --menu-sub-bg:    rgba(33, 34, 39, .95);
+
+  /* ---- purple family ---- */
+  --purple:         #b600b0;
+  --purple-2:       rgba(157, 59, 165, .4);
+  --purple-3:       #c282c5;
+
+  /* ---- menu / chrome ---- */
+  --menu-chrome-bg: rgba(37, 41, 45, .7);
+  --menu-line:      #333;
+  --menu-active-bg: #2c2d34;
+  --menu-marker-orange: #ff832f;
+  --menu-marker-light:  #b5b9c1;
+  --menu-marker-dark:   #4b545c;
+
+  /* ---- lines / borders ---- */
+  --line-dark:      #191b1e;
+  --line-dark-2:    rgba(56, 56, 60, 1);
+  --line-soft:      #e9ebf1;
+  --line-soft-2:    #eee;
+  --line-light:     #e6e8ef;
+  --line-dark-3:    #2d3238;
+  --line-white:     rgba(255, 255, 255, .3);
+  --line-compass:   rgba(95, 96, 97, .5);
+  --line-compass-2: rgba(95, 96, 97, .8);
+  --line-mid:       rgba(74, 99, 111, .2);
+
+  /* ---- ink (faint/grey) ---- */
+  --ink-faint:      #7c7e80;
+  --ink-faint-2:    #848688;
+  --ink-faint-3:    #565f67;
+  --ink-faint-4:    rgba(86, 95, 103, .2);
+  --ink-faint-5:    rgba(86, 95, 103, .4);
+  --ink-navy:       rgba(2, 29, 62, .8);
+  --gray:           gray;
+  --chrome-text:    #e8e8e8;
+
+  /* ---- shadows ---- */
+  --shadow-strong:   rgba(0, 0, 0, .3);
+  --shadow-stronger: rgba(0, 0, 0, 0.6);
+
+  /* ---- overlays (lity/lightning) ---- */
+  --overlay-bg:      rgba(33, 36, 40, 0.8);
+  --overlay-bg-2:    #212428;
+  --overlay-bg-3:    #616a72;
+  --overlay-bg-4:    #2f363f;
+  --overlay-bg-5:    rgba(86, 95, 103, 1);
+  --overlay-bg-6:    rgba(30, 33, 36, 1);
+  --overlay-bg-7:    rgba(97, 106, 114, 1);
+  --ink-light:       rgba(230, 232, 239, 1);
+  --transparent:     rgba(86, 95, 103, 0);
+  --transparent-2:   rgba(61, 64, 66, 0);
+  --transparent-3:   rgba(97, 106, 114, 0);
+
+  /* ---- scrollbar + health glow ---- */
+  --scrollbar-track: #eaeaea;
+  --health-ok-glow:  rgba(51, 170, 136, .7);
+  --health-warn-glow: rgba(224, 128, 32, .8);
+  --health-fault-glow: rgba(217, 69, 61, .9);
+
+  /* ---- misc ---- */
+  --good-2:         #3a8;
+  --white:          #fff;
+  --ink-bright:     #f8f8f8;
+  --black:          #000;
 }
 
 :root[data-theme="light"] {
@@ -24,6 +197,23 @@
   --text:   #2d2d2d;
   --text-d: #aaa;
   --text-m: #888;
+
+  --bg0:    #fff;
+  --bg1:    #f8f8f8;
+  --text:   #2d2d2d;
+  --text-d: #aaa;
+  --text-m: #888;
+  --page-bg:        #fff;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        #fff;
+  --card-bg-2:      #f8f8f8;
+  --card-surface:   #fff;
+  --card-ink:       #2d2d2d;
+  --card-ink-blue:  #2d3a4b;
+  --card-ink-soft:  #888;
+  --card-ink-dim:   #aaa;
+  --card-ink-strong:#2d2d2d;
+  --card-line:      rgba(230, 232, 239, .8);
 }
 
 @supports (-moz-appearance:none) {

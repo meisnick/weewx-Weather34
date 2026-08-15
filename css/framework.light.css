@@ -6388,23 +6388,6 @@ wulargetemplohome uvspan {
   font-size: 11px
 }
 
-.wuhumidity {
-  position: absolute;
-  font-family: weathertext2;
-  width: 2.75rem;
-  height: 1.25rem;
-  font-size: .8rem;
-  color: #fff;
-  justify-content: center;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  margin-left: 134px;
-  top: -32px;
-  background: #01a4b5
-}
-
 .wurainfall,
 .wuwindspeed {
   font-size: .7rem;
@@ -6443,15 +6426,6 @@ heatindexwu,
 redwu,
 redwuv {
   background: var(--red-l)
-}
-
-wuhumidityword {
-  font-size: 9px;
-  position: absolute;
-  margin-left: 0;
-  top: 20px;
-  color: #2d3a4b;
-  font-family: Arial, Helvetica, sans-serif
 }.wulargeheatindex {
   font-size: .7rem;
   float: none;
@@ -6643,12 +6617,6 @@ wuthunder2 {
   margin-top: -18px;
   line-height: 10px;
   left: 12px
-}
-
-wustormalert {
-  position: relative;
-  top: -15px;
-  left: 1px;
 }
 
 wuheatindex {

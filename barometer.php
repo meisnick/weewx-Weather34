@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include_once('common.php');include_once('w34CombinedData.php');
 # 27th Jan 2019 file edited by Ken True based on barometer units for non standard configurations by lightmaster https://www.wxforum.net/index.php?topic=36011.0

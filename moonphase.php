@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 	####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2015-2016-2017                                #
 	#	CREATED FOR HOMEWEATHERSTATION TEMPLATE at 													   #

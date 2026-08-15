@@ -1,4 +1,4 @@
-﻿<body>
+<body>
 <?php  include('shared.php');include('common.php');include('serverdata/airqualitydata.php');
 $pm25 = $pm2_5_now_ecowitt;
 

@@ -1,4 +1,4 @@
-﻿<?php  //weather34 rain module 15th Feb 2019 //
+<?php  //weather34 rain module 15th Feb 2019 //
 include_once('w34CombinedData.php');?><div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
 <div class="mod-rainfall">
 <div class="weather34i-rairate-bar"><div id="raincontainer"><div id="weather34rainbeaker">

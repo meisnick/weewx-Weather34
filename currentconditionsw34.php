@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <title>weather34 current conditions</title>
 <style>
 uppercase{ text-transform:capitalize;}

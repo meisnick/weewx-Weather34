@@ -147,6 +147,9 @@
 }
 
 [data-theme="light"] .ym-badge {
+  /* border-box would shrink the 32px interior by 2px and clip the fixed chin;
+     content-box keeps the interior identical to dark, border sits outside */
+  box-sizing: content-box;
   border: 1px solid var(--line-light);
 }
 

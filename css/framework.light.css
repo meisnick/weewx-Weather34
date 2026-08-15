@@ -1820,98 +1820,9 @@ uvtrend {
   margin-top: -5px
 }
 
-.tempblue,
-.tempgreen,
-.temporange,
-.tempred,
-.tempyellow {
-  margin-top: -17px;
-  float: left;
-  width: 60px
-}
-
-.tempblue,
-.tempbluedew,
-.tempgreen,
-.tempgreendew,
-.temporange,
-.temporangedew,
-.tempred,
-.tempreddew {
-  position: relative;
-  padding: 1px;
-  border-radius: 2px;
-  margin-left: 35px
-}
-
 yellow,
 yellow1 {
   color: #ddb549
-}
-
-.tempgreen {
-  color: var(--text)
-}
-
-.tempgreen span {
-  font-weight: 600;
-  color: var(--green)
-}
-
-.temporange {
-  color: var(--text)
-}
-
-.temporange span {
-  font-weight: 600;
-  color: var(--orange)
-}
-
-tempyellow {
-  font-weight: 600;
-  color: #ddb549
-}
-
-.tempred {
-  color: var(--text)
-}
-
-.tempred span {
-  font-weight: 600;
-  color: #ff5c41
-}
-
-.tempblue span {
-  font-weight: 600
-}
-
-.tempbluedew,
-.tempgreendew,
-.temporangedew,
-.tempreddew {
-  color: var(--text);
-  margin-top: -5px;
-  float: left;
-  width: 60px
-}
-
-.tempgreendew span {
-  font-weight: 600;
-  color: var(--green)
-}
-
-.temporangedew span {
-  font-weight: 600;
-  color: var(--orange)
-}
-
-.tempreddew span {
-  font-weight: 600;
-  color: #ff5c41
-}
-
-.tempbluedew span {
-  font-weight: 600
 }
 
 .barometerblue,
@@ -2529,18 +2440,6 @@ uptime {
   left: 75px;
   padding-top: 5px;
   top: 62px
-}
-
-temporange {
-  color: var(--orange)
-}
-
-tempgreen {
-  color: var(--green)
-}
-
-tempred {
-  color: #ee7159
 }
 
 suplight {

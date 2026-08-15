@@ -1605,10 +1605,6 @@ suptemp3 {
   color: silver
 }
 
-.weather34menulisting {
-  background: rgba(37, 41, 45, .7)
-}
-
 @media screen and (max-width:768px) {
   .weather34box-toparea {
     grid-template-columns: repeat(2, 1fr)
@@ -2090,54 +2086,11 @@ oredh1 {
   color: silver
 }
 
-.main-menu {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  width: 60px;
-  z-index: 10;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px
-}
-
-.main-menu li,
-.main-menu li>a {
-  width: 250px;
-  position: relative
-}
-
 .main-menu menu {
   position: relative;
   padding-left: 5px;
   display: inline;
   top: 5px
-}
-
-.main-menu>ul {
-  margin: 5px 0
-}
-
-.main-menu li {
-  display: block
-}
-
-.main-menu li>a {
-  display: table;
-  border-collapse: collapse;
-  border-spacing: 0;
-  border-top: 0 solid #2c2d34;
-  float: left
-}
-
-.main-menu .nav-text {
-  position: relative;
-  display: table-cell;
-  width: 190px;
-  float: left;
-  margin-left: 60px
 }
 
 .metricsymbol,
@@ -2227,21 +2180,6 @@ orangefi {
   }
 }
 
-.menu34 {
-  bottom: 0;
-  font-size: 10px;
-  text-transform: lowercase;
-  text-align: center;
-  border: 1px solid var(--text-m);
-  padding: 3px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  width: 150px
-}
-
 .weather34solarrate,
 .weather34uvrate {
   width: 20px;
@@ -2321,25 +2259,6 @@ dayi {
   float: right;
   margin-right: 20px;
   margin-top: -30px
-}
-
-.menucolor a {
-  align-items: center;
-  height: 1rem;
-  width: 5.5rem;
-  line-height: 16px;
-  font-family: weathertext2;
-  color: silver;
-  justify-content: center;
-  font-size: .85em;
-  border: 1px solid var(--bg0);
-  border-left: 0;
-  box-shadow: inset 4px 0 0 0 #ff832f;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  padding-left: 2px
 }
 
 spanunit {
@@ -2881,48 +2800,6 @@ convtext {
   margin-top: -20px
 }
 
-.weather34menulisting {
-  width: 250px;
-  padding: 5px;
-  color: silver;
-  height: 800px;
-  position: absolute;
-  left: 0;
-  overflow: hidden;
-  top: -800px;
-  font-size: 14px
-}
-
-.weather34menulistings {
-  position: relative;
-  margin-top: 50px;
-  list-style: none;
-  line-height: 25px;
-  float: left;
-  text-align: left;
-  margin-left: 5px;
-  color: silver
-}
-
-.weather34menulistings a {
-  color: silver
-}
-
-.weather34menulistings a:hover {
-  color: var(--green)
-}
-
-.weather34menulistings p {
-  height: 3px;
-  margin-top: -15px
-}
-
-.weather34menulistings underline {
-  font-family: Arial, Helvetica, system;
-  font-weight: 700;
-  font-size: 12px
-}
-
 @media screen and (max-width:768px) {
   header {
     display: block;
@@ -3078,21 +2955,6 @@ whiteuv {
   color: var(--text-m)
 }
 
-.menucalendar,
-tempblue,
-tempgreen,
-temporange,
-tempred {
-  font-weight: 600
-}
-
-.menucalendar {
-  margin-left: 125px;
-  margin-top: 5px;
-  margin-bottom: -70px;
-  color: #fff
-}
-
 body,
 forecasttemplohome uvspan,
 gustorange {
@@ -3120,25 +2982,6 @@ gustorange {
 .clock-container>ul>li>span,
 .weather34clock {
   display: inline
-}
-
-memclock {
-  top: 3px;
-  left: 2.5px;
-  padding-right: 20px
-}
-
-.weather34calendarapp {
-  text-align: center;
-  margin-left: 180px;
-  margin-bottom: -10px;
-  margin-top: 5px
-}
-
-.weather34calendarapp-calendar {
-  height: 60px;
-  margin-bottom: 0;
-  width: 50px
 }
 
 #weather34sidebarMenu,
@@ -3307,18 +3150,8 @@ rainu {
   visibility: hidden;
 }
 
-/* keep the fifth level hidden when you hover on third level link */
-.menweather34sidebarMenuInneru ul a:hover ul a:hover ul a:hover ul ul {
-  visibility: hidden;
-}
-
 /* make the second level visible when hover on first level link */
 .weather34sidebarMenuInner ul a:hover ul {
-  visibility: visible;
-}
-
-/* make the third level visible when you hover over second level link */
-.meweather34sidebarMenuInnernu ul a:hover ul a:hover ul {
   visibility: visible;
 }
 
@@ -5339,11 +5172,6 @@ valuetextheading2 {
   font-size: .7rem;
   border: 0;
   font-weight: 400
-}
-
-menutextheading1 {
-  font-family: weathertext2;
-  color: silver
 }
 
 rainratetextheading {

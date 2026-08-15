@@ -1,4 +1,79 @@
 
+/* ======================================================================
+   Phase 4 — semantic design tokens.
+   Names describe ROLE, not colour. Theme-agnostic names (and any colour
+   identical in both themes) live here; the per-theme VALUES for the
+   theme-divergent tokens live in framework.<theme>.css :root (loaded
+   after base, so the overlay wins). Modules and framework rules reference
+   ONLY these semantic tokens — never a literal, never a raw palette var.
+   ====================================================================== */
+:root {
+  /* ---- structure / ink (values per-theme; defaults = dark here) ---- */
+  --page-bg:        #151819;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        rgba(33, 34, 39, .8);
+  --card-bg-2:      #38383c;
+  --card-surface:   #393d40;
+  --card-ink:       silver;
+  --card-ink-blue:  silver;
+  --card-ink-soft:  #777;
+  --card-ink-dim:   #bbb;
+  --card-ink-strong:#e8e8e8;
+  --card-line:      #151718;
+  --card-shadow:    rgba(0, 0, 0, .1);
+  --card-shadow-soft: rgba(97, 106, 114, .1);
+
+  /* ---- accent (brand) ---- */
+  --accent:         var(--teal-bb);
+  --accent-ink:     #fff;
+
+  /* ---- status (semantic, separate from accent) ---- */
+  --good:           var(--green);
+  --warn:           var(--amber);
+  --danger:         var(--red);
+  --info:           var(--teal-b);
+
+  /* ---- weather scale: temperature (cold -> hot) ---- */
+  --temp-cold:      #ab49de;
+  --temp-cold-2:    #3369e7;
+  --temp-cool:      var(--teal);
+  --temp-cool-2:    var(--teal-b);
+  --temp-cool-3:    rgba(80, 69, 188, 1);
+  --temp-chilly:    #087883;
+  --temp-mild:      #88b04b;
+  --temp-mild-2:    var(--green);
+  --temp-warm:      var(--amber);
+  --temp-warm-2:    var(--orange);
+  --temp-warm-3:    #efa80f;
+  --temp-hot:       var(--red-l);
+  --temp-hot-2:     var(--orange-d);
+  --temp-hot-3:     rgba(236, 102, 21, 1);
+  --temp-hot-4:     rgba(211, 93, 78, .7);
+  --temp-hot-5:     #fd7641;
+  --temp-extreme:   #de2c52;
+  --temp-blue:      #637ff6;
+
+  /* ---- weather scale: AQI ---- */
+  --aqi-good:       #9cff9c;
+  --aqi-good-2:     #31ff00;
+  --aqi-good-3:     #31cf00;
+  --aqi-moderate:   #ff0;
+  --aqi-moderate-2: #ffcf00;
+  --aqi-usg:        #ff9a00;
+  --aqi-unhealthy:  #ff6464;
+  --aqi-vu:         #900;
+  --aqi-hazard:     #ce30ff;
+
+  /* ---- weather scale: UV ---- */
+  --uv-purple:      #a475cb;
+  --uv-red:         #ef5350;
+  --uv-red-2:       rgba(215, 64, 73, 1);
+
+  /* ---- health (weather34mbhealth) ---- */
+  --health-ok:      #c0c0c0;
+  --health-warn:    #e08020;
+  --health-fault:   #e0625a;
+}
 
 @supports (-moz-appearance:none) {
 selector { property:value; }

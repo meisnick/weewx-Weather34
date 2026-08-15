@@ -16,14 +16,38 @@
   --text-d:    #bbb;
   --text-m:    #777;
   --text:      #e8e8e8;
-}
 
+  /* ---- Phase 4 semantic tokens: per-theme values (dark) ---- */
+  --page-bg:        #151819;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        rgba(33, 34, 39, .8);
+  --card-bg-2:      #38383c;
+  --card-surface:   #393d40;
+  --card-ink:       silver;
+  --card-ink-blue:  silver;
+  --card-ink-soft:  #777;
+  --card-ink-dim:   #bbb;
+  --card-ink-strong:#e8e8e8;
+  --card-line:      #151718;
+}
 :root[data-theme="light"] {
   --bg0:    #fff;
   --bg1:    #f8f8f8;
   --text:   #2d2d2d;
   --text-d: #aaa;
   --text-m: #888;
+
+  --page-bg:        #fff;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        #fff;
+  --card-bg-2:      #f8f8f8;
+  --card-surface:   #fff;
+  --card-ink:       #2d2d2d;
+  --card-ink-blue:  #2d3a4b;
+  --card-ink-soft:  #888;
+  --card-ink-dim:   #aaa;
+  --card-ink-strong:#2d2d2d;
+  --card-line:      rgba(230, 232, 239, .8);
 }
 
 body {

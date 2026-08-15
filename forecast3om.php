@@ -15,7 +15,8 @@
 //###################################################################################################################
 
 
-include_once('w34CombinedData.php');
+include_once('settings.php');
+include_once('shared.php');
 error_reporting(0); date_default_timezone_set($TZ);
 header('Content-type: text/html; charset=UTF-8');
 if ($windunit=='kts'){$windunit="kn";}

@@ -19,7 +19,7 @@
 .mod-airquality .tempconvertercircleyellow {
   display: flex;
   justify-content: center;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   font-size: .85em  
 }
@@ -125,7 +125,7 @@
 }
 
 .mod-airquality .air100 {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 }
 
 .mod-airquality .air150 {

@@ -297,7 +297,7 @@
 }
 
 .mod-barometer .pressuretextfast {
-  color: var(--orange-d)
+  color: var(--temp-hot-2)
 
 }
 
@@ -357,7 +357,7 @@
 
   width: 235px;
 
-  color: var(--text-m);
+  color: var(--card-ink-soft);
 
   font-family: Helvetica, Arial
 
@@ -616,7 +616,7 @@
 
   width: 3.5rem;
 
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
 
   overflow: hidden;
 
@@ -648,7 +648,7 @@
 }
 
 [data-theme="light"] .mod-barometer .barometertrend {
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   position: relative;
 
@@ -708,7 +708,7 @@
 [data-theme="light"] .mod-barometer .barometertrend1 hourtrend {
   font: 9px arial, system;
 
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   line-height: 9px;
 
@@ -807,14 +807,14 @@
 [data-theme="light"] .mod-barometer .barometerblue {
   margin-top: 10px;
 
-  color: var(--text)
+  color: var(--card-ink-strong)
 
 }
 
 [data-theme="light"] .mod-barometer .barometerorange {
   margin-top: -5px;
 
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   margin-left: 0
 
@@ -893,7 +893,7 @@
 
   text-align: center;
 
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   font-family: Arial, system;
 
@@ -921,7 +921,7 @@
 
   font-size: .7rem;
 
-  color: var(--text-d);
+  color: var(--card-ink-dim);
 
   margin-top: -18px;
 
@@ -945,7 +945,7 @@
 [data-theme="light"] .mod-barometer .barometertrend2 {
   position: absolute;
 
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   border-radius: 4px;
 
@@ -996,7 +996,7 @@
 
   width: 235px;
 
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   font-family: Helvetica, Arial
 

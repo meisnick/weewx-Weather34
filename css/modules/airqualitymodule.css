@@ -58,7 +58,7 @@
 }
 
 .mod-aq-badge-bot {
-    background-color: var(--bg1);
+    background-color: var(--card-bg-2);
     width: 100%;
     text-align: center;
     height: 15px;

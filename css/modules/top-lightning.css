@@ -46,7 +46,7 @@
 
   font-size: .55rem;
 
-  color: var(--bg1);
+  color: var(--card-bg-2);
 
   z-index: 1;
 
@@ -136,7 +136,7 @@
 
   left: 12px;
 
-  color: var(--text)
+  color: var(--card-ink-strong)
 
 }
 

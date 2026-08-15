@@ -77,7 +77,7 @@
 }
 
 /* Scale color states */
-.mod-aurora-rsg-scale-0 { background: var(--bg0); }
+.mod-aurora-rsg-scale-0 { background: var(--card-surface); }
 .mod-aurora-rsg-scale-1 { background: var(--aurora-yellow); }
 .mod-aurora-rsg-scale-2 { background: var(--amber); }
 .mod-aurora-rsg-scale-3 { background: var(--orange); }
@@ -117,7 +117,7 @@
 /* ── Vertical divider ─────────────────────────────────────────────────────── */
 .mod-aurora-vdivider {
   width: 1px;
-  background: var(--bg0);
+  background: var(--card-surface);
   margin: 2px 4px;
   align-self: stretch;
 }
@@ -159,8 +159,8 @@
   padding: 3px 5px;
   border-radius: 3px;
   margin-bottom: 6px;
-  background: var(--bg0);
-  color: var(--text-d);
+  background: var(--card-surface);
+  color: var(--card-ink-dim);
   border-bottom: 4px solid var(--shadow-strong);
   white-space: nowrap;
 }
@@ -192,7 +192,7 @@
 .mod-aurora-hm-yellow { background: var(--amber); }
 .mod-aurora-hm-orange { background: var(--orange); }
 .mod-aurora-hm-red    { background: var(--red); }
-.mod-aurora-hm-empty  { background: var(--bg0); opacity: 0.5; }
+.mod-aurora-hm-empty  { background: var(--card-surface); opacity: 0.5; }
 
 /* ── Light theme overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .mod-aurora-rsg-scale-0      { background: var(--line-light-2); }
@@ -211,7 +211,7 @@
   margin-top: 9px;
   width: 100%;
   padding-top: 5px;
-  border-top: 1px solid var(--bg0);
+  border-top: 1px solid var(--card-surface);
   box-sizing: border-box;
 }
 .mod-aurora-prob-lbl {
@@ -226,15 +226,15 @@
   font-size: 0.72rem;
   padding: 1px 6px;
   border-radius: 2px;
-  background: var(--bg0);
+  background: var(--card-surface);
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-bottom: 2px solid var(--shadow-strong);
   text-align: center;
   min-width: 44px;
   box-sizing: border-box;
 }
-.mod-aurora-prob-val.mod-aurora-prob-none   { background: var(--bg0); color: var(--card-ink-blue); border-color: var(--bg0); }
+.mod-aurora-prob-val.mod-aurora-prob-none   { background: var(--card-surface); color: var(--card-ink-blue); border-color: var(--card-surface); }
 .mod-aurora-prob-val.mod-aurora-prob-green  { background: var(--green); color: var(--accent-ink); border-color: var(--green); }
 .mod-aurora-prob-val.mod-aurora-prob-amber  { background: var(--amber); color: var(--accent-ink); border-color: var(--amber); }
 .mod-aurora-prob-val.mod-aurora-prob-orange { background: var(--orange); color: var(--accent-ink); border-color: var(--orange); }

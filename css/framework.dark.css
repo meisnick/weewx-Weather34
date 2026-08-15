@@ -820,7 +820,7 @@ smallrainunit {
   justify-content: center;
   height: 1rem;
   width: 3.4rem;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   overflow: hidden;
   -webkit-border-radius: 2px;
   line-height: 16px;
@@ -848,7 +848,7 @@ smalltempunit4 {
   justify-content: center;
   height: 1rem;
   width: 3.5rem;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   overflow: hidden;
   border-radius: 2px;
   color: var(--card-ink);
@@ -872,13 +872,13 @@ smalltempunit4 {
 
 trendmovementfallingx,
 trendmovementrisingx {
-  color: var(--text-d);
+  color: var(--card-ink-dim);
   font-size: .7rem;
   font-family: Arial, system
 }
 
 trendmovementsteadyx {
-  color: var(--text-d);
+  color: var(--card-ink-dim);
   font-size: .7rem
 }
 
@@ -894,7 +894,7 @@ topyellow1 {
 
 toporange1,
 wfstriketoday {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 }
 
 topdaqi1,
@@ -907,8 +907,8 @@ topdaqi5 {
   height: 2.4rem;
   font-size: .9em;
   padding-top: 7px;
-  color: var(--bg1);
-  border-bottom: 11px solid var(--bg1);
+  color: var(--card-bg-2);
+  border-bottom: 11px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -939,7 +939,7 @@ topdaqi10 {
   font-size: .9em;
   padding-top: 7px;
   color: var(--accent-ink);
-  border-bottom: 11px solid var(--bg1);
+  border-bottom: 11px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1117,7 +1117,7 @@ valuetextheading {
 valuetext1 {
   font-size: .95em;
   font-weight: 500;
-  color: var(--text-d)
+  color: var(--card-ink-dim)
 }
 
 .temphumcircle0-25,
@@ -1192,7 +1192,7 @@ rainratetextheading {
 
 .tempmodulehome-50-10c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
   -webkit-border-top-right-radius: 2px;
@@ -1209,7 +1209,7 @@ rainratetextheading {
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -1253,7 +1253,7 @@ rainratetextheading {
   font-size: .65rem;
   font-weight: 400;
   color: var(--card-ink);
-  border: 1px solid var(--bg0)
+  border: 1px solid var(--card-surface)
 }
 
 .tempmodulehome5-10c {
@@ -1289,7 +1289,7 @@ rainratetextheading {
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -1311,7 +1311,7 @@ rainratetextheading {
 
 .tempmodulehome25-30c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1324,7 +1324,7 @@ rainratetextheading {
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -1357,7 +1357,7 @@ rainratetextheading {
   font-family: weathertext2;
   font-size: .65rem;
   color: var(--card-ink);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -1402,7 +1402,7 @@ wfstriketoday {
   font-size: .8rem;
   padding-top: 9px;
   color: var(--accent-ink);
-  border-bottom: 11px solid var(--bg0);
+  border-bottom: 11px solid var(--card-surface);
   align-items: center;
   justify-content: center;
   border-radius: 3px;
@@ -1447,7 +1447,7 @@ indooryellow1 {
   height: 2.6rem;
   padding-top: 7px;
   color: var(--accent-ink);
-  border-bottom: 11px solid var(--bg1);
+  border-bottom: 11px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1608,7 +1608,7 @@ valuetitleunit {
   justify-content: center;
   height: 1rem;
   width: 3.4rem;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   overflow: hidden;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -1628,7 +1628,7 @@ yellowtds {
 }
 
 orangetds {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 }
 
 greentds {
@@ -1786,7 +1786,7 @@ yellowwuv {
 feelswuorange,
 orangewu,
 orangewuv {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 }
 
 feelswugreen,
@@ -1842,7 +1842,7 @@ wuuvicon {
   margin-left: -1px;
   top: 0;
   color: var(--accent-ink);
-  background: var(--orange-d);
+  background: var(--temp-hot-2);
   padding-left: 2px;
   padding-right: 2px;
 }
@@ -2086,8 +2086,8 @@ body {
 [data-theme="light"] .weather34box {
   border: 1px solid var(--card-line);
   background-color: var(--card-bg);
-  -webkit-box-shadow: inset 0 20px var(--bg0);
-  box-shadow: inset 0 20px var(--bg0);
+  -webkit-box-shadow: inset 0 20px var(--card-surface);
+  box-shadow: inset 0 20px var(--card-surface);
   color: var(--card-ink-blue);
 }
 

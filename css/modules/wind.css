@@ -382,7 +382,7 @@
 
   width: 3.4rem;
 
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
 
   overflow: hidden;
 
@@ -562,7 +562,7 @@
 }
 
 [data-theme="light"] .mod-wind .windgustheading {
-  color: var(--text)
+  color: var(--card-ink-strong)
 
 }
 
@@ -784,7 +784,7 @@
 
   text-align: center;
 
-  color: var(--text-m);
+  color: var(--card-ink-soft);
 
   font-family: Arial, system;
 
@@ -836,7 +836,7 @@
 }
 
 [data-theme="light"] .mod-wind .windspeedtrend1 span {
-  color: var(--text);
+  color: var(--card-ink-strong);
 
   font: 10px arial, system;
 
@@ -889,7 +889,7 @@
 }
 
 [data-theme="light"] .mod-wind .windconvertercircleorange1 {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 
 }
 
@@ -1005,7 +1005,7 @@
 }
 
 [data-theme="light"] .mod-wind .weather34beaufort4-5 {
-  background: var(--orange-d)
+  background: var(--temp-hot-2)
 
 }
 

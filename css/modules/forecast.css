@@ -296,7 +296,7 @@ position: absolute;
 .mod-forecast .wulargeforecasthome,
 .mod-forecast .wulargeforecastinghome {
 font-family: weathertext2;
-  color: var(--text)
+  color: var(--card-ink-strong)
 }
 [data-theme="light"] .mod-forecast .wulargeforecasthome wulargetemphihome,
 .mod-forecast .wulargeforecasthome wulargetempwindhome span,
@@ -304,7 +304,7 @@ font-family: weathertext2;
 .mod-forecast .wulargeweekdayhome {
 font-family: weathertext2;
   font-size: .65rem;
-  color: var(--text)
+  color: var(--card-ink-strong)
 }
 [data-theme="light"] .mod-forecast .wulargeforecastinghome {
 float: left;
@@ -316,13 +316,13 @@ float: left;
   padding: 0;
   background: 0;
   border: 0px solid var(--line-faint);
-  color: var(--text)
+  color: var(--card-ink-strong)
 }
 [data-theme="light"] .mod-forecast .wulargeweekdayhome {
 position: absolutue;
   text-align: left;
   padding: 1px;
-  color: var(--text);
+  color: var(--card-ink-strong);
   margin: 0 0 0 5px;
   background: 0
 }

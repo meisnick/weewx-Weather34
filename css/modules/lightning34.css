@@ -22,7 +22,7 @@
     position: absolute;
     top: 4px;
     right: 10px;
-    border: 1px solid var(--bg0);
+    border: 1px solid var(--card-surface);
     -webkit-border-radius: 2px;
     border-radius: 2px;
     background-color: transparent;
@@ -115,7 +115,7 @@
 }
 
 .mod-lt-badge-bot {
-    background-color: var(--bg1);
+    background-color: var(--card-bg-2);
     width: 100%;
     text-align: center;
     height: 15px;
@@ -132,7 +132,7 @@
 }
 
 .mod-lt-distance-pill {
-    border: 1px solid var(--bg0);
+    border: 1px solid var(--card-surface);
     -webkit-border-radius: 2px;
     border-radius: 2px;
     background-color: transparent;
@@ -186,7 +186,7 @@
 }
 
 .mod-lt-pill {
-    border: 1px solid var(--bg0);
+    border: 1px solid var(--card-surface);
     -webkit-border-radius: 2px;
     border-radius: 2px;
     background-color: transparent;

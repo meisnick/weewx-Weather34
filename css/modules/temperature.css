@@ -60,7 +60,7 @@
 .mod-temperature .tempconvertercircleyellow {
   display: flex;
   justify-content: center;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   font-size: .85em  
 }
@@ -176,7 +176,7 @@
   font-size: 1.6rem;
   padding-top: 10px;
   color: var(--ink-bright);
-  border-bottom: 18px solid var(--bg1);
+  border-bottom: 18px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,9 +237,9 @@
 }
 
 .mod-temperature .outside26-30 {
-  background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--orange-d), var(--temp-hot-3));
-  background: linear-gradient(90deg, var(--orange-d), var(--temp-hot-3))
+  background: var(--temp-hot-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
+  background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
 }
 
 .mod-temperature .outside31-35 {
@@ -341,7 +341,7 @@
 }
 
 .mod-temperature .temphumcircle60-80 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -351,9 +351,9 @@
 }
 
 .mod-temperature .temphumcircle25-35 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -361,7 +361,7 @@
 }
 
 .mod-temperature .temphumcircle35-60 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
   -webkit-border-top-right-radius: 2px;
@@ -371,7 +371,7 @@
 }
 
 .mod-temperature .temphumcircle80-100 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
@@ -381,7 +381,7 @@
 }
 
 .mod-temperature .temphumcircle0-25 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
   -webkit-border-top-right-radius: 2px;
@@ -422,7 +422,7 @@
 
 .mod-temperature .tempmodulehome-50-10c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
   -webkit-border-top-right-radius: 2px;
@@ -440,7 +440,7 @@
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -487,7 +487,7 @@
   font-size: .65rem;
   font-weight: 400;
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0)
+  border: 1px solid var(--card-surface)
 }
 
 .mod-temperature .tempmodulehome5-10c {
@@ -527,7 +527,7 @@
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -550,7 +550,7 @@
 
 .mod-temperature .tempmodulehome25-30c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -564,7 +564,7 @@
   line-height: 16px;
   font-family: weathertext2;
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -595,7 +595,7 @@
   font-family: weathertext2;
   font-size: .65rem;
   color: var(--card-ink-blue);
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   font-weight: 400
 }
 
@@ -645,7 +645,7 @@
 .mod-temperature .intempmodulehome0-5c,
 
 .mod-temperature .intempmodulehome5-10c {
-  border: 1px solid var(--bg0)
+  border: 1px solid var(--card-surface)
 }
 
 .mod-temperature .intempmodulehome0-5c {
@@ -673,7 +673,7 @@
 .mod-temperature .intempmodulehome15-20c {
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -690,7 +690,7 @@
 
 .mod-temperature .intempmodulehome20-25c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   -webkit-border-top-right-radius: 2px;
@@ -701,9 +701,9 @@
 
 .mod-temperature .intempmodulehome25-30c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -775,7 +775,7 @@
 }
 
 .mod-temperature .intemphumcircle60-80 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -785,9 +785,9 @@
 }
 
 .mod-temperature .intemphumcircle25-35 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -795,7 +795,7 @@
 }
 
 .mod-temperature .intemphumcircle35-60 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
   -webkit-border-top-right-radius: 2px;
@@ -805,7 +805,7 @@
 }
 
 .mod-temperature .intemphumcircle80-100 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
@@ -815,7 +815,7 @@
 }
 
 .mod-temperature .intemphumcircle0-25 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
   -webkit-border-top-right-radius: 2px;
@@ -854,7 +854,7 @@
   justify-content: center;
   height: 1rem;
   width: 3.4rem;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   overflow: hidden;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -1121,7 +1121,7 @@
   background: 0;
   border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1284,7 +1284,7 @@
   justify-content: center;
   border: 1px solid var(--line-light);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1431,7 +1431,7 @@
 
 [data-theme="light"] .mod-temperature .intempmodulehome25-30c {
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   font-weight: 400
@@ -1502,7 +1502,7 @@
 [data-theme="light"] .mod-temperature .intemphumcircle25-35 {
   border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -1630,9 +1630,9 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle26-30 {
-  background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--orange-d), var(--temp-hot-3));
-  background: linear-gradient(90deg, var(--orange-d), var(--temp-hot-3))
+  background: var(--temp-hot-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
+  background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircle31-35 {
@@ -1673,7 +1673,7 @@
 [data-theme="light"] .mod-temperature .outsideminus10,
 [data-theme="light"] .mod-temperature .outsideminus5,
 [data-theme="light"] .mod-temperature .outsidezero {
-  border-bottom: 18px solid var(--bg1) !important;
+  border-bottom: 18px solid var(--card-bg-2) !important;
 }
 
 [data-theme="light"] .mod-temperature .temptrendx {
@@ -1685,7 +1685,7 @@
   margin-top: -12px;
   left: 0;
   margin-left: -86px;
-  color: var(--bg1)
+  color: var(--card-bg-2)
 }
 
 .mod-temperature .indoorhomevalue1 {
@@ -1714,5 +1714,5 @@
 }
 
 [data-theme="light"] .mod-temperature .weather34indoorword {
-  color: var(--text);
+  color: var(--card-ink-strong);
 }

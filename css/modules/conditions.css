@@ -107,7 +107,7 @@
 .mod-conditions .cloudconvertercircle {
   align-items: center;
 
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
 
   -webkit-border-radius: 2px;
 
@@ -130,7 +130,7 @@
 .mod-conditions .cloudconvertercircle2000 {
   align-items: center;
 
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
 
   -webkit-border-radius: 2px;
 
@@ -259,7 +259,7 @@
 
 /* Darken on-tile timestamp text for light mode. */
 [data-theme="light"] .mod-conditions .updatedtimecurrent {
-  color: var(--text-d);
+  color: var(--card-ink-dim);
 }
 
 

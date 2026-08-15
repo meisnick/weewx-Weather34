@@ -708,7 +708,7 @@ supdavis {
 }
 
 mb {
-  color: var(--teal-bb);
+  color: var(--accent);
   padding-top: 17px;
   margin-left: -60px
 }
@@ -994,7 +994,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--teal-bb)
+  background-color: var(--accent)
 }
 
 ::-moz-scrollbar-track {
@@ -1007,7 +1007,7 @@ html {
 }
 
 ::-moz-scrollbar-thumb:hover {
-  background-color: var(--teal-bb)
+  background-color: var(--accent)
 }
 
 ::-o-scrollbar-track {
@@ -1020,7 +1020,7 @@ html {
 }
 
 ::-o-scrollbar-thumb:hover {
-  background-color: var(--teal-bb)
+  background-color: var(--accent)
 }
 
 ::scrollbar-track {
@@ -1033,7 +1033,7 @@ html {
 }
 
 ::scrollbar-thumb:hover {
-  background-color: var(--teal-bb)
+  background-color: var(--accent)
 }
 
 .max,
@@ -1059,7 +1059,7 @@ suptemp {
 }
 
 .windseparator {
-  color: var(--bg0)
+  color: var(--card-surface)
 }
 
 .Location,
@@ -1469,7 +1469,7 @@ adv {
 }
 
 .weather34solarrate span {
-  color: var(--text-m)
+  color: var(--card-ink-soft)
 }
 
 .weather34uvrate,
@@ -1486,7 +1486,7 @@ adv {
 }
 
 .weather34uvrate span {
-  color: var(--text-m)
+  color: var(--card-ink-soft)
 }
 
 greenf,
@@ -1686,7 +1686,7 @@ tsteady {
 }
 
 .weather34luxrate span {
-  color: var(--text-m)
+  color: var(--card-ink-soft)
 }
 
 body,
@@ -1989,7 +1989,7 @@ notifyblue {
 
 .azimuth,
 .elevation {
-  color: var(--text-d)
+  color: var(--card-ink-dim)
 }
 
 .weather34uvs {
@@ -2028,7 +2028,7 @@ uv8 {
   line-height: 0;
   font-weight: strong;
   margin-top: 145px;
-  color: var(--text-m)
+  color: var(--card-ink-soft)
 }.luxratedark, .weather34luxrate {
   line-height: 10px
 }
@@ -2060,7 +2060,7 @@ luxrate {
 }
 
 .luxrate span {
-  color: var(--text-m);
+  color: var(--card-ink-soft);
   font-size: 12px;
   left: 4px;
   margin-top: 1px
@@ -2248,13 +2248,13 @@ weather34-barometerlimitminf {
 .rainconvertercircle {
   display: flex;
   justify-content: center;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   font-size: .85em
 }.tempconvertercircleblue, .tempconvertercirclegreen, .tempconvertercircleorange, .tempconvertercirclepurple, .tempconvertercirclered {
   display: flex;
   justify-content: center;
-  border: 1px solid var(--bg1);
+  border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   font-size: .85em  
 }
@@ -2332,7 +2332,7 @@ weather34-barometerlimitminf {
   font-size: 1.6rem;
   padding-top: 10px;
   color: var(--ink-bright);
-  border-bottom: 18px solid var(--bg1);
+  border-bottom: 18px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2392,9 +2392,9 @@ weather34-barometerlimitminf {
 }
 
 .outside26-30 {
-  background: var(--orange-d);
-  background: -webkit-linear-gradient(90deg, var(--orange-d), var(--temp-hot-3));
-  background: linear-gradient(90deg, var(--orange-d), var(--temp-hot-3))
+  background: var(--temp-hot-2);
+  background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
+  background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
 }
 
 .outside31-35 {
@@ -2450,7 +2450,7 @@ weather34-barometerlimitminf {
   font-size: 1.45rem;
   padding-top: 12px;
   color: var(--ink-bright);
-  border-bottom: 15px solid var(--bg1);
+  border-bottom: 15px solid var(--card-bg-2);
   align-items: center;
   justify-content: center;
   border-radius: 2px
@@ -2487,7 +2487,7 @@ weather34-barometerlimitminf {
 .minwordlow {
   margin-top: 35px;    
   font-size: .55rem;
-  color: var(--bg1);
+  color: var(--card-bg-2);
   z-index: 1;
   position: absolute    
 }
@@ -2582,7 +2582,7 @@ canvas {
   font-size: .58rem;
   width: 100px;
   line-height: 16px;
-  color: var(--text-d)
+  color: var(--card-ink-dim)
 }
 
 .moonphasem span {
@@ -2757,7 +2757,7 @@ tblue {
 }
 
 #weather34rainbeaker {
-  border: 4px solid var(--bg0);
+  border: 4px solid var(--card-surface);
   border-top: 0;
   -webkit-border-radius: 0 0 2px 2px;
   -moz-border-radius: 0 0 2px 2px;
@@ -2773,7 +2773,7 @@ tblue {
 
 #weather34rainbeaker:after,
 #weather34rainbeaker:before {
-  border: 5px solid var(--bg0);
+  border: 5px solid var(--card-surface);
   border-bottom: 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -2811,7 +2811,7 @@ tblue {
   font-size: .75rem;
   padding-top: 7px;
   color: var(--accent-ink);
-  border-bottom: 8px solid var(--bg1);
+  border-bottom: 8px solid var(--card-bg-2);
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
@@ -2827,7 +2827,7 @@ minblue {
 }
 
 .temphumcircle60-80 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -2837,9 +2837,9 @@ minblue {
 }
 
 .temphumcircle25-35 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -2847,7 +2847,7 @@ minblue {
 }
 
 .temphumcircle35-60 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--green);
   -webkit-border-top-right-radius: 2px;
@@ -2857,7 +2857,7 @@ minblue {
 }
 
 .temphumcircle80-100 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--hum-wet);
   -webkit-border-top-right-radius: 2px;
@@ -2867,7 +2867,7 @@ minblue {
 }
 
 .temphumcircle0-25 {
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--red);
   -webkit-border-top-right-radius: 2px;
@@ -2916,7 +2916,7 @@ raiblue {
 
 .intempmodulehome0-5c,
 .intempmodulehome5-10c {
-  border: 1px solid var(--bg0)
+  border: 1px solid var(--card-surface)
 }
 
 .intempmodulehome0-5c {
@@ -2932,7 +2932,7 @@ raiblue {
 .intempmodulehome15-20c {
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--amber);
   -webkit-border-top-right-radius: 2px;
@@ -2948,7 +2948,7 @@ raiblue {
 
 .intempmodulehome20-25c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
   box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
   -webkit-border-top-right-radius: 2px;
@@ -2959,9 +2959,9 @@ raiblue {
 
 .intempmodulehome25-30c {
   justify-content: center;
-  border: 1px solid var(--bg0);
+  border: 1px solid var(--card-surface);
   border-left: 0;
-  box-shadow: inset 4px 0 0 0 var(--orange-d);
+  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
@@ -3014,7 +3014,7 @@ raiblue {
 .moon1:before,
 .moon:before {
   content: "";
-  color: var(--teal-bb);
+  color: var(--accent);
   font: .9em weathertext2
 }.mooncircle1, .mooncircle1 moonhead1, .mooncircle1 span, .mooncircle1:after, .moonphase {
   font-family: weathertext2
@@ -3079,7 +3079,7 @@ raiblue {
 
 oranget,
 orangeu {
-  color: var(--orange-d)
+  color: var(--temp-hot-2)
 }
 
 greent,
@@ -3423,7 +3423,7 @@ topbarmetricc {
 
 .lity-closed .lity-content,.lity-loading .lity-content{-webkit-transform:scale(.8);transform:scale(.8)}
 .lity-content:after{z-index:-1;content:"";display:block;position:absolute;top:0;right:0;bottom:0;left:0;width:auto;height:auto}
-.lity-close{z-index:9994;-webkit-appearance:none;position:absolute;top:-30px;width:20px;float:right;right:1%;padding:0;color:var(--accent-ink);border:0;background:0;outline:0;-webkit-box-shadow:none;box-shadow:none;text-align:center;text-decoration:none;font-family:headingtext;font-size:20px;font-style:normal;line-height:20px;cursor:pointer;background:var(--orange-d);border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;margin-top:38px}
+.lity-close{z-index:9994;-webkit-appearance:none;position:absolute;top:-30px;width:20px;float:right;right:1%;padding:0;color:var(--accent-ink);border:0;background:0;outline:0;-webkit-box-shadow:none;box-shadow:none;text-align:center;text-decoration:none;font-family:headingtext;font-size:20px;font-style:normal;line-height:20px;cursor:pointer;background:var(--temp-hot-2);border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;margin-top:38px}
 .lity-close::-moz-focus-inner{padding:0;border:0}
 .lity-close:active,.lity-close:focus,.lity-close:hover,.lity-close:visited{padding:0;color:var(--accent-ink);border:0;background:0;outline:0;-webkit-box-shadow:none;box-shadow:none;text-align:center;text-decoration:none;font-family:headingtext;font-size:25px;font-style:normal;line-height:25px;background:var(--info-6);border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px}
 .lity-close:active{color:var(--ink-faint-3)}

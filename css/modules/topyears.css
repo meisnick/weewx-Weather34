@@ -31,7 +31,7 @@
 .mod-topyear .minwordlow {
   margin-top: 35px;
   font-size: .55rem;
-  color: var(--bg1);
+  color: var(--card-bg-2);
   z-index: 1;
   position: absolute
 }
@@ -81,7 +81,7 @@
   font-size: .9em;
   padding-top: 7px;
   color: var(--accent-ink);
-  border-bottom: 11px solid var(--bg1);
+  border-bottom: 11px solid var(--card-bg-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +95,7 @@
 }
 
 .mod-topyear topred1 { background: var(--red) }
-.mod-topyear toporange1 { background: var(--orange-d) }
+.mod-topyear toporange1 { background: var(--temp-hot-2) }
 .mod-topyear topblue1 { background: var(--teal) }
 .mod-topyear topgreen1 { background: var(--green) }
 .mod-topyear topyellow1 { background: var(--amber) }

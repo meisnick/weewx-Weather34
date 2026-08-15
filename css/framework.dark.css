@@ -506,15 +506,6 @@ a:visited {
   border: 0
 }
 
-suptemp,
-suptemp1 {
-  font-size: .5em
-}
-
-supsolar {
-  font-size: .8em
-}
-
 .who {
   margin-top: -30px;
   margin-left: 5%;
@@ -678,17 +669,6 @@ wm2 {
 
 .whitespace {
   height: 45px
-}
-
-supdavis {
-  font-size: .5em;
-  vertical-align: top
-}
-
-.suptemp {
-  color: #fff;
-  margin-bottom: 50px;
-  margin-right: 150px
 }
 
 #day,
@@ -1272,11 +1252,6 @@ suptemp {
   margin-bottom: 10px
 }
 
-suptemp1,
-suptemp3 {
-  color: silver
-}
-
 @media screen and (max-width:768px) {
   .weather34box-toparea {
     grid-template-columns: repeat(2, 1fr)
@@ -1331,10 +1306,6 @@ suptemp3 {
 .sun {
   z-index: 1000;
   font-size: 15px
-}
-
-suptemp3 {
-  font-size: .5em
 }
 
 @keyframes enlarge {
@@ -2302,12 +2273,6 @@ uptime {
   left: 75px;
   padding-top: 5px;
   top: 62px
-}
-
-suplight {
-  color: silver;
-  left: 3px;
-  font-size: .7em
 }.forecastforecasthome forecasttempwindhome span, .forecastforecasthome forecasttempwindhome span2 {
   font-family: weathertext2;
   font-size: .93em;
@@ -2561,11 +2526,6 @@ darkgrey {
 
 supmb {
   font-size: .8em
-}
-
-supunit {
-  font-size: .7em;
-  color: rgba(18, 109, 193, 1)
 }
 
 .weather34barometerarrowactual:after,
@@ -2843,12 +2803,6 @@ smallrainunit {
 .barometerconverter, .barometertrendx, .tempavg60{
   font-size: 12px;
   position: absolute
-}
-
-smallsup {
-  color: silver;
-  font-size: .5rem;
-  font-family: Arial, Helvetica, system
 }
 
 .tempconverter1,

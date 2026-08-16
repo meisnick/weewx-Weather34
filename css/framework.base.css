@@ -3675,3 +3675,13 @@ weather34mbhealth.is-fault .w34health__dot {
     transition: transform 250ms ease-in-out;
   }
 }
+/* Mobile card-fit: the moonphase and sun cards have intricate fixed-position internal
+   layouts ~430px wide (offset by left:100px etc.), masked on desktop by neighbouring grid
+   cards; on the single-column mobile view they overflow the 320px card ~60-85px right.
+   Scale each composition's single wrapper to fit (measured to land exactly on the card
+   edges at 390px). Wrapper is position:relative so its children already resolve to it --
+   the transform scales the whole composition as a unit, no per-element repositioning. */
+@media screen and (max-width:768px) {
+  .mod-moonphase .moonphasemoduleposition { transform: scale(.68); transform-origin: 0 0; }
+  .mod-sun .daylightmoduleposition { transform: scale(.70); }
+}

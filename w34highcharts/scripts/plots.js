@@ -119,7 +119,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    radsmallplot: [['solar_week.json'],['year.json']],
 	    uvplot: [['solar_week.json'],['year.json']],
 	    uvsmallplot: [['solar_week.json'],['year.json']],
-	    cloudcoverplot: [['solar_week.json'],['year.json']]
+	    cloudcoverplot: [['cloudcover_week.json'],['cloudcover_year.json']],
 	};
 	
 	var tempcolors = [[-10,"#3369e7"],[-5,"#3b9cac"],[0,"#00a4b4"],[5,"#00a4b4"],[10,"#88b04b"],[15,"#e6a141"],[20,"#ff7c39"],[25,"#efa80f"],[30,"#d05f2d"],[35,"#d86858"],[40,"#fd7641"],[45,"#de2c52"],[50,"#de2c52"]];

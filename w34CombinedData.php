@@ -139,7 +139,9 @@ if (isset($weewxapi))
     //Verify next two variables as they are duplicates
     $weather['wind_speed_avg30'] = ($weewxapi[158] == "   N/A" ? "0" : $weewxapi[158]);
     $weather['wind_speed_avgday'] = ($weewxapi[158] == "   N/A" ? "0" : $weewxapi[158]);
-    $weather["cloud_cover"] = ($weewxapi[204] == "   N/A" ? "0" : $weewxapi[204]);
+    include_once __DIR__ . '/metar34cloudcover.php';
+    $cc = metar34_cloudcover();
+    $weather["cloud_cover"] = ($cc === null ? "0" : (string)$cc);
     //weather34 windrun
     $weather["windrun"] = ($weewxrt[17] == "   N/A" ? "0" : $weewxrt[17]);
     //$weather["windrun"] = $weewxapi[200];

@@ -1162,6 +1162,49 @@ suptemp {
     left: 40px;
     right: 40px
   }
+
+  /* ── Mobile follow-up fixes A/B/C — see tools/MOBILE_FIXES_HANDOFF.md ────── */
+
+  /* A — drop the no-op translateZ(0) layer promotions on the AQ/Lightning badges
+     so tile chrome + content rasterize as one layer (no subpixel detach on
+     momentum scroll). Only the two badges carry a translateZ(0) hint in loaded
+     CSS; needles/gauges and other real-layout transforms are left untouched. */
+  .mod-aq-badge,
+  .mod-lt-badge {
+    transform: none !important;
+    will-change: auto
+  }
+
+  /* B — single-column layout makes the Edit-layout controls meaningless; hide. */
+  #edit-toggle,
+  #col-picker,
+  #edit-status {
+    display: none !important
+  }
+
+  /* C — lity popups: near-fullscreen with internal scroll instead of a squeezed
+     fixed-aspect (820px x 69%) iframe that clips on phones. */
+  .lity-content {
+    max-width: 96vw !important
+  }
+
+  .lity-iframe-container {
+    padding-top: 0 !important;
+    width: 96vw !important;
+    max-width: 96vw !important;
+    height: 88vh !important
+  }
+
+  .lity-iframe-container iframe {
+    width: 100% !important;
+    height: 100% !important
+  }
+
+  .lity-close {
+    top: 4px !important;
+    right: 4px !important;
+    margin-top: 0 !important
+  }
 }
 
 @media screen and (max-width:1024px) and (orientation:portrait) {

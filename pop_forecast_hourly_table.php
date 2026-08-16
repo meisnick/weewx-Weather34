@@ -30,6 +30,19 @@ $forecastTime[0] = "0";
   <meta charset="UTF-8">
   <title>Hourly Forecast</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  /* mobile: the hourly table is laid out ~790px wide (9 columns), wider than a
+     phone. Fit the grid to the viewport and let the table scroll horizontally
+     inside it rather than clipping (right edge stays reachable). */
+  @media screen and (max-width:768px) {
+    main.grid3 {
+      width: 100% !important;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  </style>
 
 <?php
 $jsonIcon = 'jsondata/lookupTable.json';

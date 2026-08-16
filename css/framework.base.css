@@ -3657,12 +3657,15 @@ weather34mbhealth.is-fault .w34health__dot {
   margin-top: 50px;
   margin-left: 49px
 }
-/* Mobile A-fix: the off-screen slide-in menu is a persistent composited transform
-   layer (translateX(-250px), z-index:30, 900px tall) sitting 10px off the left edge.
-   On Android momentum scroll it recomposites and its green edge bleeds in, desyncing
-   the tiles. Hide it from paint entirely when closed; reveal only when the hamburger
-   checkbox is checked. Delay the visibility:hidden until the slide-out finishes. */
+/* Mobile A-fix (rev3): the real cause of the green bar C:/Program Files/Git/ tile detach on scroll is
+   compositing-layer instability -- each .weather-item card's chrome (inset shadow + border)
+   rasterizes separately from its content, and a lity popup open/close (opacity backdrop)
+   rebuilds the layer tree and re-triggers the desync (a green card element shows through).
+   Promote each card to its OWN stable layer so it rasterizes atomically and survives
+   layer-tree rebuilds (verified: shifts 0 of 938 elements at 390px). Also stop the closed
+   off-screen slide-menu from painting its green edge (keeps the slide animation). */
 @media screen and (max-width:768px) {
+  .weather-item { transform: translateZ(0); }
   #weather34sidebarMenu {
     visibility: hidden;
     transition: transform 250ms ease-in-out, visibility 0s linear 250ms;

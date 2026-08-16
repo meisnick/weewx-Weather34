@@ -1610,6 +1610,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              to: 7,
                              label: {
                                  text: 'Clear',
+                                 align: 'left',
+                                 x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
                                  }
                              },{
@@ -1618,6 +1620,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              to: 32,
                              label: {
                                  text: 'Scattered Clouds',
+                                 align: 'left',
+                                 x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
                                  }
                              },{
@@ -1626,6 +1630,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              to: 70,
                              label: {
                                  text: 'Partly Cloudy',
+                                 align: 'left',
+                                 x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
                                  }
                              },{
@@ -1634,6 +1640,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              to: 95,
                              label: {
                                  text: 'Mostly Cloudy',
+                                 align: 'left',
+                                 x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
                                  }
                              },{
@@ -1642,6 +1650,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              to: 100,
                              label: {
                                  text: 'Overcast',
+                                 align: 'left',
+                                 x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
                                  }
                              }];

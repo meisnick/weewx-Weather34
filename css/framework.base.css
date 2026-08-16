@@ -1146,7 +1146,7 @@ suptemp {
 
   html,
   body {
-    overflow-x: hidden
+    overflow-x: clip
   }
 
   .almanacpopup,
@@ -3656,4 +3656,19 @@ weather34mbhealth.is-fault .w34health__dot {
   position: relative;
   margin-top: 50px;
   margin-left: 49px
+}
+/* Mobile A-fix: the off-screen slide-in menu is a persistent composited transform
+   layer (translateX(-250px), z-index:30, 900px tall) sitting 10px off the left edge.
+   On Android momentum scroll it recomposites and its green edge bleeds in, desyncing
+   the tiles. Hide it from paint entirely when closed; reveal only when the hamburger
+   checkbox is checked. Delay the visibility:hidden until the slide-out finishes. */
+@media screen and (max-width:768px) {
+  #weather34sidebarMenu {
+    visibility: hidden;
+    transition: transform 250ms ease-in-out, visibility 0s linear 250ms;
+  }
+  input[type=checkbox]:checked ~ #weather34sidebarMenu {
+    visibility: visible;
+    transition: transform 250ms ease-in-out;
+  }
 }

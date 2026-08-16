@@ -500,7 +500,7 @@ h6 {
 
 .weather-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 320px);
+  grid-template-columns: var(--w34-grid-cols, repeat(auto-fill, 320px));
   justify-content: center;
   list-style: none;
   width: 100%;
@@ -1132,16 +1132,21 @@ suptemp {
 
 @media screen and (max-width:768px) {
   .weather34box-toparea {
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 240px
   }
 
   .weather-container {
-    grid-template-columns: 1fr
+    grid-template-columns: 320px
   }
 
   .weather-item {
-    width: 100%;
-    margin: 4px 0
+    width: 320px;
+    margin: 4px auto
+  }
+
+  html,
+  body {
+    overflow-x: hidden
   }
 
   .almanacpopup,
@@ -1161,16 +1166,16 @@ suptemp {
 
 @media screen and (max-width:1024px) and (orientation:portrait) {
   .weather34box-toparea {
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 240px
   }
 
   .weather-container {
-    grid-template-columns: 1fr
+    grid-template-columns: 320px
   }
 
   .weather-item {
-    width: 100%;
-    margin: 4px 0
+    width: 320px;
+    margin: 4px auto
   }
 
   .almanacpopup,
@@ -1178,6 +1183,13 @@ suptemp {
   .weatherfooter-container,
   header {
     display: none
+  }
+}
+
+@media screen and (max-width:359px) {
+  .weather-container,
+  .weather34box-toparea {
+    zoom: calc((100vw - 8px) / 328px)
   }
 }
 

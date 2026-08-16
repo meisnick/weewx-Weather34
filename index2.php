@@ -284,7 +284,7 @@ foreach ($grid_modules as $i => $mod):
     }
     $popups = modulePopups($file, $popupVars);
     if ($i === 0): ?>
-<div class="weather-container" id="grid-sortable" style="grid-template-columns:<?php echo $col_style; ?>">
+<div class="weather-container" id="grid-sortable" style="--w34-grid-cols:<?php echo $col_style; ?>">
     <?php endif; ?>
     <div class="weather-item" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="chartforecast"><?php echo $popups; ?></div>
@@ -336,9 +336,9 @@ function setColumns(cols) {
     document.body.classList.toggle('cols-3', String(cols) === '3');
     document.body.classList.toggle('cols-6', String(cols) === '6');
     var grid = document.getElementById('grid-sortable');
-    grid.style.gridTemplateColumns = (cols === 'auto')
+    grid.style.setProperty('--w34-grid-cols', (cols === 'auto')
         ? 'repeat(auto-fill, 320px)'
-        : 'repeat(' + cols + ', 320px)';
+        : 'repeat(' + cols + ', 320px)');
     document.querySelectorAll('#col-picker [data-cols]').forEach(function(b) {
         b.classList.toggle('active', String(b.dataset.cols) === String(cols));
     });

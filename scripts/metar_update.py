@@ -5,10 +5,10 @@ Fetches METAR from aviationweather.gov (free, no key) and writes me.txt
 in CheckWX-compatible JSON format so metar34get.php needs no changes.
 """
 
-import json, math, os, sys, urllib.request, urllib.error
+import json, math, os, sys, time, urllib.request, urllib.error
 from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from w34config import ICAO, ME_PATH
+from w34config import ICAO, ME_PATH, WEB_ROOT
 
 API_URL  = f"https://aviationweather.gov/api/data/metar?ids={ICAO}&hours=0&format=json"
 HEADERS  = {"User-Agent": "weewx-weather34/aviationweather"}
@@ -121,6 +121,92 @@ def write_atomic(path, data):
     except Exception:
         pass
 
+COVER_MAP = {
+    "SKC": 0, "CLR": 0, "NSC": 0, "NCD": 0, "CAVOK": 0,
+    "FEW": 19, "SCT": 44, "BKN": 75, "OVC": 100, "OVX": 100,
+}
+
+HISTORY_PATH    = WEB_ROOT + "/jsondata/cloudcover_history.json"
+WEEK_JSON_PATH  = WEB_ROOT + "/w34highcharts/json/cloudcover_week.json"
+YEAR_JSON_PATH  = WEB_ROOT + "/w34highcharts/json/cloudcover_year.json"
+HISTORY_MAX_DAYS = 366
+
+
+def cloud_cover_pct(clouds_out, raw_text=""):
+    pct = 0
+    if clouds_out:
+        for layer in clouds_out:
+            code = str(layer.get("code", "")).upper()
+            if code in COVER_MAP:
+                pct = max(pct, COVER_MAP[code])
+    elif "VV" in str(raw_text).upper():
+        pct = 100
+    return pct
+
+
+def _load_history():
+    try:
+        with open(HISTORY_PATH) as f:
+            data = json.load(f)
+        return data if isinstance(data, list) else []
+    except (OSError, ValueError):
+        return []
+
+
+def local_utcoffset_minutes():
+    return int(time.localtime().tm_gmtoff / 60)
+
+
+def encode_series(points):
+    if not points:
+        return []
+    points = sorted(points, key=lambda p: p[0])
+    base = points[0][0]
+    return [[p[0] if i == 0 else p[0] - base, p[1]] for i, p in enumerate(points)]
+
+
+def local_midnight_epoch(epoch_sec):
+    lt = time.localtime(epoch_sec)
+    return int(time.mktime((lt.tm_year, lt.tm_mon, lt.tm_mday, 0, 0, 0, lt.tm_wday, lt.tm_yday, -1)))
+
+
+def update_cloudcover_history(cover):
+    now = int(time.time())
+    history = _load_history()
+    history.append([now, int(cover)])
+    cutoff = now - HISTORY_MAX_DAYS * 86400
+    write_atomic(HISTORY_PATH, [e for e in history if e[0] >= cutoff])
+
+
+def regenerate_cloudcover_charts():
+    history = _load_history()
+    utcoffset = local_utcoffset_minutes()
+    now = int(time.time())
+
+    week_points = [e for e in history if e[0] >= now - 7 * 86400]
+    week_wrapper = [{
+        "utcoffset": utcoffset,
+        "cloudcoverplot": {"units": "%", "cloudcoverWeek": encode_series(week_points)},
+    }]
+    write_atomic(WEEK_JSON_PATH, week_wrapper)
+
+    days = {}
+    for epoch_sec, cover in history:
+        days.setdefault(local_midnight_epoch(epoch_sec), []).append(cover)
+    sorted_days = sorted(days.keys())
+    if sorted_days:
+        base = sorted_days[0]
+        max_series = [[base if i == 0 else d - base, max(days[d])] for i, d in enumerate(sorted_days)]
+        avg_series = [[base if i == 0 else d - base, round(sum(days[d]) / len(days[d]))] for i, d in enumerate(sorted_days)]
+    else:
+        max_series, avg_series = [], []
+    year_wrapper = [{
+        "utcoffset": utcoffset,
+        "cloudcoverplot": {"units": "%", "cloudcoverMax": max_series, "cloudcoverAvg": avg_series},
+    }]
+    write_atomic(YEAR_JSON_PATH, year_wrapper)
+
+
 def main():
     print(f"Fetching METAR {ICAO} from aviationweather.gov...")
     data = fetch()
@@ -195,6 +281,12 @@ def main():
     }
 
     write_atomic(ME_PATH, out)
+
+    # Cloud cover: persist rolling history + regenerate weekly/yearly chart JSON
+    cover = cloud_cover_pct(out["data"][0]["clouds"], out["data"][0]["raw_text"])
+    update_cloudcover_history(cover)
+    regenerate_cloudcover_charts()
+
     print(f"Written: {ME_PATH}")
     print("Done.")
 

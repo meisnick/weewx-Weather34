@@ -1811,3 +1811,24 @@
 .mod-temperature .weather34indoorword {
   margin-top: 5px;
 }
+
+
+.weather34box .mod-temperature .heatcircle,
+.weather34box .mod-temperature .heatcircle2,
+.weather34box .mod-temperature .heatcircle3,
+.weather34box .mod-temperature .heatcircle4,
+.weather34box .mod-temperature .heatcircle5,
+.weather34box .mod-temperature .tempcontainer,
+.weather34box .mod-temperature .tempindoorextra,
+.weather34box .mod-temperature .tempindoorextra1,
+.weather34box .mod-temperature .tempindoorextra2,
+.weather34box .mod-temperature .tempconverter2 {
+  position: relative !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+}

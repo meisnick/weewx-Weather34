@@ -1,5 +1,12 @@
 /* barometer module -- scoped to .mod-barometer */
-.mod-barometer { display: contents; }
+.mod-barometer {
+  display: grid !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
 
 .mod-barometer .barometergaugegrid {
   width: 90%;
@@ -1207,4 +1214,103 @@
   border: 1px dashed var(--line-dark-6);
   margin-left: 65px;
   margin-top: 62px
+}
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-barometer {
+  grid-template-columns: 230px 86px;
+  grid-template-rows: 30px 90px 75px;
+  gap: 0;
+}
+
+/* Non-overlapping structure: corner pills, grid-placed */
+
+.mod-barometer .barometermax {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 10px 0 0 10px !important;
+  width: 50px !important;
+}
+
+.mod-barometer .barometerconverter {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 20px !important;
+}
+
+.mod-barometer .barometerlimits {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  justify-self: start;
+  align-self: start;
+  margin: 27px 0 0 16px !important;
+  width: 235px !important;
+}
+
+.mod-barometer .barometertrend2 {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  justify-self: start;
+  align-self: start;
+  margin: 9px 0 0 10px !important;
+  width: 60px !important;
+}
+
+.mod-barometer .barometermin {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  justify-self: start;
+  align-self: start;
+  margin: 4px 0 0 10px !important;
+  width: 50px !important;
+}
+
+/* Overlays: compass dial + ruler, absolute */
+
+.mod-barometer .homeweathercompass2 {
+  position: absolute !important;
+  left: 40px !important;
+  top: 25px !important;
+  margin: 0 !important;
+  width: 175px !important;
+  height: 175px !important;
+  z-index: 10;
+}
+
+.mod-barometer .weather34-barometerruler {
+  position: absolute !important;
+  left: 65px !important;
+  top: 62px !important;
+  margin: 0 !important;
+  width: 135px !important;
+  height: 1px !important;
+}
+
+/* Light-theme pixel shifts (match Prod's [data-theme="light"] deltas) */
+
+[data-theme="light"] .mod-barometer .barometertrend2 {
+  margin-top: 15px !important;
+}
+
+[data-theme="light"] .mod-barometer .barometermin {
+  margin-top: 5px !important;
+}
+
+[data-theme="light"] .mod-barometer .barometerlimits {
+  margin-top: 25px !important;
 }

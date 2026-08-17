@@ -1,5 +1,12 @@
 /* wind module -- scoped to .mod-wind */
-.mod-wind { display: contents; }
+.mod-wind {
+  display: grid !important;
+  position: relative;
+  width: 100%;
+  height: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
 
 .mod-wind .windgustheading {
   color: var(--card-ink-blue);
@@ -1092,4 +1099,76 @@
 [data-theme="light"] .mod-wind .homeweathercompass1 > .windirectiontext1,
 [data-theme="light"] .mod-wind .text1 {
   color: var(--card-ink-blue) !important;
+}
+
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-wind {
+  grid-template-columns: 230px 86px;
+  grid-template-rows: 0px 50px 55px 16px;
+  gap: 0;
+}
+
+/* Non-overlapping structure: grid-placed */
+
+.mod-wind .windspeedtrend1 {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: -14px 0 0 10px !important;
+  width: 70px !important;
+  float: none !important;
+}
+
+.mod-wind .windconverter {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: -15px 0 0 22px !important;
+}
+
+.mod-wind .windspeedvalues {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  justify-self: start;
+  align-self: start;
+  margin: 0 !important;
+  width: 0 !important;
+}
+
+.mod-wind .weather34windrun {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 0 !important;
+}
+
+/* Overlays: compass dial, absolute */
+
+.mod-wind .homeweathercompass1 {
+  position: absolute !important;
+  left: 67px !important;
+  top: -25px !important;
+  margin: 0 !important;
+  width: 175px !important;
+  height: 175px !important;
+  z-index: 1;
+}
+
+/* Light-theme pixel shifts (match Prod's [data-theme="light"] deltas) */
+
+[data-theme="light"] .mod-wind .windspeedtrend1 {
+  margin-top: -13px !important;
+}
+
+[data-theme="light"] .mod-wind .weather34windrun {
+  margin-top: 5px !important;
 }

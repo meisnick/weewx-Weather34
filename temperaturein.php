@@ -129,7 +129,7 @@ else if(anyToC($weather["heatindex"])>=5 ){echo "<div class=tempmodulehome5-10c>
 else if(anyToC($weather["heatindex"])>=0 ){echo "<div class=tempmodulehome0-5c>".$weather["heatindex"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["heatindex"])>-10){echo "<div class=tempmodulehome-10-0c>".$weather["heatindex"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["heatindex"])>-50){echo "<div class=tempmodulehome-50-10c>".$weather["heatindex"]."&deg;<smalltempunit2>".$weather["temp_units"];}
-?></smalltempunit2></div></div></a></div>
+?></smalltempunit2></div></a></div>
 <div class="tempindoorextra2">
 <valuetextheading2><?php echo $lang['Windchill']?></valuetextheading1>
 <a alt="weekly windchill" title="weekly derivedtemp" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='tempderivedplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
@@ -145,6 +145,6 @@ else if(anyToC($weather["windchill"])>=5 ){echo "<div class=tempmodulehome5-10c>
 else if(anyToC($weather["windchill"])>=0 ){echo "<div class=tempmodulehome0-5c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>-10){echo "<div class=tempmodulehome-10-0c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>-50){echo "<div class=tempmodulehome-50-10c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
-?></smalltempunit2></div></div></a></div>
+?></smalltempunit2></div></a></div>
 </div>
 </div><!-- /mod-temperature -->

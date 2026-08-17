@@ -47,7 +47,7 @@ else if(anyToC($weather["apptemp"])>=5 ){echo "<div class=tempconverter1><div cl
 else if(anyToC($weather["apptemp"])>=0 ){echo "<div class=tempconverter1><div class=tempmodulehome0-5c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
-?></smalltempunit2></a></div></div></div>
+?></smalltempunit2></a></div></div></div></div>
 <div class="heatcircle2"><div class="heatcircle-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
 <?php //avg today
      if (anyToC($weather["temp_avgtoday"])>=40){echo "<div class=tempconverter1><div class=tempmodulehome40-50c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
@@ -85,7 +85,7 @@ else if(anyToC($weather["dewpoint"])>-10){echo "<div class=tempconverter1><div c
 else if(anyToC($weather["dewpoint"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>&nbsp;".$weather['dewpoint'].'&deg;<smalltempunit2>'.$weather["temp_units"];}
 ?></smalltempunit2>
 <?php //dewpoint trend
-if($weather["dewpoint_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["dewpoint_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></a></div></div></div></div></div>
+if($weather["dewpoint_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["dewpoint_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></a></div></div></div></div>
 <div class="tempconverter2">
 <?php
  //Temp
@@ -145,6 +145,6 @@ else if(anyToC($weather["windchill"])>=5 ){echo "<div class=tempmodulehome5-10c>
 else if(anyToC($weather["windchill"])>=0 ){echo "<div class=tempmodulehome0-5c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>-10){echo "<div class=tempmodulehome-10-0c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>-50){echo "<div class=tempmodulehome-50-10c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
-?></smalltempunit2></a></div>
+?></smalltempunit2></a></div></div>
 </div>
 </div><!-- /mod-temperature -->

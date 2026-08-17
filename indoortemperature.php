@@ -23,8 +23,7 @@ else if( $weather["temp_units"]=='C' && anyToC($weather["temp_indoor"])<10){echo
  if (anyToC($weather["temp_indoor"]) >30){echo "<indoorred1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else if (anyToC($weather["temp_indoor"]) >24){echo "<indoororange1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else if (anyToC($weather["temp_indoor"]) >20){echo "<indooryellow1>",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }
  else if (anyToC($weather["temp_indoor"]) >15){ echo "<indoorgreen1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; } else { echo "<indoorblue1>", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"] ; }?></div>
 <div class="weather34indoorword">
-<?php if($weather["temp_indoor_trend"] >0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp; '.$risingsymbol;else if($weather["temp_indoor_trend"]<0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp;'.$fallingsymbol;else if($weather["temp_indoor_trend"] ==0)echo 'Steady'; ?></div>
-</div></smalluvunit></div></div>
+<?php if($weather["temp_indoor_trend"] >0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp; '.$risingsymbol;else if($weather["temp_indoor_trend"]<0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp;'.$fallingsymbol;else if($weather["temp_indoor_trend"] ==0)echo 'Steady'; ?></div></smalluvunit>
 
 <div class="heatcircle6"><div class="inheatcircle-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
 <?php //humidity
@@ -34,7 +33,7 @@ else if ($weather["humidity_indoor"]>35){echo "<div class=tempconverter1><div cl
 else if ($weather["humidity_indoor"]>25){echo "<div class=tempconverter1><div class=temphumcircle25-35>".$weather["humidity_indoor"];}
 else if ($weather["humidity_indoor"]<=25){echo "<div class=tempconverter1><div class=temphumcircle0-25>".$weather["humidity_indoor"];}?><smalltempunit2>%</smalltempunit2>
 <?php //humidity trend
-if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></span></div></div></div>
+if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></div></div></div></div>
 
 
 
@@ -49,6 +48,6 @@ else if (anyToC($weather["temp_indoor_feel"])>0){ echo "<div class=tempmodulehom
 
 
 
-echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?> </smalltempunit2>
-</span></div></div></div></div>
+echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?> 
+</div></div>
 </div><!-- /mod-temperature -->

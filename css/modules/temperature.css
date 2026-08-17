@@ -894,7 +894,7 @@
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleyellow {
-  background: rgba(var(--amber-rgb), .8)
+  background: var(--temp-warm-soft)
 }
 
 [data-theme="light"] .mod-temperature .tempconvertercircleorange {

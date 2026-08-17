@@ -46,6 +46,7 @@
   --temp-mild-2:    var(--green);
   --temp-mild-3:    var(--green2);
   --temp-warm:      var(--amber);
+  --temp-warm-soft: rgba(230, 161, 65, .8);
   --temp-warm-2:    var(--orange);
   --temp-warm-3:    #efa80f;
   --temp-hot:       var(--red-l);

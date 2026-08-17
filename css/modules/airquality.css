@@ -182,7 +182,7 @@
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleyellow {
-  background: rgba(var(--amber-rgb), .8)
+  background: var(--temp-warm-soft)
 }
 
 [data-theme="light"] .mod-airquality .tempconvertercircleorange {

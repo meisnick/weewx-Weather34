@@ -1,5 +1,5 @@
 /* temperature module — scoped to .mod-temperature */
-.weather34box .mod-temperature { display: contents; }
+.mod-temperature { display: contents; }
 
 /* ============================================================
    temperature module
@@ -1696,7 +1696,7 @@
 
 /* --- Phase 2 CSS Grid Refactor --- */
 
-.weather34box .mod-temperature {
+.mod-temperature {
   display: grid !important;
   grid-template-columns: 140px 1fr 1fr;
   grid-template-rows: auto auto auto auto;
@@ -1813,16 +1813,16 @@
 }
 
 
-.weather34box .mod-temperature .heatcircle,
-.weather34box .mod-temperature .heatcircle2,
-.weather34box .mod-temperature .heatcircle3,
-.weather34box .mod-temperature .heatcircle4,
-.weather34box .mod-temperature .heatcircle5,
-.weather34box .mod-temperature .tempcontainer,
-.weather34box .mod-temperature .tempindoorextra,
-.weather34box .mod-temperature .tempindoorextra1,
-.weather34box .mod-temperature .tempindoorextra2,
-.weather34box .mod-temperature .tempconverter2 {
+.mod-temperature .heatcircle,
+.mod-temperature .heatcircle2,
+.mod-temperature .heatcircle3,
+.mod-temperature .heatcircle4,
+.mod-temperature .heatcircle5,
+.mod-temperature .tempcontainer,
+.mod-temperature .tempindoorextra,
+.mod-temperature .tempindoorextra1,
+.mod-temperature .tempindoorextra2,
+.mod-temperature .tempconverter2 {
   position: relative !important;
   float: none !important;
   margin: 0 !important;

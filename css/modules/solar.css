@@ -3,7 +3,14 @@
    dependency on main.*.css. Selectors scoped under .mod-solaruv.
    Dark base rules (shared var-driven values) */
 
-.mod-solaruv { display: contents; }
+.mod-solaruv {
+  display: grid !important;
+  position: relative;
+  width: 100%;
+  height: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
 
 .mod-solaruv .weather34luxvalue,
 .mod-solaruv .weather34solarvalue { position: absolute; }
@@ -223,4 +230,125 @@
   left: -10px;
   float: left;
   bottom: 0
+}
+
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-solaruv {
+  grid-template-columns: 120px 85px 111px;
+  grid-template-rows: 0px 55px 15px 40px 17px;
+  gap: 0;
+}
+
+/* Non-overlapping structure: grid-placed */
+
+.mod-solaruv .uvcautionbig {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 15px !important;
+  width: 5.3rem !important;
+}
+
+.mod-solaruv .weather34solarvalue {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 30px !important;
+  width: 20px !important;
+}
+
+.mod-solaruv .weather34luxvalue {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 46px !important;
+  width: 20px !important;
+}
+
+.mod-solaruv .uvcontainer1 {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 55px 0 0 30px !important;
+  top: 0 !important;
+  left: 0 !important;
+  float: none !important;
+}
+
+.mod-solaruv .solarwrap {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 70px 0 0 16px !important;
+}
+
+.mod-solaruv .luxwrap {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 70px 0 0 16px !important;
+}
+
+.mod-solaruv .solarluxtodayword {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  justify-self: start;
+  align-self: start;
+  margin: 0 0 0 13px !important;
+  width: 65px !important;
+}
+
+.mod-solaruv .luxtodayword {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 5 / 6;
+  justify-self: start;
+  align-self: start;
+  margin: 0 0 0 23px !important;
+  width: 48px !important;
+}
+
+/* Overlays inside grid items / columns */
+
+.mod-solaruv .uvtrend {
+  position: absolute !important;
+  left: 47px !important;
+  top: 60px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .uvcaution {
+  position: absolute !important;
+  left: 33px !important;
+  top: 112px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .weather34solarword {
+  position: absolute !important;
+  left: 153px !important;
+  top: 92px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .weather34luxword {
+  position: absolute !important;
+  left: 242px !important;
+  top: 92px !important;
+  margin: 0 !important;
 }

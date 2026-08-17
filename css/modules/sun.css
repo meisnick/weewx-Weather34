@@ -1,5 +1,5 @@
 /* sun module -- scoped to .mod-sun */
-.mod-sun { display: contents; }
+.mod-sun { display: grid; position: relative; width: 100%; height: 0; }
 
 .mod-sun .daylight {
   color: var(--card-ink-blue);

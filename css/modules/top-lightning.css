@@ -1,5 +1,5 @@
 /* top-lightning module -- scoped to .mod-top-lightning */
-.mod-top-lightning { display: contents; }
+.mod-top-lightning { display: grid; position: relative; width: 100%; height: 0; }
 
 .mod-top-lightning .wfstrikes {
   font-size: 9px;
@@ -202,3 +202,4 @@
 [data-theme="light"] .mod-top-lightning .wfstrikes {
   color: var(--card-ink-blue);
 }
+

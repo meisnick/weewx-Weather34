@@ -1,5 +1,5 @@
 /* conditions module -- scoped to .mod-conditions */
-.mod-conditions { display: contents; }
+.mod-conditions { display: grid; position: relative; width: 100%; height: 0; }
 
 .mod-conditions .updatedtimecurrent {
   border-radius: 2px
@@ -302,4 +302,51 @@
 .mod-conditions .updatedtimecurrent {
   width: 75px;
   text-align: center
+}
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-conditions {
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: 70px 1fr;
+  gap: 0;
+}
+
+.mod-conditions .forecasticoncurrent {
+  position: absolute !important;
+  left: 35px !important;
+  top: 10px !important;
+  margin: 0 !important;
+  float: none !important;
+  width: 70px !important;
+}
+
+.mod-conditions .forecastsummary {
+  position: absolute !important;
+  left: 125px !important;
+  top: 20px !important;
+  margin: 0 !important;
+}
+
+.mod-conditions .forecastnexthours {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 58px !important;
+  margin: 0 !important;
+  width: 240px !important;
+}
+
+.mod-conditions .cloudconverter {
+  position: absolute !important;
+  left: 210px !important;
+  top: 7px !important;
+  margin: 0 !important;
+}
+
+.mod-conditions .updatedtimecurrent {
+  position: absolute !important;
+  left: 235px !important;
+  top: -18px !important;
+  margin: 0 !important;
 }

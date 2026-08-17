@@ -977,7 +977,7 @@ hr {
    are the "updated N min ago" labels. Defined once here in base.css; consuming
    modules reference this class and MUST NOT redeclare it. */
 .outlook,
-.updatedtime {
+.updatedtime, .updatedtime1 {
   position: absolute
 }
 
@@ -3686,3 +3686,4 @@ weather34mbhealth.is-fault .w34health__dot {
   .mod-moonphase .moonphasemoduleposition { transform: scale(.68); transform-origin: 0 0; }
   .mod-sun .daylightmoduleposition { transform: scale(.70); }
 }
+

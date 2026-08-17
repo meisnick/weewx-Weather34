@@ -3,7 +3,7 @@
  * (the live topbar year family). Extracted from main/framework so these cards do
  * not depend on main.dark/light.css. AQI topbar badges (top_aqi_*) are a separate
  * family and stay in framework. */
-.mod-topyear { display: contents; }
+.mod-topyear { display: grid; position: relative; width: 100%; height: 0; }
 
 /* Topbar value badge geometry + color states */
 .mod-topyear .topmin,
@@ -100,3 +100,4 @@
 .mod-topyear topgreen1 { background: var(--good) }
 .mod-topyear topyellow1 { background: var(--warn) }
 .mod-topyear topyellow2 { background: var(--warn-8) }
+

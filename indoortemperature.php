@@ -33,7 +33,7 @@ else if ($weather["humidity_indoor"]>35){echo "<div class=tempconverter1><div cl
 else if ($weather["humidity_indoor"]>25){echo "<div class=tempconverter1><div class=temphumcircle25-35>".$weather["humidity_indoor"];}
 else if ($weather["humidity_indoor"]<=25){echo "<div class=tempconverter1><div class=temphumcircle0-25>".$weather["humidity_indoor"];}?><smalltempunit2>%</smalltempunit2>
 <?php //humidity trend
-if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></div></div></div></div>
+if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></div></div></a></div></div>
 
 
 

@@ -40,20 +40,39 @@
   text-align: center;
 }
 
-/* Prod side blocks are UNIFORM: weathertext2 8.4px w500, line-height 8px (tight). */
+/* Side blocks: weathertext2 w500, line-height 8px (tight). Font 9px (sandbox-tuned
+ * up from Prod's measured 8.4px). One rule for labels + values — no per-element size. */
 .mod-sun .sun-grid .sun-col-left .sun-block,
 .mod-sun .sun-grid .sun-col-right .sun-block {
-  font-size: 8.4px;
+  font-size: 9px;
   line-height: 8px;
 }
 
 .mod-sun .sun-grid .sun-col-left .sun-block value,
 .mod-sun .sun-grid .sun-col-right .sun-block value {
-  font-size: 8.4px;
+  font-size: 9px;
   font-weight: 500;
   display: inline-block;   /* let the markup's <br> control line breaks — block
                               here doubled up with <br> and left gaps between lines */
 }
+
+/* sandbox-tuned per-line vertical rhythm inside the side blocks */
+.mod-sun .daylighttext   { position: relative; top: 3px; }
+.mod-sun .moonphasetext  { position: relative; top: -1px; }
+.mod-sun .moonphasevalue { position: relative; top: 1px; }
+.mod-sun .moonrisetext   { position: relative; top: 2px; }
+.mod-sun .moonrisevalue  { position: relative; top: 4px; }
+.mod-sun .sunrisetext    { position: relative; top: -1px; }
+.mod-sun .sunrisetime    { position: relative; top: 1px; }
+.mod-sun .firstlighttext { position: relative; top: 3px; }
+.mod-sun .sunsettext     { position: relative; top: -2px; }
+.mod-sun .lastlighttext  { position: relative; top: 2px; }
+.mod-sun .luminancetext  { position: relative; top: -1px; }
+.mod-sun .luminancevalue { position: relative; top: 1px; }
+.mod-sun .moonsettext    { position: relative; top: 2px; }
+.mod-sun .moonsetvalue   { position: relative; top: 4px; }
+.mod-sun .darknesstext   { position: relative; top: 2px; }
+.mod-sun .darknesshours  { position: relative; top: -1px; }
 
 /* Center Column (The Graphic) */
 .mod-sun .sun-col-center {

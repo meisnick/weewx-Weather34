@@ -146,8 +146,11 @@ $mods = array_values(array_unique($mods));
   var rules={};                       // selector -> { prop: value }  (source of truth)
 
   // control definitions: [cssprop, label, kind, min, max, step, unit]
+  // Move uses left/top (with position:relative for non-absolute elements) instead of
+  // margins: works on inline elements (vertical margin is ignored on inline boxes) and
+  // never shoves sibling elements. setProp() adds position:relative automatically.
   var CTRLS = {
-    move: [['margin-left','X','num',-120,320,1,'px'], ['margin-top','Y','num',-120,320,1,'px']],
+    move: [['left','X','num',-200,320,1,'px'], ['top','Y','num',-200,320,1,'px']],
     size: [['width','W','num',0,340,1,'px'], ['height','H','num',0,240,1,'px']],
     text: [['font-size','Font','num',5,60,0.5,'px']],
     color:[['color','Text','color'], ['background-color','Fill','color']]
@@ -164,17 +167,25 @@ $mods = array_values(array_unique($mods));
     css.value=out; applyLive();
   }
   function applyLive(){ try{ var d=frame.contentDocument; var st=d&&d.getElementById('liveoverride'); if(st) st.textContent=css.value; }catch(e){} }
-  function setProp(sel,prop,val){ (rules[sel]=rules[sel]||{})[prop]=val; serialize(); }
+  // absolute/fixed elements move via their own left/top; everything else via position:relative + left/top
+  function moveRelative(el){ try{ var p=frame.contentWindow.getComputedStyle(el).position; return p!=='absolute'&&p!=='fixed'; }catch(e){ return true; } }
+  function setProp(sel,prop,val){
+    rules[sel]=rules[sel]||{};
+    if((prop==='left'||prop==='top') && curEl && sel===curSel && moveRelative(curEl)) rules[sel]['position']='relative';
+    rules[sel][prop]=val; serialize();
+  }
   function getProp(sel,prop){ return rules[sel]&&rules[sel][prop]; }
 
-  function baseMargin(prop,cprop){ var v=getProp(curSel,prop); if(v!=null) return px(v);
-    try{ return px(frame.contentWindow.getComputedStyle(curEl)[cprop]); }catch(e){ return 0; } }
-  function nudge(dx,dy){
-    if(!curEl) return;
-    var ml=baseMargin('margin-left','marginLeft')+dx, mt=baseMargin('margin-top','marginTop')+dy;
-    rules[curSel]=rules[curSel]||{}; rules[curSel]['margin-left']=ml+'px'; rules[curSel]['margin-top']=mt+'px';
-    serialize(); buildPanel();
+  // current left/top offset base (honours stored rule, else computed used-value; static → 0)
+  function baseOff(prop){ var v=getProp(curSel,prop); if(v!=null) return px(v);
+    try{ return px(frame.contentWindow.getComputedStyle(curEl)[prop]); }catch(e){ return 0; } }
+  function moveTo(l,t){
+    rules[curSel]=rules[curSel]||{};
+    if(moveRelative(curEl)) rules[curSel]['position']='relative';
+    rules[curSel]['left']=Math.round(l)+'px'; rules[curSel]['top']=Math.round(t)+'px';
+    serialize();
   }
+  function nudge(dx,dy){ if(!curEl) return; moveTo(baseOff('left')+dx, baseOff('top')+dy); buildPanel(); }
   function onKey(ev){
     if(!curEl) return;
     if(/^(input|select|textarea)$/i.test((ev.target&&ev.target.tagName)||'')) return; // let controls handle their own arrows
@@ -204,12 +215,10 @@ $mods = array_values(array_unique($mods));
     if(!curEl) return;
     var m=moduleBoxOf(curEl); if(!m) return;
     var b=curEl.getBoundingClientRect(), mb=m.getBoundingClientRect();
-    rules[curSel]=rules[curSel]||{};
-    if(axis==='h'){ var d=(mb.width-b.width)/2-(b.left-mb.left);
-      rules[curSel]['margin-left']=Math.round(baseMargin('margin-left','marginLeft')+d)+'px'; }
-    if(axis==='v'){ var dv=(mb.height-b.height)/2-(b.top-mb.top);
-      rules[curSel]['margin-top']=Math.round(baseMargin('margin-top','marginTop')+dv)+'px'; }
-    serialize(); buildPanel();
+    var l=baseOff('left'), t=baseOff('top');
+    if(axis==='h') l+=(mb.width-b.width)/2-(b.left-mb.left);
+    if(axis==='v') t+=(mb.height-b.height)/2-(b.top-mb.top);
+    moveTo(l,t); buildPanel();
   }
   function toggleHide(){ if(curEl) curEl.classList.toggle('sbx-hidden'); }
   function showAll(){ try{ var d=frame.contentDocument;
@@ -224,14 +233,39 @@ $mods = array_values(array_unique($mods));
     select(stack[(i+1)%stack.length]);
   }
 
+  function segFor(el){                                  // one selector segment for a node
+    var tag=el.tagName.toLowerCase();
+    var cls=(el.className&&typeof el.className==='string')?el.className.trim().split(/\s+/).filter(Boolean):[];
+    if(cls.length) return (tag.match(/^(div|span|a|b|li)$/)?'':tag)+'.'+cls.join('.');
+    return tag;
+  }
+  function isShellRoot(el){
+    if(!el) return true;
+    if(el.id==='sbx') return true;
+    return el.classList && (el.classList.contains('weather-item')||el.classList.contains('weather-container')||
+      el.classList.contains('weather34box')||el.classList.contains('weather34box-toparea'));
+  }
+  // Build the SHORTEST descendant selector that is unique inside the module. Walks up
+  // adding ancestor segments until querySelectorAll matches exactly one element, so a
+  // class-less tag like <valuetext> gets scoped to its nearest classed parent
+  // (e.g. ".barometerorange valuetext") instead of the ambiguous ".mod-barometer valuetext".
   function selectorFor(el){
     if(!el||el.nodeType!==1) return '';
-    var tag=el.tagName.toLowerCase();
-    var cls=(el.className&&typeof el.className==='string')?'.'+el.className.trim().split(/\s+/).filter(Boolean).join('.'):'';
-    var self=cls?(tag.match(/^(div|span|a|b)$/)?cls:tag+cls):tag;
-    var mod=el.closest&&el.closest('[class*="mod-"]');
-    if(mod&&mod!==el){ var mc=(''+mod.className).split(/\s+/).filter(function(c){return c.indexOf('mod-')===0;})[0]; if(mc) return '.'+mc+' '+self; }
-    return self;
+    var d=frame.contentDocument;
+    var parts=[], node=el;
+    while(node && node.nodeType===1 && !isShellRoot(node)){
+      parts.unshift(segFor(node));
+      var sel=parts.join(' ');
+      try{ if(d.querySelectorAll(sel).length===1){
+        // ensure it's anchored to a mod-* class for a clean paste target
+        if(/(^|\s)\.mod-/.test(sel)) return sel;
+        var mod=el.closest&&el.closest('[class*="mod-"]');
+        var mc=mod&&(''+mod.className).split(/\s+/).filter(function(c){return c.indexOf('mod-')===0;})[0];
+        return mc ? '.'+mc+' '+sel : sel;
+      } }catch(e){}
+      node=node.parentElement;
+    }
+    return parts.join(' ') || el.tagName.toLowerCase();
   }
   function rgb2hex(c){ var m=(c||'').match(/(\d+),\s*(\d+),\s*(\d+)/); if(!m) return '#000000';
     return '#'+[1,2,3].map(function(i){return ('0'+parseInt(m[i]).toString(16)).slice(-2);}).join(''); }
@@ -307,14 +341,12 @@ $mods = array_values(array_unique($mods));
         return;
       }
       if(curEl && (el===curEl)){                       // drag the already-selected element
-        var cs=w.getComputedStyle(curEl);
-        drag={sx:ev.clientX, sy:ev.clientY, ml:px(getProp(curSel,'margin-left')!=null?getProp(curSel,'margin-left'):cs.marginLeft), mt:px(getProp(curSel,'margin-top')!=null?getProp(curSel,'margin-top'):cs.marginTop)};
+        drag={sx:ev.clientX, sy:ev.clientY, l:baseOff('left'), t:baseOff('top')};
       } else { select(el); }
     }, true);
     d.addEventListener('mousemove', function(ev){
       if(!drag) return;
-      var nx=Math.round(drag.ml+(ev.clientX-drag.sx)), ny=Math.round(drag.mt+(ev.clientY-drag.sy));
-      rules[curSel]=rules[curSel]||{}; rules[curSel]['margin-left']=nx+'px'; rules[curSel]['margin-top']=ny+'px'; serialize();
+      moveTo(drag.l+(ev.clientX-drag.sx), drag.t+(ev.clientY-drag.sy));
       buildPanel();
     }, true);
     d.addEventListener('mouseup', function(){ drag=null; }, true);

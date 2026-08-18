@@ -864,7 +864,9 @@
 }
 
 
-/* Fix Forward: Phase 3 Strip Restorations */
+/* Fix Forward: Restore Phase-3-stripped legacy overlay positions for Rainfall.
+   NOTE: legacy had two global .tempconverter rules (237px then 10px); the 10px
+   always won in the cascade, so 237px was dead code — collapsed to 10px here. */
 .rainrateextra {
   position: absolute !important;
   margin-left: 227px !important;
@@ -872,23 +874,6 @@
 }
 .mod-rainfall .tempconverter {
   margin-top: 5px !important;
-  margin-left: 237px !important;
-}
-.rainblue1 {
-  bottom: 5px !important;
-}
-
-/* Fix Forward: Restore missing Phase 3 legacy rules for Rainfall */
-.rainrateextra {
-  position: absolute !important;
-  margin-left: 227px !important;
-  margin-top: 130px !important;
-}
-.mod-rainfall .tempconverter {
-  margin-top: 5px !important;
-  margin-left: 237px !important;
-}
-.mod-rainfall .tempconverter {
   margin-left: 10px !important;
 }
 .rainblue1 {

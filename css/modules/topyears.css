@@ -101,15 +101,3 @@
 .mod-topyear topyellow1 { background: var(--warn) }
 .mod-topyear topyellow2 { background: var(--warn-8) }
 
-/* Nudge the left value pill + its labels left, away from the center year
- * watermark (.yearwordbig). NOTE: .mintimedate (the left under-date label) is a
- * load-bearing sibling rendered OUTSIDE .mod-topyear by a stray </div> in the
- * template, and is shared with the AQI/Lightning top badges — so scope it via
- * :has() to shift only the year cards, not those. -18px keeps pill/label centers
- * aligned (badge margin-left 133->115 effective via .topmin, minword 48->30,
- * mintimedate 30->12). */
-.mod-topyear .topmin { margin-left: -18px; }
-.mod-topyear .minword,
-.mod-topyear .minwordlow { margin-left: 30px; }
-div:has(> .mod-topyear) .mintimedate { margin-left: 12px; }
-

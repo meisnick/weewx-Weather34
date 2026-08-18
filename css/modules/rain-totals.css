@@ -219,14 +219,4 @@
 
 }
 
-/* Nudge the left value pill + its labels left, away from the center year
- * watermark. .mintimedate is a load-bearing sibling OUTSIDE .mod-rain-totals
- * (stray </div> in the template) shared with the AQI/Lightning top badges, so
- * scope it via :has() to hit only this card. Mirrors topyears.css. */
-.mod-rain-totals .topmin { margin-left: -18px; }
-.mod-rain-totals .minword,
-.mod-rain-totals .minwordlow,
-.mod-rain-totals .minwordl { margin-left: 30px; }
-div:has(> .mod-rain-totals) .mintimedate { margin-left: 12px; }
-
 

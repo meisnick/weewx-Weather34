@@ -28,9 +28,13 @@ if (isset($_GET['frame'])) {
 
     header('Content-Type: text/html; charset=utf-8');
     echo '<!doctype html><html data-theme="' . $theme . '"><head><meta charset="utf-8">';
+    /* Load EXACTLY what index.php loads — framework.base + framework.$theme + the
+     * modular css. The legacy monolith css/main.*.css is deliberately NOT loaded:
+     * the modularized dashboard doesn't use it, and its stale .mod-* rules (e.g.
+     * .weather34-barometerruler{margin-top:62}) would leak in and make the preview
+     * lie about where things land on the real page. */
     echo '<link rel="stylesheet" href="css/framework.base.css?t=' . time() . '">';
     echo '<link rel="stylesheet" href="css/framework.' . $theme . '.css?t=' . time() . '">';
-    echo '<link rel="stylesheet" href="css/main.' . $theme . '.css?t=' . time() . '">';
     foreach (glob('css/modules/*.css') as $s) { echo '<link rel="stylesheet" href="' . $s . '?t=' . time() . '">'; }
     echo '<style id="liveoverride"></style>';
     echo '<style>html,body{margin:0}body{background:var(--page-bg,#15171a);display:flex;justify-content:center;padding:26px 10px}
@@ -46,7 +50,7 @@ if (isset($_GET['frame'])) {
            . '<div class="title">&#9432; SANDBOX</div>'
            . '<div class="value"><div id="sbx">' . $frag . '</div></div></div></div>';
     } else {
-        echo '<div class="weather-container" style="--w34-grid-cols:1;width:340px;display:block">'
+        echo '<div class="weather-container" style="--w34-grid-cols:1;width:316px;display:block">'
            . '<div class="weather-item" data-module="' . htmlspecialchars($module) . '">'
            . '<span class="moduletitle">SANDBOX</span><br>'
            . '<div id="sbx">' . $frag . '</div></div></div>';

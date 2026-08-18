@@ -197,8 +197,7 @@
   font-family: Helvetica, Arial;
 }
 .mod-barometer .weather34-barometerruler {
-  position: relative;
-  left: -29px; top: -27px;        /* sandbox-tuned offset (carries the 28/31 labels) */
+  margin: 0;                      /* guard against legacy main.*.css margin leak */
   width: 135px;
   height: 1px;
   border: 1px dashed var(--line-dark-6);

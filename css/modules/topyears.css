@@ -1,28 +1,33 @@
 /* ── Top-bar YEAR cards — clean rebuild ───────────────────────────────────────
  * Rainfall Totals · Wind Gust Year · Temperature Year.
  *
- * Replaces the legacy layout (position:absolute widgets, magic-number margins,
- * invalid HTML that reparented half the elements out of .mod-*) with a plain
- * flexbox flow: [left pill] [year ghost] [right pill]. Each pill is a single
- * self-contained card — fixed width (so left and right match), a coloured body
- * (cap + value), and a grey "chin" footer holding the date/Total label. No
- * position:absolute, no magic margins, valid nesting.
+ * Flexbox flow: [left pill] [year ghost] [right pill]. Each pill is one
+ * self-contained card — fixed width (left/right match), a coloured BODY
+ * (cap + value) stacked on a grey CHIN footer (Total/date label). No
+ * position:absolute widgets, no magic margins, valid nesting.
  *
  * Markup: top_{rainfallfyearmonth,windgustyear,temperatureyear}.php via
  * top_year_helpers.php. Shared by .mod-rain-totals and .mod-topyear. */
 
 /* The framework anchors BOTH .title and .value at top:0 (they overlap; legacy
- * cards self-offset with margins). Drop this card's .value below the title bar
- * and give it the full cell width so the flex row can center. */
-.weather34box:has(.mod-topyear) .value,
-.weather34box:has(.mod-rain-totals) .value {
+ * cards self-offset with margins). Reposition .value into the zone BELOW the
+ * title and flex-center its content vertically. Scoped by the STATIC data-module
+ * attribute (present in the server HTML) — not :has() / the AJAX-loaded class,
+ * which was unreliable and left the content jammed against the title. */
+.weather34box[data-module="top_rainfallfyearmonth.php"] .value,
+.weather34box[data-module="top_windgustyear.php"] .value,
+.weather34box[data-module="top_temperatureyear.php"] .value {
   position: absolute;
-  top: 19px;
+  top: 17px;
   left: 0;
   right: 0;
+  bottom: 4px;
   width: 100%;
-  height: 60px;
+  height: auto;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mod-rain-totals,
@@ -31,55 +36,64 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  height: 100%;
-  box-sizing: border-box;
 }
 
-/* one card = coloured body + grey chin, fixed width so both sides match */
 .mod-rain-totals .yt-pill,
 .mod-topyear .yt-pill {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  width: 64px;
+  width: 66px;
   border-radius: 3px;
   overflow: hidden;
-  color: var(--accent-ink);
   text-align: center;
-  line-height: 1.1;
+}
+
+/* coloured body */
+.mod-rain-totals .yt-body,
+.mod-topyear .yt-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 4px 4px;
+  color: var(--accent-ink);
+  line-height: 1.05;
 }
 
 .mod-rain-totals .yt-cap,
-.mod-topyear .yt-cap { font-size: .48rem; padding-top: 2px; opacity: .9; }
+.mod-topyear .yt-cap { font-size: .52rem; opacity: .92; }
 
 .mod-rain-totals .yt-val,
-.mod-topyear .yt-val { font-family: weathertext2; font-size: .9rem; padding-bottom: 1px; }
+.mod-topyear .yt-val { font-family: weathertext2; font-size: 1.05rem; }
 
 .mod-rain-totals .yt-unit,
-.mod-topyear .yt-unit { font-size: .46rem; padding-left: 1px; }
+.mod-topyear .yt-unit { font-size: .52rem; padding-left: 1px; }
 
-/* grey chin footer holds the sub-label, contained inside the card */
+/* grey chin footer — the sub-label lives here, vertically centered */
 .mod-rain-totals .yt-chin,
 .mod-topyear .yt-chin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 16px;
+  padding: 1px 3px;
   background: var(--card-bg-2);
   color: var(--card-ink-blue);
-  font-size: .5rem;
-  padding: 2px 2px 1px;
+  font-size: .58rem;
   white-space: nowrap;
 }
 
 .mod-rain-totals .yt-year,
 .mod-topyear .yt-year {
   font-family: weathertext2;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: var(--ink-faint-5);
   line-height: 1;
 }
 
-/* colour states — same palette as the legacy top* badges */
-.yt-red     { background: var(--danger); }
-.yt-orange  { background: var(--temp-hot-2); }
-.yt-yellow1 { background: var(--warn); }
-.yt-yellow2 { background: var(--warn-8); }
-.yt-green   { background: var(--good); }
-.yt-blue    { background: var(--info-cool); }
+/* colour states — applied to the BODY only, so nothing peeks behind the chin */
+.yt-red     .yt-body { background: var(--danger); }
+.yt-orange  .yt-body { background: var(--temp-hot-2); }
+.yt-yellow1 .yt-body { background: var(--warn); }
+.yt-yellow2 .yt-body { background: var(--warn-8); }
+.yt-green   .yt-body { background: var(--good); }
+.yt-blue    .yt-body { background: var(--info-cool); }

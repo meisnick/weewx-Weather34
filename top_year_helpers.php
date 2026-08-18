@@ -35,12 +35,15 @@ function yt_temp_class($v, $u) {
     return 'yt-blue';
 }
 
-/* One card: a fixed-width colour pill (cap + value+unit) with the sub-label sitting
- * inside a grey "chin" footer — self-contained, equal width left and right. */
+/* One card: fixed-width pill = a coloured body (cap + value+unit) stacked on a grey
+ * "chin" footer holding the sub-label. Body/chin are separate blocks so the colour
+ * can't peek behind the chin; equal width left and right. */
 function yt_side($cls, $cap, $val, $unit, $sub) {
     return '<div class="yt-pill ' . $cls . '">'
-         .   '<span class="yt-cap">' . $cap . '</span>'
-         .   '<span class="yt-val">' . $val . '<span class="yt-unit">' . $unit . '</span></span>'
-         .   '<span class="yt-chin">' . $sub . '</span>'
+         .   '<div class="yt-body">'
+         .     '<span class="yt-cap">' . $cap . '</span>'
+         .     '<span class="yt-val">' . $val . '<span class="yt-unit">' . $unit . '</span></span>'
+         .   '</div>'
+         .   '<div class="yt-chin">' . $sub . '</div>'
          . '</div>';
 }

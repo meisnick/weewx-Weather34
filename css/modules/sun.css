@@ -19,10 +19,16 @@
 .mod-sun .sun-grid {
   display: flex;
   width: 100%;
-  min-height: 120px;
+  min-height: 136px;      /* matches Prod's ~136px content span so blocks don't ride high */
   justify-content: space-between;
   align-items: stretch;
 }
+
+/* sandbox-tuned vertical placement (nudge content down to sit like Prod) */
+.mod-sun .sun-grid   { position: relative; top: 4px; }
+.mod-sun .sun-col-left   { position: relative; top: 7px; }
+.mod-sun .sun-col-right  { position: relative; top: 8px; }
+.mod-sun .sun-col-center { position: relative; top: 5px; }
 
 /* Left & Right Columns */
 .mod-sun .sun-col-left,
@@ -70,6 +76,8 @@
   font-size: 9.12px;        /* Prod measured */
   font-weight: 500;
   margin-top: -5px;
+  position: relative;
+  top: 3px;
 }
 .mod-sun .elevationword maxred {
   font-size: 8.66px;
@@ -198,3 +206,12 @@
 /* Fix missing icons for rise/set */
 .mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--caution); margin-left:2px;}
 .mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}
+
+/* Live-update time: Prod flows it statically at the top of the card; dev's
+ * framework makes it position:absolute (floats free / off-card). Restore Prod's
+ * behaviour, scoped to THIS module only (.updatedtime1 is shared by ~10 cards). */
+.updatedtime1:has(+ .mod-sun) {
+  position: static;
+  text-align: right;
+  padding: 2px 6px 0 0;
+}

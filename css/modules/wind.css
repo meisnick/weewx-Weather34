@@ -52,6 +52,8 @@
 .mod-wind-block value unit {
   font-size: 10px;
   margin-left: 2px;
+  color: #c0c0c0;
+  font-family: Arial, sans-serif;
 }
 
 .mod-wind-block-small {
@@ -151,10 +153,11 @@
   font-size: 7.2px !important;
   color: #c0c0c0;
   margin-left: 2px;
+  font-family: Arial, sans-serif;
 }
 
 .wind-conv-val { color: rgb(144, 177, 42); font-size: 10.2px; font-family: weathertext2; }
-.wind-conv-unit { color: #c0c0c0; font-size: 7.1px; font-family: weathertext2; margin-left: 2px;}
+.wind-conv-unit { color: #c0c0c0; font-size: 7.1px; font-family: Arial; margin-left: 2px;}
 
 /* Pill Overrides (Disable the legacy absolutism) */
 .mod-wind .weather34beaufort1-3,
@@ -168,10 +171,18 @@
   justify-content: center;
   align-items: center;
   font-family: weathertext2, Arial, sans-serif;
+}
+
+.mod-wind .weather34beaufort1-3,
+.mod-wind .weather34beaufort3-4,
+.mod-wind .weather34beaufort4-5,
+.mod-wind .weather34beaufort6 {
   font-size: 11.2px;
 }
+
 .mod-wind .weather34windrun {
-  color: rgb(144, 177, 42);
+  color: #bbb;
+  font-size: 9.5px;
 }
 
 /* SVG */

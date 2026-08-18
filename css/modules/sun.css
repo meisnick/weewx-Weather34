@@ -12,12 +12,14 @@
   font-size: 10px;
 }
 
-/* 3-column main wrapper */
+/* 3-column main wrapper — stretch so the side columns fill the card height and
+ * distribute their three blocks top/middle/bottom (matches Prod's spread). */
 .mod-sun .sun-grid {
   display: flex;
   width: 100%;
+  min-height: 120px;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* Left & Right Columns */
@@ -25,42 +27,24 @@
 .mod-sun .sun-col-right {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 85px;
+  justify-content: space-between;
+  width: 88px;
   text-align: center;
 }
 
-.mod-sun .sun-grid .sun-col-left .sun-block {
-  font-size: 8px;
-  position: relative;
-  left: 2px;
-  top: 19px;
-  margin-bottom: 5px;
-  line-height: 1.1;
-}
-
-.mod-sun .sun-grid .sun-col-left .sun-block value {
-  font-size: 8.5px;
-  position: relative;
-  left: 2px;
-  top: -2px;
-  font-weight: 600;
-  display: block;
-}
-
+/* both side columns share one compact type scale (Prod is uniform ~8px) */
+.mod-sun .sun-grid .sun-col-left .sun-block,
 .mod-sun .sun-grid .sun-col-right .sun-block {
-  position: relative;
-  left: -1px;
-  top: 8px;
-  margin-bottom: 5px;
-  line-height: 1.1;
+  font-size: 8px;
+  line-height: 1.15;
 }
 
+.mod-sun .sun-grid .sun-col-left .sun-block value,
 .mod-sun .sun-grid .sun-col-right .sun-block value {
-  font-size: 7.5px;
+  font-size: 8px;
   font-weight: 600;
-  display: block;
-  margin-bottom: 1px;
+  display: inline-block;   /* let the markup's <br> control line breaks — block
+                              here doubled up with <br> and left gaps between lines */
 }
 
 /* Center Column (The Graphic) */
@@ -74,38 +58,38 @@
 
 /* ── Typography & Elements ──────────── */
 .mod-sun .daylightword {
-  font-size: 11px; /* Tuned to match prod */
-  font-weight: bold;
+  font-size: 10px;          /* Prod: small, regular weight */
+  font-weight: 400;
   margin-bottom: 2px;
-  color: #c9ccd0; /* Typical weather34 grey text */
+  color: #c9ccd0;
 }
 
 .mod-sun .elevationword {
-  font-size: 11px;
+  font-size: 10px;
   margin-top: -5px;
 }
 .mod-sun .elevationword maxred {
-  color: var(--card-ink-temp-warm);
+  color: var(--caution);
 }
 
 /* Circles / Icons */
 .mod-sun weather34daylightdaycircle {
   display: inline-block;
-  width: 8px; height: 8px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: #009bb4;
   position: relative;
-  left: 10px;
-  top: -1px;
+  left: 0; top: 0;
+  margin-right: 2px;         /* sit just LEFT of the value (was overlapping the "1") */
 }
 .mod-sun weather34darkdaycircle {
   display: inline-block;
-  width: 8px; height: 8px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: #565f67;
   position: relative;
-  left: 61px;
-  top: 3px;
+  left: 0; top: 0;
+  margin-left: 3px;          /* sit just RIGHT of the value */
 }
 .mod-sun blueu { color: #01a4b4; }
 
@@ -168,7 +152,7 @@
   left: -4px; 
   width: 12px; height: 12px;
   border-radius: 50%;
-  background: var(--card-ink-temp-warm);
+  background: var(--caution);
   border: 1px solid rgba(255,255,255,0.5);
   box-sizing: border-box;
 }
@@ -201,5 +185,5 @@
 }
 
 /* Fix missing icons for rise/set */
-.mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--card-ink-temp-warm); margin-left:2px;}
+.mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--caution); margin-left:2px;}
 .mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}

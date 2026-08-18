@@ -235,7 +235,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- LEFT COLUMN -->
     <div class="sun-col-left">
       <div class="sun-block">
-        <value class="daylighthours"><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value>
+        <value class="daylighthours"><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value><br>
         <span class="daylighttext"><?php echo $lang['TotalDaylight'];?></span>
       </div>
       
@@ -286,7 +286,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- RIGHT COLUMN -->
     <div class="sun-col-right">
       <div class="sun-block">
-        <value class="darknesshours"><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value>
+        <value class="darknesshours"><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value><br>
         <span class="darknesstext"><?php echo $lang['TotalDarkness'];?></span>
       </div>
       

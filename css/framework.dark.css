@@ -1062,7 +1062,7 @@ rainu {
   font-size: 10px;
   color: var(--card-ink);
   left: 3px
-}.eqcaution, .eqt, .rainrateextra, .rainratesmall, .sundown34, .sunup34, .wflaststrike, .wfstrike, wfstriketoday {
+}.eqcaution, .eqt, .rainratesmall, .sundown34, .sunup34, .wflaststrike, .wfstrike, wfstriketoday {
   position: absolute
 }
 

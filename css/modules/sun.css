@@ -5,9 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
   box-sizing: border-box;
-  padding: 10px 5px;
+  padding: 0px 2px;
   color: var(--card-ink);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -18,7 +17,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
 }
 
 /* Left & Right Columns */
@@ -26,8 +25,8 @@
 .mod-sun .sun-col-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 90px;
+  justify-content: center;
+  width: 85px;
   text-align: center;
 }
 
@@ -43,27 +42,27 @@
 /* ── Typography & Elements ──────────── */
 .mod-sun .daylightword {
   font-size: 13px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .mod-sun .elevationword {
   font-size: 11px;
-  margin-top: 5px;
+  margin-top: -5px;
 }
 .mod-sun .elevationword maxred {
   color: var(--card-ink-temp-warm);
 }
 
 .mod-sun .sun-block {
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 5px;
+  line-height: 1.1;
 }
 
 .mod-sun .sun-block value {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 /* Circles / Icons */
@@ -91,6 +90,8 @@
   margin: 0;
   display: flex;
   justify-content: center;
+  transform: scale(0.9);
+  transform-origin: center top;
 }
 
 /* The actual drawing */
@@ -110,11 +111,7 @@
   z-index: 10;
 }
 
-/* The background grey circle. 
-   Canvas arc is at 65,65 with radius 54. 
-   To match perfectly, the circle must have a center of 65,65 and a border-middle radius of 54. 
-   width 112px, border 4px -> outer radius 56, middle radius 54. Center is 112/2 = 56.
-   To place center at 65, left = 65 - 56 = 9px. top = 9px. */
+/* The background grey circle. */
 .mod-sun .circleborder {
   position: absolute;
   top: 9px; left: 9px;

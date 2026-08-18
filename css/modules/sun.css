@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 5px 2px;
+  padding: 0px 2px;
   color: var(--card-ink);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -17,7 +17,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
 }
 
 /* Left & Right Columns */
@@ -25,49 +25,43 @@
 .mod-sun .sun-col-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 90px;
+  justify-content: center;
+  width: 85px;
   text-align: center;
 }
 
-.mod-sun .sun-block {
+.mod-sun .sun-grid .sun-col-left .sun-block {
+  font-size: 8px;
+  position: relative;
+  left: 2px;
+  top: 19px;
   margin-bottom: 5px;
-  line-height: 1.2;
-  color: #c9ccd0;
+  line-height: 1.1;
 }
 
-.mod-sun .sun-block value {
-  font-size: 11.5px;
-  font-family: weathertext2, Arial, sans-serif;
-  color: var(--card-ink-temp-warm);
-  font-weight: normal;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2px;
+.mod-sun .sun-grid .sun-col-left .sun-block value {
+  font-size: 8.5px;
+  position: relative;
+  left: 2px;
+  top: -2px;
+  font-weight: 600;
+  display: block;
 }
 
-/* Specific text tweaks */
-.mod-sun .sun-col-left .sun-block value { color: #ff8c00; } /* Force bright orange for sunrise */
-.mod-sun .sun-col-right .sun-block value { color: #ff8c00; } 
-/* Wait, sunrise and daylight are orange? Actually, let's just let the theme handle it or use a default orange. */
+.mod-sun .sun-grid .sun-col-right .sun-block {
+  position: relative;
+  left: -1px;
+  top: 8px;
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
 
-/* Circles / Icons */
-.mod-sun weather34daylightdaycircle {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #009bb4;
-  margin-right: 4px;
+.mod-sun .sun-grid .sun-col-right .sun-block value {
+  font-size: 7.5px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1px;
 }
-.mod-sun weather34darkdaycircle {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #565f67;
-  margin-left: 4px;
-}
-.mod-sun blueu { color: #01a4b4; }
 
 /* Center Column (The Graphic) */
 .mod-sun .sun-col-center {
@@ -78,26 +72,48 @@
   flex: 1;
 }
 
+/* ── Typography & Elements ──────────── */
 .mod-sun .daylightword {
-  font-size: 12px; 
+  font-size: 11px; /* Tuned to match prod */
   font-weight: bold;
   margin-bottom: 2px;
-  color: #c9ccd0; 
+  color: #c9ccd0; /* Typical weather34 grey text */
 }
 
 .mod-sun .elevationword {
   font-size: 11px;
-  margin-top: 5px;
+  margin-top: -5px;
 }
 .mod-sun .elevationword maxred {
-  color: #ff8c00;
+  color: var(--card-ink-temp-warm);
 }
+
+/* Circles / Icons */
+.mod-sun weather34daylightdaycircle {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #009bb4;
+  position: relative;
+  left: 10px;
+  top: -1px;
+}
+.mod-sun weather34darkdaycircle {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #565f67;
+  position: relative;
+  left: 61px;
+  top: 3px;
+}
+.mod-sun blueu { color: #01a4b4; }
 
 /* ── Containment Box: The Canvas Graphic ──────────── */
 .mod-sun .sun-graphic-container {
   position: relative;
   width: 130px;
-  height: 120px;
+  height: 110px;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -108,12 +124,14 @@
 /* The actual drawing */
 .mod-sun .sundialcontainerdiv2 {
   position: absolute;
-  top: 0px; 
-  left: 0px;
+  top: -8px; 
+  left: 2px;
   width: 130px; height: 130px;
 }
 .mod-sun #sundialcontainer {
   position: relative;
+  top: -8px;
+  left: 0px;
   width: 100%; height: 100%;
 }
 .mod-sun .suncanvasstyle {
@@ -146,10 +164,11 @@
 }
 .mod-sun #poscircircle {
   position: absolute;
-  top: -6px; left: 50px;
+  top: 63px; 
+  left: -4px; 
   width: 12px; height: 12px;
   border-radius: 50%;
-  background: #ff8c00;
+  background: var(--card-ink-temp-warm);
   border: 1px solid rgba(255,255,255,0.5);
   box-sizing: border-box;
 }
@@ -157,173 +176,30 @@
 /* The text inside the circle */
 .mod-sun .daylightvalue1 {
   position: absolute;
-  top: 25px;
+  top: 17px;
   left: 0px;
   width: 100%;
   text-align: center;
   z-index: 5;
-  color: #c9ccd0;
+  color: var(--card-ink);
 }
 .mod-sun .daylightvalue1 hours {
   font-family: weathertext2;
-  font-size: 26px;
-  color: #c9ccd0;
+  font-size: 24px;
+  color: var(--card-ink-faint);
+  position: relative;
+  left: -6px;
+  top: 0px;
 }
 .mod-sun .daylightvalue1 minutes {
   font-family: weathertext2;
-  font-size: 26px;
-  color: #c9ccd0;
+  font-size: 24px;
+  color: var(--card-ink-faint);
+  position: relative;
+  left: 10px;
+  top: 0px;
 }
 
 /* Fix missing icons for rise/set */
-.mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid #ff8c00; margin-left:2px;}
-.mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid #565f67; margin-left:2px;}
-
-/* --- USER WYSIWYG NUDGES (2026-08-18) --- */
-.mod-sun value.moonphasevalue {
-  position: relative;
-  left: -9px;
-  top: 3px;
-  font-size: 8px;
-}
-.mod-sun .moonphasetext {
-  position: relative;
-  left: -8px;
-  top: 3px;
-  font-size: 8px;
-}
-.mod-sun weather34darkdaycircle {
-  position: relative;
-  left: 4px;
-  top: 1px;
-}
-.mod-sun weather34daylightdaycircle {
-  position: relative;
-  left: -1px;
-  top: 1px;
-}
-.mod-sun value.daylighthours {
-  position: relative;
-  left: -11px;
-  top: -18px;
-  font-size: 8px;
-}
-.mod-sun .daylighttext {
-  position: relative;
-  left: -11px;
-  top: -17px;
-}
-.mod-sun .moonrisetext {
-  position: relative;
-  left: -10px;
-  top: -6px;
-  font-size: 9px;
-}
-.mod-sun value.moonrisevalue {
-  position: relative;
-  left: -10px;
-  top: -5px;
-}
-.mod-sun value.sunrisetext {
-  position: relative;
-  left: -5px;
-  top: 15px;
-}
-.mod-sun .firstlighttext {
-  position: relative;
-  left: -3px;
-  top: 6px;
-}
-.mod-sun .sunrisetime {
-  position: relative;
-  left: -3px;
-  top: 5px;
-}
-.mod-sun .elevationword {
-  position: relative;
-  left: 0px;
-  top: 8px;
-  font-size: 10px;
-}
-.mod-sun .weather34sunclock {
-  left: 7px;
-  top: 17px;
-}
-.mod-sun .sun-col-center {
-  position: relative;
-  left: 0px;
-  top: 7px;
-}
-.mod-sun .daylightword {
-  position: relative;
-  left: 0px;
-  top: -5px;
-}
-.mod-sun value.darknesshours {
-  position: relative;
-  left: 2px;
-  top: 2px;
-}
-.mod-sun .darknesstext {
-  font-size: 8px;
-  position: relative;
-  left: 0px;
-  top: 1px;
-}
-.mod-sun .lastlighttext {
-  position: relative;
-  left: 0px;
-  top: 12px;
-  font-size: 8px;
-}
-.mod-sun .sunsettime {
-  position: relative;
-  left: 0px;
-  top: 13px;
-  font-size: 8px;
-}
-.mod-sun value.sunsettext {
-  position: relative;
-  left: 0px;
-  top: 26px;
-  font-size: 8.5px;
-}
-.updatedtime1 {
-  left: 451px;
-  top: 50px;
-}
-.mod-sun value.moonsetvalue {
-  font-size: 8.5px;
-  position: relative;
-  left: 0px;
-  top: 6px;
-}
-.mod-sun .sun-grid .sun-col-right .sun-block {
-  position: relative;
-  left: -1px;
-  top: 8px;
-}
-.mod-sun .moonsettext {
-  position: relative;
-  left: 0px;
-  top: 8px;
-}
-.mod-sun value.luminancevalue {
-  position: relative;
-  left: 0px;
-  top: 20px;
-  font-size: 8.5px;
-}
-.mod-sun .luminancetext {
-  position: relative;
-  left: 0px;
-  top: 21px;
-}
-
-/* --- FIXES FOR FONTS & COLORS --- */
-.mod-sun .sun-block value {
-  font-family: weathertext2, Arial, Helvetica, sans-serif;
-}
-.mod-sun .elevationword maxred {
-  color: var(--card-ink-temp-warm); /* Matches Prod Orange */
-}
+.mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--card-ink-temp-warm); margin-left:2px;}
+.mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}

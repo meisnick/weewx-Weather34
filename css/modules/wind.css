@@ -1,131 +1,114 @@
-/* wind module -- scoped to .mod-wind */
+/* ── WIND MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
 .mod-wind {
   position: relative;
-  min-height: 195px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 2px;
+  color: var(--card-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+/* 3-column main wrapper */
+.mod-wind-grid {
+  display: flex;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  z-index: 10;
 }
 
-/* Base spans */
-.mod-wind span {
-  position: absolute;
-  box-sizing: border-box;
-  display: inline-block;
+/* Left & Right Columns */
+.mod-wind-col-left,
+.mod-wind-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90px;
+  text-align: center;
 }
 
-/* Time */
-.mod-wind .wind-time {
-  top: 4px; left: 250px;
-  font-family: weathertext2; font-size: 9.1px; font-weight: 400; color: rgb(192, 192, 192); line-height: 10px; width: 45px;
+.mod-wind-block {
+  margin-bottom: 5px;
+  line-height: 1.2;
+  color: #c9ccd0;
 }
 
-/* Speed / Currently */
-.mod-wind .wind-speed-val {
-  top: 90px; left: 20px;
-  font-family: weathertext2; font-size: 24.8px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 45px;
+.mod-wind-block value {
+  font-size: 24.8px;
+  font-family: weathertext2, Arial, sans-serif;
+  color: #c0c0c0;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 2px;
 }
-.mod-wind .wind-currently {
-  top: 69px; left: 20px;
-  font-family: weathertext2; font-size: 10px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 55px;
-}
-.mod-wind .wind-speed-unit {
-  top: 111px; left: 35px;
-  font-family: weathertext2; font-size: 10px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 22px;
-}
-
-/* Gust */
-.mod-wind .wind-gust-val {
-  top: 90px; left: 238px;
-  font-family: weathertext2; font-size: 24.8px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 45px;
-}
-.mod-wind .wind-gust-unit {
-  top: 111px; left: 253px;
-  font-family: weathertext2; font-size: 10px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 22px;
-}
-.mod-wind .wind-gust-label {
-  top: 69px; left: 222px;
-  font-family: weathertext2; font-size: 10px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14px; width: 85px;
+.mod-wind-block value unit {
+  font-size: 10px;
+  margin-left: 2px;
 }
 
-/* Max Gust Trend */
-.mod-wind .wind-max-gust-label {
-  top: 25px; left: 17px;
-  font-family: weathertext2; font-size: 9px; font-weight: 500; color: rgb(192, 192, 192); line-height: 9px; width: 55px;
+.mod-wind-block-small {
+  margin-bottom: 5px;
+  line-height: 1.2;
+  color: #c9ccd0;
 }
-.mod-wind .wind-max-gust-val {
-  top: 26px; left: 38px;
-  font-family: weathertext2; font-size: 8.55px; font-weight: 500; color: rgb(255, 124, 57); line-height: 9px; width: 17px;
-}
-.mod-wind .wind-max-gust-unit {
-  top: 27px; left: 55px;
-  font-family: weathertext2; font-size: 7.2px; font-weight: 500; color: rgb(192, 192, 192); line-height: 9px; width: 18px;
-}
-
-/* Converter */
-.mod-wind .wind-conv-val {
-  top: 25px; left: 264px;
-  font-family: weathertext2; font-size: 10.2px; font-weight: 500; line-height: 16px; width: 16px;
-}
-.mod-wind .wind-conv-unit {
-  top: 25px; left: 279px;
-  font-family: weathertext2; font-size: 7.14px; font-weight: 500; color: rgb(192, 192, 192); line-height: 16px; width: 15px;
-}
-
-/* Direction */
-.mod-wind .wind-dir-deg {
-  top: 75px; left: 72px;
-  font-family: weathertext2; font-size: 23.2px; font-weight: 500; color: rgb(192, 192, 192); line-height: 33px; width: 170px; text-align: center;
-}
-.mod-wind .wind-dir-text {
-  top: 108px; left: 67px;
-  font-family: Arial; font-size: 12px; font-weight: 600; color: rgb(192, 192, 192); line-height: 12px; width: 175px; text-align: center;
-}
-.mod-wind .wind-dir-text span {
+.mod-wind-block-small value {
+  font-size: 11.2px;
+  font-family: weathertext2, Arial, sans-serif;
   color: rgb(144, 177, 42);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.mod-wind-block-small value unit {
+  font-size: 8.8px;
+  color: #c0c0c0;
+  margin-left: 2px;
 }
 
-/* Wind Run */
-.mod-wind .wind-run-label {
-  top: 162px; left: 240px;
-  font-family: Arial; font-size: 10.4px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14.8px; width: 104px;
-}
-.mod-wind .wind-run-val {
-  top: 148px; left: 253px;
-  font-family: weathertext2; font-size: 9.5px; font-weight: 500; color: rgb(187, 187, 187); line-height: 13.5px; width: 34px;
-}
-.mod-wind .wind-run-unit {
-  top: 150px; left: 276px;
-  font-family: Arial; font-size: 8px; font-weight: 500; color: rgb(192, 192, 192); line-height: 11.4px; width: 11px;
+/* Labels */
+.mod-wind-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #c0c0c0;
 }
 
-/* Beaufort */
-.mod-wind .wind-bft-val {
-  top: 145px; left: 20px;
-  font-family: weathertext2; font-size: 11.2px; font-weight: 500; line-height: 16px; width: 64px;
-}
-.mod-wind .wind-bft-label {
-  top: 147px; left: 59px;
-  font-family: Arial; font-size: 8.8px; font-weight: 500; color: rgb(192, 192, 192); line-height: 12.5px; width: 20px;
-}
-.mod-wind .wind-bft-text {
-  top: 162px; left: 0px;
-  font-family: Arial; font-size: 10.4px; font-weight: 500; color: rgb(192, 192, 192); line-height: 14.8px; width: 104px; text-align: center;
+/* Center Column (The Graphic) */
+.mod-wind-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
 }
 
-/* Beaufort Colors */
-.mod-wind .weather34beaufort1-3 { color: var(--good); }
-.mod-wind .weather34beaufort3-4 { color: var(--warn); }
-.mod-wind .weather34beaufort4-5 { color: var(--caution); }
-.mod-wind .weather34beaufort6 { color: var(--danger); }
+/* The Compass Graphic Container */
+.mod-wind-graphic-container {
+  position: relative;
+  width: 130px;
+  height: 120px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Compass */
 .mod-wind .homeweathercompass1 {
   position: absolute;
-  top: 0; left: 67px;
+  top: -15px; left: -25px;
   width: 175px; height: 175px;
   z-index: 1;
 }
+
 .mod-wind .homeweathercompass-line1 {
   position: absolute;
   top: 25px; left: 25px; right: 25px; bottom: 25px;
@@ -135,3 +118,41 @@
   border-right: 8px solid var(--line-compass);
   border-bottom: 8px solid var(--line-compass-2);
 }
+
+/* Center text */
+.mod-wind-center-text {
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  z-index: 10;
+}
+.mod-wind-deg {
+  font-family: weathertext2;
+  font-size: 23.2px;
+  font-weight: 500;
+  color: #c0c0c0;
+}
+.mod-wind-dir {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c0c0c0;
+  display: block;
+}
+.mod-wind-dir span {
+  color: rgb(144, 177, 42);
+}
+
+/* Max Gust Specifics */
+.wind-max-gust-val {
+  color: rgb(255, 124, 57);
+}
+.wind-bft-val {
+  color: rgb(144, 177, 42);
+}
+
+/* Beaufort Colors */
+.weather34beaufort1-3 { color: var(--good); }
+.weather34beaufort3-4 { color: var(--warn); }
+.weather34beaufort4-5 { color: var(--caution); }
+.weather34beaufort6 { color: var(--danger); }

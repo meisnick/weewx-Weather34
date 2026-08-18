@@ -108,7 +108,7 @@ $mods = array_values(array_unique($mods));
   <button id="grid">Grid</button>
   <button id="reload">Reload</button>
   <span class="sp"></span>
-  <span class="hint">Click an element &rarr; adjust with the controls (or drag it in the preview)</span>
+  <span class="hint">Click an element &rarr; drag it, use the controls, or nudge with &larr;&uarr;&darr;&rarr; (Shift = 10px)</span>
 </header>
 <div class="wrap">
   <div class="side">
@@ -160,6 +160,23 @@ $mods = array_values(array_unique($mods));
   function applyLive(){ try{ var d=frame.contentDocument; var st=d&&d.getElementById('liveoverride'); if(st) st.textContent=css.value; }catch(e){} }
   function setProp(sel,prop,val){ (rules[sel]=rules[sel]||{})[prop]=val; serialize(); }
   function getProp(sel,prop){ return rules[sel]&&rules[sel][prop]; }
+
+  function baseMargin(prop,cprop){ var v=getProp(curSel,prop); if(v!=null) return px(v);
+    try{ return px(frame.contentWindow.getComputedStyle(curEl)[cprop]); }catch(e){ return 0; } }
+  function nudge(dx,dy){
+    if(!curEl) return;
+    var ml=baseMargin('margin-left','marginLeft')+dx, mt=baseMargin('margin-top','marginTop')+dy;
+    rules[curSel]=rules[curSel]||{}; rules[curSel]['margin-left']=ml+'px'; rules[curSel]['margin-top']=mt+'px';
+    serialize(); buildPanel();
+  }
+  function onKey(ev){
+    if(!curEl) return;
+    if(/^(input|select|textarea)$/i.test((ev.target&&ev.target.tagName)||'')) return; // let controls handle their own arrows
+    var s=ev.shiftKey?10:1, dx=0, dy=0;
+    if(ev.key==='ArrowLeft') dx=-s; else if(ev.key==='ArrowRight') dx=s;
+    else if(ev.key==='ArrowUp') dy=-s; else if(ev.key==='ArrowDown') dy=s; else return;
+    ev.preventDefault(); nudge(dx,dy);
+  }
 
   function selectorFor(el){
     if(!el||el.nodeType!==1) return '';
@@ -234,6 +251,7 @@ $mods = array_values(array_unique($mods));
       buildPanel();
     }, true);
     d.addEventListener('mouseup', function(){ drag=null; }, true);
+    d.addEventListener('keydown', onKey);          // arrow-nudge when focus is in the preview
   }
 
   moduleSel.onchange=load;
@@ -244,6 +262,7 @@ $mods = array_values(array_unique($mods));
   $('reset').onclick=function(){ if(curSel){ delete rules[curSel]; serialize(); buildPanel(); } };
   $('clear').onclick=function(){ rules={}; serialize(); buildPanel(); };
   frame.addEventListener('load', wireFrame);
+  document.addEventListener('keydown', onKey);     // arrow-nudge when focus is on the editor side
   load();
 })();
 </script>

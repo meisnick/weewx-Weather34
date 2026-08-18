@@ -30,6 +30,39 @@
   text-align: center;
 }
 
+.mod-sun .sun-grid .sun-col-left .sun-block {
+  font-size: 8px;
+  position: relative;
+  left: 2px;
+  top: 19px;
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
+
+.mod-sun .sun-grid .sun-col-left .sun-block value {
+  font-size: 8.5px;
+  position: relative;
+  left: 2px;
+  top: -2px;
+  font-weight: 600;
+  display: block;
+}
+
+.mod-sun .sun-grid .sun-col-right .sun-block {
+  position: relative;
+  left: -1px;
+  top: 8px;
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
+
+.mod-sun .sun-grid .sun-col-right .sun-block value {
+  font-size: 7.5px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1px;
+}
+
 /* Center Column (The Graphic) */
 .mod-sun .sun-col-center {
   display: flex;
@@ -41,8 +74,10 @@
 
 /* ── Typography & Elements ──────────── */
 .mod-sun .daylightword {
-  font-size: 13px;
+  font-size: 11px; /* Tuned to match prod */
+  font-weight: bold;
   margin-bottom: 2px;
+  color: #c9ccd0; /* Typical weather34 grey text */
 }
 
 .mod-sun .elevationword {
@@ -53,32 +88,24 @@
   color: var(--card-ink-temp-warm);
 }
 
-.mod-sun .sun-block {
-  margin-bottom: 5px;
-  line-height: 1.1;
-}
-
-.mod-sun .sun-block value {
-  font-size: 11px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 1px;
-}
-
 /* Circles / Icons */
 .mod-sun weather34daylightdaycircle {
   display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: #009bb4;
-  margin-right: 3px;
+  position: relative;
+  left: 10px;
+  top: -1px;
 }
 .mod-sun weather34darkdaycircle {
   display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: #565f67;
-  margin-left: 3px;
+  position: relative;
+  left: 61px;
+  top: 3px;
 }
 .mod-sun blueu { color: #01a4b4; }
 
@@ -97,16 +124,20 @@
 /* The actual drawing */
 .mod-sun .sundialcontainerdiv2 {
   position: absolute;
-  top: 0; left: 0;
+  top: -8px; 
+  left: 2px;
   width: 130px; height: 130px;
 }
 .mod-sun #sundialcontainer {
   position: relative;
+  top: -8px;
+  left: 0px;
   width: 100%; height: 100%;
 }
 .mod-sun .suncanvasstyle {
   position: absolute;
-  top: 0; left: 0;
+  top: 6px; 
+  left: -2px;
   width: 130px; height: 130px;
   z-index: 10;
 }
@@ -114,7 +145,8 @@
 /* The background grey circle. */
 .mod-sun .circleborder {
   position: absolute;
-  top: 9px; left: 9px;
+  top: 1px; 
+  left: 9px;
   width: 112px; height: 112px;
   border-radius: 50%;
   border: 4px solid var(--card-bg-2);
@@ -125,13 +157,15 @@
 /* The rotating sun dot. Wrapper is 112x112, top/left 9px */
 .mod-sun .weather34sunclock {
   position: absolute;
-  top: 9px; left: 9px;
+  top: 16px; 
+  left: 7px;
   width: 112px; height: 112px;
   z-index: 20;
 }
 .mod-sun #poscircircle {
   position: absolute;
-  top: -6px; left: 50px; /* 56px (middle) - 6px (half width) */
+  top: 63px; 
+  left: -4px; 
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--card-ink-temp-warm);
@@ -142,17 +176,28 @@
 /* The text inside the circle */
 .mod-sun .daylightvalue1 {
   position: absolute;
-  top: 35px;
+  top: 17px;
+  left: 0px;
   width: 100%;
   text-align: center;
   z-index: 5;
   color: var(--card-ink);
 }
-.mod-sun .daylightvalue1 hours,
+.mod-sun .daylightvalue1 hours {
+  font-family: weathertext2;
+  font-size: 24px;
+  color: var(--card-ink-faint);
+  position: relative;
+  left: -6px;
+  top: 0px;
+}
 .mod-sun .daylightvalue1 minutes {
   font-family: weathertext2;
   font-size: 24px;
   color: var(--card-ink-faint);
+  position: relative;
+  left: 10px;
+  top: 0px;
 }
 
 /* Fix missing icons for rise/set */

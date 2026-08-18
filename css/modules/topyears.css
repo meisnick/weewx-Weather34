@@ -1,115 +1,86 @@
-/* topyears.module — shared topbar YEAR-cards kernel, scoped to .mod-topyear
- * Used by: top_rainfallfyearmonth.php, top_windgustyear.php, top_temperatureyear.php
- * (the live topbar year family). Extracted from main/framework so these cards do
- * not depend on main.dark/light.css. AQI topbar badges (top_aqi_*) are a separate
- * family and stay in framework. */
-.mod-topyear { display: grid; position: relative; width: 100%; height: 0; }
+/* ── Top-bar YEAR cards — clean rebuild ───────────────────────────────────────
+ * Rainfall Totals · Wind Gust Year · Temperature Year.
+ *
+ * Replaces the legacy layout (position:absolute widgets, magic-number margins,
+ * invalid HTML that reparented half the elements out of .mod-* ) with a plain
+ * flexbox flow: [left side] [year ghost] [right side]. Every element is sized to
+ * its own content, spacing is a single `gap`, nesting is valid. Nothing overlaps,
+ * so nothing needs pixel archaeology to move.
+ *
+ * Markup: top_{rainfallfyearmonth,windgustyear,temperatureyear}.php via
+ * top_year_helpers.php. Shared by .mod-rain-totals and .mod-topyear. */
 
-/* Topbar value badge geometry + color states */
-.mod-topyear .topmin,
-.mod-topyear .topmax {
+/* The framework anchors BOTH .title and .value at top:0 (they overlap; legacy
+ * cards self-offset with margins). Drop this card's .value below the title bar
+ * and give it the full cell width so the flex row can center. */
+.weather34box:has(.mod-topyear) .value,
+.weather34box:has(.mod-rain-totals) .value {
   position: absolute;
-  margin-top: 39px;
-  font-size: 12px;
-  padding-right: 4px;
-  padding-left: 0
+  top: 15px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  padding: 0;
 }
 
-.mod-topyear .topmax { left: 10px }
-
-.mod-topyear .maxword,
-.mod-topyear .minword,
-.mod-topyear .minwordl {
-  margin-top: 35px;
-  font-size: .55rem;
-  color: var(--accent-ink);
-  z-index: 1;
-  position: absolute
-}
-
-.mod-topyear .maxwordlow,
-.mod-topyear .minwordlow {
-  margin-top: 35px;
-  font-size: .55rem;
-  color: var(--card-bg-2);
-  z-index: 1;
-  position: absolute
-}
-
-.mod-topyear .maxword { margin-left: 157px }
-.mod-topyear .maxwordlow { margin-left: 157px }
-.mod-topyear .minword { margin-left: 48px }
-.mod-topyear .minwordlow { margin-left: 48px }
-.mod-topyear .minwordl { margin-left: 30px }
-
-.mod-topyear .maxtimedate,
-.mod-topyear .mintimedate {
-  position: absolute;
-  margin-top: 61px;
-  font-size: .54rem;
-  z-index: 1;
-  color: var(--card-ink-blue);
-  width: 50px
-}
-
-.mod-topyear .maxtimedate { margin-left: 140px }
-.mod-topyear .mintimedate { margin-left: 30px }
-
-.mod-topyear .yearwordbig {
-  position: absolute;
-  margin-left: 11px;
-  margin-top: 40px;
-  font-size: 1.2rem
-}
-
-.mod-topyear smallwindunit {
-  font-size: .45rem;
-  font-family: Arial, Helvetica, system;
-  padding-left: 2px
-}
-
-/* Badge size + base (shared with lightning wfstrike* in main but scoped here) */
-.mod-topyear topred1,
-.mod-topyear topgreen1,
-.mod-topyear toporange1,
-.mod-topyear topblue1,
-.mod-topyear topyellow1,
-.mod-topyear topyellow2 {
-  font-family: weathertext2;
-  width: 3.3rem;
-  height: 2.4rem;
-  font-size: .9em;
-  padding-top: 7px;
-  color: var(--accent-ink);
-  border-bottom: 11px solid var(--card-bg-2);
+.mod-rain-totals,
+.mod-topyear {
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  position: absolute;
-  margin-left: 133px;
-  top: -5px
+  gap: 16px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.mod-topyear topred1 { background: var(--danger) }
-.mod-topyear toporange1 { background: var(--temp-hot-2) }
-.mod-topyear topblue1 { background: var(--info-cool) }
-.mod-topyear topgreen1 { background: var(--good) }
-.mod-topyear topyellow1 { background: var(--warn) }
-.mod-topyear topyellow2 { background: var(--warn-8) }
+.mod-rain-totals .yt-side,
+.mod-topyear .yt-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
 
-/* Even ~10px air on each side of the center year (.yearwordbig "2026" glyph,
- * 48px wide, sits between the pills). Left elements (.topmin/.minword) are
- * INSIDE .mod-topyear; the right pill (.topmax), right label (.maxword) and both
- * date labels are reparented OUTSIDE by stray tags -> scope via div:has(). Also
- * center the date labels in their 50px box (they were left-aligned). */
-.mod-topyear .topmin { margin-left: -9px; }
-.mod-topyear .minword, .mod-topyear .minwordlow { margin-left: 42px; }
-div:has(> .mod-topyear) .topmax { left: 15px; }
-div:has(> .mod-topyear) .maxword, div:has(> .mod-topyear) .maxwordlow { margin-left: 162px; }
-div:has(> .mod-topyear) .mintimedate { margin-left: 26px; text-align: center; }
-div:has(> .mod-topyear) .maxtimedate { margin-left: 147px; text-align: center; }
+.mod-rain-totals .yt-pill,
+.mod-topyear .yt-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.4rem;
+  padding: 3px 7px 1px;
+  border-radius: 2px;
+  border-bottom: 7px solid var(--card-bg-2);
+  color: var(--accent-ink);
+  line-height: 1.12;
+  text-align: center;
+}
 
+.mod-rain-totals .yt-cap,
+.mod-topyear .yt-cap { font-size: .5rem; opacity: .9; }
+
+.mod-rain-totals .yt-val,
+.mod-topyear .yt-val { font-family: weathertext2; font-size: 1rem; }
+
+.mod-rain-totals .yt-unit,
+.mod-topyear .yt-unit { font-size: .5rem; padding-left: 1px; }
+
+.mod-rain-totals .yt-sub,
+.mod-topyear .yt-sub { font-size: .55rem; color: var(--card-ink-blue); white-space: nowrap; }
+
+.mod-rain-totals .yt-year,
+.mod-topyear .yt-year {
+  font-family: weathertext2;
+  font-size: 1.25rem;
+  color: var(--ink-faint-5);
+  line-height: 1;
+}
+
+/* colour states — same palette as the legacy top* badges */
+.yt-red     { background: var(--danger); }
+.yt-orange  { background: var(--temp-hot-2); }
+.yt-yellow1 { background: var(--warn); }
+.yt-yellow2 { background: var(--warn-8); }
+.yt-green   { background: var(--good); }
+.yt-blue    { background: var(--info-cool); }

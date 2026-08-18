@@ -1,24 +1,13 @@
-<?php include('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');date_default_timezone_set($TZ);?>
+<?php include('w34CombinedData.php'); include('top_year_helpers.php');
+header('Content-type: text/html; charset=utf-8'); date_default_timezone_set($TZ);
+$mn = $weather["rain_month"] >= 1000 ? round($weather["rain_month"], 0) : $weather["rain_month"];
+$yr = $weather["rain_year"]  >= 1000 ? round($weather["rain_year"], 0)  : $weather["rain_year"];
+$u  = $weather["rain_units"];
+?>
 <div class="mod-rain-totals">
-<div class="topmin">
-
-<?php //rain month 
-if($weather["rain_month"]>=1000){ echo "<topblue1>".round($weather["rain_month"],0)  ;}
-else  echo "<topblue1>".$weather["rain_month"]  ;echo "<smallwindunit>".$weather["rain_units"];
+<?php
+echo yt_side('yt-blue', date('M'), $mn, $u, 'Total');
+echo '<div class="yt-year">' . date('Y') . '</div>';
+echo yt_side('yt-blue', date('Y'), $yr, $u, 'Total');
 ?>
-</div></smallwindunit>
-<div class="minword"><?php echo date('M')?></div></div>
-<div class="mintimedate">Total 
-</div>  
-
-<div class="yearwordbig"><?php echo date('Y')?></div>
-<div class="topmax">
-<?php //rain year 
-if($weather["rain_year"]>=1000){ echo "<topblue1>".round($weather["rain_year"],0)  ;}
-else  echo "<topblue1>".$weather["rain_year"]  ;echo "<smallwindunit>".$weather["rain_units"];
-?>
-</div></smallwindunit>
-<div class="maxword"><?php echo date('Y')?></div></div>
-<div class="maxtimedate">Total</div> 
-
 </div><!-- /mod-rain-totals -->

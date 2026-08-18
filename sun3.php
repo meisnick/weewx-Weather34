@@ -235,23 +235,23 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- LEFT COLUMN -->
     <div class="sun-col-left">
       <div class="sun-block">
-        <value><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value>
-        <?php echo $lang['TotalDaylight'];?>
+        <value class="daylighthours"><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value>
+        <span class="daylighttext"><?php echo $lang['TotalDaylight'];?></span>
       </div>
       
       <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
       <div class="sun-block">
-        Moon Phase<br>
-        <value><?php echo $weather["moonphase"];?></value>
-        <?php echo $lang['Moonrise'];?><br>
-        <value><?php echo $weather['moonrise'];?></value>
+        <span class="moonphasetext">Moon Phase</span><br>
+        <value class="moonphasevalue"><?php echo $weather["moonphase"];?></value><br>
+        <span class="moonrisetext"><?php echo $lang['Moonrise'];?></span><br>
+        <value class="moonrisevalue"><?php echo $weather['moonrise'];?></value>
       </div>
       <?php endif; ?>
       
       <div class="sun-block">
-        <value><?php echo $sunuphalf.''.$lang['Sunrise'];?></value><br>
-        <?php echo $nextrisetxt.' '.$nextrise;?><br>
-        First Light (<blueu><?php echo $nextfirstlight;?></blueu>)
+        <value class="sunrisetext"><?php echo $sunuphalf.''.$lang['Sunrise'];?></value><br>
+        <span class="sunrisetime"><?php echo $nextrisetxt.' '.$nextrise;?></span><br>
+        <span class="firstlighttext">First Light (<blueu><?php echo $nextfirstlight;?></blueu>)</span>
       </div>
     </div>
 
@@ -271,9 +271,10 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
           </div>
         </div>
         <div class="daylightvalue1">
-          Estimated<br>hrs&nbsp;&nbsp;&nbsp;&nbsp;min<br>
+          <span class="estimatedtext">Estimated</span><br>
+          <span class="hrsmintext">hrs&nbsp;&nbsp;&nbsp;&nbsp;min</span><br>
           <hours><?php echo $hrs;?></hours> <minutes><?php echo $min;?></minutes><br>
-          Till Sunset
+          <span class="tillsunsettext">Till Sunset</span>
         </div>
       </div>
       
@@ -285,23 +286,23 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- RIGHT COLUMN -->
     <div class="sun-col-right">
       <div class="sun-block">
-        <value><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value>
-        <?php echo $lang['TotalDarkness'];?>
+        <value class="darknesshours"><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value>
+        <span class="darknesstext"><?php echo $lang['TotalDarkness'];?></span>
       </div>
       
       <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
       <div class="sun-block">
-        Luminance<br>
-        <value><?php echo $weather["luminance"];?>%</value><br>
-        <?php echo $lang['Moonset'];?><br>
-        <value><?php echo $weather['moonset'];?></value>
+        <span class="luminancetext">Luminance</span><br>
+        <value class="luminancevalue"><?php echo $weather["luminance"];?>%</value><br>
+        <span class="moonsettext"><?php echo $lang['Moonset'];?></span><br>
+        <value class="moonsetvalue"><?php echo $weather['moonset'];?></value>
       </div>
       <?php endif; ?>
       
       <div class="sun-block">
-        <value><?php echo $sundownhalf.''.$lang['Sunset'];?></value><br>
-        <?php echo $nextsettxt.' '.$nextset;?><br>
-        Last Light (<blueu><?php echo $nextlastlight;?></blueu>)
+        <value class="sunsettext"><?php echo $sundownhalf.''.$lang['Sunset'];?></value><br>
+        <span class="sunsettime"><?php echo $nextsettxt.' '.$nextset;?></span><br>
+        <span class="lastlighttext">Last Light (<blueu><?php echo $nextlastlight;?></blueu>)</span>
       </div>
     </div>
   </div>

@@ -97,10 +97,12 @@
 
 .mod-wind .homeweathercompass1 {
   position: absolute;
-  top: -20px; left: -22.5px;
-  width: 175px; height: 175px;
+  top: -25px; 
+  left: 50%;
+  margin-left: -87.5px;
+  width: 175px; 
+  height: 175px;
   z-index: 1;
-  transform: scale(0.9);
 }
 
 .mod-wind .homeweathercompass-line1 {
@@ -111,6 +113,12 @@
   border-top: 8px solid var(--line-compass-2);
   border-right: 8px solid var(--line-compass);
   border-bottom: 8px solid var(--line-compass-2);
+}
+
+/* Fix arrow 1 */
+.mod-wind .thearrow1 {
+  width: 10px;
+  height: 50%;
 }
 
 /* Center text */

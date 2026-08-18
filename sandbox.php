@@ -236,6 +236,9 @@ $mods = array_values(array_unique($mods));
     if(!d) return; applyLive();
     var ov=d.getElementById('sbxov'); if(ov) ov.style.display=gridOn?'block':'none';
     if(pickParam && !curEl){ try{ var pe=d.querySelector(decodeURIComponent(pickParam)); if(pe) select(pe); }catch(e){} }
+    // Swallow clicks so anchors / chart popups can't navigate the preview away.
+    d.addEventListener('click', function(ev){ ev.preventDefault(); ev.stopPropagation(); }, true);
+    d.addEventListener('dragstart', function(ev){ ev.preventDefault(); }, true);
     var drag=null;
     d.addEventListener('mousedown', function(ev){
       var el=ev.target; ev.preventDefault();

@@ -214,25 +214,14 @@ $theminute =date('i');
 .mod-sun .weather34sunclock {
 -webkit-transform: rotate(<?php echo ((($thehour * 15) + ($theminute / 4)) - 86)?>deg);
 transform: rotate(<?php echo ((($thehour * 15) + ($theminute / 4)) - 86)?>deg);
-border: 5px solid rgba(255, 255,255,0);
-width: 110px; 
-height: 110px;
-top: -9px;
-margin-left: 104px }
+}
 
-.mod-sun .weather34sunclock 
-#poscircircle {top: 50%;
-left: calc(50% - 55.8%);
-z-index: 1;
-height: 10px;
-width: 10px;
-border: 0;
--webkit-border-radius: 50%;
-border-radius: 50%;
+.mod-sun .weather34sunclock #poscircircle {
 background: <?php if ($elev <= 0.5 && $elev > - 4) { 
 echo "rgba(255, 112, 50, 0.5)"; 
 } else if ($elev <= 0) { echo "rgba(86, 95, 103, 0.7)"; } 
-else echo $stroke; ?>; }
+else echo $stroke; ?>;
+}
 </style>
 
 <?php if ($elev >= 0) { 
@@ -240,63 +229,122 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunaboveweather34>&nbsp;</div>";
 } else if ($elev < 0) { 
 $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }?>
 
-<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div><div class="mod-sun">
-<div class="daylightmoduleposition" >
- 
-<?php echo 
-'<div class="weather34sunlightday"><weather34daylightdaycircle></weather34daylightdaycircle> '.$daylight.' hrs<br>'.$lang['TotalDaylight'].'</div>
-<div class="weather34sundarkday">'. $darkhours,":", $darkminutes.' hrs <weather34darkdaycircle></weather34darkdaycircle><br>'.$lang['TotalDarkness'].'</div>
+<div class="updatedtime1"><?php echo $online.' '.date($timeFormat);?></div>
+<div class="mod-sun">
+  <div class="sun-grid">
+    <!-- LEFT COLUMN -->
+    <div class="sun-col-left">
+      <div class="sun-block">
+        <value><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value>
+        <?php echo $lang['TotalDaylight'];?>
+      </div>
+      
+      <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
+      <div class="sun-block">
+        Moon Phase<br>
+        <value><?php echo $weather["moonphase"];?></value><br>
+        <?php echo $lang['Moonrise'];?><br>
+        <value>Rise <?php echo $weather['moonrise'];?></value>
+      </div>
+      <?php endif; ?>
+      
+      <div class="sun-block">
+        <value><?php echo $sunuphalf.''.$lang['Sunrise'];?></value><br>
+        <?php echo $nextrisetxt.' '.$nextrise;?><br>
+        First Light (<blueu><?php echo $nextfirstlight;?></blueu>)
+      </div>
+    </div>
 
-<div class="weather34sunriseday">'.$sunuphalf.''.$lang['Sunrise'].'<br>'.$nextrisetxt.' '.$nextrise.'<br>First Light (<blueu>'.$nextfirstlight.'</blueu>)</div>
-<div class="weather34sunsetday">'.$sundownhalf.''.$lang['Sunset'].'<br>'.$nextsettxt.' '.$nextset.'<br>Last Light (<blueu>'.$nextlastlight.'</blueu>)</div>
-<div class="daylightword"><value>Daylight</div>
+    <!-- CENTER COLUMN (The Graphic) -->
+    <div class="sun-col-center">
+      <div class="daylightword">Daylight</div>
+      
+      <!-- The Containment Box -->
+      <div class="sun-graphic-container">
+        <div class="circleborder"></div>
+        <div class="sundialcontainerdiv2">
+          <div id="sundialcontainer" class="sundialcontainer">
+            <canvas id="sundial" class="suncanvasstyle" width="130" height="130"></canvas>
+            <div class="weather34sunclock">
+              <div id="poscircircle"></div>
+            </div>
+          </div>
+        </div>
+        <div class="daylightvalue1">
+          Estimated<br>hrs&nbsp;&nbsp;&nbsp;&nbsp;min<br>
+          <hours><?php echo $hrs;?></hours> <minutes><?php echo $min;?></minutes><br>
+          Till Sunset
+        </div>
+      </div>
+      
+      <div class="elevationword">
+        Sun Elevation <span><maxred><?php echo $elev1;?></maxred></span>
+      </div>
+    </div>
 
-<div class="elevationword"><value>Sun Elevation<span><value><maxred> '.$elev1.'</maxred></value></span></div>
-<div class="circleborder"></div>
-<div class="sundialcontainerdiv2" ><div id="sundialcontainer" class=sundialcontainer><canvas id="sundial" class="suncanvasstyle"></canvas><div class="weather34sunclock"><div id="poscircircle"></div></div></div>
-<div class="daylightvalue1" ><hrs>hrs</hrs><hours>&nbsp;&nbsp;'.$hrs.'</hours> <minutes>'.$min.'</minutes> <br>&nbsp;<period>'.$txt.'</period><min>min</min></div>';
+    <!-- RIGHT COLUMN -->
+    <div class="sun-col-right">
+      <div class="sun-block">
+        <value><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value><br>
+        <?php echo $lang['TotalDarkness'];?>
+      </div>
+      
+      <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
+      <div class="sun-block">
+        Luminance<br>
+        <value><?php echo $weather["luminance"];?>%</value><br>
+        <?php echo $lang['Moonset'];?><br>
+        <value>Set <?php echo $weather['moonset'];?></value>
+      </div>
+      <?php endif; ?>
+      
+      <div class="sun-block">
+        <value><?php echo $sundownhalf.''.$lang['Sunset'];?></value><br>
+        <?php echo $nextsettxt.' '.$nextset;?><br>
+        Last Light (<blueu><?php echo $nextlastlight;?></blueu>)
+      </div>
+    </div>
+  </div>
+</div><!-- /mod-sun -->
 
-if ($position12 == 'moonphase.php' OR $positionlastmodule == 'moonphase.php') { echo ''; } else echo
-'<div class="weather34moonphasem">Moon Phase <br>'.$weather["moonphase"].'<br>'.$lang['Moonrise'].'<br>'.$weather['moonrise'].'</div>
-<div class="weather34luminancem">Luminance<br> '.$weather["luminance"].'% '.'<br>'.$lang['Moonset'].'<br>'.$weather['moonset'].'</div></div></div></div>';
-
+<?php
 $d_crcl = 24 * 60 / 2;
 function clc_crcl ($integer) { 
-global $d_crcl;
-$h = (int) date ('H',$integer);
-$m = (int) date ('i',$integer);
-$calc = $m + $h * 60; 
-$calc = (float) 0.5 + ($calc / $d_crcl);
-if ($calc > 2.0) { 
-$calc = $calc - 2; 
-} 
- return round($calc,5); 
+  global $d_crcl;
+  $h = (int) date ('H',$integer);
+  $m = (int) date ('i',$integer);
+  $calc = $m + $h * 60; 
+  $calc = (float) 0.5 + ($calc / $d_crcl);
+  if ($calc > 2.0) { $calc = $calc - 2; } 
+  return round($calc,5); 
 } 
 $start = clc_crcl ($result['sunrise']);
 $end = clc_crcl ($result['sunset']);
 $pos = clc_crcl ($now);
 if ($now > $result['sunset'] || $now < $result['sunrise']) { 
-$sn_clr = 'rgba(86,95,103,0)'; 
-} else { $sn_clr = 'rgba(255, 112,50,1)'; } 
-
-echo 
-'<script>
+  $sn_clr = 'rgba(86,95,103,0)'; 
+} else { 
+  $sn_clr = 'rgba(255, 112,50,1)'; 
+} 
+?>
+<script>
 var c = document.getElementById("sundial");
-var ctx = c.getContext("2d");
+if (c) {
+  var ctx = c.getContext("2d");
+  ctx.imageSmoothingEnabled = false;
 
-ctx.imageSmoothingEnabled = false;
+  // Render the daylight arc
+  ctx.beginPath();
+  ctx.arc(65, 65, 54, <?php echo $start;?> * Math.PI, <?php echo $end;?> * Math.PI);
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = "<?php echo $stroke;?>";
+  ctx.stroke();
 
-ctx.beginPath();
-ctx.arc(62.5, 65, 55.5, '.$start.' * Math.PI, '.$end.' * Math.PI);
-ctx.lineWidth = 1.5;
-ctx.strokeStyle = "'.$stroke.'";
-ctx.stroke();
-
-ctx.beginPath();
-ctx.arc(63, 65, 55.5, '.$pos.' * Math.PI, '.$pos.' * Math.PI);
-ctx.lineWidth = 0;
-ctx.strokeStyle = "'.$sn_clr.'";
-ctx.stroke();
-  
-</script>'?>
-</div><!-- /mod-sun -->
+  // Draw the current position
+  ctx.beginPath();
+  ctx.arc(65, 65, 54, <?php echo $pos;?> * Math.PI, <?php echo $pos;?> * Math.PI);
+  ctx.lineWidth = 0;
+  ctx.strokeStyle = "<?php echo $sn_clr;?>";
+  ctx.stroke();
+}
+</script>

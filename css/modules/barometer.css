@@ -52,12 +52,16 @@
   font-size: 10px;
 }
 .mod-barometer .barometertrend2 span { font-weight: 600; color: var(--good); }
+/* nudge the trend text block within its cell (sandbox-tuned) */
+.mod-barometer .barometertrend2 valuetext { position: relative; left: -10px; top: -36px; }
 
 /* inner value wrappers (colour states come from php tags) */
 .mod-barometer .barometerorange { color: var(--card-ink-blue); line-height: 10px; }
 .mod-barometer .barometerorange span { font-weight: 600; color: var(--caution); }
 .mod-barometer .barometerblue { line-height: 10px; }
 .mod-barometer .barometerblue span { font-weight: 600; }
+/* nudge the min text block within its cell (sandbox-tuned) */
+.mod-barometer .barometerblue valuetext { position: relative; left: 7px; top: -62px; }
 
 /* ── converter badge (top-right) ──────────────────────────────────────────── */
 .mod-barometer .barometerconverter {
@@ -83,7 +87,7 @@
 /* ── radial dial + needles (centred overlay) ──────────────────────────────── */
 .mod-barometer .homeweathercompass2 {
   position: absolute;
-  top: 25px; left: 40px;
+  top: 25px; left: 59px;
   margin: 0;
   width: 175px;
   height: 175px;
@@ -193,6 +197,8 @@
   font-family: Helvetica, Arial;
 }
 .mod-barometer .weather34-barometerruler {
+  position: relative;
+  left: -29px; top: -27px;        /* sandbox-tuned offset (carries the 28/31 labels) */
   width: 135px;
   height: 1px;
   border: 1px dashed var(--line-dark-6);

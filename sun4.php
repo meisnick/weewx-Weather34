@@ -242,9 +242,9 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
       <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
       <div class="sun-block">
         Moon Phase<br>
-        <value><?php echo $weather["moonphase"];?></value><br>
+        <value><?php echo $weather["moonphase"];?></value>
         <?php echo $lang['Moonrise'];?><br>
-        <value>Rise <?php echo $weather['moonrise'];?></value>
+        <value><?php echo $weather['moonrise'];?></value>
       </div>
       <?php endif; ?>
       
@@ -285,7 +285,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- RIGHT COLUMN -->
     <div class="sun-col-right">
       <div class="sun-block">
-        <value><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value><br>
+        <value><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value>
         <?php echo $lang['TotalDarkness'];?>
       </div>
       
@@ -294,7 +294,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
         Luminance<br>
         <value><?php echo $weather["luminance"];?>%</value><br>
         <?php echo $lang['Moonset'];?><br>
-        <value>Set <?php echo $weather['moonset'];?></value>
+        <value><?php echo $weather['moonset'];?></value>
       </div>
       <?php endif; ?>
       

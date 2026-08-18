@@ -37,7 +37,8 @@ if (isset($_GET['frame'])) {
       .sbx-ov{position:fixed;inset:0;pointer-events:none;z-index:99999;display:none;
         background-image:linear-gradient(rgba(120,170,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(120,170,255,.18) 1px,transparent 1px);
         background-size:10px 10px}
-      .sbx-hl{outline:1px dashed #ff5bd0 !important;outline-offset:0;cursor:move}</style>';
+      .sbx-hl{outline:1px dashed #ff5bd0 !important;outline-offset:0;cursor:move}
+      .sbx-hidden{visibility:hidden !important}</style>';
     echo '</head><body>';
     if ($isTop) {
         echo '<div class="weather34box-toparea" style="width:250px;display:block">'
@@ -98,6 +99,9 @@ $mods = array_values(array_unique($mods));
   .prevbar{padding:6px 12px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);background:var(--panel)}
   iframe{flex:1;width:100%;border:0;background:#15171a}
   .hint{color:var(--muted);font-size:11.5px}
+  .arrange{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .arrange button{flex:1 1 42%;padding:6px 8px;font-size:12px}
+  .arrange button.act{background:var(--accent);color:#0b1120;border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -108,11 +112,12 @@ $mods = array_values(array_unique($mods));
   <button id="grid">Grid</button>
   <button id="reload">Reload</button>
   <span class="sp"></span>
-  <span class="hint">Click an element &rarr; drag it, use the controls, or nudge with &larr;&uarr;&darr;&rarr; (Shift = 10px)</span>
+  <span class="hint">Click &rarr; drag / nudge &larr;&uarr;&darr;&rarr; (Shift=10px) · <b>Alt-click</b> digs through stacked elements · Center &amp; Hide in the panel</span>
 </header>
 <div class="wrap">
   <div class="side">
     <div class="sel" id="sel">No element selected</div>
+    <div class="arrange" id="arrange" style="display:none"></div>
     <div class="panel empty" id="panel">Click any element in the preview to edit it.</div>
     <div class="cssout">
       <div class="lbl">Generated CSS</div>
@@ -122,6 +127,7 @@ $mods = array_values(array_unique($mods));
       <button id="copy">Copy CSS</button>
       <button id="reset">Reset element</button>
       <button id="clear">Clear all</button>
+      <button id="showall">Show all</button>
       <span class="hint" id="status"></span>
     </div>
   </div>
@@ -149,7 +155,7 @@ $mods = array_values(array_unique($mods));
 
   function theme(){ return themeBtn.dataset.theme; }
   function frameSrc(){ return base+'/sandbox.php?frame=1&module='+encodeURIComponent(moduleSel.value)+'&theme='+theme()+'&t='+Date.now(); }
-  function load(){ curSel=null; curEl=null; frame.src=frameSrc(); prevbar.textContent=moduleSel.value+'  ·  '+theme(); }
+  function load(){ curSel=null; curEl=null; buildArrange(); frame.src=frameSrc(); prevbar.textContent=moduleSel.value+'  ·  '+theme(); }
 
   function serialize(){
     var out='';
@@ -176,6 +182,46 @@ $mods = array_values(array_unique($mods));
     if(ev.key==='ArrowLeft') dx=-s; else if(ev.key==='ArrowRight') dx=s;
     else if(ev.key==='ArrowUp') dy=-s; else if(ev.key==='ArrowDown') dy=s; else return;
     ev.preventDefault(); nudge(dx,dy);
+  }
+
+  // ── arrange helpers ──────────────────────────────────────────────────────
+  function moduleBoxOf(el){
+    var m=el.closest&&el.closest('[class*="mod-"]');
+    if(!m){ try{ m=frame.contentDocument.getElementById('sbx'); }catch(e){} }
+    return m;
+  }
+  function selectable(e){
+    if(!e||e.nodeType!==1) return false;
+    var tag=e.tagName.toLowerCase();
+    if(tag==='html'||tag==='body') return false;
+    if(e.id==='sbx'||e.id==='sbxov') return false;
+    if(e.classList && (e.classList.contains('weather-item')||e.classList.contains('weather-container')||
+       e.classList.contains('weather34box')||e.classList.contains('weather34box-toparea')||
+       e.classList.contains('title')||e.classList.contains('value')||e.classList.contains('moduletitle'))) return false;
+    return true;
+  }
+  function center(axis){
+    if(!curEl) return;
+    var m=moduleBoxOf(curEl); if(!m) return;
+    var b=curEl.getBoundingClientRect(), mb=m.getBoundingClientRect();
+    rules[curSel]=rules[curSel]||{};
+    if(axis==='h'){ var d=(mb.width-b.width)/2-(b.left-mb.left);
+      rules[curSel]['margin-left']=Math.round(baseMargin('margin-left','marginLeft')+d)+'px'; }
+    if(axis==='v'){ var dv=(mb.height-b.height)/2-(b.top-mb.top);
+      rules[curSel]['margin-top']=Math.round(baseMargin('margin-top','marginTop')+dv)+'px'; }
+    serialize(); buildPanel();
+  }
+  function toggleHide(){ if(curEl) curEl.classList.toggle('sbx-hidden'); }
+  function showAll(){ try{ var d=frame.contentDocument;
+    Array.prototype.forEach.call(d.querySelectorAll('.sbx-hidden'),function(e){e.classList.remove('sbx-hidden');});
+  }catch(e){} }
+  function digUnder(){                                  // select the next element beneath the current one
+    if(!curEl) return; var d=frame.contentDocument;
+    var b=curEl.getBoundingClientRect();
+    var stack=d.elementsFromPoint(b.left+b.width/2, b.top+b.height/2).filter(selectable);
+    if(!stack.length) return;
+    var i=stack.indexOf(curEl);
+    select(stack[(i+1)%stack.length]);
   }
 
   function selectorFor(el){
@@ -221,13 +267,26 @@ $mods = array_values(array_unique($mods));
     });
   }
 
+  function buildArrange(){                              // fixed toolbar (not buried in the scroll panel)
+    var bar=$('arrange');
+    if(!curEl){ bar.style.display='none'; bar.innerHTML=''; return; }
+    bar.style.display='flex'; bar.innerHTML='';
+    [['Center ⇔',function(){center('h');}], ['Center ⇕',function(){center('v');}],
+     ['Hide',toggleHide], ['Under ⤵',digUnder]].forEach(function(bt){
+      var btn=document.createElement('button'); btn.textContent=bt[0];
+      btn.onclick=function(){ bt[1](); buildArrange(); };
+      if(bt[0]==='Hide' && curEl.classList.contains('sbx-hidden')) btn.className='act';
+      bar.appendChild(btn);
+    });
+  }
+
   function select(el){
     if(curEl) curEl.classList.remove('sbx-hl');
     curEl=el; curSel=selectorFor(el); el.classList.add('sbx-hl');
     var mod=el.closest&&el.closest('[class*="mod-"]'); var b=el.getBoundingClientRect();
     var mb=mod?mod.getBoundingClientRect():{left:0,top:0};
     selBar.innerHTML='<code>'+curSel+'</code> &nbsp; <span class="box">x:'+Math.round(b.left-mb.left)+' y:'+Math.round(b.top-mb.top)+' '+Math.round(b.width)+'&times;'+Math.round(b.height)+' · '+frame.contentWindow.getComputedStyle(el).position+'</span>';
-    buildPanel();
+    buildPanel(); buildArrange();
   }
 
   var pickParam=(location.search.match(/[?&]pick=([^&]+)/)||[])[1];
@@ -242,6 +301,11 @@ $mods = array_values(array_unique($mods));
     var drag=null;
     d.addEventListener('mousedown', function(ev){
       var el=ev.target; ev.preventDefault();
+      if(ev.altKey){                                   // Alt-click: dig through the stack at this point
+        var stk=d.elementsFromPoint(ev.clientX, ev.clientY).filter(selectable);
+        if(stk.length){ var st=stk.indexOf(curEl); select(stk[(st+1)%stk.length]); }
+        return;
+      }
       if(curEl && (el===curEl)){                       // drag the already-selected element
         var cs=w.getComputedStyle(curEl);
         drag={sx:ev.clientX, sy:ev.clientY, ml:px(getProp(curSel,'margin-left')!=null?getProp(curSel,'margin-left'):cs.marginLeft), mt:px(getProp(curSel,'margin-top')!=null?getProp(curSel,'margin-top'):cs.marginTop)};
@@ -264,6 +328,7 @@ $mods = array_values(array_unique($mods));
   $('copy').onclick=function(){ navigator.clipboard.writeText(css.value); status.textContent='copied ✓'; setTimeout(function(){status.textContent='';},1200); };
   $('reset').onclick=function(){ if(curSel){ delete rules[curSel]; serialize(); buildPanel(); } };
   $('clear').onclick=function(){ rules={}; serialize(); buildPanel(); };
+  $('showall').onclick=showAll;
   frame.addEventListener('load', wireFrame);
   document.addEventListener('keydown', onKey);     // arrow-nudge when focus is on the editor side
   load();

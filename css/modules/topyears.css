@@ -1,12 +1,11 @@
 /* ── Top-bar YEAR cards — clean rebuild ───────────────────────────────────────
  * Rainfall Totals · Wind Gust Year · Temperature Year.
  *
- * Flexbox flow: [left pill] [year ghost] [right pill]. Each pill is one
- * self-contained card — a coloured BODY (cap + value) stacked on a grey CHIN
- * footer (Total/date label). No position:absolute widgets, no magic margins.
- *
- * Type sizes are in px, tuned to Prod's rendered geometry (value 10.8px, badge
- * 53x38, root font-size is a stable 16px across viewports here).
+ * Flexbox flow: [left pill] [year ghost] [right pill]. Each pill matches Prod:
+ * a coloured top (cap + value) and a dark "chin" strip across the bottom with the
+ * Total/date label INSIDE it — one fixed 53x38 card (Prod's badge geometry, its
+ * 11px border-bottom = the chin). No position:absolute widgets, no magic margins.
+ * Type in px, tuned to Prod (value 10.8px; root font-size is a stable 16px here).
  *
  * Markup: top_{rainfallfyearmonth,windgustyear,temperatureyear}.php via
  * top_year_helpers.php. Shared by .mod-rain-totals and .mod-topyear. */
@@ -14,7 +13,7 @@
 /* The framework anchors BOTH .title and .value at top:0 (they overlap; legacy
  * cards self-offset with margins). Fill the zone BELOW the ~14px title and
  * flex-center the content. Scoped by the STATIC data-module attribute and forced
- * with !important so no responsive/theme rule can push it back to top:0. */
+ * with !important so no responsive/theme rule can strand it back at top:0. */
 .weather34box[data-module="top_rainfallfyearmonth.php"] .value,
 .weather34box[data-module="top_windgustyear.php"] .value,
 .weather34box[data-module="top_temperatureyear.php"] .value {
@@ -39,28 +38,30 @@
   gap: 14px;
 }
 
+/* one pill = coloured top + dark chin, fixed 53x38 like Prod */
 .mod-rain-totals .yt-pill,
 .mod-topyear .yt-pill {
   display: flex;
   flex-direction: column;
   width: 53px;
+  height: 38px;
+  box-sizing: border-box;
   border-radius: 2px;
   overflow: hidden;
   text-align: center;
+  color: var(--accent-ink);
 }
 
-/* coloured body — matches Prod's ~53x38 value badge */
-.mod-rain-totals .yt-body,
-.mod-topyear .yt-body {
+/* coloured value area (colour applied here, so nothing sits behind the chin) */
+.mod-rain-totals .yt-top,
+.mod-topyear .yt-top {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
-  padding: 2px 3px;
-  color: var(--accent-ink);
-  line-height: 1.05;
-  box-sizing: border-box;
+  padding-top: 1px;
+  line-height: 1.02;
 }
 
 .mod-rain-totals .yt-cap,
@@ -72,17 +73,17 @@
 .mod-rain-totals .yt-unit,
 .mod-topyear .yt-unit { font-size: 8px; padding-left: 1px; }
 
-/* grey chin footer — sub-label, vertically centered */
+/* dark chin strip across the bottom, label centered inside it (Prod's 11px edge) */
 .mod-rain-totals .yt-chin,
 .mod-topyear .yt-chin {
+  height: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 13px;
-  padding: 1px 2px;
   background: var(--card-bg-2);
-  color: var(--card-ink-blue);
-  font-size: 9px;
+  color: var(--card-ink);
+  font-size: 8.5px;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -94,10 +95,10 @@
   line-height: 1;
 }
 
-/* colour states — applied to the BODY only, so nothing peeks behind the chin */
-.yt-red     .yt-body { background: var(--danger); }
-.yt-orange  .yt-body { background: var(--temp-hot-2); }
-.yt-yellow1 .yt-body { background: var(--warn); }
-.yt-yellow2 .yt-body { background: var(--warn-8); }
-.yt-green   .yt-body { background: var(--good); }
-.yt-blue    .yt-body { background: var(--info-cool); }
+/* colour states — on the value area only, so nothing peeks behind the chin */
+.yt-red     .yt-top { background: var(--danger); }
+.yt-orange  .yt-top { background: var(--temp-hot-2); }
+.yt-yellow1 .yt-top { background: var(--warn); }
+.yt-yellow2 .yt-top { background: var(--warn-8); }
+.yt-green   .yt-top { background: var(--good); }
+.yt-blue    .yt-top { background: var(--info-cool); }

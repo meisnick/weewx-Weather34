@@ -219,4 +219,14 @@
 
 }
 
+/* (mirror of topyears.css spacing fix) even ~10px air each side of the center
+ * year ghost + centered date labels. Right-side elements are reparented outside
+ * .mod-rain-totals, so scope those via div:has(> .mod-rain-totals). */
+.mod-rain-totals .topmin { margin-left: -9px; }
+.mod-rain-totals .minword, .mod-rain-totals .minwordlow, .mod-rain-totals .minwordl { margin-left: 42px; }
+div:has(> .mod-rain-totals) .topmax { left: 15px; }
+div:has(> .mod-rain-totals) .maxword, div:has(> .mod-rain-totals) .maxwordlow { margin-left: 162px; }
+div:has(> .mod-rain-totals) .mintimedate { margin-left: 26px; text-align: center; }
+div:has(> .mod-rain-totals) .maxtimedate { margin-left: 147px; text-align: center; }
+
 

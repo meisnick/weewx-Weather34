@@ -101,3 +101,15 @@
 .mod-topyear topyellow1 { background: var(--warn) }
 .mod-topyear topyellow2 { background: var(--warn-8) }
 
+/* Even ~10px air on each side of the center year (.yearwordbig "2026" glyph,
+ * 48px wide, sits between the pills). Left elements (.topmin/.minword) are
+ * INSIDE .mod-topyear; the right pill (.topmax), right label (.maxword) and both
+ * date labels are reparented OUTSIDE by stray tags -> scope via div:has(). Also
+ * center the date labels in their 50px box (they were left-aligned). */
+.mod-topyear .topmin { margin-left: -9px; }
+.mod-topyear .minword, .mod-topyear .minwordlow { margin-left: 42px; }
+div:has(> .mod-topyear) .topmax { left: 15px; }
+div:has(> .mod-topyear) .maxword, div:has(> .mod-topyear) .maxwordlow { margin-left: 162px; }
+div:has(> .mod-topyear) .mintimedate { margin-left: 26px; text-align: center; }
+div:has(> .mod-topyear) .maxtimedate { margin-left: 147px; text-align: center; }
+

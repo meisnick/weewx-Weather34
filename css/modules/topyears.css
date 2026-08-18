@@ -2,32 +2,33 @@
  * Rainfall Totals · Wind Gust Year · Temperature Year.
  *
  * Flexbox flow: [left pill] [year ghost] [right pill]. Each pill is one
- * self-contained card — fixed width (left/right match), a coloured BODY
- * (cap + value) stacked on a grey CHIN footer (Total/date label). No
- * position:absolute widgets, no magic margins, valid nesting.
+ * self-contained card — a coloured BODY (cap + value) stacked on a grey CHIN
+ * footer (Total/date label). No position:absolute widgets, no magic margins.
+ *
+ * Type sizes are in px, tuned to Prod's rendered geometry (value 10.8px, badge
+ * 53x38, root font-size is a stable 16px across viewports here).
  *
  * Markup: top_{rainfallfyearmonth,windgustyear,temperatureyear}.php via
  * top_year_helpers.php. Shared by .mod-rain-totals and .mod-topyear. */
 
 /* The framework anchors BOTH .title and .value at top:0 (they overlap; legacy
- * cards self-offset with margins). Reposition .value into the zone BELOW the
- * title and flex-center its content vertically. Scoped by the STATIC data-module
- * attribute (present in the server HTML) — not :has() / the AJAX-loaded class,
- * which was unreliable and left the content jammed against the title. */
+ * cards self-offset with margins). Fill the zone BELOW the ~14px title and
+ * flex-center the content. Scoped by the STATIC data-module attribute and forced
+ * with !important so no responsive/theme rule can push it back to top:0. */
 .weather34box[data-module="top_rainfallfyearmonth.php"] .value,
 .weather34box[data-module="top_windgustyear.php"] .value,
 .weather34box[data-module="top_temperatureyear.php"] .value {
-  position: absolute;
-  top: 17px;
-  left: 0;
-  right: 0;
-  bottom: 4px;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute !important;
+  top: 15px !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .mod-rain-totals,
@@ -42,50 +43,53 @@
 .mod-topyear .yt-pill {
   display: flex;
   flex-direction: column;
-  width: 66px;
-  border-radius: 3px;
+  width: 53px;
+  border-radius: 2px;
   overflow: hidden;
   text-align: center;
 }
 
-/* coloured body */
+/* coloured body — matches Prod's ~53x38 value badge */
 .mod-rain-totals .yt-body,
 .mod-topyear .yt-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3px 4px 4px;
+  justify-content: center;
+  min-height: 34px;
+  padding: 2px 3px;
   color: var(--accent-ink);
   line-height: 1.05;
+  box-sizing: border-box;
 }
 
 .mod-rain-totals .yt-cap,
-.mod-topyear .yt-cap { font-size: .52rem; opacity: .92; }
+.mod-topyear .yt-cap { font-size: 9px; opacity: .9; }
 
 .mod-rain-totals .yt-val,
-.mod-topyear .yt-val { font-family: weathertext2; font-size: 1.05rem; }
+.mod-topyear .yt-val { font-family: weathertext2; font-size: 11px; }
 
 .mod-rain-totals .yt-unit,
-.mod-topyear .yt-unit { font-size: .52rem; padding-left: 1px; }
+.mod-topyear .yt-unit { font-size: 8px; padding-left: 1px; }
 
-/* grey chin footer — the sub-label lives here, vertically centered */
+/* grey chin footer — sub-label, vertically centered */
 .mod-rain-totals .yt-chin,
 .mod-topyear .yt-chin {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 16px;
-  padding: 1px 3px;
+  min-height: 13px;
+  padding: 1px 2px;
   background: var(--card-bg-2);
   color: var(--card-ink-blue);
-  font-size: .58rem;
+  font-size: 9px;
   white-space: nowrap;
 }
 
 .mod-rain-totals .yt-year,
 .mod-topyear .yt-year {
   font-family: weathertext2;
-  font-size: 1.3rem;
+  font-size: 19px;
   color: var(--ink-faint-5);
   line-height: 1;
 }

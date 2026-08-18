@@ -30,7 +30,12 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       </div>
 
       <div class="mod-wind-block-small bot-block pill-block">
-        <div class="<?php echo 'weather34beaufort' . min(6, max(1, ceil($weather['wind_speed_bft']/2))); ?>">
+        <div class="<?php
+          if ($weather["wind_speed_bft"] >= 6) { echo 'weather34beaufort6'; }
+          else if ($weather["wind_speed_bft"] >= 4) { echo 'weather34beaufort4-5'; }
+          else if ($weather["wind_speed_bft"] >= 3) { echo 'weather34beaufort3-4'; }
+          else { echo 'weather34beaufort1-3'; }
+        ?>">
           <?php
           if ($weather["wind_speed_bft"] >= 12) { echo $beaufort12 . "&nbsp; " . $weather["wind_speed_bft"]; }
           else if ($weather["wind_speed_bft"] >= 11) { echo $beaufort11 . "&nbsp; " . $weather["wind_speed_bft"]; }

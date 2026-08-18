@@ -89,6 +89,8 @@
   font-weight: 500;
   margin-bottom: 2px;
   color: rgb(192, 192, 192);
+  position: relative;
+  top: -4px;                /* sandbox-tuned */
 }
 
 .mod-sun .elevationword {

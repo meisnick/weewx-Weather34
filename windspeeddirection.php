@@ -8,31 +8,57 @@ require_once('w34CombinedData.php');require_once('common.php');?>
 .mod-wind .thearrow1:after{content:'';position:absolute;text-align:left;left:50%;font-size:8px;top:0;width:0;height:0;-webkit-border-radius:0;border-radius:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid rgb(144, 177, 42);border-bottom:0;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transition-duration:3s;-moz-transition-duration:3s;-o-transition-duration:3s;-ms-transition-duration:3s;transition-duration:3s;background:0}
 .mod-wind .thearrow1:before{content:'  o o o o';color:rgb(144, 177, 42);font-family:Arial, Helvetica, sans-serif;font-size:4px;width:1px;height:1px;position:absolute;z-index:1;left:3px;top:-4px;border:2px dotted RGBA(255,255,255,0.8);-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
 </style>
-<div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>
+<div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>
 <div class="mod-wind">
   <div class="mod-wind-grid">
     <!-- LEFT COLUMN -->
     <div class="mod-wind-col-left">
-      <div class="mod-wind-block">
+      <div class="mod-wind-block-small top-block">
+        <div class="mod-wind-label">Max Gust (<?php echo $weather["winddmaxtime"];?>)</div>
+        <value class="wind-max-gust-val">
+          <?php echo number_format($weather["wind_gust_speed_max"],1);?>
+          <unit><?php echo $weather["wind_units"];?></unit>
+        </value>
+      </div>
+      
+      <div class="mod-wind-block mid-block">
         <div class="mod-wind-label"><?php echo $lang['Currently'];?></div>
         <value>
           <?php echo number_format($weather["wind_speed"],1);?>
           <unit><?php echo $weather["wind_units"];?></unit>
         </value>
       </div>
-      <div class="mod-wind-block">
-        <div class="mod-wind-label">Gust</div>
-        <value>
-          <?php echo number_format($weather["wind_gust_speed"],1);?>
-          <unit><?php echo $weather["wind_units"];?></unit>
-        </value>
-      </div>
-      <div class="mod-wind-block-small">
-        <div class="mod-wind-label">Max Gust (<?php echo $weather['wind_gust_time'];?>)</div>
-        <value class="wind-max-gust-val">
-          <?php echo number_format($weather["wind_gust_speed_max"],1);?>
-          <unit><?php echo $weather["wind_units"];?></unit>
-        </value>
+
+      <div class="mod-wind-block-small bot-block pill-block">
+        <div class="<?php echo 'weather34beaufort' . min(6, max(1, ceil($weather['wind_speed_bft']/2))); ?>">
+          <?php
+          if ($weather["wind_speed_bft"] >= 12) { echo $beaufort12 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 11) { echo $beaufort11 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 10) { echo $beaufort10 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 9) { echo $beaufort9 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 8) { echo $beaufort8 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 7) { echo $beaufort7 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 6) { echo $beaufort6 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 5) { echo $beaufort5 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 4) { echo $beaufort4 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 3) { echo $beaufort3 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 2) { echo $beaufort2 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 1) { echo $beaufort1 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          else if ($weather["wind_speed_bft"] >= 0) { echo $beaufort0 . "&nbsp; " . $weather["wind_speed_bft"]; }
+          ?>
+          <span style="font-size: 8px; font-family: Arial; margin-left: 2px;">BFT</span>
+        </div>
+        <div class="mod-wind-label bft-text">
+          <?php
+          if ($weather["wind_speed_bft"] == 0) { echo $lang['Calm']; }
+          else if ($weather["wind_speed_bft"] == 1) { echo $lang['Lightair'] ?? 'Light Air'; }
+          else if ($weather["wind_speed_bft"] == 2) { echo $lang['Lightbreeze'] ?? 'Light Breeze'; }
+          else if ($weather["wind_speed_bft"] == 3) { echo $lang['Gentelbreeze'] ?? 'Gentle Breeze'; }
+          else if ($weather["wind_speed_bft"] == 4) { echo $lang['Moderatebreeze'] ?? 'Moderate Breeze'; }
+          else if ($weather["wind_speed_bft"] == 5) { echo $lang['Freshbreeze'] ?? 'Fresh Breeze'; }
+          else if ($weather["wind_speed_bft"] >= 6) { echo $lang['Strongbreeze'] ?? 'Strong Breeze'; }
+          ?>
+        </div>
       </div>
     </div>
 
@@ -58,30 +84,37 @@ require_once('w34CombinedData.php');require_once('common.php');?>
 
     <!-- RIGHT COLUMN -->
     <div class="mod-wind-col-right">
-      <div class="mod-wind-block">
-        <div class="mod-wind-label">BFT</div>
-        <value class="wind-bft-val <?php echo 'weather34beaufort' . min(6, max(1, ceil($weather['wind_speed_bft']/2))); ?>">
-          <?php echo $weather["wind_speed_bft"];?>
-          <unit>BFT</unit>
-        </value>
+      <div class="mod-wind-block-small top-block">
         <div class="mod-wind-label">
-          <?php
-          if ($weather["wind_speed_bft"] == 0) { echo $lang['Calm']; }
-          else if ($weather["wind_speed_bft"] == 1) { echo $lang['Lightair'] ?? 'Light Air'; }
-          else if ($weather["wind_speed_bft"] == 2) { echo $lang['Lightbreeze'] ?? 'Light Breeze'; }
-          else if ($weather["wind_speed_bft"] == 3) { echo $lang['Gentelbreeze'] ?? 'Gentle Breeze'; }
-          else if ($weather["wind_speed_bft"] == 4) { echo $lang['Moderatebreeze'] ?? 'Moderate Breeze'; }
-          else if ($weather["wind_speed_bft"] == 5) { echo $lang['Freshbreeze'] ?? 'Fresh Breeze'; }
-          else if ($weather["wind_speed_bft"] >= 6) { echo $lang['Strongbreeze'] ?? 'Strong Breeze'; }
-          ?>
+           <?php 
+           $toKnots=0.868976;
+           if ($weather["wind_units"]=="km/h") {
+               echo "<span class='wind-conv-val'>".number_format($weather["wind_gust_speed"]*0.621371,1)."</span><span class='wind-conv-unit'>mph</span>";
+           } else if ($weather["wind_units"]=="mph") {
+               echo "<span class='wind-conv-val'>".number_format($weather["wind_gust_speed"]*1.60934,1)."</span><span class='wind-conv-unit'>kmh</span>";
+           } else {
+               echo "<span class='wind-conv-val'>".number_format($weather["wind_gust_speed"]*3.6,1)."</span><span class='wind-conv-unit'>kmh</span>";
+           }
+           ?>
         </div>
       </div>
-      <div class="mod-wind-block-small">
-        <div class="mod-wind-label"><?php echo $windrunicon . ' ' . $lang['Wind Run'];?></div>
+      
+      <div class="mod-wind-block mid-block">
+        <div class="mod-wind-label">Gust</div>
         <value>
-          <?php echo number_format($weather["windrun"],1);?>
-          <unit><?php if ($weather["wind_units"] == 'mph') echo 'mi'; else if ($weather["wind_units"] == 'm/s') echo 'km'; else if ($weather["wind_units"] == 'kts') echo 'mi';else echo 'km';?></unit>
+          <?php echo number_format($weather["wind_gust_speed"],1);?>
+          <unit><?php echo $weather["wind_units"];?></unit>
         </value>
+      </div>
+
+      <div class="mod-wind-block-small bot-block pill-block">
+        <div class="weather34windrun">
+          <?php echo $windrunicon . '&nbsp;'. number_format($weather["windrun"],1);?>
+          <span style="font-size: 8px; font-family: Arial; margin-left: 2px;">
+            <?php if ($weather["wind_units"] == 'mph') echo 'mi'; else if ($weather["wind_units"] == 'm/s') echo 'km'; else if ($weather["wind_units"] == 'kts') echo 'mi';else echo 'km';?>
+          </span>
+        </div>
+        <div class="mod-wind-label wind-run-text"><?php echo $lang['Wind Run'];?></div>
       </div>
     </div>
   </div>

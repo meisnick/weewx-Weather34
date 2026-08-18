@@ -3093,7 +3093,7 @@ raiblue {
   position: absolute
 }.airwarning2 {
   position: absolute
-}.updatedtime, .updatedtimealert, .updatedtimedir, .updatedtimeuv {
+}.updatedtime, .updatedtime1, .updatedtimealert, .updatedtimedir, .updatedtimeuv {
   width: 75px;
   text-align: center
 }

@@ -206,12 +206,3 @@
 /* Fix missing icons for rise/set */
 .mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--caution); margin-left:2px;}
 .mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}
-
-/* Live-update time: Prod flows it statically at the top of the card; dev's
- * framework makes it position:absolute (floats free / off-card). Restore Prod's
- * behaviour, scoped to THIS module only (.updatedtime1 is shared by ~10 cards). */
-.updatedtime1:has(+ .mod-sun) {
-  position: static;
-  text-align: right;
-  padding: 2px 6px 0 0;
-}

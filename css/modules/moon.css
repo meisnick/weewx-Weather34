@@ -1,0 +1,16 @@
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Moon */
+.moonphasem {
+  position: absolute !important;
+  margin-top: -50px !important;
+  left: -85px !important;
+}
+.luminancem {
+  left: 115px !important;
+}
+.moonphasem span {
+  left: 0 !important;
+}
+.luminancem span {
+  left: 5px !important;
+}

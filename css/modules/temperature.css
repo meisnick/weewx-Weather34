@@ -1862,3 +1862,10 @@
   text-align: center;
 }
 
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Temperature */
+.tempblue1 {
+  margin-left: 210px !important;
+  margin-top: 116px !important;
+  position: absolute !important;
+}

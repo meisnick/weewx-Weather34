@@ -1505,3 +1505,20 @@
   letter-spacing: normal;
   position: absolute
 }
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Sun */
+.sundarkday {
+  margin-left: 215px !important;
+  margin-top: 0 !important;
+}
+.sunsetday {
+  margin-left: 210px !important;
+  margin-top: 116px !important;
+}
+.sunlightday {
+  margin-top: 0 !important;
+}
+.sunriseday {
+  margin-top: 116px !important;
+  margin-left: 7px !important;
+}

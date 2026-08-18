@@ -863,3 +863,34 @@
   margin-left: 25px !important;
 }
 
+
+/* Fix Forward: Phase 3 Strip Restorations */
+.rainrateextra {
+  position: absolute !important;
+  margin-left: 227px !important;
+  margin-top: 130px !important;
+}
+.mod-rainfall .tempconverter {
+  margin-top: 5px !important;
+  margin-left: 237px !important;
+}
+.rainblue1 {
+  bottom: 5px !important;
+}
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Rainfall */
+.rainrateextra {
+  position: absolute !important;
+  margin-left: 227px !important;
+  margin-top: 130px !important;
+}
+.mod-rainfall .tempconverter {
+  margin-top: 5px !important;
+  margin-left: 237px !important;
+}
+.mod-rainfall .tempconverter {
+  margin-left: 10px !important;
+}
+.rainblue1 {
+  bottom: 5px !important;
+}

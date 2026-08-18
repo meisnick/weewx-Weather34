@@ -243,3 +243,11 @@
 [data-theme="light"] .mod-lt-lbl {
   color: var(--card-ink-blue);
 }
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Lightning */
+.lightningicon {
+  position: absolute !important;
+  display: inline !important;
+  right: -95px !important;
+  margin-top: 25px !important;
+}

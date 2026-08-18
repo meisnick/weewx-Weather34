@@ -87,7 +87,7 @@
 /* ── radial dial + needles (centred overlay) ──────────────────────────────── */
 .mod-barometer .homeweathercompass2 {
   position: absolute;
-  top: 25px; left: 59px;
+  top: 25px; left: 47px;
   margin: 0;
   width: 175px;
   height: 175px;
@@ -198,6 +198,8 @@
 }
 .mod-barometer .weather34-barometerruler {
   margin: 0;                      /* guard against legacy main.*.css margin leak */
+  position: relative;
+  left: 24px; top: 35px;          /* sandbox-tuned (carries the 28/31 labels) */
   width: 135px;
   height: 1px;
   border: 1px dashed var(--line-dark-6);

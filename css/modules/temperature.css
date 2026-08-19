@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden; /* Ensure nothing visually escapes if it overflows slightly */
 }
 
 /* Framework Leak Neutralization! */
@@ -51,6 +52,26 @@
   margin: 0 !important;
 }
 
+/* Hide raw float values emitted directly into the DOM */
+.mod-temperature .temptrendx {
+  font-size: 0px !important;
+  color: transparent !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px !important;
+}
+.mod-temperature trendmovementfallingx,
+.mod-temperature trendmovementrisingx,
+.mod-temperature trendmovementsteadyx {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.08px;
+  font-weight: 500;
+  color: #bbbbbb;
+  display: flex;
+  align-items: baseline;
+}
+
+
 /* 2-column main wrapper */
 .mod-temperature-grid {
   display: flex;
@@ -88,10 +109,9 @@
   font-weight: 500;
   color: #fff;
   position: static !important;
-  margin: 0 !important;
+  margin: 0 0 5px 0 !important;
 }
 
-/* The big temperature value is wrapped in .outside... */
 .mod-temperature .tempcontainer > div[class^="outside"] {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 25.6px;
@@ -110,29 +130,11 @@
   margin-left: 2px;
 }
 
-.mod-temperature .temptrendx {
-  font-family: weathertext2, Arial, sans-serif;
-  font-size: 10.08px;
-  font-weight: 500;
-  color: #bbbbbb;
-  position: static !important;
-  margin-top: 15px !important;
-  display: flex;
-  justify-content: center;
-}
-
-.mod-temperature trendmovementfallingx,
-.mod-temperature trendmovementrisingx {
-  display: flex;
-  align-items: baseline;
-}
-
-
 /* RIGHT COLUMN */
 .mod-temperature-col-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 150px;
   position: relative;
 }
@@ -141,7 +143,7 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .mod-temperature .tempconvertercircle16-20,
@@ -168,7 +170,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  gap: 6px;
   padding: 0 5px;
 }
 
@@ -195,7 +197,7 @@ valuetextheading2 {
   font-size: 9.9px;
   font-weight: 500;
   color: rgb(192, 192, 192);
-  line-height: 15px;
+  line-height: 12px;
   text-align: center;
 }
 
@@ -216,16 +218,15 @@ valuetextheading2 {
   font-size: 10.4px;
   font-weight: 400;
   color: rgb(192, 192, 192);
-  line-height: 16px;
+  line-height: 14px;
 }
-
 
 /* Bottom Pills Row */
 .mod-temperature-bot-pills {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .mod-temperature .tempindoorextra,
@@ -238,7 +239,6 @@ valuetextheading2 {
   margin: 0 !important;
 }
 
-
 /* INDOOR LAYOUT SPECIFICS */
 .mod-temperature-1x2 {
   display: flex;
@@ -250,7 +250,7 @@ valuetextheading2 {
 .mod-temperature-indoor-graphic {
   position: relative;
   width: 140px;
-  height: 140px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,10 +258,10 @@ valuetextheading2 {
 
 .mod-temperature .indoorhomesvg1 {
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 10px;
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   color: var(--card-bg-2);
   z-index: 1;
 }
@@ -273,7 +273,7 @@ valuetextheading2 {
 
 .mod-temperature .indoortrendhouse1 {
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   font-family: Arial, sans-serif;
@@ -285,7 +285,7 @@ valuetextheading2 {
 
 .mod-temperature .indoorhomevalue1 {
   position: absolute;
-  top: 75px;
+  top: 65px;
   left: 50%;
   transform: translateX(-50%);
   font-family: weathertext2, Arial, sans-serif;
@@ -299,7 +299,7 @@ valuetextheading2 {
 
 .mod-temperature .weather34indoorword {
   position: absolute;
-  top: 100px;
+  top: 90px;
   left: 50%;
   transform: translateX(-50%);
   font-family: weathertext2, Arial, sans-serif;
@@ -325,9 +325,12 @@ valuetextheading2 {
   color: var(--card-ink-strong);
 }
 
-[data-theme="light"] .mod-temperature .temptrendx {
+[data-theme="light"] .mod-temperature trendmovementfallingx,
+[data-theme="light"] .mod-temperature trendmovementrisingx,
+[data-theme="light"] .mod-temperature trendmovementsteadyx {
   color: var(--card-ink-blue) !important;
 }
+
 [data-theme="light"] .mod-temperature .weather34indoorword {
   color: var(--card-ink-strong);
 }

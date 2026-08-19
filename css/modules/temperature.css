@@ -456,6 +456,8 @@ valuetextheading2 {
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-grid { position: relative !important; left: 1px !important; top: 13px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .weather34indoorword { left: 109px !important; top: 74px !important; height: 14px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .inheatcircle-content valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 45px !important; top: 29px !important; }
+/* position:relative stays !important (beats framework position:static !important); left/top
+ * are NOT !important so a sandbox override (which carries !important) can move the pill. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 0; top: 0; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block.heatcircle7 { position: relative !important; left: 4px !important; top: 35px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .inheatcircle2-content valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }

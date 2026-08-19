@@ -115,8 +115,6 @@ if($weather["dewpoint_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["
 </div> <!-- close col-right -->
 </div> <!-- close grid -->
 <div class="mod-temperature-bot-pills">
-else if(anyToC($weather["temp"])<100){echo "<div class=tempconvertercircle50>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-?></smalltempunit2></div></div>
 <div class="tempindoorextra">
 <valuetextheading2><?php echo $lang['IndoorTemp']?></valuetextheading1>
 <a alt="weekly indoor" title="weekly indoor" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='indoorplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity >

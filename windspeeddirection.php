@@ -90,7 +90,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
     <!-- RIGHT COLUMN -->
     <div class="mod-wind-col-right">
       <div class="mod-wind-block-small top-block">
-        <div class="mod-wind-label">
+        <div class="mod-wind-label wind-conv-pill">
            <?php 
            $toKnots=0.868976;
            if ($weather["wind_units"]=="km/h") {

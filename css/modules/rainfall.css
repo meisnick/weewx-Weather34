@@ -52,14 +52,23 @@
   pointer-events: none;
 }
 
-#raincontainer {
+/* framework.base.css #raincontainer is absolute w208 h170 overflow:hidden with
+ * margin-top:-70/left:-20 — that offset AND clip mangled the beaker. Neutralise it
+ * so the beaker anchors cleanly to .weather34i-rairate-bar and isn't cut off. */
+.mod-rainfall #raincontainer {
+  position: static !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
   pointer-events: none;
 }
 
 #weather34rainbeaker {
-  position: absolute; /* Lock to container */
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 15px;          /* validated vs prod: beaker at card x29 y60 */
+  left: 18px;
   border: 4px solid var(--card-surface);
   border-top: 0;
   border-radius: 0 0 2px 2px;
@@ -105,10 +114,9 @@
 /* Big Value (Rain Today) Overlay */
 .mod-rainfall-big-value {
   position: absolute;
-  /* Prod coordinates: Beaker is x14, y103. Teal box is x55, y107. */
-  /* Delta: left = 41px, top = 4px inside the 100x100 beaker! */
-  top: 4px;
-  left: 41px;
+  /* validated vs prod: teal box at card x55 y107 */
+  top: 62px;
+  left: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,12 +162,12 @@
 .mod-rainfall-top-pill {
   display: flex;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 12px;   /* validated vs prod: pill right edge ~x304 */
 }
 
 .mod-rainfall .rainconvertercircle {
   /* Inherits from framework.base.css: flex, center, border, border-radius */
-  width: 3.2rem;
+  width: 4.2rem;         /* prod converter is 67px, not 51 */
   overflow: hidden;
   line-height: 16px;
   /* Prod measured */
@@ -212,12 +220,10 @@ valuetextheading1 {
   display: flex !important;
   justify-content: center;
   align-items: baseline;
-  
-  /* Restored pill border! */
-  border: 1px solid var(--line-light);
-  border-left: 0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  /* Prod pill: full 1px border in --card-surface (#393d40), radius 2px.
+     (was border-left:0 + --line-light → cut-off left + wrong pale colour) */
+  border: 1px solid var(--card-surface);
+  border-radius: 2px;
 }
 
 .mod-rainfall raiblue {

@@ -166,7 +166,7 @@
 }
 
 .wind-conv-val { color: rgb(144, 177, 42); font-size: 10.2px; font-family: weathertext2; }
-.wind-conv-unit { color: #c0c0c0; font-size: 7.1px; font-family: Arial; margin-left: 2px;}
+.wind-conv-unit { color: #c0c0c0; font-size: 8px; font-family: Arial; margin-left: 2px;}
 
 /* Pill Overrides (Disable the legacy absolutism) */
 .mod-wind .weather34beaufort1-3,
@@ -205,7 +205,8 @@
   padding: 0 5px;
   margin-top: 0;
   position: relative;
-  top: -3px;                /* validated against prod (conv sits at card-y 25) */
+  left: 6px; top: 1px;      /* sandbox-tuned */
+  font-size: 10px;
 }
 
 /* ── sandbox-tuned positions ─────────────────────────────────────────────── */
@@ -218,7 +219,10 @@
 .mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 16px; }
 .mod-wind-col-left  .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 16px; }
 .mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 21px; }
-.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; top: -2px; }  /* validated vs prod (Max line at card-y 25) */
+.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; left: 0; top: -1px; }
+.mod-wind-col-right .mod-wind-block-small.top-block { position: relative; left: 5px; top: 3px; }
+.mod-wind .mod-wind-grid .mod-wind-col-left .mod-wind-block-small.top-block .mod-wind-label { position: relative; left: -7px; top: 2px; font-size: 9px; }
+.mod-wind-label.wind-max-top { position: relative; left: -8px; top: 1px; font-size: 9px; }
 
 /* SVG */
 svg { vertical-align: middle; }

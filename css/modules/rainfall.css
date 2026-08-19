@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* Align beaker to the left */
-  padding-left: 10px; /* Adjust to match the user's -26px shift (approx) */
+  align-items: flex-start; 
+  padding-left: 9px; /* Exactly x14 from card left edge (9px + 5px card padding) */
   width: 120px;
   height: 140px;
   position: relative;
@@ -42,7 +42,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px; /* Adjust vertical placement */
 }
 
 /* Beaker Overrides */
@@ -51,6 +50,11 @@
   left: auto !important;
   top: auto !important;
   margin: 0 !important;
+  pointer-events: none; /* Sandbox fix: prevent dragging wrapper */
+}
+
+#raincontainer {
+  pointer-events: none; /* Sandbox fix: prevent dragging wrapper */
 }
 
 #weather34rainbeaker {
@@ -61,7 +65,8 @@
   height: 100px;
   width: 100px;
   background: url(../rain/rainmarker.svg) no-repeat;
-  background-position: center top; /* Ensure the teardrop is centered */
+  background-position: center top;
+  pointer-events: auto; /* Sandbox: dragging this moves the whole beaker safely */
 }
 
 #weather34rainbeaker:before,
@@ -93,14 +98,15 @@
   opacity: 0.8;
   max-height: 98px;
   min-height: 1px;
+  pointer-events: none; /* Sandbox fix: stop water from detaching when dragging beaker */
 }
 
 /* Big Value (Rain Today) Overlay */
 .mod-rainfall-big-value {
   position: absolute;
-  top: 50%; /* Center it vertically inside the beaker */
+  top: 60%; /* Push it down a bit inside the beaker so it doesn't hit the teardrop */
   left: 50%;
-  transform: translate(-50%, -10%); /* Shift it down slightly so the teardrop is visible above it */
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,6 +114,7 @@
   border-radius: 3px;
   width: 3.1rem;
   height: 2.5rem;
+  pointer-events: auto; /* Allow dragging the teal box independently */
 }
 
 .mod-rainfall .raintoday1 {
@@ -120,7 +127,8 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  background: transparent !important; /* override the dark framework since we placed it on the parent */
+  background: transparent !important;
+  pointer-events: none; /* Stop inner element drag tearing */
 }
 
 .mod-rainfall .raintoday1 smallrainunita {
@@ -179,7 +187,7 @@
 .mod-rainfall-block {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Actually, we want the headers aligned left with the pill. So let's use align-items: flex-end and shift header? */
+  align-items: flex-end; /* right align so left edges match */
   justify-content: center;
   position: relative;
 }
@@ -191,9 +199,8 @@ valuetextheading1 {
   font-weight: 500;
   color: rgb(192, 192, 192);
   line-height: 15px;
-  width: 100%;
+  width: 4.5rem; /* Match the pill width roughly to align */
   text-align: left;
-  padding-left: 10px; /* Align with the pill's left edge */
 }
 
 .mod-rainfall .rainmodulehome {
@@ -203,8 +210,12 @@ valuetextheading1 {
   display: flex !important;
   justify-content: center;
   align-items: baseline;
-  /* width: auto !important; */ /* Remove auto to inherit 4rem from framework */
-  /* Remove border: none so it regains the left-open border pill style! */
+  
+  /* Restored pill border! */
+  border: 1px solid var(--line-light);
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .mod-rainfall raiblue {

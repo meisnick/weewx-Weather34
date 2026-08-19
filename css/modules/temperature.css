@@ -441,3 +441,21 @@ valuetextheading2 {
 .mod-temperature-col-left .tempcontainer valuetext {
   position: static !important; top: auto !important; left: auto !important;
 }
+
+/* ══ INDOOR temperature card (indoortemperature.php) ══════════════════════════
+ * indoortemperature.php reuses .mod-temperature + temperature.css (same wrapper as
+ * the main Temperature card). These sandbox-tuned offsets are SCOPED to the indoor
+ * card via its data-module so shared classes (grid, temphumcircle, tempmodulehome,
+ * heatcircle7, converter) don't move the main card. Higher specificity + !important
+ * override the unscoped main-card rules for the indoor card only. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indooryellow1 { left: -69px !important; top: -21px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomesvg1 svg { position: relative !important; left: 13px !important; top: -44px !important; width: 180px !important; height: 180px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .temphumcircle35-60 { position: relative !important; left: 4px !important; top: 3px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill .tempconvertercircleyellow { position: relative !important; left: -3px !important; top: -29px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoortrendhouse1 { left: 106px !important; top: 30px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-grid { position: relative !important; left: 1px !important; top: 13px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .weather34indoorword { left: 109px !important; top: 74px !important; height: 14px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .inheatcircle-content valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 45px !important; top: 29px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.heatcircle7 { position: relative !important; left: 4px !important; top: 35px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .inheatcircle2-content valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }

@@ -211,6 +211,8 @@ valuetextheading1 {
   line-height: 15px;
   width: 100%;
   text-align: center; /* restored to center alignment */
+  position: relative;
+  left: -6px;          /* sandbox-tuned: nudge 2x2 headings left */
 }
 
 .mod-rainfall .rainmodulehome {

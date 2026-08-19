@@ -102,7 +102,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-left: -20px; /* Shifted left so it doesn't hit the teardrop graphic! */
   background: var(--info-cool);
   border-radius: 3px;
   width: 3.1rem;
@@ -119,7 +118,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  background: transparent !important; /* override the dark framework since we placed it on the parent */
+  background: transparent !important;
 }
 
 .mod-rainfall .raintoday1 smallrainunita {
@@ -198,9 +197,12 @@ valuetextheading1 {
   display: flex !important;
   justify-content: center;
   align-items: baseline;
-  width: auto !important;
-  border: none !important;
-  border-radius: 0 !important;
+  
+  /* Restored pill border! */
+  border: 1px solid var(--line-light);
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .mod-rainfall raiblue {
@@ -296,4 +298,42 @@ rainratetextheading {
   margin: 0 !important;
   width: auto !important;
   height: auto !important;
+}
+
+
+/* ========================================= */
+/* USER OFFSETS & SANDBOX OVERRIDES          */
+/* ========================================= */
+
+.mod-rainfall-col-left {
+  position: relative !important;
+  left: -26px !important;
+  top: -2px !important;
+}
+
+.mod-rainfall-big-value {
+  position: relative !important;
+  left: 107px !important;
+  top: 67px !important;
+  transform: none !important; /* overrides my flex centering so their absolute matches work */
+}
+
+/* We deliberately DO NOT apply the broken offset to .weather34i-rairate-bar div div div (water level)
+   because it tore the water out of the measuring gauge! */
+.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-left .mod-rainfall-graphic-container .weather34i-rairate-bar div div {
+  position: relative !important;
+  left: 6px !important;
+  top: 34px !important;
+}
+
+.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-left .mod-rainfall-graphic-container .weather34i-rairate-bar div {
+  position: relative !important;
+  left: -23px !important;
+  top: 6px !important;
+}
+
+.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-right .mod-rainfall-2x2 .mod-rainfall-block valuetextheading1 {
+  position: relative !important;
+  left: -9px !important;
+  top: 0px !important;
 }

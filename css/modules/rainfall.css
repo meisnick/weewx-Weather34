@@ -40,8 +40,7 @@
   width: 100px;
   height: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Not flex centering inner elements anymore! We want exact Prod relative placement */
 }
 
 /* Beaker Overrides */
@@ -50,15 +49,17 @@
   left: auto !important;
   top: auto !important;
   margin: 0 !important;
-  pointer-events: none; /* Sandbox fix: prevent dragging wrapper */
+  pointer-events: none;
 }
 
 #raincontainer {
-  pointer-events: none; /* Sandbox fix: prevent dragging wrapper */
+  pointer-events: none;
 }
 
 #weather34rainbeaker {
-  position: relative;
+  position: absolute; /* Lock to container */
+  top: 0;
+  left: 0;
   border: 4px solid var(--card-surface);
   border-top: 0;
   border-radius: 0 0 2px 2px;
@@ -66,7 +67,7 @@
   width: 100px;
   background: url(../rain/rainmarker.svg) no-repeat;
   background-position: center top;
-  pointer-events: auto; /* Sandbox: dragging this moves the whole beaker safely */
+  pointer-events: auto;
 }
 
 #weather34rainbeaker:before,
@@ -98,15 +99,16 @@
   opacity: 0.8;
   max-height: 98px;
   min-height: 1px;
-  pointer-events: none; /* Sandbox fix: stop water from detaching when dragging beaker */
+  pointer-events: none;
 }
 
 /* Big Value (Rain Today) Overlay */
 .mod-rainfall-big-value {
   position: absolute;
-  top: 60%; /* Push it down a bit inside the beaker so it doesn't hit the teardrop */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* Prod coordinates: Beaker is x14, y103. Teal box is x55, y107. */
+  /* Delta: left = 41px, top = 4px inside the 100x100 beaker! */
+  top: 4px;
+  left: 41px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +116,7 @@
   border-radius: 3px;
   width: 3.1rem;
   height: 2.5rem;
-  pointer-events: auto; /* Allow dragging the teal box independently */
+  pointer-events: auto;
 }
 
 .mod-rainfall .raintoday1 {
@@ -128,7 +130,7 @@
   justify-content: center;
   align-items: baseline;
   background: transparent !important;
-  pointer-events: none; /* Stop inner element drag tearing */
+  pointer-events: none;
 }
 
 .mod-rainfall .raintoday1 smallrainunita {
@@ -187,7 +189,7 @@
 .mod-rainfall-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* right align so left edges match */
+  align-items: center; /* RESTORED TO CENTER TO FIX PILLS SHIFTING RIGHT */
   justify-content: center;
   position: relative;
 }
@@ -199,8 +201,8 @@ valuetextheading1 {
   font-weight: 500;
   color: rgb(192, 192, 192);
   line-height: 15px;
-  width: 4.5rem; /* Match the pill width roughly to align */
-  text-align: left;
+  width: 100%;
+  text-align: center; /* restored to center alignment */
 }
 
 .mod-rainfall .rainmodulehome {
@@ -312,3 +314,5 @@ rainratetextheading {
   width: auto !important;
   height: auto !important;
 }
+
+/* NO USER OFFSETS! */

@@ -1,1871 +1,333 @@
-/* temperature module — scoped to .mod-temperature */
-.mod-temperature { display: contents; }
-
-/* ============================================================
-   temperature module
-   Extracted from main.dark.css + main.light.css
-   Theme-specific overrides via [data-theme="light"]
-   ============================================================ */
-
-.mod-temperature .tempcontainer,
-
-.mod-temperature .tempcontainer1,
-
-.mod-temperature .heatcircle,
-
-.mod-temperature .heatcircle2,
-
-.mod-temperature .heatcircle-content {
-  color: var(--card-ink-blue);
-  
-  
-  padding: 0;
-  text-align: center;
-  width: auto;
-  font: 500 11px weathertext2;
-  display: block;
-  line-height: 15px
-}
-
-.mod-temperature .tempconvertercircleblue,
-
-.mod-temperature .tempconvertercirclegreen,
-
-.mod-temperature .tempconvertercircleorange,
-
-.mod-temperature .tempconvertercirclepurple,
-
-.mod-temperature .tempconvertercirclered,
-
-.mod-temperature .tempconvertercircleyellow {
+/* ── TEMPERATURE MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
+.mod-temperature {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  width: 4.2rem;
-  color: var(--card-ink-blue);
-  font-family: weathertext2;
-  height: 1rem;
-  line-height: 16px;
-  overflow: hidden
+  box-sizing: border-box;
+  padding: 5px 2px;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.mod-temperature .tempconvertercircleblue,
-
-.mod-temperature .tempconvertercirclegreen,
-
-.mod-temperature .tempconvertercircleorange,
-
-.mod-temperature .tempconvertercirclepurple,
-
-.mod-temperature .tempconvertercirclered,
-
-.mod-temperature .tempconvertercircleyellow {
-  display: flex;
-  justify-content: center;
-  border: 1px solid var(--card-bg-2);
-  border-radius: 2px;
-  font-size: .85em  
-}
-
-.mod-temperature .tempindoorconverter {
-  font-size: 12px;
-  }
-
-.mod-temperature .tempindoorconverter {
-  
-  }
-
-.mod-temperature .tempconverter1,
-
-.mod-temperature .tempconverter1 {
-  
-  }
-
+/* Framework Leak Neutralization! */
 .mod-temperature .heatcircle,
-
 .mod-temperature .heatcircle2,
-
 .mod-temperature .heatcircle3,
-
 .mod-temperature .heatcircle4,
-
-.mod-temperature .heatcircle5 {
-  padding: 0;
-  width: auto;
-  
-  }
-
-.mod-temperature .heatcircle {
-  
-  }
-
-.mod-temperature .heatcircle2 {
-  
-  }
-
-.mod-temperature .heatcircle3,
-
-.mod-temperature .heatcircle4 {
-  }
-
-.mod-temperature .heatcircle3 {
-  }
-
-.mod-temperature .heatcircle4 {
-  }
-
-.mod-temperature .heatcircle5 {
-  
-  }
-
-.mod-temperature .tempcontainer {
-  grid-column: 1 / 2 !important;
-  grid-row: 1 / 3 !important;
-  display: block;
+.mod-temperature .heatcircle5,
+.mod-temperature .heatcircle6,
+.mod-temperature .heatcircle7 {
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  float: none !important;
 }
 
-.mod-temperature .tempcontainerx {
-  
-  
-  }
+.mod-temperature .tempconverter,
+.mod-temperature .tempconverter1,
+.mod-temperature .tempconverter2 {
+  position: static !important;
+  margin: 0 !important;
+}
 
 .mod-temperature .outside0-5,
-
 .mod-temperature .outside11-15,
-
 .mod-temperature .outside16-20,
-
 .mod-temperature .outside21-25,
-
 .mod-temperature .outside26-30,
-
 .mod-temperature .outside31-35,
-
 .mod-temperature .outside36-40,
-
 .mod-temperature .outside41-45,
-
 .mod-temperature .outside50,
-
 .mod-temperature .outside6-10,
-
 .mod-temperature .outsideminus,
-
 .mod-temperature .outsideminus10,
-
 .mod-temperature .outsideminus5,
-
 .mod-temperature .outsidezero {
-  font-family: weathertext2;
-  width: 6rem;
-  height: 5.5rem;
-  font-size: 1.6rem;
-  padding-
-  color: var(--ink-bright);
-  border-
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* 2-column main wrapper */
+.mod-temperature-grid {
   display: flex;
-  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  padding: 0 5px;
+}
+
+/* LEFT COLUMN */
+.mod-temperature-col-left {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px
+  align-items: center; 
+  width: 130px;
+  position: relative;
 }
 
-.mod-temperature .outsideminus10 {
-  background: var(--temp-cold-2);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2));
-  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2))
+.mod-temperature .tempcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
 
-.mod-temperature .outsideminus5 {
-  background: var(--temp-cool);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
-  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
+/* Big Value */
+.mod-temperature .maxdata {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 8.25px;
+  font-weight: 500;
+  color: #fff;
+  position: static !important;
+  margin: 0 !important;
 }
 
-.mod-temperature .outsideminus,
-
-.mod-temperature .outsidezero {
-  background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
-  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
+/* The big temperature value is wrapped in .outside... */
+.mod-temperature .tempcontainer > div[class^="outside"] {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 25.6px;
+  font-weight: 500;
+  color: #f8f8f8;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
-.mod-temperature .outside0-5 {
-  background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
-}
-
-.mod-temperature .outside6-10 {
-  background: var(--temp-mild);
-  background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
-  background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
-}
-
-.mod-temperature .outside11-15 {
-  background: var(--temp-warm);
-  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
-  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
-}
-
-.mod-temperature .outside16-20 {
-  background: var(--temp-warm-2);
-  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
-  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
-}
-
-.mod-temperature .outside21-25 {
-  background: var(--temp-warm-3);
-  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
-  background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
-}
-
-.mod-temperature .outside26-30 {
-  background: var(--temp-hot-2);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
-  background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
-}
-
-.mod-temperature .outside31-35 {
-  background: var(--temp-hot);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
-}
-
-.mod-temperature .outside36-40 {
-  background: var(--temp-hot-5);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue));
-  background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue))
-}
-
-.mod-temperature .outside41-45,
-
-.mod-temperature .outside50 {
-  background: var(--temp-extreme);
-  background: -webkit-linear-gradient(90deg, var(--temp-extreme), var(--temp-blue));
-  background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue))
+.mod-temperature smalltempunit {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 15.36px;
+  font-weight: 500;
+  color: #f8f8f8;
+  margin-left: 2px;
 }
 
 .mod-temperature .temptrendx {
-  
-  
-  
-  text-align: center;
-  z-index: auto;
-  font-size: 0;
-  color: var(--card-ink-blue);
-  font-family: Arial, system
-}
-
-.mod-temperature .maxdata,
-
-.mod-temperature .maxdata {
-  
-  font-size: .75em;
-  color: var(--accent-ink);
-  margin: 5px auto auto;
-  }
-
-.mod-temperature .tempindoorextra {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.08px;
   font-weight: 500;
-  font-family: weathertext2;
-  font-size: .68rem;
-  
-  
-  
-}
-
-.mod-temperature .tempindoorextra1 {
-  font-weight: 500;
-  font-family: weathertext2;
-  font-size: .68rem;
-  
-  
-  
-}
-
-.mod-temperature .tempindoorextra2 {
-  font-weight: 500;
-  font-family: weathertext2;
-  font-size: .68rem;
-  
-  
-  
-}
-
-.mod-temperature .temphumcircle0-25,
-
-.mod-temperature .temphumcircle25-35,
-
-.mod-temperature .temphumcircle35-60,
-
-.mod-temperature .temphumcircle60-80,
-
-.mod-temperature .temphumcircle80-100 {
+  color: #bbbbbb;
+  position: static !important;
+  margin-top: 15px !important;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: var(--card-ink-blue)
 }
 
-.mod-temperature .tempmodulehome-50-10c {
+.mod-temperature trendmovementfallingx,
+.mod-temperature trendmovementrisingx {
   display: flex;
-  align-items: center;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-weight: 400;
-  color: var(--card-ink-blue)
+  align-items: baseline;
 }
 
-.mod-temperature .temphumcircle60-80 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
 
-.mod-temperature .temphumcircle25-35 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .temphumcircle35-60 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .temphumcircle80-100 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--hum-wet);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .temphumcircle0-25 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .tempconverter1,
-.mod-temperature .tempconverter2 {
-  
-  
-  font-size: 12px
-}
-
-.mod-temperature .tempconverter1,
-.mod-temperature .tempconverter2 {
-  }
-
-.mod-temperature .tempmodulehome-10-0c,
-
-.mod-temperature .tempmodulehome-50-10c,
-
-.mod-temperature .tempmodulehome0-5c,
-
-.mod-temperature .tempmodulehome20-25c,
-
-.mod-temperature .tempmodulehome25-30c,
-
-.mod-temperature .tempmodulehome30-35c,
-
-.mod-temperature .tempmodulehome35-40c {
-  height: 1.1rem;
-  overflow: hidden;
-  font-size: .65rem;
-  font-weight: 400;
-  width: 4rem
-}
-
-.mod-temperature .tempmodulehome-50-10c {
-  justify-content: center;
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome-10-0c,
-
-.mod-temperature .tempmodulehome0-5c {
+/* RIGHT COLUMN */
+.mod-temperature-col-right {
   display: flex;
-  align-items: center;
-  line-height: 16px;
-  font-family: weathertext2;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--card-surface);
-  font-weight: 400
+  flex-direction: column;
+  justify-content: space-between;
+  width: 150px;
+  position: relative;
 }
 
-.mod-temperature .tempmodulehome-10-0c {
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-cool);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome0-5c,
-
-.mod-temperature .tempmodulehome5-10c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome0-5c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-cool);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome10-15c,
-
-.mod-temperature .tempmodulehome15-20c,
-
-.mod-temperature .tempmodulehome5-10c {
+.mod-temperature-top-pill {
   display: flex;
-  align-items: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .65rem;
-  font-weight: 400;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--card-surface)
+  justify-content: flex-end;
+  padding-right: 5px;
+  margin-bottom: 5px;
 }
-
-.mod-temperature .tempmodulehome5-10c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome10-15c,
-
-.mod-temperature .tempmodulehome15-20c,
-
-.mod-temperature .tempmodulehome20-25c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome10-15c,
-
-.mod-temperature .tempmodulehome15-20c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome20-25c,
-
-.mod-temperature .tempmodulehome25-30c {
-  display: flex;
-  align-items: center;
-  line-height: 16px;
-  font-family: weathertext2;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--card-surface);
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome20-25c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome25-30c,
-
-.mod-temperature .tempmodulehome30-35c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome25-30c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome30-35c,
-
-.mod-temperature .tempmodulehome35-40c {
-  display: flex;
-  align-items: center;
-  line-height: 16px;
-  font-family: weathertext2;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--card-surface);
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome30-35c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome35-40c {
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome40-50c {
-  display: flex;
-  height: 1.1rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .65rem;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--card-surface);
-  font-weight: 400
-}
-
-.mod-temperature .tempmodulehome40-50c {
-  align-items: center
-}
-
-.mod-temperature .intempmodulehome0-5c,
-
-.mod-temperature .tempmodulehome40-50c {
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-.mod-temperature .tempmodulehome40-50c {
-  justify-content: center;
-  width: 4rem;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-3);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-  font-weight: 400
-}
-
-.mod-temperature .intempmodulehome0-5c,
-
-.mod-temperature .intempmodulehome10-15c,
-
-.mod-temperature .intempmodulehome15-20c,
-
-.mod-temperature .intempmodulehome20-25c,
-
-.mod-temperature .intempmodulehome25-30c,
-
-.mod-temperature .intempmodulehome5-10c {
-  height: 1.1rem;
-  width: 4.3rem;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .65rem;
-  color: var(--card-ink-blue);
-  font-weight: 400;
-  display: flex;
-  overflow: hidden
-}
-
-.mod-temperature .intempmodulehome0-5c,
-
-.mod-temperature .intempmodulehome5-10c {
-  border: 1px solid var(--card-surface)
-}
-
-.mod-temperature .intempmodulehome0-5c {
-  align-items: center;
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-cool);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intempmodulehome5-10c {
-  align-items: center;
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intempmodulehome10-15c,
-
-.mod-temperature .intempmodulehome15-20c {
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intempmodulehome20-25c,
-
-.mod-temperature .intempmodulehome25-30c {
-  align-items: center
-}
-
-.mod-temperature .intempmodulehome20-25c {
-  justify-content: center;
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intempmodulehome25-30c {
-  justify-content: center;
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .inheatcircle-content {
-  
-  color: var(--card-ink-blue);
-  
-  
-  padding: 0;
-  text-align: center;
-  width: auto;
-  font: 500 11px weathertext2;
-  display: block;
-  line-height: 15px
-}
-
-.mod-temperature .heatcircle6 {
-  padding: 0;
-  width: auto;
-  
-  
-  }
-
-.mod-temperature .inheatcircle2-content {
-  
-  color: var(--card-ink-blue);
-  
-  
-  
-  padding: 0;
-  text-align: center;
-  width: auto;
-  font: 500 11px weathertext2;
-  display: block;
-  line-height: 15px
-}
-
-.mod-temperature .heatcircle7 {
-  padding: 0;
-  width: auto;
-  
-  
-  }
-
-.mod-temperature .intemphumcircle0-25,
-
-.mod-temperature .intemphumcircle25-35,
-
-.mod-temperature .intemphumcircle35-60,
-
-.mod-temperature .intemphumcircle60-80,
-
-.mod-temperature .intemphumcircle80-100 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: var(--card-ink-blue)
-}
-
-.mod-temperature .intemphumcircle60-80 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intemphumcircle25-35 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intemphumcircle35-60 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intemphumcircle80-100 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--hum-wet);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .intemphumcircle0-25 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-.mod-temperature .tempconvertercircle0-5,
-
-.mod-temperature .tempconvertercircle11-15,
 
 .mod-temperature .tempconvertercircle16-20,
-
-.mod-temperature .tempconvertercircle21-25,
-
-.mod-temperature .tempconvertercircle26-30,
-
-.mod-temperature .tempconvertercircle31-35,
-
-.mod-temperature .tempconvertercircle36-40,
-
-.mod-temperature .tempconvertercircle41-45,
-
-.mod-temperature .tempconvertercircle50,
-
-.mod-temperature .tempconvertercircle6-10,
-
-.mod-temperature .tempconvertercircleminus,
-
-.mod-temperature .tempconvertercircleminus10,
-
-.mod-temperature .tempconvertercircleminus5 {
+.mod-temperature div[class^="tempconvertercircle"] {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 1rem;
-  width: 3.4rem;
-  border: 1px solid var(--card-surface);
+  align-items: center;
+  width: 3.2rem;
   overflow: hidden;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  color: var(--card-ink-blue);
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  background: 0
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
 }
 
+.mod-temperature smalltempunit2 {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 8.8px;
+  font-weight: 400;
+  margin-left: 2px;
+}
 
-/* ── Light theme overrides ── */
+/* 2x2 Grid */
+.mod-temperature-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  padding: 0 5px;
+}
 
-[data-theme="light"] .mod-temperature .tempconvertercircleblue,
-
-[data-theme="light"] .mod-temperature .tempconvertercirclegreen,
-
-[data-theme="light"] .mod-temperature .tempconvertercircleorange,
-
-[data-theme="light"] .mod-temperature .tempconvertercirclepurple,
-
-[data-theme="light"] .mod-temperature .tempconvertercirclered,
-
-[data-theme="light"] .mod-temperature .tempconvertercircleyellow {
+.mod-temperature-block {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
   justify-content: center;
-  height: 1.1rem;
-  width: 3.4rem;
-  border: 2px solid var(--line-light);
-  overflow: hidden;
-  border-radius: 4px;
-  color: var(--accent-ink);
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em
+  position: relative;
 }
 
-[data-theme="light"] .mod-temperature .tempconvertercircleyellow {
-  background: var(--temp-warm-soft)
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircleorange {
-  background: var(--temp-warm-2)
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercirclered {
-  background: var(--temp-hot-4-solid)
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercirclegreen {
-  background: var(--temp-mild-2)
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercirclepurple {
-  background: var(--uv-purple)
-}
-
-[data-theme="light"] .mod-temperature .tempindoorconverter {
-  
-  }
-
-[data-theme="light"] .mod-temperature .tempconverter1 {
-  
-  
-  
-  font-size: 12px
-}
-
-[data-theme="light"] .mod-temperature .heatcircle {
-  
-  
-  
-  padding: 0;
-  width: auto;
-  }
-
-[data-theme="light"] .mod-temperature .tempcontainer,
-
-[data-theme="light"] .mod-temperature .tempcontainer {
-  font-family: weathertext2;
-  
-  margin: 25px 10px 10px 40px;
-  
-  }
-
-[data-theme="light"] .mod-temperature .outside0-5,
-
-[data-theme="light"] .mod-temperature .outside11-15,
-
-[data-theme="light"] .mod-temperature .outside16-20,
-
-[data-theme="light"] .mod-temperature .outside21-25,
-
-[data-theme="light"] .mod-temperature .outside26-30,
-
-[data-theme="light"] .mod-temperature .outside31-35,
-
-[data-theme="light"] .mod-temperature .outside36-40,
-
-[data-theme="light"] .mod-temperature .outside41-45,
-
-[data-theme="light"] .mod-temperature .outside50,
-
-[data-theme="light"] .mod-temperature .outside6-10,
-
-[data-theme="light"] .mod-temperature .outsideminus,
-
-[data-theme="light"] .mod-temperature .outsideminus10,
-
-[data-theme="light"] .mod-temperature .outsideminus5,
-
-[data-theme="light"] .mod-temperature .outsidezero {
-  font-family: weathertext2;
-  width: 6rem;
-  height: 5.5rem;
-  font-size: 1.6rem;
-  padding-
-  color: var(--accent-ink);
-  border-
+.mod-temperature .heatcircle-content,
+.mod-temperature .inheatcircle-content,
+.mod-temperature .inheatcircle2-content {
+  width: auto !important;
+  margin: 0 !important;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px
 }
 
-[data-theme="light"] .mod-temperature .temptrendx {
-  
-  
-  
+valuetextheading2 {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.9px;
+  font-weight: 500;
+  color: rgb(192, 192, 192);
+  line-height: 15px;
   text-align: center;
-  z-index: auto;
-  font-size: 0;
+}
+
+.mod-temperature div[class*="tempmodulehome"],
+.mod-temperature div[class*="intempmodulehome"] {
+  display: flex !important;
+  justify-content: center;
+  align-items: baseline;
+  border: 1px solid var(--line-light);
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  position: static !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  
+  font-family: Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
+  color: rgb(192, 192, 192);
+  line-height: 16px;
+}
+
+
+/* Bottom Pills Row */
+.mod-temperature-bot-pills {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.mod-temperature .tempindoorextra,
+.mod-temperature .tempindoorextra1,
+.mod-temperature .tempindoorextra2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static !important;
+  margin: 0 !important;
+}
+
+
+/* INDOOR LAYOUT SPECIFICS */
+.mod-temperature-1x2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mod-temperature-indoor-graphic {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mod-temperature .indoorhomesvg1 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 120px;
+  height: 120px;
+  color: var(--card-bg-2);
+  z-index: 1;
+}
+
+.mod-temperature .indoorhomesvg1 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mod-temperature .indoortrendhouse1 {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Arial, sans-serif;
+  font-size: 8px;
   color: var(--accent-ink);
-  font-family: Arial, system
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.mod-temperature .indoorhomevalue1 {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+}
+
+.mod-temperature .weather34indoorword {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10px;
+  color: var(--card-ink-blue);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.mod-temperature .tempindoorconverter {
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* Light theme overrides */
+[data-theme="light"] .mod-temperature div[class*="tempmodulehome"],
+[data-theme="light"] .mod-temperature div[class*="intempmodulehome"] {
+  border-color: var(--line-soft);
+  color: var(--accent-ink);
 }
 
 [data-theme="light"] .mod-temperature .maxdata {
-  
-  font-family: weathertext2;
-  font-size: .8em;
-  color: var(--accent-ink);
-  font-weight: 400;
-  margin: 5px auto auto;
-  }
-
-[data-theme="light"] .mod-temperature .heatcircle {
-  background: 0
-}
-
-[data-theme="light"] .mod-temperature .heatcircle-content {
-  color: var(--card-ink-blue);
-  
-  
-  padding: 0;
-  text-align: center;
-  width: auto;
-  font-size: 11px;
-  display: block;
-  line-height: 15px
-}
-
-[data-theme="light"] .mod-temperature .heatcircle2,
-
-[data-theme="light"] .mod-temperature .heatcircle3,
-
-[data-theme="light"] .mod-temperature .heatcircle4 {
-  padding: 0;
-  width: auto;
-  
-  }
-
-[data-theme="light"] .mod-temperature .tempmodulehome-10-0c {
-  justify-content: center
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircleblue {
-  background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: -o-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: -moz-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: -ms-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
-}
-
-[data-theme="light"] .mod-temperature .tempindoorextra {
-  font-weight: 500;
-  font-family: weathertext2;
-  font-size: .68rem;
-  
-  
-  }
-
-[data-theme="light"] .mod-temperature .temphumcircle0-25,
-
-[data-theme="light"] .mod-temperature .temphumcircle25-35,
-
-[data-theme="light"] .mod-temperature .temphumcircle35-60,
-
-[data-theme="light"] .mod-temperature .temphumcircle60-80,
-
-[data-theme="light"] .mod-temperature .temphumcircle80-100 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome-50-10c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome0-5c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome20-25c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome25-30c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome30-35c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome35-40c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome40-50c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
-  font-size: .65rem;
-  height: 1.1rem;
-  line-height: 16px;
-  font-family: weathertext2;
-  overflow: hidden
-}
-
-[data-theme="light"] .mod-temperature .temphumcircle60-80 {
-  background: 0;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
-}
-
-[data-theme="light"] .mod-temperature .temphumcircle25-35 {
-  background: 0;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
-}
-
-[data-theme="light"] .mod-temperature .temphumcircle35-60 {
-  background: 0;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
-}
-
-[data-theme="light"] .mod-temperature .temphumcircle80-100 {
-  background: 0;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--hum-wet);
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
-}
-
-[data-theme="light"] .mod-temperature .temphumcircle0-25 {
-  background: 0;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome-50-10c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
-  display: flex;
-  width: 4rem;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome-50-10c {
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-cold);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome-10-0c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
-  border: 1px solid var(--line-light);
-  align-items: center
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome-10-0c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-cool);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome0-5c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome0-5c {
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-cool);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome20-25c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
-  border: 1px solid var(--line-light);
-  color: var(--card-ink-blue);
-  width: 4rem;
-  display: flex;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome5-10c {
-  align-items: center;
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome35-40c {
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome15-20c {
-  align-items: center;
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome20-25c {
-  align-items: center;
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome25-30c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome30-35c {
-  display: flex;
-  align-items: center;
-  width: 4rem;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome25-30c {
-  justify-content: center;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome30-35c {
-  justify-content: center;
-  border: 1px solid var(--line-light);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome35-40c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
-  display: flex;
-  align-items: center;
-  width: 4rem;
-  color: var(--card-ink-blue);
-  border: 1px solid var(--line-light);
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome20-25c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome25-30c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
-  height: 1.1rem;
-  width: 4.2rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-size: .65rem;
-  font-family: weathertext2;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome35-40c {
-  justify-content: center;
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-2);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
-
-[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempmodulehome40-50c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-hot-3);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome0-5c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--line-light)
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome0-5c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-cool);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome5-10c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-3);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome15-20c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome20-25c {
-  align-items: center;
-  border: 1px solid var(--line-light);
-  display: flex;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome10-15c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome15-20c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome20-25c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome25-30c {
-  justify-content: center;
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome20-25c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-home-warm);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intempmodulehome25-30c,
-
-[data-theme="light"] .mod-temperature .intempmodulehome25-30c {
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 400
-}
-
-[data-theme="light"] .mod-temperature .tempconverter1,
-.mod-temperature .tempconverter2 {
-  }
-
-[data-theme="light"] .mod-temperature .inheatcircle-content,
-
-[data-theme="light"] .mod-temperature .inheatcircle2-content {
-  
-  text-align: center;
-  display: block;
-  padding: 0;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .inheatcircle-content {
-  
-  
-  width: auto;
-  font: 500 11px weathertext2;
-  line-height: 15px
-}
-
-[data-theme="light"] .mod-temperature .inheatcircle2-content {
-  
-  
-  
-  width: auto;
-  font: 500 11px weathertext2;
-  line-height: 15px
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle0-25,
-
-[data-theme="light"] .mod-temperature .intemphumcircle25-35,
-
-[data-theme="light"] .mod-temperature .intemphumcircle35-60,
-
-[data-theme="light"] .mod-temperature .intemphumcircle60-80,
-
-[data-theme="light"] .mod-temperature .intemphumcircle80-100 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 4rem;
-  overflow: hidden;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: var(--card-ink-blue)
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle60-80 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-warm);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle25-35 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle35-60 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-mild-2);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle80-100 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--hum-wet);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .intemphumcircle0-25 {
-  border: 1px solid var(--card-surface);
-  border-
-  box-shadow: inset 4px 0 0 0 var(--temp-hot-4-solid);
-  -webkit-border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle0-5,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle11-15,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle16-20,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle21-25,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle26-30,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle31-35,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle36-40,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle41-45,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle50,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle6-10,
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus,
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus10,
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.1rem;
-  width: 3.4rem;
-  border: 2px solid var(--line-light);
-  overflow: hidden;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  color: var(--accent-ink);
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus10 {
-  background: var(--temp-cold-2);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2));
-  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus5 {
-  background: var(--temp-cool);
-  background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
-  background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircleminus,
-
-[data-theme="light"] .mod-temperature .tempconvertercirclezero {
-  background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
-  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle0-5 {
-  background: var(--temp-cool-2);
-  background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
-  background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle6-10 {
-  background: var(--temp-mild);
-  background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
-  background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle11-15 {
-  background: var(--temp-warm);
-  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
-  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle16-20 {
-  background: var(--temp-warm-2);
-  background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
-  background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle21-25 {
-  background: var(--temp-warm-3);
-  background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
-  background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle26-30 {
-  background: var(--temp-hot-2);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
-  background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle31-35 {
-  background: var(--temp-hot);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
-  background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle36-40 {
-  background: var(--temp-hot-5);
-  background: -webkit-linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue));
-  background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue))
-}
-
-[data-theme="light"] .mod-temperature .tempconvertercircle41-45,
-
-[data-theme="light"] .mod-temperature .tempconvertercircle50 {
-  background: var(--temp-extreme);
-  background: -webkit-linear-gradient(90deg, var(--temp-extreme), var(--temp-blue));
-  background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue))
-}
-
-
-
-
-/* Temperature tile light bottom bar matching lightning/UV badges in light mode */
-[data-theme="light"] .mod-temperature .outside0-5,
-[data-theme="light"] .mod-temperature .outside11-15,
-[data-theme="light"] .mod-temperature .outside16-20,
-[data-theme="light"] .mod-temperature .outside21-25,
-[data-theme="light"] .mod-temperature .outside26-30,
-[data-theme="light"] .mod-temperature .outside31-35,
-[data-theme="light"] .mod-temperature .outside36-40,
-[data-theme="light"] .mod-temperature .outside41-45,
-[data-theme="light"] .mod-temperature .outside50,
-[data-theme="light"] .mod-temperature .outside6-10,
-[data-theme="light"] .mod-temperature .outsideminus,
-[data-theme="light"] .mod-temperature .outsideminus10,
-[data-theme="light"] .mod-temperature .outsideminus5,
-[data-theme="light"] .mod-temperature .outsidezero {
-  border-
+  color: var(--card-ink-strong);
 }
 
 [data-theme="light"] .mod-temperature .temptrendx {
   color: var(--card-ink-blue) !important;
 }
-
-/* indoor-temperature card (scoped under .mod-temperature) */
-.mod-temperature .indoorhomesvg1 {
-  
-  
-  
-  color: var(--card-bg-2)
-}
-
-.mod-temperature .indoorhomevalue1 {
-  
-  
-  
-  font-size: 1.1em
-}
-
-.mod-temperature .indoortrendhouse1 {
-  
-  
-  
-  font-size: .55rem;
-  z-index: 1;
-  color: var(--accent-ink)
-}
-
-.mod-temperature .weather34indoorword {
-  
-  
-  color: var(--card-ink-blue);
-  font-size: .55rem;
-  font-family: arial, system;
-  }
-
 [data-theme="light"] .mod-temperature .weather34indoorword {
   color: var(--card-ink-strong);
-}
-
-
-/* --- Phase 2 CSS Grid Refactor --- */
-
-.mod-temperature {
-  display: grid !important;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0;
-}
-
-[data-module="temperaturein.php"] .mod-temperature {
-  grid-template-columns: 100px 75px 75px 66px;
-  grid-template-rows: 48px 42px 34px;
-  gap: 0;
-}
-
-[data-module="indoortemperature.php"] .mod-temperature {
-  grid-template-columns: 1fr 80px;
-  grid-template-rows: 56px 50px 40px;
-  gap: 0;
-}
-
-/* ============ OUTDOOR (temperaturein.php) ============ */
-
-.mod-temperature .tempcontainer {
-  position: relative !important;
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
-  justify-self: start;
-  align-self: start;
-  margin: 21px 0 0 35px !important;
-  width: 160px !important;
-  height: 88px !important;
-}
-
-.mod-temperature .maxdata {
-  position: absolute !important;
-  top: 5px !important;
-  left: 29px !important;
-  margin: 0 !important;
-}
-
-.mod-temperature .temptrendx {
-  position: absolute !important;
-  top: 71px !important;
-  left: 8px !important;
-  margin: 0 !important;
-}
-
-.mod-temperature .heatcircle,
-.mod-temperature .heatcircle2,
-.mod-temperature .heatcircle3,
-.mod-temperature .heatcircle4 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 170px !important;
-  margin: 0;
-  padding: 0;
-}
-
-.mod-temperature .heatcircle  { grid-column: 2 / 3; grid-row: 1 / 2; justify-self: start; align-self: start; margin-top: 30px !important; }
-.mod-temperature .heatcircle2 { grid-column: 3 / 4; grid-row: 1 / 2; justify-self: start; align-self: start; margin-top: 30px !important; }
-.mod-temperature .heatcircle3 { grid-column: 2 / 3; grid-row: 2 / 3; justify-self: start; align-self: start; margin-top: 22px !important; }
-.mod-temperature .heatcircle4 { grid-column: 3 / 4; grid-row: 2 / 3; justify-self: start; align-self: start; margin-top: 22px !important; }
-
-.mod-temperature .heatcircle-content,
-.mod-temperature .inheatcircle-content,
-.mod-temperature .inheatcircle2-content {
-  width: 160px !important;
-  margin-left: -4px !important;
-  text-align: center;
-}
-
-.mod-temperature .tempconverter1 {
-  margin-top: 0;
-}
-
-.mod-temperature .tempconverter2 {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-  justify-self: start;
-  align-self: start;
-  margin: 5px 0 0 -10px !important;
-}
-
-.mod-temperature .tempindoorextra  { grid-column: 1 / 2; grid-row: 3 / 4; justify-self: start; align-self: start; margin: 25px 0 0 45px !important; }
-.mod-temperature .tempindoorextra1 { grid-column: 2 / 3; grid-row: 3 / 4; justify-self: start; align-self: start; margin: 25px 0 0 50px !important; }
-.mod-temperature .tempindoorextra2 { grid-column: 3 / 4; grid-row: 3 / 4; justify-self: start; align-self: start; margin: 25px 0 0 50px !important; }
-
-/* ============ INDOOR (indoortemperature.php) ============ */
-
-.mod-temperature .indoorhomesvg1 {
-  grid-column: 1 / 2;
-  grid-row: 1 / 4;
-  justify-self: start;
-  align-self: start;
-  margin: -12px 0 0 23px !important;
-  z-index: 1;
-}
-
-.mod-temperature .indoorhomevalue1 {
-  position: relative !important;
-  grid-column: 1 / 2;
-  grid-row: 1 / 4;
-  justify-self: stretch;
-  align-self: start;
-  margin-top: 71px !important;
-  z-index: 2;
-}
-
-.mod-temperature .indoortrendhouse1 {
-  position: absolute !important;
-  left: 97px !important;
-  top: 65px !important;
-  margin: 0 !important;
-  z-index: 3;
-}
-
-.mod-temperature .weather34indoorword {
-  position: absolute !important;
-  left: 93px !important;
-  top: 97px !important;
-  margin: 0 !important;
-  z-index: 3;
-}
-
-.mod-temperature .tempindoorconverter {
-  position: absolute !important;
-  left: 245px !important;
-  top: -15px !important;
-  margin: 0 !important;
-}
-
-.mod-temperature .heatcircle6 {
-  position: absolute !important;
-  left: 140px !important;
-  top: 36px !important;
-  width: 170px !important;
-  margin: 0 !important;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.mod-temperature .inheatcircle-content {
-  width: 160px !important;
-  margin-left: -4px !important;
-  text-align: center;
-}
-
-.mod-temperature .heatcircle7 {
-  position: absolute !important;
-  left: 189px !important;
-  top: 86px !important;
-  width: 170px !important;
-  margin: 0 !important;
-}
-
-.mod-temperature .inheatcircle2-content {
-  position: absolute !important;
-  left: 135px !important;
-  top: 71px !important;
-  width: 160px !important;
-  margin: 0 !important;
-  text-align: center;
-}
-
-
-/* Fix Forward: Restore missing Phase 3 legacy rules for Temperature */
-.tempblue1 {
-  margin-left: 210px !important;
-  margin-top: 116px !important;
-  position: absolute !important;
 }

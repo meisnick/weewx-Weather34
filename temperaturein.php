@@ -3,6 +3,8 @@
 include('w34CombinedData.php');include('common.php');include('settings1.php');?>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 <div class="mod-temperature">
+<div class="mod-temperature-grid">
+<div class="mod-temperature-col-left">
 <div class="tempcontainer">
 <div class="maxdata"><?php 
 if ($weather["temp_today_high"]<10){echo "&nbsp;".$weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}else if ($weather["temp_today_high"]>=10){echo $weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}?>
@@ -31,7 +33,28 @@ elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<
 //steady
 else echo '<trendmovementsteadyx><valuetext>Trend '.$steadysymbol.'Steady</valuetext></trendmovementsteadyx>';?>
 </div></div>
-<div class="heatcircle"><div class="heatcircle-content">
+</div> <!-- close col-left -->
+<div class="mod-temperature-col-right">
+<div class="mod-temperature-top-pill">
+<!-- moved tempconverter2 -->
+<div class="tempconverter2">
+<?php
+ //Temp
+     if(anyToC($weather["temp"])<-10){echo "<div class=tempconvertercircleminus10>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<-5) {echo "<div class=tempconvertercircleminus5>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<0)  {echo "<div class=tempconvertercircleminus>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<5)  {echo "<div class=tempconvertercircle0-5>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<10) {echo "<div class=tempconvertercircle6-10>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<15) {echo "<div class=tempconvertercircle11-15>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<20) {echo "<div class=tempconvertercircle16-20>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<25) {echo "<div class=tempconvertercircle21-25>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<30) {echo "<div class=tempconvertercircle26-30>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<35) {echo "<div class=tempconvertercircle31-35>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<40) {echo "<div class=tempconvertercircle36-40>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<45) {echo "<div class=tempconvertercircle41-45>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+</div> <!-- close top pill -->
+<div class="mod-temperature-2x2">
+<div class="mod-temperature-block heatcircle"><div class="heatcircle-content">
 <?php 
 echo "<valuetextheading1>".$lang['Apparent']."</valuetextheading1>";?>
 <a alt="weekly apparent" title="weekly apparent" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='apparentplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
@@ -48,7 +71,7 @@ else if(anyToC($weather["apptemp"])>=0 ){echo "<div class=tempconverter1><div cl
 else if(anyToC($weather["apptemp"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></div></a></div></div>
-<div class="heatcircle2"><div class="heatcircle-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
+<div class="mod-temperature-block heatcircle2"><div class="heatcircle-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
 <?php //avg today
      if (anyToC($weather["temp_avgtoday"])>=40){echo "<div class=tempconverter1><div class=tempmodulehome40-50c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if (anyToC($weather["temp_avgtoday"])>=35){echo "<div class=tempconverter1><div class=tempmodulehome35-40c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
@@ -62,7 +85,7 @@ else if (anyToC($weather["temp_avgtoday"])>=0) {echo "<div class=tempconverter1>
 else if (anyToC($weather["temp_avgtoday"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if (anyToC($weather["temp_avgtoday"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></div></div></div>
-<div class="heatcircle3"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
+<div class="mod-temperature-block heatcircle3"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
 <a alt="weekly humidity" title="weekly humidity" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='humidityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //humidity
      if ($weather["humidity"]>90){echo "<div class=tempconverter1><div class=temphumcircle80-100>".$weather["humidity"];}
@@ -72,7 +95,7 @@ else if ($weather["humidity"]>25){echo "<div class=tempconverter1><div class=tem
 else if ($weather["humidity"]<=25){echo "<div class=tempconverter1><div class=temphumcircle0-25>".$weather["humidity"];}?><smalltempunit2>%</smalltempunit2>
 <?php //humidity trend
 if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></div></div></a></div></div>
-<div class="heatcircle4"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Dewpoint']?></valuetextheading1>
+<div class="mod-temperature-block heatcircle4"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Dewpoint']?></valuetextheading1>
 <a alt="weekly dewpoint" title="weekly dewpoint" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='dewpointplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //dewpoint
      if(anyToC($weather["dewpoint"])>21) {echo "<div class=tempconverter1><div class=tempmodulehome25-30c>&nbsp;".$weather['dewpoint'].'&deg;<smalltempunit2>'.$weather["temp_units"];}
@@ -86,21 +109,10 @@ else if(anyToC($weather["dewpoint"])>-50){echo "<div class=tempconverter1><div c
 ?></smalltempunit2>
 <?php //dewpoint trend
 if($weather["dewpoint_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["dewpoint_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></div></div></a></div></div>
-<div class="tempconverter2">
-<?php
- //Temp
-     if(anyToC($weather["temp"])<-10){echo "<div class=tempconvertercircleminus10>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<-5) {echo "<div class=tempconvertercircleminus5>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<0)  {echo "<div class=tempconvertercircleminus>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<5)  {echo "<div class=tempconvertercircle0-5>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<10) {echo "<div class=tempconvertercircle6-10>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<15) {echo "<div class=tempconvertercircle11-15>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<20) {echo "<div class=tempconvertercircle16-20>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<25) {echo "<div class=tempconvertercircle21-25>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<30) {echo "<div class=tempconvertercircle26-30>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<35) {echo "<div class=tempconvertercircle31-35>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<40) {echo "<div class=tempconvertercircle36-40>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
-else if(anyToC($weather["temp"])<45) {echo "<div class=tempconvertercircle41-45>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+</div> <!-- close 2x2 -->
+</div> <!-- close col-right -->
+</div> <!-- close grid -->
+<div class="mod-temperature-bot-pills">
 else if(anyToC($weather["temp"])<100){echo "<div class=tempconvertercircle50>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
 ?></smalltempunit2></div></div>
 <div class="tempindoorextra">
@@ -147,4 +159,5 @@ else if(anyToC($weather["windchill"])>-10){echo "<div class=tempmodulehome-10-0c
 else if(anyToC($weather["windchill"])>-50){echo "<div class=tempmodulehome-50-10c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></a></div>
 </div>
+</div> <!-- close bot pills -->
 </div><!-- /mod-temperature -->

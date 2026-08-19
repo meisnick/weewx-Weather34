@@ -380,7 +380,12 @@ valuetextheading2 {
 .mod-temperature-col-left {
   position: relative !important;
   left: 0 !important;
-  top: -6px !important;   /* sandbox-tuned */
+  top: 2px !important;    /* sandbox-tuned */
+}
+.mod-temperature-bot-pills .tempindoorextra1 {
+  position: relative !important;
+  left: -4px !important;
+  top: -1px !important;
 }
 .mod-temperature-top-pill [class^="tempconvertercircle"] {
   position: relative !important;
@@ -389,7 +394,7 @@ valuetextheading2 {
 }
 .mod-temperature-bot-pills .tempindoorextra {
   position: relative !important;
-  left: 0 !important; top: 0 !important;
+  left: 0 !important; top: -1px !important;   /* sandbox-tuned */
 }
 
 .mod-temperature-bot-pills .tempindoorextra valuetextheading2 {

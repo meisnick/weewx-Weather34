@@ -14,11 +14,8 @@ require_once('w34CombinedData.php');require_once('common.php');?>
     <!-- LEFT COLUMN -->
     <div class="mod-wind-col-left">
       <div class="mod-wind-block-small top-block">
-        <div class="mod-wind-label">Max Gust (<?php echo $weather["winddmaxtime"];?>)</div>
-        <value class="wind-max-gust-val">
-          <?php echo number_format($weather["wind_gust_speed_max"],1);?>
-          <unit><?php echo $weather["wind_units"];?></unit>
-        </value>
+        <div class="mod-wind-label wind-max-top">Max <value class="wind-max-gust-val"><?php echo number_format($weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
+        <div class="mod-wind-label">Gust (<?php echo $weather["winddmaxtime"];?>)</div>
       </div>
       
       <div class="mod-wind-block mid-block">

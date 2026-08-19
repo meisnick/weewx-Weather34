@@ -147,14 +147,14 @@
 }
 
 /* Specifics */
+/* Left top-block = Prod's "Max 15.9 mph" (grey "Max" + orange value + small unit)
+ * on one line, "Gust (time)" plain below. Value is inline within the label line. */
 .wind-max-gust-val {
   color: rgb(255, 124, 57) !important;
-  font-size: 8.55px !important;
+  font-size: 10.2px !important;
   font-family: weathertext2, Arial, sans-serif;
   font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
+  display: inline;
   line-height: 1;
 }
 .wind-max-gust-val unit {
@@ -192,6 +192,30 @@
   color: #bbb;
   font-size: 9.5px;
 }
+
+/* Top-right unit-conversion badge = a pill like Prod's "8.2 kmh"
+ * (matches the beaufort/windrun pill: 1px border, 2px radius, transparent). */
+.mod-wind .wind-conv-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(74, 99, 111, 0.2);
+  border-radius: 2px;
+  padding: 0 5px;
+  margin-top: 0;
+}
+
+/* ── sandbox-tuned positions ─────────────────────────────────────────────── */
+.mod-wind-graphic-container .homeweathercompass1 { left: 65px; top: -9px; }
+.mod-wind-deg { position: relative; top: 19px; }
+.mod-wind-dir { position: relative; top: 12px; }
+.mod-wind-col-left  .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
+.mod-wind-col-right .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
+.mod-wind-col-left  .mod-wind-block.mid-block value { position: relative; top: 12px; }
+.mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 16px; }
+.mod-wind-col-left  .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 16px; }
+.mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 21px; }
+.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; top: 5px; }
 
 /* SVG */
 svg { vertical-align: middle; }

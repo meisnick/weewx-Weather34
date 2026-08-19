@@ -334,3 +334,47 @@ valuetextheading2 {
 [data-theme="light"] .mod-temperature .weather34indoorword {
   color: var(--card-ink-strong);
 }
+
+
+/* User Visual Sandbox Offsets */
+.mod-temperature-col-left valuetext {
+  position: relative !important;
+  left: -9px !important;
+  top: 78px !important;
+}
+
+.mod-temperature-col-left .maxdata {
+  position: relative !important;
+  left: 0px !important;
+  top: 19px !important;
+}
+
+.mod-temperature-bot-pills .tempindoorextra1 valuetextheading2 {
+  position: relative !important;
+  left: 36px !important;
+  top: 2px !important;
+}
+
+.mod-temperature-bot-pills .tempindoorextra2 valuetextheading2 {
+  position: relative !important;
+  left: 9px !important;
+  top: 1px !important;
+}
+
+.mod-temperature-2x2 {
+  position: relative !important;
+  left: 0px !important;
+  top: 18px !important;
+}
+
+.mod-temperature-bot-pills .tempindoorextra valuetextheading2 {
+  position: relative !important;
+  left: 13px !important;
+  top: 2px !important;
+}
+
+/* Fix Big Value placement */
+.mod-temperature-col-left div[class^="outside"] {
+  position: relative !important;
+  top: 25px !important; /* lower matching prod */
+}

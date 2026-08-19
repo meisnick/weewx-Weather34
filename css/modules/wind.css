@@ -44,14 +44,15 @@
   color: #c0c0c0;
   font-weight: 500;
   display: flex;
+  flex-direction: column;   /* unit stacks BELOW the number (Prod layout) */
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   margin-top: 2px;
   line-height: 1;
 }
 .mod-wind-block value unit {
   font-size: 10px;
-  margin-left: 2px;
+  margin-left: 0;
   color: #c0c0c0;
   font-family: Arial, sans-serif;
 }
@@ -203,6 +204,8 @@
   border-radius: 2px;
   padding: 0 5px;
   margin-top: 0;
+  position: relative;
+  top: -3px;                /* validated against prod (conv sits at card-y 25) */
 }
 
 /* ── sandbox-tuned positions ─────────────────────────────────────────────── */
@@ -215,7 +218,7 @@
 .mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 16px; }
 .mod-wind-col-left  .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 16px; }
 .mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 21px; }
-.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; top: 5px; }
+.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; top: -2px; }  /* validated vs prod (Max line at card-y 25) */
 
 /* SVG */
 svg { vertical-align: middle; }

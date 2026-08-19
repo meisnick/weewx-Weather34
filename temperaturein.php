@@ -52,6 +52,8 @@ else if(anyToC($weather["temp"])<30) {echo "<div class=tempconvertercircle26-30>
 else if(anyToC($weather["temp"])<35) {echo "<div class=tempconvertercircle31-35>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
 else if(anyToC($weather["temp"])<40) {echo "<div class=tempconvertercircle36-40>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
 else if(anyToC($weather["temp"])<45) {echo "<div class=tempconvertercircle41-45>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+else if(anyToC($weather["temp"])<100){echo "<div class=tempconvertercircle50>".(($weather["temp_units"]=='F')?anyToC($weather["temp"])."&deg;<smalltempunit2>C":anyToF($weather["temp"])."&deg;<smalltempunit2>F");}
+?></smalltempunit2></div></div>
 </div> <!-- close top pill -->
 <div class="mod-temperature-2x2">
 <div class="mod-temperature-block heatcircle"><div class="heatcircle-content">

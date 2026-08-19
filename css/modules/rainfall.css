@@ -27,8 +27,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 130px;
+  align-items: flex-start; /* Align beaker to the left */
+  padding-left: 10px; /* Adjust to match the user's -26px shift (approx) */
+  width: 120px;
   height: 140px;
   position: relative;
 }
@@ -41,6 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5px; /* Adjust vertical placement */
 }
 
 /* Beaker Overrides */
@@ -59,6 +61,7 @@
   height: 100px;
   width: 100px;
   background: url(../rain/rainmarker.svg) no-repeat;
+  background-position: center top; /* Ensure the teardrop is centered */
 }
 
 #weather34rainbeaker:before,
@@ -95,13 +98,12 @@
 /* Big Value (Rain Today) Overlay */
 .mod-rainfall-big-value {
   position: absolute;
-  top: 50%;
+  top: 50%; /* Center it vertically inside the beaker */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%); /* Shift it down slightly so the teardrop is visible above it */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   background: var(--info-cool);
   border-radius: 3px;
   width: 3.1rem;
@@ -118,7 +120,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  background: transparent !important;
+  background: transparent !important; /* override the dark framework since we placed it on the parent */
 }
 
 .mod-rainfall .raintoday1 smallrainunita {
@@ -177,8 +179,9 @@
 .mod-rainfall-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Actually, we want the headers aligned left with the pill. So let's use align-items: flex-end and shift header? */
   justify-content: center;
+  position: relative;
 }
 
 valuetextheading1 {
@@ -188,6 +191,9 @@ valuetextheading1 {
   font-weight: 500;
   color: rgb(192, 192, 192);
   line-height: 15px;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px; /* Align with the pill's left edge */
 }
 
 .mod-rainfall .rainmodulehome {
@@ -197,12 +203,8 @@ valuetextheading1 {
   display: flex !important;
   justify-content: center;
   align-items: baseline;
-  
-  /* Restored pill border! */
-  border: 1px solid var(--line-light);
-  border-left: 0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  /* width: auto !important; */ /* Remove auto to inherit 4rem from framework */
+  /* Remove border: none so it regains the left-open border pill style! */
 }
 
 .mod-rainfall raiblue {
@@ -298,42 +300,4 @@ rainratetextheading {
   margin: 0 !important;
   width: auto !important;
   height: auto !important;
-}
-
-
-/* ========================================= */
-/* USER OFFSETS & SANDBOX OVERRIDES          */
-/* ========================================= */
-
-.mod-rainfall-col-left {
-  position: relative !important;
-  left: -26px !important;
-  top: -2px !important;
-}
-
-.mod-rainfall-big-value {
-  position: relative !important;
-  left: 107px !important;
-  top: 67px !important;
-  transform: none !important; /* overrides my flex centering so their absolute matches work */
-}
-
-/* We deliberately DO NOT apply the broken offset to .weather34i-rairate-bar div div div (water level)
-   because it tore the water out of the measuring gauge! */
-.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-left .mod-rainfall-graphic-container .weather34i-rairate-bar div div {
-  position: relative !important;
-  left: 6px !important;
-  top: 34px !important;
-}
-
-.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-left .mod-rainfall-graphic-container .weather34i-rairate-bar div {
-  position: relative !important;
-  left: -23px !important;
-  top: 6px !important;
-}
-
-.mod-rainfall .mod-rainfall-grid .mod-rainfall-col-right .mod-rainfall-2x2 .mod-rainfall-block valuetextheading1 {
-  position: relative !important;
-  left: -9px !important;
-  top: 0px !important;
 }

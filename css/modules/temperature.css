@@ -351,13 +351,13 @@ valuetextheading2 {
 
 .mod-temperature-bot-pills .tempindoorextra1 valuetextheading2 {
   position: relative !important;
-  left: 36px !important;
+  left: 35px !important;   /* aligned: label → x165 (was x163 → +3 from container, -1 here) */
   top: 2px !important;
 }
 
 .mod-temperature-bot-pills .tempindoorextra2 valuetextheading2 {
   position: relative !important;
-  left: 6px !important;   /* sandbox-tuned */
+  left: 5px !important;   /* aligned: label → x238 (was x240 → -1 from container, -1 here) */
   top: 1px !important;
 }
 
@@ -384,8 +384,20 @@ valuetextheading2 {
 }
 .mod-temperature-bot-pills .tempindoorextra1 {
   position: relative !important;
-  left: -4px !important;
+  left: -1px !important;   /* aligned: value box → left-col grid x166 (was x163, +3) */
   top: -1px !important;
+}
+.mod-temperature-bot-pills .tempindoorextra2 {
+  position: relative !important;
+  left: -1px !important;   /* aligned: value box → right-col grid x239 (was x240, -1) */
+}
+/* Reference pills sit the value box 1px right of the label; these two had label
+   and value at the same x, so bump only the value box +1 to hit the grid
+   (left col x166, right col x239). Generic [class*] so it holds across temp ranges. */
+.mod-temperature-bot-pills .tempindoorextra1 [class*="tempmodulehome"],
+.mod-temperature-bot-pills .tempindoorextra2 [class*="tempmodulehome"] {
+  position: relative !important;
+  left: 1px !important;
 }
 .mod-temperature-top-pill [class^="tempconvertercircle"] {
   position: relative !important;

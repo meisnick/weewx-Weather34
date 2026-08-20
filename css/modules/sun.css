@@ -110,7 +110,7 @@
   display: inline-block;
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #009bb4;
+  background: var(--info-2-bg);
   position: relative;
   left: 0; top: 0;
   margin-right: 2px;         /* sit just LEFT of the value (was overlapping the "1") */
@@ -124,7 +124,7 @@
   left: 0; top: 0;
   margin-left: 3px;          /* sit just RIGHT of the value */
 }
-.mod-sun blueu { color: rgb(1, 164, 181); }
+.mod-sun blueu { color: var(--info-2); }
 /* Prod colours specific values: moonrise time teal, moonset time orange */
 .mod-sun .moonrisevalue { color: var(--info-5); }
 .mod-sun .moonsetvalue  { color: var(--caution); }
@@ -189,7 +189,7 @@
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--caution);
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid var(--line-white-2);
   box-sizing: border-box;
 }
 

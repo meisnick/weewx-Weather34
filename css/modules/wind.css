@@ -190,7 +190,7 @@
 }
 
 .mod-wind .weather34windrun {
-  color: #bbb;
+  color: var(--ink-faint-9);
   font-size: 9.5px;
 }
 
@@ -200,7 +200,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(74, 99, 111, 0.2);
+  border: 1px solid var(--line-mid);
   border-radius: 2px;
   padding: 0 5px;
   margin-top: 0;

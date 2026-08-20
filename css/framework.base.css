@@ -93,6 +93,7 @@
   /* ---- status shades (info = teal family) ---- */
   --info-cool:      var(--teal);
   --info-2:         #01a4b5;
+  --info-2-bg:      #009bb4;
   --info-3:         #009bab;
   --info-4:         #07727d;
   --info-5:         #44a6b5;
@@ -142,6 +143,7 @@
   --line-light:     #e6e8ef;
   --line-dark-3:    #2d3238;
   --line-white:     rgba(255, 255, 255, .3);
+  --line-white-2:   rgba(255, 255, 255, .5);
   --line-compass:   rgba(95, 96, 97, .5);
   --line-compass-2: rgba(95, 96, 97, .8);
   --line-mid:       rgba(74, 99, 111, .2);
@@ -194,6 +196,7 @@
   --ink-faint-6:    #878a8c;
   --ink-faint-7:    #b0b0b0;
   --ink-faint-8:    #c0c4cc;
+  --ink-faint-9:    #bbbbbb;
   --ink-teal-dark:  #4a636f;
   --line-light-2:   #dde0e6;
   --line-light-3:   #efefef;

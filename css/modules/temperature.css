@@ -66,7 +66,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 10.08px;
   font-weight: 500;
-  color: #bbbbbb;
+  color: var(--ink-faint-9);
   display: flex;
   align-items: baseline;
 }
@@ -116,7 +116,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 25.6px;
   font-weight: 500;
-  color: #f8f8f8;
+  color: var(--ink-bright);
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -126,7 +126,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 15.36px;
   font-weight: 500;
-  color: #f8f8f8;
+  color: var(--ink-bright);
   margin-left: 2px;
 }
 

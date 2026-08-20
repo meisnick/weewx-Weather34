@@ -467,6 +467,14 @@ valuetextheading2 {
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoortrendhouse1 { left: 106px !important; top: 30px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-grid { position: relative !important; left: 1px !important; top: 13px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .weather34indoorword { left: 109px !important; top: 74px !important; height: 14px !important; }
+/* the big indoor temp pill: every other element in the moved/enlarged house zone got a
+ * scoped offset except this one, so it was stranded at its base position (top:65 + left:50%
+ * translateX(-50%), centered on the old zone) — it fell out the bottom-right of the house.
+ * The base translateX(-50%) throws it far right in this card's hand-tuned geometry, so we
+ * position by the left edge instead (transform:none). left:0/top:44 seats it in the house
+ * body, under INDOOR and above the trend. Indoor temps are always ~2-digit °F, so the
+ * fixed left edge stays visually centered. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomevalue1 { left: 0px !important; top: 44px !important; transform: none !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .inheatcircle-content valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
 /* position:relative stays !important (beats framework position:static !important); left/top
  * are NOT !important so a sandbox override (which carries !important) can move the pill. */

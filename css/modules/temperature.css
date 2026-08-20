@@ -107,7 +107,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 8.25px;
   font-weight: 500;
-  color: #fff;
+  color: var(--white);
   position: static !important;
   margin: 0 0 5px 0 !important;
 }
@@ -196,7 +196,7 @@ valuetextheading2 {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 9.9px;
   font-weight: 500;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   line-height: 12px;
   text-align: center;
 }
@@ -217,7 +217,7 @@ valuetextheading2 {
   font-family: Arial, sans-serif;
   font-size: 10.4px;
   font-weight: 400;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   line-height: 14px;
 }
 
@@ -291,7 +291,7 @@ valuetextheading2 {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #fff;
+  color: var(--white);
   z-index: 2;
   display: flex;
   align-items: baseline;

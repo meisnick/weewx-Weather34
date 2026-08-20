@@ -41,7 +41,7 @@
 .mod-wind-block value {
   font-size: 24.8px;
   font-family: weathertext2, Arial, sans-serif;
-  color: #c0c0c0;
+  color: var(--card-ink);
   font-weight: 500;
   display: flex;
   flex-direction: column;   /* unit stacks BELOW the number (Prod layout) */
@@ -53,7 +53,7 @@
 .mod-wind-block value unit {
   font-size: 10px;
   margin-left: 0;
-  color: #c0c0c0;
+  color: var(--card-ink);
   font-family: Arial, sans-serif;
 }
 
@@ -68,7 +68,7 @@
 .mod-wind-label {
   font-size: 10px;
   font-weight: 500;
-  color: #c0c0c0;
+  color: var(--card-ink);
   margin-top: 2px;
 }
 .bft-text, .wind-run-text {
@@ -133,25 +133,25 @@
   font-family: weathertext2;
   font-size: 23.2px;
   font-weight: 500;
-  color: #c0c0c0;
+  color: var(--card-ink);
 }
 .mod-wind-dir {
   font-family: Arial;
   font-size: 12px;
   font-weight: 600;
-  color: #c0c0c0;
+  color: var(--card-ink);
   display: block;
   margin-top: 4px;
 }
 .mod-wind-dir span {
-  color: rgb(144, 177, 42);
+  color: var(--green);
 }
 
 /* Specifics */
 /* Left top-block = Prod's "Max 15.9 mph" (grey "Max" + orange value + small unit)
  * on one line, "Gust (time)" plain below. Value is inline within the label line. */
 .wind-max-gust-val {
-  color: rgb(255, 124, 57) !important;
+  color: var(--caution) !important;
   font-size: 10.2px !important;
   font-family: weathertext2, Arial, sans-serif;
   font-weight: 500;
@@ -160,13 +160,13 @@
 }
 .wind-max-gust-val unit {
   font-size: 7.2px !important;
-  color: #c0c0c0;
+  color: var(--card-ink);
   margin-left: 2px;
   font-family: Arial, sans-serif;
 }
 
-.wind-conv-val { color: rgb(144, 177, 42); font-size: 10.2px; font-family: weathertext2; }
-.wind-conv-unit { color: #c0c0c0; font-size: 8px; font-family: Arial; margin-left: 2px;}
+.wind-conv-val { color: var(--green); font-size: 10.2px; font-family: weathertext2; }
+.wind-conv-unit { color: var(--card-ink); font-size: 8px; font-family: Arial; margin-left: 2px;}
 
 /* Pill Overrides (Disable the legacy absolutism) */
 .mod-wind .weather34beaufort1-3,

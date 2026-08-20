@@ -132,7 +132,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #fff;
+  color: var(--white);
   line-height: 17.1px;
   display: flex;
   justify-content: center;
@@ -145,7 +145,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 7.2px;
   font-weight: 500;
-  color: #fff;
+  color: var(--white);
   margin-left: 2px;
 }
 
@@ -174,13 +174,13 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 10.4px;
   font-weight: 400;
-  color: rgb(59, 156, 172);
+  color: var(--info-cool);
 }
 
 .mod-rainfall .rainconvertercircle smallrainunit {
   font-family: Arial, sans-serif;
   font-size: 8px;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   margin-left: 2px;
 }
 
@@ -207,7 +207,7 @@ valuetextheading1 {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 9.9px;
   font-weight: 500;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   line-height: 15px;
   width: 100%;
   text-align: center; /* restored to center alignment */
@@ -222,7 +222,7 @@ valuetextheading1 {
   display: flex !important;
   justify-content: center;
   align-items: baseline;
-  /* Prod pill: full 1px border in --card-surface (#393d40), radius 2px.
+  /* Prod pill: full 1px border in --card-surface (var(--card-surface)), radius 2px.
      (was border-left:0 + --line-light → cut-off left + wrong pale colour) */
   border: 1px solid var(--card-surface);
   border-radius: 2px;
@@ -233,7 +233,7 @@ valuetextheading1 {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 10.4px;
   font-weight: 400;
-  color: rgb(59, 156, 172);
+  color: var(--info-cool);
   line-height: 16px;
 }
 
@@ -242,7 +242,7 @@ valuetextheading1 {
   font-family: Arial, sans-serif;
   font-size: 8px;
   font-weight: 400;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   margin-left: 2px;
 }
 
@@ -268,7 +268,7 @@ rainratetextheading {
   font-family: weathertext2, Arial, sans-serif;
   font-size: 7.8px;
   font-weight: 400;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   margin-right: 2px;
 }
 

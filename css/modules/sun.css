@@ -7,8 +7,8 @@
   align-items: center;
   box-sizing: border-box;
   padding: 0px 2px;
-  /* Prod ground truth (getComputedStyle): weathertext2, silver #c0c0c0, weight 500. */
-  color: rgb(192, 192, 192);
+  /* Prod ground truth (getComputedStyle): weathertext2, silver var(--card-ink), weight 500. */
+  color: var(--card-ink);
   font-family: weathertext2, Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 8.4px;
@@ -88,7 +88,7 @@
   font-size: 9.12px;        /* Prod measured */
   font-weight: 500;
   margin-bottom: 2px;
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   position: relative;
   top: -4px;                /* sandbox-tuned */
 }
@@ -102,7 +102,7 @@
 }
 .mod-sun .elevationword maxred {
   font-size: 8.66px;
-  color: rgb(255, 124, 57);  /* Prod orange */
+  color: var(--caution);  /* Prod orange */
 }
 
 /* Circles / Icons */
@@ -119,15 +119,15 @@
   display: inline-block;
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #565f67;
+  background: var(--ink-faint-3);
   position: relative;
   left: 0; top: 0;
   margin-left: 3px;          /* sit just RIGHT of the value */
 }
 .mod-sun blueu { color: rgb(1, 164, 181); }
 /* Prod colours specific values: moonrise time teal, moonset time orange */
-.mod-sun .moonrisevalue { color: rgb(68, 166, 181); }
-.mod-sun .moonsetvalue  { color: rgb(255, 124, 57); }
+.mod-sun .moonrisevalue { color: var(--info-5); }
+.mod-sun .moonsetvalue  { color: var(--caution); }
 
 /* ── Containment Box: The Canvas Graphic ──────────── */
 .mod-sun .sun-graphic-container {
@@ -206,7 +206,7 @@
 .mod-sun .daylightvalue1 hours {
   font-family: weathertext2;
   font-size: 20px;                 /* Prod measured */
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   position: relative;
   left: -6px;
   top: 0px;
@@ -214,7 +214,7 @@
 .mod-sun .daylightvalue1 minutes {
   font-family: weathertext2;
   font-size: 20px;                 /* Prod measured */
-  color: rgb(192, 192, 192);
+  color: var(--card-ink);
   position: relative;
   left: 10px;
   top: 0px;

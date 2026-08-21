@@ -322,7 +322,7 @@ This fork adds modifications under the same non-commercial terms.
 ## Credits & Attribution
 
 - **Original template:** Brian Underdown — [weather34.com](https://weather34.com/homeweatherstation)
-- **WeeWX skin port and primary maintainer:** Ian Millard (Steepleian) — [steepleian/weewx-Weather34](https://github.com/steepleian/weewx-Weather34)
+- **Original WeeWX skin port:** Ian Millard (Steepleian) — [steepleian/weewx-Weather34](https://github.com/steepleian/weewx-Weather34)
   Ian ported Weather34 to WeeWX and maintained it through v4.3.0 (August 2023). This fork is built directly on his work. The upstream repo is the authoritative reference for WeeWX 4 installations.
 
 - **This fork:** [meisnick/weewx-Weather34](https://github.com/meisnick/weewx-Weather34)

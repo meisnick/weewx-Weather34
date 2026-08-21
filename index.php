@@ -1,6 +1,6 @@
 <?php
 ####################################################################################################################
-#   weewx-Weather34 Template maintained by Ian Millard (Steepleian)                                              #
+#   weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)             #
 #   Contains original legacy code by Brian Underdown (https://weather34.com)                                     #
 #   © weather34.com original CSS/SVG/PHP 2015-2019                                                               #
 #   Contains original code by Ian Millard and collaborators                                                       #

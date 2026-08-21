@@ -319,6 +319,11 @@ valuetextheading2 {
   border-color: var(--line-soft);
   color: var(--card-ink); /* dark ink on the light pill; --accent-ink is #fff → invisible here */
 }
+/* Humidity pill border: base uses --card-surface (=#fff in light) → invisible.
+   Match the other pills' visible light-mode border. */
+[data-theme="light"] .mod-temperature div[class*="temphumcircle"] {
+  border-color: var(--line-soft);
+}
 
 [data-theme="light"] .mod-temperature .maxdata {
   color: var(--card-ink-strong);

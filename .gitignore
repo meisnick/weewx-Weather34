@@ -16,6 +16,7 @@ w34highcharts/w34_reports/__pycache__/
 
 # Station-specific config — never commit
 scripts/w34config.py
+settings1.php
 CLAUDE.md
 
 # (all icon sets are now tracked)

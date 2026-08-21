@@ -1388,25 +1388,25 @@ yellow1 {
   color: var(--warn-4)
 }
 
-.barometerblue {
+.mod-barometer-min {
   margin-top: 5px
 }
 
-.barometerorange {
+.mod-barometer-max {
   margin-top: -5px;
   margin-left: 0
 }
 
-.barometerblue {
+.mod-barometer-min {
   margin-left: 5px
 }
 
-.barometerorange span {
+.mod-barometer-max span {
   font-weight: 600;
   color: var(--caution)
 }
 
-.barometerblue span {
+.mod-barometer-min span {
   font-weight: 600
 }
 
@@ -1424,7 +1424,7 @@ tsteady {
   font-weight: 500
 }
 
-.barometertrend2 span {
+.mod-barometer-trend span {
   font-weight: 600;
   color: var(--good)
 }

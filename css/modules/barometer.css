@@ -42,7 +42,7 @@
   font: 10px arial, system;
   line-height: 10px;
 }
-.mod-barometer .barometertrend2 {
+.mod-barometer .mod-barometer-trend {
   position: absolute;
   bottom: 8px; left: 12px;
   margin: 0;
@@ -51,17 +51,17 @@
   line-height: 10px;
   font-size: 10px;
 }
-.mod-barometer .barometertrend2 span { font-weight: 600; color: var(--good); }
+.mod-barometer .mod-barometer-trend span { font-weight: 600; color: var(--good); }
 /* nudge the trend text block within its cell (sandbox-tuned) */
-.mod-barometer .barometertrend2 valuetext { position: relative; left: -10px; top: -36px; }
+.mod-barometer .mod-barometer-trend valuetext { position: relative; left: -10px; top: -36px; }
 
 /* inner value wrappers (colour states come from php tags) */
-.mod-barometer .barometerorange { color: var(--card-ink-blue); line-height: 10px; }
-.mod-barometer .barometerorange span { font-weight: 600; color: var(--caution); }
-.mod-barometer .barometerblue { line-height: 10px; }
-.mod-barometer .barometerblue span { font-weight: 600; }
+.mod-barometer .mod-barometer-max { color: var(--card-ink-blue); line-height: 10px; }
+.mod-barometer .mod-barometer-max span { font-weight: 600; color: var(--caution); }
+.mod-barometer .mod-barometer-min { line-height: 10px; }
+.mod-barometer .mod-barometer-min span { font-weight: 600; }
 /* nudge the min text block within its cell (sandbox-tuned) */
-.mod-barometer .barometerblue valuetext { position: relative; left: 7px; top: -62px; }
+.mod-barometer .mod-barometer-min valuetext { position: relative; left: 7px; top: -62px; }
 
 /* ── converter badge (top-right) ──────────────────────────────────────────── */
 .mod-barometer .barometerconverter {
@@ -209,11 +209,11 @@
 /* ── Light theme ──────────────────────────────────────────────────────────── */
 [data-theme="light"] .mod-barometer .barometermax { color: var(--warn-strong); }
 [data-theme="light"] .mod-barometer .barometermin { color: var(--info-4); }
-[data-theme="light"] .mod-barometer .barometertrend2 { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-barometer .mod-barometer-trend { color: var(--card-ink-strong); }
 [data-theme="light"] .mod-barometer .barometerlimits { color: var(--card-ink-strong); }
-[data-theme="light"] .mod-barometer .barometerorange { color: var(--card-ink-strong); }
-[data-theme="light"] .mod-barometer .barometerorange span { color: var(--danger); }
-[data-theme="light"] .mod-barometer .barometerblue span { color: var(--info-9-solid); }
+[data-theme="light"] .mod-barometer .mod-barometer-max { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-barometer .mod-barometer-max span { color: var(--danger); }
+[data-theme="light"] .mod-barometer .mod-barometer-min span { color: var(--info-9-solid); }
 
 [data-theme="light"] .mod-barometer .homeweathercompass2 {
   color: var(--card-ink-strong);

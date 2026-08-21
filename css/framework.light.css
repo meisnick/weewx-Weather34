@@ -523,8 +523,8 @@ solartrend {
   color: var(--card-ink-strong)
 }
 
-.barometerblue,
-.barometerorange {
+.mod-barometer-min,
+.mod-barometer-max {
   position: absolute;
   background: var(--transparent-3);
   color: var(--card-ink-strong);
@@ -1043,7 +1043,7 @@ weather34windrunspan {
 weather34windrunspan {
   margin-left: 3px;
   font-size: .5rem
-}.barometerblue span, .rainaverage span, .rainblue1, .raintodayblue, .tempblue span, .tempbluedew span, .tempbluefeels span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
+}.mod-barometer-min span, .rainaverage span, .rainblue1, .raintodayblue, .tempblue span, .tempbluedew span, .tempbluefeels span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
   color: var(--info-cool)
 }
 

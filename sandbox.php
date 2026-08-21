@@ -255,7 +255,7 @@ $mods = array_values(array_unique($mods));
   // Build the SHORTEST descendant selector that is unique inside the module. Walks up
   // adding ancestor segments until querySelectorAll matches exactly one element, so a
   // class-less tag like <valuetext> gets scoped to its nearest classed parent
-  // (e.g. ".barometerorange valuetext") instead of the ambiguous ".mod-barometer valuetext".
+  // (e.g. ".mod-barometer-max valuetext") instead of the ambiguous ".mod-barometer valuetext".
   function selectorFor(el){
     if(!el||el.nodeType!==1) return '';
     var d=frame.contentDocument;

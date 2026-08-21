@@ -35,7 +35,10 @@ if (isset($_GET['frame'])) {
      * lie about where things land on the real page. */
     echo '<link rel="stylesheet" href="css/framework.base.css?t=' . time() . '">';
     echo '<link rel="stylesheet" href="css/framework.' . $theme . '.css?t=' . time() . '">';
-    foreach (glob('css/modules/*.css') as $s) { echo '<link rel="stylesheet" href="' . $s . '?t=' . time() . '">'; }
+    foreach (glob('css/modules/*.css') as $s) {
+        if (basename($s) === 'modules.bundle.css') { continue; }
+        echo '<link rel="stylesheet" href="' . $s . '?t=' . time() . '">';
+    }
     echo '<style id="liveoverride"></style>';
     echo '<style>html,body{margin:0}body{background:var(--page-bg,#15171a);display:flex;justify-content:center;padding:26px 10px}
       .sbx-ov{position:fixed;inset:0;pointer-events:none;z-index:99999;display:none;

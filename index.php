@@ -195,9 +195,48 @@ function modulePopups($module, $vars) {
 <link href="css/framework.base.css?version=<?php clearstatcache(); echo filemtime('css/framework.base.css'); ?>" rel="stylesheet prefetch">
 <link href="css/framework.<?php echo $theme1; ?>.css?version=<?php clearstatcache(); echo filemtime('css/framework.'.$theme1.'.css'); ?>" rel="stylesheet prefetch">
 <?php
-// Scoped CSS modules dynamic glob loader (Plug-and-Play architecture)
-foreach (glob("css/modules/*.css") as $sheet) {
-    echo '<link href="' . $sheet . '?version=' . filemtime($sheet) . '" rel="stylesheet">' . "\n";
+// Scoped CSS modules loader: serves fresh pre-built bundle (1 request) when valid,
+// falling back automatically to dynamic per-file glob loader (22 requests) if stale or missing.
+$modulesBundle = 'css/modules/modules.bundle.css';
+$useBundle = false;
+
+if (file_exists($modulesBundle)) {
+    $bundleMtime = filemtime($modulesBundle);
+    $moduleFiles = glob("css/modules/*.css");
+    $sourceCount = 0;
+    $newestSourceMtime = 0;
+
+    foreach ($moduleFiles as $mf) {
+        if (basename($mf) === 'modules.bundle.css') { continue; }
+        $sourceCount++;
+        $mtime = filemtime($mf);
+        if ($mtime > $newestSourceMtime) {
+            $newestSourceMtime = $mtime;
+        }
+    }
+
+    if ($bundleMtime >= $newestSourceMtime) {
+        // Read the first 1KB of bundle to check the baked-in file count metadata
+        $fp = fopen($modulesBundle, 'r');
+        if ($fp) {
+            $hdr = fread($fp, 1024);
+            fclose($fp);
+            if (preg_match('/Source count:\s*(\d+)/', $hdr, $m)) {
+                if ((int)$m[1] === $sourceCount) {
+                    $useBundle = true;
+                }
+            }
+        }
+    }
+}
+
+if ($useBundle) {
+    echo '<link href="' . $modulesBundle . '?version=' . filemtime($modulesBundle) . '" rel="stylesheet">' . "\n";
+} else {
+    foreach (glob("css/modules/*.css") as $sheet) {
+        if (basename($sheet) === 'modules.bundle.css') { continue; }
+        echo '<link href="' . $sheet . '?version=' . filemtime($sheet) . '" rel="stylesheet">' . "\n";
+    }
 }
 ?>
 <script>

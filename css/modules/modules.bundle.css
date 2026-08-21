@@ -1,0 +1,4950 @@
+/* ==========================================================================
+   Weather34 CSS Modules Bundle (Production Artifact)
+   Generated: 2026-08-21 01:29:17 UTC
+   Source count: 22
+   Manifest:
+     - [1/22] advisory.css
+     - [2/22] airquality.css
+     - [3/22] airqualitymodule.css
+     - [4/22] aurora.css
+     - [5/22] barometer.css
+     - [6/22] clock.css
+     - [7/22] conditions.css
+     - [8/22] forecast.css
+     - [9/22] forecastdiscussion.css
+     - [10/22] lightning34.css
+     - [11/22] localforecast.css
+     - [12/22] moon.css
+     - [13/22] moonphase.css
+     - [14/22] radar.css
+     - [15/22] rain-totals.css
+     - [16/22] rainfall.css
+     - [17/22] solar.css
+     - [18/22] sun.css
+     - [19/22] temperature.css
+     - [20/22] top-lightning.css
+     - [21/22] topyears.css
+     - [22/22] wind.css
+   ========================================================================== */
+
+/* ==== advisory.css ==== */
+/* advisory module -- scoped to .mod-advisory */
+.mod-advisory { display: grid; position: relative; width: 100%; height: 0; }
+
+/* prod parity: main.dark sets weathertext2 on the WU-large card containers (unscoped) and the
+   regional-earthquake divs inherit it; the .mod-advisory scope dropped both, falling back to arial. */
+.mod-advisory .wulargediv,
+.mod-advisory .wulargeforecasthome,
+.mod-advisory .wulargeforecastinghome {
+  font-family: weathertext2;
+}
+.mod-advisory .eqcirclehomeregional,
+.mod-advisory .eqtexthomeregional {
+  font-family: weathertext2;
+}
+
+.mod-advisory .wulargeforecasthome {
+  position: absolute;
+
+  width: 308px;
+
+  background: 0;
+
+  margin: 0 auto 0 10px;
+
+  font-size: .65rem;
+
+  display: block;
+
+  border-radius: 3px;
+
+  overflow: hidden
+
+}
+
+.mod-advisory .wulargediv {
+  width: 310px;
+
+  height: 180px;
+
+  margin-top: 3px
+
+}
+
+.mod-advisory .wulargeforecasthome wulargetemplohome {
+  margin-top: 0;
+
+  margin-left: 1%;
+
+  font-weight: 500
+
+}
+
+.mod-advisory .wulargeforecasthome wulargetemphihome span {
+  font-size: .7rem;
+
+  color: var(--caution)
+
+}
+
+.mod-advisory .wulargeforecasthome wulargetemphihome {
+  font-size: 12px;
+
+  color: var(--caution)
+
+}
+
+.mod-advisory .wulargeforecasthome wulargetempwindhome span4 {
+  position: absolute;
+
+  color: var(--info-4);
+
+  font-family: weathertext2;
+
+  font-size: .7rem;
+
+  float: left
+
+}
+
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-advisory {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0;
+}
+
+.mod-advisory .wulargeforecasthome {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: start;
+  margin: 0 auto 0 10px !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+/* ==== airquality.css ==== */
+/* airquality module -- scoped to .mod-airquality */
+.mod-airquality {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mod-airquality .tempconvertercircleyellow {
+  align-items: center;
+  width: 4.2rem;
+  color: var(--card-ink-blue);
+  font-family: weathertext2;
+  height: 1rem;
+  line-height: 16px;
+  overflow: hidden
+}
+
+.mod-airquality .tempconvertercircleyellow {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--card-bg-2);
+  border-radius: 2px;
+  font-size: .85em  
+}
+
+.mod-airquality .tempcontainer {
+  float: left;
+  font-family: weathertext2;
+  bottom: 0;
+  right: 0;
+  position: relative;
+  margin: 25px 10px 10px 40px;
+  left: -5px;
+  top: -4px
+}
+
+.mod-airquality .tempcontainerx {
+  position: relative;
+  left: -20px;
+  top: -11px
+}
+
+.mod-airquality .tempconverter2 {
+  position: absolute;
+  margin-top: 5px;
+  font-size: 12px
+}
+
+.mod-airquality .tempconverter2 {
+  margin-left: 240px
+}
+
+.mod-airquality .airqualitymoduleposition {
+  position: relative;
+  left: 75px;
+  top: 10px
+}
+
+.mod-airquality .airsvg {
+  position: absolute;
+  margin-top: -12px;
+  left: 20px
+}
+
+.mod-airquality .dottedcirclegreen,
+.mod-airquality .dottedcircleorange,
+.mod-airquality .dottedcirclepurple,
+.mod-airquality .dottedcirclered,
+.mod-airquality .dottedcircleyellow {
+  width: 100px;
+  height: 100px;
+  margin-top: 25px;
+  z-index: 20;
+  position: absolute;
+  border: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%
+}
+
+.mod-airquality .airvalue {
+  position: relative;
+  margin-top: 75px;
+  left: 80px; /* Shifted 2px right from 78px (total 75px shift) */
+  top: 15px;  /* Kept 10px down shift */
+  font-size: .9rem
+}
+
+.mod-airquality airdescription {
+  position: absolute;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  left: -105px;
+  line-height: 26px;
+  margin-top: 0;
+}
+
+.mod-airquality .air50 {
+  margin-top: 15px;
+  width: 5rem;
+  height: 4.68rem;
+  font-size: 1.4rem;
+  padding-top: 0;
+  color: var(--accent-ink);
+  border-bottom: 15px solid var(--line-dark-2);
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px
+}
+
+.mod-airquality .air0 {
+  background: var(--good)
+}
+
+.mod-airquality .air50 {
+  background: var(--warn)
+}
+
+.mod-airquality .air100 {
+  background: var(--temp-hot-2)
+}
+
+.mod-airquality .air150 {
+  background: var(--danger)
+}
+
+.mod-airquality .air300 {
+  background: var(--uv-purple)
+}
+
+.mod-airquality .airwarning {
+  display: none; /* Hidden as the built-in SVG face boxes already contain warnings/checkmarks */
+}
+
+.mod-airquality .airwarning1 {
+  position: absolute;
+  margin-top: 0;
+  margin-left: -60px
+}
+
+.mod-airquality .airwarning21 {
+  position: absolute
+}
+
+.mod-airquality .airqualitywordbig {
+  margin-left: 50px;
+  margin-top: 15px
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-airquality .airwarning4 {
+  margin-top: 95px
+}
+
+[data-theme="light"] .mod-airquality .airwarning2 span {
+  font-size: 8px;
+  line-height: 14px
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercircleyellow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.1rem;
+  width: 3.4rem;
+  border: 2px solid var(--line-light);
+  overflow: hidden;
+  border-radius: 4px;
+  color: var(--accent-ink);
+  line-height: 16px;
+  font-family: weathertext2;
+  font-size: .85em
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercircleyellow {
+  background: var(--temp-warm-soft)
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercircleorange {
+  background: var(--temp-warm-2)
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercirclered {
+  background: var(--temp-hot-4-solid)
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercirclegreen {
+  background: var(--temp-mild-2)
+}
+
+[data-theme="light"] .mod-airquality .tempconvertercirclepurple {
+  background: var(--uv-purple)
+}
+
+[data-theme="light"] .mod-airquality .tempcontainer {
+  font-family: weathertext2;
+  position: relative;
+  margin: 25px 10px 10px 40px;
+  left: -5px;
+  top: -4px
+}
+
+[data-theme="light"] .mod-airquality .tempconverter2 {
+  margin-left: 250px
+}
+
+[data-theme="light"] .mod-airquality .air50 {
+  margin-top: 15px;
+  width: 5rem;
+  height: 4.68rem;
+  font-size: 1.4rem;
+  padding-top: 0;
+  color: var(--accent-ink);
+  border-bottom: 15px solid var(--line-light);
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px
+}
+
+/* ==== airqualitymodule.css ==== */
+/* airqualitymodule — redesigned to match Lightning architecture */
+
+.mod-aq {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    padding-top: 50px; /* Pushes content down to align properly */
+    padding-left: 20px;
+    padding-right: 15px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Left column: main AQI badge ──────────────────────────────────────────── */
+.mod-aq-badge {
+    width: 85px; /* Locked to exact Lightning badge width */
+    height: 4.5rem; /* Locked to exact Lightning badge height */
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    transform: translateZ(0);
+}
+
+.mod-aq-badge-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.mod-aq-badge-top .lbl {
+    font-size: 0.65rem;
+    color: var(--accent-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mod-aq-badge-top .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    color: var(--accent-ink);
+}
+
+.mod-aq-badge-bot {
+    background-color: var(--card-bg-2);
+    width: 100%;
+    text-align: center;
+    height: 15px;
+    line-height: 15px;
+    font-size: 0.55rem;
+    color: var(--card-ink-blue);
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    -webkit-border-bottom-left-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+/* ── Right column: pollutants grid ────────────────────────────────────────── */
+.mod-aq-details {
+    width: 155px; /* Locked to exact Lightning grid width */
+    display: flex;
+    flex-direction: column;
+    margin-top: -2px; /* Slight optical adjustment */
+}
+
+.mod-aq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    padding-right: 2px;
+}
+
+.mod-aq-heading {
+    font-size: 0.6em;
+    color: var(--card-ink-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mod-aq-dominant-tag {
+    font-size: 0.65em;
+    cursor: pointer;
+}
+
+.mod-aq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.mod-aq-pill {
+    border-radius: 3px;
+    border-bottom: 3px solid var(--shadow-strong); /* Slimmed down from 6px to match sleek look */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0 2px 0;
+    color: var(--accent-ink);
+    height: 28px;
+    box-sizing: border-box;
+}
+
+/* The Dominant Pollutant */
+.mod-aq-pill.dominant {
+    box-shadow: inset 0 0 0 1px var(--white-soft-2);
+}
+
+.mod-aq-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 0.65rem;
+    line-height: 1;
+    margin-bottom: 1px;
+}
+
+.mod-aq-pill .lbl {
+    font-size: 0.52rem;
+    color: var(--white-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] .mod-aq-badge {
+    /* border-box would shrink the fixed 4.5rem interior by 2px and clip the fixed
+       bottom bar; content-box keeps the interior identical to dark (border outside) */
+    box-sizing: content-box;
+    border: 1px solid var(--line-light);
+}
+
+[data-theme="light"] .mod-aq-badge-bot {
+    background-color: var(--surface-light);
+    color: var(--ink-muted);
+}
+
+[data-theme="light"] .mod-aq-pill {
+    border-bottom-color: var(--shadow-mid);
+}
+
+/* Darken on-tile AQ heading for light mode. */
+[data-theme="light"] .mod-aq-heading {
+  color: var(--card-ink-blue);
+}
+
+/* ==== aurora.css ==== */
+/* aurora / space weather module */
+
+/* ── Card wrapper ─────────────────────────────────────────────────────────── */
+/* display:flex overrides weather-item's text-align:center for block content.  */
+/* padding-top (not margin-top) avoids margin-collapse through #grid_N, which  */
+/* would shift the absolute updatedtime's static-position reference downward.  */
+.mod-aurora {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 8px;
+  padding-left: 4px;
+  padding-right: 5px;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Two-panel row ────────────────────────────────────────────────────────── */
+.mod-aurora-body {
+  display: flex;
+  gap: 0;
+  width: 100%;
+}
+
+/* ── Section label — matches solarluxtodayword / moonset1 convention ─────── */
+.mod-aurora-sect {
+  font-size: .65em;
+  color: var(--card-ink-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Left panel: R/S/G scales ─────────────────────────────────────────────── */
+.mod-aurora-left {
+  flex: 0 0 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.mod-aurora-rsg-row {
+  display: flex;
+  gap: 5px;
+}
+
+/* Weather34 pill-style badge — vertical orientation */
+.mod-aurora-rsg-box {
+  width: 30px;
+  height: 46px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 6px solid var(--shadow-strong);
+}
+
+.mod-aurora-rsg-letter {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--accent-ink);
+}
+
+.mod-aurora-rsg-val {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: var(--white-soft);
+  margin-top: 3px;
+}
+
+/* Scale color states */
+.mod-aurora-rsg-scale-0 { background: var(--card-surface); }
+.mod-aurora-rsg-scale-1 { background: var(--aurora-yellow); }
+.mod-aurora-rsg-scale-2 { background: var(--warn); }
+.mod-aurora-rsg-scale-3 { background: var(--caution); }
+.mod-aurora-rsg-scale-4 { background: var(--danger); }
+.mod-aurora-rsg-scale-5 { background: var(--aurora-red); }
+
+/* Contrast overrides for lighter backgrounds */
+.mod-aurora-rsg-scale-1 .mod-aurora-rsg-letter,
+.mod-aurora-rsg-scale-2 .mod-aurora-rsg-letter,
+.mod-aurora-rsg-scale-3 .mod-aurora-rsg-letter {
+  color: var(--ink-dark-4);
+}
+
+.mod-aurora-rsg-scale-1 .mod-aurora-rsg-val,
+.mod-aurora-rsg-scale-2 .mod-aurora-rsg-val,
+.mod-aurora-rsg-scale-3 .mod-aurora-rsg-val {
+  color: var(--shadow-heavy-2);
+}
+
+/* Sub-labels: Radio / Solar / Geo */
+.mod-aurora-rsg-labels {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+  width: 100%;
+  justify-content: center;
+}
+
+.mod-aurora-rsg-labels span {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: var(--card-ink-blue);
+  width: 30px;
+  text-align: center;
+}
+
+/* ── Vertical divider ─────────────────────────────────────────────────────── */
+.mod-aurora-vdivider {
+  width: 1px;
+  background: var(--card-surface);
+  margin: 2px 4px;
+  align-self: stretch;
+}
+
+/* ── Right panel: 3-day forecast ──────────────────────────────────────────── */
+.mod-aurora-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 2px;
+}
+
+.mod-aurora-fc-grid {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.mod-aurora-day-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mod-aurora-day-name {
+  font-family: Arial, sans-serif;
+  font-size: .65em;
+  color: var(--card-ink-blue);
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+/* Kp max pill — Weather34 badge style */
+.mod-aurora-kpmax {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: .8em;
+  padding: 3px 5px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  background: var(--card-surface);
+  color: var(--card-ink-dim);
+  border-bottom: 4px solid var(--shadow-strong);
+  white-space: nowrap;
+}
+
+.mod-aurora-kpmax.mod-aurora-kpmax-mid {
+  background: var(--warn);
+  color: var(--accent-ink);
+}
+
+.mod-aurora-kpmax.mod-aurora-kpmax-high {
+  background: var(--caution);
+  color: var(--accent-ink);
+}
+
+/* ── Kp heatmap ───────────────────────────────────────────────────────────── */
+.mod-aurora-heatmap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: 100%;
+}
+
+.mod-aurora-hm-block {
+  height: 6px;
+  border-radius: 1px;
+}
+
+.mod-aurora-hm-green  { background: var(--good); }
+.mod-aurora-hm-yellow { background: var(--warn); }
+.mod-aurora-hm-orange { background: var(--caution); }
+.mod-aurora-hm-red    { background: var(--danger); }
+.mod-aurora-hm-empty  { background: var(--card-surface); opacity: 0.5; }
+
+/* ── Light theme overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .mod-aurora-rsg-scale-0      { background: var(--line-light-2); }
+[data-theme="light"] .mod-aurora-kpmax    { background: var(--line-light); color: var(--ink-dark-3); border-bottom-color: var(--ink-faint-8); }
+[data-theme="light"] .mod-aurora-vdivider { background: var(--line-light-2); }
+[data-theme="light"] .mod-aurora-hm-empty        { background: var(--line-light-2); opacity: 1; }
+[data-theme="light"] .mod-aurora-footer   { border-top-color: var(--line-light-2); }
+
+/* ── Aurora Probability Horizontal Footer Styles ──────────────────────────── */
+.mod-aurora-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 9px;
+  width: 100%;
+  padding-top: 5px;
+  border-top: 1px solid var(--card-surface);
+  box-sizing: border-box;
+}
+.mod-aurora-prob-lbl {
+  font-family: Arial, sans-serif;
+  font-size: 0.58rem;
+  color: var(--card-ink-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.mod-aurora-prob-val {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 2px;
+  background: var(--card-surface);
+  color: var(--card-ink-blue);
+  border: 1px solid var(--card-surface);
+  border-bottom: 2px solid var(--shadow-strong);
+  text-align: center;
+  min-width: 44px;
+  box-sizing: border-box;
+}
+.mod-aurora-prob-val.mod-aurora-prob-none   { background: var(--card-surface); color: var(--card-ink-blue); border-color: var(--card-surface); }
+.mod-aurora-prob-val.mod-aurora-prob-green  { background: var(--good); color: var(--accent-ink); border-color: var(--good); }
+.mod-aurora-prob-val.mod-aurora-prob-amber  { background: var(--warn); color: var(--accent-ink); border-color: var(--warn); }
+.mod-aurora-prob-val.mod-aurora-prob-orange { background: var(--caution); color: var(--accent-ink); border-color: var(--caution); }
+.mod-aurora-prob-val.mod-aurora-prob-red    { background: var(--danger); color: var(--accent-ink); border-color: var(--danger); }
+
+[data-theme="light"] .mod-aurora-prob-val.mod-aurora-prob-none { background: var(--line-light-2); color: var(--card-ink-soft); border-color: var(--line-light-2); }
+
+/* Darken on-tile caption/label text for light mode.
+   Kept var(--white) where text sits on colored scale badges (rsg box),
+   Kp badges, heatmap cells, and colored probability chips. */
+[data-theme="light"] .mod-aurora-sect {
+  color: var(--card-ink-blue);
+}
+[data-theme="light"] .mod-aurora-rsg-labels span {
+  color: var(--card-ink-blue);
+}
+[data-theme="light"] .mod-aurora-day-name {
+  color: var(--card-ink-blue);
+}
+[data-theme="light"] .mod-aurora-prob-lbl {
+  color: var(--card-ink-blue);
+}
+
+
+/* ==== barometer.css ==== */
+/* ── Barometer module — clean rebuild ─────────────────────────────────────────
+ * A radial dial with four corner readouts is a LAYERED layout, not a flow — so
+ * the container is position:relative and every child is anchored to a real edge
+ * with top/right/bottom/left. No magic margins, no grid-item/abspos surprises,
+ * one rule per selector, no !important:
+ *
+ *     ┌ Max ▝              Converter ▘ ┐
+ *     │        (radial dial + needles  │   dial + ruler are centred overlays
+ *     │         + ruler, centred)      │
+ *     └ Trend ▖                 Min ▗ ─┘
+ *
+ * Markup is barometer.php (unchanged; no reparented elements). Value colours
+ * (maxred/minblue) come from the global palette. Renders identically to Prod. */
+
+.mod-barometer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 195px;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* ── corner readouts ──────────────────────────────────────────────────────── */
+.mod-barometer .barometermax {
+  position: absolute;
+  top: 10px; left: 12px;
+  margin: 0;
+  width: 60px;
+  text-align: left;
+  color: var(--card-ink-blue);
+  font: 10px arial, system;
+  line-height: 10px;
+}
+.mod-barometer .barometermin {
+  position: absolute;
+  bottom: 8px; right: 12px;
+  margin: 0;
+  width: 70px;
+  text-align: right;
+  color: var(--card-ink-blue);
+  font: 10px arial, system;
+  line-height: 10px;
+}
+.mod-barometer .barometertrend2 {
+  position: absolute;
+  bottom: 8px; left: 12px;
+  margin: 0;
+  width: 60px;
+  color: var(--card-ink-blue);
+  line-height: 10px;
+  font-size: 10px;
+}
+.mod-barometer .barometertrend2 span { font-weight: 600; color: var(--good); }
+/* nudge the trend text block within its cell (sandbox-tuned) */
+.mod-barometer .barometertrend2 valuetext { position: relative; left: -10px; top: -36px; }
+
+/* inner value wrappers (colour states come from php tags) */
+.mod-barometer .barometerorange { color: var(--card-ink-blue); line-height: 10px; }
+.mod-barometer .barometerorange span { font-weight: 600; color: var(--caution); }
+.mod-barometer .barometerblue { line-height: 10px; }
+.mod-barometer .barometerblue span { font-weight: 600; }
+/* nudge the min text block within its cell (sandbox-tuned) */
+.mod-barometer .barometerblue valuetext { position: relative; left: 7px; top: -62px; }
+
+/* ── converter badge (top-right) ──────────────────────────────────────────── */
+.mod-barometer .barometerconverter {
+  position: absolute;
+  top: 6px; right: 12px;
+  margin: 0;
+}
+.mod-barometer .barometerconvertercircleblue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  width: 3.5rem;
+  border: 1px solid var(--card-bg-2);
+  overflow: hidden;
+  border-radius: 2px;
+  color: var(--card-ink-blue);
+  line-height: 16px;
+  font-family: weathertext2, Helvetica, system;
+  font-size: .85em;
+}
+
+/* ── radial dial + needles (centred overlay) ──────────────────────────────── */
+.mod-barometer .homeweathercompass2 {
+  position: absolute;
+  top: 25px; left: 47px;
+  margin: 0;
+  width: 175px;
+  height: 175px;
+  z-index: 10;
+  text-align: center;
+  font-family: Arial, system;
+  font-weight: 600;
+  line-height: 12px;
+}
+.mod-barometer .homeweathercompass2 > .homeweathercompass-line2 {
+  position: absolute;
+  left: 25px; top: 25px; bottom: 25px;
+  width: 170px; height: 170px;
+  border: 8px solid;
+  border-top: 8px solid var(--line-dark-4);
+  border-right: 8px solid var(--line-dark-4);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(-45deg);
+  margin: auto;
+}
+
+/* pressure text block that sits inside the dial */
+.mod-barometer .text2 {
+  font-size: 18px;
+  margin-left: 35px;
+  margin-top: 75px;
+  color: var(--caution);
+}
+
+/* actual-pressure needle (arrowhead + o-o-o trail) */
+.mod-barometer .weather34barometerarrowactual {
+  position: absolute;
+  top: 0; left: 50%;
+  margin-left: 0;
+  width: 8px; height: 50%;
+  transform-origin: 50% 100%;
+}
+.mod-barometer .weather34barometerarrowactual:after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0;
+  border-color: var(--caution) transparent transparent;
+  transform: translate(-50%, -50%);
+}
+.mod-barometer .weather34barometerarrowactual:before {
+  content: 'o o o';
+  position: absolute;
+  left: 2px; top: -5px;
+  color: var(--caution);
+  font-size: 5px;
+  font-family: Arial, Helvetica, system;
+}
+
+/* min-pressure needle (dot) */
+.mod-barometer .weather34barometerarrowmin {
+  position: absolute;
+  top: 0; left: 50%;
+  margin-left: 0;
+  width: 8px; height: 50%;
+  transform-origin: 50% 100%;
+  z-index: 200;
+}
+.mod-barometer .weather34barometerarrowmin:after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--info-soft);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* max-pressure needle (dot) */
+.mod-barometer .weather34barometerarrowmax {
+  position: absolute;
+  top: 0; left: 50%;
+  margin-left: 0;
+  width: 8px; height: 50%;
+  transform-origin: 50% 100%;
+}
+.mod-barometer .weather34barometerarrowmax:after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--warn-soft-2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── pressure ruler (centred overlay across the dial base) ─────────────────── */
+.mod-barometer .barometerlimits {
+  position: absolute;
+  top: 87px; left: 65px;
+  margin: 0;
+  width: 135px;
+  color: var(--card-ink-soft);
+  font-family: Helvetica, Arial;
+}
+.mod-barometer .weather34-barometerruler {
+  margin: 0;                      /* guard against legacy main.*.css margin leak */
+  position: relative;
+  left: 24px; top: 35px;          /* sandbox-tuned (carries the 28/31 labels) */
+  width: 135px;
+  height: 1px;
+  border: 1px dashed var(--line-dark-6);
+}
+
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] .mod-barometer .barometermax { color: var(--warn-strong); }
+[data-theme="light"] .mod-barometer .barometermin { color: var(--info-4); }
+[data-theme="light"] .mod-barometer .barometertrend2 { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-barometer .barometerlimits { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-barometer .barometerorange { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-barometer .barometerorange span { color: var(--danger); }
+[data-theme="light"] .mod-barometer .barometerblue span { color: var(--info-9-solid); }
+
+[data-theme="light"] .mod-barometer .homeweathercompass2 {
+  color: var(--card-ink-strong);
+  font-size: 12px;
+}
+[data-theme="light"] .mod-barometer .homeweathercompass2 > .homeweathercompass-line2 {
+  top: 20px;
+  border: 8px solid var(--line-soft);
+  border-top: 8px solid var(--line-soft);
+  border-right: 8px solid var(--line-soft);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+[data-theme="light"] .mod-barometer .weather34barometerarrowactual:before { font-size: 7px; }
+[data-theme="light"] .mod-barometer .weather34barometerarrowmax:after { border-color: var(--danger); }
+
+[data-theme="light"] .mod-barometer .barometerconvertercircleblue {
+  background: var(--hum-wet);
+  height: 1.1rem;
+  border: 2px solid var(--line-light);
+  border-radius: 3px;
+  color: var(--accent-ink);
+  font-family: weathertext2;
+}
+
+/* ==== clock.css ==== */
+/* clock module */
+.mod-clock {
+  display: block;
+  position: relative;
+}
+
+/* Replaces .weather34box .value styling that #theTime relied on */
+.mod-clock #theTime {
+  position: absolute;
+  font-size: 26px;
+  font-weight: lighter;
+  color: var(--card-ink-blue);
+  top: 0;
+  left: 0;
+  padding: 0 3px;
+}
+
+.mod-clock .clock {
+  width: 48px;
+  height: 48px;
+}
+
+.mod-clock .weather34box.clock {
+  background-repeat: no-repeat;
+  background-position: left 10px bottom 18px;
+  color: var(--accent-ink)
+}
+
+.mod-clock .weather34box.clock span {
+  color: var(--card-ink-blue);
+  font-weight: 500
+}
+
+.mod-clock .weather34box.clock titlespan {
+  color: var(--good);
+  font-weight: 500
+}
+
+.mod-clock .clock-container {
+  float: left;
+  color: var(--accent-ink);
+  font: 1em weathertext2;
+  top: 10px;
+  list-style: none;
+  width: 140px;
+  height: 1.55em;
+  right: 137px;
+  border: 0;
+  padding-top: 0;
+  line-height: 16px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  background: var(--danger-5)
+}
+
+.mod-clock .calendar34 {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  color: var(--line-soft-4)
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-clock #theTime {
+  color: var(--card-ink-blue);
+}
+
+[data-theme="light"] .mod-clock .clock-container {
+  float: left;
+  color: var(--accent-ink);
+  top: 10px;
+  list-style: none;
+  width: 140px;
+  height: 1.55em;
+  right: 147px;
+  border: 0;
+  padding-top: 0;
+  line-height: 16px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  background: var(--danger-5)
+}
+
+[data-theme="light"] .mod-clock .calendar34 {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  color: var(--line-light)
+}
+
+
+.mod-clock .weather34box.clock {
+  background-color: var(--card-bg);
+  -webkit-box-shadow: inset 0 18px var(--card-shadow-soft);
+  box-shadow: inset 0 18px var(--card-shadow-soft);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+/* ==== conditions.css ==== */
+/* conditions module -- scoped to .mod-conditions */
+.mod-conditions { display: grid; position: relative; width: 100%; height: 0; }
+
+.mod-conditions .updatedtimecurrent {
+  border-radius: 2px
+
+}
+
+.mod-conditions .forecastnexthours span2 {
+  font-family: arial, helvetica, system;
+
+  color: var(--card-ink-blue)
+
+}
+
+.mod-conditions .forecastnexthours span2 {
+  font-size: 12px
+
+}
+
+.mod-conditions .forecasticoncurrent {
+  postion: relative;
+
+  position: relative;
+
+  margin-top: 10px;
+
+  margin-bottom: -5px;
+
+  margin-left: 35px;
+
+  float: left
+
+}
+
+.mod-conditions .forecasticoncurrent {
+  position: relative;
+
+  margin-top: 10px;
+
+  margin-bottom: -5px;
+
+  margin-left: 35px;
+
+  float: left
+
+}
+
+.mod-conditions .forecasticoncurrent span1 {
+  font-size: .9em
+
+}
+
+.mod-conditions .forecastsummary {
+  position: absolute;
+
+  font-family: Arial;
+
+  font-size: 12px;
+
+  line-height: 12px;
+
+  height: 35px;
+
+  padding: 5px;
+
+  margin-top: 20px;
+
+  margin-left: 125px;
+
+  max-width: 120px;
+
+  color: var(--card-ink-blue)
+
+}
+
+.mod-conditions .forecastnexthours {
+  font-size: .7rem;
+
+  position: relative;
+
+  text-align: center;
+
+  margin: 76px auto auto;
+
+  width: 240px;
+
+  line-height: 12px
+
+}
+
+.mod-conditions .cloudconvertercircle2000 {
+  width: 6.0rem;
+
+  font-family: weathertext2;
+
+  height: 1rem;
+
+  line-height: 16px;
+
+  overflow: hidden;
+
+  padding-top: 0
+
+}
+
+.mod-conditions .cloudconvertercircle {
+  align-items: center;
+
+  border: 1px solid var(--card-bg-2);
+
+  -webkit-border-radius: 2px;
+
+  border-radius: 2px;
+
+  font-size: .57rem
+
+}
+
+.mod-conditions .cloudconverter {
+  position: absolute;
+  font-size: 12px;
+
+  margin-top: 7px;
+
+  margin-left: 210px
+
+}
+
+.mod-conditions .cloudconvertercircle2000 {
+  align-items: center;
+
+  border: 1px solid var(--card-bg-2);
+
+  -webkit-border-radius: 2px;
+
+  border-radius: 2px;
+
+  font-size: .57rem
+
+}
+
+.mod-conditions .updatedtimecurrent {
+  margin-top: -18px;
+
+  margin-left: 235px;
+
+  color: var(--card-ink-blue);
+
+  font: .65em weathertext2;
+
+  line-height: 10px;
+
+  background: 0;
+
+  padding: 3px
+
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-conditions .forecastsummary {
+  position: absolute;
+
+  font-family: Arial;
+
+  font-size: 12px;
+
+  line-height: 12px;
+
+  height: 35px;
+
+  padding: 5px;
+
+  margin-top: 20px;
+
+  margin-left: 125px;
+
+  max-width: 120px;
+
+  color: var(--ink-dark-3)
+
+}
+
+[data-theme="light"] .mod-conditions .forecastnexthours span2 {
+  font-family: arial, helvetica, system;
+
+  color: var(--card-ink-blue)
+
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 {
+  width: 6.0rem;
+
+  font-family: weathertext2;
+
+  height: 1.25rem;
+
+  line-height: 16px;
+
+  overflow: hidden;
+
+  padding-top: 0;
+
+  color: var(--accent-ink)
+
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle {
+  align-items: center;
+
+  background: var(--hum-wet);
+
+  border: 2px solid var(--line-light);
+
+  -webkit-border-radius: 4px;
+
+  border-radius: 4px;
+
+  font-size: .57rem
+
+}
+
+[data-theme="light"] .mod-conditions .cloudconverter {
+  position: absolute;
+
+  font-size: 12px;
+
+  margin-top: 7px;
+
+  margin-left: 210px
+
+}
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 {
+  align-items: center;
+
+  background: var(--warn);
+
+  border: 2px solid var(--line-light);
+
+  -webkit-border-radius: 4px;
+
+  border-radius: 4px;
+
+  font-size: .57rem
+
+}
+
+[data-theme="light"] .mod-conditions .updatedtimecurrent {
+  margin-top: -18px;
+
+  font: .65em weathertext2;
+
+  line-height: 10px
+
+}
+
+
+/* Darken on-tile timestamp text for light mode. */
+[data-theme="light"] .mod-conditions .updatedtimecurrent {
+  color: var(--card-ink-dim);
+}
+
+
+[data-theme="light"] .mod-conditions .cloudconvertercircle tyellow,
+[data-theme="light"] .mod-conditions .cloudconvertercircle tblue,
+[data-theme="light"] .mod-conditions .cloudconvertercircle smalltempunit2,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 tyellow,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 tblue,
+[data-theme="light"] .mod-conditions .cloudconvertercircle2000 smalltempunit2 {
+  color: var(--white) !important;
+}
+
+
+/* conditions comma-group first-selector base rules (lost during generation) */
+.mod-conditions .cloudconvertercircle {
+  width: 6.0rem;
+  font-family: weathertext2;
+  height: 1rem;
+  line-height: 16px;
+  overflow: hidden;
+  padding-top: 0
+}
+
+.mod-conditions .forecasticoncurrent span1 {
+  font-family: arial, helvetica, system;
+  color: var(--card-ink-blue)
+}
+
+.mod-conditions .forecastnexthours {
+  font-family: arial, helvetica, system;
+  color: var(--card-ink-blue)
+}
+
+.mod-conditions .forecastnexthours span1 {
+  font-family: arial, helvetica, system;
+  color: var(--card-ink-blue);
+  font-size: 12px
+}
+
+.mod-conditions .updatedtimecurrent {
+  width: 75px;
+  text-align: center
+}
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-conditions {
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: 70px 1fr;
+  gap: 0;
+}
+
+.mod-conditions .forecasticoncurrent {
+  position: absolute !important;
+  left: 35px !important;
+  top: 8px !important;      /* Prod measured: icon at card y28 (was y30, +2 low) */
+  margin: 0 !important;
+  float: none !important;
+  width: 70px !important;
+}
+
+.mod-conditions .forecastsummary {
+  position: absolute !important;
+  left: 125px !important;
+  top: 18px !important;     /* Prod measured: summary at card y38 (was y40, +2 low) */
+  margin: 0 !important;
+}
+
+.mod-conditions .forecastnexthours {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 58px !important;
+  margin: 0 !important;
+  width: 240px !important;
+}
+
+.mod-conditions .cloudconverter {
+  position: absolute !important;
+  left: 210px !important;
+  top: 5px !important;      /* Prod measured: cloudbase pill at card y25 (was y27, +2 low) */
+  margin: 0 !important;
+}
+
+.mod-conditions .updatedtimecurrent {
+  position: absolute !important;
+  left: 235px !important;
+  top: -18px !important;
+  margin: 0 !important;
+}
+
+/* ==== forecast.css ==== */
+/* forecast module -- scoped to .mod-forecast */
+.mod-forecast { display: grid; position: relative; width: 100%; height: 0; top: 5px; /* Prod measured: whole forecast body sat -5px high on dev; nudge wrapper origin down 5 (moonphase pattern) */ }
+
+.mod-forecast .forecastforecastinghome {
+  font-family: weathertext2;
+  color: var(--info-4)
+}
+
+.mod-forecast .forecastforecasthome {
+  position: absolute;
+  width: 305px;
+  background: 0;
+  margin: 0px auto 0 5px;
+  font-size: .65rem;
+  display: block;
+  border-radius: 3px;
+  overflow: hidden
+}
+
+.mod-forecast .forecastforecastinghome {
+  overflow: hidden
+}
+
+.mod-forecast .forecastweekdayhome {
+  font-family: weathertext2;
+  font-size: .93em;
+  color: var(--card-ink-blue)
+}
+
+.mod-forecast .forecastdiv {
+  width: 305px;
+  height: 180px;
+  margin-top: 0
+}
+
+.mod-forecast .forecastforecastinghome {
+  float: left;
+  display: inline;
+  width: 29%;
+  border-radius: 3px;
+  margin: 5px 0 100px 3.25%;
+  height: 140px;
+  padding: 1px;
+  background: 0;
+  border: 1px solid var(--line-faint);
+  color: var(--card-ink-blue)
+}
+
+.mod-forecast .forecastweekdayhome {
+  position: absolutue;
+  text-align: center;
+  padding: 1px;
+  color: var(--card-ink-blue);
+  margin: 0;
+  background: 0
+}
+
+.mod-forecast .forecastforecasthome forecasttemplohome {
+  margin-top: 0;
+  margin-left: 1%;
+  font-weight: 500
+}
+
+.mod-forecast .forecastforecasthome forecasttemphihome span {
+  font-size: .7rem;
+  color: var(--caution)
+}
+
+.mod-forecast .forecastforecasthome forecasttemphihome {
+  font-size: 12px;
+  color: var(--caution)
+}
+
+.mod-forecast .forecastforecasthome forecasttempwindhome span4 {
+  color: var(--info-4);
+  font-family: weathertext2;
+  font-size: .65rem
+}
+
+.mod-forecast .forecastforecasthome forecasttemplohome span {
+  font-size: .7rem
+}
+
+.mod-forecast .forecasthomeicons {
+  margin-bottom: -4px
+}
+
+.mod-forecast .forecasttempdesc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-forecast .forecastforecasthome {
+  position: absolute;
+  width: 305px;
+  background: 0;
+  margin: 2px auto 0 5px;
+  font-size: .65rem;
+  display: block;
+  border-radius: 3px;
+  overflow: hidden
+}
+
+[data-theme="light"] .mod-forecast .forecastweekdayhome {
+  font-family: weathertext2;
+  font-size: .93em;
+  color: var(--card-ink-blue)
+}
+
+[data-theme="light"] .mod-forecast .forecastdiv {
+  width: 305px;
+  height: 180px;
+  margin-top: 5px
+}
+
+[data-theme="light"] .mod-forecast .forecastforecastinghome {
+  float: left;
+  display: inline;
+  width: 29%;
+  border-radius: 3px;
+  margin: 0 0 100px 3.25%;
+  height: 143px;
+  padding: 1px;
+  background: 0;
+  border: 1px solid var(--line-faint);
+  color: var(--card-ink-blue)
+}
+
+[data-theme="light"] .mod-forecast .forecastweekdayhome {
+  position: absolutue;
+  text-align: center;
+  padding: 1px;
+  color: var(--card-ink-blue);
+  margin: 0;
+  background: 0
+}
+
+[data-theme="light"] .mod-forecast .forecasthomeicons {
+  margin-bottom: 0px
+}
+
+[data-theme="light"] .mod-forecast .forecasttempdesc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  margin-bottom: 0
+}
+
+
+/* forecast-large (wularge) card -- scoped to .mod-forecast */
+.mod-forecast .wulargediv,
+.mod-forecast .wulargeforecasthome,
+.mod-forecast .wulargeforecastinghome {
+font-family: weathertext2;
+  color: var(--card-ink-blue)
+}
+.mod-forecast .wulargeforecasthome {
+position: absolute;
+  width: 308px;
+  background: 0;
+  margin: 0 auto 0 10px;
+  font-size: .65rem;
+  display: block;
+  border-radius: 3px;
+  overflow: hidden
+}
+.mod-forecast .wulargediv,
+.mod-forecast .wulargeforecastinghome {
+overflow: hidden
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span2,
+.mod-forecast .wulargeweekdayhome {
+font-family: weathertext2;
+  font-size: .65rem;
+  color: var(--card-ink-blue)
+}
+.mod-forecast .wulargediv {
+width: 310px;
+  height: 180px;
+  margin-top: 3px
+}
+.mod-forecast .wulargeforecastinghome {
+float: left;
+  display: inline;
+  width: 290px;
+  border-radius: 2px;
+  margin: 0 0 100px 1%;
+  height: 140px;
+  padding: 0;
+  background: 0;
+  border: 0px solid var(--line-faint);
+  color: var(--card-ink-blue)
+}
+.mod-forecast .wulargeweekdayhome {
+position: absolutue;
+  text-align: left;
+  padding: 1px;
+  color: var(--card-ink-blue);
+  margin: 0 0 0 5px;
+  background: 0
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetemplohome {
+margin-top: 0;
+  margin-left: 1%;
+  font-weight: 500
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome span {
+font-size: .7rem;
+  color: var(--caution)
+}
+.mod-forecast .wulargeforecasthome wulargetemphihome {
+font-size: 12px;
+  color: var(--caution)
+}
+.mod-forecast .wulargeforecasthome wulargetempwindhome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span4 {
+position: absolute;
+  color: var(--info-4);
+  font-family: weathertext2;
+  font-size: .7rem;
+  float: left
+}
+.mod-forecast wulargetemplohome uv {
+font-weight: 500
+}
+.mod-forecast wulargeforecasthome wulargetemplohome,
+.mod-forecast wulargetemplohome {
+font-size: .7rem;
+  font-weight: 500
+}
+.mod-forecast wulargetemplohome uvspan {
+font-weight: 400
+}
+.mod-forecast .wulargerain,
+.mod-forecast .wulargewindspeedicon {
+display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute
+}
+.mod-forecast .wulargewindspeedicon,
+.mod-forecast wulargetempdesc {
+margin-top: 5px;
+  float: left;
+  font-size: 11px  
+}
+.mod-forecast .wulargehomeicons {
+margin-bottom: -5px;
+  float: left;
+  margin-left: 10px
+}
+.mod-forecast .wulargewindspeedicon {
+margin-left: 10px
+}
+.mod-forecast .wulargerain {
+float: left;
+  margin-left: 10px;
+  margin-top: 30px;
+  font-size: 11px
+}
+.mod-forecast .wulargeheatindex,
+.mod-forecast .wulargeuvindex {
+font-size: .7rem;
+  float: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute
+}
+.mod-forecast .wulargeuvindex {
+margin-top: 5px
+}
+.mod-forecast .wulargeuvindex wuinfo {
+position: absolute;
+  display: inline;
+  left: 98px;
+  text-align: left;
+  width: 8rem;
+  top: 0
+}
+.mod-forecast .wulargeheatindex {
+margin-top: 27px
+}
+.mod-forecast .wulargeheatindex wuinfo {
+position: absolute;
+  display: inline;
+  left: 5px;
+  width: 6em
+}
+[data-theme="light"] .mod-forecast .wulargediv,
+.mod-forecast .wulargeforecasthome,
+.mod-forecast .wulargeforecastinghome {
+font-family: weathertext2;
+  color: var(--card-ink-strong)
+}
+[data-theme="light"] .mod-forecast .wulargeforecasthome wulargetemphihome,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span,
+.mod-forecast .wulargeforecasthome wulargetempwindhome span2,
+.mod-forecast .wulargeweekdayhome {
+font-family: weathertext2;
+  font-size: .65rem;
+  color: var(--card-ink-strong)
+}
+[data-theme="light"] .mod-forecast .wulargeforecastinghome {
+float: left;
+  display: inline;
+  width: 290px;
+  border-radius: 2px;
+  margin: 0 0 100px 1%;
+  height: 140px;
+  padding: 0;
+  background: 0;
+  border: 0px solid var(--line-faint);
+  color: var(--card-ink-strong)
+}
+[data-theme="light"] .mod-forecast .wulargeweekdayhome {
+position: absolutue;
+  text-align: left;
+  padding: 1px;
+  color: var(--card-ink-strong);
+  margin: 0 0 0 5px;
+  background: 0
+}
+
+/* ── forecast comma-group first-selector base rules (lost during generation) ── */
+.mod-forecast .forecastdiv {
+  font-family: weathertext2;
+  color: var(--info-4);
+  overflow: hidden
+}
+
+.mod-forecast .forecastforecasthome {
+  font-family: weathertext2;
+  color: var(--info-cool)
+}
+
+.mod-forecast .forecastforecasthome forecasttemphihome {
+  font-family: weathertext2;
+  font-size: 12px;
+  color: var(--caution);   /* prod parity: main.dark uses var(--orange) (==--caution) here; number colour is on the child tag */
+  margin-top: 0;
+  margin-left: 1%;
+  font-weight: 500
+}
+
+.mod-forecast .forecastforecasthome forecasttempwindhome span {
+  font-family: weathertext2;
+  font-size: .93em;
+  color: var(--card-ink-blue)
+}
+
+.mod-forecast .forecastforecasthome forecasttempwindhome span2 {
+  font-family: weathertext2;
+  font-size: .93em;
+  color: var(--card-ink-blue)
+}
+
+.mod-forecast .forecastforecasthome forecasttempwindhome {
+  color: var(--info-4);
+  font-family: weathertext2;
+  font-size: .65rem
+}
+
+.mod-forecast .forecastforecasthome forecasttemplohome {
+  color: var(--info-cool)
+}
+
+.mod-forecast .forecastforecasthome forecasttemplohome span {
+  color: var(--info-cool)
+}
+
+.mod-forecast forecasttemplohome {
+  font-size: .7rem;
+  font-weight: 500
+}
+
+.mod-forecast forecasttemplohome uv {
+  font-weight: 500
+}
+
+.mod-forecast forecasttemplohome uvspan {
+  font-weight: 400
+}
+
+[data-theme="light"] .mod-forecast .forecastforecasthome forecasttemphihome {
+  color: var(--card-ink-blue)
+}
+
+[data-theme="light"] .mod-forecast .forecastforecasthome forecasttempwindhome span {
+  color: var(--card-ink-blue)
+}
+
+[data-theme="light"] .mod-forecast .forecastforecasthome forecasttempwindhome span2 {
+  color: var(--card-ink-blue)
+}
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-forecast {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0;
+}
+
+.mod-forecast .forecastforecasthome,
+.mod-forecast .wulargeforecasthome {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: start;
+  left: auto !important;
+  top: auto !important;
+}
+
+.mod-forecast .forecastforecasthome {
+  margin: 0px auto 0 5px !important;
+}
+
+.mod-forecast .wulargeforecasthome {
+  margin: 0 auto 0 10px !important;
+}
+
+[data-theme=light] .mod-forecast .forecastforecasthome {
+  margin: 2px auto 0 5px !important;
+}
+
+/* ==== forecastdiscussion.css ==== */
+/* forecastdiscussion — Narrative Forecast Card Scoped CSS */
+
+.mod-fct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px; /* Optimized padding for concise text layout */
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    --blue: var(--info-cool);
+}
+
+/* --- List: Parsed Narrative Lines --- */
+.mod-fct-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; /* Proportional gap for 4 distinct bullets with concise text */
+    width: 100%;
+}
+
+.mod-fct-line {
+    font-size: 0.64rem; /* Enlarged from 0.58rem for improved legibility */
+    color: var(--card-ink-blue);
+    text-align: center;
+    line-height: 1.25; /* Clean and legible line height */
+    width: 98%;
+}
+
+/* --- Utility Classes for PHP Keyword Highlighting ---
+   NOTE: .hl-* are SHARED helpers (used by the language files, e.g.
+   languages/lang.en.php ConfirmOllamaStatus) — deliberately left unprefixed. */
+.hl-orange { color: var(--caution); font-weight: bold; }
+.hl-blue   { color: var(--blue, var(--info-cool));   font-weight: bold; }
+.hl-red    { color: var(--danger);    font-weight: bold; }
+.hl-amber  { color: var(--warn);  font-weight: bold; }
+.hl-green  { color: var(--good);  font-weight: bold; }
+
+/* ── Light theme overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .mod-fct-line {
+    color: var(--ink-dark-2);
+}
+
+/* --- Popout Modal styling --- */
+.mod-fct-clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.mod-fct-clickable:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-mid-2);
+}
+
+.mod-fct-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dialog-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999; /* Higher than dashboard cards */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mod-fct-modal.mod-fct-modal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mod-fct-modal-content {
+    background: var(--dialog-bg-3);
+    border: 1px solid var(--white-faint);
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px var(--shadow-heavy);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.mod-fct-modal.mod-fct-modal-active .mod-fct-modal-content {
+    transform: scale(1);
+}
+
+.mod-fct-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--dialog-bg-2);
+    border-bottom: 1px solid var(--white-faint-2);
+}
+
+.mod-fct-modal-title {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--line-light-3);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.mod-fct-modal-close {
+    font-size: 1.5rem;
+    color: var(--card-ink-soft);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+.mod-fct-modal-close:hover {
+    color: var(--accent-ink);
+}
+
+.mod-fct-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.mod-fct-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .mod-fct-grid {
+        grid-template-columns: 1fr;
+    }
+    .mod-fct-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+.mod-fct-section-card {
+    background: var(--dialog-bg-4);
+    border: 1px solid var(--white-faint-4);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.mod-fct-section-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--white-faint-3);
+    text-align: left;
+}
+
+.mod-fct-section-text {
+    font-size: 0.72rem;
+    color: var(--ink-faint-7);
+    line-height: 1.4;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+/* Borders and header colors for each type */
+.mod-fct-border-red { border-left: 3px solid var(--danger); }
+.mod-fct-border-amber { border-left: 3px solid var(--warn); }
+.mod-fct-border-blue { border-left: 3px solid var(--blue, var(--info-cool)); }
+.mod-fct-border-green { border-left: 3px solid var(--good); }
+
+.mod-fct-text-red { color: var(--danger); }
+.mod-fct-text-amber { color: var(--warn); }
+.mod-fct-text-blue { color: var(--blue, var(--info-cool)); }
+.mod-fct-text-green { color: var(--good); }
+
+/* --- Light theme overrides for modal --- */
+[data-theme="light"] .mod-fct-modal {
+    background: var(--dialog-line);
+}
+[data-theme="light"] .mod-fct-modal-content {
+    background: var(--surface-light-2);
+    border: 1px solid var(--shadow-mid);
+    box-shadow: 0 10px 35px var(--shadow-mid);
+}
+[data-theme="light"] .mod-fct-modal-header {
+    background: var(--line-light-4);
+    border-bottom: 1px solid var(--card-shadow);
+}
+[data-theme="light"] .mod-fct-modal-title {
+    color: var(--ink-dark);
+}
+[data-theme="light"] .mod-fct-modal-close {
+    color: var(--ink-muted);
+}
+[data-theme="light"] .mod-fct-modal-close:hover {
+    color: var(--black);
+}
+[data-theme="light"] .mod-fct-section-card {
+    background: var(--white);
+    border: 1px solid var(--shadow-faint);
+}
+[data-theme="light"] .mod-fct-section-title {
+    border-bottom: 1px solid var(--shadow-faint);
+}
+[data-theme="light"] .mod-fct-section-text {
+    color: var(--menu-line);
+}
+
+/* ==== lightning34.css ==== */
+/* lightning34 — redesigned module */
+
+/*
+ * padding-top (not margin-top) prevents margin collapse through #grid_N.
+ * position:relative establishes containing block for .mod-lt-top-pill.
+ * display:flex + text-align:left overrides .weather-item's global centering.
+ */
+.mod-lt {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* ── Top-right energy pill ────────────────────────────────────────────────── */
+.mod-lt-top-pill {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    border: 1px solid var(--card-surface);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
+    padding: 0 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mod-lt-top-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    color: var(--caution);
+    font-size: 0.65rem;
+}
+
+.mod-lt-top-pill .unit {
+    color: var(--card-ink-blue);
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
+    margin-left: 2px;
+}
+
+/* ── Main row: left col + pill grid ──────────────────────────────────────── */
+.mod-lt-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 44px;
+}
+
+/* ── Left column: badge + distance pill ──────────────────────────────────── */
+.mod-lt-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    width: 85px;
+    flex-shrink: 0;
+    position: relative;
+    left: 10px;
+}
+
+.mod-lt-badge {
+    width: 100%;
+    height: 4.5rem;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    transform: translateZ(0);
+}
+
+.mod-lt-badge-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.mod-lt-badge-top .lbl {
+    font-size: 0.65rem;
+    color: var(--accent-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mod-lt-badge-top .val {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    color: var(--accent-ink);
+}
+
+.mod-lt-badge-bot {
+    background-color: var(--card-bg-2);
+    width: 100%;
+    text-align: center;
+    height: 15px;
+    line-height: 15px;
+    font-size: 0.55rem;
+    color: var(--card-ink-blue);
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    -webkit-border-bottom-left-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.mod-lt-distance-pill {
+    border: 1px solid var(--card-surface);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
+    width: 4rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mod-lt-distance-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    color: var(--caution);
+    font-size: 0.65rem;
+}
+
+.mod-lt-distance-pill .unit {
+    color: var(--card-ink-blue);
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
+    margin-left: 2px;
+}
+
+/* ── Right: pill grid ─────────────────────────────────────────────────────── */
+.mod-lt-grid {
+    display: grid;
+    grid-template-columns: 4rem 4rem;
+    gap: 5px 10px;
+    position: relative;
+    left: -10px;
+}
+
+.mod-lt-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mod-lt-full-width {
+    grid-column: span 2;
+}
+
+.mod-lt-lbl {
+    font-family: weathertext2;
+    font-size: 0.65em;
+    color: var(--card-ink-blue);
+    margin-bottom: 3px;
+}
+
+.mod-lt-pill {
+    border: 1px solid var(--card-surface);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.1rem;
+    line-height: 16px;
+    width: 4rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mod-lt-pill .val {
+    font-family: weathertext2, Arial, sans-serif;
+    color: var(--caution);
+    font-size: 0.65rem;
+}
+
+/* Last strike uses proportional Arial so date text isn't compressed */
+.mod-lt-pill .val.date-text {
+    font-family: Arial, sans-serif;
+    font-size: 0.55rem;
+}
+
+.mod-lt-pill .unit {
+    color: var(--card-ink-blue);
+    font-size: 0.5rem;
+    font-family: Arial, Helvetica, system;
+    margin-left: 2px;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] .mod-lt-badge {
+    border-bottom-color: var(--shadow-mid);
+}
+
+[data-theme="light"] .mod-lt-top-pill,
+[data-theme="light"] .mod-lt-distance-pill,
+[data-theme="light"] .mod-lt-pill {
+    border-color: var(--line-light);
+    background-color: transparent;
+}
+
+/* Darken on-tile lightning pill labels for light mode. Keep var(--white) on colored badge. */
+[data-theme="light"] .mod-lt-top-pill .unit,
+[data-theme="light"] .mod-lt-distance-pill .unit,
+[data-theme="light"] .mod-lt-pill .unit {
+  color: var(--card-ink-blue);
+}
+[data-theme="light"] .mod-lt-badge-bot {
+  color: var(--ink-muted);
+}
+[data-theme="light"] .mod-lt-lbl {
+  color: var(--card-ink-blue);
+}
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Lightning */
+.lightningicon {
+  position: absolute !important;
+  display: inline !important;
+  right: -95px !important;
+  margin-top: 25px !important;
+}
+
+/* ==== localforecast.css ==== */
+/* localforecast.css — Scoped styling for the Local Nowcast dashboard card */
+
+.mod-localforecast {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Top Header Strip ─────────────────────────────────────────────────────── */
+.mod-lf-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.mod-lf-header-left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.mod-lf-term {
+  font-family: weathertext2, Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  color: var(--card-ink-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.mod-lf-wind {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65em;
+  color: var(--card-ink-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 4px;
+}
+
+/* ── Rain Risk Badge (Style B Scaled) ─────────────────────────────────────── */
+.ym-badge {
+  border-radius: 2px;
+  height: 32px;
+  width: 62px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 3px var(--shadow-mid);
+}
+
+.ym-badge-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.ym-lbl {
+  font-size: 0.52em;
+  color: var(--white-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+
+.ym-val {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 0.85em;
+  color: var(--accent-ink);
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+.ym-badge-bot {
+  height: 11px;
+  background: var(--card-bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-ink-blue);
+  font-size: 0.52em;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 11px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* Color states using standard Weather34 color variables */
+.ym-quiet .ym-badge-top  { background: var(--good); }
+.ym-minor .ym-badge-top  { background: var(--warn); }
+.ym-active .ym-badge-top { background: var(--caution); }
+.ym-storm .ym-badge-top  { background: var(--danger); }
+
+/* ── Nowcast Narrative Text Card ─────────────────────────────────────────── */
+.nowcast-text-card {
+  background: var(--card-bg-faint);
+  border: 1px solid var(--line-faint-2);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-height: 52px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+
+.nowcast-quote {
+  font-family: weathertext2, Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--caution);
+  line-height: 0.9;
+  opacity: 0.7;
+  width: 8px;
+  display: inline-block;
+}
+
+.nowcast-sentence {
+  font-family: Arial, sans-serif;
+  font-size: 0.73em;
+  color: var(--card-ink-dim);
+  line-height: 1.35;
+  text-align: left;
+  padding: 0 2px;
+  flex: 1;
+}
+
+/* ── Light Theme Overrides ────────────────────────────────────────────────── */
+[data-theme="light"] .mod-lf-term {
+  color: var(--ink-dark);
+}
+
+[data-theme="light"] .ym-badge {
+  /* border-box would shrink the 32px interior by 2px and clip the fixed chin;
+     content-box keeps the interior identical to dark, border sits outside */
+  box-sizing: content-box;
+  border: 1px solid var(--line-light);
+}
+
+[data-theme="light"] .ym-badge-bot {
+  background: var(--surface-light);
+  color: var(--ink-muted);
+}
+
+[data-theme="light"] .nowcast-text-card {
+  background: var(--line-faint-4);
+  border-color: var(--line-faint-5);
+}
+
+[data-theme="light"] .nowcast-sentence {
+  color: var(--ink-dark);
+}
+
+/* Darken on-tile local-forecast wind label for light mode. */
+[data-theme="light"] .mod-lf-wind {
+  color: var(--ink-dark);
+}
+
+/* ==== moon.css ==== */
+
+/* Fix Forward: Restore missing Phase 3 legacy rules for Moon */
+.moonphasem {
+  position: absolute !important;
+  margin-top: -50px !important;
+  left: -85px !important;
+}
+.luminancem {
+  left: 115px !important;
+}
+.moonphasem span {
+  left: 0 !important;
+}
+.luminancem span {
+  left: 5px !important;
+}
+
+/* ==== moonphase.css ==== */
+/* moonphase module -- scoped to .mod-moonphase */
+.mod-moonphase { display: grid; position: relative; width: 100%; height: 0; top: 2px; /* Prod measured: whole card sat -2px high on dev; nudge origin down 2 */ }
+
+.mod-moonphase .moonset {
+  padding-top: 5px
+
+}
+
+.mod-moonphase .moonrise {
+  margin-top: -5px;
+
+  margin-left: 0;
+
+  font-size: 12px
+
+}
+
+.mod-moonphase .moonset {
+  margin-top: -32px;
+
+  margin-left: 80px
+
+}
+
+.mod-moonphase .fullmoon {
+  margin-top: -6px;
+
+  margin-left: 0;
+
+  font-size: 12px
+
+}
+
+.mod-moonphase .moonsetblue {
+  width: 65px;
+
+  line-height: 10px
+
+}
+
+.mod-moonphase .moonsetblue {
+  font-weight: 600;
+
+  color: var(--accent-ink)
+
+}
+
+.mod-moonphase .moonphasemoduleposition {
+  position: relative;
+
+  left: 100px;
+
+  margin-top: 3px;
+
+  font-family: weathertext2
+
+}
+
+.mod-moonphase .moonset1 span {
+  font-family: weathertext2
+
+}
+
+.mod-moonphase .moonset1 {
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility
+
+}
+
+.mod-moonphase .moonrise1 {
+  color: var(--card-ink-blue)
+
+}
+
+.mod-moonphase .newmoon1 {
+  position: absolute;
+
+  padding-top: 5px;
+
+  line-height: 10px;
+
+  text-align: center
+
+}
+
+.mod-moonphase .moonset1 {
+  width: 75px;
+
+  font-size: .55rem;
+
+  -moz-osx-font-smoothing: grayscale
+
+}
+
+.mod-moonphase .newmoon1 {
+  font-size: .55rem;
+
+  width: 120px
+
+}
+
+.mod-moonphase .moonrise1 {
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  width: 75px;
+  font-size: .55rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--card-ink-blue);
+  top: 0;
+  margin-left: -105px
+}
+
+.mod-moonphase .moonrise1 span {
+  color: var(--card-ink-blue);
+
+  margin-left: 25px
+
+}
+
+.mod-moonphase .moonset1 {
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  width: 75px;
+  font-size: .55rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin-top: 120px;
+  margin-left: -105px;
+  color: var(--card-ink-blue)
+}
+
+.mod-moonphase .moonset1 span {
+  color: var(--card-ink-blue);
+
+  margin-left: 15px
+
+}
+
+.mod-moonphase .newmoon1 {
+  color: var(--card-ink-blue);
+
+  font-family: weathertext2
+
+}
+
+.mod-moonphase .fullmoon1 {
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  font-size: .55rem;
+  width: 120px;
+  color: var(--card-ink-blue);
+  font-family: weathertext2;
+  top: 0;
+  margin-left: 105px
+}
+
+.mod-moonphase .fullmoon1 span {
+  margin-left: 8px
+
+}
+
+.mod-moonphase .newmoon1 {
+  margin-top: 120px;
+
+  margin-left: 105px
+
+}
+
+.mod-moonphase .newmoon1 span {
+  margin-left: 5px
+
+}
+
+.mod-moonphase .meteorshower {
+  position: absolute;
+  padding-top: 5px;
+  line-height: 10px;
+  text-align: center;
+  font-size: .55rem;
+  width: 120px;
+  color: var(--card-ink-blue);
+  font-family: weathertext2;
+  margin: 130px auto 110px -5px
+}
+
+.mod-moonphase .weather34moonphasem2 {
+  position: absolute;
+
+  height: 4.1rem;
+
+  width: 7.4rem;
+
+  overflow: hidden;
+
+  color: var(--card-ink-blue);
+
+  line-height: 8px;
+
+  font-size: .65em;
+
+  margin-top: 65px;
+
+  font-family: weathertext2
+
+}
+
+.mod-moonphase .weather34moonphasem2 {
+  align-items: center;
+
+  justify-content: center;
+
+  left: -110px
+
+}
+
+.mod-moonphase .weather34luminancem2 {
+  position: absolute;
+  height: 4.1rem;
+  width: 7.4rem;
+  overflow: hidden;
+  color: var(--card-ink-blue);
+  line-height: 8px;
+  font-size: .65em;
+  margin-top: 65px;
+  font-family: weathertext2;
+  align-items: center;
+  justify-content: center;
+  left: 100px;
+}
+
+.mod-moonphase .weather34moonmodule {
+  margin-left: 35px;
+
+  margin-top: 45px
+
+}
+
+.mod-moonphase .weather34moonmodule svg {
+  width: auto;
+
+  color: var(--line-soft-3)
+
+}
+
+.mod-moonphase .weather34moonmodulepos {
+  position: absolute;
+
+  top: -20px;
+
+  left: 75px
+
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-moonphase .moonsetblue {
+  width: 65px;
+
+  margin-top: 0;
+
+  line-height: 10px
+
+}
+
+[data-theme="light"] .mod-moonphase .moonrisered {
+  position: relative;
+
+  background: var(--temp-hot-2)
+
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 {
+  -moz-font-smoothing: antialiased
+
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 span {
+  color: var(--card-ink-blue)
+
+}
+
+[data-theme="light"] .mod-moonphase .moonrise1 span {
+  margin-left: 25px
+
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 {
+  margin-top: 120px;
+
+  margin-left: -105px
+
+}
+
+[data-theme="light"] .mod-moonphase .moonset1 span {
+  margin-left: 15px
+
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  color: var(--card-ink-blue);
+
+  font-family: weathertext2
+
+}
+
+[data-theme="light"] .mod-moonphase .fullmoon1 {
+  top: 0;
+
+  margin-left: 115px;
+
+  font-size: .55rem;
+
+  width: 100px
+
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  font-size: .55rem;
+
+  width: 110px
+
+}
+
+[data-theme="light"] .mod-moonphase .newmoon1 {
+  margin-top: 120px;
+
+  margin-left: 110px
+
+}
+
+[data-theme="light"] .mod-moonphase .weather34moonphasem2 {
+  position: absolute;
+
+  height: 4.1rem;
+
+  width: 7.4rem;
+
+  overflow: hidden;
+
+  color: var(--card-ink-blue);
+
+  line-height: 8px;
+
+  font-size: .65em;
+
+  margin-top: 65px;
+
+  font-family: weathertext2
+
+}
+
+[data-theme="light"] .mod-moonphase .weather34moonmodule svg {
+  width: auto;
+
+  color: var(--ink-light)
+
+}
+
+
+/* Darken on-tile moon phase labels for light mode. */
+[data-theme="light"] .mod-moonphase .moonrise1,
+[data-theme="light"] .mod-moonphase .moonrise1 span,
+[data-theme="light"] .mod-moonphase .moonset1 {
+  color: var(--card-ink-blue);
+}
+
+/* ==== radar.css ==== */
+/* radar — scoped to .mod-radar */
+
+.mod-radar {
+  position: relative;
+  width: 100%;
+  height: 155px;
+  overflow: hidden;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.mod-radar-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  transform-origin: 0 0;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* ==== rain-totals.css ==== */
+/* Rainfall Totals card — rebuilt as a clean flexbox component alongside the other
+ * top-bar YEAR cards. Its styles now live in css/modules/topyears.css (shared by
+ * .mod-rain-totals and .mod-topyear). This file is intentionally empty; the old
+ * absolute-positioned rules were removed in the year-card rebuild. */
+
+/* ==== rainfall.css ==== */
+/* ── RAINFALL MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
+.mod-rainfall {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 2px;
+  color: var(--card-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+/* 2-column main wrapper */
+.mod-rainfall-grid {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* LEFT COLUMN */
+.mod-rainfall-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; 
+  padding-left: 9px; /* Exactly x14 from card left edge (9px + 5px card padding) */
+  width: 120px;
+  height: 140px;
+  position: relative;
+}
+
+/* Graphic Container */
+.mod-rainfall-graphic-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  /* Not flex centering inner elements anymore! We want exact Prod relative placement */
+}
+
+/* Beaker Overrides */
+.mod-rainfall .weather34i-rairate-bar {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  pointer-events: none;
+}
+
+/* framework.base.css #raincontainer is absolute w208 h170 overflow:hidden with
+ * margin-top:-70/left:-20 — that offset AND clip mangled the beaker. Neutralise it
+ * so the beaker anchors cleanly to .weather34i-rairate-bar and isn't cut off. */
+.mod-rainfall #raincontainer {
+  position: static !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: none;
+}
+
+#weather34rainbeaker {
+  position: absolute;
+  top: 15px;          /* validated vs prod: beaker at card x29 y60 */
+  left: 18px;
+  border: 4px solid var(--card-surface);
+  border-top: 0;
+  border-radius: 0 0 2px 2px;
+  height: 100px;
+  width: 100px;
+  background: url(../rain/rainmarker.svg) no-repeat;
+  background-position: center top;
+  pointer-events: auto;
+}
+
+#weather34rainbeaker:before,
+#weather34rainbeaker:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 5px;
+  border: 5px solid var(--card-surface);
+  border-bottom: 0;
+  border-radius: 2px;
+}
+
+#weather34rainbeaker:before {
+  left: -10px;
+}
+
+#weather34rainbeaker:after {
+  right: -10px;
+}
+
+#weather34rainwater {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--info-9);
+  border-radius: 0 0 2px 2px;
+  opacity: 0.8;
+  max-height: 98px;
+  min-height: 1px;
+  pointer-events: none;
+}
+
+/* Big Value (Rain Today) Overlay */
+.mod-rainfall-big-value {
+  position: absolute;
+  /* validated vs prod: teal box at card x55 y107 */
+  top: 62px;
+  left: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--info-cool);
+  border-radius: 3px;
+  width: 3.1rem;
+  height: 2.5rem;
+  pointer-events: auto;
+}
+
+.mod-rainfall .raintoday1 {
+  /* Prod measured */
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 17.1px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.mod-rainfall .raintoday1 smallrainunita {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 7.2px;
+  font-weight: 500;
+  color: var(--white);
+  margin-left: 2px;
+}
+
+
+/* RIGHT COLUMN */
+.mod-rainfall-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 140px;
+}
+
+.mod-rainfall-top-pill {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 12px;   /* validated vs prod: pill right edge ~x304 */
+}
+
+.mod-rainfall .rainconvertercircle {
+  /* Inherits from framework.base.css: flex, center, border, border-radius */
+  width: 4.2rem;         /* prod converter is 67px, not 51 */
+  overflow: hidden;
+  line-height: 16px;
+  /* Prod measured */
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
+  color: var(--info-cool);
+}
+
+.mod-rainfall .rainconvertercircle smallrainunit {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: var(--card-ink);
+  margin-left: 2px;
+}
+
+
+/* 2x2 Grid */
+.mod-rainfall-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  padding: 0 5px;
+}
+
+.mod-rainfall-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* RESTORED TO CENTER TO FIX PILLS SHIFTING RIGHT */
+  justify-content: center;
+  position: relative;
+}
+
+valuetextheading1 {
+  /* Prod measured */
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.9px;
+  font-weight: 500;
+  color: var(--card-ink);
+  line-height: 15px;
+  width: 100%;
+  text-align: center; /* restored to center alignment */
+  position: relative;
+  left: -6px;          /* sandbox-tuned: nudge 2x2 headings left */
+}
+
+.mod-rainfall .rainmodulehome {
+  /* Overrides from absolute to static */
+  position: static !important;
+  margin: 0 !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: baseline;
+  /* Prod pill: full 1px border in --card-surface (var(--card-surface)), radius 2px.
+     (was border-left:0 + --line-light → cut-off left + wrong pale colour) */
+  border: 1px solid var(--card-surface);
+  border-radius: 2px;
+}
+
+.mod-rainfall raiblue {
+  /* Prod measured */
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
+  color: var(--info-cool);
+  line-height: 16px;
+}
+
+.mod-rainfall smallrainunit2 {
+  /* Prod measured */
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--card-ink);
+  margin-left: 2px;
+}
+
+
+/* Bottom Pill */
+.mod-rainfall-bot-pill {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.mod-rainfall .rainratemodulehome {
+  /* Inherits from framework.base.css: border-radius, width */
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: auto;
+  line-height: 16px;
+}
+
+rainratetextheading {
+  /* Prod measured */
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 7.8px;
+  font-weight: 400;
+  color: var(--card-ink);
+  margin-right: 2px;
+}
+
+/* Light theme overrides */
+[data-theme="light"] .mod-rainfall #weather34rainbeaker {
+  border-color: var(--line-soft);
+}
+[data-theme="light"] .mod-rainfall #weather34rainbeaker:before,
+[data-theme="light"] .mod-rainfall #weather34rainbeaker:after {
+  border-color: var(--line-soft);
+}
+[data-theme="light"] .mod-rainfall .rainconvertercircle {
+  background: var(--hum-wet);
+  border: 1px solid var(--line-light);
+  color: var(--accent-ink);
+}
+[data-theme="light"] .mod-rainfall .rainratemodulehome {
+  border: 1px solid var(--line-light);
+  box-shadow: inset 4px 0 0 0 var(--info-cool);
+}
+[data-theme="light"] .mod-rainfall-big-value {
+  background: var(--info-9-soft);
+  color: var(--accent-ink);
+  border-bottom: 8px solid var(--line-soft);
+}
+[data-theme="light"] .mod-rainfall .raintoday1,
+[data-theme="light"] .mod-rainfall .raintoday1 smallrainunita {
+  color: var(--accent-ink);
+}
+
+/* Nullify all old framework leaks */
+.mod-rainfall .heatcircle, .mod-rainfall .heatcircle2, .mod-rainfall .heatcircle3, .mod-rainfall .heatcircle4, .mod-rainfall .heatcircle7 {
+  position: static !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.mod-rainfall .tempconverter, .mod-rainfall .tempconverter1 {
+  position: static !important;
+  margin: 0 !important;
+}
+
+.mod-rainfall .rainrateextra, .mod-rainfall .rainconverter {
+  position: static !important;
+  margin: 0 !important;
+}
+
+.mod-rainfall .raincontainer1 {
+  position: static !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* NO USER OFFSETS! */
+
+/* ==== solar.css ==== */
+/* solaruv module — scoped to .mod-solaruv */
+/* Extracted from css/main.dark.css & css/main.light.css so this card has zero
+   dependency on main.*.css. Selectors scoped under .mod-solaruv.
+   Dark base rules (shared var-driven values) */
+
+.mod-solaruv {
+  display: grid !important;
+  position: relative;
+  width: 100%;
+  height: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.mod-solaruv .weather34luxvalue,
+.mod-solaruv .weather34solarvalue { position: absolute; }
+
+.mod-solaruv .weather34solarvalue { line-height: 10px; }
+
+.mod-solaruv .weather34luxvalue {
+  margin-left: 251px;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 10px;
+  text-align: center;
+  max-width: 20px;
+  z-index: 1;
+}
+
+.mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
+
+.mod-solaruv .uvtoday1-3 { background: var(--good); }
+.mod-solaruv .uvtodaydark { background: var(--ink-teal-dark); }
+
+.mod-solaruv .uvcontainer1 { font-family: weathertext2; }
+
+.mod-solaruv .uvcontainer1 {
+  position: relative;
+  margin: 40px 10px 10px 40px;
+  top: 15px;
+}
+
+.mod-solaruv .uvtoday1,
+.mod-solaruv .uvtoday1-3,
+.mod-solaruv .uvtoday11,
+.mod-solaruv .uvtoday4-5,
+.mod-solaruv .uvtoday6-8,
+.mod-solaruv .uvtoday9-10,
+.mod-solaruv .uvtodaydark {
+  font-family: weathertext2;
+  width: 5rem;
+  height: 4.5rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  display: flex;
+}
+
+.mod-solaruv .uvtoday1,
+.mod-solaruv .uvtoday1-3,
+.mod-solaruv .uvtoday11,
+.mod-solaruv .uvtoday4-5,
+.mod-solaruv .uvtoday6-8,
+.mod-solaruv .uvtoday9-10,
+.mod-solaruv .uvtodaydark {
+  font-size: 1.45rem;
+  padding-top: 7px;
+  color: var(--accent-ink);
+  border-bottom: 15px solid var(--card-bg-2);
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.mod-solaruv .uvcaution,
+.mod-solaruv .uvtrend { position: absolute; font-size: .65rem; }
+
+.mod-solaruv .uvcaution time { font-size: .55rem; }
+
+.mod-solaruv .uvtoday4-5 { background: var(--warn); }
+.mod-solaruv .uvtoday6-8 { background: var(--warn-soft); }
+.mod-solaruv .uvtoday9-10 { background: var(--red-fade); }
+.mod-solaruv .uvtoday11 { background: var(--purple-4); }
+
+.mod-solaruv .uvcaution {
+  margin-left: 33px;
+  margin-top: 112px;
+  font-family: Arial, Helvetica, system;
+}
+
+.mod-solaruv .uvtrend {
+  margin-left: 47px;
+  margin-top: 60px;
+  z-index: 1;
+  color: var(--accent-ink);
+}
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtoday,
+.mod-solaruv .solarluxtodaydark {
+  height: 1.75rem;
+  display: flex;
+  border-bottom: 11px solid var(--card-bg-2);
+  font-family: weathertext2;
+}
+
+.mod-solaruv .solartodaycontainer1 { position: relative; left: 110px; top: 70px; }
+
+.mod-solaruv .solarluxtoday,
+.mod-solaruv .solarluxtodaydark {
+  width: 3.15rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  font-size: .75rem;
+  padding-top: 0;
+  color: var(--accent-ink);
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: var(--warn-soft);
+}
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtodaydark {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+
+.mod-solaruv .solarluxtodayword {
+  margin-left: 133px;
+  margin-top: 110px;
+  font-size: .65em;
+  color: var(--card-ink-dim);
+  position: absolute;
+  z-index: 10;
+  padding: 2px;
+}
+
+.mod-solaruv .luxtodaycontainer1 { position: relative; left: -26px; top: 70px; }
+
+.mod-solaruv .luxtoday,
+.mod-solaruv .luxtodaydark {
+  width: 3.17rem;
+  -o-border-radius: 2px;
+  font-size: .75rem;
+  padding-top: 0;
+  color: var(--accent-ink);
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: var(--warn-soft);
+}
+
+.mod-solaruv .luxtodayword,
+.mod-solaruv .weather34luxword,
+.mod-solaruv .weather34solarword {
+  font-size: .65em;
+  color: var(--card-ink-dim);
+  position: absolute;
+  z-index: 10;
+}
+
+.mod-solaruv .luxtodayword { margin-left: 228px; margin-top: 110px; padding: 2px; }
+
+.mod-solaruv .luxtodaydark,
+.mod-solaruv .solarluxtodaydark { background: var(--ink-teal-dark); }
+
+.mod-solaruv .weather34luxword,
+.mod-solaruv .weather34solarword { margin-top: 92px; }
+
+.mod-solaruv .weather34solarvalue {
+  margin-left: 30px;
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+  max-width: 20px;
+  z-index: 1;
+}
+
+.mod-solaruv .weather34solarvalue span { font-size: 10px; display: block; z-index: 1; }
+
+.mod-solaruv .weather34luxword { margin-left: 242px; }
+.mod-solaruv .weather34solarword { margin-left: 153px; }
+
+.mod-solaruv .luxwrap,
+.mod-solaruv .solarwrap {
+  position: absolute;
+  border: 1px solid var(--line-faint-3);
+  border-bottom: 3px solid var(--line-faint-3);
+  width: 44pt;
+  padding: 0;
+  height: 30pt;
+  margin-top: 70px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mod-solaruv .solarwrap { margin-left: 136px; }
+.mod-solaruv .luxwrap { margin-left: 221px; }
+
+.mod-solaruv .uvcautionbig {
+  display: flex;
+  height: 1rem;
+  width: 5.3rem;
+  border: 1px solid var(--card-bg-2);
+  font-size: .6rem;
+  position: absolute;
+  margin-left: 220px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  margin-top: 5px;
+  color: var(--card-ink-blue);
+}
+
+.mod-solaruv .uvcautionbig span { color: var(--caution); padding-right: 3px; }
+
+/* Light theme overrides (color only differences) */
+[data-theme="light"] .mod-solaruv .uvcautionbig { color: var(--card-ink-strong); }
+
+
+.mod-solaruv .uvcontainer1 {
+  right: 0;
+  left: -10px;
+  float: left;
+  bottom: 0
+}
+
+
+/* --- Phase 2 CSS Grid Refactor --- */
+
+.mod-solaruv {
+  grid-template-columns: 120px 85px 111px;
+  grid-template-rows: 0px 55px 15px 40px 17px;
+  gap: 0;
+}
+
+/* Non-overlapping structure: grid-placed */
+
+.mod-solaruv .uvcautionbig {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 15px !important;
+  width: 5.3rem !important;
+}
+
+.mod-solaruv .weather34solarvalue {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 30px !important;
+  width: 20px !important;
+}
+
+.mod-solaruv .weather34luxvalue {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  margin: 5px 0 0 46px !important;
+  width: 20px !important;
+}
+
+.mod-solaruv .uvcontainer1 {
+  position: relative !important;
+  grid-column: 1 / 2;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 55px 0 0 30px !important;
+  top: 0 !important;
+  left: 0 !important;
+  float: none !important;
+}
+
+.mod-solaruv .solarwrap {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 70px 0 0 16px !important;
+}
+
+.mod-solaruv .luxwrap {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 2 / 5;
+  justify-self: start;
+  align-self: start;
+  margin: 70px 0 0 16px !important;
+}
+
+.mod-solaruv .solarluxtodayword {
+  position: relative !important;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  justify-self: start;
+  align-self: start;
+  margin: 0 0 0 13px !important;
+  width: 65px !important;
+}
+
+.mod-solaruv .luxtodayword {
+  position: relative !important;
+  grid-column: 3 / 4;
+  grid-row: 5 / 6;
+  justify-self: start;
+  align-self: start;
+  margin: 0 0 0 23px !important;
+  width: 48px !important;
+}
+
+/* Overlays inside grid items / columns */
+
+.mod-solaruv .uvtrend {
+  position: absolute !important;
+  left: 47px !important;
+  top: 60px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .uvcaution {
+  position: absolute !important;
+  left: 33px !important;
+  top: 112px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .weather34solarword {
+  position: absolute !important;
+  left: 153px !important;
+  top: 92px !important;
+  margin: 0 !important;
+}
+
+.mod-solaruv .weather34luxword {
+  position: absolute !important;
+  left: 242px !important;
+  top: 92px !important;
+  margin: 0 !important;
+}
+
+/* ==== sun.css ==== */
+/* ── SUN MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
+.mod-sun {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px 2px;
+  /* Prod ground truth (getComputedStyle): weathertext2, silver var(--card-ink), weight 500. */
+  color: var(--card-ink);
+  font-family: weathertext2, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 8.4px;
+}
+
+/* 3-column main wrapper — stretch so the side columns fill the card height and
+ * distribute their three blocks top/middle/bottom (matches Prod's spread). */
+.mod-sun .sun-grid {
+  display: flex;
+  width: 100%;
+  min-height: 136px;      /* matches Prod's ~136px content span so blocks don't ride high */
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+/* sandbox-tuned vertical placement (nudge content down to sit like Prod) */
+.mod-sun .sun-grid   { position: relative; top: 4px; }
+.mod-sun .sun-col-left   { position: relative; top: 7px; }
+.mod-sun .sun-col-right  { position: relative; top: 8px; }
+.mod-sun .sun-col-center { position: relative; top: 5px; }
+
+/* Left & Right Columns */
+.mod-sun .sun-col-left,
+.mod-sun .sun-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 88px;
+  text-align: center;
+}
+
+/* Side blocks: weathertext2 w500, line-height 8px (tight). Font 9px (sandbox-tuned
+ * up from Prod's measured 8.4px). One rule for labels + values — no per-element size. */
+.mod-sun .sun-grid .sun-col-left .sun-block,
+.mod-sun .sun-grid .sun-col-right .sun-block {
+  font-size: 9px;
+  line-height: 8px;
+}
+
+.mod-sun .sun-grid .sun-col-left .sun-block value,
+.mod-sun .sun-grid .sun-col-right .sun-block value {
+  font-size: 9px;
+  font-weight: 500;
+  display: inline-block;   /* let the markup's <br> control line breaks — block
+                              here doubled up with <br> and left gaps between lines */
+}
+
+/* sandbox-tuned per-line vertical rhythm inside the side blocks */
+.mod-sun .daylighttext   { position: relative; top: 3px; }
+.mod-sun .moonphasetext  { position: relative; top: -1px; }
+.mod-sun .moonphasevalue { position: relative; top: 1px; }
+.mod-sun .moonrisetext   { position: relative; top: 2px; }
+.mod-sun .moonrisevalue  { position: relative; top: 4px; }
+.mod-sun .sunrisetext    { position: relative; top: -1px; }
+.mod-sun .sunrisetime    { position: relative; top: 1px; }
+.mod-sun .firstlighttext { position: relative; top: 3px; }
+.mod-sun .sunsettext     { position: relative; top: -2px; }
+.mod-sun .lastlighttext  { position: relative; top: 2px; }
+.mod-sun .luminancetext  { position: relative; top: -1px; }
+.mod-sun .luminancevalue { position: relative; top: 1px; }
+.mod-sun .moonsettext    { position: relative; top: 2px; }
+.mod-sun .moonsetvalue   { position: relative; top: 4px; }
+.mod-sun .darknesstext   { position: relative; top: 2px; }
+.mod-sun .darknesshours  { position: relative; top: -1px; }
+
+/* Center Column (The Graphic) */
+.mod-sun .sun-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* ── Typography & Elements ──────────── */
+.mod-sun .daylightword {
+  font-size: 9.12px;        /* Prod measured */
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: var(--card-ink);
+  position: relative;
+  top: -4px;                /* sandbox-tuned */
+}
+
+.mod-sun .elevationword {
+  font-size: 9.12px;        /* Prod measured */
+  font-weight: 500;
+  margin-top: -5px;
+  position: relative;
+  top: 3px;
+}
+.mod-sun .elevationword maxred {
+  font-size: 8.66px;
+  color: var(--caution);  /* Prod orange */
+}
+
+/* Circles / Icons */
+.mod-sun weather34daylightdaycircle {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--info-2-bg);
+  position: relative;
+  left: 0; top: 0;
+  margin-right: 2px;         /* sit just LEFT of the value (was overlapping the "1") */
+}
+.mod-sun weather34darkdaycircle {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ink-faint-3);
+  position: relative;
+  left: 0; top: 0;
+  margin-left: 3px;          /* sit just RIGHT of the value */
+}
+.mod-sun blueu { color: var(--info-2); }
+/* Prod colours specific values: moonrise time teal, moonset time orange */
+.mod-sun .moonrisevalue { color: var(--info-5); }
+.mod-sun .moonsetvalue  { color: var(--caution); }
+
+/* ── Containment Box: The Canvas Graphic ──────────── */
+.mod-sun .sun-graphic-container {
+  position: relative;
+  width: 130px;
+  height: 110px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  transform: scale(0.9);
+  transform-origin: center top;
+}
+
+/* The actual drawing */
+.mod-sun .sundialcontainerdiv2 {
+  position: absolute;
+  top: -8px; 
+  left: 2px;
+  width: 130px; height: 130px;
+}
+.mod-sun #sundialcontainer {
+  position: relative;
+  top: -8px;
+  left: 0px;
+  width: 100%; height: 100%;
+}
+.mod-sun .suncanvasstyle {
+  position: absolute;
+  top: 6px; 
+  left: -2px;
+  width: 130px; height: 130px;
+  z-index: 10;
+}
+
+/* The background grey circle. */
+.mod-sun .circleborder {
+  position: absolute;
+  top: 1px; 
+  left: 9px;
+  width: 112px; height: 112px;
+  border-radius: 50%;
+  border: 4px solid var(--card-bg-2);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* The rotating sun dot. Wrapper is 112x112, top/left 9px */
+.mod-sun .weather34sunclock {
+  position: absolute;
+  top: 16px; 
+  left: 7px;
+  width: 112px; height: 112px;
+  z-index: 20;
+}
+.mod-sun #poscircircle {
+  position: absolute;
+  top: 63px; 
+  left: -4px; 
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--caution);
+  border: 1px solid var(--line-white-2);
+  box-sizing: border-box;
+}
+
+/* The text inside the circle */
+.mod-sun .daylightvalue1 {
+  position: absolute;
+  top: 17px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+  color: var(--card-ink);
+}
+.mod-sun .daylightvalue1 hours {
+  font-family: weathertext2;
+  font-size: 20px;                 /* Prod measured */
+  color: var(--card-ink);
+  position: relative;
+  left: -6px;
+  top: 0px;
+}
+.mod-sun .daylightvalue1 minutes {
+  font-family: weathertext2;
+  font-size: 20px;                 /* Prod measured */
+  color: var(--card-ink);
+  position: relative;
+  left: 10px;
+  top: 0px;
+}
+/* inner circle labels (Prod: hrs/min 9px, Estimated ~9px, Till Sunset 10.45px) */
+.mod-sun .daylightvalue1 .estimatedtext,
+.mod-sun .daylightvalue1 .hrsmintext { font-size: 9px; }
+.mod-sun .daylightvalue1 .tillsunsettext { font-size: 10.45px; }
+
+/* Fix missing icons for rise/set */
+.mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--caution); margin-left:2px;}
+.mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}
+
+/* ==== temperature.css ==== */
+/* ── TEMPERATURE MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
+.mod-temperature {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 2px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible; /* the 'chin' was clipping lowered 2x2/bot-pill rows */
+}
+
+/* Framework Leak Neutralization! */
+.mod-temperature .heatcircle,
+.mod-temperature .heatcircle2,
+.mod-temperature .heatcircle3,
+.mod-temperature .heatcircle4,
+.mod-temperature .heatcircle5,
+.mod-temperature .heatcircle6,
+.mod-temperature .heatcircle7 {
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  float: none !important;
+}
+
+.mod-temperature .tempconverter,
+.mod-temperature .tempconverter1,
+.mod-temperature .tempconverter2 {
+  position: static !important;
+  margin: 0 !important;
+}
+
+.mod-temperature .outside0-5,
+.mod-temperature .outside11-15,
+.mod-temperature .outside16-20,
+.mod-temperature .outside21-25,
+.mod-temperature .outside26-30,
+.mod-temperature .outside31-35,
+.mod-temperature .outside36-40,
+.mod-temperature .outside41-45,
+.mod-temperature .outside50,
+.mod-temperature .outside6-10,
+.mod-temperature .outsideminus,
+.mod-temperature .outsideminus10,
+.mod-temperature .outsideminus5,
+.mod-temperature .outsidezero {
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* Hide raw float values emitted directly into the DOM */
+.mod-temperature .temptrendx {
+  font-size: 0px !important;
+  color: transparent !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px !important;
+}
+.mod-temperature trendmovementfallingx,
+.mod-temperature trendmovementrisingx,
+.mod-temperature trendmovementsteadyx {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.08px;
+  font-weight: 500;
+  color: var(--ink-faint-9);
+  display: flex;
+  align-items: baseline;
+}
+
+
+/* 2-column main wrapper */
+.mod-temperature-grid {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  padding: 0 5px;
+}
+
+/* LEFT COLUMN */
+.mod-temperature-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 130px;
+  position: relative;
+}
+
+.mod-temperature .tempcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Big Value */
+.mod-temperature .maxdata {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 8.25px;
+  font-weight: 500;
+  color: var(--white);
+  position: static !important;
+  margin: 0 0 5px 0 !important;
+}
+
+.mod-temperature .tempcontainer > div[class^="outside"] {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 25.6px;
+  font-weight: 500;
+  color: var(--ink-bright);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.mod-temperature smalltempunit {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 15.36px;
+  font-weight: 500;
+  color: var(--ink-bright);
+  margin-left: 2px;
+}
+
+/* RIGHT COLUMN */
+.mod-temperature-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 150px;
+  position: relative;
+}
+
+.mod-temperature-top-pill {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
+  margin-bottom: 2px;
+}
+
+.mod-temperature .tempconvertercircle16-20,
+.mod-temperature div[class^="tempconvertercircle"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.2rem;
+  overflow: hidden;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
+}
+
+.mod-temperature smalltempunit2 {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 8.8px;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+/* 2x2 Grid */
+.mod-temperature-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  padding: 0 5px;
+}
+
+.mod-temperature-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+}
+
+.mod-temperature .heatcircle-content,
+.mod-temperature .inheatcircle-content,
+.mod-temperature .inheatcircle2-content {
+  width: auto !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+valuetextheading2 {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.9px;
+  font-weight: 500;
+  color: var(--card-ink);
+  line-height: 12px;
+  text-align: center;
+}
+
+.mod-temperature div[class*="tempmodulehome"],
+.mod-temperature div[class*="intempmodulehome"] {
+  display: flex !important;
+  justify-content: center;
+  align-items: baseline;
+  border: 1px solid var(--card-surface);   /* grey, matching .temphumcircle* (was pale --line-light) */
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  position: static !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  
+  font-family: Arial, sans-serif;
+  font-size: 10.4px;
+  font-weight: 400;
+  color: var(--card-ink);
+  line-height: 14px;
+}
+
+/* Bottom Pills Row */
+.mod-temperature-bot-pills {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.mod-temperature .tempindoorextra,
+.mod-temperature .tempindoorextra1,
+.mod-temperature .tempindoorextra2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* INDOOR LAYOUT SPECIFICS */
+.mod-temperature-1x2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mod-temperature-indoor-graphic {
+  position: relative;
+  width: 140px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mod-temperature .indoorhomesvg1 {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 110px;
+  height: 110px;
+  color: var(--card-bg-2);
+  z-index: 1;
+}
+
+.mod-temperature .indoorhomesvg1 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mod-temperature .indoortrendhouse1 {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: var(--accent-ink);
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.mod-temperature .indoorhomevalue1 {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+}
+
+.mod-temperature .weather34indoorword {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 10px;
+  color: var(--card-ink-blue);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.mod-temperature .tempindoorconverter {
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* Light theme overrides */
+[data-theme="light"] .mod-temperature div[class*="tempmodulehome"],
+[data-theme="light"] .mod-temperature div[class*="intempmodulehome"] {
+  border-color: var(--line-soft);
+  color: var(--accent-ink);
+}
+
+[data-theme="light"] .mod-temperature .maxdata {
+  color: var(--card-ink-strong);
+}
+
+[data-theme="light"] .mod-temperature trendmovementfallingx,
+[data-theme="light"] .mod-temperature trendmovementrisingx,
+[data-theme="light"] .mod-temperature trendmovementsteadyx {
+  color: var(--card-ink-blue) !important;
+}
+
+[data-theme="light"] .mod-temperature .weather34indoorword {
+  color: var(--card-ink-strong);
+}
+
+
+/* User Visual Sandbox Offsets */
+.mod-temperature-col-left valuetext {
+  position: relative !important;
+  left: -9px !important;
+  top: 78px !important;
+}
+
+.mod-temperature-col-left .maxdata {
+  position: relative !important;
+  left: 0px !important;
+  top: 19px !important;
+}
+
+.mod-temperature-bot-pills .tempindoorextra1 valuetextheading2 {
+  position: relative !important;
+  left: 35px !important;   /* aligned: label → x165 (was x163 → +3 from container, -1 here) */
+  top: 2px !important;
+}
+
+.mod-temperature-bot-pills .tempindoorextra2 valuetextheading2 {
+  position: relative !important;
+  left: 5px !important;   /* aligned: label → x238 (was x240 → -1 from container, -1 here) */
+  top: 1px !important;
+}
+
+.mod-temperature-2x2 {
+  position: relative !important;
+  left: 3px !important;   /* sandbox-tuned */
+  top: 2px !important;
+}
+
+.mod-temperature-bot-pills {
+  position: relative !important;
+  left: 3px !important;   /* sandbox-tuned */
+  top: 17px !important;
+}
+.mod-temperature-grid {
+  position: relative !important;
+  left: -3px !important;  /* sandbox-tuned */
+  top: 15px !important;
+}
+.mod-temperature-col-left {
+  position: relative !important;
+  left: 14px !important;  /* sandbox-tuned */
+  top: 2px !important;    /* sandbox-tuned */
+}
+.mod-temperature-bot-pills .tempindoorextra1 {
+  position: relative !important;
+  left: -1px !important;   /* aligned: value box → left-col grid x166 (was x163, +3) */
+  top: -1px !important;
+}
+.mod-temperature-bot-pills .tempindoorextra2 {
+  position: relative !important;
+  left: -1px !important;   /* aligned: value box → right-col grid x239 (was x240, -1) */
+}
+/* Reference pills sit the value box 1px right of the label; these two had label
+   and value at the same x, so bump only the value box +1 to hit the grid
+   (left col x166, right col x239). Generic [class*] so it holds across temp ranges. */
+.mod-temperature-bot-pills .tempindoorextra1 [class*="tempmodulehome"],
+.mod-temperature-bot-pills .tempindoorextra2 [class*="tempmodulehome"] {
+  position: relative !important;
+  left: 1px !important;
+}
+.mod-temperature-top-pill [class^="tempconvertercircle"] {
+  position: relative !important;
+  left: 1px !important;
+  top: -13px !important;  /* sandbox-tuned (all temp ranges, not just 16-20) */
+}
+.mod-temperature-bot-pills .tempindoorextra {
+  position: relative !important;
+  left: 12px !important; top: -1px !important;   /* sandbox-tuned */
+}
+
+.mod-temperature-bot-pills .tempindoorextra valuetextheading2 {
+  position: relative !important;
+  left: 13px !important;
+  top: 2px !important;
+}
+
+/* Fix Big Value placement */
+.mod-temperature-col-left div[class^="outside"] {
+  position: relative !important;
+  top: 25px !important; /* lower matching prod */
+}
+
+/* ── Box overlay (match prod): the outside* gradient FILLS the tempcontainer; the
+ *    max/min sits over its top and the trend over its bottom. Was: max/min stacked
+ *    ABOVE the gradient (floating in black) with a grey gap below. ── */
+.mod-temperature-col-left .tempcontainer {
+  position: relative !important;
+  width: 96px !important;
+  height: 88px !important;
+  margin: 0 !important;
+}
+.mod-temperature-col-left .tempcontainer > div[class^="outside"] {
+  position: absolute !important;
+  top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  padding: 0 !important;               /* framework padding-top:10px shrank the paint area */
+  box-sizing: border-box !important;
+  background-size: 100% 100% !important;   /* keep the data-coded temp gradient, fill the box */
+  align-items: center !important;
+  z-index: 1;
+}
+.mod-temperature-col-left .tempcontainer > .maxdata {
+  position: absolute !important;
+  top: 5px !important; left: 0 !important; right: 0 !important;
+  z-index: 2; text-align: center; margin: 0 !important;
+}
+.mod-temperature-col-left .tempcontainer > .temptrendx {
+  position: absolute !important;
+  bottom: 3px !important; left: 0 !important; right: 0 !important;
+  top: auto !important; margin: 0 !important; z-index: 2;
+}
+.mod-temperature-col-left .tempcontainer valuetext {
+  position: static !important; top: auto !important; left: auto !important;
+}
+
+/* ══ INDOOR temperature card (indoortemperature.php) ══════════════════════════
+ * indoortemperature.php reuses .mod-temperature + temperature.css (same wrapper as
+ * the main Temperature card). These sandbox-tuned offsets are SCOPED to the indoor
+ * card via its data-module so shared classes (grid, temphumcircle, tempmodulehome,
+ * heatcircle7, converter) don't move the main card. Higher specificity + !important
+ * override the unscoped main-card rules for the indoor card only. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorred1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoororange1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indooryellow1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorgreen1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorblue1 { left: -1px !important; top: 1px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomesvg1 svg { position: relative !important; left: 13px !important; top: -44px !important; width: 180px !important; height: 180px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .temphumcircle35-60 { position: relative !important; left: 4px !important; top: 3px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill .tempconvertercircleyellow { position: relative !important; left: -3px !important; top: -29px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoortrendhouse1 { left: 106px !important; top: 30px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-grid { position: relative !important; left: 1px !important; top: 13px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .weather34indoorword { left: 109px !important; top: 74px !important; height: 14px !important; }
+/* the big indoor temp pill: every other element in the moved/enlarged house zone got a
+ * scoped offset except this one, so it was stranded at its base position (top:65 + left:50%
+ * translateX(-50%), centered on the old zone) — it fell out the bottom-right of the house.
+ * The base translateX(-50%) throws it far right in this card's hand-tuned geometry, so we
+ * position by the left edge instead (transform:none). left:0/top:44 seats it in the house
+ * body, under INDOOR and above the trend. Indoor temps are always ~2-digit °F, so the
+ * fixed left edge stays visually centered. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomevalue1 { left: 0px !important; top: 44px !important; transform: none !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .inheatcircle-content valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
+/* position:relative stays !important (beats framework position:static !important); left/top
+ * are NOT !important so a sandbox override (which carries !important) can move the pill. */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 0; top: 0; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.heatcircle7 { position: relative !important; left: 4px !important; top: 35px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .inheatcircle2-content valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }
+
+/* ==== top-lightning.css ==== */
+/* top-lightning module -- scoped to .mod-top-lightning */
+.mod-top-lightning { display: grid; position: relative; width: 100%; height: 0; }
+
+.mod-top-lightning .wfstrikes {
+  font-size: 9px;
+
+  top: -12px;
+
+  color: var(--card-ink-blue)
+
+}
+
+.mod-top-lightning .wfstrikes1 {
+  position: absolute;
+
+  font-size: 9px;
+
+  top: -12px;
+
+  left: 12px;
+
+  color: var(--card-ink-blue)
+
+}
+
+.mod-top-lightning .wfstrike {
+  left: -100px
+
+}
+
+.mod-top-lightning .minwordl {
+  margin-top: 35px; 
+
+  font-size: .55rem;
+
+  color: var(--accent-ink);
+
+  z-index: 1;
+
+  position: absolute          
+
+}
+
+.mod-top-lightning .minwordlow {
+  margin-top: 35px;    
+
+  font-size: .55rem;
+
+  color: var(--card-bg-2);
+
+  z-index: 1;
+
+  position: absolute    
+
+}
+
+.mod-top-lightning .minwordlow {
+  margin-left: 48px
+
+}
+
+.mod-top-lightning .minwordl {
+  margin-left: 30px
+
+}
+
+.mod-top-lightning .wfstrike {
+  padding-right: 4px;
+
+  padding-left: 0
+
+}
+
+.mod-top-lightning .wflaststrike {
+  margin-left: 55px;
+
+  margin-top: 33px;
+
+  font-size: .55rem;
+
+  width: 200px
+
+}
+
+.mod-top-lightning .wfstrike {
+  margin-top: 39px;
+
+  font-size: 0
+
+}
+
+.mod-top-lightning .lightningicon {
+  position: absolute;
+
+  display: inline;
+
+  right: -95px;
+
+  margin-top: 25px;
+
+}
+
+.mod-top-lightning .mintimedatex {
+  position: absolute;
+
+  margin-top: 61px;
+
+  font-size: .54rem;
+
+  z-index: 1;
+
+  color: var(--card-ink-blue);
+
+  width: 50px
+
+}
+
+.mod-top-lightning .mintimedatex {
+  margin-left: 17px
+
+}
+
+
+/* -- Light theme overrides -- */
+[data-theme="light"] .mod-top-lightning .wfstrikes {
+  font-size: 9px
+
+}
+
+[data-theme="light"] .mod-top-lightning .wfstrikes1 {
+  position: absolute;
+
+  font-size: 9px;
+
+  top: -12px;
+
+  left: 12px;
+
+  color: var(--card-ink-strong)
+
+}
+
+[data-theme="light"] .mod-top-lightning .minwordlow {
+  margin-top: 35px;
+
+  font-size: .55rem;
+
+  color: var(--card-ink-blue);
+
+  z-index: 1;
+
+  position: absolute
+
+}
+
+[data-theme="light"] .mod-top-lightning .minwordlow {
+  margin-left: 49px
+
+}
+
+[data-theme="light"] .mod-top-lightning .wflaststrike {
+  position: absolute;
+
+  margin-left: 55px;
+
+  margin-top: 33px;
+
+  font-size: .55rem;
+
+  width: 200px
+
+}
+
+[data-theme="light"] .mod-top-lightning .wfstrike {
+  position: absolute;
+
+  margin-top: 39px;
+
+  font-size: 0;
+
+  left: -100px
+
+}
+
+[data-theme="light"] .mod-top-lightning .mintimedatex {
+  position: absolute;
+
+  margin-top: 61px;
+
+  font-size: .54rem;
+
+  z-index: 1;
+
+  color: var(--card-ink-blue);;
+
+  width: 50px
+
+}
+
+
+/* Darken on-tile strike label for light mode. */
+[data-theme="light"] .mod-top-lightning .wfstrikes {
+  color: var(--card-ink-blue);
+}
+
+
+/* ==== topyears.css ==== */
+/* ── Top-bar YEAR cards — clean rebuild ───────────────────────────────────────
+ * Rainfall Totals · Wind Gust Year · Temperature Year.
+ *
+ * Flexbox flow: [left pill] [year ghost] [right pill]. Each pill matches Prod:
+ * a coloured top (cap + value) and a dark "chin" strip across the bottom with the
+ * Total/date label INSIDE it — one fixed 53x38 card (Prod's badge geometry, its
+ * 11px border-bottom = the chin). No position:absolute widgets, no magic margins.
+ * Type in px, tuned to Prod (value 10.8px; root font-size is a stable 16px here).
+ *
+ * Markup: top_{rainfallfyearmonth,windgustyear,temperatureyear}.php via
+ * top_year_helpers.php. Shared by .mod-rain-totals and .mod-topyear. */
+
+/* The framework anchors BOTH .title and .value at top:0 (they overlap; legacy
+ * cards self-offset with margins). Fill the zone BELOW the ~14px title and
+ * flex-center the content. Scoped by the STATIC data-module attribute and forced
+ * with !important so no responsive/theme rule can strand it back at top:0. */
+.weather34box[data-module="top_rainfallfyearmonth.php"] .value,
+.weather34box[data-module="top_windgustyear.php"] .value,
+.weather34box[data-module="top_temperatureyear.php"] .value {
+  position: absolute !important;
+  top: 15px !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mod-rain-totals,
+.mod-topyear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* one pill = coloured top + dark chin, fixed 53x38 like Prod */
+.mod-rain-totals .yt-pill,
+.mod-topyear .yt-pill {
+  display: flex;
+  flex-direction: column;
+  width: 53px;
+  height: 38px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  overflow: hidden;
+  text-align: center;
+  color: var(--accent-ink);
+}
+
+/* coloured value area (colour applied here, so nothing sits behind the chin) */
+.mod-rain-totals .yt-top,
+.mod-topyear .yt-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1px;
+  line-height: 1.02;
+}
+
+.mod-rain-totals .yt-cap,
+.mod-topyear .yt-cap { font-size: 9px; opacity: .9; }
+
+.mod-rain-totals .yt-val,
+.mod-topyear .yt-val { font-family: weathertext2; font-size: 11px; }
+
+.mod-rain-totals .yt-unit,
+.mod-topyear .yt-unit { font-size: 8px; padding-left: 1px; }
+
+/* dark chin strip across the bottom, label centered inside it (Prod's 11px edge) */
+.mod-rain-totals .yt-chin,
+.mod-topyear .yt-chin {
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg-2);
+  color: var(--card-ink);
+  font-size: 8.5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mod-rain-totals .yt-year,
+.mod-topyear .yt-year {
+  font-family: weathertext2;
+  font-size: 19px;
+  color: var(--ink-faint-5);
+  line-height: 1;
+}
+
+/* colour states — on the value area only, so nothing peeks behind the chin */
+.yt-red     .yt-top { background: var(--danger); }
+.yt-orange  .yt-top { background: var(--temp-hot-2); }
+.yt-yellow1 .yt-top { background: var(--warn); }
+.yt-yellow2 .yt-top { background: var(--warn-8); }
+.yt-green   .yt-top { background: var(--good); }
+.yt-blue    .yt-top { background: var(--info-cool); }
+
+/* ==== wind.css ==== */
+/* ── WIND MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */
+.mod-wind {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 2px;
+  color: var(--card-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+/* 3-column main wrapper */
+.mod-wind-grid {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Left & Right Columns */
+.mod-wind-col-left,
+.mod-wind-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 85px;
+  height: 120px;
+  text-align: center;
+}
+
+.mod-wind-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mod-wind-block value {
+  font-size: 24.8px;
+  font-family: weathertext2, Arial, sans-serif;
+  color: var(--card-ink);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;   /* unit stacks BELOW the number (Prod layout) */
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  line-height: 1;
+}
+.mod-wind-block value unit {
+  font-size: 10px;
+  margin-left: 0;
+  color: var(--card-ink);
+  font-family: Arial, sans-serif;
+}
+
+.mod-wind-block-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Labels */
+.mod-wind-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--card-ink);
+  margin-top: 2px;
+}
+.bft-text, .wind-run-text {
+  font-size: 10.4px;
+}
+
+/* Center Column (The Graphic) */
+.mod-wind-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+/* The Compass Graphic Container */
+.mod-wind-graphic-container {
+  position: relative;
+  width: 130px;
+  height: 120px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mod-wind .homeweathercompass1 {
+  position: absolute;
+  top: -25px; 
+  left: 50%;
+  margin-left: -87.5px;
+  width: 175px; 
+  height: 175px;
+  z-index: 1;
+}
+
+.mod-wind .homeweathercompass-line1 {
+  position: absolute;
+  top: 25px; left: 25px; right: 25px; bottom: 25px;
+  border-radius: 50%;
+  border-left: 8px solid var(--line-compass);
+  border-top: 8px solid var(--line-compass-2);
+  border-right: 8px solid var(--line-compass);
+  border-bottom: 8px solid var(--line-compass-2);
+}
+
+/* Fix arrow 1 */
+.mod-wind .thearrow1 {
+  width: 10px;
+  height: 50%;
+}
+
+/* Center text */
+.mod-wind-center-text {
+  position: absolute;
+  top: 30px;
+  text-align: center;
+  z-index: 10;
+}
+.mod-wind-deg {
+  font-family: weathertext2;
+  font-size: 23.2px;
+  font-weight: 500;
+  color: var(--card-ink);
+}
+.mod-wind-dir {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--card-ink);
+  display: block;
+  margin-top: 4px;
+}
+.mod-wind-dir span {
+  color: var(--green);
+}
+
+/* Specifics */
+/* Left top-block = Prod's "Max 15.9 mph" (grey "Max" + orange value + small unit)
+ * on one line, "Gust (time)" plain below. Value is inline within the label line. */
+.wind-max-gust-val {
+  color: var(--caution) !important;
+  font-size: 10.2px !important;
+  font-family: weathertext2, Arial, sans-serif;
+  font-weight: 500;
+  display: inline;
+  line-height: 1;
+}
+.wind-max-gust-val unit {
+  font-size: 7.2px !important;
+  color: var(--card-ink);
+  margin-left: 2px;
+  font-family: Arial, sans-serif;
+}
+
+.wind-conv-val { color: var(--green); font-size: 10.2px; font-family: weathertext2; }
+.wind-conv-unit { color: var(--card-ink); font-size: 8px; font-family: Arial; margin-left: 2px;}
+
+/* Pill Overrides (Disable the legacy absolutism) */
+.mod-wind .weather34beaufort1-3,
+.mod-wind .weather34beaufort3-4,
+.mod-wind .weather34beaufort4-5,
+.mod-wind .weather34beaufort6,
+.mod-wind .weather34windrun {
+  position: static !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  font-family: weathertext2, Arial, sans-serif;
+}
+
+.mod-wind .weather34beaufort1-3,
+.mod-wind .weather34beaufort3-4,
+.mod-wind .weather34beaufort4-5,
+.mod-wind .weather34beaufort6 {
+  font-size: 11.2px;
+}
+
+.mod-wind .weather34windrun {
+  color: var(--ink-faint-9);
+  font-size: 9.5px;
+}
+
+/* Top-right unit-conversion badge = a pill like Prod's "8.2 kmh"
+ * (matches the beaufort/windrun pill: 1px border, 2px radius, transparent). */
+.mod-wind .wind-conv-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-mid);
+  border-radius: 2px;
+  padding: 0 5px;
+  margin-top: 0;
+  position: relative;
+  left: 6px; top: 1px;      /* sandbox-tuned */
+  font-size: 10px;
+}
+
+/* ── sandbox-tuned positions ─────────────────────────────────────────────── */
+.mod-wind-graphic-container .homeweathercompass1 { left: 65px; top: -9px; }
+.mod-wind-deg { position: relative; top: 19px; }
+.mod-wind-dir { position: relative; top: 12px; }
+.mod-wind-col-left  .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
+.mod-wind-col-right .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
+.mod-wind-col-left  .mod-wind-block.mid-block value { position: relative; top: 12px; }
+.mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 16px; }
+.mod-wind-col-left  .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 16px; }
+.mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 21px; }
+.mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; left: 0; top: -1px; }
+.mod-wind-col-right .mod-wind-block-small.top-block { position: relative; left: 5px; top: 3px; }
+.mod-wind .mod-wind-grid .mod-wind-col-left .mod-wind-block-small.top-block .mod-wind-label { position: relative; left: -7px; top: 2px; font-size: 9px; }
+.mod-wind-label.wind-max-top { position: relative; left: -8px; top: 1px; font-size: 9px; }
+
+/* SVG */
+svg { vertical-align: middle; }
+

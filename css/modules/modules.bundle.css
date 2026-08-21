@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 15:13:24 UTC
+   Generated: 2026-08-21 15:52:24 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4379,11 +4379,11 @@ valuetextheading2 {
  * card via its data-module so shared classes (grid, temphumcircle, tempmodulehome,
  * heatcircle7, converter) don't move the main card. Higher specificity + !important
  * override the unscoped main-card rules for the indoor card only. */
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorred1,
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoororange1,
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indooryellow1,
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorgreen1,
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorblue1 { left: -1px !important; top: 1px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--hot,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--warm,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--mild,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--cool,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--cold { left: -1px !important; top: 1px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomesvg1 svg { position: relative !important; left: 13px !important; top: -44px !important; width: 180px !important; height: 180px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .temphumcircle35-60 { position: relative !important; left: 4px !important; top: 3px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill .tempconvertercircleyellow { position: relative !important; left: -3px !important; top: -29px !important; }

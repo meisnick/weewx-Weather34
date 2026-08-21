@@ -1428,7 +1428,7 @@ wfstriketoday {
 }
 
 .feelsindoorcircleyellow,
-indooryellow1 {
+.mod-indoor-temp--mild {
   background: var(--warn)
 }
 
@@ -1437,11 +1437,11 @@ indoortrends {
   margin-left: 35px
 }
 
-indoorblue1,
-indoorgreen1,
-indoororange1,
-indoorred1,
-indooryellow1 {
+.mod-indoor-temp--cold,
+.mod-indoor-temp--cool,
+.mod-indoor-temp--warm,
+.mod-indoor-temp--hot,
+.mod-indoor-temp--mild {
   font-family: weathertext2, Helvetica, system;
   width: 3.4rem;
   height: 2.6rem;
@@ -1460,22 +1460,22 @@ indooryellow1 {
   top: -5px
 }
 
-indoorred1 {
+.mod-indoor-temp--hot {
   background: var(--temp-hot-4-solid)
 }
 
-indoororange1 {
+.mod-indoor-temp--warm {
   background: var(--caution)
 }
 
-indoorgreen1 {
+.mod-indoor-temp--cool {
   background: var(--good)
 }
 
 .feelsindoorcircleblue,
 .raintoday1,
 .suncircleblue,
-indoorblue1,
+.mod-indoor-temp--cold,
 topblue1 {
   background: var(--info-cool)
 }

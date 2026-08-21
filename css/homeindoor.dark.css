@@ -170,11 +170,11 @@ purple {
   color: #c0c0c0;
   margin-left: 5px;
 }
-indoorblue1,
-indoorgreen1,
-indoororange1,
-indoorred1,
-indooryellow1 {
+.mod-indoor-temp--cold,
+.mod-indoor-temp--cool,
+.mod-indoor-temp--warm,
+.mod-indoor-temp--hot,
+.mod-indoor-temp--mild {
   padding: 5px;
 }
 .indoorhomesvg1 {
@@ -223,11 +223,11 @@ indooryellow1 {
   left: 0;
 }
 
-indoorblue1,
-indoorgreen1,
-indoororange1,
-indoorred1,
-indooryellow1 {
+.mod-indoor-temp--cold,
+.mod-indoor-temp--cool,
+.mod-indoor-temp--warm,
+.mod-indoor-temp--hot,
+.mod-indoor-temp--mild {
   font-family: weathertext, Arial, Helvetica, system;
   width: 3.4rem;
   height: 1.7rem;
@@ -247,19 +247,19 @@ indooryellow1 {
   margin-left: 53px;
   top: -14px;
 }
-indoorred1 {
+.mod-indoor-temp--hot {
   background: #e27667;
 }
-indoororange1 {
+.mod-indoor-temp--warm {
   background: #ff8841;
 }
-indoorgreen1 {
+.mod-indoor-temp--cool {
   background: #9aba2f;
 }
-indoorblue1 {
+.mod-indoor-temp--cold {
   background: #01a4b4;
 }
-indooryellow1 {
+.mod-indoor-temp--mild {
   background: rgba(233, 171, 74, 1);
 }
 smallrainunit {

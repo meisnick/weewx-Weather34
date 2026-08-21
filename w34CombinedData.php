@@ -1306,6 +1306,14 @@ else
     $weather['rainStartTime'] = 'All Time';
 }
 
+// Indoortemperature includes w34CombinedData.php which populates $weather.
+// But w34CombinedData can check if $fixture_weather_override is set.
+if (isset($GLOBALS['fixture_weather_override']) && is_array($GLOBALS['fixture_weather_override'])) {
+    foreach ($GLOBALS['fixture_weather_override'] as $k => $v) {
+        $weather[$k] = $v;
+    }
+}
+
 $weather['consoleLowBattery'] = intval($weewxapi[171]); # Console battery, 0 when battery is good, 1 when battery is low
 $weather['stationLowBattery'] = intval($weewxapi[172]); # Station battery, 0 when battery is good, 1 when battery is low
 

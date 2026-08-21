@@ -460,8 +460,11 @@ valuetextheading2 {
  * card via its data-module so shared classes (grid, temphumcircle, tempmodulehome,
  * heatcircle7, converter) don't move the main card. Higher specificity + !important
  * override the unscoped main-card rules for the indoor card only. */
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indooryellow1 { left: -69px !important; top: -21px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoororange1 { left: -1px !important; top: 1px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorred1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoororange1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indooryellow1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorgreen1,
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic indoorblue1 { left: -1px !important; top: 1px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomesvg1 svg { position: relative !important; left: 13px !important; top: -44px !important; width: 180px !important; height: 180px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .temphumcircle35-60 { position: relative !important; left: 4px !important; top: 3px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill .tempconvertercircleyellow { position: relative !important; left: -3px !important; top: -29px !important; }

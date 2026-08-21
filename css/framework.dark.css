@@ -419,7 +419,6 @@ suptempindoor {
   color: var(--card-ink)
 }
 
-.weather34box,
 .mod-box {
   border: 2px solid var(--card-line);
   border-top: 1px;
@@ -436,8 +435,6 @@ suptempindoor {
   box-sizing: border-box
 }
 
-.weather34box .title,
-.weather34box .value,
 .mod-box .title,
 .mod-box .value {
   position: absolute;
@@ -445,20 +442,16 @@ suptempindoor {
   color: var(--card-ink)
 }
 
-.weather34box.indoor span,
 .mod-box.indoor span {
   color: var(--card-ink);
   font-weight: 500
 }
 
-.weather34box.indoor titlespan,
 .mod-box.indoor titlespan {
   color: var(--good);
   font-weight: 500
 }
 
-.weather34box.alert span,
-.weather34box.earthquake span,
 .mod-box.alert span,
 .mod-box.earthquake span {
   color: var(--caution);
@@ -793,7 +786,6 @@ body {
   width: 170px
 }
 
-.weather34box .value1,
 .mod-box .value1 {
   position: absolute;
   font-size: 14px;
@@ -2092,7 +2084,6 @@ body {
   background: var(--page-bg);
 }
 
-[data-theme="light"] .weather34box,
 [data-theme="light"] .mod-box {
   border: 1px solid var(--card-line);
   background-color: var(--card-bg);
@@ -2101,8 +2092,6 @@ body {
   color: var(--card-ink-blue);
 }
 
-[data-theme="light"] .weather34box .title,
-[data-theme="light"] .weather34box .value,
 [data-theme="light"] .mod-box .title,
 [data-theme="light"] .mod-box .value {
   color: var(--card-ink-blue);

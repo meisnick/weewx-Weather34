@@ -214,7 +214,6 @@ $mods = array_values(array_unique($mods));
     if(tag==='html'||tag==='body') return false;
     if(e.id==='sbx'||e.id==='sbxov') return false;
     if(e.classList && (e.classList.contains('weather-item')||e.classList.contains('weather-container')||
-       e.classList.contains('weather34box')||e.classList.contains('weather34box-toparea')||
        e.classList.contains('mod-box')||e.classList.contains('mod-box-topbar')||
        e.classList.contains('title')||e.classList.contains('value')||e.classList.contains('moduletitle'))) return false;
     return true;
@@ -251,7 +250,6 @@ $mods = array_values(array_unique($mods));
     if(!el) return true;
     if(el.id==='sbx') return true;
     return el.classList && (el.classList.contains('weather-item')||el.classList.contains('weather-container')||
-      el.classList.contains('weather34box')||el.classList.contains('weather34box-toparea')||
       el.classList.contains('mod-box')||el.classList.contains('mod-box-topbar'));
   }
   // Build the SHORTEST descendant selector that is unique inside the module. Walks up

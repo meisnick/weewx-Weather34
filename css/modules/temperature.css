@@ -317,7 +317,7 @@ valuetextheading2 {
 [data-theme="light"] .mod-temperature div[class*="tempmodulehome"],
 [data-theme="light"] .mod-temperature div[class*="intempmodulehome"] {
   border-color: var(--line-soft);
-  color: var(--accent-ink);
+  color: var(--card-ink); /* dark ink on the light pill; --accent-ink is #fff → invisible here */
 }
 
 [data-theme="light"] .mod-temperature .maxdata {

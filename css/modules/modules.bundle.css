@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 20:16:21 UTC
+   Generated: 2026-08-21 21:29:40 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4236,7 +4236,7 @@ valuetextheading2 {
 [data-theme="light"] .mod-temperature div[class*="tempmodulehome"],
 [data-theme="light"] .mod-temperature div[class*="intempmodulehome"] {
   border-color: var(--line-soft);
-  color: var(--accent-ink);
+  color: var(--card-ink); /* dark ink on the light pill; --accent-ink is #fff → invisible here */
 }
 
 [data-theme="light"] .mod-temperature .maxdata {

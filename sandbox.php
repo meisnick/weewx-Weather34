@@ -48,8 +48,8 @@ if (isset($_GET['frame'])) {
       .sbx-hidden{visibility:hidden !important}</style>';
     echo '</head><body>';
     if ($isTop) {
-        echo '<div class="weather34box-toparea" style="width:250px;display:block">'
-           . '<div class="weather34box" data-module="' . htmlspecialchars($module) . '">'
+        echo '<div class="mod-box-topbar" style="width:250px;display:block">'
+           . '<div class="mod-box" data-module="' . htmlspecialchars($module) . '">'
            . '<div class="title">&#9432; SANDBOX</div>'
            . '<div class="value"><div id="sbx">' . $frag . '</div></div></div></div>';
     } else {
@@ -215,6 +215,7 @@ $mods = array_values(array_unique($mods));
     if(e.id==='sbx'||e.id==='sbxov') return false;
     if(e.classList && (e.classList.contains('weather-item')||e.classList.contains('weather-container')||
        e.classList.contains('weather34box')||e.classList.contains('weather34box-toparea')||
+       e.classList.contains('mod-box')||e.classList.contains('mod-box-topbar')||
        e.classList.contains('title')||e.classList.contains('value')||e.classList.contains('moduletitle'))) return false;
     return true;
   }
@@ -250,7 +251,8 @@ $mods = array_values(array_unique($mods));
     if(!el) return true;
     if(el.id==='sbx') return true;
     return el.classList && (el.classList.contains('weather-item')||el.classList.contains('weather-container')||
-      el.classList.contains('weather34box')||el.classList.contains('weather34box-toparea'));
+      el.classList.contains('weather34box')||el.classList.contains('weather34box-toparea')||
+      el.classList.contains('mod-box')||el.classList.contains('mod-box-topbar'));
   }
   // Build the SHORTEST descendant selector that is unique inside the module. Walks up
   // adding ancestor segments until querySelectorAll matches exactly one element, so a

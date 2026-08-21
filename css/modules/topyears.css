@@ -16,7 +16,10 @@
  * with !important so no responsive/theme rule can strand it back at top:0. */
 .weather34box[data-module="top_rainfallfyearmonth.php"] .value,
 .weather34box[data-module="top_windgustyear.php"] .value,
-.weather34box[data-module="top_temperatureyear.php"] .value {
+.weather34box[data-module="top_temperatureyear.php"] .value,
+.mod-box[data-module="top_rainfallfyearmonth.php"] .value,
+.mod-box[data-module="top_windgustyear.php"] .value,
+.mod-box[data-module="top_temperatureyear.php"] .value {
   position: absolute !important;
   top: 15px !important;
   left: 0 !important;

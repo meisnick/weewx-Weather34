@@ -266,9 +266,9 @@ $popupVars = compact('chartinfo','menucharticonpage','info','webcamicon','webcam
   cursor:pointer;font-family:arial,helvetica;display:flex;align-items:center;gap:6px}
 #edit-toggle:hover{background:rgba(50,52,60,.95)}
 body.edit-mode .weather-item,
-body.edit-mode .weather34box{cursor:grab;outline:1px dashed rgba(240,94,64,.5)}
+body.edit-mode .mod-box{cursor:grab;outline:1px dashed rgba(240,94,64,.5)}
 body.edit-mode .weather-item:active,
-body.edit-mode .weather34box:active{cursor:grabbing}
+body.edit-mode .mod-box:active{cursor:grabbing}
 .sortable-ghost{opacity:.35}
 .sortable-chosen{outline:2px solid rgba(240,94,64,.8) !important}
 #edit-status{position:fixed;bottom:18px;right:360px;z-index:9999;font-size:11px;
@@ -295,11 +295,11 @@ body.edit-mode .weather34box:active{cursor:grabbing}
 
 <!-- ── TOP BAR ─────────────────────────────────────────────────────────────── -->
 <div class="weather2-container">
-<div class="weather34box-toparea" id="topbar-sortable">
+<div class="mod-box-topbar" id="topbar-sortable">
 <?php foreach ($topbar_modules as $i => $mod): 
     $title = $mod['title'] !== '' ? $mod['title'] : moduleTitle($mod['module'], $weather, $lang);
 ?>
-    <div class="weather34box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
+    <div class="mod-box" data-module="<?php echo htmlspecialchars($mod['module']); ?>" data-title="<?php echo htmlspecialchars($mod['title']); ?>">
         <div class="title"><?php echo $info; ?> <?php echo htmlspecialchars($title); ?></div>
         <?php if ($mod['module'] === 'weather34clock.php'): ?>
         <div id="top_<?php echo $i; ?>"></div>

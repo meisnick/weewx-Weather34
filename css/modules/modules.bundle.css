@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 17:44:59 UTC
+   Generated: 2026-08-21 17:51:59 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -1057,18 +1057,21 @@
   height: 48px;
 }
 
-.mod-clock .weather34box.clock {
+.mod-clock .weather34box.clock,
+.mod-clock .mod-box.clock {
   background-repeat: no-repeat;
   background-position: left 10px bottom 18px;
   color: var(--accent-ink)
 }
 
-.mod-clock .weather34box.clock span {
+.mod-clock .weather34box.clock span,
+.mod-clock .mod-box.clock span {
   color: var(--card-ink-blue);
   font-weight: 500
 }
 
-.mod-clock .weather34box.clock titlespan {
+.mod-clock .weather34box.clock titlespan,
+.mod-clock .mod-box.clock titlespan {
   color: var(--good);
   font-weight: 500
 }
@@ -1133,7 +1136,8 @@
 }
 
 
-.mod-clock .weather34box.clock {
+.mod-clock .weather34box.clock,
+.mod-clock .mod-box.clock {
   background-color: var(--card-bg);
   -webkit-box-shadow: inset 0 18px var(--card-shadow-soft);
   box-shadow: inset 0 18px var(--card-shadow-soft);
@@ -4630,7 +4634,10 @@ valuetextheading2 {
  * with !important so no responsive/theme rule can strand it back at top:0. */
 .weather34box[data-module="top_rainfallfyearmonth.php"] .value,
 .weather34box[data-module="top_windgustyear.php"] .value,
-.weather34box[data-module="top_temperatureyear.php"] .value {
+.weather34box[data-module="top_temperatureyear.php"] .value,
+.mod-box[data-module="top_rainfallfyearmonth.php"] .value,
+.mod-box[data-module="top_windgustyear.php"] .value,
+.mod-box[data-module="top_temperatureyear.php"] .value {
   position: absolute !important;
   top: 15px !important;
   left: 0 !important;

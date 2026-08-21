@@ -70,7 +70,8 @@ a:hover { color: #90b12a }
 ::-webkit-scrollbar-thumb:hover { background-color: #00adbc }
 
 /* ── Top grid ────────────────────────────────────────────────────────── */
-.weather34box-toparea {
+.weather34box-toparea,
+.mod-box-topbar {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   justify-content: center;
@@ -107,7 +108,8 @@ a:hover { color: #90b12a }
 }
 
 /* ── Module box (top bar) ────────────────────────────────────────────── */
-.weather34box {
+.weather34box,
+.mod-box {
   border: var(--border-box);
   color: var(--text-body);
   padding: 5px;
@@ -121,19 +123,29 @@ a:hover { color: #90b12a }
 .weather34box.alert,
 .weather34box.clock,
 .weather34box.earthquake,
-.weather34box.indoor {
+.weather34box.indoor,
+.mod-box.alert,
+.mod-box.clock,
+.mod-box.earthquake,
+.mod-box.indoor {
   background-color: var(--bg-cell);
   box-shadow: inset 0 18px var(--bg-inset);
   box-sizing: border-box;
 }
 .weather34box .title,
-.weather34box .value { position: absolute; float: left; color: var(--text-body) }
-.weather34box .title { font-family: arial, helvetica; font-size: 9px; top: 2px; padding: 1px 5px 0; z-index: 1 }
-.weather34box .value { font-size: 26px; font-weight: lighter; padding: 0 3px; top: 0 }
+.weather34box .value,
+.mod-box .title,
+.mod-box .value { position: absolute; float: left; color: var(--text-body) }
+.weather34box .title,
+.mod-box .title { font-family: arial, helvetica; font-size: 9px; top: 2px; padding: 1px 5px 0; z-index: 1 }
+.weather34box .value,
+.mod-box .value { font-size: 26px; font-weight: lighter; padding: 0 3px; top: 0 }
 
 /* ── mod-box context (top-bar modules using .mod-top) ────────────────── */
-.weather34box.mod-box .value { left: 0; right: 0; bottom: 0; padding: 0; font-size: 11px }
-.weather34box.mod-box .value > div { height: 100% }
+.weather34box.mod-box .value,
+.mod-box.mod-box .value { left: 0; right: 0; bottom: 0; padding: 0; font-size: 11px }
+.weather34box.mod-box .value > div,
+.mod-box.mod-box .value > div { height: 100% }
 
 /* ── Timestamp — absolute so it never affects module content flow ────── */
 .updatedtime, .updatedtime1, .updatedtimecurrent, .updatedtimeuv {
@@ -196,17 +208,20 @@ timeago { font-size: .55rem; font-family: Arial; color: var(--text-muted); displ
 
 /* ── Responsive grid ─────────────────────────────────────────────────── */
 @media screen and (max-width: 768px) {
-  .weather34box-toparea { grid-template-columns: repeat(2, 1fr) }
+  .weather34box-toparea,
+  .mod-box-topbar { grid-template-columns: repeat(2, 1fr) }
   .weather-container { grid-template-columns: 1fr }
   .weatherfooter-container, header { display: none }
 }
 @media screen and (max-width: 1024px) and (orientation: portrait) {
-  .weather34box-toparea { grid-template-columns: repeat(2, 1fr) }
+  .weather34box-toparea,
+  .mod-box-topbar { grid-template-columns: repeat(2, 1fr) }
   .weather-container { grid-template-columns: 1fr }
 }
 
 /* ── Grid box height ─────────────────────────────────────────────────── */
-.weather-container .weather34box { height: 195px }
+.weather-container .weather34box,
+.weather-container .mod-box { height: 195px }
 
 /* ── Lity lightbox ───────────────────────────────────────────────────── */
 .lity { z-index: 9990; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.8) }

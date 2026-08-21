@@ -1009,7 +1009,8 @@ suptemp {
 }
 
 @media screen and (max-width:768px) {
-  .weather34box-toparea {
+  .weather34box-toparea,
+  .mod-box-topbar {
     grid-template-columns: 240px
   }
 
@@ -1086,7 +1087,8 @@ suptemp {
 }
 
 @media screen and (max-width:1024px) and (orientation:portrait) {
-  .weather34box-toparea {
+  .weather34box-toparea,
+  .mod-box-topbar {
     grid-template-columns: 240px
   }
 
@@ -1109,7 +1111,8 @@ suptemp {
 
 @media screen and (max-width:359px) {
   .weather-container,
-  .weather34box-toparea {
+  .weather34box-toparea,
+  .mod-box-topbar {
     zoom: calc((100vw - 8px) / 328px)
   }
 }
@@ -1176,7 +1179,8 @@ suptemp {
 
 .blank {
   display: none
-}.weather34box.alert, .weather34box.earthquake, .weather34box.indoor {
+}.weather34box.alert, .weather34box.earthquake, .weather34box.indoor,
+.mod-box.alert, .mod-box.earthquake, .mod-box.indoor {
   background-color: var(--card-bg);
   -webkit-box-shadow: inset 0 18px var(--card-shadow-soft);
   box-shadow: inset 0 18px var(--card-shadow-soft);
@@ -1184,7 +1188,8 @@ suptemp {
   box-sizing: border-box
 }
 
-.weather34box-toparea {
+.weather34box-toparea,
+.mod-box-topbar {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   justify-content: center;
@@ -1192,7 +1197,8 @@ suptemp {
   margin: 0 auto 0
 }
 
-.weather34box .title {
+.weather34box .title,
+.mod-box .title {
   font-family: arial, helvetica;
   font-size: 9px;
   top: 2px;
@@ -1201,7 +1207,8 @@ suptemp {
   font-family: Arial, Helvetica, system
 }
 
-.weather34box .value {
+.weather34box .value,
+.mod-box .value {
   font-size: 26px;
   font-weight: lighter;
   padding: 0 3px;

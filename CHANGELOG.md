@@ -10,7 +10,7 @@ All notable changes to this maintained fork will be documented in this file.
 - **Legacy naming folded into the scoped `.mod-*` system.** Runtime data-lookup classes and bare
   color tags (barometer/indoor/outside bands, `heatcircle*` → `.mod-gauge-ring`, `<ored>` → `ink-*`,
   `weather34box` → `.mod-box`, AQI `air*` bands → `.mod-aqi-band--*`) were renamed with
-  render-parity gates. See `tools/RENAME_LOG.md`.
+  render-parity gates.
 - **Attribution reframed.** File headers now credit this as the meisnick fork while keeping
   Ian Millard (Steepleian, WeeWX port) and Brian Underdown (original Weather34 template) credited
   for brought-forward work.

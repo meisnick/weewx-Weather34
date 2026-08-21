@@ -29,3 +29,6 @@ _config.yml
 pop_metoffice_daynight.php-not*
 w34highcharts/*.html-org
 modules.php
+
+# Internal dev/QA/process tooling — not part of the shippable skin, kept local only
+tools/

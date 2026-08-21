@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 18:39:52 UTC
+   Generated: 2026-08-21 20:10:05 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4401,8 +4401,8 @@ valuetextheading2 {
 /* position:relative stays !important (beats framework position:static !important); left/top
  * are NOT !important so a sandbox override (which carries !important) can move the pill. */
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 0; top: 0; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.mod-gauge-ring--7 { position: relative !important; left: 4px !important; top: 35px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.mod-gauge-ring--7 { position: relative !important; left: 0 !important; top: 0 !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
 
 /* ==== top-lightning.css ==== */
 /* top-lightning module -- scoped to .mod-top-lightning */

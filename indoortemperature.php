@@ -46,8 +46,7 @@ if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["
 
 
 
-<div class="mod-gauge-ring-content--indoor-feels"><valuetextheading1>Feels</valuetextheading1></div>
-<div class="mod-temperature-block mod-gauge-ring--7">
+<div class="mod-temperature-block mod-gauge-ring--7"><div class="mod-gauge-ring-content--indoor-feels"><valuetextheading1>Feels</valuetextheading1>
 <?php  if (anyToC($weather["temp_indoor_feel"])>28){ echo "<div class=tempmodulehome30-35c><div class=rainratesmall>";} 
 else if (anyToC($weather["temp_indoor_feel"])>25){ echo "<div class=tempmodulehome25-30c><div class=rainratesmall>";}
 else if (anyToC($weather["temp_indoor_feel"])>20){ echo "<div class=tempmodulehome20-25c><div class=rainratesmall>";}  
@@ -57,8 +56,8 @@ else if (anyToC($weather["temp_indoor_feel"])>0){ echo "<div class=tempmodulehom
 
 
 
-echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?> 
-</div></div>
+echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?>
+</div></div></div>
 </div> <!-- close 1x2 -->
 </div> <!-- close col-right -->
 </div> <!-- close grid -->

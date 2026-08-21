@@ -1,4 +1,4 @@
-<?php  include('shared.php');include('common.php');
+<?php  include('shared_core.php'); include('shared_icons.php');include('common.php');
 // PURPLE AIR additional conversion script included by Andrew Billits 24 April 2018
 function pm25_to_aqi($pm25){
 	if ($pm25 > 500.5) {

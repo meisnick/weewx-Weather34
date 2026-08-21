@@ -17,7 +17,8 @@
 # original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original
 # by weather34 (Brian Underwood)
 include ('settings.php');
-include ('shared.php');
+include ('shared_core.php');
+include ('shared_icons.php');
 error_reporting(0);
 //weewx - api December 2019
 try

@@ -1,4 +1,10 @@
 <?php
+/**
+ * templateSetup.php — Web Configuration Panel UI & Persistence Handler
+ * 
+ * Provides the interactive browser settings UI for configuring station metadata, hardware options,
+ * provider keys, and module slots. Validates local/private IP access and writes directly to settings1.php.
+ */
 // Prevent altering settings from outside the local network
 $client_ip = $_SERVER['REMOTE_ADDR'];
 // If behind Cloudflare Tunnel or reverse proxy, check forwarding headers to get the actual public IP

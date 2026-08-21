@@ -2,7 +2,6 @@
   include('w34CombinedData.php');
   include('settings.php');
   include('common.php');
-  //include('shared.php');
   date_default_timezone_set($TZ);
   header('Content-type: text/html; charset=utf-8');
   error_reporting(0);

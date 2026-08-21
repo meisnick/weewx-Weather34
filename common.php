@@ -1,4 +1,10 @@
 <?php
+/**
+ * common.php — Core Localization & Unit Conversion Helpers
+ * 
+ * Sets up localization (UTF-8 encoding, language dictionary selection via session/cookie/config),
+ * timezone initialization, and shared utility helper functions (compass, Beaufort, unit conversion).
+ */
 include('settings1.php');
 date_default_timezone_set($TZ);
 //translations for HOMEWEATHERSTATION TEMPLATE UPDATED 2nd November added set locale

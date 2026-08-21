@@ -1,7 +1,8 @@
 <?php
 // top_advisory_nws.php — NWS active alerts for Washington County WI
 // Replaces top_advisory_rw.php (EU MeteoAlarm / dead WU API)
-include('shared.php');
+include('shared_core.php');
+include('shared_icons.php');
 include('settings1.php');
 error_reporting(0);
 

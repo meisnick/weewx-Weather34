@@ -16,7 +16,8 @@
 
 
 include_once('settings.php');
-include_once('shared.php');
+include_once('shared_core.php');
+include_once('shared_icons.php');
 error_reporting(0); date_default_timezone_set($TZ);
 header('Content-type: text/html; charset=UTF-8');
 if ($windunit=='kts'){$windunit="kn";}

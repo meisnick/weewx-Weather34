@@ -6,6 +6,7 @@
 #   Contains original code by Ian Millard and collaborators                                                       #
 #   © claydonsweather.org.uk original CSS/SVG/PHP 2020-2021                                                      #
 #   Issues: https://github.com/meisnick/weewx-Weather34/issues                                                   #
+#   Naming conventions & structure legend: see tools/NAMING_INVENTORY.md §3                                      #
 ####################################################################################################################
 if (!file_exists('settings1.php')) { copy('initial_settings1.php', 'settings1.php'); }
 if (!file_exists('modules.php'))   { copy('modules.example.php', 'modules.php'); }

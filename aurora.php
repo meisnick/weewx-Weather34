@@ -1,4 +1,4 @@
-<?php include('shared.php'); include('common.php');
+<?php include('shared_core.php'); include('shared_icons.php'); include('common.php');
 // K-INDEX & SOLAR DATA FOR HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
 $str = file_get_contents('jsondata/ki.txt');
 $json = array_reverse(json_decode($str,false));

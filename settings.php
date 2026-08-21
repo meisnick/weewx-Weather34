@@ -1,11 +1,5 @@
 <?php 
-/**
- * settings.php — Extended Runtime Settings & Environment Wrapper
- * 
- * Wraps settings1.php and sets up derived environment variables, timezone/UTC offsets,
- * error reporting, display formatting preferences, panel refresh intervals, and API keys.
- */
-include('settings1.php');error_reporting(0);
+include('settings1.php');error_reporting(0); 
 	####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE SETUP please set up and check thoroughly                         #
 	#	CREATED FOR HOMEWEATHERSTATION TEMPLATE at https://weather34.com/homeweatherstation/index.html # 

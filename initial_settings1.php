@@ -1,10 +1,4 @@
 <?php
-/**
- * initial_settings1.php — Default Template Configuration Seed
- * 
- * Provides pristine default settings (units, timezone, module slots, sample values).
- * Copied to settings1.php by index.php/index2.php on fresh setups if settings1.php does not exist.
- */
 $theme = isset($theme) ? $theme : "dark";
 $theme1 = $theme;
 $weatherflowID = '';

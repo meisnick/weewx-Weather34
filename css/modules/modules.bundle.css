@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 18:15:46 UTC
+   Generated: 2026-08-21 18:39:52 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -230,7 +230,7 @@
   margin-top: 0;
 }
 
-.mod-airquality .air50 {
+.mod-airquality .mod-aqi-band--50 {
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -246,37 +246,37 @@
   border-radius: 2px
 }
 
-.mod-airquality .air0 {
+.mod-airquality .mod-aqi-band--0 {
   background: var(--good)
 }
 
-.mod-airquality .air50 {
+.mod-airquality .mod-aqi-band--50 {
   background: var(--warn)
 }
 
-.mod-airquality .air100 {
+.mod-airquality .mod-aqi-band--100 {
   background: var(--temp-hot-2)
 }
 
-.mod-airquality .air150 {
+.mod-airquality .mod-aqi-band--150 {
   background: var(--danger)
 }
 
-.mod-airquality .air300 {
+.mod-airquality .mod-aqi-band--300 {
   background: var(--uv-purple)
 }
 
-.mod-airquality .airwarning {
+.mod-airquality .mod-aqi-warning {
   display: none; /* Hidden as the built-in SVG face boxes already contain warnings/checkmarks */
 }
 
-.mod-airquality .airwarning1 {
+.mod-airquality .mod-aqi-warning--1 {
   position: absolute;
   margin-top: 0;
   margin-left: -60px
 }
 
-.mod-airquality .airwarning21 {
+.mod-airquality .mod-aqi-warning--21 {
   position: absolute
 }
 
@@ -287,11 +287,11 @@
 
 
 /* -- Light theme overrides -- */
-[data-theme="light"] .mod-airquality .airwarning4 {
+[data-theme="light"] .mod-airquality .mod-aqi-warning--4 {
   margin-top: 95px
 }
 
-[data-theme="light"] .mod-airquality .airwarning2 span {
+[data-theme="light"] .mod-airquality .mod-aqi-warning--2 span {
   font-size: 8px;
   line-height: 14px
 }
@@ -343,7 +343,7 @@
   margin-left: 250px
 }
 
-[data-theme="light"] .mod-airquality .air50 {
+[data-theme="light"] .mod-airquality .mod-aqi-band--50 {
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;

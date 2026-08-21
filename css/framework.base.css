@@ -2775,10 +2775,10 @@ raiblue {
   font-size: 12px
 }
 
-.air200 {
+.mod-aqi-band--200 {
   font-family: weathertext2, Helvetica, system;
   display: flex
-}.air200 {
+}.mod-aqi-band--200 {
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -2792,12 +2792,12 @@ raiblue {
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px
-}.air200, .air250 {
+}.mod-aqi-band--200, .mod-aqi-band--250 {
   background: var(--uv-purple)
 }.circlegreen, .circleorange, .circlepurple, .circlered, .circleyellow {
   margin-top: 0;
   position: absolute
-}.airwarning2 {
+}.mod-aqi-warning--2 {
   position: absolute
 }.updatedtime, .updatedtime1, .updatedtimealert, .updatedtimedir, .updatedtimeuv {
   width: 75px;

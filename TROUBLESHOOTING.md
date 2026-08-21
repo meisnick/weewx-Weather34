@@ -8,7 +8,15 @@ Quick reference for the most common configuration issues.
 
 **Cause:** The `mbstring` PHP extension is missing.
 
+**Fix:** Install it and reload the web server:
 
+```bash
+sudo apt install php8.4-mbstring
+sudo systemctl reload apache2
+```
+
+Confirm it is loaded with `php -m | grep mbstring`. (On older PHP, substitute your version,
+e.g. `php8.2-mbstring`.)
 
 ---
 

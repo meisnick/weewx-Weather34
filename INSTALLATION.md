@@ -2,7 +2,7 @@
 
 This guide covers a fresh installation of the Weather34 WeeWX skin on a Raspberry Pi running Debian 12 (Bookworm) or Debian 13 (Trixie). The result is a fully functional local weather dashboard fed by an Ecowitt GW1000 or GW2000 gateway.
 
-**Tested configuration:** WeeWX 5.3.1 · PHP 8.4 · Python 3.13 · Debian 13 Trixie 64-bit
+**Tested configuration:** WeeWX 5.5.0 · PHP 8.4 · Python 3.13 · Debian 13 Trixie 64-bit
 
 ---
 

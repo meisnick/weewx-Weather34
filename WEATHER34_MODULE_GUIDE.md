@@ -739,4 +739,4 @@ To maintain visual stability while refactoring Weather34 CSS:
 - [ ] Dashboard loads clean: `curl -s -o /dev/null -w '%{http_code}' http://localhost/weewx/weather34/index.php`
 - [ ] If popup: `html, body { height:100%; overflow:hidden; }` — no scrollbar
 - [ ] If popup: close button clearance — `margin-right: 50px` on last header element
-- [ ] Commit to `modularize` branch: `sudo -u www-data git add ... && sudo -u www-data git commit`
+- [ ] Commit to `main` branch: `sudo -u www-data git add ... && sudo -u www-data git commit`

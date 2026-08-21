@@ -3,16 +3,16 @@
 # w34config.py is gitignored and never committed.
 
 # Station location
-LAT = 0.0       # Decimal degrees, N positive  (e.g. 43.46)
-LON = 0.0       # Decimal degrees, E positive  (e.g. -87.95)
-TZ  = "America/Chicago"   # IANA timezone string
+LAT = 0.0       # Decimal degrees, N positive  (e.g. 40.71)
+LON = 0.0       # Decimal degrees, E positive  (e.g. -74.01)
+TZ  = "America/New_York"   # IANA timezone string
 
 # Nearest airport for METAR data
-ICAO = "KABC"   # 4-letter ICAO identifier (e.g. KETB)
+ICAO = "KABC"   # 4-letter ICAO identifier (e.g. KJFK)
 
 # NWS alert zones — find yours at: https://api.weather.gov/points/LAT,LON
-# Look for forecastZone (e.g. WIZ060) and county (e.g. WIC089)
-ALERT_ZONES = "WIZ000,WIC000"
+# Look for forecastZone (e.g. NYZ072) and county (e.g. NYC061)
+ALERT_ZONES = "NYZ000,NYC000"
 
 # Display name written into forecast JSON (cosmetic only)
 PLACE_NAME    = "yourtown"

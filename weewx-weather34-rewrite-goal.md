@@ -1,7 +1,12 @@
 # Goal: weewx-Weather34 Full-Stack Modular Rewrite
 
+> **HISTORICAL DESIGN DOC (2026-05-23).** The modular rewrite is complete and the
+> `modularize` branch was **promoted to `main`** on 2026-08-21 (the previous standard-layout
+> `main` is preserved as `main-legacy`). The two-branch "permanently separate" model described
+> below is therefore obsolete — `main` is now the modular skin. Kept for design-history context.
+
 **Repo:** https://github.com/meisnick/weewx-Weather34  
-**Branch:** `modularize` (dev Pi: `pi2`, host alias `pi2`)  
+**Branch:** `main` (formerly `modularize`)  
 **Last updated:** 2026-05-23  
 **Status:** CSS variables done. All active modules scoped. Main CSS strip blocked (needs CSS parser). Flex refactor not started.
 

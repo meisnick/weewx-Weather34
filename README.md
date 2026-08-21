@@ -7,18 +7,18 @@
 
 | Branch | WeeWX | PHP | Python | OS | Status | Description |
 |--------|-------|-----|--------|----|--------|-------------|
-| `main` | **5.5.0** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | Upstream-compatible standard layout |
-| `modularize` | **5.5.0** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | **Enhanced with dynamic layout engine & modular CSS** |
-| `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen | Traditional steepleian-style releases |
+| `main` | **5.5.0** | **8.4** | **3.13** | Debian 13 Trixie 64-bit | Active | **The modular skin — dynamic layout engine, modular CSS, theme engine, Space Weather & LLM forecast** |
+| `main-legacy` | 5.5.0 | 8.4 | 3.13 | Debian 13 Trixie 64-bit | Preserved | Previous upstream-compatible standard layout (pre-modularization) |
+| `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen | Traditional steepleian-style WeeWX 4 releases |
 
-## System Requirements (main and modularize branches)
+## System Requirements
 
 - **WeeWX:** 5.x (tested 5.5.0)
 - **PHP:** 8.2+ (tested 8.4 with `php-cli`)
 - **Python:** 3.9+ (tested 3.13)
 - **OS:** Debian 12 Bookworm or 13 Trixie (64-bit recommended)
 - **Hardware driver:** Ecowitt GW1000 / GW2000 via [weewx-contrib/weewx-gw1000](https://github.com/weewx-contrib/weewx-gw1000)
-- **Ollama (optional — for modularize branch forecast discussion):** Local installation with `gemma3:1b` model pulled
+- **Ollama (optional — for the Forecast Discussion module):** Local installation with `gemma3:1b` model pulled
 
 ## Quick Start
 
@@ -91,9 +91,9 @@ sudo weectl database update --yes
 sudo systemctl start weewx
 ```
 
-### 7 — Additional Setup for modularize Branch (Space Weather & LLM Forecast Discussion)
+### 7 — Additional Setup (Space Weather & LLM Forecast Discussion)
 
-The `modularize` branch introduces two highly dynamic modules that require secondary setup: the **Space Weather** auroral probability generator and the **Forecast Discussion** LLM summarizer.
+The skin includes two highly dynamic modules that require secondary setup: the **Space Weather** auroral probability generator and the **Forecast Discussion** LLM summarizer.
 
 #### A. Install Ollama & Pull the Model (for Forecast Discussion)
 If you wish to use the Area Forecast Discussion (AFD) summarizer, install Ollama and retrieve the required lightweight LLM model:
@@ -236,9 +236,9 @@ The settings page has been substantially overhauled:
 
 ---
 
-### Modularization & Dynamic Layout Engine (modularize branch)
+### Modularization & Dynamic Layout Engine
 
-The `modularize` branch introduces an extensive, modern overhaul of the layout, styling, and customization engine of the Weather34 skin, moving away from rigid templates to a highly dynamic, scalable system.
+The `main` branch is an extensive, modern overhaul of the layout, styling, and customization engine of the Weather34 skin, moving away from rigid templates to a highly dynamic, scalable system.
 
 #### 1. Dynamic Layout System & Live Customization
 - **CSS Grid Conversion**: The entire page and dashboard layout has been converted from a static rigid container to a modern, flexible **CSS Grid**, facilitating seamless alignment across different viewport resolutions.

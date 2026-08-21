@@ -2,6 +2,23 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [2026-08-21] — Branch Promotion, Naming Cleanup, Attribution & History Scrub
+
+- **`modularize` promoted to `main`.** The modular skin is now the primary branch. The previous
+  upstream-compatible standard-layout `main` is preserved unchanged as **`main-legacy`**; the
+  frozen WeeWX 4 line remains **`legacy-4.x`**.
+- **Legacy naming folded into the scoped `.mod-*` system.** Runtime data-lookup classes and bare
+  color tags (barometer/indoor/outside bands, `heatcircle*` → `.mod-gauge-ring`, `<ored>` → `ink-*`,
+  `weather34box` → `.mod-box`, AQI `air*` bands → `.mod-aqi-band--*`) were renamed with
+  render-parity gates. See `tools/RENAME_LOG.md`.
+- **Attribution reframed.** File headers now credit this as the meisnick fork while keeping
+  Ian Millard (Steepleian, WeeWX port) and Brian Underdown (original Weather34 template) credited
+  for brought-forward work.
+- **Git history scrubbed.** Per-box config (`settings1.php`) and private tooling (`CLAUDE.md`) were
+  purged from all history across every branch (removing station coordinates, a placeholder password,
+  and internal LAN IPs). Current code is byte-identical; only history was cleaned. Station config,
+  API keys, and coordinates live only in gitignored files that were never committed.
+
 ## [2026-08-12] — Full Modularization, Light/Dark Theme Engine, Unit & i18n Fixes (modularize branch)
 
 Complete overhaul of the Weather34 layout, stylesheet system, internationalization framework, unit conversion logic, and notification popup pipeline.

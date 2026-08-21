@@ -14,7 +14,7 @@ This guide covers a fresh installation of the Weather34 WeeWX skin on a Raspberr
 - Apache web server access
 - A nearby airport ICAO code (for METAR current conditions)
 - NWS forecast zone codes for your location (US stations — find at [weather.gov/pfl](https://www.weather.gov/pfl/))
-- **Ollama (for modularize branch forecast discussion):** Local installation with `gemma3:1b` model pulled
+- **Ollama (for the Forecast Discussion module):** Local installation with `gemma3:1b` model pulled
 - **PHP CLI (`php-cli`):** For executing PHP background processes
 
 ---
@@ -189,9 +189,9 @@ Add to root crontab (`sudo crontab -e`):
 
 ---
 
-## 7b. Additional Setup for modularize Branch (Space Weather & LLM Forecast Discussion)
+## 7b. Additional Setup (Space Weather & LLM Forecast Discussion)
 
-The `modularize` branch introduces two highly dynamic modules that require secondary setup: the **Space Weather** auroral probability generator and the **Forecast Discussion** LLM summarizer.
+The skin includes two highly dynamic modules that require secondary setup: the **Space Weather** auroral probability generator and the **Forecast Discussion** LLM summarizer.
 
 ### A. Install Ollama & Pull the Model (for Forecast Discussion)
 If you wish to use the Area Forecast Discussion (AFD) summarizer, install Ollama and retrieve the required lightweight LLM model:

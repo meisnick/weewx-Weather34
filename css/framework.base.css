@@ -2079,20 +2079,19 @@ weather34-barometerlimitminf {
   margin-left: 75px
 }
 
-.outside0-5,
-.outside11-15,
-.outside16-20,
-.outside21-25,
-.outside26-30,
-.outside31-35,
-.outside36-40,
-.outside41-45,
-.outside50,
-.outside6-10,
-.outsideminus,
-.outsideminus10,
-.outsideminus5,
-.outsidezero {
+.mod-temp-band--0-5,
+.mod-temp-band--11-15,
+.mod-temp-band--16-20,
+.mod-temp-band--21-25,
+.mod-temp-band--26-30,
+.mod-temp-band--31-35,
+.mod-temp-band--36-40,
+.mod-temp-band--41-45,
+.mod-temp-band--50,
+.mod-temp-band--6-10,
+.mod-temp-band--m10,
+.mod-temp-band--m5,
+.mod-temp-band--0 {
   font-family: weathertext2;
   width: 6rem;
   height: 5.5rem;
@@ -2109,75 +2108,74 @@ weather34-barometerlimitminf {
   border-radius: 2px
 }
 
-.outsideminus10 {
+.mod-temp-band--m10 {
   background: var(--temp-cold-2);
   background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2));
   background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2))
 }
 
-.outsideminus5 {
+.mod-temp-band--m5 {
   background: var(--temp-cool);
   background: -webkit-linear-gradient(45deg, var(--temp-cold), var(--temp-cool));
   background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool))
 }
 
-.outsideminus,
-.outsidezero {
+.mod-temp-band--0 {
   background: var(--temp-cool-2);
   background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3));
   background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3))
 }
 
-.outside0-5 {
+.mod-temp-band--0-5 {
   background: var(--temp-cool-2);
   background: -webkit-linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly));
   background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly))
 }
 
-.outside6-10 {
+.mod-temp-band--6-10 {
   background: var(--temp-mild);
   background: -webkit-linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild));
   background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild))
 }
 
-.outside11-15 {
+.mod-temp-band--11-15 {
   background: var(--temp-warm);
   background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm));
   background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm))
 }
 
-.outside16-20 {
+.mod-temp-band--16-20 {
   background: var(--temp-warm-2);
   background: -webkit-linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2));
   background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2))
 }
 
-.outside21-25 {
+.mod-temp-band--21-25 {
   background: var(--temp-warm-3);
   background: -webkit-linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot));
   background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot))
 }
 
-.outside26-30 {
+.mod-temp-band--26-30 {
   background: var(--temp-hot-2);
   background: -webkit-linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3));
   background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3))
 }
 
-.outside31-35 {
+.mod-temp-band--31-35 {
   background: var(--temp-hot);
   background: -webkit-linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4));
   background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4))
 }
 
-.outside36-40 {
+.mod-temp-band--36-40 {
   background: var(--temp-hot-5);
   background: -webkit-linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue));
   background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue))
 }
 
-.outside41-45,
-.outside50 {
+.mod-temp-band--41-45,
+.mod-temp-band--50 {
   background: var(--temp-extreme);
   background: -webkit-linear-gradient(90deg, var(--temp-extreme), var(--temp-blue));
   background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue))

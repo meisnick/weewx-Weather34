@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 17:37:44 UTC
+   Generated: 2026-08-21 17:44:59 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -3304,7 +3304,7 @@ rainratetextheading {
 }
 
 /* Nullify all old framework leaks */
-.mod-rainfall .heatcircle, .mod-rainfall .heatcircle2, .mod-rainfall .heatcircle3, .mod-rainfall .heatcircle4, .mod-rainfall .heatcircle7 {
+.mod-rainfall .mod-gauge-ring, .mod-rainfall .mod-gauge-ring--2, .mod-rainfall .mod-gauge-ring--3, .mod-rainfall .mod-gauge-ring--4, .mod-rainfall .mod-gauge-ring--7 {
   position: static !important;
   margin: 0 !important;
   width: auto !important;
@@ -3932,18 +3932,18 @@ rainratetextheading {
 }
 
 /* Framework Leak Neutralization! */
-.mod-temperature .heatcircle,
-.mod-temperature .heatcircle2,
-.mod-temperature .heatcircle3,
-.mod-temperature .heatcircle4,
-.mod-temperature .heatcircle5,
-.mod-temperature .heatcircle6,
-.mod-temperature .heatcircle7 {
+.mod-temperature .mod-gauge-ring,
+.mod-temperature .mod-gauge-ring--2,
+.mod-temperature .mod-gauge-ring--3,
+.mod-temperature .mod-gauge-ring--4,
+.mod-temperature .mod-gauge-ring--5,
+.mod-temperature .mod-gauge-ring--6,
+.mod-temperature .mod-gauge-ring--7 {
   position: static !important;
   margin: 0 !important;
-  padding: 0 !important;
   width: auto !important;
   float: none !important;
+  padding: 0 !important;
 }
 
 .mod-temperature .tempconverter,
@@ -4100,14 +4100,14 @@ rainratetextheading {
   position: relative;
 }
 
-.mod-temperature .heatcircle-content,
-.mod-temperature .inheatcircle-content,
-.mod-temperature .inheatcircle2-content {
-  width: auto !important;
+.mod-temperature .mod-gauge-ring-content,
+.mod-temperature .mod-gauge-ring-content--indoor,
+.mod-temperature .mod-gauge-ring-content--indoor-feels {
+  position: static !important;
   margin: 0 !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: auto !important;
+  float: none !important;
+  display: block !important;
 }
 
 valuetextheading2 {
@@ -4376,7 +4376,7 @@ valuetextheading2 {
  * indoortemperature.php reuses .mod-temperature + temperature.css (same wrapper as
  * the main Temperature card). These sandbox-tuned offsets are SCOPED to the indoor
  * card via its data-module so shared classes (grid, temphumcircle, tempmodulehome,
- * heatcircle7, converter) don't move the main card. Higher specificity + !important
+ * gauge-ring-7, converter) don't move the main card. Higher specificity + !important
  * override the unscoped main-card rules for the indoor card only. */
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--hot,
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--warm,
@@ -4397,12 +4397,12 @@ valuetextheading2 {
  * body, under INDOOR and above the trend. Indoor temps are always ~2-digit °F, so the
  * fixed left edge stays visually centered. */
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomevalue1 { left: 0px !important; top: 44px !important; transform: none !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .inheatcircle-content valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .mod-gauge-ring-content--indoor valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
 /* position:relative stays !important (beats framework position:static !important); left/top
  * are NOT !important so a sandbox override (which carries !important) can move the pill. */
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 0; top: 0; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.heatcircle7 { position: relative !important; left: 4px !important; top: 35px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .inheatcircle2-content valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block.mod-gauge-ring--7 { position: relative !important; left: 4px !important; top: 35px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: 56px !important; top: 23px !important; }
 
 /* ==== top-lightning.css ==== */
 /* top-lightning module -- scoped to .mod-top-lightning */

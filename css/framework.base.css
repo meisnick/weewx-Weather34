@@ -547,7 +547,7 @@ h3 {
   font: 4em weathertext2
 }.nexthours {
   display: inline-block
-}.chartforecast, .heatcircle, .heatcircle2, canvas, daylighthours:after, in, mb {
+}.chartforecast, .mod-gauge-ring, .mod-gauge-ring--2, canvas, daylighthours:after, in, mb {
   position: absolute
 }
 
@@ -2043,40 +2043,40 @@ weather34-barometerlimitminf {
   margin-top: 0
 }
 
-/* Shared primitive (base API): the gauge family (`.heatcircle`, `heatcircle2-5`,
-   `.heatcircle-content`), shared by rainfall + temperature. Defined once here;
+/* Shared primitive (base API): the gauge ring family (`.mod-gauge-ring`, `.mod-gauge-ring--2..7`,
+   `.mod-gauge-ring-content`), shared by rainfall + temperature. Defined once here;
    consuming modules reference it and do NOT redeclare it. */
-.heatcircle,
-.heatcircle2,
-.heatcircle3,
-.heatcircle4,
-.heatcircle5 {
+.mod-gauge-ring,
+.mod-gauge-ring--2,
+.mod-gauge-ring--3,
+.mod-gauge-ring--4,
+.mod-gauge-ring--5 {
   padding: 0;
   width: 170px;
   position: absolute;
   float: left
 }
 
-.heatcircle {
+.mod-gauge-ring {
   margin-top: 30px;
   margin-left: 100px
 }
 
-.heatcircle2 {
+.mod-gauge-ring--2 {
   margin-top: 0;
   margin-left: 75px
 }
 
-.heatcircle3,
-.heatcircle4 {
+.mod-gauge-ring--3,
+.mod-gauge-ring--4 {
   margin-top: 40px
 }
 
-.heatcircle3 {
+.mod-gauge-ring--3 {
   margin-left: 0
 }
 
-.heatcircle4 {
+.mod-gauge-ring--4 {
   margin-left: 75px
 }
 
@@ -3283,7 +3283,7 @@ weather34mbhealth.is-fault .w34health__dot {
 
 
 
-.heatcircle6 {
+.mod-gauge-ring--6 {
   padding: 0;
   width: 170px;
   position: absolute;
@@ -3291,7 +3291,7 @@ weather34mbhealth.is-fault .w34health__dot {
   margin-left: 140px
 }
 
-.heatcircle7 {
+.mod-gauge-ring--7 {
   padding: 0;
   width: 170px;
   position: relative;

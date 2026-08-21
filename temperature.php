@@ -31,7 +31,7 @@ elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<
 //steady
 else echo '<trendmovementsteadyx><valuetext>Trend '.$steadysymbol.'Steady</valuetext></trendmovementsteadyx>';?>
 </div></div>
-<div class="heatcircle"><div class="heatcircle-content">
+<div class="mod-gauge-ring"><div class="mod-gauge-ring-content">
 <?php 
 echo "<valuetextheading1>".$lang['Apparent']."</valuetextheading1>";?>
 <a alt="weekly apparent" title="weekly apparent" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='apparentplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
@@ -48,7 +48,7 @@ else if(anyToC($weather["apptemp"])>=0 ){echo "<div class=tempconverter1><div cl
 else if(anyToC($weather["apptemp"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></a></div></div></div>
-<div class="heatcircle2"><div class="heatcircle-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
+<div class="mod-gauge-ring--2"><div class="mod-gauge-ring-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
 <?php //avg today
      if (anyToC($weather["temp_avgtoday"])>=40){echo "<div class=tempconverter1><div class=tempmodulehome40-50c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if (anyToC($weather["temp_avgtoday"])>=35){echo "<div class=tempconverter1><div class=tempmodulehome35-40c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
@@ -62,7 +62,7 @@ else if (anyToC($weather["temp_avgtoday"])>=0) {echo "<div class=tempconverter1>
 else if (anyToC($weather["temp_avgtoday"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if (anyToC($weather["temp_avgtoday"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></div></div></div>
-<div class="heatcircle3"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
+<div class="mod-gauge-ring--3"><div class="mod-gauge-ring-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
 <a alt="weekly humidity" title="weekly humidity" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='humidityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //humidity
      if ($weather["humidity"]>90){echo "<div class=tempconverter1><div class=temphumcircle80-100>".$weather["humidity"];}
@@ -72,7 +72,7 @@ else if ($weather["humidity"]>25){echo "<div class=tempconverter1><div class=tem
 else if ($weather["humidity"]<=25){echo "<div class=tempconverter1><div class=temphumcircle0-25>".$weather["humidity"];}?><smalltempunit2>%</smalltempunit2>
 <?php //humidity trend
 if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></a></div></div></div></div>
-<div class="heatcircle4"><div class="heatcircle-content"><valuetextheading1><?php echo $lang['Dewpoint']?></valuetextheading1>
+<div class="mod-gauge-ring--4"><div class="mod-gauge-ring-content"><valuetextheading1><?php echo $lang['Dewpoint']?></valuetextheading1>
 <a alt="weekly dewpoint" title="weekly dewpoint" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='dewpointplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //dewpoint
      if(anyToC($weather["dewpoint"])>21) {echo "<div class=tempconverter1><div class=tempmodulehome25-30c>&nbsp;".$weather['dewpoint'].'&deg;<smalltempunit2>'.$weather["temp_units"];}

@@ -158,7 +158,7 @@ eq {
   margin: 32px auto 0 -30px
 }
 
-.heatcircle-content {
+.mod-gauge-ring-content {
   color: var(--card-ink-strong);
   float: left;
   margin-left: -4px;
@@ -1553,7 +1553,7 @@ valuewindunit {
   font-size: .55rem
 }
 
-.inheatcircle-content {
+.mod-gauge-ring-content--indoor {
   position: absolute;
   color: var(--card-ink-strong);
   float: left;
@@ -1566,7 +1566,7 @@ valuewindunit {
   line-height: 15px
 }
 
-.inheatcircle2-content {
+.mod-gauge-ring-content--indoor-feels {
   position: absolute;
   color: var(--card-ink-strong);
   float: left;

@@ -300,7 +300,7 @@ rainratetextheading {
 }
 
 /* Nullify all old framework leaks */
-.mod-rainfall .heatcircle, .mod-rainfall .heatcircle2, .mod-rainfall .heatcircle3, .mod-rainfall .heatcircle4, .mod-rainfall .heatcircle7 {
+.mod-rainfall .mod-gauge-ring, .mod-rainfall .mod-gauge-ring--2, .mod-rainfall .mod-gauge-ring--3, .mod-rainfall .mod-gauge-ring--4, .mod-rainfall .mod-gauge-ring--7 {
   position: static !important;
   margin: 0 !important;
   width: auto !important;

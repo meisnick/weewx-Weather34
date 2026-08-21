@@ -34,7 +34,7 @@ else if( $weather["temp_units"]=='C' && anyToC($weather["temp_indoor"])<10){echo
 ?></smalltempunit2></div></div>
 </div> <!-- close top pill -->
 <div class="mod-temperature-1x2">
-<div class="mod-temperature-block heatcircle6"><div class="inheatcircle-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
+<div class="mod-temperature-block mod-gauge-ring--6"><div class="mod-gauge-ring-content--indoor"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
 <?php //humidity
 if ($weather["humidity_indoor"]>90){echo "<div class=tempconverter1><div class=temphumcircle80-100>".$weather["humidity_indoor"];}
 else if ($weather["humidity_indoor"]>70){echo "<div class=tempconverter1><div class=temphumcircle60-80>".$weather["humidity_indoor"];}
@@ -46,8 +46,8 @@ if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["
 
 
 
-<div class="inheatcircle2-content"><valuetextheading1>Feels</valuetextheading1></div>
-<div class="mod-temperature-block heatcircle7">
+<div class="mod-gauge-ring-content--indoor-feels"><valuetextheading1>Feels</valuetextheading1></div>
+<div class="mod-temperature-block mod-gauge-ring--7">
 <?php  if (anyToC($weather["temp_indoor_feel"])>28){ echo "<div class=tempmodulehome30-35c><div class=rainratesmall>";} 
 else if (anyToC($weather["temp_indoor_feel"])>25){ echo "<div class=tempmodulehome25-30c><div class=rainratesmall>";}
 else if (anyToC($weather["temp_indoor_feel"])>20){ echo "<div class=tempmodulehome20-25c><div class=rainratesmall>";}  

@@ -87,9 +87,9 @@ for ($k=0;$k<=4;$k++) {if(empty($parsed_forecastjson->{'daypart'}[0]->{'iconCode
 	//snow
 	if ($forecastdaysnow > 0) {
 		$snow_unit_str = ($rainunit == 'in' ? ' in' : ' cm');
-		echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'.$forecastdaysnow.'</oblue><valuewindunit>'.$snow_unit_str.'</valuewindunit></forecastwindhome></span></precip>';
+		echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><span class="ink-oblue">&nbsp;'.$forecastdaysnow.'</span><valuewindunit>'.$snow_unit_str.'</valuewindunit></forecastwindhome></span></precip>';
 	} else if ($forecastdayprecipIntensity > 0) {
-		echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><oblue>&nbsp;'. number_format($forecastdayprecipIntensity, 2).'</oblue>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';
+		echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><span class="ink-oblue">&nbsp;'. number_format($forecastdayprecipIntensity, 2).'</span>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></forecastwindhome></span></precip>';
 	}
 	//uvi
 if ($forecastdaynight=='D'){echo '<br><forecasttemplohome><uv>UV <uvspan>';if ($forecastdayUV>=10){echo "<purpleu>".$forecastdayUV. '</purpleu><greyu> '.$forecastdayUVdesc;}else  if ($forecastdayUV>=7){echo "<redu>".$forecastdayUV. '</redu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>5){ echo "<orangeu>".$forecastdayUV. '</orangeu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>2){  echo "<yellowu>".$forecastdayUV. '</yellowu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>=0){ echo "<greenu>".$forecastdayUV. '</greenu><greyu> '.$forecastdayUVdesc;}echo '</uvspan></uv>';}

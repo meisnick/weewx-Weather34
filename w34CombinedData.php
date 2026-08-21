@@ -1207,7 +1207,7 @@ function convert_uptime($uptime)
 //
 //
 //lunar and solar eclipse /meteor shpwers advisory 2018-2019-2020
-$eclipse_default = " <noalert>No Current Weather <spanyellow><ored>Alerts " . $alert . "</ored></spanyellow></noalert>";
+$eclipse_default = " <noalert>No Current Weather <spanyellow><span class=\"ink-ored\">Alerts " . $alert . "</span></spanyellow></noalert>";
 //2 jul solar 2019
 $eclipse_events[] = array(
     "event_start" => mktime(0, 0, 0, 7, 2, 2019) ,

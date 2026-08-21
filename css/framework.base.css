@@ -1208,16 +1208,17 @@ suptemp {
   top: 0
 }.main-menu a, .main-menu li, .main-menu li>a, .main-menu menu, raingrey {
   font-weight: 500
-}red, ored, blue, oblue, orange, oorange, green, ogreen {
+}red, ored, blue, oblue, orange, oorange, green, ogreen, .ink-ored, .ink-oblue, .ink-oorange, .ink-ogreen {
   font-weight: bold;
 }
 
 .windgrey1,
 oorange,
+.ink-oorange,
 orange,
 rise {
   color: var(--caution);
-}ored, red {
+}ored, red, .ink-ored {
   color:var(--danger);
 }
 
@@ -1279,7 +1280,7 @@ nav ul {
   background-color: var(--menu-active-bg);
   width: 100%;
   height: 100%
-}ogreen {
+}ogreen, .ink-ogreen {
   color: var(--good)
 }
 
@@ -2450,6 +2451,7 @@ tgreen {
 }
 
 oblue,
+.ink-oblue,
 tblue {
   color: var(--info-cool)
 }

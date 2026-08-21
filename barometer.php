@@ -35,7 +35,7 @@ else if ($weather["barometer_trend"] < 0) {
 echo '<falling><fall> '.$fallingsymbol.'</fall><value> '; echo number_format($weather["barometer_trend"],2), '</falling><units> ';echo $weather["barometer_units"], '</units>';}
 else if ($weather["barometer_trend"] > 0 && $weather["barometer_trend"] < 100) {
 echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}	  
-else echo '<ogreen> '.$steadysymbol.'</ogreen><steady><ogreen><value>Steady</ogreen></steady>';?></valuetext>
+else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class="ink-ogreen"><value>Steady</span></steady>';?></valuetext>
 </div>
 
 <div class="homeweathercompass2" >
@@ -46,13 +46,13 @@ else echo '<ogreen> '.$steadysymbol.'</ogreen><steady><ogreen><value>Steady</ogr
 </div>
 <div class="text2"><div class="pressuretext">
 <?php if ($weather["barometer_trend"]>20) {
-    echo '<ogreen>'.$lang['Steady'].'</ogreen>';
+    echo '<span class="ink-ogreen">'.$lang['Steady'].'</span>';
 } else if ($weather["barometer_trend"] < 0) {
-    echo '<oblue>'.$lang['Falling'].'</oblue> <fall> '.$fallingsymbol.'</fall>';
+    echo '<span class="ink-oblue">'.$lang['Falling'].'</span> <fall> '.$fallingsymbol.'</fall>';
 } else if ($weather["barometer_trend"] > 0) {
-    echo '<oorange>'.$lang['Rising'].'</orange> <rise> '.$risingsymbol.' </rise>';
+    echo '<span class="ink-oorange">'.$lang['Rising'].'</span> <rise> '.$risingsymbol.' </rise>';
 } else {
-    echo '<ogreen>'.$lang['Steady'].'</ogreen>';
+    echo '<span class="ink-ogreen">'.$lang['Steady'].'</span>';
 }?>
 </div>
 <?php echo "<darkgrey>".$weather["barometer"],"&nbsp;<span>".$weather["barometer_units"]."</span>";?>

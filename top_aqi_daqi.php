@@ -53,4 +53,4 @@ if ($aqiweather["pm25"] >300){echo "<topdaqi9>",$aqiweather["pm25"]."<smallwindu
  else if ($aqiweather["pm10"]>=0){echo '<div class="maxwordlow">PM<sub>10</sub>';}
   ?>
 </div></div>
-<div class="maxtimedate"><?php echo $aqiweather["band"]?></oorange></div> 
+<div class="maxtimedate"><?php echo $aqiweather["band"]?></div> 

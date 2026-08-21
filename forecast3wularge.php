@@ -172,8 +172,8 @@ echo $wuskydayWinddircardinal;
 echo " </blueu>at ".$windalert2." <div class=wuwindspeed> ".number_format($wuskydayWindGust,0),"&nbsp;<wuunits>".$windunit;echo  '</wuunits></div></div>';'<br><br>';
 echo "<div class='wulargerain'>";
 //snow wu
-if ( $wuskydaysnow>0 && $rainunit=='in'){ echo ' Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><oblue>&nbsp;'.$wuskydaysnow.'</oblue><wuunits> in</wuunits>';}
-else if ( $wuskydaysnow>0 && $rainunit=='mm'){ echo 'Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><oblue>&nbsp;'.$wuskydaysnow.'</oblue><wuunits> cm</wuunits>';}
+if ( $wuskydaysnow>0 && $rainunit=='in'){ echo ' Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> in</wuunits>';}
+else if ( $wuskydaysnow>0 && $rainunit=='mm'){ echo 'Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> cm</wuunits>';}
 //rain wu
 else if ($wuskydayPrecipType='rain' && $rainunit=='in'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,2).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
 else if ($wuskydayPrecipType='rain' && $rainunit=='mm'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,1).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
@@ -193,16 +193,16 @@ if ($tempunit=='C' && $wuskyheatindex>=29){echo "Heat Index ".$heatindexwu." <he
 //lightning wu
 echo '</div><div class=wulargeheatindex style="margin-top:27px;width:16em;margin-left:98px">';
 if ($wuskythunderidx>0 )  {echo 'Thunderstorms expected '.$wuskydayTime.' </wuthunder2>';}
-else if ($wuskythunderidx1>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime1. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx2>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime2. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx3>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime3. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx4>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime4. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx5>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime5. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx6>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime6. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx7>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime7. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx8>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx9>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime9. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskythunderidx10>0 )  {echo $infowu.'<ored>Thunder</ored> '.$wuskydayTime10. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx1>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime1. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx2>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime2. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx3>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime3. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx4>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime4. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx5>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime5. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx6>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime6. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx7>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime7. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx8>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx9>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime9. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskythunderidx10>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime10. '&nbsp;'.$lightningalert8.'';}
 //snowfall wu
 else if ($wuskysnow>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime. '&nbsp;'.$freezing.'';}
 else if ($wuskysnow1>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime1. '&nbsp;'.$freezing.'';}
@@ -231,14 +231,14 @@ else if ($wuskyrain10>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime10. '
 else if ($tempunit=='C' && $wuskyheatindex>29 )  {echo $infowu.'<wuheatindex>Heat Index </wuheatindex>High '.$wuskydayTime. '&nbsp;'.$lightningalert8.'';}
 else if ($tempunit=='F' && $wuskyheatindex>84 )  {echo $infowu.'<wuheatindex>Heat Index </wuheatindex>High '.$wuskydayTime. '&nbsp;'.$lightningalert8.'';}
 //uv index wu
-else if ($wuskydayUV1>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime1.'&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV2>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime2.'&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV3>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime3. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV4>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime4. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV5>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime5. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV6>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime6. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV7>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime7. '&nbsp;'.$lightningalert8.'';}
-else if ($wuskydayUV8>6 )  {echo $infowu.'<ored>High UV </ored> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV1>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime1.'&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV2>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime2.'&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV3>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime3. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV4>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime4. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV5>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime5. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV6>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime6. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV7>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime7. '&nbsp;'.$lightningalert8.'';}
+else if ($wuskydayUV8>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
 else echo $lightningalert8. "&nbsp;No Cautions";
 echo '</div>';?></div></div></div>
 </div><!-- /mod-forecast -->

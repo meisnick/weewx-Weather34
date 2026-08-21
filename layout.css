@@ -173,11 +173,11 @@ header { background: var(--bg-header); border-bottom: 1px solid #151718; positio
 /* ── Common semantic color tags ──────────────────────────────────────── */
 orange, torange, maxred, windred, agolightning { color: #ff7c39 }
 tred { color: #d35d4e }
-tblue, oblue, minblue { color: #3b9cac }
+tblue, oblue, .ink-oblue, minblue { color: #3b9cac }
 tgreen { color: #90b12a }
 grey, darkgrey { color: silver }
-ogreen { color: #90b12a }
-oorange { color: #ff7c39 }
+ogreen, .ink-ogreen { color: #90b12a }
+oorange, .ink-oorange { color: #ff7c39 }
 blueu { color: #3b9cac }
 
 /* ── Common typography tags ──────────────────────────────────────────── */

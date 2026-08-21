@@ -152,9 +152,9 @@ echo '</wuunits></div></div>';
 echo "<div class='wulargerain'>";
 //snow aw
 if ($forecastsnow > 0 && $rainunit == 'in') {
-    echo ' Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><oblue>&nbsp;' . $forecastsnow . '</oblue><wuunits> in</wuunits>';
+    echo ' Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> in</wuunits>';
 } else if ($forecastsnow > 0 && $rainunit == 'mm') {
-    echo 'Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><oblue>&nbsp;' . $forecastsnow . '</oblue><wuunits> cm</wuunits>';
+    echo 'Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> cm</wuunits>';
 }
 //rain aw
 else if ($forecastPrecipType = 'rain' && $rainunit == 'in') {
@@ -192,25 +192,25 @@ echo '</div><div class=wulargeheatindex style="margin-top:27px;width:16em;margin
 if ($forecastthunderidx > 0) {
     echo 'Thunderstorms expected ' . $forecastTime . ' </wuthunder2>';
 } else if ($forecastthunderidx1 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx2 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx3 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx4 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx5 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx6 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx7 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx8 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx9 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime9 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime9 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx10 > 0) {
-    echo $infowu . '<ored>Thunder</ored> ' . $forecastTime10 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime10 . '&nbsp;' . $lightningalert8 . '';
 }
 //snowfall aw
 else if ($forecastsnow > 0) {
@@ -268,22 +268,22 @@ else if ($tempunit == 'C' && $forecastheatindex > 29) {
 }
 //uv index aw
 else if ($forecastUV1 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV2 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV3 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV4 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV5 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV6 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV7 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastUV8 > 6) {
-    echo $infowu . '<ored>High UV </ored> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
-} 
+    echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
+}
 //else
 //    echo $lightningalert8 . "&nbsp;No Cautions";
 echo '</div>';

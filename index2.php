@@ -101,7 +101,7 @@ function modulePopups($module, $vars) {
             $out = '<span class="yearpopup"><a href="pop_outlookwu.php" data-lity>' . $chartinfo . ' Daily F.cast</a></span>';
             break;
         case 'currentconditionsw34.php':
-            $metar_offline = (file_exists('jsondata/me.txt') && filesize('jsondata/me.txt') < 160) ? ' (<ored>Offline</ored>)' : '';
+            $metar_offline = (file_exists('jsondata/me.txt') && filesize('jsondata/me.txt') < 160) ? ' (<span class="ink-ored">Offline</span>)' : '';
             $out  = '<span class="yearpopup"><a href="pop_metarnearby.php" data-lity>' . $chartinfo . ' Nearby Metar' . $metar_offline . '</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windyradar.php" data-lity>' . $chartinfo . ' Radar</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windywind.php" data-lity>' . $chartinfo . ' Wind Map</a></span>';

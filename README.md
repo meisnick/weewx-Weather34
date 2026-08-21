@@ -15,6 +15,8 @@ weather, and AI-summarized forecast discussions — all powered by free, keyless
 > reached end-of-life in August 2023; this fork keeps it working on modern WeeWX 5, PHP 8.4,
 > and Python 3.13, and rebuilds it around a fully modular, customizable dashboard.
 
+![Weather34 for WeeWX — dashboard, dark theme](docs/screenshots/dashboard-dark.png)
+
 ---
 
 ## Overview
@@ -52,18 +54,6 @@ no paid or deprecated APIs.
 - **🌍 Internationalized** — localized module titles and Beaufort-scale descriptions via `$lang[]`.
 - **🆓 Free & keyless data** — Open-Meteo, NOAA Aviation Weather METAR, and NWS alerts require no
   API key; only optional extended forecast / AQI use free tokens.
-
-## Screenshots
-
-<!--
-Add dashboard captures to docs/screenshots/ and reference them here, e.g.:
-![Dashboard — dark theme](docs/screenshots/dashboard-dark.png)
-![Dashboard — light theme](docs/screenshots/dashboard-light.png)
--->
-
-_Drop dashboard screenshots into `docs/screenshots/` and link them here._
-
----
 
 ## Branches
 

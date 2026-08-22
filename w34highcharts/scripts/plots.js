@@ -634,7 +634,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function setTempSmall(options) {
 	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "160";
+
 	    $("#"+plot_div).css("height", 210);
 	    return options
 	};
@@ -912,7 +912,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function setBarSmall(obj) {
 	    obj.chart.marginBottom = 50;
-	    obj.yAxis[0].height = "240";
+
 	    $("#"+plot_div).css("height", 290);
 	    return obj
 	};
@@ -963,7 +963,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function setWindSmall(options) {
 	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "235";
+
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1197,7 +1197,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function setRainSmall(options) {
 	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "235";
+
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1258,7 +1258,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function setStrikeSmall(options) {
 	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "235";
+
 	    $("#"+plot_div).css("height", 375);
 	    return options;
 	};
@@ -1370,7 +1370,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function setRadSmall(options) {
 	    options.chart.marginBottom = 50;
-	    options.yAxis[0].height = "235";
+
 	    $("#"+plot_div).css("height", 285);
 	    return options;
 	};
@@ -1478,7 +1478,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function setUvSmall(options) {
 	    options.chart.marginBottom = 50;
-	    options.yAxis[0].height = "235";
+
 	    $("#"+plot_div).css("height", 285);
 	    return options
 	};

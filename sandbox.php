@@ -166,7 +166,7 @@ sort($pop_mods);
   </select>
   <button id="theme" data-theme="<?php echo $theme; ?>">Theme: <?php echo $theme; ?></button>
   <button id="grid">Grid</button>
-  <button id="reload">Reload</button><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Width: <input type="range" id="pop-width" min="300" max="1600" value="820" style="vertical-align:middle;width:80px;margin:0 5px"><span id="pop-val">820px</span></label>
+  <button id="reload">Reload</button><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Width: <input type="range" id="pop-width" min="300" max="1600" value="820" style="vertical-align:middle;width:80px;margin:0 5px"><span id="pop-val">820px</span></label><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Height: <input type="range" id="pop-height" min="300" max="1600" value="566" style="vertical-align:middle;width:80px;margin:0 5px"><span id="poph-val">566px</span></label>
   <span class="sp"></span>
   <span class="hint">WYSIWYG CSS & Highcharts Live Control · Shift=10px · Instant postMessage re-render</span>
 </header>
@@ -634,7 +634,7 @@ sort($pop_mods);
   moduleSel.onchange=load;
   themeBtn.onclick=function(){ themeBtn.dataset.theme=theme()==='dark'?'light':'dark'; themeBtn.textContent='Theme: '+theme(); load(); };
   gridBtn.onclick=function(){ gridOn=!gridOn; gridBtn.classList.toggle('on',gridOn); wireFrame(); };
-  $('reload').onclick=load; $('pop-width').oninput=function(){ $('pop-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.width=this.value+'px'; };
+  $('reload').onclick=load; $('pop-width').oninput=function(){ $('pop-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.width=this.value+'px'; }; $('pop-height').oninput=function(){ $('poph-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.height=this.value+'px'; };
   $('copy').onclick=function(){ navigator.clipboard.writeText(css.value); status.textContent='copied ✓'; setTimeout(function(){status.textContent='';},1200); };
   $('reset').onclick=function(){ if(curSel){ delete rules[curSel]; serialize(); buildPanel(); } };
   $('clear').onclick=function(){ rules={}; serialize(); buildPanel(); };
@@ -675,7 +675,7 @@ sort($pop_mods);
   frame.addEventListener('load', function() {
     wireFrame();
     // Re-sync Highcharts to the loaded iframe
-    setTimeout(syncHighcharts, 500);
+    setTimeout(syncHighcharts, 500); if(frame.classList.contains('popout-mode') && frame.contentDocument) { var h=frame.contentDocument.documentElement.scrollHeight; if(h>100){ $('pop-height').value=h; $('pop-height').oninput(); } }
     setTimeout(syncHighcharts, 1500);
   });
   document.addEventListener('keydown', onKey);

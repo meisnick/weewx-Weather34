@@ -595,7 +595,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        rangeSelector: {enabled: false},
 	        navigator: {enabled: false},
 	        scrollbar: {enabled: false},
-	        legend:{enabled:true },
+	        legend:{enabled:true, margin:25 },
 	        title: {text: ''}
 	    });
 	};

@@ -143,7 +143,7 @@ sort($pop_mods);
   .foot button.primary:hover{background:#3575d3}
   .prev{flex:1;display:flex;flex-direction:column;min-width:0}
   .prevbar{padding:6px 12px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);background:var(--panel)}
-  iframe{flex:1;width:100%;border:0;background:#15171a; transition:all 0.3s} iframe.popout-mode{max-width:850px; margin:40px auto; height:calc(100% - 80px); flex:none; box-shadow:0 10px 40px rgba(0,0,0,0.5); border-radius:8px}
+  iframe{flex:1;width:100%;border:0;background:#15171a; transition:all 0.3s} iframe.popout-mode{width:820px; max-width:100%; margin:40px auto; height:565.5px; flex:none; box-shadow:0 10px 40px rgba(0,0,0,0.5); border-radius:8px}
   .hint{color:var(--muted);font-size:11.5px}
   .arrange{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--panel)}
   .arrange button{flex:1 1 42%;padding:6px 8px;font-size:12px}
@@ -166,7 +166,7 @@ sort($pop_mods);
   </select>
   <button id="theme" data-theme="<?php echo $theme; ?>">Theme: <?php echo $theme; ?></button>
   <button id="grid">Grid</button>
-  <button id="reload">Reload</button><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Width: <input type="range" id="pop-width" min="300" max="1600" value="850" style="vertical-align:middle;width:80px;margin:0 5px"><span id="pop-val">850px</span></label>
+  <button id="reload">Reload</button><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Width: <input type="range" id="pop-width" min="300" max="1600" value="820" style="vertical-align:middle;width:80px;margin:0 5px"><span id="pop-val">820px</span></label>
   <span class="sp"></span>
   <span class="hint">WYSIWYG CSS & Highcharts Live Control · Shift=10px · Instant postMessage re-render</span>
 </header>
@@ -634,7 +634,7 @@ sort($pop_mods);
   moduleSel.onchange=load;
   themeBtn.onclick=function(){ themeBtn.dataset.theme=theme()==='dark'?'light':'dark'; themeBtn.textContent='Theme: '+theme(); load(); };
   gridBtn.onclick=function(){ gridOn=!gridOn; gridBtn.classList.toggle('on',gridOn); wireFrame(); };
-  $('reload').onclick=load; $('pop-width').oninput=function(){ $('pop-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.maxWidth=this.value+'px'; };
+  $('reload').onclick=load; $('pop-width').oninput=function(){ $('pop-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.width=this.value+'px'; };
   $('copy').onclick=function(){ navigator.clipboard.writeText(css.value); status.textContent='copied ✓'; setTimeout(function(){status.textContent='';},1200); };
   $('reset').onclick=function(){ if(curSel){ delete rules[curSel]; serialize(); buildPanel(); } };
   $('clear').onclick=function(){ rules={}; serialize(); buildPanel(); };

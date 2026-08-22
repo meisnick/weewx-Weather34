@@ -179,9 +179,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function create_common_options(){
 	    var commonOptions = {
 	        chart: {
-	            spacing: [10, 10, 0, 0],
+	            spacing: [10, 10, 10, 10],
 	            boost: {useGPUTranslations: false},
-	            spacingLeft: 20,
+	            spacingLeft: 10,
                     events: {
                          load: function(event){             // Hack to make radial charts display correctly the first time when they are not full of data
                             if (enable_radial_charts_reload && this.options.chart.polar && event.target.series[0].data.length > 10 && plot_type != 'windroseplot' && plot_type != 'windrosegustplot')
@@ -323,7 +323,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        }],
 	        yAxis: [{
 	            labels: {
-	                x: -4,
+	                x: -8,
 	                y: 4,
 	            },
 	            lineWidth: 1,
@@ -341,7 +341,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            title: {text: ''}
 	            }, {
 	            labels: {
-	                x: 4,
+	                x: 8,
 	                y: 4,
 	            },
 	            lineWidth: 1,
@@ -360,7 +360,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                text: ''}
 	            }, {
 	            labels: {
-	                x: 4,
+	                x: 8,
 	                y: 4,
 	            },
 	            lineWidth: 1,
@@ -595,7 +595,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        rangeSelector: {enabled: false},
 	        navigator: {enabled: false},
 	        scrollbar: {enabled: false},
-	        legend:{enabled:false },
+	        legend:{enabled:true },
 	        title: {text: ''}
 	    });
 	};
@@ -632,9 +632,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 
 	function setTempSmall(options) {
-	    options.chart.marginBottom = 40;
+	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "180";
+	    options.yAxis[0].height = "160";
 	    $("#"+plot_div).css("height", 210);
 	    return options
 	};
@@ -911,8 +911,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 	
 	function setBarSmall(obj) {
-	    obj.chart.marginBottom = 40;
-	    obj.yAxis[0].height = "260";
+	    obj.chart.marginBottom = 50;
+	    obj.yAxis[0].height = "240";
 	    $("#"+plot_div).css("height", 290);
 	    return obj
 	};
@@ -961,9 +961,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
             return wcolors;
         }
 	function setWindSmall(options) {
-	    options.chart.marginBottom = 40;
+	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "255";
+	    options.yAxis[0].height = "235";
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1106,7 +1106,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    };
 	    options.yAxis.endOnTick = false;
 	    options.yAxis.title = {text: getTranslation('Frequency (%)')};
-	    options.yAxis.labels = {formatter: function () {return this.value + '%';}};
+	    options.yAxis.labels = {x: -8, y: 4, formatter: function () {return this.value + '%';}};
 	    options.yAxis.reversedStacks = false;
 	    options.plotOptions.series = {
 	            stacking: 'normal',
@@ -1195,9 +1195,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setRainSmall(options) {
-	    options.chart.marginBottom = 40;
+	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "255";
+	    options.yAxis[0].height = "235";
 	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
@@ -1256,9 +1256,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setStrikeSmall(options) {
-	    options.chart.marginBottom = 40;
+	    options.chart.marginBottom = 50;
             options.chart.marginTop = 50;
-	    options.yAxis[0].height = "255";
+	    options.yAxis[0].height = "235";
 	    $("#"+plot_div).css("height", 375);
 	    return options;
 	};
@@ -1369,7 +1369,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setRadSmall(options) {
-	    options.yAxis[0].height = "255";
+	    options.chart.marginBottom = 50;
+	    options.yAxis[0].height = "235";
 	    $("#"+plot_div).css("height", 285);
 	    return options;
 	};
@@ -1476,7 +1477,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setUvSmall(options) {
-	    options.yAxis[0].height = "255";
+	    options.chart.marginBottom = 50;
+	    options.yAxis[0].height = "235";
 	    $("#"+plot_div).css("height", 285);
 	    return options
 	};

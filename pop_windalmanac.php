@@ -389,15 +389,15 @@ Max Recorded <br><blue><?php echo $weather["windamaxtime"];?></blue></div>
   
   
   
-<articlegraph style="height:30px">  
+<articlegraph style="height:45px; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a></span>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>
   </div>   
     
   <div class="lotemp">
   <?php echo $info?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
-  </a></div>
+  </div>
    
   </articlegraph>
   

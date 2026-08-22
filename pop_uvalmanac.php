@@ -172,10 +172,10 @@ if ($theme === "dark") {
   <iframe  src="w34highcharts/<?php echo $theme1;?>-charts.html?chart='uvsmallplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
  
   </articlegraph> 
-     <articlegraph style="height:30px">  
+     <articlegraph style="height:45px; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:6px;"> Charts rendered using Highcharts. Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-2019</a></div>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered using Highcharts. Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y'); ?></a></div>
    
   </articlegraph> 
   

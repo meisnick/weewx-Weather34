@@ -87,7 +87,7 @@ $mods = array_values(array_unique($mods));
   select,button{font:inherit;background:#232833;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:5px 9px;cursor:pointer}
   button:hover{border-color:var(--accent)} button.on{background:var(--accent);color:#0b1120;border-color:var(--accent)}
   .wrap{flex:1;display:flex;min-height:0}
-  .side{width:340px;min-width:300px;display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--panel)}
+  .side{width:360px;min-width:320px;display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--panel)}
   .sel{padding:8px 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
   .sel code{color:var(--pink);font-family:ui-monospace,Menlo,Consolas,monospace} .sel .box{color:var(--accent);font-family:ui-monospace,monospace}
   .panel{padding:6px 12px 10px;overflow:auto;flex:1}
@@ -95,6 +95,8 @@ $mods = array_values(array_unique($mods));
   .grp{margin:10px 0 4px;font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
   .row{display:grid;grid-template-columns:52px 1fr 58px;gap:8px;align-items:center;margin:6px 0}
   .row label{font-size:12px;color:var(--muted)}
+  .row select{width:100%;background:#0b0d10;color:#d6e2ff;border:1px solid var(--line);border-radius:5px;padding:3px 5px;font:12px ui-sans-serif,sans-serif}
+  .row .inline-val{font:12px ui-monospace,monospace;color:var(--muted);text-align:right}
   .row input[type=range]{width:100%}
   .row input[type=number]{width:100%;background:#0b0d10;color:#d6e2ff;border:1px solid var(--line);border-radius:5px;padding:3px 5px;font:12px ui-monospace,monospace}
   .row input[type=color]{width:100%;height:26px;background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px;cursor:pointer}
@@ -152,14 +154,25 @@ $mods = array_values(array_unique($mods));
   var gridOn=false, curSel=null, curEl=null;
   var rules={};                       // selector -> { prop: value }  (source of truth)
 
-  // control definitions: [cssprop, label, kind, min, max, step, unit]
+  // control definitions: [cssprop, label, kind, min/options, max, step, unit]
   // Move uses left/top (with position:relative for non-absolute elements) instead of
   // margins: works on inline elements (vertical margin is ignored on inline boxes) and
   // never shoves sibling elements. setProp() adds position:relative automatically.
   var CTRLS = {
     move: [['left','X','num',-200,320,1,'px'], ['top','Y','num',-200,320,1,'px']],
     size: [['width','W','num',0,340,1,'px'], ['height','H','num',0,240,1,'px']],
-    text: [['font-size','Font','num',5,60,0.5,'px']],
+    padding: [['padding-top','Pad T','num',0,100,1,'px'], ['padding-right','Pad R','num',0,100,1,'px'],
+              ['padding-bottom','Pad B','num',0,100,1,'px'], ['padding-left','Pad L','num',0,100,1,'px']],
+    margin: [['margin-top','Mar T','num',-100,150,1,'px'], ['margin-right','Mar R','num',-100,150,1,'px'],
+             ['margin-bottom','Mar B','num',-100,150,1,'px'], ['margin-left','Mar L','num',-100,150,1,'px']],
+    layout: [['display','Display','select',['','block','inline-block','inline','flex','inline-flex','none']],
+             ['position','Position','select',['','static','relative','absolute','fixed']]],
+    flex: [['gap','Gap','num',0,100,1,'px'],
+           ['align-items','Align','select',['','stretch','flex-start','center','flex-end','baseline']],
+           ['justify-content','Justify','select',['','flex-start','center','flex-end','space-between','space-around','space-evenly']]],
+    text: [['font-size','Font','num',5,60,0.5,'px'],
+           ['line-height','Line H','num',0,80,1,'px'],
+           ['text-align','Align','select',['','left','center','right']]],
     color:[['color','Text','color'], ['background-color','Fill','color']]
   };
 
@@ -179,7 +192,13 @@ $mods = array_values(array_unique($mods));
   function setProp(sel,prop,val){
     rules[sel]=rules[sel]||{};
     if((prop==='left'||prop==='top') && curEl && sel===curSel && moveRelative(curEl)) rules[sel]['position']='relative';
-    rules[sel][prop]=val; serialize();
+    if(val==='' || val==null) {
+      delete rules[sel][prop];
+      if(!Object.keys(rules[sel]).length) delete rules[sel];
+    } else {
+      rules[sel][prop]=val;
+    }
+    serialize();
   }
   function getProp(sel,prop){ return rules[sel]&&rules[sel][prop]; }
 
@@ -294,6 +313,25 @@ $mods = array_values(array_unique($mods));
           var ci=document.createElement('input'); ci.type='color'; ci.value=/^#/.test(val)?val:rgb2hex(val);
           ci.oninput=function(){ setProp(curSel,prop,ci.value); };
           var spacer=document.createElement('span'); row.appendChild(ci); row.appendChild(spacer);
+        } else if(kind==='select'){
+          var stored=getProp(curSel,prop);
+          var computed=cs.getPropertyValue(prop)||'';
+          var selBox=document.createElement('select');
+          var options=def[3];
+          options.forEach(function(opt){
+            var o=document.createElement('option');
+            o.value=opt;
+            o.textContent=opt==='' ? '(default / inherit)' : opt;
+            if(stored!=null ? stored===opt : (opt!=='' && computed===opt)){
+              o.selected=true;
+            }
+            selBox.appendChild(o);
+          });
+          selBox.onchange=function(){ setProp(curSel,prop,selBox.value); };
+          var valLabel=document.createElement('span'); valLabel.className='inline-val';
+          valLabel.textContent=stored?stored:computed;
+          selBox.addEventListener('change',function(){ valLabel.textContent=selBox.value||computed; });
+          row.appendChild(selBox); row.appendChild(valLabel);
         } else {
           var cur=getProp(curSel,prop); var num=cur!=null?px(cur):px(cs.getPropertyValue(prop));
           var rng=document.createElement('input'); rng.type='range'; rng.min=def[3]; rng.max=def[4]; rng.step=def[5]; rng.value=num;

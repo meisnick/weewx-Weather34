@@ -130,16 +130,7 @@ metricsblue {
 <iframe  src="w34highcharts/<?php echo $theme1;?>-charts.html?chart='strikesmallplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" frameborder="0" scrolling="no" width="100%"  height="100%"></iframe>
     </articlegraph>
 
-<articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
-  <div class="lotemp">
-  <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>
-  </div>   
-    
-  <div class="lotemp">
-  <?php echo $info?> Adapted by Jerry for the WeeWX Weather34 template from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
-  </div>
-   
-  </articlegraph>
+
   
 </main>
+

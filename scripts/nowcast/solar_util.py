@@ -1,6 +1,11 @@
 import math
 from datetime import datetime, timezone, timedelta
-from nowcast_config import LAT, LON
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import w34config as cfg
+LAT = cfg.LAT
+LON = cfg.LON
 
 def get_central_offset(dt_utc):
     """

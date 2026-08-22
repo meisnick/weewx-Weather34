@@ -6,10 +6,11 @@ Generates a plain-English 6-hour forecast from your local weewx weather station 
 
 This engine has been refactored to be deployed by ANY station, anywhere in the world. 
 
-1. **Configure Your Station (nowcast_config.py)**
-   - Open `nowcast_config.py` and set your `LAT` and `LON` (required for sunset/sunrise tracking).
-   - Set your `ONSHORE_WINDS`. If your station is near a coast (ocean or large lake), define which wind vectors bring the marine layer (e.g. `{"NE", "ENE", "E"}`).
-   - Set `ONSHORE_NAME` (e.g. "Lake breeze", "Sea breeze"). If you are completely inland, you can leave the set empty `ONSHORE_WINDS = set()`.
+1. **Configure Your Station (scripts/w34config.py)**
+   - Copy `scripts/w34config.example.py` to `scripts/w34config.py` and open it.
+   - Set your `LAT` and `LON` (required for sunset/sunrise tracking).
+   - Set your `NOWCAST_ONSHORE_WINDS`. If your station is near a coast (ocean or large lake), define which wind vectors bring the marine layer (e.g. `["NE", "ENE", "E"]`).
+   - Set `NOWCAST_ONSHORE_NAME` (e.g. "Lake breeze", "Sea breeze"). If you are completely inland, you can leave the list empty `NOWCAST_ONSHORE_WINDS = []`.
 
 2. **Initialize the SQLite Database**
    - Run `python3 feature_builder.py`.

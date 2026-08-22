@@ -16,7 +16,10 @@ import time
 import urllib.request
 from pathlib import Path
 import analogue_forecast as af
-import nowcast_config as cfg
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import w34config as cfg
 
 # Try relative/local paths first, fall back to Pi standard path
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -33,7 +36,7 @@ SYSTEM = (
     "Your ONLY output is valid JSON: {\"forecast\": \"...\"}. "
     "Write one forecast sentence, 12-22 words. Plain language only. "
     "No jargon. No location names. No introductory phrases. "
-    f"Preserve mandatory elements: the exact time-of-day phrase, {cfg.ONSHORE_NAME.lower()} if mentioned, rain chance if mentioned, and temperature trend."
+    f"Preserve mandatory elements: the exact time-of-day phrase, {cfg.NOWCAST_ONSHORE_NAME.lower()} if mentioned, rain chance if mentioned, and temperature trend."
 )
 
 FEW_SHOT = [
@@ -64,8 +67,8 @@ FEW_SHOT = [
     ),
 ]
 
-LAKE_ONSHORE  = cfg.ONSHORE_WINDS
-ONSHORE_NAME  = cfg.ONSHORE_NAME
+LAKE_ONSHORE  = cfg.NOWCAST_ONSHORE_WINDS
+NOWCAST_ONSHORE_NAME  = cfg.NOWCAST_ONSHORE_NAME
 LAKE_NEUTRAL  = {"N", "NNE", "NNW", "S", "SSE", "SSW"}
 LAKE_OFFSHORE = {"W", "WNW", "WSW", "SW", "NW"}
 
@@ -130,7 +133,7 @@ def interpret(data):
         temp_story = f"near {temp_now:.0f}°F {timing_phrase}" if temp_now else f"steady {timing_phrase}"
 
     # Lake modifier (crucial meteorological feature)
-    lake_prefix = f"{ONSHORE_NAME} with temperatures " if lake else "Temperatures "
+    lake_prefix = f"{NOWCAST_ONSHORE_NAME} with temperatures " if lake else "Temperatures "
 
     # Rain note
     if rain_pct >= 40:
@@ -154,7 +157,7 @@ def interpret(data):
         f"Refine into a polished forecast sentence (12-22 words):\n"
         f"Draft: {draft}\n\n"
         f"MANDATORY: You must include the exact phrase '{timing_phrase}', "
-        f"{'mention the ' + ONSHORE_NAME.lower() + ', ' if lake else ''}"
+        f"{'mention the ' + NOWCAST_ONSHORE_NAME.lower() + ', ' if lake else ''}"
         f"and state the temperature and rain details accurately."
     )
 

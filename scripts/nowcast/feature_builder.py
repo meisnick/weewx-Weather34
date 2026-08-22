@@ -15,7 +15,10 @@ import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-import nowcast_config as cfg
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import w34config as cfg
 
 WEEWX_DB   = Path("/var/lib/weewx/weewx.sdb")
 FEATURES_DB  = Path(cfg.NOWCAST_LOCAL_FEATURE_DB)

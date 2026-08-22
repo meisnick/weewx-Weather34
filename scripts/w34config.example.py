@@ -25,3 +25,11 @@ FORECAST_DAILY_PATH   = WEB_ROOT + "/jsondata/forecast_daily.txt"
 FORECAST_HOURLY_PATH   = WEB_ROOT + "/jsondata/forecast_hourly.txt"
 ME_PATH    = WEB_ROOT + "/jsondata/me.txt"
 ALERTS_PATH = WEB_ROOT + "/jsondata/nws_alerts.txt"
+
+# Nowcast Pipeline Configuration
+NOWCAST_LOCAL_FEATURE_DB = "/home/weewx/features.db"   # SQLite DB for historical features
+NOWCAST_LOCAL_LOG_DB     = "/home/weewx/forecast_log.db" # SQLite DB for logging
+NOWCAST_ONSHORE_WINDS    = ["NE", "ENE", "E", "ESE", "SE"]  # Winds that bring local microclimate effects
+NOWCAST_ONSHORE_NAME     = "Lake breeze" # Term to use in the LLM narrative (e.g. "Sea breeze", "Ocean breeze")
+OLLAMA_URL               = "http://localhost:11434/api/chat"
+OLLAMA_MODEL             = "gemma3:1b"

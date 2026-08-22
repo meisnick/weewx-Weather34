@@ -383,8 +383,28 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                text: ''}
 	        }],
 	    };
+	    // Merge any saved Highcharts sandbox overrides
+	    if (window.w34HighchartsOverrides && typeof window.w34HighchartsOverrides === 'object') {
+	        $.extend(true, commonOptions, window.w34HighchartsOverrides);
+	    }
 	    return commonOptions;
 	};
+
+	// Real-time live updates from sandbox.php
+	if (!window._w34HighchartsListenerAttached) {
+	    window._w34HighchartsListenerAttached = true;
+	    window.addEventListener('message', function(event) {
+	        if (event && event.data && event.data.type === 'HIGHCHARTS_UPDATE' && event.data.config) {
+	            if (window.Highcharts && Highcharts.charts) {
+	                Highcharts.charts.forEach(function(c) {
+	                    if (c && typeof c.update === 'function') {
+	                        c.update(event.data.config, true, true, false);
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
 	
 	function remove_range_selector(chart){
 	    chart.update({

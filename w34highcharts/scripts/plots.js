@@ -291,7 +291,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            tickPosition: 'outside',
 	            tickWidth: 1,
 	            title: {},
-	            type: 'datetime',
+	            type: 'datetime', labels: { y: 20 },
 	            minRange: 1,
 	        },{
 	            dateTimeLabelFormats: {
@@ -308,7 +308,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            tickPosition: 'outside',
 	            tickWidth: 1,
 	            title: {},
-	            type: 'datetime',
+	            type: 'datetime', labels: { y: 20 },
 	            opposite: true,
 	            minRange: 1,
 	            visible: false,

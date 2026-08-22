@@ -166,7 +166,7 @@ sort($pop_mods);
   </select>
   <button id="theme" data-theme="<?php echo $theme; ?>">Theme: <?php echo $theme; ?></button>
   <button id="grid">Grid</button>
-  <button id="reload">Reload</button>
+  <button id="reload">Reload</button><label style="margin-left:15px;color:var(--muted);font-size:12px">Pop Width: <input type="range" id="pop-width" min="300" max="1600" value="850" style="vertical-align:middle;width:80px;margin:0 5px"><span id="pop-val">850px</span></label>
   <span class="sp"></span>
   <span class="hint">WYSIWYG CSS & Highcharts Live Control · Shift=10px · Instant postMessage re-render</span>
 </header>
@@ -634,7 +634,7 @@ sort($pop_mods);
   moduleSel.onchange=load;
   themeBtn.onclick=function(){ themeBtn.dataset.theme=theme()==='dark'?'light':'dark'; themeBtn.textContent='Theme: '+theme(); load(); };
   gridBtn.onclick=function(){ gridOn=!gridOn; gridBtn.classList.toggle('on',gridOn); wireFrame(); };
-  $('reload').onclick=load;
+  $('reload').onclick=load; $('pop-width').oninput=function(){ $('pop-val').textContent=this.value+'px'; if(frame.classList.contains('popout-mode')) frame.style.maxWidth=this.value+'px'; };
   $('copy').onclick=function(){ navigator.clipboard.writeText(css.value); status.textContent='copied ✓'; setTimeout(function(){status.textContent='';},1200); };
   $('reset').onclick=function(){ if(curSel){ delete rules[curSel]; serialize(); buildPanel(); } };
   $('clear').onclick=function(){ rules={}; serialize(); buildPanel(); };

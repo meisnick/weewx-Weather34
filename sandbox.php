@@ -143,7 +143,7 @@ sort($pop_mods);
   .foot button.primary:hover{background:#3575d3}
   .prev{flex:1;display:flex;flex-direction:column;min-width:0}
   .prevbar{padding:6px 12px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);background:var(--panel)}
-  iframe{flex:1;width:100%;border:0;background:#15171a}
+  iframe{flex:1;width:100%;border:0;background:#15171a; transition:all 0.3s} iframe.popout-mode{max-width:850px; margin:40px auto; height:calc(100% - 80px); flex:none; box-shadow:0 10px 40px rgba(0,0,0,0.5); border-radius:8px}
   .hint{color:var(--muted);font-size:11.5px}
   .arrange{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--panel)}
   .arrange button{flex:1 1 42%;padding:6px 8px;font-size:12px}
@@ -274,7 +274,7 @@ sort($pop_mods);
 
   function theme(){ return themeBtn.dataset.theme; }
   function frameSrc(){ return base+'/sandbox.php?frame=1&module='+encodeURIComponent(moduleSel.value)+'&theme='+theme()+'&t='+Date.now(); }
-  function load(){ curSel=null; curEl=null; buildArrange(); frame.src=frameSrc(); prevbar.textContent=moduleSel.value+'  ·  '+theme(); }
+  function load(){ frame.classList.toggle('popout-mode', moduleSel.value.startsWith('pop_')); curSel=null; curEl=null; buildArrange(); frame.src=frameSrc(); prevbar.textContent=moduleSel.value+'  ·  '+theme(); }
 
   /* ── CSS SERIALIZE & LIVE APPLY ────────────────────────────────────────── */
   function serialize(){

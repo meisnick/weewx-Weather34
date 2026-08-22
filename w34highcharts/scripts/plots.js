@@ -179,6 +179,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function create_common_options(){
 	    var commonOptions = {
 	        chart: {
+	            height: null,
+	            width: null,
 	            spacing: [10, 10, 10, 10],
 	            boost: {useGPUTranslations: false},
 	            spacingLeft: 10,
@@ -191,7 +193,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        },
 	        legend: {
 	            enabled: true,
-	            itemDistance:15,
+	            margin: 25,
+	            itemDistance: 15,
 	        },
 	        plotOptions: {
 	            area: {
@@ -632,11 +635,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 
 	function setTempSmall(options) {
-	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
-
-	    $("#"+plot_div).css("height", 210);
-	    return options
+	    return options;
 	};
 	
 	function create_temperature_chart(options, span, seriesData, units){
@@ -911,10 +910,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 	
 	function setBarSmall(obj) {
-	    obj.chart.marginBottom = 50;
-
-	    $("#"+plot_div).css("height", 290);
-	    return obj
+	    return obj;
 	};
 	
 	function create_barometer_chart(options, span, seriesData, units){
@@ -961,10 +957,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
             return wcolors;
         }
 	function setWindSmall(options) {
-	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
-
-	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
 	
@@ -1195,10 +1187,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setRainSmall(options) {
-	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
-
-	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
 	
@@ -1256,10 +1244,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setStrikeSmall(options) {
-	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
-
-	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
 
@@ -1369,9 +1353,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setRadSmall(options) {
-	    options.chart.marginBottom = 50;
-
-	    $("#"+plot_div).css("height", 285);
 	    return options;
 	};
 	
@@ -1477,10 +1458,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setUvSmall(options) {
-	    options.chart.marginBottom = 50;
-
-	    $("#"+plot_div).css("height", 285);
-	    return options
+	    return options;
 	};
 	
 	function create_uv_chart(options, span, seriesData, units){
@@ -1923,8 +1901,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                 chart.options.zoomType = 'x';
 	        chart.pointer.zoomX = true;
 	        chart.pointer.zoomHor = true;
- chart.update({
-        chart:{xAxis:{min:400}}});
 	        if (postcreatefunctions.hasOwnProperty(plot_type))
 	            for (var i = 0; i < postcreatefunctions[plot_type].length; i++)
 	                postcreatefunctions[plot_type][i](chart);

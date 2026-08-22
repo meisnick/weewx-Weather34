@@ -389,7 +389,7 @@ Max Recorded <br><blue><?php echo $weather["windamaxtime"];?></blue></div>
   
   
   
-<articlegraph style="height:45px; overflow:visible;">  
+<articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info?> 
 <a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>

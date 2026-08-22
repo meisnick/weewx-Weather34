@@ -528,8 +528,8 @@ sort($pop_mods);
     // 1. Container Height CSS rule
     var h = parseInt(hcState.containerHeight, 10);
     if (h > 0) {
-      rules['.grid1 > articlegraph'] = rules['.grid1 > articlegraph'] || {};
-      rules['.grid1 > articlegraph']['height'] = h + 'px';
+      rules['.grid1 > articlegraph:first-of-type'] = rules['.grid1 > articlegraph:first-of-type'] || {};
+      rules['.grid1 > articlegraph:first-of-type']['height'] = h + 'px';
       serialize();
     }
 

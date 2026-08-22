@@ -78,7 +78,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    barsmallplot: [post_create_small_chart],
 	    windsmallplot: [post_create_small_chart],
 	    rainsmallplot: [post_create_small_chart],
-	    strikesmallplot: [post_create_small_chart],
+
 	    rainmonthplot: [remove_range_selector],
 	    lightningmonthplot: [remove_range_selector],
 	    radsmallplot: [post_create_small_chart],
@@ -633,7 +633,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 
 	function setTempSmall(options) {
 	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50;
+            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
 
 	    $("#"+plot_div).css("height", 210);
 	    return options
@@ -962,7 +962,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 	function setWindSmall(options) {
 	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50;
+            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
 
 	    $("#"+plot_div).css("height", 325);
 	    return options;
@@ -1196,7 +1196,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function setRainSmall(options) {
 	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50;
+            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
 
 	    $("#"+plot_div).css("height", 325);
 	    return options;
@@ -1257,9 +1257,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function setStrikeSmall(options) {
 	    options.chart.marginBottom = 50;
-            options.chart.marginTop = 50;
+            options.chart.marginTop = 50; options.legend = {enabled: true, margin: 25};
 
-	    $("#"+plot_div).css("height", 375);
+	    $("#"+plot_div).css("height", 325);
 	    return options;
 	};
 

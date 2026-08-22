@@ -24,6 +24,10 @@ if (file_exists($file_path)) {
             $wind_out = $wind_label . ' ' . $lang['Wind'];
         }
         
+        // Time Window Calculation
+        $gen_ts = $data['generated_ts'] ?? filemtime($file_path);
+        $time_window = date('ga', $gen_ts) . '-' . date('ga', $gen_ts + (6 * 3600));
+        
         // Rain classification
         $rain_pct = intval($data['rain_pct_6h'] ?? 0);
         if ($rain_pct === 0) {
@@ -65,7 +69,7 @@ if (file_exists($file_path)) {
 <div class="mod-localforecast">
     <div class="mod-lf-header">
         <div class="mod-lf-header-left">
-            <span class="mod-lf-term"><?php echo $lang['Nowcast6h']; ?></span>
+            <span class="mod-lf-term"><?php echo $lang['Nowcast6h']; ?><?php if(isset($time_window)) echo ' <span style="font-size: 0.75em; opacity: 0.8; font-weight: normal;">(' . $time_window . ')</span>'; ?></span>
             <span class="mod-lf-wind"><?php echo htmlspecialchars($wind_out); ?></span>
         </div>
         

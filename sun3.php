@@ -37,13 +37,13 @@ if ($now < $firstrise) {
 $time = $firstrise - $now; 
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt = '<value>&nbsp;Till Sunrise';
-} elseif ($now < $firstset) { 
+$txt = '<value>&nbsp;Till Sunrise'; $tillLabel = 'Till Sunrise';
+} elseif ($now < $firstset) {
 $time = $firstset - $now; 
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt = ' &nbsp;<value>Till Sunset';
-} else { $time = $secondrise - $now; 
+$txt = ' &nbsp;<value>Till Sunset'; $tillLabel = 'Till Sunset';
+} else { $time = $secondrise - $now; $tillLabel = 'Till Sunrise';
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
 $txt ='&nbsp;<value>Till Sunrise'; } echo "</value>";
@@ -274,7 +274,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
           <span class="estimatedtext">Estimated</span><br>
           <span class="hrsmintext">hrs&nbsp;&nbsp;&nbsp;&nbsp;min</span><br>
           <hours><?php echo $hrs;?></hours> <minutes><?php echo $min;?></minutes><br>
-          <span class="tillsunsettext">Till Sunset</span>
+          <span class="tillsunsettext"><?php echo $tillLabel; ?></span>
         </div>
       </div>
       

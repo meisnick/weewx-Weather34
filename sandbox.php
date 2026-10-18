@@ -70,7 +70,9 @@ if (isset($_GET['frame'])) {
            . '<div class="title">&#9432; SANDBOX</div>'
            . '<div class="value"><div id="sbx">' . $frag . '</div></div></div></div>';
     } else {
-        echo '<div class="weather-container" style="--w34-grid-cols:1;width:316px;display:block">'
+        // one real 320px grid column, as index.php lays it out: the card's 2px margin makes it 316px wide.
+        // (A 316px display:block wrapper rendered the card 320px wide, so sandbox and dashboard disagreed.)
+        echo '<div class="weather-container" style="--w34-grid-cols:320px;width:320px">'
            . '<div class="weather-item" data-module="' . htmlspecialchars($module) . '">'
            . '<span class="moduletitle">SANDBOX</span><br>'
            . '<div id="sbx">' . $frag . '</div></div></div>';

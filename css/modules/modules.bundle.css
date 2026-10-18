@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:39:47 UTC
+   Generated: 2026-10-18 22:42:39 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -3591,7 +3591,17 @@ rainratetextheading {
 .mod-solaruv .uvcautionbig span { color: var(--caution); padding-right: 3px; }
 
 /* Light theme overrides (color only differences) */
-[data-theme="light"] .mod-solaruv .uvcautionbig { color: var(--card-ink-strong); }
+[data-theme="light"] .mod-solaruv .uvcautionbig {
+  color: var(--card-ink-strong);
+  border-color: var(--line-soft);
+}
+
+[data-theme="light"] .mod-solaruv .luxtodayword,
+[data-theme="light"] .mod-solaruv .solarluxtodayword,
+[data-theme="light"] .mod-solaruv .weather34luxword,
+[data-theme="light"] .mod-solaruv .weather34solarword {
+  color: var(--card-ink);
+}
 
 
 .mod-solaruv .uvcontainer1 {
@@ -3680,6 +3690,7 @@ rainratetextheading {
   align-self: start;
   margin: 0 0 0 13px !important;
   width: 65px !important;
+  text-align: center;
 }
 
 .mod-solaruv .luxtodayword {
@@ -3688,37 +3699,46 @@ rainratetextheading {
   grid-row: 5 / 6;
   justify-self: start;
   align-self: start;
-  margin: 0 0 0 23px !important;
-  width: 48px !important;
+  margin: 0 0 0 21px !important;
+  width: 50px !important;
+  text-align: center;
 }
 
 /* Overlays inside grid items / columns */
 
 .mod-solaruv .uvtrend {
   position: absolute !important;
-  left: 47px !important;
+  left: 30px !important;
   top: 60px !important;
+  width: 80px !important;
+  text-align: center !important;
   margin: 0 !important;
 }
 
 .mod-solaruv .uvcaution {
   position: absolute !important;
-  left: 33px !important;
+  left: 30px !important;
   top: 112px !important;
+  width: 80px !important;
+  text-align: center !important;
   margin: 0 !important;
 }
 
 .mod-solaruv .weather34solarword {
   position: absolute !important;
-  left: 153px !important;
+  left: 140px !important;
   top: 92px !important;
+  width: 50px !important;
+  text-align: center !important;
   margin: 0 !important;
 }
 
 .mod-solaruv .weather34luxword {
   position: absolute !important;
-  left: 242px !important;
+  left: 225px !important;
   top: 92px !important;
+  width: 51px !important;
+  text-align: center !important;
   margin: 0 !important;
 }
 

@@ -31,7 +31,7 @@ $result = date_sun_info(time(), $lat, $lon); '<pre>'.time().print_r($result,true
 $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise = date('H:i',$result2['sunrise']);} else {$nextrise = date('H:i',$nextrise);} 
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);}?>
-<div class="updatedtime"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
+<div class="updatedtime"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 <div class="mod-solaruv">
 <?php
 $solar_val = 0;
@@ -78,16 +78,16 @@ else if ($weather["uv3"]>5) {echo '<div class=uvtoday6-8>'.number_format($weathe
 else if ($weather["uv3"]>3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
 else if (date('Hi')>$sunset && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
 else if (date('Gi')<$sunrise && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}?></smallrainunit></div></div>
+else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}?></smalluvunit></div></div>
 <div class="uvtrend"><?php echo mb_strtoupper(w34t('UvIndex', 'UV Index'))?></div>  
-<div class="uvcaution"><value>&nbsp;&nbsp;UVI <?php echo $uv_label;?><value></div>
+<div class="uvcaution"><value>UVI <?php echo $uv_label;?></value></div>
 
 <div class="weather34luxword"><valuetext>Lux</valuetext></div> <div class="weather34luxvalue"><div class="luxtodaycontainer1">
 <?php 
 if ($weather["lux"]>99999) {echo "<div class=luxtoday>".number_format($weather["lux"]/1000,0). "K";}
 else if($weather["lux"]==0) echo "<div class=luxtodaydark>".$weather["lux"];
 else echo "<div class=luxtoday>".$weather["lux"];?> 
-</div></div></div><div class="luxtodayword"><valuetext><?php echo w34t('Brightness', 'Brightness');?><valuetext></div><div class="luxwrap"></div>
+</div></div></div><div class="luxtodayword"><valuetext><?php echo w34t('Brightness', 'Brightness');?></valuetext></div><div class="luxwrap"></div>
 
 <div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
 else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvLow', 'Low');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvVeryLow', 'Very Low');}?></div>
@@ -119,7 +119,7 @@ else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHo
             innerDiv.className = cls;
             innerDiv.innerHTML = uvVal.toFixed(1) + '<smalluvunit>&nbsp;fcst UVI</smalluvunit>';
             var lbl = document.querySelector('.uvcaution');
-            if (lbl) lbl.innerHTML = '<value>&nbsp;&nbsp;UVI Forecast</value>';
+            if (lbl) lbl.innerHTML = '<value>UVI Forecast</value>';
         }
     }, 500);
 })();

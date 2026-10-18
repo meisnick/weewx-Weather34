@@ -621,6 +621,8 @@ class Webserver():
                 else:
                     host = socket.gethostbyname(host)
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                # rebind straight after a restart even while old day-chart connections sit in TIME_WAIT
+                s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 s.bind((host, port))
                 s.listen(2)
                 logdbg("Webserver: weewx host ip " + host + " listening on port " + str(port))
@@ -731,6 +733,11 @@ class Weather34RealTime(StdService):
             finally:
                 s.close() 
         bin_path = os.path.dirname(os.path.realpath(__file__)).split("/user")[0]
+        # weewx 5 packages keep the weewx modules apart from user/ (e.g. /usr/share/weewx); getDayChart.php's
+        # fallback runs w34_reports with this as PYTHONPATH, so it needs both
+        weewx_root = os.path.dirname(os.path.dirname(os.path.realpath(weewx.__file__)))
+        if weewx_root != bin_path:
+            bin_path += ":" + weewx_root
         # source unit system is the database unit system
         self.db_us = None
         # initialise packet unit system

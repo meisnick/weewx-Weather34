@@ -29,7 +29,7 @@
       $weewxserver_address = trim($data[0]);
       $weewxserver_port = trim($data[1]);
       $weewx_file_transfer = trim($data[2]);
-      putenv("PYTHONPATH=".trim($data[3]));
+      putenv("PYTHONPATH=".trim(implode(":", array_slice($data, 3)))); // may hold several ':'-joined paths
     }
     else{
       putenv("PYTHONPATH="."/usr/share/weewx:/home/weewx/bin:/Users/Shared/weewx/bin");

@@ -16,8 +16,71 @@
 }
 
 .mod-clock .clock {
+  position: relative;
+  top: 27px;
+  left: 5px;
   width: 48px;
   height: 48px;
+}
+
+.mod-clock .dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--line-soft-3);
+  box-sizing: border-box;
+}
+
+.mod-clock .hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: center bottom;
+  border-radius: 40px;
+}
+
+.mod-clock .s-hand {
+  height: 20px;
+  width: 1px;
+  background-color: var(--orange);
+  z-index: 5;
+}
+
+.mod-clock .m-hand {
+  height: 19px;
+  width: 2px;
+  background-color: var(--ink-muted-5);
+  z-index: 4;
+}
+
+.mod-clock .h-hand {
+  height: 16px;
+  width: 3.5px;
+  background-color: var(--ink-muted-5);
+  z-index: 3;
+}
+
+.mod-clock .center {
+  background-color: var(--orange);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+
+.mod-clock .weatherclock34 {
+  left: 52px;
+  width: 180px;
+  box-sizing: border-box;
+}
+
+.mod-clock .orangeclock {
+  margin: 3px auto 0;
 }
 
 .mod-clock .mod-box.clock {
@@ -60,6 +123,7 @@
   position: absolute;
   left: 10px;
   top: 20px;
+  padding-top: 10px;
   color: var(--line-soft-4)
 }
 
@@ -67,6 +131,15 @@
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-clock #theTime {
   color: var(--card-ink-blue);
+}
+
+[data-theme="light"] .mod-clock .dot {
+  border-color: var(--line-light-2);
+}
+
+[data-theme="light"] .mod-clock .m-hand,
+[data-theme="light"] .mod-clock .h-hand {
+  background-color: var(--card-ink-blue);
 }
 
 [data-theme="light"] .mod-clock .clock-container {
@@ -92,6 +165,7 @@
   position: absolute;
   left: 10px;
   top: 20px;
+  padding-top: 10px;
   color: var(--line-light)
 }
 
@@ -103,3 +177,4 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
+

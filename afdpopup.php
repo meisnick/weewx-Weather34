@@ -28,7 +28,7 @@ $text_dim  = $is_dark ? '#777'    : '#666';
 $border    = $is_dark ? '#2e3033' : '#ccc';
 ?>
 <!DOCTYPE html>
-<html lang="en" data-theme="<?php echo htmlspecialchars($theme); ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

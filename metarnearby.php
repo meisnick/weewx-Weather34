@@ -5,7 +5,7 @@ if($theme==="light"){$background="white";$text="black";}
 else if($theme==="dark"){$background="rgba(33, 34, 39, .8)";$text="white";}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
   <meta charset="UTF-8">
   <title>Weather34 Nearby Metar</title>

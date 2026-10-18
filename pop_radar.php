@@ -1,6 +1,6 @@
 <?php include_once('w34CombinedData.php'); error_reporting(0); ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
 <meta charset="utf-8">
 <style>

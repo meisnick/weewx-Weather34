@@ -172,7 +172,7 @@ function modulePopups($module, $vars) {
 }
 ?>
 <!DOCTYPE html>
-<html data-theme="<?php echo $theme; ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo $theme; ?>">
 <head>
 <title><?php echo $stationlocation; ?> Weather Station</title>
 <meta content="Home weather station providing current weather conditions for <?php echo $stationlocation; ?>" name="description">

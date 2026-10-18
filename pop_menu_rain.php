@@ -1,6 +1,6 @@
 <?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php

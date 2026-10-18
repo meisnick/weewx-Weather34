@@ -6,7 +6,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
   <meta charset="UTF-8">
   <title>Weather34 UV Index SOLAR Radiation Information</title>

@@ -135,7 +135,7 @@ $north_json = json_encode($north_pts);
 $south_json = json_encode($south_pts);
 ?>
 <!DOCTYPE html>
-<html lang="en" data-theme="<?php echo htmlspecialchars($theme); ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo $lang['SpaceWeather']; ?></title>

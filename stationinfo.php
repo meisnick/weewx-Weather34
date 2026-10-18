@@ -7,7 +7,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
 <link href="css/popup.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/popup.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo w34t('StationHardware', 'Weather Station Hardware'); ?></title>  

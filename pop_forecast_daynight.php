@@ -26,7 +26,7 @@ else if($theme==="light"){echo '<style>@font-face{font-family:weathertext2;src:u
 <script src="js/jquery.js"></script>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
   <meta charset="UTF-8">
   <title>Day and Night Forecast</title>

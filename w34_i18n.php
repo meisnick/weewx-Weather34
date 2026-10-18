@@ -12,6 +12,16 @@ function w34_is_english() {
     return empty($lang_file) || $lang_file === 'lang.en.php';
 }
 
+// BCP 47 tag for the pages' html lang attribute. Browsers apply language rules to CSS text-transform with it: Greek
+// capitals drop their accents (ΚΕΡΑΥΝΟΙ, not ΚΕΡΑΥΝΟΊ), Turkish i -> İ, German ß -> SS.
+function w34_html_lang() {
+    global $lang_file;
+    $tags = array('lang.dk.php' => 'da', 'lang.nl.php' => 'nl', 'lang.pl.php' => 'pl', 'lang.dl.php' => 'de',
+        'lang.it.php' => 'it', 'lang.sp.php' => 'es', 'lang.cat.php' => 'ca', 'lang.fr.php' => 'fr',
+        'lang.gr.php' => 'el', 'lang.tr.php' => 'tr', 'lang.hu.php' => 'hu', 'lang.no.php' => 'nb', 'lang.sw.php' => 'sv');
+    return isset($lang_file, $tags[$lang_file]) ? $tags[$lang_file] : 'en';
+}
+
 // Translated text for $key, or $english when the key is missing.
 function w34t($key, $english = '') {
     global $lang;

@@ -214,6 +214,10 @@ valuetextheading1 {
   position: relative;
   left: -6px;          /* sandbox-tuned: nudge 2x2 headings left */
 }
+.mod-rainfall valuetextheading1 {
+  margin-left: 0;
+  left: 0;
+}
 
 .mod-rainfall .rainmodulehome {
   /* Overrides from absolute to static */
@@ -285,16 +289,24 @@ rainratetextheading {
   border: 1px solid var(--line-light);
   color: var(--accent-ink);
 }
+[data-theme="light"] .mod-rainfall .rainconvertercircle smallrainunit {
+  color: var(--accent-ink);
+}
+[data-theme="light"] .mod-rainfall .rainmodulehome {
+  border-color: var(--line-soft);
+}
 [data-theme="light"] .mod-rainfall .rainratemodulehome {
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-soft);
   box-shadow: inset 4px 0 0 0 var(--info-cool);
 }
 [data-theme="light"] .mod-rainfall-big-value {
   background: var(--info-9-soft);
   color: var(--accent-ink);
-  border-bottom: 8px solid var(--line-soft);
 }
-[data-theme="light"] .mod-rainfall .raintoday1,
+[data-theme="light"] .mod-rainfall .raintoday1 {
+  border-bottom-color: var(--line-soft);
+  color: var(--accent-ink);
+}
 [data-theme="light"] .mod-rainfall .raintoday1 smallrainunita {
   color: var(--accent-ink);
 }

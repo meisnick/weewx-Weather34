@@ -678,9 +678,19 @@ class Webserver():
                     record = db_manager.getRecord(ts)
                 weewx.reportengine.StdReportEngine(config_dict, stn_info, record=record, gen_ts=ts).run()
                 logdbg("Webserver: Report complete")
-                do_file_transfer(args[4], os.path.join(html_root,args[2].split(".tmpl")[0]), conn, address, None, config_dict['StdReport']['RSYNC'].get('user',None), config_dict['StdReport']['RSYNC'].get('port',None))
+                # the transfer mode is the 5th word, and is empty (absent after strip) when PHP sends no mode
+                mode = args[4] if len(args) > 4 else ''
+                do_file_transfer(mode, os.path.join(html_root,args[2].split(".tmpl")[0]), conn, address, None, config_dict['StdReport']['RSYNC'].get('user',None), config_dict['StdReport']['RSYNC'].get('port',None))
+                conn = None
         except Exception as e:
             logerr("Webserver Error in execute_report: " + str(e))
+        finally:
+            # do_file_transfer closes conn; on any earlier failure close it here so getDayChart.php isn't left waiting
+            if conn is not None:
+                try:
+                    conn.close()
+                except Exception:
+                    pass
        
 class Weather34RealTime(StdService):
     """Service retains previous loop packet values updating any value that isn't None from new

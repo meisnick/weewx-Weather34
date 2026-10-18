@@ -31,7 +31,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    radsmallplot: [addYearOptions, setRadSmall, create_radiation_chart],
 	    raduvplot: [addWeekOptions, create_raduv_chart],
 	    uvsmallplot: [addYearOptions, setUvSmall, create_uv_chart],
-	    raduvplot: [addYearOptions, create_raduv_chart],
 	    airqualityplot: [addWeekOptions, create_aq_chart],
 	    tempsmallplot: [addYearOptions, setTempSmall, create_temperature_chart],
 	    barsmallplot: [addYearOptions, setBarSmall, create_barometer_chart],
@@ -133,8 +132,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 	var windrosespans = ["1h","24h","Week","Month","Year"];
         var compassdirections = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
-	var realtimeXscaleFactor = 300/realtimeinterval;
 	var realtimeinterval = 2;
+	var realtimeXscaleFactor = 300/realtimeinterval;
 	var reload_plot_type = null;
 	var reload_span = null;
 	var plot_type = null;
@@ -964,8 +963,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function create_bartempwind_chart(options, span, seriesData, units){
 	    options = create_chart_options(options, 'spline', 'Barometer/Temp/Wind', units.pressure, [['Barometer', 'spline'], ['Temp', 'spline',1,,,{valueSuffix: units.temp}],['Wind', 'column',2,,,{valueSuffix: units.wind}]]);
 	    options.series[0].data = convert_pressure(seriesData[0].barometerplot.units, units.pressure, reinflate_time(seriesData[0].barometerplot.barometer));
-	    options.series[1].data = convert_pressure(seriesData[1].temperatureplot.units, units.temp, reinflate_time(seriesData[1].temperatureplot.outTemp));
-	    options.series[2].data = convert_pressure(seriesData[2].windplot.units, units.wind, reinflate_time(seriesData[2].windplot.windSpeed));
+	    options.series[1].data = convert_temp(seriesData[1].temperatureplot.units, units.temp, reinflate_time(seriesData[1].temperatureplot.outTemp));
+	    options.series[2].data = convert_wind(seriesData[2].windplot.units, units.wind, reinflate_time(seriesData[2].windplot.windSpeed));
 	    options.yAxis[0].title.text = "(" + units.pressure + ")";
 	    options.yAxis[1].title.text = "(\xB0" + units.temp + ")";
 	    options.yAxis[2].title.text = "(" + units.wind + ")";
@@ -1255,7 +1254,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	           month_data[index] +=  data[i][1];
 	    }
 	    options = create_chart_options(options, 'column', 'Monthly Rainfall', units.rain,[['Rainfall', 'column']], month_name);
-	    options.series[0].data = convert_rain(seriesData[0].rainplot.units, units.rain, month_data);
+	    options.series[0].data = month_data;
 	    options.yAxis[0].title.text = "(" + units.rain + ")";
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].tickInterval = 1;

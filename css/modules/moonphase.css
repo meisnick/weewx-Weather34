@@ -85,7 +85,7 @@
 }
 
 .mod-moonphase .moonset1 {
-  width: 75px;
+  width: 108px;
 
   font-size: .55rem;
 
@@ -96,7 +96,7 @@
 .mod-moonphase .newmoon1 {
   font-size: .55rem;
 
-  width: 120px
+  width: 7.4rem
 
 }
 
@@ -105,7 +105,7 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  width: 75px;
+  width: 108px;
   font-size: .55rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -127,7 +127,7 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  width: 75px;
+  width: 108px;
   font-size: .55rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -157,11 +157,11 @@
   line-height: 10px;
   text-align: center;
   font-size: .55rem;
-  width: 120px;
+  width: 7.4rem;
   color: var(--card-ink-blue);
   font-family: weathertext2;
   top: 0;
-  margin-left: 105px
+  margin-left: 100px
 }
 
 .mod-moonphase .fullmoon1 span {
@@ -172,7 +172,7 @@
 .mod-moonphase .newmoon1 {
   margin-top: 120px;
 
-  margin-left: 105px
+  margin-left: 100px
 
 }
 
@@ -204,7 +204,7 @@
 
   color: var(--card-ink-blue);
 
-  line-height: 8px;
+  line-height: 11px;
 
   font-size: .65em;
 
@@ -229,7 +229,7 @@
   width: 7.4rem;
   overflow: hidden;
   color: var(--card-ink-blue);
-  line-height: 8px;
+  line-height: 11px;
   font-size: .65em;
   margin-top: 65px;
   font-family: weathertext2;
@@ -316,25 +316,25 @@
 [data-theme="light"] .mod-moonphase .fullmoon1 {
   top: 0;
 
-  margin-left: 115px;
+  margin-left: 100px;
 
   font-size: .55rem;
 
-  width: 100px
+  width: 7.4rem
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
   font-size: .55rem;
 
-  width: 110px
+  width: 7.4rem
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
   margin-top: 120px;
 
-  margin-left: 110px
+  margin-left: 100px
 
 }
 
@@ -349,7 +349,7 @@
 
   color: var(--card-ink-blue);
 
-  line-height: 8px;
+  line-height: 11px;
 
   font-size: .65em;
 

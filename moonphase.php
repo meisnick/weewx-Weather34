@@ -136,7 +136,7 @@ foreach ($meteor_events as $meteor_check) {
 <div class="mod-moonphase">
 <div class="moonphasemoduleposition">
 <div class="moonrise1">
-<svg id="weather34 moon rise" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#ff9350" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">    <path d="M30 20 L16 8 2 20" /></svg> <?php echo $lang['Moon'];?> <br /><blueu><?php  echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'));?>
+<svg id="weather34 moon rise" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#ff9350" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">    <path d="M30 20 L16 8 2 20" /></svg> <?php echo $lang['Moon'];?> <br /><blueu><?php  echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'));?></blueu>
 
  
 <div class="weather34moonmodulepos">
@@ -160,11 +160,7 @@ $moon1 = new MoonPhase();
 echo "";
 if ($now1 < $moon1->full_moon()) {echo date($dateFormat, $moon1->full_moon() );}
 else echo date( $dateFormat, $moon1->next_full_moon() );
-?></value></div>
-
-
-
- </span>
+?></moonm></value></div>
 </div>
 
 
@@ -176,15 +172,13 @@ $moon = new MoonPhase();
 $nextnewmoon = date( $dateFormat, $moon->next_new_moon() );
 //$nextnewmoon = date( 'jS-M', $moon->next_new_moon() );
 echo "$nextnewmoon";
-?></value></div>
-
- </span>
+?></moonm></value></div>
 </div>
 <div class="moonset1">
 <svg id="weather34 moon set" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#f26c4f" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">
     <path d="M30 12 L16 24 2 12" /></svg>
 <?php echo $lang['Moon']?><div class="nextnewmoon">
-<?php echo  w34_words($weather['moonset'], array('Set' => 'MoonSetShort'));?></span> 
+<?php echo  w34_words($weather['moonset'], array('Set' => 'MoonSetShort'));?> 
 
 </div></div>
 <div class="meteorshower"><svg xmlns='http://www.w3.org/2000/svg' width='10px' height='10px' viewBox='0 0 16 16'><path fill='currentcolor' d='M0 0l14.527 13.615s.274.382-.081.764c-.355.382-.82.055-.82.055L0 0zm4.315 1.364l11.277 10.368s.274.382-.081.764c-.355.382-.82.055-.82.055L4.315 1.364zm-3.032 2.92l11.278 10.368s.273.382-.082.764c-.355.382-.819.054-.819.054L1.283 4.284zm6.679-1.747l7.88 7.244s.19.267-.058.534-.572.038-.572.038l-7.25-7.816zm-5.68 5.13l7.88 7.244s.19.266-.058.533-.572.038-.572.038l-7.25-7.815zm9.406-3.438l3.597 3.285s.094.125-.029.25c-.122.125-.283.018-.283.018L11.688 4.23zm-7.592 7.04l3.597 3.285s.095.125-.028.25-.283.018-.283.018l-3.286-3.553z'/></svg>

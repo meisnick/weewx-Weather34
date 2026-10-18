@@ -217,8 +217,12 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                             enabled: false,
 	                },
                     },
-	            series: {states: {hover: {halo: {size: 0,}}}, 
+	            series: {states: {hover: {halo: {size: 0,}}},
                             turboThreshold:5000,
+                            // with the time axis not ordinal, break the line where no record exists for > 70 min
+                            // (an outage) instead of drawing straight across; 70 min keeps hourly backfill continuous
+                            gapUnit: 'value',
+                            gapSize: 70 * 60 * 1000,
 	            },
 	            scatter: {
 	                marker: {
@@ -295,6 +299,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            title: {},
 	            type: 'datetime', labels: { y: 20 },
 	            minRange: 1,
+	            ordinal: false, // true time spacing: 20-min/hourly backfill days are not squeezed, outages show as gaps
 	        },{
 	            dateTimeLabelFormats: {
 	                day: '%e %b',
@@ -313,6 +318,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            type: 'datetime', labels: { y: 20 },
 	            opposite: true,
 	            minRange: 1,
+	            ordinal: false, // must match the primary axis or compared series misalign
 	            visible: false,
 	            labels: {formatter: function() {
 	                    for (var i = 0; i < compare_dates_ts.length; i++)

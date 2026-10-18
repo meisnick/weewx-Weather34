@@ -151,6 +151,9 @@
   justify-content: center;
   align-items: center;
   width: 3.2rem;
+  height: 1rem;
+  border: 1px solid var(--card-surface);
+  border-radius: 2px;
   overflow: hidden;
   font-family: weathertext2, Arial, sans-serif;
   font-size: 10.4px;
@@ -189,6 +192,7 @@
   width: auto !important;
   float: none !important;
   display: block !important;
+  text-align: center;
 }
 
 valuetextheading2 {
@@ -336,8 +340,13 @@ valuetextheading2 {
   color: var(--ink-bright) !important;
 }
 
-[data-theme="light"] .mod-temperature .weather34indoorword {
+[data-theme="light"] .mod-temperature .weather34indoorword,
+[data-theme="light"] .mod-temperature .indoortrendhouse1 {
   color: var(--card-ink-strong);
+}
+
+[data-theme="light"] .mod-temperature .indoorhomesvg1 {
+  color: var(--line-light-2);
 }
 
 
@@ -470,11 +479,11 @@ valuetextheading2 {
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--warm,
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--mild,
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--cool,
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--cold { left: -1px !important; top: 1px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .mod-indoor-temp--cold { left: 0px !important; top: 1px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomesvg1 svg { position: relative !important; left: 13px !important; top: -44px !important; width: 180px !important; height: 180px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .temphumcircle35-60 { position: relative !important; left: 4px !important; top: 3px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill .tempconvertercircleyellow { position: relative !important; left: -3px !important; top: -29px !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoortrendhouse1 { left: 106px !important; top: 30px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block [class^="temphumcircle"] { position: relative !important; left: 2px !important; top: 3px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-top-pill [class^="tempconvertercircle"] { position: relative !important; left: -3px !important; top: -29px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoortrendhouse1 { left: 107px !important; top: 30px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-grid { position: relative !important; left: 1px !important; top: 13px !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .weather34indoorword { left: 109px !important; top: 74px !important; height: 14px !important; }
 /* the big indoor temp pill: every other element in the moved/enlarged house zone got a
@@ -485,9 +494,9 @@ valuetextheading2 {
  * body, under INDOOR and above the trend. Indoor temps are always ~2-digit °F, so the
  * fixed left edge stays visually centered. */
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-indoor-graphic .indoorhomevalue1 { left: 0px !important; top: 44px !important; transform: none !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .mod-gauge-ring-content--indoor valuetextheading1 { position: relative !important; left: -1px !important; top: 2px !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .mod-gauge-ring-content--indoor valuetextheading1 { position: relative !important; left: 2px !important; top: 2px !important; }
 /* position:relative stays !important (beats framework position:static !important); left/top
  * are NOT !important so a sandbox override (which carries !important) can move the pill. */
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-block .tempmodulehome20-25c { position: relative !important; left: 0; top: 0; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-block [class^="tempmodulehome"] { position: relative !important; left: 0; top: 0; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block.mod-gauge-ring--7 { position: relative !important; left: 2px !important; top: 0 !important; }
-.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: -3px !important; top: 0 !important; }
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: 0px !important; top: 0 !important; }

@@ -20,7 +20,7 @@ include_once('settings1.php');
   var img2 = container.querySelector('.img-buffer');
   var activeImg = img1;
   var bufferImg = img2;
-  var TW = 310, TH = 155;
+  var TW = 316, TH = 155;
   var clockFormat = <?php echo json_encode($clockformat ?? '24'); ?>;
 
   function formatTime(date) {

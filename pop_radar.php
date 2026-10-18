@@ -98,7 +98,7 @@ body{
 
 <script>
 (function(){
-  var TW=310, TH=155;
+  var TW=316, TH=155;
   var img   = document.getElementById('rp-img');
   var crop  = document.getElementById('rp-crop');
   var ws    = document.getElementById('rp-ws');

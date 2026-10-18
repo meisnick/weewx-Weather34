@@ -166,12 +166,31 @@ def calc_avg_windspeed(dbm, ts, interval=600):
                      (sts, ts))
     return val[0] if val is not None else None
 
+def vector_avg_winddir(dbm, sts, ts):
+    """Speed-weighted vector mean of windDir over (sts, ts]; a plain AVG() wraps at north."""
+    x = y = 0.0
+    xu = yu = 0.0
+    n = 0
+    for d, s in dbm.genSql("SELECT windDir, windSpeed FROM %s "
+                           "WHERE dateTime>? AND dateTime<=? AND windDir IS NOT NULL" % dbm.table_name,
+                           (sts, ts)):
+        r = math.radians(d)
+        w = s if s else 0.0
+        x += w * math.sin(r)
+        y += w * math.cos(r)
+        xu += math.sin(r)
+        yu += math.cos(r)
+        n += 1
+    if n == 0:
+        return None
+    if x == 0.0 and y == 0.0:  # calm the whole time: fall back to the unweighted mean
+        x, y = xu, yu
+    if x == 0.0 and y == 0.0:
+        return None
+    return clamp_degrees(round(math.degrees(math.atan2(x, y)) % 360.0, 1))
+
 def calc_avg_winddir(dbm, ts, interval=600):
-    sts = ts - interval
-    val = dbm.getSql("SELECT AVG(windDir) FROM %s "
-                     "WHERE dateTime>? AND dateTime<=?" % dbm.table_name,
-                     (sts, ts))
-    return clamp_degrees(val[0]) if val is not None else None
+    return vector_avg_winddir(dbm, ts - interval, ts)
 
 def calc_max_gust_10min(dbm, ts):
     sts = ts - 600
@@ -188,11 +207,7 @@ def calc_avg_gust_10min(dbm, ts):
     return val[0] if val is not None else None
 
 def calc_avg_winddir_10min(dbm, ts):
-    sts = ts - 600
-    val = dbm.getSql("SELECT AVG(windDir) FROM %s "
-                     "WHERE dateTime>? AND dateTime<=?" % dbm.table_name,
-                     (sts, ts))
-    return clamp_degrees(val[0]) if val is not None else None
+    return vector_avg_winddir(dbm, ts - 600, ts)
 
 def calc_windrun(dbm, ts, db_us):
     """Calculate windrun since midnight.  returns a value in the distance units
@@ -366,7 +381,7 @@ def do_file_transfer(mode, rpath, conn, address, lpath, user, port):
                 log_success=True if weewx.debug >= 1 else False).run()
             logdbg("do_file_transfer: Rsync complete")
         elif mode == 'socket':
-            with open(rpath, 'r') as f:
+            with open(rpath, 'rb') as f:
                 conn.sendall(f.read())
     except IOError as e:
         logerr("do_file_transfer " + str(e))
@@ -621,7 +636,7 @@ class Webserver():
                     logdbg("Webserver: webserver ip " + webserver_address)
                 recv_data = conn.recv(256)
                 if recv_data:
-                    thread = threading.Thread(target=self.execute_report, args=(str(recv_data).split(" "), conn, webserver_address))
+                    thread = threading.Thread(target=self.execute_report, args=(recv_data.decode('utf-8', 'replace').strip().split(" "), conn, webserver_address))
                     thread.daemon = True
                     thread.start()
                 else:
@@ -640,7 +655,7 @@ class Webserver():
             html_root = args[3]
             stn_info = weewx.station.StationInfo(**config_dict['Station'])
             save_entries = ["SKIN_ROOT","HTML_ROOT","RSYNC","data_binding","log_success","log_failure","w34Highcharts"]
-            for key in config_dict['StdReport']:
+            for key in list(config_dict['StdReport']):
                 if key not in save_entries:
                     del config_dict['StdReport'][key]
             config_dict['StdReport']['w34Highcharts']['skin'] = 'w34Highcharts-day'
@@ -1047,7 +1062,7 @@ class Weather34RealTime(StdService):
             calc_avg_gust_10min(dbm, ts), w_u, 'windSpeed', 'group_speed')
 
         data['10min_avg_wind_bearing'] = calc_avg_winddir_10min(dbm, ts)
-        data['avg_wind_dir'] = degree_to_compass(v)
+        data['avg_wind_dir'] = degree_to_compass(data['10min_avg_wind_bearing'])
 
         data['rain_hour'] = self._cvt(
             calc_rain_hour(dbm, ts), r_u, 'rain', 'group_rain')

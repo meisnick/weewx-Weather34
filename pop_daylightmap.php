@@ -15,7 +15,7 @@ if ($theme === "dark") {
   
   echo '<div class="roundcornerframe">';
   echo '
-<iframe src="daylightmap/daylightmap.html" width="100%" height="98%" scrolling="no" frameborder="0"></iframe>
+<iframe src="daylightmap/daylightmap.html?' . http_build_query(array('t' => w34t('DaylightMapTitle', 'Equirectangular Projection World Daylight Map'), 'u' => w34t('UsingLabel', 'Using'), 'mo' => implode(',', array_map(function ($m) { return w34_datetext($m); }, array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))))) . '" width="100%" height="98%" scrolling="no" frameborder="0"></iframe>
 
 
 ';

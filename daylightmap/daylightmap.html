@@ -11,7 +11,7 @@
 <body>
 <!-- partial:index.partial.html -->
 
-<p>Equirectangular Projection World Daylight Map</p>
+<p id="dl-title">Equirectangular Projection World Daylight Map</p>
 <div class="container">
 
     <svg id="daylight-map"></svg>
@@ -45,7 +45,7 @@
 
 <p class="animate"><a href="#" class="js-animate"></a></p>
 
-<p class="credit">Using
+<p class="credit"><span id="dl-using">Using</span>
     <a href="https://d3js.org/">D3.js</a>,
     <a href="https://github.com/mbostock/d3/wiki/Geo-Projections">Geocode Projections</a>,
     <a href="https://github.com/mbostock/topojson">Topojson</a>,
@@ -61,6 +61,13 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.1/moment-timezone.min.js'></script>
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/suncalc.js'></script>
+<script>
+// Labels and short month names in the dashboard language, passed by pop_daylightmap.php
+var dlq = new URLSearchParams(location.search);
+if (dlq.get('t')) document.getElementById('dl-title').textContent = dlq.get('t');
+if (dlq.get('u')) document.getElementById('dl-using').textContent = dlq.get('u');
+window.W34_MONTHS = dlq.get('mo') ? dlq.get('mo').split(',') : null;
+</script>
 <script src="script.js"></script>
 
 </body>

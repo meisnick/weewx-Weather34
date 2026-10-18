@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,10 +67,10 @@ body, html {
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen">Hourly Forecast</button>
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Hourly Forecast Table</button>
-<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')">Day and Night Forecast</button>  
-<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')">Day and Night Forecast Table</button>  
+<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen"><?php echo w34t('Hourlyforecast', 'Hourly Forecast'); ?></button>
+<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabHourlyTable', 'Hourly Forecast Table'); ?></button>
+<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabDayNight', 'Day and Night Forecast'); ?></button>  
+<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabDayNightTable', 'Day and Night Forecast Table'); ?></button>  
 
   
   <div id="Tab1" class="tabcontent">

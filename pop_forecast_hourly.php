@@ -204,7 +204,7 @@ for ($k = 0;$k < 12;$k++)
     if ($forecastnight[$k] == 'N')
     {
         echo '<div class=uvforecast><grey>';
-        echo "Humidity ";
+        echo w34t('Humidity', 'Humidity') . ' ';
         if ($forecasthumidity[$k] >= 70)
         {
             echo "<blueu>" . $forecasthumidity[$k] . '%</blueu>';
@@ -250,7 +250,7 @@ for ($k = 0;$k < 12;$k++)
     //snow
     if ($forecastsnow[$k] > 0)
     {
-        echo '&nbsp;' . $snowflakesvg[$k] . '<valuer>Snow  <bluer>' . $forecastsnow[$k] . 'cm</bluer>';
+        echo '&nbsp;' . $snowflakesvg[$k] . '<valuer>' . w34t('CondSnow', 'Snow') . '  <bluer>' . $forecastsnow[$k] . 'cm</bluer>';
     }
     //rain — only show when there is a signal (amount or probability)
     else if ($forecastPrecipProb[$k] > 0 || $forecastprecipIntensity[$k] > 0)
@@ -259,64 +259,64 @@ for ($k = 0;$k < 12;$k++)
         if ($forecastprecipIntensity[$k] > 0) {
             echo '<bluer>' . number_format($forecastprecipIntensity[$k], 2) . '&nbsp;' . $rainunit . '</bluer>&nbsp;&middot;&nbsp;';
         }
-        echo '<grey>' . $forecastPrecipProb[$k] . '%&nbsp;chance</grey></valuer>';
+        echo '<grey>' . $forecastPrecipProb[$k] . '%&nbsp;' . w34t('ChanceLc', 'chance') . '</grey></valuer>';
     }
     echo "</div>";
     //wind/gusts
     if ($windunit == 'mph' && $forecastWindGust[$k] >= 30)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></redu></wind>';
     }
     else if ($windunit == 'mph' && $forecastWindGust[$k] >= 25)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></orangeu></wind>';
     }
     //kts
     if ($windunit == 'kts' && $forecastWindGust[$k] >= 30)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625 * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></redu></wind>';
     }
     else if ($windunit == 'kts' && $forecastWindGust[$k] >= 25)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625 * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></orangeu></wind>';
     }
     else if ($windunit == 'kts' && $forecastWindGust[$k] >= 0)
     {
-        echo "<wind>Wind <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Wind', 'Wind') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<blueu>" . number_format($forecastWindGust[$k] * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></blueu></wind>';
     }
     else if ($forecastWindGust[$k] >= 30)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></redu></wind>';
     }
     else if ($forecastWindGust[$k] >= 25)
     {
-        echo "<wind>Gust <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></orangeu></wind>';
     }
     else if ($forecastWindGust[$k] < 25)
     {
         echo "<wind> Wind <orangeu>";
-        echo $forecastWinddircardinal[$k];
+        echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<blueu>" . number_format($forecastWindGust[$k], 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></blueu></wind>';
     }
@@ -328,17 +328,17 @@ for ($k = 0;$k < 12;$k++)
  <!-- copyright needs to be kept please be ethical--->
   <article>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> CSS/SVG/PHP original scripts were developed by <a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:8px;">weather34.com</a>  for use in the weather34 template &copy; 2015-<?php echo date('Y'); ?></span> <br>
+  <?php echo $knfo ?> <?php echo w34f('CreditWeather34', 'CSS/SVG/PHP scripts were developed by %s for use in the weather34 template', '<a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:8px;">weather34.com</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
     </article>
   <article>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> CSS/SVG/PHP these scripts were adapted by <a href="https://claydonsweather.org.uk" title="Steepleian" target="_blank" style="font-size:8px;">Steepleian</a>  for use in the weewx-Weather34 skin &copy; 2015-<?php echo date('Y'); ?></span> <br>
+  <?php echo $knfo ?> <?php echo w34f('CreditSteepleian', 'CSS/SVG/PHP scripts were adapted by %s for use in the weewx-Weather34 skin', '<a href="https://claydonsweather.org.uk" title="Steepleian" target="_blank" style="font-size:8px;">Steepleian</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
     </article>
   <article>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> Data for Forecast provided by <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;">CC BY 4.0</a></span></br>
+  <?php echo $knfo ?> <?php echo w34t('ForecastDataBy', 'Forecast data provided by'); ?> <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;">CC BY 4.0</a></span></br>
     <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> Icons for Forecast provided by <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;">MIT</a></span>
+  <?php echo $knfo ?> <?php echo w34t('ForecastIconsBy', 'Forecast icons provided by'); ?> <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;">MIT</a></span>
  
     </article>
 </main>

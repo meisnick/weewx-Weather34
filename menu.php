@@ -68,12 +68,12 @@
         </weather34mbuptime>
           <?php if ($units != 'us')
 { ?>
-            <a href="./?units=us" title="select Imperial"><topbarimperial>&deg;F</topbarimperial></a>
+            <a href="./?units=us" title="<?php echo htmlspecialchars(w34t('SelectImperial', 'Select Imperial')); ?>"><topbarimperial>&deg;F</topbarimperial></a>
           <?php
 }
 else
 { ?>
-            <a href="./?units=metric" title="select Metric"><topbarmetric>&deg;C</topbarmetric></a>
+            <a href="./?units=metric" title="<?php echo htmlspecialchars(w34t('SelectMetric', 'Select Metric')); ?>"><topbarmetric>&deg;C</topbarmetric></a>
           <?php
 } ?>
       </div>
@@ -95,41 +95,41 @@ else
       <br/>
       
       
-      <li class="header">ADMIN</li>
+      <li class="header"><?php echo mb_strtoupper(w34t('MenuAdmin', 'Admin')); ?></li>
       <li>
-        <a href="templateSetup.php" target="_blank" title="WEATHERSTATION SETTINGS PAGE">
+        <a href="templateSetup.php" target="_blank" title="<?php echo htmlspecialchars(w34t('Settings', 'Settings')); ?>">
           <weather34menumarkeryellow></weather34menumarkeryellow> <?php echo $lang['Settings']; ?>
         </a>
       </li>
       <li>
-        <a href="index.php" title="WEATHERSTATION HOME PAGE">
-          <weather34menumarkergreen></weather34menumarkergreen> Home
+        <a href="index.php" title="<?php echo htmlspecialchars(w34t('MenuHome', 'Home')); ?>">
+          <weather34menumarkergreen></weather34menumarkergreen> <?php echo w34t('MenuHome', 'Home'); ?>
         </a>
       </li>
       
       
-      <li class="header">UI THEME</li>
+      <li class="header"><?php echo mb_strtoupper(w34t('MenuTheme', 'UI Theme')); ?></li>
       <li>
         <a href="<?php echo ($theme == 'dark') ? '?theme=light' : '?theme=dark'; ?>">
           <?php if ($theme == 'dark')
 { ?>
-            <weather34menumarkerlight></weather34menumarkerlight> Light Theme
+            <weather34menumarkerlight></weather34menumarkerlight> <?php echo w34t('Lighttheme', 'Light Theme'); ?>
           <?php
 }
 else
 { ?>
-            <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Dark Theme
+            <weather34menumarkerbluegrey></weather34menumarkerbluegrey> <?php echo w34t('Darktheme', 'Dark Theme'); ?>
           <?php
 } ?>
         </a>
       </li>
       
       
-      <li class="header">UNITS</li>
+      <li class="header"><?php echo mb_strtoupper(w34t('MenuUnits', 'Units')); ?></li>
       <?php if ($units != Null && $units != 'default')
 { ?>
         <li>
-          <a href="./?units=default"><weather34menumarkerred></weather34menumarkerred> Default Units
+          <a href="./?units=default"><weather34menumarkerred></weather34menumarkerred> <?php echo w34t('DefaultUnits', 'Default Units'); ?>
             <?php if ($tempunit == 'F')
     { ?>
               <topbarimperialf>&deg;F</topbarimperialf>
@@ -147,14 +147,14 @@ else
 if ($units != 'us')
 { ?>
         <li>
-          <a href="./?units=us"><weather34menumarkerorange></weather34menumarkerorange> Imperial <topbarimperialf>&deg;F</topbarimperialf></a>
+          <a href="./?units=us"><weather34menumarkerorange></weather34menumarkerorange> <?php echo w34t('Imperial', 'Imperial'); ?> <topbarimperialf>&deg;F</topbarimperialf></a>
         </li>
       <?php
 }
 if ($units != 'metric')
 { ?>
         <li>
-          <a href="./?units=metric"><weather34menumarkerblue></weather34menumarkerblue> Metric <topbarmetricc>&deg;C</topbarmetricc></a>
+          <a href="./?units=metric"><weather34menumarkerblue></weather34menumarkerblue> <?php echo w34t('MetricUnits', 'Metric'); ?> <topbarmetricc>&deg;C</topbarmetricc></a>
         </li>
       <?php
 }
@@ -182,7 +182,7 @@ if ($units != 'ca')
 
 if ($extralinks == 'yes')
 { ?>
-      <li class="header sub">LINKS <img class="menuimg" src="img/arrow34iconlink.svg" alt=""/>
+      <li class="header sub"><?php echo mb_strtoupper(w34t('MenuLinks', 'Links')); ?> <img class="menuimg" src="img/arrow34iconlink.svg" alt=""/>
         <ul>
           <?php if ($linkWU == 'yes')
     { ?>
@@ -191,7 +191,7 @@ if ($extralinks == 'yes')
          ?>
               <a href="<?php echo ($linkWUNew == 'yes' || empty($linkWUNew) ? 'https://www.wunderground.com/dashboard/pws/' : 'https://www.wunderground.com/personal-weather-station/dashboard?id=') . $id; ?>" title="<?php echo $id; ?> on Weather Underground" target="_blank">
                 <img class="menuimg" src="img/wulogo.svg" style="width:30px" alt=""/>
-                <?php echo $id; ?> on WU
+                <?php echo w34f('OnSite', '%s on %s', $id, 'WU'); ?>
               </a>
             </li>
           <?php
@@ -350,7 +350,7 @@ if ($extralinks == 'yes')
       </li>
       <?php
 } ?>
-      <li class="header">EXTRAS</li>
+      <li class="header"><?php echo mb_strtoupper(w34t('MenuExtras', 'Extras')); ?></li>
       <?php if ($weatherflowoption == "yes")
 { ?>
         <li>
@@ -363,18 +363,18 @@ if ($extralinks == 'yes')
 if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamurl != 'null')
 { ?>
         <li><!--webcam-->
-          <a href="cam.php" data-lity title="WEATHERSTATION WEBCAM"><weather34menumarkeryellow></weather34menumarkeryellow> Web Cam</a>
+          <a href="cam.php" data-lity title="<?php echo htmlspecialchars(w34t('Webcam', 'Webcam')); ?>"><weather34menumarkeryellow></weather34menumarkeryellow> <?php echo w34t('Webcam', 'Webcam'); ?></a>
         </li>
       <?php
 } ?>
       <li><!--contact info-->
-        <a href="bio.php" data-lity title="Weather Station Owner Contact Card Info"><weather34menumarkerorange></weather34menumarkerorange> Contact Card</a>
+        <a href="bio.php" data-lity title="<?php echo htmlspecialchars(w34t('Contactinfo', 'Station & Contact Info')); ?>"><weather34menumarkerorange></weather34menumarkerorange> <?php echo w34t('ContactCard', 'Contact Card'); ?></a>
       </li>
       <li><!--hardware info-->
-        <a href="stationinfo.php" data-lity title="Hardware Weather Station Hardware Info"><weather34menumarkerred></weather34menumarkerred> Hardware Info</a>
+        <a href="stationinfo.php" data-lity title="<?php echo htmlspecialchars(w34t('StationHardware', 'Weather Station Hardware')); ?>"><weather34menumarkerred></weather34menumarkerred> <?php echo w34t('HardwareInfo', 'Hardware Info'); ?></a>
       </li>
       <li><!--sensor battery status-->
-        <a href="pop_sensors.php" data-lity title="GW1000 Sensor Battery &amp; Signal Status"><weather34menumarkergreen></weather34menumarkergreen> Sensor Status</a>
+        <a href="pop_sensors.php" data-lity title="<?php echo htmlspecialchars(w34t('SensorBatterySignal', 'Sensor Battery & Signal Status')); ?>"><weather34menumarkergreen></weather34menumarkergreen> <?php echo w34t('SensorStatus', 'Sensor Status'); ?></a>
       </li>
       <?php if (!empty($extraLinkTitle) && !empty($extraLinkURL) && !empty($extraLinkColor))
 { ?>
@@ -426,27 +426,27 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
         <li class="header"><?php echo $lang["language"]; ?></li>
         <li class="flagstop">
           <a href="index.php?lang=en"><img src="img/flags/en.svg" title="English" class="flags" alt="en"/></a>&nbsp;
-          <a href="index.php?lang=dk"><img src="img/flags/dk.svg" title="Danish" class="flags" alt="dk"/></a>&nbsp;
-          <a href="index.php?lang=gr"><img src="img/flags/gr.svg" title="Greek" class="flags" alt="gr"/></a>&nbsp;
-          <a href="index.php?lang=it"><img src="img/flags/it.svg" title="Italian" class="flags" alt="it"/></a>&nbsp;
-          <a href="index.php?lang=fr"><img src="img/flags/fr.svg" title="French" class="flags" alt="fr"/></a>&nbsp;
+          <a href="index.php?lang=dk"><img src="img/flags/dk.svg" title="Dansk" class="flags" alt="dk"/></a>&nbsp;
+          <a href="index.php?lang=gr"><img src="img/flags/gr.svg" title="Ελληνικά" class="flags" alt="gr"/></a>&nbsp;
+          <a href="index.php?lang=it"><img src="img/flags/it.svg" title="Italiano" class="flags" alt="it"/></a>&nbsp;
+          <a href="index.php?lang=fr"><img src="img/flags/fr.svg" title="Français" class="flags" alt="fr"/></a>&nbsp;
         </li>
 
         <li class="flagsmiddle">
-          <a href="index.php?lang=dl"><img src="img/flags/dl.svg" title="German" class="flags" alt="dl"/></a>&nbsp;
-          <a href="index.php?lang=nl"><img src="img/flags/nl.svg" title="Dutch" class="flags" alt="nl"/></a>&nbsp;
-          <a href="index.php?lang=cat"><img src="img/flags/cat.svg" title="Catalan" class="flags" alt="cat"/></a>&nbsp;
-          <a href="index.php?lang=sp"><img src="img/flags/sp.svg" title="Spanish" class="flags" alt="sp"/></a>&nbsp;
-          <a href="index.php?lang=tr"><img src="img/flags/tr.svg" title="Turkish" class="flags" alt="tr"/></a>&nbsp;
+          <a href="index.php?lang=dl"><img src="img/flags/dl.svg" title="Deutsch" class="flags" alt="dl"/></a>&nbsp;
+          <a href="index.php?lang=nl"><img src="img/flags/nl.svg" title="Nederlands" class="flags" alt="nl"/></a>&nbsp;
+          <a href="index.php?lang=cat"><img src="img/flags/cat.svg" title="Català" class="flags" alt="cat"/></a>&nbsp;
+          <a href="index.php?lang=sp"><img src="img/flags/sp.svg" title="Español" class="flags" alt="sp"/></a>&nbsp;
+          <a href="index.php?lang=tr"><img src="img/flags/tr.svg" title="Türkçe" class="flags" alt="tr"/></a>&nbsp;
         </li>
 
         <li class="flagsbottom">
-          <a href="index.php?lang=hu"><img src="img/flags/hu.svg" title="Hungary" class="flags" alt="hu"/></a>&nbsp;
-          <a href="index.php?lang=pl"><img src="img/flags/pl.svg" title="Polish" class="flags" alt="pl"/></a>&nbsp;
-          <a href="index.php?lang=sp"><img src="img/flags/ar.svg" title="Argentina" class="flags" alt="ar"/></a>&nbsp;
-          <a href="index.php?lang=dl"><img src="img/flags/ch.svg" title="Switzerland" class="flags" alt="ch"/></a>&nbsp;
-          <a href="index.php?lang=no"><img src="img/flags/no.svg" title="Norwegian" class="flags" alt="no"/></a>&nbsp;
-          <a href="index.php?lang=sw"><img src="img/flags/sw.svg" title="Swedish" class="flags" alt="sw"/></a>&nbsp;
+          <a href="index.php?lang=hu"><img src="img/flags/hu.svg" title="Magyar" class="flags" alt="hu"/></a>&nbsp;
+          <a href="index.php?lang=pl"><img src="img/flags/pl.svg" title="Polski" class="flags" alt="pl"/></a>&nbsp;
+          <a href="index.php?lang=sp"><img src="img/flags/ar.svg" title="Español (Argentina)" class="flags" alt="ar"/></a>&nbsp;
+          <a href="index.php?lang=dl"><img src="img/flags/ch.svg" title="Deutsch (Schweiz)" class="flags" alt="ch"/></a>&nbsp;
+          <a href="index.php?lang=no"><img src="img/flags/no.svg" title="Norsk" class="flags" alt="no"/></a>&nbsp;
+          <a href="index.php?lang=sw"><img src="img/flags/sw.svg" title="Svenska" class="flags" alt="sw"/></a>&nbsp;
         </li>
       <?php
 } ?>
@@ -454,28 +454,28 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
       <?php // please do not remove this and if so no support is given and your domain will be blacklisted from support it is not much to ask //
  ?>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34/blob/main/INSTALLATION.md" title="Installation Guide" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Installation Guide
+        <a href="https://github.com/meisnick/weewx-Weather34/blob/main/INSTALLATION.md" title="<?php echo htmlspecialchars(w34t('InstallationGuide', 'Installation Guide')); ?>" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> <?php echo w34t('InstallationGuide', 'Installation Guide'); ?>
         </a>
       </li>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34/" title="weewx-Weather34 on GitHub" target="_blank">
+        <a href="https://github.com/meisnick/weewx-Weather34/" title="<?php echo htmlspecialchars(w34f('OnSite', '%s on %s', 'weewx-Weather34', 'GitHub')); ?>" target="_blank">
           <weather34menumarkerbluegrey></weather34menumarkerbluegrey> GitHub: meisnick/weewx-Weather34
         </a>
       </li>
       <li>
-        <a href="templateSetup.php" title="Dashboard Setup Page">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Dashboard Setup Page
+        <a href="templateSetup.php" title="<?php echo htmlspecialchars(w34t('DashboardSetupPage', 'Dashboard Setup Page')); ?>">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> <?php echo w34t('DashboardSetupPage', 'Dashboard Setup Page'); ?>
         </a>
       </li>
       <li>
-        <a href="https://github.com/meisnick/weewx-Weather34" title="This fork by meisnick, based on the WeeWX port by Ian Millard (Steepleian)" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> WeeWX skin (fork of Steepleian's port)
+        <a href="https://github.com/meisnick/weewx-Weather34" title="<?php echo htmlspecialchars(w34t('ForkCredit', 'This fork by meisnick, based on the WeeWX port by Ian Millard (Steepleian)')); ?>" target="_blank">
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> <?php echo w34t('ForkShort', 'WeeWX skin (fork of Steepleian’s port)'); ?>
         </a>
       </li>
       <li>
         <a href="https://weather34.com/homeweatherstation/" title="Weather34" target="_blank">
-          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> Designed by weather34.com
+          <weather34menumarkerbluegrey></weather34menumarkerbluegrey> <?php echo w34f('DesignedBy', 'Designed by %s', 'weather34.com'); ?>
         </a>
       </li>
       <!-- USA WeatherFinder -->

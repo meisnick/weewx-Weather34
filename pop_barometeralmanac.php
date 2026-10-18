@@ -27,7 +27,7 @@ if ($theme === "dark") {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Barometer Almanac Information</title>
+  <title><?php echo w34t('LinkBaroAlmanac', 'Barometer Almanac and Charts'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/baromalmanac.<?php echo $theme; ?>.css?version=<?php echo filemtime(
     "css/baromalmanac." . $theme . ".css"
@@ -36,7 +36,7 @@ if ($theme === "dark") {
 
 <main class="grid">
   <article>
-   <div class=actualt>&nbsp;Barometer Today </div>
+   <div class=actualt>&nbsp;<?php echo w34f('AlmToday', '%s Today', w34t('Barometer', 'Barometer')); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -48,7 +48,7 @@ if ($theme === "dark") {
      echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $weather[
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('MaxLabel', 'Max'); ?></b></span><br><?php echo $weather[
         "thb0seapressmaxtime"
     ]; ?></span></div>
 	</div>
@@ -62,13 +62,13 @@ if ($theme === "dark") {
 
  echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $weather[
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('MinLabel', 'Min'); ?></b></span><br><?php echo $weather[
     "thb0seapressmintime"
 ]; ?></span></div>
 </article>
 
  <article>
-   <div class=actualt>&nbsp;Barometer Yesterday </div>
+   <div class=actualt>&nbsp;<?php echo w34f('AlmYesterday', '%s Yesterday', w34t('Barometer', 'Barometer')); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -80,7 +80,7 @@ if ($theme === "dark") {
      echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('MaxLabel', 'Max'); ?></b></span><br> <?php echo $weather[
         "thb0seapressydmaxtime"
     ]; ?></span></div>
 			</div>
@@ -96,7 +96,7 @@ if ($theme === "dark") {
 
  echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('MinLabel', 'Min'); ?></b></span><br> <?php echo $weather[
     "thb0seapressydmintime"
 ]; ?></span></div>
 
@@ -105,7 +105,7 @@ if ($theme === "dark") {
 
 
   <article>
-  <div class=actualt>&nbsp;Barometer <?php echo w34_date("F Y"); ?> </div>
+  <div class=actualt>&nbsp;<?php echo w34t('Barometer', 'Barometer'); ?> <?php echo w34_date("F Y"); ?> </div>
    <div class="temperaturecontainer1">
   <?php
   ////pressure max month
@@ -115,7 +115,7 @@ if ($theme === "dark") {
   }
   echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
   ?> </div>
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('MaxLabel', 'Max'); ?></b></span><br> <?php echo $weather[
         "thb0seapressmonthmaxtime"
     ]; ?></span>
     </div>
@@ -129,7 +129,7 @@ if ($theme === "dark") {
    }
    echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
    ?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('MinLabel', 'Min'); ?></b></span><br> <?php echo $weather[
     "thb0seapressmonthmintime"
 ]; ?></span>
 </div>	</div>
@@ -137,7 +137,7 @@ if ($theme === "dark") {
 
 
    <article>
-   <div class=actualt>&nbsp;Barometer <?php echo date("Y"); ?> </div>
+   <div class=actualt>&nbsp;<?php echo w34t('Barometer', 'Barometer'); ?> <?php echo date("Y"); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -149,7 +149,7 @@ if ($theme === "dark") {
      echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br> <?php echo $weather[
+    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('MaxLabel', 'Max'); ?></b></span><br> <?php echo $weather[
         "thb0seapressyearmaxtime"
     ]; ?></span></div>
 			</div>
@@ -165,7 +165,7 @@ if ($theme === "dark") {
 
  echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br> <?php echo $weather[
+<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('MinLabel', 'Min'); ?></b></span><br> <?php echo $weather[
     "thb0seapressyearmintime"
 ]; ?></span></div>
 
@@ -173,7 +173,7 @@ if ($theme === "dark") {
 
 
 <article>
-   <div class=actualt>&nbsp;Barometer All-Time </div>
+   <div class=actualt>&nbsp;<?php echo w34f('AlmAllTime', '%s All-Time', w34t('Barometer', 'Barometer')); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -185,7 +185,7 @@ if ($theme === "dark") {
      echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
      ?> </div>
 
-    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b>Max</b></span><br><?php echo $weather[
+    <div class="temperaturetrend1"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('MaxLabel', 'Max'); ?></b></span><br><?php echo $weather[
         "thb0seapressamaxtime"
     ]; ?></span></div>
 			</div>
@@ -201,7 +201,7 @@ if ($theme === "dark") {
 
  echo "<smalluvunit>" . $weather["barometer_units"] . "</smalluvunit>";
  ?>  </div>
-<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b>Min</b></span><br><?php echo $weather[
+<div class="temperaturetrend1"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('MinLabel', 'Min'); ?></b></span><br><?php echo $weather[
     "thb0seapressamintime"
 ]; ?></span></div>
 
@@ -223,11 +223,11 @@ if ($theme === "dark") {
   <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info; ?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsByHighcharts', 'Charts rendered and compiled using Highcharts'); ?> </a>
   </div>   
     
   <div class="lotemp">
-  <?php echo $info; ?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date(
+  <?php echo $info; ?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date(
      "Y"
  ); ?>
   </div>

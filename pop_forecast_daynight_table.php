@@ -260,14 +260,14 @@ for ($k = 0;$k < 14;$k++)
 <table class="demo" style="width: 100%; height: 100%; text-center: left; overflow: auto;">
     
 
-<th style="font-size: 12px;">Period</th>
-<th colspan="2" style="font-size: 12px;">Conditions</th>
-<th style="font-size: 12px;">Temperature</th>
-<th style="font-size: 12px;">Precipitation</th>
-<th style="font-size: 12px;">Wind Speed</th>
-<th style="font-size: 12px;">Direction</th>
-<th style="font-size: 12px;">UV Index</th>
-<th style="font-size: 12px;">Humidity</th>
+<th style="font-size: 12px;"><?php echo w34t('Period', 'Period'); ?></th>
+<th colspan="2" style="font-size: 12px;"><?php echo w34t('Conditions', 'Conditions'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('Temperature', 'Temperature'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('Precipitation', 'Precipitation'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('WindSpeedLabel', 'Wind Speed'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('Direction', 'Direction'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('UvIndex', 'UV Index'); ?></th>
+<th style="font-size: 12px;"><?php echo w34t('Humidity', 'Humidity'); ?></th>
 </tr>
 <?php for ($k = 0;$k < 14;$k++)
 { ?>
@@ -279,7 +279,7 @@ for ($k = 0;$k < 14;$k++)
 <td><span style="font-size: 11px; ";><?php echo $forecastPrecip[$k]; ?>
 </td>
 <td><span style="font-size: 11px; ";><redt><?php echo $forecastWindSpeedMax[$k]; ?><small><?php echo $windunit; ?></small></span></td>
-<td><?php echo $forecastWinddircardinal[$k]; ?></td>
+<td><?php echo w34_dir($forecastWinddircardinal[$k]); ?></td>
 <td><span style="font-size: 11px; ";><?php echo $colorUV[$k]; ?><?php echo $forecastUV[$k]; ?></span></td>
 <td><span style="font-size: 11px;";><?php echo $colorHumidity[$k]; ?><?php echo $forecasthumidity[$k]; ?><small> %</small></span></td>
 </tr>
@@ -290,9 +290,9 @@ for ($k = 0;$k < 14;$k++)
 </table>
     </articlegraph3>
   <div style="font-size:9px;color:#aaa;padding:6px 4px;">
-    Data: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
+    <?php echo w34t('DataLabel', 'Data'); ?>: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
     (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:#aaa;">CC BY 4.0</a>)
     &nbsp;&middot;&nbsp;
-    Icons: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
+    <?php echo w34t('IconsLabel', 'Icons'); ?>: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
   </div>
    </main>

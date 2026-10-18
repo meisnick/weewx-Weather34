@@ -8,13 +8,13 @@ $forecastime = filemtime ('jsondata/uk.txt');
 
 <body>
 <div class="tabs-header">
-  <button class="tablink" onclick="openTab('historical-tab', this)" id="defaultOpen">Historical Trends</button>
-  <button class="tablink" onclick="openTab('help-tab', this)">AQI Measurement Guide</button>
+  <button class="tablink" onclick="openTab('historical-tab', this)" id="defaultOpen"><?php echo w34t('HistoricalTrends', 'Historical Trends'); ?></button>
+  <button class="tablink" onclick="openTab('help-tab', this)"><?php echo w34t('AqiMeasurementGuide', 'AQI Measurement Guide'); ?></button>
 </div>
 
 <!-- TAB 1: HISTORICAL TRENDS HIGHCHART -->
 <div id="historical-tab" class="tabcontent">
-  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="Historical Air Quality Trends (Weekly PM2.5 / PM10)"></div>
+  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('AqiHistoryTitle', 'Historical Air Quality Trends (Weekly PM2.5 / PM10)')); ?>"></div>
   <div class="chart-container">
     <iframe src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </div>
@@ -22,22 +22,22 @@ $forecastime = filemtime ('jsondata/uk.txt');
 
 <!-- TAB 2: MEASUREMENT GUIDE TABLES -->
 <div id="help-tab" class="tabcontent">
-  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="The World AQI Indices are based on the US EPA (United States Environmental Protection Agency) Scale, latest 24 hour running mean for the current day."></div>  
+  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('AqiEpaNote', 'The World AQI Indices are based on the US EPA (United States Environmental Protection Agency) Scale, latest 24 hour running mean for the current day.')); ?>"></div>  
   <br> 
 
   <table class="demo">
     <tbody>
       <tr>
         <th style="color:<?php echo $text1 ?>;" id="CELL1">WORLD (US EPA) AQI PM<sub>2.5</sub></th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL2">Good</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL3">Moderate</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL4">Unhealthy for Sensitive Groups</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL5">Unhealthy</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL6">Very Unhealthy</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL7">Hazardous</th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL2"><?php echo w34t('AqGood', 'Good'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL3"><?php echo w34t('AqModerate', 'Moderate'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL4"><?php echo w34t('AqUnhealthySensitive', 'Unhealthy for Sensitive Groups'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL5"><?php echo w34t('AqUnhealthy', 'Unhealthy'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL6"><?php echo w34t('VeryUnhealthy', 'Very Unhealthy'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL7"><?php echo w34t('AqHazardous', 'Hazardous'); ?></th>
       </tr>
       <tr>
-        <td style="color:<?php echo $text1 ?>;" id="CELL1"><b>Range<b></td>
+        <td style="color:<?php echo $text1 ?>;" id="CELL1"><b><?php echo w34t('Range', 'Range'); ?><b></td>
         <td style="color:black;" id="CELL3">0-50</td>
         <td style="color:black;" id="CELL6">51-100</td>
         <td style="color:black;" id="CELL7">101-150</td>
@@ -57,28 +57,28 @@ $forecastime = filemtime ('jsondata/uk.txt');
     </tbody>
   </table>
 
-  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="The Defra (UK Government Department for Environment and Rural Affairs) DAQI Indices are based on the daily mean concentration for historical data, latest 24 hour running mean for the current day."></div>  
+  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('AqiDaqiNote', 'The Defra (UK Government Department for Environment and Rural Affairs) DAQI Indices are based on the daily mean concentration for historical data, latest 24 hour running mean for the current day.')); ?>"></div>  
   <br>
 
   <table class="demo">
     <thead>
       <tr>
         <th style="color:<?php echo $text1 ?>;" id="CELL1">UK DAQI</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL2">Low</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL3">Low</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL4">Low</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL5">Moderate</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL6">Moderate</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL7">Moderate</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL8">High</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL9">High</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL10">High</th>
-        <th style="color:<?php echo $text1 ?>;" id="CELL11">Very High</th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL2"><?php echo w34t('DaqiLow', 'Low'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL3"><?php echo w34t('DaqiLow', 'Low'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL4"><?php echo w34t('DaqiLow', 'Low'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL5"><?php echo w34t('AqModerate', 'Moderate'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL6"><?php echo w34t('AqModerate', 'Moderate'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL7"><?php echo w34t('AqModerate', 'Moderate'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL8"><?php echo w34t('DaqiHigh', 'High'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL9"><?php echo w34t('DaqiHigh', 'High'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL10"><?php echo w34t('DaqiHigh', 'High'); ?></th>
+        <th style="color:<?php echo $text1 ?>;" id="CELL11"><?php echo w34t('DaqiVeryHigh', 'Very High'); ?></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="color:<?php echo $text1 ?>;" id="CELL1"><b>Band<b></td>
+        <td style="color:<?php echo $text1 ?>;" id="CELL1"><b><?php echo w34t('Band', 'Band'); ?><b></td>
         <td style="color:black;" id="CELL2">1</td>
         <td style="color:black;" id="CELL3">2</td>
         <td style="color:black;" id="CELL4">3</td>
@@ -101,7 +101,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
         <td style="color:black;" id="CELL8">54-58</td>
         <td id="CELL9">59-64</td>
         <td id="CELL10">65-70</td>
-        <td id="CELL11">71 or more</td>
+        <td id="CELL11"><?php echo w34f('OrMore', '%s or more', '71'); ?></td>
       </tr>
       <tr> 	 	 	 	 	 	 	 	 	
         <td style="color:<?php echo $text1 ?>;" id="CELL1"><b>PM<sub>10 </sub>µg/m³<b></td>
@@ -114,7 +114,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
         <td style="color:black;" id="CELL8">76-83</td>
         <td id="CELL9">84-91</td>
         <td id="CELL10">92-100</td>
-        <td id="CELL11">101 or more</td>
+        <td id="CELL11"><?php echo w34f('OrMore', '%s or more', '101'); ?></td>
       </tr>      
     </tbody>
   </table>

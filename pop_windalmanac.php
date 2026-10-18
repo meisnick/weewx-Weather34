@@ -26,14 +26,14 @@ if ($theme === "dark") {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Windspeed Almanac Information</title>
+  <title><?php echo w34t('LinkWindAlmanac', 'Wind Almanac and Charts'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
 <main class="grid">
   
 
 <article>
-   <div class=actualt>Max Today </div>
+   <div class=actualt><?php echo w34f('AlmToday', '%s Today', w34t('MaxLabel', 'Max')); ?> </div>
    <?php
 	if ($weather["wind_units"]=='kts'){$weather["wind_units"]="kn";}
 	// wind day km/h
@@ -98,12 +98,12 @@ if($weather["wind_units"] =='kn'){ echo number_format($weather["winddmax"]*1.851
 </div>
 
 <div class="hitempy">
-Max Recorded <blue><?php echo $weather["winddmaxtime"];?></blue></div>
+<?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <blue><?php echo $weather["winddmaxtime"];?></blue></div>
 </smalluvunit>
 </article>
 
  <article>
-   <div class=actualt>Max Yesterday </div>
+   <div class=actualt><?php echo w34f('AlmYesterday', '%s Yesterday', w34t('MaxLabel', 'Max')); ?> </div>
    <?php
 	// wind yesterday km/h
 	if ($weather["wind_units"]=='km/h' && $weather["windydmax"]>=60)  {
@@ -166,14 +166,14 @@ if($weather["wind_units"] =='kn'){ echo number_format($weather["windydmax"]*1.85
 </div>
 
 <div class="hitempy">
-Max Recorded <br><blue><?php echo $weather["windydmaxtime"];?></blue></div>
+<?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["windydmaxtime"];?></blue></div>
 
 </article>
 
 
 
   <article>
-  <div class=actualt>Max <?php echo w34_date('F Y')?> </div>
+  <div class=actualt><?php echo w34t('MaxLabel', 'Max'); ?> <?php echo w34_date('F Y')?> </div>
     <?php
 	// wind month km/h
 	if ($weather["wind_units"]=='km/h' && $weather["windmmax"]>=60)  {
@@ -236,13 +236,13 @@ if($weather["wind_units"] =='kn'){ echo number_format($weather["windmmax"]*1.851
 </div>
 
 <div class="hitempy">
-Max Recorded <br><blue><?php echo $weather["windmmaxtime"];?></blue></div>
+<?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["windmmaxtime"];?></blue></div>
 
 </article>
 
 
    <article>
-   <div class=actualt>Max <?php echo date('Y')?> </div>
+   <div class=actualt><?php echo w34t('MaxLabel', 'Max'); ?> <?php echo date('Y')?> </div>
    <?php
 	// wind year km/h
 	if ($weather["wind_units"]=='km/h' && $weather["windymax"]>=60)  {
@@ -305,14 +305,14 @@ if($weather["wind_units"] =='kn'){ echo number_format($weather["windymax"]*1.851
 </div>
 
 <div class="hitempy">
-Max Recorded <br><blue><?php echo $weather["windymaxtime"];?></blue></div>
+<?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["windymaxtime"];?></blue></div>
 
 </article>
 
 
 
  <article>
-   <div class=actualt>Max All-Time</div>
+   <div class=actualt><?php echo w34f('AlmAllTime', '%s All-Time', w34t('MaxLabel', 'Max')); ?></div>
    <?php
 	// wind year km/h
 	if ($weather["wind_units"]=='km/h' && $weather["windamax"]>=60)  {
@@ -375,7 +375,7 @@ if($weather["wind_units"] =='kn'){ echo number_format($weather["windamax"]*1.851
 </div>
 
 <div class="hitempy">
-Max Recorded <br><blue><?php echo $weather["windamaxtime"];?></blue></div>
+<?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["windamaxtime"];?></blue></div>
 
 </article>  
 </main>
@@ -393,11 +393,11 @@ Max Recorded <br><blue><?php echo $weather["windamaxtime"];?></blue></div>
 <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsByHighcharts', 'Charts rendered and compiled using Highcharts'); ?> </a>
   </div>   
     
   <div class="lotemp">
-  <?php echo $info?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
+  <?php echo $info?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y');?>
   </div>
    
   </articlegraph>

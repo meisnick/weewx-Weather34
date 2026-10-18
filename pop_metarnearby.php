@@ -8,7 +8,7 @@ else if($theme==="dark"){$background="rgba(33, 34, 39, .8)";$text="white";}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Nearby Metar</title>
+  <title><?php echo w34t('LinkNearbyMetar', 'Nearby Metar'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}
@@ -156,17 +156,17 @@ stationid{font-size:1.4em;font-family:weathertext2;color:#009bb4}
 .icontext{position:absolute;float:left;margin-top:60px;text-align:left;}
 .pressure{position:absolute;float:left;margin-top:60px;text-align:left;}
 </style>
-<div class="weather34darkbrowser" url="Nearby Airport Conditions"></div>
+<div class="weather34darkbrowser" url="<?php echo htmlspecialchars(w34t('NearbyAirportConditions', 'Nearby Airport Conditions')); ?>"></div>
   
 <main class="grid">
 
  <article>
-  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp Current Conditions </div>
+  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('Currentsky', 'Current Conditions'); ?> </div>
   <div class="iconcondition"><?php echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='60px'>";?></div>
-  <div class="icontext"><?php  echo $sky_desc; ?> </div>
+  <div class="icontext"><?php  echo w34_cond($sky_desc); ?> </div>
 <br><br><br>
 <div class="pressure">
-<blue>Pressure</blue> <br>
+<blue><?php echo w34t('Pressure', 'Pressure'); ?></blue> <br>
 <?php
 if ($pressureunit == 'mb' || $pressureunit == 'hPa' || $pressureunit == 'kPa' ) {
 	echo $metar34pressuremb ," (".$pressureunit.")";
@@ -181,10 +181,10 @@ if ($pressureunit == 'mb' || $pressureunit == 'hPa' || $pressureunit == 'kPa') {
 	echo $metar34pressuremb ," (mb)";
 }
 ?>
-<blue><br>Visibility</blue> <br>
+<blue><br><?php echo w34t('Visibility', 'Visibility'); ?></blue> <br>
 <?php
 if ($distanceunit == 'mi') {
-	echo $metar34vismiles  ," (miles)";
+	echo $metar34vismiles  ," (", w34t('Miles', 'miles'), ")";
     echo $metar34cloudbasefeet;
 } else {
 	echo $metar34viskm ," (km)";
@@ -194,7 +194,7 @@ if ($distanceunit == 'mi') {
 if ($distanceunit =='mi') {
 	echo $metar34viskm  ," (km)";
 } else {
-	echo $metar34vismiles ," (miles)";
+	echo $metar34vismiles ," (", w34t('Miles', 'miles'), ")";
 }
 ?>
 </div>
@@ -205,7 +205,7 @@ if ($distanceunit =='mi') {
 
 
   <article>       
-<div class=actualt style="background:teal;color:white;">&nbsp;&nbsp Temperature </div>   
+<div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('Temperature', 'Temperature'); ?> </div>   
 
  <div class="metartempcontainer1"><?php
  if ($tempunit == 'C') {
@@ -256,7 +256,7 @@ if ($tempunit == 'C') {
 	else if ($metar34dewpointf=='') {echo '<div class=metartemptoday0>'.$metar34dewpointf."<smalluvunit> N/A";}
 }
 ?></smalluvunit></div></div> 
- <div class="dewword">Dewpoint</div>
+ <div class="dewword"><?php echo w34t('Dewpoint', 'Dewpoint'); ?></div>
 
  <div class="metarhumcontainer1"><?php 
 if ($metar34humidity >85) {echo '<div class=metarhumtoday85-100>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
@@ -265,14 +265,14 @@ else if ($metar34humidity  >35) {echo '<div class=metarhumtoday35-70>'.$metar34h
 else if ($metar34humidity >=0) {echo '<div class=metarhumtoday0-35>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
 else if ($metar34humidity=='') {echo '<div class=metarhumtoday0-35><smalluvunit> N/A';}
 ?></smalluvunit></div></div> 
-<div class="humword">&nbsp;Humidity</div>
+<div class="humword">&nbsp;<?php echo w34t('Humidity', 'Humidity'); ?></div>
 </div>
   
 </article>  
   
    
   <article>
-  <div class=actualw style="background:teal;color:white;">&nbsp;&nbsp Wind Speed</div>   
+  <div class=actualw style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('WindSpeedLabel', 'Wind Speed'); ?></div>   
    <?php
 //set windspeed variables
 if ($windunit == 'km/h') {
@@ -351,32 +351,32 @@ echo $$metarspot4;
 
 
 <article>
-<div class=actualw style="background:teal;color:white;">&nbsp;&nbsp Wind Direction</div> 
+<div class=actualw style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('Winddirection', 'Wind Direction'); ?></div> 
 </div>
 </div> 
 <div class="metar34compass1">
 <div class=directiontext>
 <?php 
-if( $metar34windir==0){echo "Calm";}else echo "&nbsp". $metar34windir,"&deg;";?>
+if( $metar34windir==0){echo w34t('Calm', 'Calm');}else echo "&nbsp". $metar34windir,"&deg;";?>
 <br>
 <?php 
-if($metar34windir<=11.25){echo "Due North";}
-else if($metar34windir<=33.75){echo "North North <br>East";}
-else if($metar34windir<=56.25){echo "North East";}
-else if($metar34windir<=78.75){echo "East North<br>East";}
-else if($metar34windir<=101.25){echo "Due East";}
-else if($metar34windir<=123.75){echo "East South<br>East";}
-else if($metar34windir<=146.25){echo "South East";}
-else if($metar34windir<=168.75){echo "South South<br>East";}
-else if($metar34windir<=191.25){echo "Due South";}
-else if($metar34windir<=213.75){echo "South South<br>West";}
-else if($metar34windir<=236.25){echo "South West";}
-else if($metar34windir<=258.75){echo "West South<br>West";}
-else if($metar34windir<=281.25){echo "Due West";}
-else if($metar34windir<=303.75){echo "West North<br>West";}
-else if($metar34windir<=326.25){echo "North West";}
-else if($metar34windir<=348.75){echo "North North<br>West";}
-else{echo "Due North";}?></div>
+if($metar34windir<=11.25){echo w34t('Northdir', 'Due <span>North<br></span>');}
+else if($metar34windir<=33.75){echo w34t('NNEdir', 'North North <br><span>East</span>');}
+else if($metar34windir<=56.25){echo w34t('NEdir', 'North <span> East<br></span>');}
+else if($metar34windir<=78.75){echo w34t('ENEdir', 'East North<br><span>East</span>');}
+else if($metar34windir<=101.25){echo w34t('Eastdir', 'Due <span> East<br></span>');}
+else if($metar34windir<=123.75){echo w34t('ESEdir', 'East South<br><span>East</span>');}
+else if($metar34windir<=146.25){echo w34t('SEdir', 'South <span> East</span>');}
+else if($metar34windir<=168.75){echo w34t('SSEdir', 'South South<br><span>East</span>');}
+else if($metar34windir<=191.25){echo w34t('Southdir', 'Due <span> South</span>');}
+else if($metar34windir<=213.75){echo w34t('SSWdir', 'South South<br><span>West</span>');}
+else if($metar34windir<=236.25){echo w34t('SWdir', 'South <span> West</span>');}
+else if($metar34windir<=258.75){echo w34t('WSWdir', 'West South<br><span>West</span>');}
+else if($metar34windir<=281.25){echo w34t('Westdir', 'Due <span> West</span>');}
+else if($metar34windir<=303.75){echo w34t('WNWdir', 'West North<br><span>West</span>');}
+else if($metar34windir<=326.25){echo w34t('NWdir', 'North <span> West</span>');}
+else if($metar34windir<=348.75){echo w34t('NWNdir', 'North North<br><span>West</span>');}
+else{echo w34t('Northdir', 'Due <span>North<br></span>');}?></div>
 
 <div class="metar34compass-line1">
 <div class="thearrow2">
@@ -390,7 +390,7 @@ else{echo "Due North";}?></div>
   </article> 
  
   <article>
-  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp Airport Data </div>   
+  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('AirportData', 'Airport Data'); ?> </div>   
   <stationid><?php echo $metar34stationid ; ?></stationid><br>
   <div class="lotemp">
    <?php
@@ -398,14 +398,14 @@ else{echo "Due North";}?></div>
 
 if ($distanceunit == 'km') {$metdist1 = round($airport1dist,0,PHP_ROUND_HALF_UP); $metdist2 = round($airport1dist / 1.609,0,PHP_ROUND_HALF_UP); $metunit1 = 'km'; $metunit2 = 'mi';}
 else if ($distanceunit == 'mi') {$metdist1 = round($airport1dist / 1.609,0,PHP_ROUND_HALF_UP); $metdist2 = round($airport1dist,0,PHP_ROUND_HALF_UP); $metunit1 = 'mi'; $metunit2 = 'km';}
-echo "Location <orange>",$metar34stationname  ;
+echo w34t('Location', 'Location'), " <orange>",$metar34stationname  ;
 echo '</orange> <orange>'.$metdist1.'</orange> '.$metunit1.' (<orange>';
 echo $metdist2;
 echo '</orange>'.$metunit2.')';
     ?>
  <div class="lotemp">
 <?php //metar raw
-echo "Metar :" .$metar34raw."";?>
+echo "METAR: " .$metar34raw."";?>
 </div>
 <div class="hitemp">
 <?php //update timestamp
@@ -416,24 +416,24 @@ $date=str_replace('Z', ' ', $date);$date1 = strtotime($date) + 60*60*$UTC;echo w
   </article> 
   
   <article>
-  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp Raw Metar Info</div>  
+  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('RawMetarInfo', 'Raw METAR Info'); ?></div>  
   <div class="lotemp">
-  <?php echo $info?> Raw METAR is the most common format in the world for the transmission of observational weather data. It is highly standardized through the International Civil Aviation Organization (ICAO), which allows it to be understood throughout most of the world.</span></div>
+  <?php echo $info?> <?php echo w34t('RawMetarExplain', 'Raw METAR is the most common format in the world for the transmission of observational weather data. It is highly standardized through the International Civil Aviation Organization (ICAO), which allows it to be understood throughout most of the world.'); ?></span></div>
   </article> 
   
   <article>
-  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp API  Info</div>  
+  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('ApiInfo', 'API Info'); ?></div>  
   <div class="lotemp">
-  <?php echo $info?> Data Provided by </span><a href="https://aviationweather.gov/data/metar/?ids=<?php echo $icao1;?>" title="aviationweather.gov" target="_blank"><br><img src=img/noaa.svg width=130px alt="aviationweather.gov"></a></span></div>
+  <?php echo $info?> <?php echo w34t('DataProvidedBy', 'Data Provided by'); ?> </span><a href="https://aviationweather.gov/data/metar/?ids=<?php echo $icao1;?>" title="aviationweather.gov" target="_blank"><br><img src=img/noaa.svg width=130px alt="aviationweather.gov"></a></span></div>
   </article> 
   
   
   <article>
-  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp &copy; Info</div>  
+  <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp &copy; <?php echo w34t('Information', 'Information'); ?></div>  
   <div class="lotemp">
-  <?php echo $info?> CSS/SVG/PHP scripts were developed by <a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:9px;">weather34.com</a>  for use in the weather34 template &copy; 2015-<?php echo date('Y');?>
+  <?php echo $info?> <?php echo w34f('CreditWeather34', 'CSS/SVG/PHP scripts were developed by %s for use in the weather34 template', '<a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:9px;">weather34.com</a>'); ?> &copy; 2015-<?php echo date('Y');?>
   <br><br>
-  <?php echo $info?> Guide Info provided  by <a href="https://en.wikipedia.org/wiki/METAR" title="https://en.wikipedia.org/wiki/METAR" target="_blank" style="font-size:9px;">Metar-Wikipedia </a>  
+  <?php echo $info?> <?php echo w34t('GuideInfoBy', 'Guide information provided by'); ?> <a href="https://en.wikipedia.org/wiki/METAR" title="https://en.wikipedia.org/wiki/METAR" target="_blank" style="font-size:9px;">Metar-Wikipedia </a>  
   </div></article> 
    
 </main>

@@ -27,13 +27,13 @@ if ($theme === "dark") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather34 Rainfall Almanac Information</title>
+    <title><?php echo w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <main class="grid">
     <article>
-     <div class=actualt>Rainfall Today</div>
+     <div class=actualt><?php echo w34f('AlmToday', '%s Today', w34t('Rainfall', 'Rainfall')); ?></div>
     <?php // rain today
 echo "<div class='rainfalltoday1'>",$weather["rain_today"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
 <div class='w34convertrain'>
@@ -43,11 +43,11 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_today"]
 ?>
 <div></div>
 
-<div class="hitempy"><?php echo $raininfo . "Last Hour<blue> ", $weather["rain_lasthour"]."</blue> " .$weather["rain_units"] ?></div>
+<div class="hitempy"><?php echo $raininfo . w34t('LastHour', 'Last Hour') . "<blue> ", $weather["rain_lasthour"]."</blue> " .$weather["rain_units"] ?></div>
 </article>
 
  <article>
-        <div class=actualt>Rainfall Yesterday</div>
+        <div class=actualt><?php echo w34f('AlmYesterday', '%s Yesterday', w34t('Rainfall', 'Rainfall')); ?></div>
     <?php // rain yesterday
 echo "<div class='rainfalltoday1'>",$weather["rainydmax"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
 <div class='w34convertrain'>
@@ -57,12 +57,12 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rainydmax"]*
 ?>
 <div></div>
 
-<div class="hitempy"><?php echo $raininfo;?>Last 24 Hours<br/><blue><?php echo $weather["rain_24hrs"];?></blue> <?php echo $weather["rain_units"] ?></div>
+<div class="hitempy"><?php echo $raininfo;?><?php echo w34t('Last24Hours', 'Last 24 Hours'); ?><br/><blue><?php echo $weather["rain_24hrs"];?></blue> <?php echo $weather["rain_units"] ?></div>
 </article>
 
 
     <article>
-    <div class=actualt>Rainfall <?php echo w34_date('M Y')?> </div>
+    <div class=actualt><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo w34_date('M Y')?> </div>
     <?php // rain month
 echo "<div class='rainfalltoday1'>",$weather["rain_month"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
 <div class='w34convertrain'>
@@ -73,9 +73,9 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_month"]
 <div></div>
 
 <div class="hitempy">
-    <?php echo $raininfo;?>Last Rainfall<br/>
+    <?php echo $raininfo;?><?php echo w34t('LastRainfall', 'Last Rainfall'); ?><br/>
     <blue><?php if ($meteobridgeapi[124]=='--'){
-        echo "Unknown";
+        echo w34t('Unknown', 'Unknown');
     } else if ($rainlasttime == w34_date("jS M Y ")) {
         echo 'Today';
     } else {
@@ -86,7 +86,7 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_month"]
 
 
      <article>
-     <div class=actualt>Rainfall <?php echo date("Y");?> </div>
+     <div class=actualt><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo date("Y");?> </div>
     <?php // rain year
 echo "<div class='rainfalltoday1'>",$weather["rain_year"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
 <div class='w34convertrain'>
@@ -96,13 +96,13 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_year"]*
 ?>
 <div></div>
 
-<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>-->Since<br/>
+<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>--><?php echo w34t('Since', 'Since'); ?><br/>
     <blue><?php echo w34_datetext('Jan');?> <?php echo date('Y');?></blue>
 </div>
 </article>
 
 <article>
- <div class=actualt>&nbsp;Rainfall All-Time </div>
+ <div class=actualt>&nbsp;<?php echo w34f('AlmAllTime', '%s All-Time', w34t('Rainfall', 'Rainfall')); ?> </div>
     <?php
     if ($weather["rain_alltime"]==''){echo "<div class='rainfalltoday1'>N/A</value>";}
  // rain alltime
@@ -118,7 +118,7 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_alltime
 ?>
 <div></div>
 
-<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>-->Since<br/>
+<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>--><?php echo w34t('Since', 'Since'); ?><br/>
     <blue><?php echo $weather['rainStartTime'];?></blue>
 </div>
 </article> </main>
@@ -135,11 +135,11 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_alltime
     <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered and compiled using Highcharts </a>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsByHighcharts', 'Charts rendered and compiled using Highcharts'); ?> </a>
   </div>   
     
   <div class="lotemp">
-  <?php echo $info?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
+  <?php echo $info?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y');?>
   </div>
    
   </articlegraph>

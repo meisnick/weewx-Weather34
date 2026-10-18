@@ -18,6 +18,17 @@ function w34t($key, $english = '') {
     return (is_array($lang) && isset($lang[$key]) && trim($lang[$key]) !== '') ? trim($lang[$key]) : $english;
 }
 
+// Translated sprintf format, e.g. w34f('AlmToday', '%s Today', w34t('Barometer', 'Barometer')),
+// so each language can put the pieces in its own order.
+function w34f($key, $english) {
+    $args = array_slice(func_get_args(), 2);
+    try {
+        return vsprintf(w34t($key, $english), $args);
+    } catch (\Throwable $e) {  // a translation with the wrong number of %s
+        return vsprintf($english, $args);
+    }
+}
+
 // Translate English month/day names (full and 3-letter) and ordinal suffixes inside date text,
 // e.g. '23rd Jan', 'Saturday 17 Oct 2026', 'October'. Works on fresh date() output and on
 // pre-formatted strings from the data layer.
@@ -67,6 +78,29 @@ function w34_words($text, $words) {
     $map = array();
     foreach ($words as $english => $key) $map[$english] = w34t($key, $english);
     return strtr($text, $map);
+}
+
+// Compass abbreviation ('SSW', 'N', 'NNW') in the active language, e.g. French 'SSO', Greek 'ΝΝΔ'.
+// The 16-point keys predate this helper; N/E/S/W and NNW (stored as 'NWN') get their own keys.
+function w34_dir($abbr) {
+    if (w34_is_english() || !is_string($abbr) || !preg_match('/^[NESW]{1,3}$/', trim($abbr))) return $abbr;
+    $a = trim($abbr);
+    $keys = array('N' => 'DirN', 'E' => 'DirE', 'S' => 'DirS', 'W' => 'DirW', 'NNW' => 'DirNNW');
+    return w34t(isset($keys[$a]) ? $keys[$a] : $a, $a);
+}
+
+// Meteor shower event text, e.g. 'Orionids peak', 'Approaching Lyrids' or the popup's
+// 'Meteor Shower<br> <orange1>Orionids</orange1> ... Active Oct 21st-Oct 22nd ... Peaks ...'.
+function w34_meteor($text) {
+    if (w34_is_english() || $text === null || $text === '') return $text;
+    $words = array('Meteor Shower' => 'MeteorShower', 'Peak Viewing Now' => 'PeakViewingNow',
+        'Estimated ZHR' => 'EstimatedZHR', 'Peaks' => 'Peaks', 'Active' => 'Active',
+        'Approaching' => 'MeteorApproaching', 'peak' => 'MeteorPeak', 'passed' => 'MeteorPassed',
+        'Meteor' => 'MeteorWord', 'Quadrantids' => 'Quadrantids', 'Lyrids' => 'Lyrids',
+        'ETA Aquarids' => 'EtaAquarids', 'Delta Aquarids' => 'DeltaAquarids', 'Perseids' => 'Perseids',
+        'Draconids' => 'Draconids', 'Orionids' => 'Orionids', 'South Taurids' => 'SouthTaurids',
+        'North Taurids' => 'NorthTaurids', 'Leonids' => 'Leonids', 'Geminids' => 'Geminids', 'Ursids' => 'Ursids');
+    return w34_datetext(w34_words($text, $words));
 }
 
 // A multi-line label ('West South<br><span>West</span>') on one line.

@@ -22,7 +22,7 @@ if (file_exists($file_path)) {
         // Wind Label
         $wind_label = $data['wind_label'] ?? '';
         if ($wind_label) {
-            $wind_out = $wind_label . ' ' . $lang['Wind'];
+            $wind_out = w34_dir($wind_label) . ' ' . $lang['Wind'];
         }
         
         // Time Window Calculation

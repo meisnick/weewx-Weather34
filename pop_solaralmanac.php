@@ -27,12 +27,12 @@ if ($theme === "dark") {
 <html lang="en">
 <head><meta charset="UTF-8">
   
-  <title>Weather34 Solar Almanac Information</title>
+  <title><?php echo w34t('LinkSolarAlmanac', 'Solar Almanac'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
 <main class="grid">
   <article>  
-   <div class=actualt>Today </div>        
+   <div class=actualt><?php echo w34t('Today', 'Today'); ?> </div>        
    <div class="temperaturecontainer">
 	
              <?php
@@ -55,7 +55,7 @@ if ($theme === "dark") {
 
 </div>
 
-<div class="higust">Maximum Recorded <br><blue><?php echo $weather[
+<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather[
     "solardmaxtime"
 ]; ?></blue></div>
 
@@ -64,7 +64,7 @@ if ($theme === "dark") {
 </article>  
 
  <article> 
-  <div class=actualt>Yesterday </div>        
+  <div class=actualt><?php echo w34t('Yesterday', 'Yesterday'); ?> </div>        
    <div class="temperaturecontainer">
 	
              <?php
@@ -87,7 +87,7 @@ if ($theme === "dark") {
 
 </div>
 
-<div class="higust">Maximum Recorded <br><blue><?php echo $weather[
+<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather[
     "solarydmaxtime"
 ]; ?></blue></div>
 
@@ -119,7 +119,7 @@ if ($theme === "dark") {
 
 </div>
 
-<div class="higust">Maximum Recorded <br><blue><?php echo $weather[
+<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather[
     "solarmmaxtime"
 ]; ?></blue></div>
 
@@ -153,7 +153,7 @@ if ($theme === "dark") {
 
 </div>
 
-<div class="higust">Maximum Recorded <br><blue><?php echo $weather[
+<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather[
     "solarymaxtime"
 ]; ?></blue></div>
 
@@ -161,7 +161,7 @@ if ($theme === "dark") {
 
 </article> 
   <article> 
-  <div class=actualt>All-Time</div>        
+  <div class=actualt><?php echo w34t('AllTime', 'All-Time'); ?></div>        
    <div class="temperaturecontainer">
 	
              <?php
@@ -184,7 +184,7 @@ if ($theme === "dark") {
 
 </div>
 
-<div class="higust">Maximum Recorded <br><blue><?php echo $weather[
+<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather[
     "solaramaxtime"
 ]; ?></blue></div>
 
@@ -206,7 +206,7 @@ if ($theme === "dark") {
      <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
   <?php echo $info; ?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> Charts rendered using Highcharts. Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y'); ?></a></div>
+<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsUsingHighcharts', 'Charts rendered using Highcharts.'); ?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y'); ?></a></div>
    
   </articlegraph> 
   

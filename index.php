@@ -283,13 +283,13 @@ body.edit-mode .mod-box:active{cursor:grabbing}
 #col-picker button.active{background:rgba(240,94,64,.75);border-color:rgba(240,94,64,.9);color:#fff}
 </style>
 <div id="col-picker">
-  <button data-cols="auto" onclick="setColumns('auto')">Auto</button>
+  <button data-cols="auto" onclick="setColumns('auto')"><?php echo w34t('AutoColumns', 'Auto'); ?></button>
   <button data-cols="2" onclick="setColumns(2)">2</button>
   <button data-cols="3" onclick="setColumns(3)">3</button>
   <button data-cols="4" onclick="setColumns(4)">4</button>
   <button data-cols="6" onclick="setColumns(6)">6</button>
 </div>
-<button id="edit-toggle" onclick="toggleEdit()" title="Toggle layout edit mode">
+<button id="edit-toggle" onclick="toggleEdit()" title="<?php echo htmlspecialchars(w34t('ToggleEditMode', 'Toggle layout edit mode')); ?>">
   <span id="edit-icon">&#128274;</span> <span id="edit-label"><?php echo w34t('EditLayout', 'Edit Layout'); ?></span>
 </button>
 <div id="edit-status"></div>
@@ -431,7 +431,7 @@ elseif ($davis == "Yes")
 elseif ($weatherhardware == 'Weatherflow Air-Sky')
     echo '<a href="http://weatherflow.com/" target="_blank"><img src="img/wflogo.svg" width="125px" height="65px"></a>';
 else
-    echo '<a href="https://weather34.com/homeweatherstation/" target="_blank"><br><img src="img/weather34logo.svg" width="40px" class="homeweatherstationlogo"><weather34>designed by weather34 2015-' . date('Y') . '</weather34></a>';
+    echo '<a href="https://weather34.com/homeweatherstation/" target="_blank"><br><img src="img/weather34logo.svg" width="40px" class="homeweatherstationlogo"><weather34>' . w34f('DesignedBy', 'Designed by %s', 'weather34') . ' 2015-' . date('Y') . '</weather34></a>';
 ?></div>
 <div class="footertext-center">
 <div class=footertext>&nbsp;<?php echo $info; ?>&nbsp;(<value><?php echo $templateversion; ?></value>)&nbsp;

@@ -357,7 +357,9 @@
   updateDateTime = function(date) {
     // tz = date.toString().match(/\(([A-Za-z\s].*)\)/)[1]
     $('.curr-time').find('span').html(moment(date).format("HH:mm"));
-    return $('.curr-date').find('span').text(moment(date).format("DD MMM"));
+    return $('.curr-date').find('span').text(window.W34_MONTHS && window.W34_MONTHS.length === 12
+      ? moment(date).format("DD") + ' ' + window.W34_MONTHS[moment(date).month()]
+      : moment(date).format("DD MMM"));
   };
 
   $(document).ready(function() {

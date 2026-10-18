@@ -10,7 +10,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Weather Station Hardware Info card</title>  
+  <title><?php echo w34t('StationHardware', 'Weather Station Hardware'); ?></title>  
  <style>
  @charset "UTF-8";/*!
  * Flexgrid v2.2.0 (https://flexgrid.co)
@@ -20,7 +20,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
 .davishardwaresvg{position:absolute;margin-left:240px;}.nanohardwaresvg{position:absolute;margin-left:270px;}</style>
 </head>
 <body>
-<div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="Weather Station Information"></div>  
+<div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('Weatherstationinfo', 'Weather Station Info')); ?>"></div>  
  
   <div class="container:fluid">
     <div class="row xs:center xs:middle">
@@ -30,7 +30,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
                 <div class="card:header">
                     <div class="card:info">
                         <h3><?php echo $stationName;?></h3>
-                        <p>Weather Station Hardware</p>
+                        <p><?php echo w34t('StationHardware', 'Weather Station Hardware'); ?></p>
                     </div>
                     <div class="card:image">
                         <img src="img/weather34logo.svg" alt="weather34 logo" title="weather34 logo">
@@ -53,8 +53,8 @@ $forecastime = filemtime ('jsondata/uk.txt');
                                     
                                     
                                     <div class="collection:data">
-                                        <h3>Weather Station <blue> WeeWX</blue></h3>
-                                        <span>Model: <?php echo $weatherhardware?></span>
+                                        <h3><?php echo w34t('Weatherstation', 'Weather Station'); ?> <blue> WeeWX</blue></h3>
+                                        <span><?php echo w34t('Model', 'Model'); ?>: <?php echo $weatherhardware?></span>
                                         <img src="" >
                                     </div>
                                 </div>
@@ -70,8 +70,8 @@ $forecastime = filemtime ('jsondata/uk.txt');
 </svg>
                                     </div>
                                     <div class="collection:data">
-                                        <h3>Interface <blue> WeeWX</blue></h3>
-                                        <span>Type: <?php echo "Ethernet Link" ?> </span>
+                                        <h3><?php echo w34t('Interface', 'Interface'); ?> <blue> WeeWX</blue></h3>
+                                        <span><?php echo w34t('Type', 'Type'); ?>: <?php echo w34t('EthernetLink', 'Ethernet Link'); ?> </span>
                                        <img src="">
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@ $forecastime = filemtime ('jsondata/uk.txt');
     
                                     </div>
                                     <div class="collection:data">
-                                        <h3>Skin Download <blue>WeeWX</blue> </h3>
+                                        <h3><?php echo w34t('SkinDownload', 'Skin Download'); ?> <blue>WeeWX</blue> </h3>
                                         <a href="https://github.com/meisnick/weewx-Weather34" alt="https://github.com/meisnick/weewx-Weather34" title="weewx-Weather34 skin Download" target="_blank">https://github.com/meisnick/weewx-Weather34</a>
                                     </div>
                                 </div>

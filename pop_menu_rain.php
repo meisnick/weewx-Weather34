@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,10 +71,10 @@ body {
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen">Rain Almanac</button>
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Yearly Rain</button>
-<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')">Monthly Rain</button>  
-<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')">Weekly Rain</button>  
+<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen"><?php echo w34t('TabRainAlmanac', 'Rain Almanac'); ?></button>
+<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyRain', 'Yearly Rain'); ?></button>
+<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabMonthlyRain', 'Monthly Rain'); ?></button>  
+<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyRain', 'Weekly Rain'); ?></button>  
 
   <div id="Tab1" class="tabcontent">
   

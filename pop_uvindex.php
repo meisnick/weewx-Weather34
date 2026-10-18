@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -27,14 +28,14 @@ if ($theme === "dark") {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 UV-INDEX and Solar Information</title>
+  <title><?php echo w34t('LinkUvGuide', 'UV Guide'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="weather34darkbrowser" url="UV-INDEX | Solar | Lux Info"></div>
+<div class="weather34darkbrowser" url="<?php echo htmlspecialchars(w34t('UvSolarLuxInfo', 'UV Index | Solar | Lux Info')); ?>"></div>
   
 <main class="grid">
   <article>  
-   <div class=actualt>Current UV-INDEX</div>        
+   <div class=actualt><?php echo w34t('CurrentUvIndex', 'Current UV Index'); ?></div>        
    <div class="uvcontainer1"><?php 
 if ($weather["uv"]>=10) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 else if ($weather["uv"]>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
@@ -46,17 +47,17 @@ else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weathe
  
 </div>  
 <div class="uvcaution"><?php 
-if ($weather["uv"]>10) {echo 'Extreme UVI<br>Avoid being outside seek a <br>cool shaded area!';}
-else if ($weather["uv"]>8) {echo 'Very High UVI<br>Avoid being outside seek a <br>cool shaded area!';}
-else if ($weather["uv"]>5) {echo 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!';}
-else if ($weather["uv"]>3) {echo 'Moderate UVI<br>Cautionary use suncream protection <br>Wear sunglasses!';}
-else if ($weather["uv"]>=0) {echo 'Low UVI<br>No cautions required<br>Safe for all Skin types!';}
+if ($weather["uv"]>10) {echo w34t('UvCautionExtreme', 'Extreme UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
+else if ($weather["uv"]>8) {echo w34t('UvCautionVeryHigh', 'Very High UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
+else if ($weather["uv"]>5) {echo w34t('UvCautionHigh', 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!');}
+else if ($weather["uv"]>3) {echo w34t('UvCautionModerate', 'Moderate UVI<br>Use suncream protection<br>Wear sunglasses!');}
+else if ($weather["uv"]>=0) {echo w34t('UvCautionLow', 'Low UVI<br>No cautions required<br>Safe for all skin types!');}
 ?></div>
 
 </article>  
   
   <article> 
-  <div class=actualt>Current Solar Radiation </div>        
+  <div class=actualt><?php echo w34t('CurrentSolarRadiation', 'Current Solar Radiation'); ?> </div>        
     <div class="solarcontainer1"><?php 
 if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
 else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
@@ -69,34 +70,34 @@ else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($we
 	echo " ";
 
 	if ($weather["solar"]>1000)  {
-	echo "<green><br> <br>Solar Radiation Excellent</green> and Sustainable<br>";
-	echo '<green>Solar Energy</green> replenishment is good to excellent.';
+	echo "<green><br> <br>" . w34t('SolarExcellent', 'Solar Radiation Excellent') . "</green> " . w34t('AndSustainable', 'and Sustainable') . "<br>";
+	echo w34t('SolarReplGoodExcellent', '<green>Solar energy</green> replenishment is good to excellent.');
 	} 
 	
 	else if ($weather["solar"]>600)  {
-	echo "<green><br><br> Solar Radiation Good</green> and Sustainable<br>";
-	echo '<green>Solar Energy</green> replenishment is moderate to good.';
+	echo "<green><br><br> " . w34t('SolarGood', 'Solar Radiation Good') . "</green> " . w34t('AndSustainable', 'and Sustainable') . "<br>";
+	echo w34t('SolarReplModerateGood', '<green>Solar energy</green> replenishment is moderate to good.');
 	} 
 	
 	
 	else if ($weather["solar"]>400)  {
-	echo "<orange1><br><br> Solar Radiation Moderate</orange1><br>";
-	echo '<green>Solar Energy</green> replenishment is low to moderate. ';
+	echo "<orange1><br><br> " . w34t('SolarModerate', 'Solar Radiation Moderate') . "</orange1><br>";
+	echo w34t('SolarReplLowModerate', '<green>Solar energy</green> replenishment is low to moderate.');
 	} 
 	
 	else if ($weather["solar"]>200)  {
-	echo "<yellow><br><br> Solar Radiation Poor</yellow><br>";
-	echo ' <green>Solar Energy</green> replenishment is low. ';
+	echo "<yellow><br><br> " . w34t('SolarPoor', 'Solar Radiation Poor') . "</yellow><br>";
+	echo ' ' . w34t('SolarReplLow', '<green>Solar energy</green> replenishment is low.');
 	} 
 	
 	else if ($weather["solar"]>100)  {
-	echo "<yellow><br><br> Solar Radiation Poor</yellow><br>";
-	echo ' <green>Solar Energy</green> replenishment is poor. ';
+	echo "<yellow><br><br> " . w34t('SolarPoor', 'Solar Radiation Poor') . "</yellow><br>";
+	echo ' ' . w34t('SolarReplPoor', '<green>Solar energy</green> replenishment is poor.');
 	} 
 	
 	else if ($weather["solar"]>=0)  {
-	echo "<red><br>Solar Radiation Poor</red><br>";
-	echo 'When the <orange1>sun</orange1> is near the horizon,overcast,obscured or darkness hours this will prevent <green>Solar Energy</green> replenishment.  ';
+	echo "<red><br>" . w34t('SolarPoor', 'Solar Radiation Poor') . "</red><br>";
+	echo w34t('SolarReplNone', 'When the <orange1>sun</orange1> is near the horizon, obscured by cloud or down, there is no <green>solar energy</green> replenishment.');
 	} 
 	
 	
@@ -109,7 +110,7 @@ else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($we
 </article>  
   
    <article> 
-  <div class=actualt>Current Lux </div>        
+  <div class=actualt><?php echo w34t('CurrentLux', 'Current Lux'); ?> </div>        
    <div class="temperaturecontainer">
 	
             <?php //34 luxscript
@@ -131,9 +132,9 @@ else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format($weathe
  
 	echo " <br>";	
 	if ($weather["lux"]>=0)  {
-	echo "<orange1>Lux measurement</orange1><br>";
-	echo '<greyuv>Luminous flux measures the approximate human eye response to light under a variety of lighting conditions.</greyuv>';}	
-	else echo "LUX DATA NOT AVAILABLE";
+	echo "<orange1>" . w34t('LuxMeasurement', 'Lux measurement') . "</orange1><br>";
+	echo '<greyuv>' . w34t('LuxExplain', 'Luminous flux measures the approximate human eye response to light under a variety of lighting conditions.') . '</greyuv>';}	
+	else echo w34t('LuxUnavailable', 'Lux data not available');
 	
 
 ?> 
@@ -142,14 +143,14 @@ else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format($weathe
 </article>  
   
    <article> 
-  <div class=actualt><?php echo $info?> Guide</div>        
+  <div class=actualt><?php echo $info?> <?php echo w34t('Guide', 'Guide'); ?></div>        
   <?php
-   echo '<purple>10+</purple> Avoid being outside seek a cool shaded area!<br>'; 	
-echo '<red>8-10</red> Avoid being outside during midday hours use <orange1>Sunscreen</orange1><br>'; 
-echo '<orange1>6-8</orange1> Seek shadea area during midday hours!<br>'; 	
-echo '<yellow>3-5</yellow> Midday hours! caution use some form of  protection<br>'; 	
-echo '<green>1-3</green> UVI No advisory required <br>';	 	
-echo '<green>0</green> UVI No cautions required<br>'; 
+   echo '<purple>10+</purple> ' . w34t('UvGuide10', 'Avoid being outside, seek a cool shaded area!') . '<br>'; 	
+echo '<red>8-10</red> ' . w34t('UvGuide8', 'Avoid being outside during midday hours, use <orange1>sunscreen</orange1>') . '<br>'; 
+echo '<orange1>6-8</orange1> ' . w34t('UvGuide6', 'Seek a shaded area during midday hours!') . '<br>'; 	
+echo '<yellow>3-5</yellow> ' . w34t('UvGuide3', 'Around midday use some form of protection') . '<br>'; 	
+echo '<green>1-3</green> ' . w34t('UvGuide1', 'UVI no advisory required') . '<br>';	 	
+echo '<green>0</green> ' . w34t('UvGuide0', 'UVI no cautions required') . '<br>'; 
 ?>
  
 </article> 
@@ -158,8 +159,8 @@ echo '<green>0</green> UVI No cautions required<br>';
 
  <article>
   
- <div class=actualt><?php echo $info?> World Health Organization</div>    
-  <?php echo $info?> Guide information provided by <a href="https://www.who.int/uv/intersunprogramme/activities/uv_index/en/" title="WHO UV Index" target="_blank">
+ <div class=actualt><?php echo $info?> <?php echo w34t('WorldHealthOrganization', 'World Health Organization'); ?></div>    
+  <?php echo $info?> <?php echo w34t('GuideInfoBy', 'Guide information provided by'); ?> <a href="https://www.who.int/uv/intersunprogramme/activities/uv_index/en/" title="WHO UV Index" target="_blank">
   <span style="position:relative;margin-top:5px;display:flex;align-items:center;justify-content:center;">  
   <svg width="140pt" viewBox="0 0 400 222" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <path fill="darkgrey" opacity="1.00" d=" M 197.70 6.71 C 198.78 3.74 203.26 3.42 204.67 6.29 C 206.39 10.42 203.95 14.75 203.96 18.99 C 203.78 26.54 203.74 34.09 203.51 41.64 C 201.90 42.09 200.30 42.56 198.70 43.03 C 198.54 35.05 198.45 27.06 198.23 19.08 C 198.11 14.97 196.36 10.77 197.70 6.71 Z" />
@@ -218,8 +219,8 @@ echo '<green>0</green> UVI No cautions required<br>';
   </article> 
   
   <article>
-   <div class=actualt>&copy; Information</div>  
-  <?php echo $info?>Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com</a> &copy; 2015-<?php echo date('Y');?>
+   <div class=actualt>&copy; <?php echo w34t('Information', 'Information'); ?></div>  
+  <?php echo $info?><?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?></a> &copy; 2015-<?php echo date('Y');?>
   
   </article> 
   

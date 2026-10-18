@@ -54,8 +54,8 @@ $meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 10, 7),"event_title
 <green>Estimated ZHR: </green><orange>25</orange><br> Peaks <orange>Oct 22nd</orange></div></div>","event_end"=>mktime(23, 59, 59, 10, 21),);
 $meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 10, 21),"event_title"=>"Meteor Shower<br> <orange1> South Taurids</orange1><div class=date><br>Active Nov 4th- Nov 5th<br>
 <green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>Oct 10th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 5),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 5),"event_title"=>"Meteor Shower<br> <orange1> North Taurids</orange1><div class=date><br>Active Nov 11th
-<green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>No 13th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 11),);
+$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 5),"event_title"=>"Meteor Shower<br> <orange1> North Taurids</orange1><div class=date><br>Active Nov 11th<br>
+<green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>Nov 13th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 11),);
 $meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 11),"event_title"=>"Meteor Shower<br> <orange1> Leonids</orange1><div class=date><br>Active Nov 5th-Dec 3rd<br>
 <green>Estimated ZHR: </green><orange>15</orange><br> Peaks <orange>Nov 18th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 18),);
 $meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 18),"event_title"=>"Meteor Shower<br> <orange1> Geminids</orange1><div class=date><br>Active Nov 30th-Dec 17th<br>
@@ -72,7 +72,7 @@ $meteorinfo3="<svg width='22px' height='22px' viewBox='0 0 16 16'><path fill='da
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Meteor Shower<br>s</title>
+  <title><?php echo w34t('MeteorShowers', 'Meteor Showers'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
@@ -82,51 +82,53 @@ $meteorinfo3="<svg width='22px' height='22px' viewBox='0 0 16 16'><path fill='da
 else if($theme==="light"){$text1="black";$background1="white";}
 $forecastime = filemtime ('jsondata/ki.txt');?>
 
-<div class="weather34darkbrowser" url="Meteorshowers <?php
-echo $stationName ?>
+<div class="weather34darkbrowser" url="<?php
+echo htmlspecialchars(w34t('MeteorShowers', 'Meteor Showers')) . ' ' . $stationName ?>
 
   ">
 </div>  
 <main class="grid">
   <article>       
 <meteotextshowertext>
-<?php if ($meteor_default)  {	echo "<meteorsvgicon>".$meteorinfo3."</meteorsvgicon> ".$meteor_default;} 
-?></meteotextshowertext><br>Shower Currently Visible<br>
+<?php if ($meteor_default)  {	echo "<meteorsvgicon>".$meteorinfo3."</meteorsvgicon> ";
+  echo ($meteor_default === "No Meteor") ? w34t('NoMeteorShowerVisible', 'No Meteor Shower<br>Currently Visible')
+    : w34_meteor($meteor_default) . "<br>" . w34t('ShowerCurrentlyVisible', 'Shower Currently Visible');} 
+?></meteotextshowertext><br>
  <?php	echo w34_date('D jS M Y');?>       
 </article>  
   
   <article>
-  <?php if ($meteor_nextevent)  {echo $meteorinfo3 ," Next ", $meteor_nextevent ;} ?>    
+  <?php if ($meteor_nextevent)  {echo $meteorinfo3 ," ", w34t('NextLabel', 'Next'), " ", w34_meteor($meteor_nextevent) ;} ?>    
   </article> 
   
   <article>  
-   <?php echo $info ;?> <orange>Guide to</orange> <green><?php echo date('Y');?> Major Meteor Showers<br></green> <br>
-       <?php echo $meteorinfo;?> <green>Quadrantids</green> Dec 28-Jan 12<br>
-       <?php echo $meteorinfo;?> <green>Lyrids</green> Apr 18-Apr 25<br>
-       <?php echo $meteorinfo;?> <green>Perseids</green> Jul 13-Aug 26<br>
-       <?php echo $meteorinfo;?> <green>Leonids</green> Nov 05-Dec 03<br>
-       <?php echo $meteorinfo;?> <green>Geminids</green> Nov 30-Dec 17<br>
-       <?php echo $meteorinfo;?> <green>Ursids</green> Dec 17-Dec 24<br>
+   <?php echo $info ;?> <green><?php echo w34f('MeteorGuideTitle', 'Guide to %s Major Meteor Showers', date('Y'));?><br></green> <br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Quadrantids', 'Quadrantids');?></green> <?php echo w34_datetext('Dec 28-Jan 12');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Lyrids', 'Lyrids');?></green> <?php echo w34_datetext('Apr 18-Apr 25');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Perseids', 'Perseids');?></green> <?php echo w34_datetext('Jul 13-Aug 26');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Leonids', 'Leonids');?></green> <?php echo w34_datetext('Nov 05-Dec 03');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Geminids', 'Geminids');?></green> <?php echo w34_datetext('Nov 30-Dec 17');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Ursids', 'Ursids');?></green> <?php echo w34_datetext('Dec 17-Dec 24');?><br>
         
    </article> 
    
     <article>
-   <?php echo $info ;?> <orange>Viewing Guide</orange><br><green>Meteors</green> are best viewed during the night hours, though meteors enter the atmosphere at any time of the day. They are just harder to see in the daylight apart from dawn and dusk. Any nearby ambient light,Moon light can make it difficult viewing . Meteor showers are best viewed away from the city lights.<br>
+   <?php echo $info ;?> <orange><?php echo w34t('ViewingGuide', 'Viewing Guide'); ?></orange><br><?php echo w34t('MeteorViewingGuide', 'Meteors are best viewed during the night hours, though they enter the atmosphere at any time of day; they are just harder to see in daylight apart from dawn and dusk. Nearby ambient light and moonlight make viewing difficult. Meteor showers are best viewed away from city lights.'); ?><br>
  
  
               
   </article>  
   
   <article>
-   <?php echo $info ;?> <orange>Radio Ham Guide</orange><br>Meteor scatter communications can be used by Ham Radio VHF enthusiasts. Using meteor scatter propagation enables ham radio enthusiasts and also commercial radio communications contacts .Meteor scatter communications using specialised operating techniques allows communications distances up to 2000 km or more on the VHF frequencies.<br>
+   <?php echo $info ;?> <orange><?php echo w34t('RadioHamGuide', 'Radio Ham Guide'); ?></orange><br><?php echo w34t('MeteorHamGuide', 'Meteor scatter propagation lets VHF ham radio enthusiasts, and also commercial radio services, make contacts. With specialised operating techniques, meteor scatter allows distances of up to 2000 km or more on VHF frequencies.'); ?><br>
  
  
               
   </article> 
   <article>
-  <div class=actualt> &copy; Information</div>  
-  <?php echo $info?> Adapted by Steepleian for the WeeWX Weather34 skin from the legacy CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
-  <br><br><?php echo $info ;?> Data Provided by <a href="https://en.wikipedia.org/wiki/Meteor_shower" title="https://en.wikipedia.org/wiki/Meteor_shower" target="_blank">International Meteor Organization</a> 
+  <div class=actualt> &copy; <?php echo w34t('Information', 'Information'); ?></div>  
+  <?php echo $info?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y');?>
+  <br><br><?php echo $info ;?> <?php echo w34t('DataProvidedBy', 'Data Provided by'); ?> <a href="https://en.wikipedia.org/wiki/Meteor_shower" title="https://en.wikipedia.org/wiki/Meteor_shower" target="_blank"><?php echo w34t('InternationalMeteorOrg', 'International Meteor Organization'); ?></a> 
   
   </article> 
 </main>

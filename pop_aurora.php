@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 include('shared_core.php');
 include('settings.php');
@@ -346,7 +347,7 @@ body { display: flex; flex-direction: column; }
   <span class="pop-title"><?php echo $lang['SpaceWeather']; ?></span>
   <span class="pop-prob-badge"><?php echo $lang['Ovation']; ?>&nbsp;<?php echo $prob_ok ? $aurora_prob . '%' : '--'; ?></span>
   <span class="pop-kp-badge"><?php echo $lang['Kp']; ?>&nbsp;<?php echo number_format($kp, 1); ?></span>
-  <span class="pop-storm"><?php echo ucfirst($kp_type); ?> &mdash; <?php echo $storm; ?></span>
+  <span class="pop-storm"><?php echo w34t(ucfirst($kp_type), ucfirst($kp_type)); ?> &mdash; <?php echo $storm; ?></span>
   <div class="pop-rsg-mini">
     <?php foreach (['R', 'S', 'G'] as $k):
       $sc = $rsg[$k]; $cls = rsg_cls($sc); $lbl = $sc > 0 ? ($k.$sc) : '&mdash;';
@@ -403,8 +404,8 @@ body { display: flex; flex-direction: column; }
           <tbody>
             <?php foreach ($ap_data as $r): ?>
             <tr>
-              <td><?php echo htmlspecialchars($r['type']); ?></td>
-              <td><?php echo htmlspecialchars($r['date']); ?></td>
+              <td><?php echo htmlspecialchars(w34t(ucfirst(strtolower($r['type'])), $r['type'])); ?></td>
+              <td><?php echo htmlspecialchars(w34_datetext($r['date'])); ?></td>
               <td><?php echo htmlspecialchars($r['val']); ?></td>
             </tr>
             <?php endforeach; ?>
@@ -420,13 +421,13 @@ body { display: flex; flex-direction: column; }
           <thead>
             <tr>
               <th><?php echo $lang['Level']; ?></th>
-              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
+              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars(w34_datetext($d)); ?></th><?php endforeach; ?>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($prob_data as $r): ?>
             <tr>
-              <td><?php echo htmlspecialchars($r['label']); ?></td>
+              <td><?php echo htmlspecialchars(w34_words($r['label'], array('Strong-Extreme storm' => 'StrongExtremeStorm', 'Moderate storm' => 'ModerateStorm', 'Minor storm' => 'MinorStorm', 'Active' => 'Active'))); ?></td>
               <?php foreach ($r['pcts'] as $pct): ?>
               <td><?php echo htmlspecialchars(trim($pct)); ?>%</td>
               <?php endforeach; ?>
@@ -444,7 +445,7 @@ body { display: flex; flex-direction: column; }
           <thead>
             <tr>
               <th><?php echo $lang['Period']; ?></th>
-              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars($d); ?></th><?php endforeach; ?>
+              <?php foreach ($kp_days as $d): ?><th><?php echo htmlspecialchars(w34_datetext($d)); ?></th><?php endforeach; ?>
             </tr>
           </thead>
           <tbody>
@@ -464,7 +465,7 @@ body { display: flex; flex-direction: column; }
       <?php endif; ?>
 
       <?php if ($forecast_issued): ?>
-      <div class="fcst-issued"><?php echo $lang['Issued']; ?>: <?php echo htmlspecialchars($forecast_issued); ?> &middot; NOAA SWPC</div>
+      <div class="fcst-issued"><?php echo $lang['Issued']; ?>: <?php echo htmlspecialchars(w34_datetext($forecast_issued)); ?> &middot; NOAA SWPC</div>
       <?php endif; ?>
 
       <?php endif; ?>

@@ -358,16 +358,16 @@ class Moon{ public static function calculateMoonTimes($month,$day,$year,$lat,$lo
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Home Weather Moon Phase Information</title>
+  <title><?php echo w34t('MoonPhaseInformation', 'Moon Phase Information'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="weather34darkbrowser" url="Moon Phase Information"></div>
+<div class="weather34darkbrowser" url="<?php echo htmlspecialchars(w34t('MoonPhaseInformation', 'Moon Phase Information')); ?>"></div>
   
 <main class="grid">
   <article>       
 
 
-<?php echo $info;?> Current Moon Phase<br><br>  
+<?php echo $info;?> <?php echo w34t('CurrentMoonPhase', 'Current Moon Phase'); ?><br><br>  
  
 <div id="weather34moonphases" class="moonphasesvg"></div>
 <svg id="weather34 simple moonphase"><circle cx="50" cy="50" r="49.5" fill="rgba(86, 95, 103, .4)"/><path id="weather34shape" fill="rgba(230, 232, 239, .5)"/></svg>
@@ -381,9 +381,9 @@ document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}
    <div class=moonphasetext>    
 <?php echo " ";{$day = w34_date('l jS F Y');if($day===w34_date("l jS F Y",strtotime('2019-7-2'))){echo 'Solar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-16'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-17'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Eclipse</orange>';}		
 // weather34 moonphase no scraping its calculated from the livedata !
-	else echo "<aqivalue1>".$weather['moonphase']." </aqivalue1>";}?>             
+	else echo "<aqivalue1>".w34_moonphase($weather['moonphase'])." </aqivalue1>";}?>             
 <br>
-<?php echo" Luminance <orange>" .$weather['luminance']."</orange>%";?>            
+<?php echo " " . w34t('Luminance', 'Luminance') . " <orange>" .$weather['luminance']."</orange>%";?>            
 </div>    
 
 
@@ -392,22 +392,22 @@ document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}
   
   <article>
  <moonphaseriseset>
-  <?php echo $info;?> Moon Rise/Set Information<br><br>
+  <?php echo $info;?> <?php echo w34t('MoonRiseSetInfo', 'Moon Rise/Set Information'); ?><br><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#39739f" stroke="#39739f" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> Moonrise:
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('Moonrise', 'Moon Rise'); ?>:
 
-<?php echo $weather['moonrise']," ";?>
+<?php echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'))," ";?>
 <svg id="i-chevron-top" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 20 L16 8 2 20" /></svg>
 </span><br>
-<svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#D46842" stroke="#D46842" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> Moonset: 
-<?php echo $weather['moonset']," ";?>
+<svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#D46842" stroke="#D46842" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('Moonset', 'Moon Set'); ?>: 
+<?php echo w34_words($weather['moonset'], array('Set' => 'MoonSetShort'))," ";?>
 <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 12 L16 24 2 12" /></svg>
 </span><br>
 <?php  // full/new moon for homeweather station  // ?>
 
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(255, 136, 65, 1.00)" stroke="rgba(255, 136, 65, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
-Next Full Moon: <?php  // homeweatherstation fullmoon info output 18th Aug
+<?php echo w34t('Nextfullmoon', 'Next Full Moon'); ?>: <?php  // homeweatherstation fullmoon info output 18th Aug
 $now1 =time();$moon1 = new MoonPhase();
 echo "";
 if ($now1 < $moon1->full_moon()) 
@@ -416,62 +416,62 @@ else echo w34_date('D jS-M-Y', $moon1->next_full_moon() );
 ?></span><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /> <path d="M6 6 L26 26" /></svg>
-Next New Moon:<?php $moon=new MoonPhase();$nextnewmoon=w34_date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
+<?php echo w34t('Nextnewmoon', 'Next New Moon'); ?>: <?php $moon=new MoonPhase();$nextnewmoon=w34_date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
 </span><br /><svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(154, 186, 47, 1.00)" stroke="rgba(154, 186, 47, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
 <?php // homeweatherstation create an instance of the age of moon
-$moon = new MoonPhase();$moonage =round($moon->age(),2);echo "Current Moon cycle is <span style='color:#ff8841'>", round($moonage,0)," days old";?>
+$moon = new MoonPhase();$moonage =round($moon->age(),2);echo w34f('MoonCycleAge', 'Current moon cycle is %s days old', "<span style='color:#ff8841'>" . round($moonage,0) . "</span>");?>
                
   
   
    </article>  
   
   <article>
-   <?php echo $info;?> Moon Facts: <orange>Did you Know?</orange><br><br>
+   <?php echo $info;?> <?php echo w34t('MoonFacts', 'Moon Facts:'); ?> <orange><?php echo w34t('DidYouKnow', 'Did you know?'); ?></orange><br><br>
             <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> The Moon was approximately formed 4.5 billion years ago  .<br>
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('MoonFact1', 'The Moon formed approximately 4.5 billion years ago.'); ?><br>
   <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> High and Low tides are caused by the Moons gravitational pull.<br>
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('MoonFact2', 'High and low tides are caused by the Moon’s gravitational pull.'); ?><br>
   <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> The Moon orbits the Earth every 27.3 days approximately. <br>
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('MoonFact3', 'The Moon orbits the Earth approximately every 27.3 days.'); ?> <br>
   <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> As sunlight hits the moon's surface,temperatures can reach 260&deg;F (127&deg;C).<br>
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('MoonFact4', 'Where sunlight hits the Moon’s surface, temperatures can reach 260&deg;F (127&deg;C).'); ?><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> On the dark side of the moon,temperatures can drop to minus -280&deg;F (-173&deg;C)..<br>
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('MoonFact5', 'On the dark side of the Moon, temperatures can drop to -280&deg;F (-173&deg;C).'); ?><br>
 
   </article> 
   
 <article>
-   <?php echo $info ;?> Moon Photography Guide<br><br> <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+   <?php echo $info ;?> <?php echo w34t('MoonPhotoGuide', 'Moon Photography Guide'); ?><br><br> <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Use a Tripod
+ <?php echo w34t('MoonPhoto1', 'Use a tripod'); ?>
  <br>
  <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Use a Zoom Lens
+ <?php echo w34t('MoonPhoto2', 'Use a zoom lens'); ?>
  
  <br>
  <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Measure the exposure 
+ <?php echo w34t('MoonPhoto3', 'Measure the exposure'); ?> 
  <br>
  <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Avoid ambient nearby lighting 
+ <?php echo w34t('MoonPhoto4', 'Avoid ambient nearby lighting'); ?> 
  <br>
  <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Use a shutter remote release 
+ <?php echo w34t('MoonPhoto5', 'Use a remote shutter release'); ?> 
  <br>
  <svg id="i-ban" viewBox="0 0 32 32" width="8" height="8" fill="#3b9cac" stroke="#3b9cac" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
- Always shoot in RAW for post processing              
+ <?php echo w34t('MoonPhoto6', 'Always shoot in RAW for post-processing'); ?>              
   </article>    
   <article>
-   <?php echo $info ;?> Radio Ham Guide (<orange>EME</orange>)<br><br>
-   Earth–Moon–Earth communication (<orange>EME</orange>), also known as Moon bounce, is a radio communications technique that relies on the propagation of radio waves from an Earth-based transmitter directed via reflection from the surface of the Moon back to an Earth-based receiver using VHF and UHF amateur radio bands.
+   <?php echo $info ;?> <?php echo w34t('RadioHamGuide', 'Radio Ham Guide'); ?> (<orange>EME</orange>)<br><br>
+   <?php echo w34t('MoonEmeGuide', 'Earth–Moon–Earth communication (<orange>EME</orange>), also known as Moon bounce, is a radio communications technique that relies on the propagation of radio waves from an Earth-based transmitter directed via reflection from the surface of the Moon back to an Earth-based receiver using VHF and UHF amateur radio bands.'); ?>
   </article> 
   <article>
-   <div class=actualt>&nbsp;&nbsp &copy; Information</div>  
-  <?php echo $info?> CSS/SVG/PHP scripts were developed by <a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:9px;">weather34.com</a>  for use in the weather34 template &copy; 2015-<?php echo date('Y');?></span></article> 
+   <div class=actualt>&nbsp;&nbsp &copy; <?php echo w34t('Information', 'Information'); ?></div>  
+  <?php echo $info?> <?php echo w34f('CreditWeather34', 'CSS/SVG/PHP scripts were developed by %s for use in the weather34 template', '<a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:9px;">weather34.com</a>'); ?> &copy; 2015-<?php echo date('Y');?></span></article> 
 </main>

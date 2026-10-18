@@ -26,12 +26,12 @@ if ($theme === "dark") {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather34 Temperature Almanac Information</title>
+  <title><?php echo w34t('LinkTempAlmanac', 'Temperature Almanac and Derived Charts'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <main class="grid">
   <article>
-   <div class=actualt>&nbsp;Today </div>
+   <div class=actualt>&nbsp;<?php echo w34t('Today', 'Today'); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -41,7 +41,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Temp Max</b></span><br><?php echo $weather["tempdmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmTempMax', 'Temp Max'); ?></b></span><br><?php echo $weather["tempdmaxtime"];?></span></div>
 	</div>	
 <div class="temperaturecontainer2">
  <?php
@@ -51,7 +51,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Temp Min</b></span><br><?php echo $weather["tempdmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmTempMin', 'Temp Min'); ?></b></span><br><?php echo $weather["tempdmintime"];?></span></div>
 </div>  
   
    <div class="temperaturecontainer1">
@@ -63,7 +63,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Dew Max</b></span><br><?php echo $weather["dewmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmDewMax', 'Dew Max'); ?></b></span><br><?php echo $weather["dewmaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -73,7 +73,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Dew Min</b></span><br><?php echo $weather["dewmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmDewMin', 'Dew Min'); ?></b></span><br><?php echo $weather["dewmintime"];?></span></div>
 </div>
 <div class="temperaturecontainer1">
 
@@ -84,7 +84,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>%</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Hum Max</b></span><br><?php echo $weather["humidity_maxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmHumMax', 'Hum Max'); ?></b></span><br><?php echo $weather["humidity_maxtime"];?></span></div>
 </div>		
 <div class="temperaturecontainer2">
  <?php
@@ -94,12 +94,12 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>%</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Hum Min</b></span><br><?php echo $weather["humidity_mintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmHumMin', 'Hum Min'); ?></b></span><br><?php echo $weather["humidity_mintime"];?></span></div>
 </div>  
 </article>
 
  <article>
-   <div class=actualt>&nbsp;Yesterday </div>
+   <div class=actualt>&nbsp;<?php echo w34t('Yesterday', 'Yesterday'); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -109,7 +109,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Temp Max</b></span><br><?php echo $weather["tempydmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmTempMax', 'Temp Max'); ?></b></span><br><?php echo $weather["tempydmaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -119,7 +119,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Temp Min</b></span><br><?php echo $weather["tempydmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmTempMin', 'Temp Min'); ?></b></span><br><?php echo $weather["tempydmintime"];?></span></div>
   </div>
   
    <div class="temperaturecontainer1">
@@ -131,7 +131,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Dew Max</b></span><br><?php echo $weather["dewydmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmDewMax', 'Dew Max'); ?></b></span><br><?php echo $weather["dewydmaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -141,7 +141,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Dew Min</b></span><br><?php echo $weather["dewydmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmDewMin', 'Dew Min'); ?></b></span><br><?php echo $weather["dewydmintime"];?></span></div>
 </div>
 <div class="temperaturecontainer1">
 
@@ -152,7 +152,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>%</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Hum Max</b></span><br><?php echo $weather["humidity_ydmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmHumMax', 'Hum Max'); ?></b></span><br><?php echo $weather["humidity_ydmaxtime"];?></span></div>
 	</div>	
 <div class="temperaturecontainer2">
  <?php
@@ -162,7 +162,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>%</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Hum Min</b></span><br><?php echo $weather["humidity_ydmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmHumMin', 'Hum Min'); ?></b></span><br><?php echo $weather["humidity_ydmintime"];?></span></div>
 </div>
 </article>
 
@@ -178,7 +178,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Temp Max</b></span><br><?php echo $weather["tempmmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmTempMax', 'Temp Max'); ?></b></span><br><?php echo $weather["tempmmaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -188,7 +188,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Temp Min</b></span><br><?php echo $weather["tempmmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmTempMin', 'Temp Min'); ?></b></span><br><?php echo $weather["tempmmintime"];?></span></div>
   </div>
   
    <div class="temperaturecontainer1">
@@ -200,7 +200,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Dew Max</b></span><br><?php echo $weather["dewmmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmDewMax', 'Dew Max'); ?></b></span><br><?php echo $weather["dewmmaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -210,7 +210,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Dew Min</b></span><br><?php echo $weather["dewmmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmDewMin', 'Dew Min'); ?></b></span><br><?php echo $weather["dewmmintime"];?></span></div>
 </div>
 <div class="temperaturecontainer1">
 
@@ -221,7 +221,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>%</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Hum Max</b></span><br><?php echo $weather["humidity_mmaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmHumMax', 'Hum Max'); ?></b></span><br><?php echo $weather["humidity_mmaxtime"];?></span></div>
 	</div>	
 <div class="temperaturecontainer2">
  <?php
@@ -231,7 +231,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>%</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Hum Min</b></span><br><?php echo $weather["humidity_mmintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmHumMin', 'Hum Min'); ?></b></span><br><?php echo $weather["humidity_mmintime"];?></span></div>
 </div>
 </article>
 
@@ -247,7 +247,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Temp Max</b></span><br><?php echo $weather["tempymaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmTempMax', 'Temp Max'); ?></b></span><br><?php echo $weather["tempymaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -257,7 +257,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Temp Min</b></span><br><?php echo $weather["tempymintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmTempMin', 'Temp Min'); ?></b></span><br><?php echo $weather["tempymintime"];?></span></div>
   </div>
   
    <div class="temperaturecontainer1">
@@ -269,7 +269,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Dew Max</b></span><br><?php echo $weather["dewymaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmDewMax', 'Dew Max'); ?></b></span><br><?php echo $weather["dewymaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -279,7 +279,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Dew Min</b></span><br><?php echo $weather["dewymintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmDewMin', 'Dew Min'); ?></b></span><br><?php echo $weather["dewymintime"];?></span></div>
 </div>
 <div class="temperaturecontainer1">
 
@@ -290,7 +290,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>%</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Hum Max</b></span><br><?php echo $weather["humidity_ymaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmHumMax', 'Hum Max'); ?></b></span><br><?php echo $weather["humidity_ymaxtime"];?></span></div>
 	</div>	
 <div class="temperaturecontainer2">
  <?php
@@ -300,13 +300,13 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>%</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Hum Min</b></span><br><?php echo $weather["humidity_ymintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmHumMin', 'Hum Min'); ?></b></span><br><?php echo $weather["humidity_ymintime"];?></span></div>
 </div>
 </article>
 
 
 <article>
-   <div class=actualt>&nbsp;All-Time </div>
+   <div class=actualt>&nbsp;<?php echo w34t('AllTime', 'All-Time'); ?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php
@@ -316,7 +316,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Temp Max</b></span><br><?php echo $weather["tempamaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmTempMax', 'Temp Max'); ?></b></span><br><?php echo $weather["tempamaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -326,7 +326,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Temp Min</b></span><br><?php echo $weather["tempamintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmTempMin', 'Temp Min'); ?></b></span><br><?php echo $weather["tempamintime"];?></span></div>
   </div>
   
    <div class="temperaturecontainer1">
@@ -338,7 +338,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Dew Max</b></span><br><?php echo $weather["dewamaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmDewMax', 'Dew Max'); ?></b></span><br><?php echo $weather["dewamaxtime"];?></span></div>
 	</div>
 <div class="temperaturecontainer2">
  <?php
@@ -348,7 +348,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>˚".$weather["temp_units"]."</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Dew Min</b></span><br><?php echo $weather["dewamintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmDewMin', 'Dew Min'); ?></b></span><br><?php echo $weather["dewamintime"];?></span></div>
 </div>
 <div class="temperaturecontainer1">
 
@@ -359,7 +359,7 @@ if ($theme === "dark") {
 	echo "<smalluvunit>%</smalluvunit>"
 	?> </div>
 
-    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b>Hum Max</b></span><br><?php echo $weather["humidity_amaxtime"];?></span></div>
+    <div class="temperaturetrend"><span style='color:rgba(255, 124, 57, 1.000)'><b><?php echo w34t('AlmHumMax', 'Hum Max'); ?></b></span><br><?php echo $weather["humidity_amaxtime"];?></span></div>
 	</div>	
 <div class="temperaturecontainer2">
  <?php
@@ -369,7 +369,7 @@ if ($theme === "dark") {
 
 	echo "<smalluvunit>%</smalluvunit>"
 	?>  </div>
-<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b>Hum Min</b></span><br><?php echo $weather["humidity_amintime"];?></span></div>
+<div class="temperaturetrend"><span style='color:rgba(68, 166, 181, 1.000)'><b><?php echo w34t('AlmHumMin', 'Hum Min'); ?></b></span><br><?php echo $weather["humidity_amintime"];?></span></div>
 </div>
 </article>
 </article>   
@@ -383,7 +383,7 @@ if ($theme === "dark") {
   
     
   <div class="lotemp">
-  <?php echo $info?> Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com &copy; 2015-<?php echo date('Y');?>
+  <?php echo $info?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y');?>
   </a></div>
    
   </articlegraph>//--> 

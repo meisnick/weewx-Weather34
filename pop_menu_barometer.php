@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,9 +71,9 @@ body {
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen">Barometer Almanac</button>
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Yearly Barometer</button>
-<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')">Weekly Barometer</button>
+<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen"><?php echo w34t('TabBaroAlmanac', 'Barometer Almanac'); ?></button>
+<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyBaro', 'Yearly Barometer'); ?></button>
+<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyBaro', 'Weekly Barometer'); ?></button>
   
   <div id="Tab1" class="tabcontent">
   

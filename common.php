@@ -22,7 +22,7 @@ $lang = $_GET['lang'];
 // GET the session  set the cookie
 $_SESSION['lang'] = $lang;
 
-setcookie("lang", $lang, time() +3600);
+setcookie("lang", $lang, time() + 31536000); // a year: popups and iframes read it
 }
 else if(isSet($_SESSION['lang']))
 {
@@ -89,9 +89,9 @@ switch ($lang) {
   setlocale(LC_TIME, "pt_BR.UTF-8");
   break;
   
-  //argentine
+  //argentine (Spanish)
   case 'ar':
-  $lang_file = 'lang.ar.php';
+  $lang_file = 'lang.sp.php';
   $lang_flag = 'ar';
   $lang_option = 'en';
   setlocale(LC_TIME, "es_ES.UTF-8");

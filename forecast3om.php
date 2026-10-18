@@ -121,7 +121,7 @@ for ($k=0;$k<=2;$k++)
 	else if($forecastdayTempHigh>=7){echo '<forecasttemphihome><greent>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</greent></forecasttemphihome>';}
 	//wind
 	echo "<div class='forecastwindspeedicon'>";
-	echo $windalert2." ".$forecastdayWinddircardinal; 
+	echo $windalert2." ".w34_dir($forecastdayWinddircardinal); 
 	echo " ".number_format($forecastdayWindGust,0)," <valuewindunit>".$windunit;echo  '</div>';'<br>';
 	//snow
 	if ($forecastdaysnow > 0) {

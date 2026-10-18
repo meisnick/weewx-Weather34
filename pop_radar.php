@@ -74,27 +74,27 @@ body{
 
 <div class="rp-bar">
   <div class="rp-station-group">
-    <span>Station</span>
+    <span><?php echo w34t('Station', 'Station'); ?></span>
     <input type="text" class="rp-station-input" id="rp-sta" maxlength="4" placeholder="KMKX">
-    <button class="rp-load" id="rp-load">Load</button>
+    <button class="rp-load" id="rp-load"><?php echo w34t('RadarLoad', 'Load'); ?></button>
   </div>
-  <span class="rp-title" id="rp-title">&mdash; Adjust Dashboard View</span>
+  <span class="rp-title" id="rp-title">&mdash; <?php echo w34t('AdjustDashboardView', 'Adjust Dashboard View'); ?></span>
   <div class="rp-controls">
-    <span>Zoom</span>
+    <span><?php echo w34t('Zoom', 'Zoom'); ?></span>
     <input type="range" id="rp-sl" min="0.3" max="3" step="0.02">
     <span id="rp-zv">1.00&times;</span>
-    <label class="rp-invert-lbl"><input type="checkbox" id="rp-inv"> Invert</label>
-    <button class="rp-reset" id="rp-rst">Reset</button>
-    <button class="rp-save" id="rp-sav">Save</button>
+    <label class="rp-invert-lbl"><input type="checkbox" id="rp-inv"> <?php echo w34t('Invert', 'Invert'); ?></label>
+    <button class="rp-reset" id="rp-rst"><?php echo w34t('Reset', 'Reset'); ?></button>
+    <button class="rp-save" id="rp-sav"><?php echo w34t('Save', 'Save'); ?></button>
   </div>
 </div>
 
 <div class="rp-ws" id="rp-ws">
-  <img class="rp-img" id="rp-img" src="" alt="Radar Loop" draggable="false">
+  <img class="rp-img" id="rp-img" src="" alt="<?php echo htmlspecialchars(w34t('LinkRadarLoop', 'Radar Loop')); ?>" draggable="false">
   <div class="rp-crop" id="rp-crop" style="display:none"></div>
 </div>
 
-<div class="rp-hint">Drag the box to pan &nbsp;&bull;&nbsp; Slider or scroll wheel to zoom</div>
+<div class="rp-hint"><?php echo w34t('RadarPanHint', 'Drag the box to pan'); ?> &nbsp;&bull;&nbsp; <?php echo w34t('RadarZoomHint', 'Slider or scroll wheel to zoom'); ?></div>
 
 <script>
 (function(){
@@ -118,7 +118,7 @@ body{
     var cb=Math.floor(Date.now()/1000/300)*300;
     return 'https://radar.weather.gov/ridge/standard/'+sta+'_loop.gif?t='+cb;
   }
-  function setTitle(s){ title.textContent = s + ' — Adjust Dashboard View'; }
+  function setTitle(s){ title.textContent = s + ' — ' + <?php echo json_encode(w34t('AdjustDashboardView', 'Adjust Dashboard View')); ?>; }
 
   function loadLS(){
     zoom  = parseFloat(localStorage.getItem('radar_zoom')   || '0');
@@ -198,8 +198,8 @@ body{
       if(tImg) tImg.style.transform=
         'translate('+(-cropX*zoom)+'px,'+(-cropY*zoom)+'px) scale('+zoom+')';
     }catch(e){}
-    sav.textContent='Saved ✓'; sav.classList.add('saved');
-    setTimeout(function(){ sav.textContent='Save'; sav.classList.remove('saved'); },1800);
+    sav.textContent=<?php echo json_encode(w34t('Saved', 'Saved')); ?> + ' ✓'; sav.classList.add('saved');
+    setTimeout(function(){ sav.textContent=<?php echo json_encode(w34t('Save', 'Save')); ?>; sav.classList.remove('saved'); },1800);
   });
 
   // Station load

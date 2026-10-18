@@ -11,7 +11,7 @@ if (($notifications ?? 'yes') == 'yes') {
                     <div class="weather34lightningbackground-alert"></div>
                     <div class="weather34lightningcontents">
                         <div class="left"><?php echo $notifyAlert.' '.$lang['notifyAlert'];?></div>
-                        <div class="right"><?php echo date ("D H:i")?></div>
+                        <div class="right"><?php echo w34_date("D H:i")?></div>
                     </div>
                 </div>
                 <div class="weather34lightningcontents weather34lightningmain-content">
@@ -25,7 +25,7 @@ if (($notifications ?? 'yes') == 'yes') {
                         } else if ($weather['stationLowBattery']){
                             echo $lang['notifyStationLowBattery'];
                         } else {?>
-                            Not sure why you're seeing this...
+                            <?php echo w34t('NotifyUnknown', 'Not sure why you’re seeing this...'); ?>
                         <?php }?>
                     </notifyred>
                 </div>
@@ -42,7 +42,7 @@ if (($notifications ?? 'yes') == 'yes') {
                     <div class="weather34lightningbackground-alert"></div>
                     <div class="weather34lightningcontents">
                         <div class="left"><?php echo $notification.' '.$lang['notifyTitle'];?></div>
-                        <div class="right"><?php echo date ("D H:i")?></div>
+                        <div class="right"><?php echo w34_date("D H:i")?></div>
                     </div>
                 </div>
                 <div class="weather34lightningcontents weather34lightningmain-content">
@@ -62,7 +62,7 @@ if (($notifications ?? 'yes') == 'yes') {
                     <div class="weather34lightningbackground-alert"></div>
                     <div class="weather34lightningcontents">
                         <div class="left"><?php echo $notification.' '.$lang['notifyTitle'];?></div>
-                        <div class="right"><?php echo date ("D H:i")?></div>
+                        <div class="right"><?php echo w34_date("D H:i")?></div>
                     </div>
                 </div>
                 <div class="weather34lightningcontents weather34lightningmain-content">
@@ -83,7 +83,7 @@ if (($notifications ?? 'yes') == 'yes') {
                         <div class="weather34lightningbackground-alert"></div>
                         <div class="weather34lightningcontents">
                             <div class="left"><?php echo $notification.' '.$lang['notifyTitle'];?></div>
-                            <div class="right"><?php echo date ("D H:i")?></div>
+                            <div class="right"><?php echo w34_date("D H:i")?></div>
                         </div>
                     </div>
                     <div class="weather34lightningcontents weather34lightningmain-content">
@@ -115,7 +115,7 @@ if (($notifications ?? 'yes') == 'yes') {
                     <div class="weather34lightningbackground-alert"></div>
                     <div class="weather34lightningcontents">
                         <div class="left"><?php echo $notification.' '.$lang['notifyTitle'];?></div>
-                        <div class="right"><?php echo date ("D H:i")?></div>
+                        <div class="right"><?php echo w34_date("D H:i")?></div>
                     </div>
                 </div>
                 <div class="weather34lightningcontents weather34lightningmain-content">
@@ -135,7 +135,7 @@ if (($notifications ?? 'yes') == 'yes') {
                     <div class="weather34lightningbackground-alert"></div>
                     <div class="weather34lightningcontents">
                         <div class="left"><?php echo $notification.' '.$lang['notifyTitle'];?></div>
-                        <div class="right"><?php echo date ("D H:i")?></div>
+                        <div class="right"><?php echo w34_date("D H:i")?></div>
                     </div>
                 </div>
                 <div class="weather34lightningcontents weather34lightningmain-content">

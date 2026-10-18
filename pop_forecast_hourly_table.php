@@ -107,7 +107,7 @@ for ($k = 0;$k < 24;$k++)
     }
     else if ($forecastPrecipProb[$k] > 0)
     {
-        $forecastPrecip[$k] = "<greyt>" . $forecastPrecipProb[$k] . "%&nbsp;chance</greyt>";
+        $forecastPrecip[$k] = "<greyt>" . $forecastPrecipProb[$k] . "%&nbsp;" . w34t('ChanceLc', 'chance') . "</greyt>";
     }
     else
     {
@@ -232,14 +232,14 @@ for ($k = 0;$k < 24;$k++)
 <table class="demo" style="width: 98%; height: 98%; text-center: left; overflow: auto;">
     
  <tr style="border-bottom: 0px grey solid; ">
-<th style="font-size: 9px;">Time</th>
-<th colspan="2" style="font-size: 10px;">Conditions</th>
-<th style="font-size: 9px;">Temperature</th>
-<th style="font-size: 9px;">Precipitation</th>
-<th style="font-size: 9px;">Wind Speed</th>
-<th style="font-size: 9px;">Direction</th>
-<th style="font-size: 9px;">UV Index</th>
-<th style="font-size: 9px;">Humidity</th>
+<th style="font-size: 9px;"><?php echo w34t('Time', 'Time'); ?></th>
+<th colspan="2" style="font-size: 10px;"><?php echo w34t('Conditions', 'Conditions'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('Temperature', 'Temperature'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('Precipitation', 'Precipitation'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('WindSpeedLabel', 'Wind Speed'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('Direction', 'Direction'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('UvIndex', 'UV Index'); ?></th>
+<th style="font-size: 9px;"><?php echo w34t('Humidity', 'Humidity'); ?></th>
 </tr>
 <?php for ($k = 0;$k < 24;$k++)
 { ?>
@@ -251,7 +251,7 @@ for ($k = 0;$k < 24;$k++)
 <td><span style="font-size: 9px; ";><?php echo $forecastPrecip[$k]; ?>
 </td>
 <td><span style="font-size: 9px; ";><?php echo $forecastWindSpeedMax[$k]; ?><small><?php echo $windunit; ?></small></span></td>
-<td><?php echo $forecastWinddircardinal[$k]; ?></td>
+<td><?php echo w34_dir($forecastWinddircardinal[$k]); ?></td>
 <td><span style="font-size: 9px; ";><?php echo $colorUV[$k]; ?><?php echo $forecastUV[$k]; ?></span></td>
 <td><span style="font-size: 9px;";><?php echo $colorHumidity[$k]; ?><?php echo $forecasthumidity[$k]; ?><small> %</small></span></td>
 </tr>
@@ -262,9 +262,9 @@ for ($k = 0;$k < 24;$k++)
 </table>
     </articlegraph3>
   <div style="font-size:9px;color:#aaa;padding:6px 4px;">
-    Data: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
+    <?php echo w34t('DataLabel', 'Data'); ?>: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
     (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:#aaa;">CC BY 4.0</a>)
     &nbsp;&middot;&nbsp;
-    Icons: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
+    <?php echo w34t('IconsLabel', 'Icons'); ?>: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
   </div>
    </main>

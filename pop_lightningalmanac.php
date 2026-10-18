@@ -95,33 +95,33 @@ metricsblue {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather34 Strikes Almanac Information</title>
+    <title><?php echo w34t('LinkStrikeAlmanac', 'Strike Almanac'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="weather34darkbrowser" url="Lightning Strike Almanac"></div>
+<div class="weather34darkbrowser" url="<?php echo htmlspecialchars(w34t('LinkStrikeAlmanac', 'Strike Almanac')); ?>"></div>
 
 <main class="grid">
 <article>
-     <div class=actualt>Strikes Today</div>
+     <div class=actualt><?php echo w34f('AlmToday', '%s Today', w34t('Strikes', 'Strikes')); ?></div>
     <?php echo "<div class='lightning'>",$weather["lightningday"]. "</value>"?></div>
 </article>
 
 <article>
-    <div class=actualt>Strikes Yesterday</div>
+    <div class=actualt><?php echo w34f('AlmYesterday', '%s Yesterday', w34t('Strikes', 'Strikes')); ?></div>
     <?php echo "<div class='lightning'>",$weather["lightningyesterday"] . "</value>"?></div>
 </article>
 
 <article>
-    <div class=actualt>Strikes <?php echo w34_date('M Y')?> </div>
+    <div class=actualt><?php echo w34t('Strikes', 'Strikes'); ?> <?php echo w34_date('M Y')?> </div>
     <?php echo "<div class='lightning'>",$weather["lightningmonth"] . "</value>"?></div>
 </article>
 
 <article>
-     <div class=actualt>Strikes <?php echo date("Y");?> </div>
+     <div class=actualt><?php echo w34t('Strikes', 'Strikes'); ?> <?php echo date("Y");?> </div>
     <?php echo "<div class='lightning'>",$weather["lightningyear"] . "</value>"?></div>
 </article>
 
 <article>
-    <div class=actualt>&nbsp;Strikes All-Time </div>
+    <div class=actualt>&nbsp;<?php echo w34f('AlmAllTime', '%s All-Time', w34t('Strikes', 'Strikes')); ?> </div>
     <?php echo "<div class='lightning'>",$weather["lightningalltime"] . "</value>"?></div>
 </article> </main>
 

@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,13 +73,13 @@ body, html {
 </style>
 </head>
 <body>
-<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen">Temp | Dew | Hum Almanac</button>  
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')">Yearly Temperature</button>
-<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')">Yearly Feels Like</button>
-<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')">Yearly Humidity</button>  
-<button class="tablink" onclick="openPage('Tab5', this, 'rgba(194, 102, 58)')">Weekly Temperature</button>  
-<button class="tablink" onclick="openPage('Tab6', this, 'rgba(194, 102, 58)')">Weekly Feels Like</button>  
-<button class="tablink" onclick="openPage('Tab7', this, 'rgba(194, 102, 58)')">Weekly Humidity</button>
+<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen"><?php echo w34t('TabTempAlmanac', 'Temp | Dew | Hum Almanac'); ?></button>  
+<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyTemp', 'Yearly Temperature'); ?></button>
+<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyFeels', 'Yearly Feels Like'); ?></button>
+<button class="tablink" onclick="openPage('Tab4', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyHum', 'Yearly Humidity'); ?></button>  
+<button class="tablink" onclick="openPage('Tab5', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyTemp', 'Weekly Temperature'); ?></button>  
+<button class="tablink" onclick="openPage('Tab6', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyFeels', 'Weekly Feels Like'); ?></button>  
+<button class="tablink" onclick="openPage('Tab7', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyHum', 'Weekly Humidity'); ?></button>
   
   <div id="Tab1" class="tabcontent">
   

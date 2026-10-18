@@ -31,7 +31,7 @@ if ($data_ok) {
         $is_freezing = true;
     }
 }
-$precip_name = $is_freezing ? 'Snow' : 'Rain';
+$precip_name = $is_freezing ? w34t('CondSnow', 'Snow') : w34t('Rain', 'Rain');
 
 $is_dark   = ($theme !== 'light');
 $bg        = $is_dark ? '#151819' : '#fff';
@@ -93,7 +93,7 @@ function formatPressureDiff($diff_inHg, $unit) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyperlocal Nowcast Details</title>
+<title><?php echo w34t('LinkNowcastDetails', 'Hyperlocal Forecast Details'); ?></title>
 <style>
 @font-face {
   font-family: weathertext2;
@@ -271,14 +271,14 @@ body { display: flex; flex-direction: column; }
 
 <!-- Header -->
 <div class="pop-header">
-  <span class="pop-title">Hyperlocal Short-Term Nowcast</span>
-  <span class="pop-issued">As of: <?php echo htmlspecialchars($generated_utc); ?></span>
+  <span class="pop-title"><?php echo w34t('HyperlocalNowcast', 'Hyperlocal Short-Term Nowcast'); ?></span>
+  <span class="pop-issued"><?php echo w34t('AsOf', 'As of'); ?>: <?php echo htmlspecialchars($generated_utc); ?></span>
 </div>
 
 <!-- Tab buttons -->
 <div class="pop-tabs">
-  <button class="tablink" onclick="openTab('t1', this)" id="defaultOpen">Statistical Forecast</button>
-  <button class="tablink" onclick="openTab('t2', this)">Top 15 Analogues</button>
+  <button class="tablink" onclick="openTab('t1', this)" id="defaultOpen"><?php echo w34t('StatisticalForecast', 'Statistical Forecast'); ?></button>
+  <button class="tablink" onclick="openTab('t2', this)"><?php echo w34t('TopAnalogues', 'Top 15 Analogues'); ?></button>
 </div>
 
 <!-- Content panels -->
@@ -288,7 +288,7 @@ body { display: flex; flex-direction: column; }
   <div id="t1" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">6-Hour Forecast Trajectory</div>
+        <div class="fcst-card-title"><?php echo w34t('ForecastTrajectory6h', '6-Hour Forecast Trajectory'); ?></div>
         <div class="fcst-card-text">
           <div class="nowcast-bubble">
             “ <?php echo htmlspecialchars($forecast_sentence); ?> ”
@@ -297,16 +297,16 @@ body { display: flex; flex-direction: column; }
           <table class="pop-table">
             <thead>
               <tr>
-                <th>Interval</th>
-                <th>Temp Range (Min–Max)</th>
-                <th>Mean Temp</th>
-                <th><?php echo $precip_name; ?> Probability</th>
-                <th>Matches</th>
+                <th><?php echo w34t('Interval', 'Interval'); ?></th>
+                <th><?php echo w34t('TempRangeMinMax', 'Temp Range (Min–Max)'); ?></th>
+                <th><?php echo w34t('MeanTemp', 'Mean Temp'); ?></th>
+                <th><?php echo w34f('PrecipProbability', '%s Probability', $precip_name); ?></th>
+                <th><?php echo w34t('Matches', 'Matches'); ?></th>
               </tr>
             </thead>
             <tbody>
               <?php if (empty($forecast_intervals)): ?>
-                <tr><td colspan="5" style="text-align:center;padding:20px;color:gray;">No forecast intervals available.</td></tr>
+                <tr><td colspan="5" style="text-align:center;padding:20px;color:gray;"><?php echo w34t('NoForecastIntervals', 'No forecast intervals available.'); ?></td></tr>
               <?php else: 
                 foreach ($forecast_intervals as $h => $f): 
                   $rain = intval($f['rain_pct']);
@@ -321,11 +321,11 @@ body { display: flex; flex-direction: column; }
                   $std_val = formatStdDev($f['std_f'], $tempunit);
               ?>
                 <tr>
-                  <td><strong>+<?php echo $h; ?> Hours</strong></td>
+                  <td><strong>+<?php echo $h; ?> <?php echo w34t('UnitHours', 'hours'); ?></strong></td>
                   <td><?php echo $min_val; ?>&deg;<?php echo $tempunit; ?> &ndash; <?php echo $max_val; ?>&deg;<?php echo $tempunit; ?></td>
-                  <td><strong><?php echo $mean_val; ?>&deg;<?php echo $tempunit; ?></strong> (std-dev: &plusmn;<?php echo $std_val; ?>&deg;<?php echo $tempunit; ?>)</td>
+                  <td><strong><?php echo $mean_val; ?>&deg;<?php echo $tempunit; ?></strong> (<?php echo w34t('StdDev', 'std-dev'); ?>: &plusmn;<?php echo $std_val; ?>&deg;<?php echo $tempunit; ?>)</td>
                   <td><span class="<?php echo $r_style; ?>"><?php echo $rain; ?>%</span></td>
-                  <td><?php echo $f['n']; ?> matches</td>
+                  <td><?php echo w34f('NMatches', '%s matches', $f['n']); ?></td>
                 </tr>
               <?php endforeach; endif; ?>
             </tbody>
@@ -339,22 +339,22 @@ body { display: flex; flex-direction: column; }
   <div id="t2" class="tabcontent">
     <div class="discussion-body">
       <div class="fcst-card">
-        <div class="fcst-card-title">Top 15 Historical Matching Hours (from features.db)</div>
+        <div class="fcst-card-title"><?php echo w34t('TopMatchingHours', 'Top 15 Historical Matching Hours (from features.db)'); ?></div>
         <div class="fcst-card-text">
           <table class="pop-table">
             <thead>
               <tr>
-                <th>Historical Date &amp; Time</th>
-                <th>Distance</th>
-                <th>Observed Temp</th>
-                <th>Observed Pressure</th>
-                <th>3h Trend</th>
-                <th>Observed Wind</th>
+                <th><?php echo w34t('HistoricalDateTime', 'Historical Date &amp; Time'); ?></th>
+                <th><?php echo w34t('Distance', 'Distance'); ?></th>
+                <th><?php echo w34t('ObservedTemp', 'Observed Temp'); ?></th>
+                <th><?php echo w34t('ObservedPressure', 'Observed Pressure'); ?></th>
+                <th><?php echo w34t('Trend3h', '3h Trend'); ?></th>
+                <th><?php echo w34t('ObservedWind', 'Observed Wind'); ?></th>
               </tr>
             </thead>
             <tbody>
               <?php if (empty($analogues)): ?>
-                <tr><td colspan="6" style="text-align:center;padding:20px;color:gray;">No historical analogues matched yet.</td></tr>
+                <tr><td colspan="6" style="text-align:center;padding:20px;color:gray;"><?php echo w34t('NoAnalogues', 'No historical analogues matched yet.'); ?></td></tr>
               <?php else: 
                 foreach ($analogues as $a): 
                   $dist = floatval($a['distance']);
@@ -368,12 +368,12 @@ body { display: flex; flex-direction: column; }
                   $wind_val = formatWindSpeed($a['wind_mph'], $windunit);
               ?>
                 <tr>
-                  <td><strong><?php echo htmlspecialchars($a['date']); ?></strong></td>
+                  <td><strong><?php echo htmlspecialchars(w34_datetext($a['date'])); ?></strong></td>
                   <td><span style="color:<?php echo $d_col; ?>;font-weight:bold;"><?php echo number_format($dist, 3); ?></span></td>
                   <td><?php echo $temp_val; ?>&deg;<?php echo $tempunit; ?></td>
                   <td><?php echo $press_val; ?> <?php echo $pressureunit; ?></td>
                   <td><?php echo $dp_val; ?></td>
-                  <td><?php echo htmlspecialchars($a['wind_label']); ?> @ <?php echo $wind_val; ?> <?php echo $windunit; ?></td>
+                  <td><?php echo htmlspecialchars(w34_dir($a['wind_label'])); ?> @ <?php echo $wind_val; ?> <?php echo $windunit; ?></td>
                 </tr>
               <?php endforeach; endif; ?>
             </tbody>

@@ -258,7 +258,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                         yellowButton:  {y: (plot_div=='plot_div2'?-100:0),},
                         greenButton:   {y: (plot_div=='plot_div2'?-100:0),},
                         toggle: {
-                            text: 'Select',
+                            text: getTranslation('Select'),
                             x: -10,
                             menuItems:[]
                         }
@@ -475,7 +475,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        text: '36h'
 	    }, {
 	        type: 'all',
-	        text: 'All'
+	        text: getTranslation('All')
 	    }];
 	    if (realtimeplot.hasOwnProperty(plot_type) && !day_plots && !compare_dates) {obj.rangeSelector.buttons.push({
 	        text: getTranslation("RT"),
@@ -501,7 +501,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            text: '1yr'
                 }, {
                     type: 'all',
-                    text: 'All'
+                    text: getTranslation('All')
                 }],
                 obj.rangeSelector.selected = 0;
             }
@@ -528,7 +528,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            text: '1yr'
 	        }, {
 	            type: 'all',
-                    text: 'All'
+                    text: getTranslation('All')
 	        }],
 	        obj.rangeSelector.selected = 4;
             }
@@ -570,7 +570,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    });
 	    if (first_tp_display){
 	        first_tp_display = false;
-	        temp += "When mouse cursor turns to a hand then left click to drill down into chart data"
+	        temp += getTranslation("When mouse cursor turns to a hand then left click to drill down into chart data")
 	    }
 	    return temp;
 	};
@@ -578,6 +578,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function getTranslation(term){
 	    if (typeof translations == 'undefined') return term;
 	    if (translations.hasOwnProperty(term)) return translations[term];
+	    var trimmed = term.trim();  // e.g. 'Wind Speed ' in the wind rose title
+	    if (trimmed !== term && translations.hasOwnProperty(trimmed)) return term.replace(trimmed, translations[trimmed]);
 	    if (translations.hasOwnProperty(term.replace(' ', ''))) return translations[term.replace(' ', '')];
 	    var parts = term.split(/([" ", "/", "&"])/);
 	    var translation = "";
@@ -1609,7 +1611,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              from: 0,
                              to: 7,
                              label: {
-                                 text: 'Clear',
+                                 text: getTranslation('Clear'),
                                  align: 'left',
                                  x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
@@ -1619,7 +1621,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              from: 7,
                              to: 32,
                              label: {
-                                 text: 'Scattered Clouds',
+                                 text: getTranslation('Scattered Clouds'),
                                  align: 'left',
                                  x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
@@ -1629,7 +1631,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              from: 32,
                              to: 70,
                              label: {
-                                 text: 'Partly Cloudy',
+                                 text: getTranslation('Partly Cloudy'),
                                  align: 'left',
                                  x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
@@ -1639,7 +1641,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              from: 70,
                              to: 95,
                              label: {
-                                 text: 'Mostly Cloudy',
+                                 text: getTranslation('Mostly Cloudy'),
                                  align: 'left',
                                  x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
@@ -1649,7 +1651,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                              from: 95,
                              to: 100,
                              label: {
-                                 text: 'Overcast',
+                                 text: getTranslation('Overcast'),
                                  align: 'left',
                                  x: 5,
                                  style: {color: Highcharts.theme=='white'?'black':'white'}
@@ -1905,18 +1907,18 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                                         error:function(data){$("#"+plot_div).load("../404.html")}
 	                                      });
 	         }};
-	         options.exporting.buttons.toggle.menuItems.push({text: "View in full screen", onclick: fullscreen_callback()});
-	         options.exporting.buttons.toggle.menuItems.push({text: "Export Chart", onclick: export_callback()});
-	         options.exporting.buttons.toggle.menuItems.push({text: "Reload Chart", onclick: callback(units, plot_type, span, true)});
-	         options.exporting.buttons.toggle.menuItems.push({text: "Auto Update Chart", onclick: callback(units, plot_type, span, false)});
+	         options.exporting.buttons.toggle.menuItems.push({text: getTranslation("View in full screen"), onclick: fullscreen_callback()});
+	         options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Export Chart"), onclick: export_callback()});
+	         options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Reload Chart"), onclick: callback(units, plot_type, span, true)});
+	         options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Auto Update Chart"), onclick: callback(units, plot_type, span, false)});
 	         if (realtimeplot.hasOwnProperty(plot_type))
-	             options.exporting.buttons.toggle.menuItems.push({text: "Realtime Update", onclick: realtime_callback()});
+	             options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Realtime Update"), onclick: realtime_callback()});
 	         if (radialplots.includes(plot_type))
-	             options.exporting.buttons.toggle.menuItems.push({text: "Radial Chart", onclick: radial_callback()});
+	             options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Radial Chart"), onclick: radial_callback()});
 	         if (day_plots && plot_type == 'windplot')
-	             options.exporting.buttons.toggle.menuItems.push({text: "Hays Chart", onclick: radial_callback(true,['weekly'])});
+	             options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Hays Chart"), onclick: radial_callback(true,['weekly'])});
 	         if (compareplots.includes(plot_type) && !disable_day_plots)
-	             options.exporting.buttons.toggle.menuItems.push({text: "Compare Dates", onclick: compare_callback()});
+	             options.exporting.buttons.toggle.menuItems.push({text: getTranslation("Compare Dates"), onclick: compare_callback()});
 	        chart = new Highcharts.StockChart(options,function(chart){setTimeout(function(){$('input.highcharts-range-selector',$('#'+options.chart.renderTo)).datepicker()},0)});
                 chart.options.zoomType = 'x';
 	        chart.pointer.zoomX = true;

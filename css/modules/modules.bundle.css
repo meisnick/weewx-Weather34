@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 23:26:27 UTC
+   Generated: 2026-10-18 23:29:19 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -158,7 +158,7 @@
 .mod-advisory .mod-adv-sev-severe   { --adv-col: var(--orange); }
 .mod-advisory .mod-adv-sev-moderate { --adv-col: var(--warn); }
 .mod-advisory .mod-adv-sev-minor    { --adv-col: var(--info-cool); }
-.mod-advisory .mod-adv-sev-unknown  { --adv-col: var(--ink-muted-5); }
+.mod-advisory .mod-adv-sev-unknown  { --adv-col: var(--ink-faint-7); }
 
 .mod-advisory .mod-adv-val {
   color: var(--adv-col, var(--caution));
@@ -1193,7 +1193,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 2px solid var(--line-soft-3);
+  border: 2px solid var(--line-soft-4);
   box-sizing: border-box;
 }
 
@@ -1216,14 +1216,14 @@
 .mod-clock .m-hand {
   height: 19px;
   width: 2px;
-  background-color: var(--ink-muted-5);
+  background-color: var(--ink-faint-7);
   z-index: 4;
 }
 
 .mod-clock .h-hand {
   height: 16px;
   width: 3.5px;
-  background-color: var(--ink-muted-5);
+  background-color: var(--ink-faint-7);
   z-index: 3;
 }
 

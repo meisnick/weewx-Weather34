@@ -27,7 +27,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 2px solid var(--line-soft-3);
+  border: 2px solid var(--line-soft-4);
   box-sizing: border-box;
 }
 
@@ -50,14 +50,14 @@
 .mod-clock .m-hand {
   height: 19px;
   width: 2px;
-  background-color: var(--ink-muted-5);
+  background-color: var(--ink-faint-7);
   z-index: 4;
 }
 
 .mod-clock .h-hand {
   height: 16px;
   width: 3.5px;
-  background-color: var(--ink-muted-5);
+  background-color: var(--ink-faint-7);
   z-index: 3;
 }
 

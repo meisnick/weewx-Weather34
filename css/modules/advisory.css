@@ -128,7 +128,7 @@
 .mod-advisory .mod-adv-sev-severe   { --adv-col: var(--orange); }
 .mod-advisory .mod-adv-sev-moderate { --adv-col: var(--warn); }
 .mod-advisory .mod-adv-sev-minor    { --adv-col: var(--info-cool); }
-.mod-advisory .mod-adv-sev-unknown  { --adv-col: var(--ink-muted-5); }
+.mod-advisory .mod-adv-sev-unknown  { --adv-col: var(--ink-faint-7); }
 
 .mod-advisory .mod-adv-val {
   color: var(--adv-col, var(--caution));

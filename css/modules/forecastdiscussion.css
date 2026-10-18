@@ -29,6 +29,12 @@
     width: 98%;
 }
 
+.mod-fct-sub {
+    font-size: 0.55rem;
+    color: var(--card-ink-soft);
+    font-weight: normal;
+}
+
 /* --- Utility Classes for PHP Keyword Highlighting ---
    NOTE: .hl-* are SHARED helpers (used by the language files, e.g.
    languages/lang.en.php ConfirmOllamaStatus) — deliberately left unprefixed. */
@@ -41,6 +47,10 @@
 /* ── Light theme overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .mod-fct-line {
     color: var(--ink-dark-2);
+}
+
+[data-theme="light"] .mod-fct-sub {
+    color: var(--ink-muted);
 }
 
 /* --- Popout Modal styling --- */

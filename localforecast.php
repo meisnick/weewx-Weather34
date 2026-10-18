@@ -66,13 +66,13 @@ if (file_exists($file_path)) {
     else:
         echo $offline . ' <offline>' . $lang['Offline'] . '</offline>';
     endif; ?>
-</div>
+</span></div>
 
 <!-- Nowcast Content -->
 <div class="mod-localforecast">
     <div class="mod-lf-header">
         <div class="mod-lf-header-left">
-            <span class="mod-lf-term"><?php echo $lang['Nowcast6h']; ?><?php if(isset($time_window)) echo ' <span style="font-size: 0.75em; opacity: 0.8; font-weight: normal;">(' . $time_window . ')</span>'; ?></span>
+            <span class="mod-lf-term"><?php echo $lang['Nowcast6h']; ?><?php if(isset($time_window)) echo ' <span class="mod-lf-window">(' . $time_window . ')</span>'; ?></span>
             <span class="mod-lf-wind"><?php echo htmlspecialchars($wind_out); ?></span>
         </div>
         

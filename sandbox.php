@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . '/local_only.php'; // developer tool: LAN only (its frame mode fetches from 127.0.0.1)
 /* sandbox.php — visual module & Highcharts editor (DEV ONLY).
  *
  * Renders ONE Weather34 module or popout almanac authentically inside an iframe.

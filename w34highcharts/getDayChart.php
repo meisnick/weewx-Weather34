@@ -1,4 +1,5 @@
 <?php 
+    include_once __DIR__ . '/../local_only.php'; // runs commands and deletes files named in the request: LAN only
     function socket_transfer($socket, $cmd, $s_file){
       try {
         socket_write($socket, $cmd, strlen($cmd));

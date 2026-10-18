@@ -1,4 +1,6 @@
 <?php
+$w34_local_only_message = json_encode(['error' => 'Only allowed from the local network.']);
+include_once __DIR__ . '/local_only.php';
 header('Content-Type: application/json');
 
 $cfgPath = '/usr/local/bin/w34config.py';

@@ -3,41 +3,8 @@ header('Content-Type: application/json');
 error_reporting(0);
 
 // Prevent altering settings from outside the local network
-$client_ip = $_SERVER['REMOTE_ADDR'];
-if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-    $client_ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ips = array_map('trim', explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
-    $client_ip = end($ips);
-}
-
-function is_local_ip($ip) {
-    if ($ip === '127.0.0.1' || $ip === '::1') {
-        return true;
-    }
-    $ip_num = ip2long($ip);
-    if ($ip_num !== false) {
-        $private_ranges = [
-            ['10.0.0.0', '10.255.255.255'],
-            ['172.16.0.0', '172.31.255.255'],
-            ['192.168.0.0', '192.168.255.255'],
-        ];
-        foreach ($private_ranges as $range) {
-            $min = ip2long($range[0]);
-            $max = ip2long($range[1]);
-            if ($ip_num >= $min && $ip_num <= $max) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-if (!is_local_ip($client_ip)) {
-    http_response_code(403);
-    echo json_encode(['error' => 'Saving overrides is only allowed from the local network.']);
-    exit;
-}
+$w34_local_only_message = json_encode(['error' => 'Saving overrides is only allowed from the local network.']);
+include_once __DIR__ . '/local_only.php';
 
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);

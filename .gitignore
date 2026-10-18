@@ -32,3 +32,6 @@ modules.php
 
 # Internal dev/QA/process tooling — not part of the shippable skin, kept local only
 tools/
+
+# Python bytecode from running scripts/ in place on the boxes
+__pycache__/

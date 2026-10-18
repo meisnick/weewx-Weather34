@@ -65,7 +65,7 @@
   font-family: weathertext2, Arial, sans-serif;
   font-size: 10.08px;
   font-weight: 500;
-  color: var(--ink-faint-9);
+  color: var(--ink-bright);
   display: flex;
   align-items: baseline;
 }
@@ -321,18 +321,19 @@ valuetextheading2 {
 }
 /* Humidity pill border: base uses --card-surface (=#fff in light) → invisible.
    Match the other pills' visible light-mode border. */
-[data-theme="light"] .mod-temperature div[class*="temphumcircle"] {
+[data-theme="light"] .mod-temperature div[class*="temphumcircle"],
+[data-theme="light"] .mod-temperature div[class^="tempconvertercircle"] {
   border-color: var(--line-soft);
 }
 
 [data-theme="light"] .mod-temperature .maxdata {
-  color: var(--card-ink-strong);
+  color: var(--white);
 }
 
 [data-theme="light"] .mod-temperature trendmovementfallingx,
 [data-theme="light"] .mod-temperature trendmovementrisingx,
 [data-theme="light"] .mod-temperature trendmovementsteadyx {
-  color: var(--card-ink-blue) !important;
+  color: var(--ink-bright) !important;
 }
 
 [data-theme="light"] .mod-temperature .weather34indoorword {
@@ -439,6 +440,7 @@ valuetextheading2 {
   top: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
   padding: 0 !important;               /* framework padding-top:10px shrank the paint area */
+  border-bottom: 0 !important;         /* remove 15px framework bottom bar so gradient fills 88px box */
   box-sizing: border-box !important;
   background-size: 100% 100% !important;   /* keep the data-coded temp gradient, fill the box */
   align-items: center !important;

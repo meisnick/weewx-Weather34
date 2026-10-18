@@ -28,9 +28,9 @@ else if(anyToC($weather['temp'])<100){echo  '<div class="mod-temp-band--50">'.nu
 <div class="temptrendx">
 <?php echo $weather["temp_trend"]."\n";
 //falling
-if($weather["temp_trend"]<0){echo '<trendmovementfallingx>&nbsp;&nbsp;&nbsp;<valuetext>'.w34t('TrendLabel', 'Trend').' '.$fallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+if($weather["temp_trend"]<0){echo '<trendmovementfallingx><valuetext>'.w34t('TrendLabel', 'Trend').' '.$fallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
 //rising
-elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<valuetext>'.w34t('TrendLabel', 'Trend').' '.$risingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx><valuetext>'.w34t('TrendLabel', 'Trend').' '.$risingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementrisingx>';}
 //steady
 else echo '<trendmovementsteadyx><valuetext>'.w34t('TrendLabel', 'Trend').' '.$steadysymbol.w34t('Steady', 'Steady').'</valuetext></trendmovementsteadyx>';?>
 </div></div>

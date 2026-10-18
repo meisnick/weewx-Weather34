@@ -48,6 +48,7 @@
     margin-bottom: 0px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
 }
 
 .mod-aq-badge-top .val {
@@ -68,6 +69,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -83,7 +85,7 @@
     width: 155px; /* Locked to exact Lightning grid width */
     display: flex;
     flex-direction: column;
-    margin-top: -2px; /* Slight optical adjustment */
+    margin-top: -3px; /* Aligns vertical center with 72px badge */
 }
 
 .mod-aq-header {
@@ -125,6 +127,21 @@
     box-sizing: border-box;
 }
 
+/* AQI level background and foreground modifier classes */
+.mod-aq-bg--none      { background-color: var(--page-bg); }
+.mod-aq-bg--good      { background-color: var(--good); }
+.mod-aq-bg--moderate  { background-color: var(--warn); }
+.mod-aq-bg--usg       { background-color: var(--caution); }
+.mod-aq-bg--unhealthy { background-color: var(--danger); }
+.mod-aq-bg--vu        { background-color: var(--uv-purple); }
+.mod-aq-bg--hazard    { background-color: var(--purple); }
+
+.mod-aq-fg--none      { color: var(--card-ink-soft); }
+.mod-aq-fg--good      { color: var(--good); }
+.mod-aq-fg--moderate  { color: var(--warn); }
+.mod-aq-fg--usg       { color: var(--caution); }
+.mod-aq-fg--unhealthy { color: var(--danger); }
+
 /* The Dominant Pollutant */
 .mod-aq-pill.dominant {
     box-shadow: inset 0 0 0 1px var(--white-soft-2);
@@ -142,6 +159,7 @@
     color: var(--white-soft);
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    text-indent: 0.3px;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
@@ -154,7 +172,7 @@
 
 [data-theme="light"] .mod-aq-badge-bot {
     background-color: var(--surface-light);
-    color: var(--ink-muted);
+    color: var(--card-ink-blue);
 }
 
 [data-theme="light"] .mod-aq-pill {

@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:44:42 UTC
+   Generated: 2026-10-18 22:50:09 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -136,22 +136,23 @@
   height: 100%;
 }
 
+.mod-airquality .tempconvertercirclegreen,
+.mod-airquality .tempconvertercircleorange,
+.mod-airquality .tempconvertercirclepurple,
+.mod-airquality .tempconvertercirclered,
 .mod-airquality .tempconvertercircleyellow {
+  display: flex;
   align-items: center;
+  justify-content: center;
   width: 4.2rem;
   color: var(--card-ink-blue);
   font-family: weathertext2;
   height: 1rem;
   line-height: 16px;
-  overflow: hidden
-}
-
-.mod-airquality .tempconvertercircleyellow {
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
   border: 1px solid var(--card-bg-2);
   border-radius: 2px;
-  font-size: .85em  
+  font-size: .85em
 }
 
 .mod-airquality .tempcontainer {
@@ -174,10 +175,7 @@
 .mod-airquality .tempconverter2 {
   position: absolute;
   margin-top: 5px;
-  font-size: 12px
-}
-
-.mod-airquality .tempconverter2 {
+  font-size: 12px;
   margin-left: 240px
 }
 
@@ -213,8 +211,10 @@
 .mod-airquality .airvalue {
   position: relative;
   margin-top: 75px;
-  left: 80px; /* Shifted 2px right from 78px (total 75px shift) */
-  top: 15px;  /* Kept 10px down shift */
+  left: 80px;
+  top: 15px;
+  width: 100px;
+  text-align: center;
   font-size: .9rem
 }
 
@@ -225,12 +225,18 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  left: -105px;
+  left: -100px;
   line-height: 26px;
   margin-top: 0;
 }
 
-.mod-airquality .mod-aqi-band--50 {
+.mod-airquality .mod-aqi-band--0,
+.mod-airquality .mod-aqi-band--50,
+.mod-airquality .mod-aqi-band--100,
+.mod-airquality .mod-aqi-band--150,
+.mod-airquality .mod-aqi-band--200,
+.mod-airquality .mod-aqi-band--300 {
+  display: flex;
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -262,6 +268,7 @@
   background: var(--danger)
 }
 
+.mod-airquality .mod-aqi-band--200,
 .mod-airquality .mod-aqi-band--300 {
   background: var(--uv-purple)
 }
@@ -281,6 +288,11 @@
 }
 
 .mod-airquality .airqualitywordbig {
+  position: absolute;
+  font-size: 1.4rem;
+  color: var(--ink-faint-4);
+  width: 200px;
+  font-family: weathertext2;
   margin-left: 50px;
   margin-top: 15px
 }
@@ -296,6 +308,10 @@
   line-height: 14px
 }
 
+[data-theme="light"] .mod-airquality .tempconvertercirclegreen,
+[data-theme="light"] .mod-airquality .tempconvertercircleorange,
+[data-theme="light"] .mod-airquality .tempconvertercirclepurple,
+[data-theme="light"] .mod-airquality .tempconvertercirclered,
 [data-theme="light"] .mod-airquality .tempconvertercircleyellow {
   display: flex;
   align-items: center;
@@ -343,7 +359,13 @@
   margin-left: 250px
 }
 
-[data-theme="light"] .mod-airquality .mod-aqi-band--50 {
+[data-theme="light"] .mod-airquality .mod-aqi-band--0,
+[data-theme="light"] .mod-airquality .mod-aqi-band--50,
+[data-theme="light"] .mod-airquality .mod-aqi-band--100,
+[data-theme="light"] .mod-airquality .mod-aqi-band--150,
+[data-theme="light"] .mod-airquality .mod-aqi-band--200,
+[data-theme="light"] .mod-airquality .mod-aqi-band--300 {
+  display: flex;
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -410,6 +432,7 @@
     margin-bottom: 0px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
 }
 
 .mod-aq-badge-top .val {
@@ -430,6 +453,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -445,7 +469,7 @@
     width: 155px; /* Locked to exact Lightning grid width */
     display: flex;
     flex-direction: column;
-    margin-top: -2px; /* Slight optical adjustment */
+    margin-top: -3px; /* Aligns vertical center with 72px badge */
 }
 
 .mod-aq-header {
@@ -487,6 +511,21 @@
     box-sizing: border-box;
 }
 
+/* AQI level background and foreground modifier classes */
+.mod-aq-bg--none      { background-color: var(--page-bg); }
+.mod-aq-bg--good      { background-color: var(--good); }
+.mod-aq-bg--moderate  { background-color: var(--warn); }
+.mod-aq-bg--usg       { background-color: var(--caution); }
+.mod-aq-bg--unhealthy { background-color: var(--danger); }
+.mod-aq-bg--vu        { background-color: var(--uv-purple); }
+.mod-aq-bg--hazard    { background-color: var(--purple); }
+
+.mod-aq-fg--none      { color: var(--card-ink-soft); }
+.mod-aq-fg--good      { color: var(--good); }
+.mod-aq-fg--moderate  { color: var(--warn); }
+.mod-aq-fg--usg       { color: var(--caution); }
+.mod-aq-fg--unhealthy { color: var(--danger); }
+
 /* The Dominant Pollutant */
 .mod-aq-pill.dominant {
     box-shadow: inset 0 0 0 1px var(--white-soft-2);
@@ -504,6 +543,7 @@
     color: var(--white-soft);
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    text-indent: 0.3px;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
@@ -516,7 +556,7 @@
 
 [data-theme="light"] .mod-aq-badge-bot {
     background-color: var(--surface-light);
-    color: var(--ink-muted);
+    color: var(--card-ink-blue);
 }
 
 [data-theme="light"] .mod-aq-pill {

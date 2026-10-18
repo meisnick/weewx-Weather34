@@ -24,22 +24,22 @@ if (file_exists($aq_file) && (time() - filemtime($aq_file) < 7200)) {
     }
 }
 
-// Colour for a given AQI sub-index value
-function aq_color($val) {
-    if ($val === null) return 'var(--bg0)';
-    if ($val > 150) return 'var(--red)';
-    if ($val > 100) return 'var(--orange)';
-    if ($val > 50)  return 'var(--amber)';
-    return 'var(--green)';
+// Modifier class suffix for a given AQI sub-index value
+function aq_level($val) {
+    if ($val === null) return 'none';
+    if ($val > 150) return 'unhealthy';
+    if ($val > 100) return 'usg';
+    if ($val > 50)  return 'moderate';
+    return 'good';
 }
 
-// Main badge colour and icon based on composite AQI
-if ($aqi > 300)      { $badge_col = '#8b3a8b'; $icon = 'css/aqi/hazair.svg'; }
-elseif ($aqi > 200)  { $badge_col = '#a475cb'; $icon = 'css/aqi/vhair.svg';  }
-elseif ($aqi > 150)  { $badge_col = 'var(--red)';    $icon = 'css/aqi/uhair.svg';   }
-elseif ($aqi > 100)  { $badge_col = 'var(--orange)'; $icon = 'css/aqi/uhfsair.svg'; }
-elseif ($aqi > 50)   { $badge_col = 'var(--amber)';  $icon = 'css/aqi/modair.svg';  }
-else                 { $badge_col = 'var(--green)';  $icon = 'css/aqi/goodair.svg'; }
+// Main badge modifier class and icon based on composite AQI
+if ($aqi > 300)      { $badge_lvl = 'hazard';    $icon = 'css/aqi/hazair.svg'; }
+elseif ($aqi > 200)  { $badge_lvl = 'vu';        $icon = 'css/aqi/vhair.svg';  }
+elseif ($aqi > 150)  { $badge_lvl = 'unhealthy'; $icon = 'css/aqi/uhair.svg';   }
+elseif ($aqi > 100)  { $badge_lvl = 'usg';       $icon = 'css/aqi/uhfsair.svg'; }
+elseif ($aqi > 50)   { $badge_lvl = 'moderate';  $icon = 'css/aqi/modair.svg';  }
+else                 { $badge_lvl = 'good';      $icon = 'css/aqi/goodair.svg'; }
 
 // AQI description text (shortened to fit the 85px badge)
 if ($aqi > 300)      $aqi_desc = w34t('AqHazardous', 'Hazardous');
@@ -49,11 +49,11 @@ elseif ($aqi > 100)  $aqi_desc = w34t('AqUnhealthyFS', 'Unhealthy FS');
 elseif ($aqi > 50)   $aqi_desc = w34t('AqModerate', 'Moderate');
 else                 $aqi_desc = w34t('AqGood', 'Good');
 
-// Dominant pollutant display label and its colour
+// Dominant pollutant display label and its level class
 $dom_labels = ['pm25' => 'PM2.5', 'pm10' => 'PM10', 'o3' => 'O3', 'no2' => 'NO₂'];
 $dom_label  = $dom_labels[$aq_dominant] ?? strtoupper($aq_dominant);
 $dom_vals   = ['pm25' => $aq_pm25, 'pm10' => $aq_pm10, 'o3' => $aq_o3, 'no2' => $aq_no2];
-$dom_color  = aq_color($dom_vals[$aq_dominant] ?? null);
+$dom_lvl    = aq_level($dom_vals[$aq_dominant] ?? null);
 
 $polls = [
     'PM2.5' => ['val' => $aq_pm25, 'slug' => 'pm25'],
@@ -74,7 +74,7 @@ $polls = [
 
     <!-- Left: Main AQI Badge -->
     <div class="mod-aq-badge">
-        <div class="mod-aq-badge-top" style="background-color:<?php echo $badge_col; ?>">
+        <div class="mod-aq-badge-top mod-aq-bg--<?php echo $badge_lvl; ?>">
             <span class="lbl">AQI</span>
             <span class="val"><?php echo $aqi; ?></span>
         </div>
@@ -86,16 +86,16 @@ $polls = [
         <div class="mod-aq-header">
             <span class="mod-aq-heading"><?php echo w34t('Pollutants', 'Pollutants');?></span>
             <?php if ($dom_label): ?>
-            <span class="mod-aq-dominant-tag" style="color:<?php echo $dom_color; ?>"><?php echo htmlspecialchars($dom_label); ?> &#x29C9;</span>
+            <span class="mod-aq-dominant-tag mod-aq-fg--<?php echo $dom_lvl; ?>"><?php echo htmlspecialchars($dom_label); ?> &#x29C9;</span>
             <?php endif; ?>
         </div>
         <div class="mod-aq-grid">
             <?php foreach ($polls as $label => $p):
-                $col  = aq_color($p['val']);
+                $lvl  = aq_level($p['val']);
                 $disp = ($p['val'] !== null) ? $p['val'] : '--';
                 $dom  = ($p['slug'] === $aq_dominant) ? ' dominant' : '';
             ?>
-            <div class="mod-aq-pill<?php echo $dom; ?>" style="background-color:<?php echo $col; ?>">
+            <div class="mod-aq-pill mod-aq-bg--<?php echo $lvl . $dom; ?>">
                 <span class="val"><?php echo $disp; ?></span>
                 <span class="lbl"><?php echo $label; ?></span>
             </div>

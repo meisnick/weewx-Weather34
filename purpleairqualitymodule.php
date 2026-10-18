@@ -43,16 +43,16 @@ $aqiweather["city"]      = $parsed_json->{'results'}[0]->{'ID'};
 $aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'};
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
 ?>
+<div class="updatedtime">
+    <span>
+        <?php if(file_exists('jsondata/pu.txt') && time() - filemtime('jsondata/pu.txt') < 7200) {
+            echo $online . " " . date($timeFormat, filemtime('jsondata/pu.txt'));
+        } else {
+            echo $offline . ' <offline>Offline</offline>';
+        }?>
+    </span>
+</div> 
 <div class="mod-airquality">
-    <div class="updatedtime">
-        <span>
-            <?php if(file_exists('jsondata/pu.txt') && time() - filemtime('jsondata/pu.txt') < 7200) {
-                echo $online . " " . date($timeFormat, filemtime('jsondata/pu.txt'));
-            } else {
-                echo $offline . ' <offline>Offline</offline>';
-            }?>
-        </span>
-    </div> 
 
     <div class="airqualitywordbig">Air Quality</div>
 
@@ -114,17 +114,17 @@ $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
                 
                 //WEATHER34 air quality description
                 if ($aqiweather["aqi"] > 300) {
-                    echo "<br><airdescription><indoorred>&nbsp;" . $lang['Hazordous'] . "</indoorred></airdescription>";
+                    echo "<br><airdescription><indoorred>" . $lang['Hazordous'] . "</indoorred></airdescription>";
                 } else if ($aqiweather["aqi"] > 200) {
                     echo "<br><airdescription><indoorpurple>" . $lang['VeryUnhealthy'] . "</indoorpurple></airdescription>";
                 } else if ($aqiweather["aqi"] > 150) {
-                    echo "<br><airdescription><indoorred>&nbsp;" . $lang['Unhealthy'] . "</indoorred></airdescription>";
+                    echo "<br><airdescription><indoorred>" . $lang['Unhealthy'] . "</indoorred></airdescription>";
                 } else if ($aqiweather["aqi"] > 100) {
                     echo "<br><airdescription><indoororange>" . $lang['UnhealthyFS'] . "</indoororange></airdescription>";
                 } else if ($aqiweather["aqi"] > 50) {
-                    echo "<br><airdescription><indooryellow>&nbsp;" . $lang['Moderate'] . "</indooryellow></airdescription>";
+                    echo "<br><airdescription><indooryellow>" . $lang['Moderate'] . "</indooryellow></airdescription>";
                 } else if ($aqiweather["aqi"] >= 0) {
-                    echo "<br><airdescription><indoorgreen>&nbsp; &nbsp;" . $lang['Good'] . "</indoorgreen></airdescription>";
+                    echo "<br><airdescription><indoorgreen>" . $lang['Good'] . "</indoorgreen></airdescription>";
                 }
                 ?>
             </div>

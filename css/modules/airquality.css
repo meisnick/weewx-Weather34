@@ -6,22 +6,23 @@
   height: 100%;
 }
 
+.mod-airquality .tempconvertercirclegreen,
+.mod-airquality .tempconvertercircleorange,
+.mod-airquality .tempconvertercirclepurple,
+.mod-airquality .tempconvertercirclered,
 .mod-airquality .tempconvertercircleyellow {
+  display: flex;
   align-items: center;
+  justify-content: center;
   width: 4.2rem;
   color: var(--card-ink-blue);
   font-family: weathertext2;
   height: 1rem;
   line-height: 16px;
-  overflow: hidden
-}
-
-.mod-airquality .tempconvertercircleyellow {
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
   border: 1px solid var(--card-bg-2);
   border-radius: 2px;
-  font-size: .85em  
+  font-size: .85em
 }
 
 .mod-airquality .tempcontainer {
@@ -44,10 +45,7 @@
 .mod-airquality .tempconverter2 {
   position: absolute;
   margin-top: 5px;
-  font-size: 12px
-}
-
-.mod-airquality .tempconverter2 {
+  font-size: 12px;
   margin-left: 240px
 }
 
@@ -83,8 +81,10 @@
 .mod-airquality .airvalue {
   position: relative;
   margin-top: 75px;
-  left: 80px; /* Shifted 2px right from 78px (total 75px shift) */
-  top: 15px;  /* Kept 10px down shift */
+  left: 80px;
+  top: 15px;
+  width: 100px;
+  text-align: center;
   font-size: .9rem
 }
 
@@ -95,12 +95,18 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  left: -105px;
+  left: -100px;
   line-height: 26px;
   margin-top: 0;
 }
 
-.mod-airquality .mod-aqi-band--50 {
+.mod-airquality .mod-aqi-band--0,
+.mod-airquality .mod-aqi-band--50,
+.mod-airquality .mod-aqi-band--100,
+.mod-airquality .mod-aqi-band--150,
+.mod-airquality .mod-aqi-band--200,
+.mod-airquality .mod-aqi-band--300 {
+  display: flex;
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;
@@ -132,6 +138,7 @@
   background: var(--danger)
 }
 
+.mod-airquality .mod-aqi-band--200,
 .mod-airquality .mod-aqi-band--300 {
   background: var(--uv-purple)
 }
@@ -151,6 +158,11 @@
 }
 
 .mod-airquality .airqualitywordbig {
+  position: absolute;
+  font-size: 1.4rem;
+  color: var(--ink-faint-4);
+  width: 200px;
+  font-family: weathertext2;
   margin-left: 50px;
   margin-top: 15px
 }
@@ -166,6 +178,10 @@
   line-height: 14px
 }
 
+[data-theme="light"] .mod-airquality .tempconvertercirclegreen,
+[data-theme="light"] .mod-airquality .tempconvertercircleorange,
+[data-theme="light"] .mod-airquality .tempconvertercirclepurple,
+[data-theme="light"] .mod-airquality .tempconvertercirclered,
 [data-theme="light"] .mod-airquality .tempconvertercircleyellow {
   display: flex;
   align-items: center;
@@ -213,7 +229,13 @@
   margin-left: 250px
 }
 
-[data-theme="light"] .mod-airquality .mod-aqi-band--50 {
+[data-theme="light"] .mod-airquality .mod-aqi-band--0,
+[data-theme="light"] .mod-airquality .mod-aqi-band--50,
+[data-theme="light"] .mod-airquality .mod-aqi-band--100,
+[data-theme="light"] .mod-airquality .mod-aqi-band--150,
+[data-theme="light"] .mod-airquality .mod-aqi-band--200,
+[data-theme="light"] .mod-airquality .mod-aqi-band--300 {
+  display: flex;
   margin-top: 15px;
   width: 5rem;
   height: 4.68rem;

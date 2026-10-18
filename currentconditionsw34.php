@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<title>weather34 current conditions</title>
-<style>
-uppercase{ text-transform:capitalize;}
-</style>
 <?php
 include('settings1.php');
 include_once('w34CombinedData.php');
@@ -28,11 +23,11 @@ $clouds = w34t('Cloudbase', 'Cloudbase');
 if ($windunit =='mph' ||  $windunit =='kts'){$distance="ft";}
 else if ($windunit =='km/h' ||  $windunit =='m/s'){$distance="m";}
 if ($weather["cloudbase3"]>0){
-if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]>=1999){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
-else if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]<1999){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
-else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
-else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</tblue><smalltempunit2>" ;}
-}?></div></div>
+if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]>=1999){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]<1999){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+}?></div>
 <div class="forecasticoncurrent"><span1>
 <?php 
 //homeweatherstation weather34 current conditions using hardware values
@@ -55,7 +50,7 @@ else if($weather["wind_speed_avg"]>=15){echo "<img rel='prefetch' src='css/svg/w
 else if(filesize('jsondata/me.txt')<160){
 echo "<img rel='prefetch' src='css/icons/offline.svg' width='70px' height='60px' alt='weather34 offline icon'>";}
 else {echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='70px' height='60px' alt='".htmlspecialchars($sky_desc)."'>";}
-?></div>
+?></span1></div>
 <div class="forecastsummary"><span>
 <?php echo '';
 if ($windunit=='kts'){$windunit="kn";}
@@ -95,13 +90,13 @@ else if($weather["cloud_cover"]<=100) {$weather["cloud_oktas"]="8 oktas";}
 ?>
 </span></div>
  <!-- weather34 generated Data--> 
-<div class="forecastnexthours" style="margin: 60px auto auto">
+<div class="forecastnexthours">
 <?php //weather34 average station data
 //echo "Average <span class=\"ink-oblue\">Cloud Cover</span> last 5 minutes <span class=\"ink-ogreen\">" .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. "(".$weather["cloud_oktas"].")";
 
 if ($visibility!==0){echo "</br>".w34t('Visibility', 'Visibility')." <span class=\"ink-oorange\">".$visibility."</span></br>";}
 if (strpos($weather["cloud_cover"],"N/A") == false){
-echo "<span class=\"ink-oblue\">".w34t('Cloudcover', 'Cloud Cover')."</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")";
+echo "<span class=\"ink-oblue\">".w34t('Cloudcover', 'Cloud Cover')."</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")</valuetext>";
 }
 
 
@@ -118,5 +113,5 @@ if($weather["wind_direction_avg"]>0){echo "<br>".w34t('CcAvg', 'Average')." ".w3
 else if($weather["wind_direction_avg"]<=168.75){echo w34_nobr($lang['SSEdir']);}else if($weather["wind_direction_avg"]<=191.25){echo w34_nobr($lang['Southdir']);}else if($weather["wind_direction_avg"]<=213.75){echo w34_nobr($lang['SSWdir']);}else if($weather["wind_direction_avg"]<=236.25){echo w34_nobr($lang['SWdir']);}else if($weather["wind_direction_avg"]<=258.75){echo w34_nobr($lang['WSWdir']);}else if($weather["wind_direction_avg"]<=281.25){echo w34_nobr($lang['Westdir']);}else if($weather["wind_direction_avg"]<=303.75){echo w34_nobr($lang['WNWdir']);}else if($weather["wind_direction_avg"]<=326.25){echo w34_nobr($lang['NWdir']);}else if($weather["wind_direction_avg"]<=348.75){echo w34_nobr($lang['NWNdir']);}else{echo w34_nobr($lang['Northdir']);}
 echo " </span><span class=\"ink-oblue\"> ".$weather["wind_direction_avg"]."</span>°";}
 echo "<br><span class=\"ink-oblue\">".w34t('Rainfall', 'Rainfall')."</span> ".w34t('RainLast3h', 'for the last 3 hours')." <span class=\"ink-oblue\"> " .$weather["rain_last3hours"]."</span><valuetext> " .$weather['rain_units'];
-?></valuetext></div></div></div>
+?></valuetext></div>
 </div><!-- /mod-conditions -->

@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:34:03 UTC
+   Generated: 2026-10-18 22:37:49 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -1360,6 +1360,20 @@
 [data-theme="light"] .mod-conditions .cloudconvertercircle {
   align-items: center;
 
+  width: 6.0rem;
+
+  font-family: weathertext2;
+
+  height: 1.25rem;
+
+  line-height: 16px;
+
+  overflow: hidden;
+
+  padding-top: 0;
+
+  color: var(--accent-ink);
+
   background: var(--hum-wet);
 
   border: 2px solid var(--line-light);
@@ -1483,9 +1497,13 @@
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  top: 58px !important;
+  top: 54px !important;
   margin: 0 !important;
   width: 240px !important;
+}
+
+.mod-conditions uppercase {
+  text-transform: capitalize;
 }
 
 .mod-conditions .cloudconverter {

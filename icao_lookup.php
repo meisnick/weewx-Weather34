@@ -3,11 +3,13 @@ $w34_local_only_message = json_encode(['error' => 'Only allowed from the local n
 include_once __DIR__ . '/local_only.php';
 header('Content-Type: application/json');
 
-$cfgPath = '/usr/local/bin/w34config.py';
+// one config for everything: the nowcast scripts read this file and /usr/local/bin/w34config.py
+// (used by the root cron fetchers) is a symlink to it
+$cfgPath = __DIR__ . '/scripts/w34config.py';
 
 function writeCfg($path, $icao) {
     if (!is_writable($path)) {
-        return "w34config.py not writable — run: sudo chown www-data {$path}";
+        return "w34config.py not writable — the web server needs group write on {$path}";
     }
     $cfg = file_get_contents($path);
     $cfg = preg_replace('/^ICAO\s*=\s*.*/m', "ICAO = \"{$icao}\"", $cfg);

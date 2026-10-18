@@ -88,7 +88,7 @@ SECTION_PROMPTS = {
     "short_term": (
         "Write: 'Highs [TEMP], [WEATHER].' Max 8 words total. "
         "Find the high temperature in the text and substitute it for [TEMP] — "
-        "use the actual number or range (e.g. 'mid-70s', 'upper 60s', '82°'). "
+        "use the exact number or range written in the text, never one from this example. "
         "For [WEATHER] use one brief weather fact. "
         "No 'and', 'with', 'also'. "
         "Example: 'Highs upper 70s, beach hazards Saturday.'"
@@ -220,6 +220,20 @@ def _has_jargon(text):
     return any(re.search(r'\b' + re.escape(w) + r'\b', lower) for w in OUTPUT_JARGON)
 
 
+def _ungrounded_numbers(summary, source):
+    """Numbers in the summary that never appear in the source text (the 1b model
+    sometimes copies figures from the prompt examples instead of the AFD)."""
+    have = set(re.findall(r'\d+', source))
+    return [n for n in re.findall(r'\d+', summary) if n not in have]
+
+
+def build_short_term_fallback(section_text):
+    """Deterministic 'Highs ...' line pulled straight from the AFD text."""
+    m = re.search(r'\bhighs?\b[^.]{0,60}?\b((?:lower|low|mid|middle|upper)[ -]?\d0s|\d{2,3}s?)\b',
+                  section_text, re.IGNORECASE | re.DOTALL)
+    return f"Highs {m.group(1)}." if m else ""
+
+
 def query_section(section_text, section_key, retries=2):
     if not section_text.strip():
         if section_key == "outlook":
@@ -300,11 +314,16 @@ def query_section(section_text, section_key, retries=2):
                             summary = val
 
                 if summary:
-                    last_summary = summary
-                    if not _has_jargon(summary):
-                        return summary
-                    # Jargon found — retry once with slightly higher temperature
-                    print(f"[{section_key}] Jargon detected in '{summary}', retrying...")
+                    invented = _ungrounded_numbers(summary, section_text)
+                    if not invented:
+                        last_summary = summary
+                        if not _has_jargon(summary):
+                            return summary
+                        # Jargon found — retry once with slightly higher temperature
+                        print(f"[{section_key}] Jargon detected in '{summary}', retrying...")
+                    else:
+                        # Never keep a summary with numbers the AFD doesn't contain
+                        print(f"[{section_key}] Ungrounded numbers {invented} in '{summary}', retrying...")
                     data["options"]["temperature"] = 0.2
 
         except Exception as e:
@@ -319,6 +338,8 @@ def query_section(section_text, section_key, retries=2):
         return last_summary
     if section_key == "outlook":
         return build_outlook_fallback(section_text)
+    if section_key == "short_term":
+        return build_short_term_fallback(section_text)
     return ""
 
 def apply_highlights(text):

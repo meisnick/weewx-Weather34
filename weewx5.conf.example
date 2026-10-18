@@ -87,6 +87,8 @@ version = 5.5.0
 
 [StdCalibrate]
     [[Corrections]]
+        # GW1000 reports only lux; derive solar radiation (W/m2) with Ecowitt gain 126.7
+        radiation = luminosity / 126.7
 
 [StdQC]
     [[MinMax]]

@@ -669,12 +669,11 @@ class Webserver():
                 binding = 'wx_binding'
             with weewx.manager.DBBinder(config_dict) as db_binder:
                 db_manager = db_binder.get_manager(binding)
-                for _ in range(1500):
-                    record = db_manager.getRecord(ts)
-                    if record == None:
-                        ts = ts + 60
-                    else:
-                        break;
+                # first record at or after the requested time; imported rows sit off the minute grid
+                # (e.g. 23:59:41), so stepping a minute at a time never found them
+                row = db_manager.getSql("SELECT MIN(dateTime) FROM %s WHERE dateTime >= ?" % db_manager.table_name, (int(ts),))
+                ts = row[0] if row and row[0] is not None else db_manager.lastGoodStamp()
+                record = db_manager.getRecord(ts)
                 if record == None:
                     ts = db_manager.firstGoodStamp()
                     record = db_manager.getRecord(ts)

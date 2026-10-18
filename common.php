@@ -190,6 +190,7 @@ switch ($lang) {
   }
 
 
-//path to language files
+//path to language files (English first, so keys a translation lacks fall back instead of rendering blank)
+include_once 'languages/lang.en.php';
 include_once 'languages/'.$lang_file;
 ?>

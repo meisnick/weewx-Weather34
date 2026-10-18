@@ -148,10 +148,10 @@ if ($rainunit=='in' && $wuapiunit=='h' ){$wuskydayprecipIntensity2=$wuskydayprec
 //rain mm to inches metric
 if ($rainunit=='in' && $wuapiunit=='m' ){$wuskydayprecipIntensity=$wuskydayprecipIntensity*0.0393701;}
 //icon + day wu
-echo '<div class="wulargeforecastinghome">';echo '<div class="wulargeweekdayhome">'.$wuskydayTime.'s Forecast</div><div class=wulargehomeicons>';
-if ($wuskydaynight=='D'){echo '<img src="css/wuicons/'.$wuskydayIcon.'.svg" width="50" height="40" alt="'.$wuskydesc.'" title="'.$wuskydesc.'"></img>';}
-if ($wuskydaynight=='N'){echo '<img src="css/wuicons/nt_'.$wuskydayIcon.'.svg" width="50" height="40" alt="'.$wuskydesc.'" title="'.$wuskydesc.'"></img>';}
-echo '</div><wulargetempdesc><value>'.$wuskydesc.'<value></wulargetempdesc><br>';
+echo '<div class="wulargeforecastinghome">';echo '<div class="wulargeweekdayhome">'.$wuskydayTime."'s Forecast</div><div class=\"wulargehomeicons\">";
+if ($wuskydaynight=='D'){echo '<img src="css/wuicons/'.$wuskydayIcon.'.svg" width="50" height="40" alt="'.$wuskydesc.'" title="'.$wuskydesc.'">';}
+if ($wuskydaynight=='N'){echo '<img src="css/wuicons/nt_'.$wuskydayIcon.'.svg" width="50" height="40" alt="'.$wuskydesc.'" title="'.$wuskydesc.'">';}
+echo '</div><wulargetempdesc><value>'.$wuskydesc.'</value></wulargetempdesc><br><br>';
 //temp non metric wu
 if($tempunit=='F' && $wuskydayTempHigh<44.6){echo '<wulargetemphihome><bluewu>'.number_format($wuskydayTempHigh,0).'°<wuunits>F</wuunits></bluewu></wulargetemphihome>';}
 else if($tempunit=='F' && $wuskydayTempHigh>104){echo '<wulargetemphihome><purplewu>'.number_format($wuskydayTempHigh,0).'°<wuunits>F</wuunits></purplewu></wulargetemphihome>';}
@@ -172,27 +172,27 @@ echo $wuskydayWinddircardinal;
 echo " </blueu>at ".$windalert2." <div class=wuwindspeed> ".number_format($wuskydayWindGust,0),"&nbsp;<wuunits>".$windunit;echo  '</wuunits></div></div>';'<br><br>';
 echo "<div class='wulargerain'>";
 //snow wu
-if ( $wuskydaysnow>0 && $rainunit=='in'){ echo ' Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> in</wuunits>';}
-else if ( $wuskydaysnow>0 && $rainunit=='mm'){ echo 'Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> cm</wuunits>';}
+if ( $wuskydaysnow>0 && $rainunit=='in'){ echo ' Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> in</wuunits></wulargetempwindhome>';}
+else if ( $wuskydaysnow>0 && $rainunit=='mm'){ echo 'Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> cm</wuunits></wulargetempwindhome>';}
 //rain wu
 else if ($wuskydayPrecipType='rain' && $rainunit=='in'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,2).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
 else if ($wuskydayPrecipType='rain' && $rainunit=='mm'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,1).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
 //uvindex wu
 echo '<br><div class=wulargeuvindex>UV Index &nbsp;<wuuvicon>&#9788;</wuuvicon>';
-if ($wuskydayUV>=10){echo 	"<purplewuv>".$wuskydayUV. '</purplewuv><wuinfo>'.$wuskydayUVdesc;}
-else  if ($wuskydayUV>7){echo 	"<redwuv>".$wuskydayUV. '</redwuv><wuinfo> '.$wuskydayUVdesc;}
-else if ($wuskydayUV>5){echo 	"<orangewuv>".$wuskydayUV. '</orangewuv><wuinfo> '.$wuskydayUVdesc;}
-else if ($wuskydayUV>2){echo 	"<yellowwuv>".$wuskydayUV. '</yellowwuv><wuinfo> '.$wuskydayUVdesc;}
-else if ($wuskydayUV>0){echo 	"<greenwuv>".$wuskydayUV. '</greenwuv><wuinfo>'.$wuskydayUVdesc;}	
-else if ($wuskydayUV==0){echo 	"<greywuv>".$wuskydayUV. '</greywuv><wuinfo> No Caution';}echo '</div>';
+if ($wuskydayUV>=10){echo 	"<purplewuv>".$wuskydayUV. '</purplewuv><wuinfo>'.$wuskydayUVdesc.'</wuinfo>';}
+else  if ($wuskydayUV>7){echo 	"<redwuv>".$wuskydayUV. '</redwuv><wuinfo> '.$wuskydayUVdesc.'</wuinfo>';}
+else if ($wuskydayUV>5){echo 	"<orangewuv>".$wuskydayUV. '</orangewuv><wuinfo> '.$wuskydayUVdesc.'</wuinfo>';}
+else if ($wuskydayUV>2){echo 	"<yellowwuv>".$wuskydayUV. '</yellowwuv><wuinfo> '.$wuskydayUVdesc.'</wuinfo>';}
+else if ($wuskydayUV>0){echo 	"<greenwuv>".$wuskydayUV. '</greenwuv><wuinfo>'.$wuskydayUVdesc.'</wuinfo>';}	
+else if ($wuskydayUV==0){echo 	"<greywuv>".$wuskydayUV. '</greywuv><wuinfo> No Caution</wuinfo>';}echo '</div>';
 ///wuheat index F
 echo "<div class=wulargeheatindex>";
 if ($tempunit=='F' && $wuskyheatindex>=84.2){echo "Heat Index ".$heatindexwu."<heatindexwu>".number_format($wuskyheatindex,0). '°<wuunits>F</wuunits></heatindexwu>';}
 //wu heat index C
 if ($tempunit=='C' && $wuskyheatindex>=29){echo "Heat Index ".$heatindexwu." <heatindexwu>".number_format($wuskyheatindex,0). '°<wuunits>C</wuunits></heatindexwu>';}
 //lightning wu
-echo '</div><div class=wulargeheatindex style="margin-top:27px;width:16em;margin-left:98px">';
-if ($wuskythunderidx>0 )  {echo 'Thunderstorms expected '.$wuskydayTime.' </wuthunder2>';}
+echo '</div><div class="wulargeheatindex wulargeheatindex--alert">';
+if ($wuskythunderidx>0 )  {echo 'Thunderstorms expected '.$wuskydayTime;}
 else if ($wuskythunderidx1>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime1. '&nbsp;'.$lightningalert8.'';}
 else if ($wuskythunderidx2>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime2. '&nbsp;'.$lightningalert8.'';}
 else if ($wuskythunderidx3>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime3. '&nbsp;'.$lightningalert8.'';}
@@ -240,5 +240,5 @@ else if ($wuskydayUV6>6 )  {echo $infowu.'<span class="ink-ored">High UV </span>
 else if ($wuskydayUV7>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime7. '&nbsp;'.$lightningalert8.'';}
 else if ($wuskydayUV8>6 )  {echo $infowu.'<span class="ink-ored">High UV </span> '.$wuskydayTime8. '&nbsp;'.$lightningalert8.'';}
 else echo $lightningalert8. "&nbsp;No Cautions";
-echo '</div>';?></div></div></div>
+echo '</div></div>';?></div></div></div>
 </div><!-- /mod-forecast -->

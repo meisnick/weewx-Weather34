@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:58:39 UTC
+   Generated: 2026-10-18 23:04:00 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -1623,8 +1623,12 @@
   color: var(--card-ink-blue)
 }
 
+.mod-forecast .forecastforecastinghome.forecastforecastinghome--borderless {
+  border: 0;
+}
+
 .mod-forecast .forecastweekdayhome {
-  position: absolutue;
+  position: static;
   text-align: center;
   padding: 1px;
   color: var(--card-ink-blue);
@@ -1669,6 +1673,10 @@
   font-size: 10px;
 }
 
+.mod-forecast .forecasttempdesc.forecasttempdesc--sm {
+  font-size: 0.53rem;
+}
+
 
 /* -- Light theme overrides -- */
 [data-theme="light"] .mod-forecast .forecastforecasthome {
@@ -1703,12 +1711,16 @@
   height: 143px;
   padding: 1px;
   background: 0;
-  border: 1px solid var(--line-faint);
+  border: 1px solid var(--line-soft);
   color: var(--card-ink-blue)
 }
 
+[data-theme="light"] .mod-forecast .forecastforecastinghome.forecastforecastinghome--borderless {
+  border: 0;
+}
+
 [data-theme="light"] .mod-forecast .forecastweekdayhome {
-  position: absolutue;
+  position: static;
   text-align: center;
   padding: 1px;
   color: var(--card-ink-blue);
@@ -1726,6 +1738,10 @@
   justify-content: center;
   font-size: 10px;
   margin-bottom: 0
+}
+
+[data-theme="light"] .mod-forecast .forecasttempdesc.forecasttempdesc--sm {
+  font-size: 0.53rem;
 }
 
 
@@ -1776,7 +1792,7 @@ float: left;
   color: var(--card-ink-blue)
 }
 .mod-forecast .wulargeweekdayhome {
-position: absolutue;
+position: static;
   text-align: left;
   padding: 1px;
   color: var(--card-ink-blue);
@@ -1863,6 +1879,11 @@ position: absolute;
 .mod-forecast .wulargeheatindex {
 margin-top: 27px
 }
+.mod-forecast .wulargeheatindex.wulargeheatindex--alert {
+  margin-top: 27px;
+  width: 16em;
+  margin-left: 98px;
+}
 .mod-forecast .wulargeheatindex wuinfo {
 position: absolute;
   display: inline;
@@ -1870,15 +1891,15 @@ position: absolute;
   width: 6em
 }
 [data-theme="light"] .mod-forecast .wulargediv,
-.mod-forecast .wulargeforecasthome,
-.mod-forecast .wulargeforecastinghome {
+[data-theme="light"] .mod-forecast .wulargeforecasthome,
+[data-theme="light"] .mod-forecast .wulargeforecastinghome {
 font-family: weathertext2;
   color: var(--card-ink-strong)
 }
 [data-theme="light"] .mod-forecast .wulargeforecasthome wulargetemphihome,
-.mod-forecast .wulargeforecasthome wulargetempwindhome span,
-.mod-forecast .wulargeforecasthome wulargetempwindhome span2,
-.mod-forecast .wulargeweekdayhome {
+[data-theme="light"] .mod-forecast .wulargeforecasthome wulargetempwindhome span,
+[data-theme="light"] .mod-forecast .wulargeforecasthome wulargetempwindhome span2,
+[data-theme="light"] .mod-forecast .wulargeweekdayhome {
 font-family: weathertext2;
   font-size: .65rem;
   color: var(--card-ink-strong)
@@ -1896,7 +1917,7 @@ float: left;
   color: var(--card-ink-strong)
 }
 [data-theme="light"] .mod-forecast .wulargeweekdayhome {
-position: absolutue;
+position: static;
   text-align: left;
   padding: 1px;
   color: var(--card-ink-strong);

@@ -112,9 +112,9 @@ if ($forecastthunderidx == 0) {
     }	//convert lightning index shorter phrases
 //icon + day aw
 echo '<div class="wulargeforecastinghome">';
-echo '<div class="wulargeweekdayhome">' . $forecastTime . 's Forecast</div><div class=wulargehomeicons>';
-echo '<img src="css/svg/'.$forecastIcon.'" width="52px" height="41px"  ></img>';
-echo '</div><wulargetempdesc><value>' . $forecastdesc . '<value></wulargetempdesc><br><br>';
+echo '<div class="wulargeweekdayhome">' . $forecastTime . 's Forecast</div><div class="wulargehomeicons">';
+echo '<img src="css/svg/'.$forecastIcon.'" width="52px" height="41px" alt="">';
+echo '</div><wulargetempdesc><value>' . $forecastdesc . '</value></wulargetempdesc><br><br>';
 //temp non metric aw
 if ($tempunit == 'F' && $forecastTempHigh < 44.6) {
     echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></bluewu></wulargetemphihome>';
@@ -152,9 +152,9 @@ echo '</wuunits></div></div>';
 echo "<div class='wulargerain'>";
 //snow aw
 if ($forecastsnow > 0 && $rainunit == 'in') {
-    echo ' Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> in</wuunits>';
+    echo ' Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> in</wuunits></wulargetempwindhome>';
 } else if ($forecastsnow > 0 && $rainunit == 'mm') {
-    echo 'Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> cm</wuunits>';
+    echo 'Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> cm</wuunits></wulargetempwindhome>';
 }
 //rain aw
 else if ($forecastPrecipType = 'rain' && $rainunit == 'in') {
@@ -165,17 +165,17 @@ else if ($forecastPrecipType = 'rain' && $rainunit == 'in') {
 //uvindex aw
 echo '<br><div class=wulargeuvindex>UV Index &nbsp;<wuuvicon>&#9788;</wuuvicon>';
 if ($forecastUV >= 10) {
-    echo "<purplewuv>" . $forecastUV . '</purplewuv><wuinfo>' . $forecastUVdesc;
+    echo "<purplewuv>" . $forecastUV . '</purplewuv><wuinfo>' . $forecastUVdesc . '</wuinfo>';
 } else if ($forecastUV > 7) {
-    echo "<redwuv>" . $forecastUV . '</redwuv><wuinfo> ' . $forecastUVdesc;
+    echo "<redwuv>" . $forecastUV . '</redwuv><wuinfo> ' . $forecastUVdesc . '</wuinfo>';
 } else if ($forecastUV > 5) {
-    echo "<orangewuv>" . $forecastUV . '</orangewuv><wuinfo> ' . $forecastUVdesc;
+    echo "<orangewuv>" . $forecastUV . '</orangewuv><wuinfo> ' . $forecastUVdesc . '</wuinfo>';
 } else if ($forecastUV > 2) {
-    echo "<yellowwuv>" . $forecastUV . '</yellowwuv><wuinfo> ' . $forecastUVdesc;
+    echo "<yellowwuv>" . $forecastUV . '</yellowwuv><wuinfo> ' . $forecastUVdesc . '</wuinfo>';
 } else if ($forecastUV > 0) {
-    echo "<greenwuv>" . $forecastUV . '</greenwuv><wuinfo>' . $forecastUVdesc;
+    echo "<greenwuv>" . $forecastUV . '</greenwuv><wuinfo>' . $forecastUVdesc . '</wuinfo>';
 } else if ($forecastUV == 0) {
-    echo "<greywuv>" . $forecastUV . '</greywuv><wuinfo> No Caution';
+    echo "<greywuv>" . $forecastUV . '</greywuv><wuinfo> No Caution</wuinfo>';
 }
 echo '</div>';
 ///awheat index F
@@ -188,9 +188,9 @@ if ($tempunit == 'C' && $forecastheatindex >= 29) {
     echo "Heat Index " . $heatindexwu . " <heatindexwu>" . number_format($forecastheatindex, 0) . '°<wuunits>C</wuunits></heatindexwu>';
 }
 //lightning aw
-echo '</div><div class=wulargeheatindex style="margin-top:27px;width:16em;margin-left:98px">';
+echo '</div><div class="wulargeheatindex wulargeheatindex--alert">';
 if ($forecastthunderidx > 0) {
-    echo 'Thunderstorms expected ' . $forecastTime . ' </wuthunder2>';
+    echo 'Thunderstorms expected ' . $forecastTime;
 } else if ($forecastthunderidx1 > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
 } else if ($forecastthunderidx2 > 0) {
@@ -286,5 +286,5 @@ else if ($forecastUV1 > 6) {
 }
 //else
 //    echo $lightningalert8 . "&nbsp;No Cautions";
-echo '</div>';
-?></div></div></div></div><!-- /mod-forecast -->
+echo '</div></div>';
+?></div></div></div><!-- /mod-forecast -->

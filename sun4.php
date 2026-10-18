@@ -1,4 +1,4 @@
-<?php include_once('w34CombinedData.php');include_once('common.php');error_reporting(0);
+<?php include_once('w34CombinedData.php');include_once('common.php');include_once('w34_i18n.php');error_reporting(0);
 if($theme==="dark"){$stroke="#ffd348";}
 else if($theme==="light"){$stroke="#faa716";}
 # heavily modified version of Wim weather display version cleaner output
@@ -37,16 +37,16 @@ if ($now < $firstrise) {
 $time = $firstrise - $now; 
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt = '<value>&nbsp;Till Sunrise';
+$txt = '<value>&nbsp;Till Sunrise'; $tillLabel = w34t('TillSunrise', 'Till Sunrise');
 } elseif ($now < $firstset) { 
 $time = $firstset - $now; 
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt = ' &nbsp;<value>Till Sunset';
-} else { $time = $secondrise - $now; 
+$txt = ' &nbsp;<value>Till Sunset'; $tillLabel = w34t('TillSunset', 'Till Sunset');
+} else { $time = $secondrise - $now; $tillLabel = w34t('TillSunrise', 'Till Sunrise');
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt ='&nbsp;<value>Till Sunrise'; } echo "</value>";
+$txt ='&nbsp;<value>Till Sunrise'; }
 
 //sun position based on https://github.com/KiboOst/php-sunPos
 class sunPos {
@@ -235,29 +235,29 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
     <!-- LEFT COLUMN -->
     <div class="sun-col-left">
       <div class="sun-block">
-        <value class="daylighthours"><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> hrs</value>
+        <value class="daylighthours"><weather34daylightdaycircle></weather34daylightdaycircle> <?php echo $daylight;?> <?php echo w34t('HrsShort', 'hrs');?></value><br>
         <span class="daylighttext"><?php echo $lang['TotalDaylight'];?></span>
       </div>
       
       <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
       <div class="sun-block">
-        <span class="moonphasetext">Moon Phase</span><br>
-        <value class="moonphasevalue"><?php echo $weather["moonphase"];?></value><br>
+        <span class="moonphasetext"><?php echo w34t('MoonPhase', 'Moon Phase');?></span><br>
+        <value class="moonphasevalue"><?php echo w34_moonphase($weather["moonphase"]);?></value><br>
         <span class="moonrisetext"><?php echo $lang['Moonrise'];?></span><br>
-        <value class="moonrisevalue"><?php echo $weather['moonrise'];?></value>
+        <value class="moonrisevalue"><?php echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'));?></value>
       </div>
       <?php endif; ?>
       
       <div class="sun-block">
         <value class="sunrisetext"><?php echo $sunuphalf.''.$lang['Sunrise'];?></value><br>
         <span class="sunrisetime"><?php echo $nextrisetxt.' '.$nextrise;?></span><br>
-        <span class="firstlighttext">First Light (<blueu><?php echo $nextfirstlight;?></blueu>)</span>
+        <span class="firstlighttext"><?php echo w34t('FirstLight', 'First Light');?> (<blueu><?php echo $nextfirstlight;?></blueu>)</span>
       </div>
     </div>
 
     <!-- CENTER COLUMN (The Graphic) -->
     <div class="sun-col-center">
-      <div class="daylightword">Daylight</div>
+      <div class="daylightword"><?php echo w34t('Daylight', 'Daylight');?></div>
       
       <!-- The Containment Box -->
       <div class="sun-graphic-container">
@@ -271,38 +271,38 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
           </div>
         </div>
         <div class="daylightvalue1">
-          <span class="estimatedtext">Estimated</span><br>
-          <span class="hrsmintext">hrs&nbsp;&nbsp;&nbsp;&nbsp;min</span><br>
+          <span class="estimatedtext"><?php echo w34t('Estimated', 'Estimated');?></span><br>
+          <span class="hrsmintext"><?php echo w34t('HrsShort', 'hrs');?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo w34t('MinShort', 'min');?></span><br>
           <hours><?php echo $hrs;?></hours> <minutes><?php echo $min;?></minutes><br>
-          <span class="tillsunsettext">Till Sunset</span>
+          <span class="tillsunsettext"><?php echo $tillLabel; ?></span>
         </div>
       </div>
       
       <div class="elevationword">
-        Sun Elevation <span><maxred><?php echo $elev1;?></maxred></span>
+        <?php echo w34t('SunElevation', 'Sun Elevation');?> <span><maxred><?php echo $elev1;?></maxred></span>
       </div>
     </div>
 
     <!-- RIGHT COLUMN -->
     <div class="sun-col-right">
       <div class="sun-block">
-        <value class="darknesshours"><?php echo $darkhours.":".$darkminutes;?> hrs <weather34darkdaycircle></weather34darkdaycircle></value>
+        <value class="darknesshours"><?php echo $darkhours.":".$darkminutes;?> <?php echo w34t('HrsShort', 'hrs');?> <weather34darkdaycircle></weather34darkdaycircle></value><br>
         <span class="darknesstext"><?php echo $lang['TotalDarkness'];?></span>
       </div>
       
       <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
       <div class="sun-block">
-        <span class="luminancetext">Luminance</span><br>
+        <span class="luminancetext"><?php echo w34t('Luminance', 'Luminance');?></span><br>
         <value class="luminancevalue"><?php echo $weather["luminance"];?>%</value><br>
         <span class="moonsettext"><?php echo $lang['Moonset'];?></span><br>
-        <value class="moonsetvalue"><?php echo $weather['moonset'];?></value>
+        <value class="moonsetvalue"><?php echo w34_words($weather['moonset'], array('Set' => 'MoonSetShort'));?></value>
       </div>
       <?php endif; ?>
       
       <div class="sun-block">
         <value class="sunsettext"><?php echo $sundownhalf.''.$lang['Sunset'];?></value><br>
         <span class="sunsettime"><?php echo $nextsettxt.' '.$nextset;?></span><br>
-        <span class="lastlighttext">Last Light (<blueu><?php echo $nextlastlight;?></blueu>)</span>
+        <span class="lastlighttext"><?php echo w34t('LastLight', 'Last Light');?> (<blueu><?php echo $nextlastlight;?></blueu>)</span>
       </div>
     </div>
   </div>

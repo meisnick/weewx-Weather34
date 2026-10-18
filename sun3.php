@@ -46,7 +46,7 @@ $txt = ' &nbsp;<value>Till Sunset'; $tillLabel = w34t('TillSunset', 'Till Sunset
 } else { $time = $secondrise - $now; $tillLabel = w34t('TillSunrise', 'Till Sunrise');
 $hrs = gmdate ('G',$time); 
 $min = gmdate ('i',$time); 
-$txt ='&nbsp;<value>Till Sunrise'; } echo "</value>";
+$txt ='&nbsp;<value>Till Sunrise'; }
 
 //sun position based on https://github.com/KiboOst/php-sunPos
 class sunPos {

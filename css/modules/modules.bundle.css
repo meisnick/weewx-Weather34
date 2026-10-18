@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:30:25 UTC
+   Generated: 2026-10-18 22:34:03 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -3734,7 +3734,7 @@ rainratetextheading {
 /* sandbox-tuned vertical placement (nudge content down to sit like Prod) */
 .mod-sun .sun-grid   { position: relative; top: 4px; }
 .mod-sun .sun-col-left   { position: relative; top: 7px; }
-.mod-sun .sun-col-right  { position: relative; top: 8px; }
+.mod-sun .sun-col-right  { position: relative; top: 7px; }
 .mod-sun .sun-col-center { position: relative; top: 5px; }
 
 /* Left & Right Columns */
@@ -3772,14 +3772,15 @@ rainratetextheading {
 .mod-sun .sunrisetext    { position: relative; top: -1px; }
 .mod-sun .sunrisetime    { position: relative; top: 1px; }
 .mod-sun .firstlighttext { position: relative; top: 3px; }
-.mod-sun .sunsettext     { position: relative; top: -2px; }
-.mod-sun .lastlighttext  { position: relative; top: 2px; }
+.mod-sun .sunsettext     { position: relative; top: -1px; }
+.mod-sun .sunsettime     { position: relative; top: 1px; }
+.mod-sun .lastlighttext  { position: relative; top: 3px; }
 .mod-sun .luminancetext  { position: relative; top: -1px; }
 .mod-sun .luminancevalue { position: relative; top: 1px; }
 .mod-sun .moonsettext    { position: relative; top: 2px; }
 .mod-sun .moonsetvalue   { position: relative; top: 4px; }
-.mod-sun .darknesstext   { position: relative; top: 2px; }
-.mod-sun .darknesshours  { position: relative; top: -1px; }
+.mod-sun .darknesstext   { position: relative; top: 3px; }
+.mod-sun .darknesshours  { position: relative; top: 0; }
 
 /* Center Column (The Graphic) */
 .mod-sun .sun-col-center {
@@ -3879,6 +3880,9 @@ rainratetextheading {
   border: 4px solid var(--card-bg-2);
   box-sizing: border-box;
   z-index: 1;
+}
+[data-theme="light"] .mod-sun .circleborder {
+  border-color: var(--line-soft);
 }
 
 /* The rotating sun dot. Wrapper is 112x112, top/left 9px */

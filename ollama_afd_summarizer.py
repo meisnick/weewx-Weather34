@@ -3,11 +3,18 @@ import urllib.request
 import json
 import re
 import os
+import sys
 import time
 from datetime import datetime
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "scripts"))
+try:
+    import w34config as cfg
+except ImportError:
+    cfg = None
 
 # Configuration
-NWS_TXT_URL = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus63.kmkx.afd.mkx.txt"
+# Area Forecast Discussion for the local NWS office; set AFD_URL in scripts/w34config.py for another office
+NWS_TXT_URL = getattr(cfg, "AFD_URL", "https://tgftp.nws.noaa.gov/data/raw/fx/fxus63.kmkx.afd.mkx.txt")
 OLLAMA_URL  = "http://localhost:11434/api/chat"
 MODEL_NAME  = "gemma3:1b"
 CACHE_PATH  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jsondata", "afd_summary.json")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-forecast_logger.py — NWS hourly forecast logger for MKX/85,85
+forecast_logger.py — NWS hourly forecast logger for the station's grid cell (from w34config LAT/LON)
 
 Fetches the NWS hourly forecast and stores each forecast period so we can
 later compare what was predicted vs. what the weewx station actually recorded.
@@ -30,10 +30,19 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import w34config as cfg
 
-FORECAST_URL  = "https://api.weather.gov/gridpoints/MKX/85,85/forecast/hourly"
+# NWS hourly forecast for the station: w34config.NWS_HOURLY_URL if set, else looked up from LAT/LON
+FORECAST_URL  = getattr(cfg, "NWS_HOURLY_URL", None)
 FORECAST_DB   = Path(cfg.NOWCAST_LOCAL_LOG_DB)
 WEEWX_DB      = Path("/var/lib/weewx/weewx.sdb")
 HEADERS       = {"User-Agent": "weewx-forecast-compare/1.0 (meisnickbuck@gmail.com)"}
+
+def resolve_forecast_url():
+    """Hourly forecast URL for the configured station (points API gives the office and grid cell)."""
+    if FORECAST_URL:
+        return FORECAST_URL
+    req = urllib.request.Request(f"https://api.weather.gov/points/{cfg.LAT:.4f},{cfg.LON:.4f}", headers=HEADERS)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read())["properties"]["forecastHourly"]
 
 WIND_DIR_DEGREES = {
     "N": 0, "NNE": 22, "NE": 45, "ENE": 67,
@@ -74,7 +83,7 @@ def init_db(conn):
     conn.commit()
 
 def fetch_forecast():
-    req = urllib.request.Request(FORECAST_URL, headers=HEADERS)
+    req = urllib.request.Request(resolve_forecast_url(), headers=HEADERS)
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read())
 
@@ -121,7 +130,7 @@ def get_weewx_hourly(weewx_conn, valid_time):
             AVG(outTemp)    as temp_f,
             AVG(dewpoint)   as dewpt_f,
             AVG(outHumidity) as rh,
-            AVG(windDir)    as wind_deg,
+            mod(degrees(atan2(SUM((COALESCE(windSpeed, 0) + 0.01) * sin(radians(windDir))), SUM((COALESCE(windSpeed, 0) + 0.01) * cos(radians(windDir))))) + 360.0, 360.0) as wind_deg,  -- vector mean: AVG() wraps at north
             AVG(windSpeed)  as wind_mph,
             AVG(barometer)  as pressure,
             COUNT(*)        as n

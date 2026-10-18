@@ -55,7 +55,7 @@ def fetch_weewx_hourly(wconn, from_ts, to_ts):
             AVG(dewpoint)             AS dewpt_f,
             AVG(outHumidity)          AS rh_pct,
             AVG(barometer)            AS pressure,
-            AVG(windDir)              AS wind_dir,
+            mod(degrees(atan2(SUM((COALESCE(windSpeed, 0) + 0.01) * sin(radians(windDir))), SUM((COALESCE(windSpeed, 0) + 0.01) * cos(radians(windDir))))) + 360.0, 360.0) AS wind_dir,  -- vector mean: AVG() wraps at north
             AVG(windSpeed)            AS wind_mph,
             AVG(radiation)            AS solar,
             SUM(rain)                 AS rain_in,

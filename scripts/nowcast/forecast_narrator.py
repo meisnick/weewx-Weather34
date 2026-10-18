@@ -72,19 +72,16 @@ NOWCAST_ONSHORE_NAME  = cfg.NOWCAST_ONSHORE_NAME
 LAKE_NEUTRAL  = {"N", "NNE", "NNW", "S", "SSE", "SSW"}
 LAKE_OFFSHORE = {"W", "WNW", "WSW", "SW", "NW"}
 
-def interpret(data):
-    """Pre-reason the key facts into an explicit draft sentence with mandatory terms."""
+def effective_rain_pct(data):
+    """Analogue rain chance, raised by the physical heuristics below.
+
+    interpret() words the forecast from this and write_output() stores it as rain_pct_6h, so the
+    card's percentage and the sentence under it agree."""
     cur = data["current"]
     fc  = data["forecast"]
-    solar_ctx = data.get("solar_context", {})
-
-    temp_now  = cur["temp_f"]
-    temp_6h   = fc.get("6", fc.get("4", {})).get("mean_f")
-    temp_1h   = fc.get("1", {}).get("mean_f")
-    
     # Calculate max rain probability across future window from analogues
     rain_pct  = max((fc[h]["rain_pct"] for h in fc), default=0)
-    
+
     # Meteorological Physical Rain Heuristics:
     # 1. Any analogue detected rain (e.g. >= 5%)
     # 2. Strong single-station pressure drop (dp_3h <= -0.030)
@@ -93,7 +90,7 @@ def interpret(data):
     dew_spread = cur.get("dew_spread")
     rh_pct = cur.get("rh_pct")
     dp_3h = cur.get("dp_3h")
-    
+
     if rain_pct >= 5:
         # Analogues captured precipitation in some past occurrences
         rain_pct = max(rain_pct, 20)
@@ -106,6 +103,19 @@ def interpret(data):
     elif (dew_spread is not None and dew_spread <= 4.0) or (rh_pct is not None and rh_pct >= 88.0):
         # Surface saturation
         rain_pct = max(rain_pct, 20)
+    return rain_pct
+
+def interpret(data):
+    """Pre-reason the key facts into an explicit draft sentence with mandatory terms."""
+    cur = data["current"]
+    fc  = data["forecast"]
+    solar_ctx = data.get("solar_context", {})
+
+    temp_now  = cur["temp_f"]
+    temp_6h   = fc.get("6", fc.get("4", {})).get("mean_f")
+    temp_1h   = fc.get("1", {}).get("mean_f")
+    
+    rain_pct  = effective_rain_pct(data)
 
     pressure  = cur.get("pressure_trend", af.pressure_label(cur.get("dp_3h")))
     wind      = cur.get("wind_label", af.wind_label(cur.get("wind_dir")))
@@ -203,7 +213,7 @@ def write_output(data, sentence):
     """Write combined JSON atomically to the web directory."""
     cur = data["current"]
     fc  = data["forecast"]
-    rain_pct = max((fc[h]["rain_pct"] for h in fc), default=0)
+    rain_pct = effective_rain_pct(data)
 
     out = {
         "generated_utc": data["as_of"],
@@ -216,6 +226,7 @@ def write_output(data, sentence):
         "wind_dir_deg":   round(cur["wind_dir"], 1) if cur["wind_dir"] is not None else None,
         "rh_pct":         round(cur["rh_pct"], 1) if cur["rh_pct"] is not None else None,
         "rain_pct_6h":    rain_pct,
+        "rain_pct_analogue": max((fc[h]["rain_pct"] for h in fc), default=0),
         "solar_context":  data.get("solar_context", {}),
         "n_analogues":    data["n_analogues"],
         "forecast_intervals": fc,

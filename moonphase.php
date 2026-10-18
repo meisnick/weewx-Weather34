@@ -10,6 +10,7 @@
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include('weather34skydata.php');
 include('common.php');
+include_once('w34_i18n.php');
 header('Content-type: text/html; charset=utf-8');?>
 <?php 
 // homeweatherstation sun & moon information kind of a unique approach  // updated september 4th 2016 //
@@ -102,7 +103,7 @@ header('Content-type: text/html; charset=utf-8');?>
 		// end homeweatherstation calculations		 
 ?>
 <?php 
-$meteor_default="No Meteor Showers";
+$meteor_default=w34t('NoMeteorShower', 'No Meteor Showers');
 $meteor_events[]=array("event_start"=>mktime(0, 0, 0, 1, 1),"event_title"=>"Quadrantids","event_end"=>mktime(23, 59, 59, 1, 2),);
 $meteor_events[]=array("event_start"=>mktime(0, 0, 0, 1, 3),"event_title"=>"Quadrantids peak","event_end"=>mktime(23, 59, 59, 1, 4),);
 $meteor_events[]=array("event_start"=>mktime(0, 0, 0, 1, 5),"event_title"=>"Quadrantids","event_end"=>mktime(23, 59, 59, 1, 12),);
@@ -135,7 +136,7 @@ foreach ($meteor_events as $meteor_check) {
 <div class="mod-moonphase">
 <div class="moonphasemoduleposition">
 <div class="moonrise1">
-<svg id="weather34 moon rise" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#ff9350" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">    <path d="M30 20 L16 8 2 20" /></svg> <?php echo $lang['Moon'];?> <br /><blueu><?php  echo $weather['moonrise'];?>
+<svg id="weather34 moon rise" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#ff9350" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">    <path d="M30 20 L16 8 2 20" /></svg> <?php echo $lang['Moon'];?> <br /><blueu><?php  echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'));?>
 
  
 <div class="weather34moonmodulepos">
@@ -183,7 +184,7 @@ echo "$nextnewmoon";
 <svg id="weather34 moon set" viewBox="0 0 32 32" width="6" height="6" fill="none" stroke="#f26c4f" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">
     <path d="M30 12 L16 24 2 12" /></svg>
 <?php echo $lang['Moon']?><div class="nextnewmoon">
-<?php echo  $weather['moonset'];?></span> 
+<?php echo  w34_words($weather['moonset'], array('Set' => 'MoonSetShort'));?></span> 
 
 </div></div>
 <div class="meteorshower"><svg xmlns='http://www.w3.org/2000/svg' width='10px' height='10px' viewBox='0 0 16 16'><path fill='currentcolor' d='M0 0l14.527 13.615s.274.382-.081.764c-.355.382-.82.055-.82.055L0 0zm4.315 1.364l11.277 10.368s.274.382-.081.764c-.355.382-.82.055-.82.055L4.315 1.364zm-3.032 2.92l11.278 10.368s.273.382-.082.764c-.355.382-.819.054-.819.054L1.283 4.284zm6.679-1.747l7.88 7.244s.19.267-.058.534-.572.038-.572.038l-7.25-7.816zm-5.68 5.13l7.88 7.244s.19.266-.058.533-.572.038-.572.038l-7.25-7.815zm9.406-3.438l3.597 3.285s.094.125-.029.25c-.122.125-.283.018-.283.018L11.688 4.23zm-7.592 7.04l3.597 3.285s.095.125-.028.25-.283.018-.283.018l-3.286-3.553z'/></svg>
@@ -191,6 +192,6 @@ echo "$nextnewmoon";
 echo $meteor_default;?>
 </div>
 
-<?php echo'<div class="weather34moonphasem2">Moon Phase<br>'.$weather["moonphase"].'</div>
-<div class="weather34luminancem2">Luminance<br>'.$weather["luminance"].'% </div>';?>
+<?php echo'<div class="weather34moonphasem2">'.w34t('MoonPhase', 'Moon Phase').'<br>'.w34_moonphase($weather["moonphase"]).'</div>
+<div class="weather34luminancem2">'.w34t('Luminance', 'Luminance').'<br>'.$weather["luminance"].'% </div>';?>
 </div><!-- /mod-moonphase -->

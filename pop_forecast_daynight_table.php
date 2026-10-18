@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -44,46 +45,46 @@ for ($k = 0;$k < 14;$k++)
     $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'];
     $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'];
     $Time[$k] = date("H", $parsed_json['response'][0]['periods'][$k]['timestamp']);
-    $nameDay[$k] = date("l", $parsed_json['response'][0]['periods'][$k]['timestamp']);
+    $nameDay[$k] = w34_date("l", $parsed_json['response'][0]['periods'][$k]['timestamp']);
 
     if ($Time[0] === "07")
     {
-        $forecastTime[0] = "Today";
-        $forecastTime[1] = "Tonight";
-        $forecastTime[2] = "Tomorrow";
-        $forecastTime[3] = "Tomorrow Night";
+        $forecastTime[0] = w34t('Today', 'Today');
+        $forecastTime[1] = w34t('Tonight', 'Tonight');
+        $forecastTime[2] = w34t('Tomorrow', 'Tomorrow');
+        $forecastTime[3] = w34t('Tomorrownight', 'Tomorrow Night');
         $forecastTime[4] = $nameDay[4];
-        $forecastTime[5] = $nameDay[5] . " Night";
+        $forecastTime[5] = $nameDay[5] . ' ' . w34t('Night', 'Night');
         $forecastTime[6] = $nameDay[6];
-        $forecastTime[7] = $nameDay[7] . " Night";
+        $forecastTime[7] = $nameDay[7] . ' ' . w34t('Night', 'Night');
         $forecastTime[8] = $nameDay[8];
-        $forecastTime[9] = $nameDay[9] . " Night";
+        $forecastTime[9] = $nameDay[9] . ' ' . w34t('Night', 'Night');
         $forecastTime[10] = $nameDay[10];
-        $forecastTime[11] = $nameDay[11] . " Night";
+        $forecastTime[11] = $nameDay[11] . ' ' . w34t('Night', 'Night');
         $forecastTime[12] = $nameDay[12];
-        $forecastTime[13] = $nameDay[13] . " Night";
+        $forecastTime[13] = $nameDay[13] . ' ' . w34t('Night', 'Night');
         $forecastTime[14] = $nameDay[14];
-        $forecastTime[15] = $nameDay[15] . " Night";
+        $forecastTime[15] = $nameDay[15] . ' ' . w34t('Night', 'Night');
         $forecastTime[16] = $nameDay[16];
-        $forecastTime[17] = $nameDay[17] . " Night";
+        $forecastTime[17] = $nameDay[17] . ' ' . w34t('Night', 'Night');
     }
     else if ($Time[0] === "19")
     {
-        $forecastTime[0] = "Tonight";
-        $forecastTime[1] = "Tomorrow";
-        $forecastTime[2] = "Tomorrow Night";
+        $forecastTime[0] = w34t('Tonight', 'Tonight');
+        $forecastTime[1] = w34t('Tomorrow', 'Tomorrow');
+        $forecastTime[2] = w34t('Tomorrownight', 'Tomorrow Night');
         $forecastTime[3] = $nameDay[3];
-        $forecastTime[4] = $nameDay[4] . " Night";
+        $forecastTime[4] = $nameDay[4] . ' ' . w34t('Night', 'Night');
         $forecastTime[5] = $nameDay[5];
-        $forecastTime[6] = $nameDay[6] . " Night";
+        $forecastTime[6] = $nameDay[6] . ' ' . w34t('Night', 'Night');
         $forecastTime[7] = $nameDay[7];
-        $forecastTime[8] = $nameDay[8] . " Night";
+        $forecastTime[8] = $nameDay[8] . ' ' . w34t('Night', 'Night');
         $forecastTime[9] = $nameDay[9];
-        $forecastTime[10] = $nameDay[10] . " Night";
+        $forecastTime[10] = $nameDay[10] . ' ' . w34t('Night', 'Night');
         $forecastTime[11] = $nameDay[11];
-        $forecastTime[12] = $nameDay[12] . " Night";
+        $forecastTime[12] = $nameDay[12] . ' ' . w34t('Night', 'Night');
         $forecastTime[13] = $nameDay[13];
-        $forecastTime[14] = $nameDay[14] . " Night";
+        $forecastTime[14] = $nameDay[14] . ' ' . w34t('Night', 'Night');
     }
 
     $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['maxTempC'];
@@ -99,9 +100,9 @@ for ($k = 0;$k < 14;$k++)
     $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
     $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
     $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
+    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
     $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = $parsed_json['response'][0]['periods'][$k]['weatherPrimary'];
+    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
     $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
     $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
     if ($forecastUV[$k] === 0 or $forecastUV[$k] === null)

@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -378,7 +379,7 @@ var weather34moonCurve;var lf=Math.min(3-4*(phase/30),1);var lc=Math.abs(lf*50);
 var rf=Math.min(3+4*((phase-30)/30),1);	var rc=Math.abs(rf*50);	var rb=(rf<0) ? "0" : "1";weather34moonCurve="M 50,0 "+ "a "+s(lc)+",50 0 0 "+lb+" 0,100 "+ "a "+s(rc)+",50 0 0 "+rb+" 0,-100";
 document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}</script> 
    <div class=moonphasetext>    
-<?php echo " ";{$day = date('l jS F Y');if($day===date("l jS F Y",strtotime('2019-7-2'))){echo 'Solar <orange>Eclipse</orange>';}else if($day===date("l jS F Y",strtotime('2019-7-16'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===date("l jS F Y",strtotime('2019-7-17'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Eclipse</orange>';}		
+<?php echo " ";{$day = w34_date('l jS F Y');if($day===w34_date("l jS F Y",strtotime('2019-7-2'))){echo 'Solar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-16'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-17'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Eclipse</orange>';}		
 // weather34 moonphase no scraping its calculated from the livedata !
 	else echo "<aqivalue1>".$weather['moonphase']." </aqivalue1>";}?>             
 <br>
@@ -410,12 +411,12 @@ Next Full Moon: <?php  // homeweatherstation fullmoon info output 18th Aug
 $now1 =time();$moon1 = new MoonPhase();
 echo "";
 if ($now1 < $moon1->full_moon()) 
-{echo date('D jS-M-Y', $moon1->full_moon() );}
-else echo date('D jS-M-Y', $moon1->next_full_moon() );
+{echo w34_date('D jS-M-Y', $moon1->full_moon() );}
+else echo w34_date('D jS-M-Y', $moon1->next_full_moon() );
 ?></span><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /> <path d="M6 6 L26 26" /></svg>
-Next New Moon:<?php $moon=new MoonPhase();$nextnewmoon=date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
+Next New Moon:<?php $moon=new MoonPhase();$nextnewmoon=w34_date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
 </span><br /><svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(154, 186, 47, 1.00)" stroke="rgba(154, 186, 47, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
 <?php // homeweatherstation create an instance of the age of moon

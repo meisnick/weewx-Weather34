@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 include('w34CombinedData.php');
 include('settings1.php');
@@ -178,8 +179,8 @@ body { display: flex; flex-direction: column; }
       
       <div style="font-size:0.7em;color:<?php echo $text_dim; ?>;margin-bottom:8px;line-height:1.4;border-bottom:1px solid <?php echo $border; ?>;padding-bottom:6px;">
         <strong><?php echo $lang['Headline']; ?>:</strong> <span style="color: <?php echo $is_dark ? '#eee' : '#222'; ?>;"><?php echo htmlspecialchars($a['headline']); ?></span><br>
-        <?php if (!empty($a['effective'])): ?><strong><?php echo $lang['Effective']; ?>:</strong> <?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
-        <?php if (!empty($a['expires'])): ?><strong><?php echo $lang['Expires']; ?>:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
+        <?php if (!empty($a['effective'])): ?><strong><?php echo $lang['Effective']; ?>:</strong> <?php echo htmlspecialchars(w34_date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
+        <?php if (!empty($a['expires'])): ?><strong><?php echo $lang['Expires']; ?>:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(w34_date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
       </div>
       
       <div class="fcst-card-text"><?php echo nl2br(htmlspecialchars(trim($a['description']))); ?></div>

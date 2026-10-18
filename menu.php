@@ -8,12 +8,13 @@
 <?php
   // Sensor health check-engine light. Reads persisted signal/battery columns
   // from the archive -- see [GW1000] field_map_extensions in weewx.conf.
+  include_once('w34_i18n.php');
   include_once('sensor_health.php');
   $w34h    = w34_sensor_health();
   $w34hTip = $w34h['state'] === 'ok'
-           ? 'All sensors reporting normally'
+           ? w34t('AllSensorsOk', 'All sensors reporting normally')
            : implode(' | ', $w34h['issues']);
-  $w34hTxt = $w34h['state'] === 'ok' ? 'SENSORS' : strtoupper($w34h['state']);
+  $w34hTxt = $w34h['state'] === 'ok' ? mb_strtoupper(w34t('Sensors', 'Sensors')) : strtoupper($w34h['state']);
 ?>
         <weather34mbhealth id="w34health" class="is-<?php echo $w34h['state']; ?>"
           title="<?php echo htmlspecialchars($w34hTip, ENT_QUOTES); ?>">
@@ -32,10 +33,10 @@
               .then(function (d) {
                 el.className = 'is-' + d.state;
                 el.title = d.state === 'ok'
-                  ? 'All sensors reporting normally'
+                  ? <?php echo json_encode(w34t('AllSensorsOk', 'All sensors reporting normally')); ?>
                   : d.issues.join(' | ');
                 var t = el.querySelector('.w34health__txt');
-                if (t) t.textContent = d.state === 'ok' ? 'SENSORS' : d.state.toUpperCase();
+                if (t) t.textContent = d.state === 'ok' ? <?php echo json_encode(mb_strtoupper(w34t('Sensors', 'Sensors'))); ?> : d.state.toUpperCase();
               })
               .catch(function () { /* leave last known state on the light */ });
           }
@@ -45,12 +46,25 @@
       </div>
       <div class="weather34toolbar__center">
         <button class="weather34btn weather34btn--primary">
-          <weather34toptitle><?php echo $stationName; ?>&nbsp; Weather Station</weather34toptitle>
+          <weather34toptitle><?php echo $stationName; ?>&nbsp; <?php echo w34t('Weatherstation', 'Weather Station'); ?></weather34toptitle>
         </button>
       </div>
       <div class="weather34toolbar__right">
         <weather34mbuptime>
-          <?php echo "Server " . (shell_exec('uptime -p')); ?>
+          <?php
+          if (w34_is_english()) {
+            echo "Server " . (shell_exec('uptime -p'));
+          } else {
+            // uptime -p is English-only: rebuild it from /proc/uptime with translated units
+            $up = (int) floatval(@file_get_contents('/proc/uptime'));
+            $parts = array();
+            foreach (array(array(86400, 'UnitDay', 'day', 'UnitDays', 'days'), array(3600, 'UnitHour', 'hour', 'UnitHours', 'hours'), array(60, 'UnitMinute', 'minute', 'UnitMinutes', 'minutes')) as $u) {
+              $n = intdiv($up, $u[0]); $up -= $n * $u[0];
+              if ($n > 0) $parts[] = $n . ' ' . ($n == 1 ? w34t($u[1], $u[2]) : w34t($u[3], $u[4]));
+            }
+            echo w34t('ServerUp', 'Server up') . ' ' . implode(', ', $parts);
+          }
+          ?>
         </weather34mbuptime>
           <?php if ($units != 'us')
 { ?>

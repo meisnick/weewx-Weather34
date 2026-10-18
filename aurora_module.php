@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 include('shared_core.php');
 include_once('settings1.php');
@@ -41,7 +42,7 @@ if (file_exists('jsondata/ki.txt')) {
         $slots  = $by_date[$d];
         $valid  = array_filter($slots, fn($v) => $v !== null);
         $max_kp = $valid ? (float)max($valid) : 0.0;
-        $label  = ($d === $local_date) ? 'Today' : date('j M', $target_ts);
+        $label  = ($d === $local_date) ? w34t('Today', 'Today') : w34_date('j M', $target_ts);
         $forecast_days[] = [
             'label'  => $label,
             'max_kp' => $max_kp,

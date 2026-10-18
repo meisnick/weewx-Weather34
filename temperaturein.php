@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include('w34CombinedData.php');include('common.php');include('settings1.php');?>
@@ -27,11 +28,11 @@ else if(anyToC($weather['temp'])<100){echo  '<div class="mod-temp-band--50">'.nu
 <div class="temptrendx">
 <?php echo $weather["temp_trend"]."\n";
 //falling
-if($weather["temp_trend"]<0){echo '<trendmovementfallingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$fallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+if($weather["temp_trend"]<0){echo '<trendmovementfallingx>&nbsp;&nbsp;&nbsp;<valuetext>'.w34t('TrendLabel', 'Trend').' '.$fallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
 //rising
-elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$risingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<valuetext>'.w34t('TrendLabel', 'Trend').' '.$risingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
 //steady
-else echo '<trendmovementsteadyx><valuetext>Trend '.$steadysymbol.'Steady</valuetext></trendmovementsteadyx>';?>
+else echo '<trendmovementsteadyx><valuetext>'.w34t('TrendLabel', 'Trend').' '.$steadysymbol.w34t('Steady', 'Steady').'</valuetext></trendmovementsteadyx>';?>
 </div></div>
 </div> <!-- close col-left -->
 <div class="mod-temperature-col-right">
@@ -73,7 +74,7 @@ else if(anyToC($weather["apptemp"])>=0 ){echo "<div class=tempconverter1><div cl
 else if(anyToC($weather["apptemp"])>-10){echo "<div class=tempconverter1><div class=tempmodulehome-10-0c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></div></a></div></div>
-<div class="mod-temperature-block mod-gauge-ring--2"><div class="mod-gauge-ring-content"><valuetextheading1>Avg <?php echo $lang['Today']?></valuetextheading1>
+<div class="mod-temperature-block mod-gauge-ring--2"><div class="mod-gauge-ring-content"><valuetextheading1><?php echo w34t('AvgToday', 'Avg Today')?></valuetextheading1>
 <?php //avg today
      if (anyToC($weather["temp_avgtoday"])>=40){echo "<div class=tempconverter1><div class=tempmodulehome40-50c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if (anyToC($weather["temp_avgtoday"])>=35){echo "<div class=tempconverter1><div class=tempmodulehome35-40c>". $weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}

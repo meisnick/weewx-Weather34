@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -61,7 +62,7 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rainydmax"]*
 
 
     <article>
-    <div class=actualt>Rainfall <?php echo date('M Y')?> </div>
+    <div class=actualt>Rainfall <?php echo w34_date('M Y')?> </div>
     <?php // rain month
 echo "<div class='rainfalltoday1'>",$weather["rain_month"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
 <div class='w34convertrain'>
@@ -75,7 +76,7 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_month"]
     <?php echo $raininfo;?>Last Rainfall<br/>
     <blue><?php if ($meteobridgeapi[124]=='--'){
         echo "Unknown";
-    } else if ($rainlasttime == date("jS M Y ")) {
+    } else if ($rainlasttime == w34_date("jS M Y ")) {
         echo 'Today';
     } else {
         echo $rainlasttime;
@@ -96,7 +97,7 @@ elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_year"]*
 <div></div>
 
 <div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>-->Since<br/>
-    <blue>Jan <?php echo date('Y');?></blue>
+    <blue><?php echo w34_datetext('Jan');?> <?php echo date('Y');?></blue>
 </div>
 </article>
 

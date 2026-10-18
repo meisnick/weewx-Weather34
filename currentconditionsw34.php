@@ -6,6 +6,7 @@ uppercase{ text-transform:capitalize;}
 <?php
 include('settings1.php');
 include('w34CombinedData.php');
+include_once('w34_i18n.php');
 include('metar34sky.php');
 $cloud_region = explode("/", $TZ);
 error_reporting(0);
@@ -23,7 +24,7 @@ else echo $online,"";echo " ",date($timeFormat,$forecastime);?></div>
 <div class="cloudconverter">
 <?php //cloudbase-weather34
 $cloudcoverunit = '%';
-$clouds = "Cloudbase";
+$clouds = w34t('Cloudbase', 'Cloudbase');
 if ($windunit =='mph' ||  $windunit =='kts'){$distance="ft";}
 else if ($windunit =='km/h' ||  $windunit =='m/s'){$distance="m";}
 if ($weather["cloudbase3"]>0){
@@ -59,26 +60,26 @@ else {echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='70px' height=
 <?php echo '';
 if ($windunit=='kts'){$windunit="kn";}
 //rain-weather34
-if($weather["rain_rate"]>0 && $weather["wind_speed_avg"]>15){echo "Rain Showers"; echo '<br>';echo "Windy Conditions";}
-else if($weather["rain_rate"]>=20){echo "Heavy Rain"; echo '<br>';echo "Flooding Possible";}
-else if($weather["rain_rate"]>=10){echo "Heavy Rain"; echo '<br>Showers';}
-else if($weather["rain_rate"]>=5){echo "Moderate Rain"; echo '<br>Showers';}
-else if($weather["rain_rate"]>=1){echo "Steady Rain";echo '<br>Showers';}
-else if($weather["rain_rate"]>0){echo "Light Rain";echo '<br>Showers';}
+if($weather["rain_rate"]>0 && $weather["wind_speed_avg"]>15){echo w34_cond("Rain Showers"); echo '<br>';echo w34_cond("Windy Conditions");}
+else if($weather["rain_rate"]>=20){echo w34_cond("Heavy Rain"); echo '<br>';echo w34t('Flooding', 'Flooding Possible');}
+else if($weather["rain_rate"]>=10){echo w34_cond("Heavy Rain<br>Showers");}
+else if($weather["rain_rate"]>=5){echo w34_cond("Moderate Rain<br>Showers");}
+else if($weather["rain_rate"]>=1){echo w34_cond("Steady Rain<br>Showers");}
+else if($weather["rain_rate"]>0){echo w34_cond("Light Rain<br>Showers");}
 //fog-weather34
-else if($weather["temp"] -$weather["dewpoint"] <0.5  && $dayPartNatural == "night" && $weather["temp"]>5){echo "Misty Fog<br>Conditions ".$alert."";}
-else if($weather["temp"] -$weather["dewpoint"] <0.5  && $weather["temp"]>5){echo "Misty Fog<br>Conditions ".$alert."";}
+else if($weather["temp"] -$weather["dewpoint"] <0.5  && $dayPartNatural == "night" && $weather["temp"]>5){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
+else if($weather["temp"] -$weather["dewpoint"] <0.5  && $weather["temp"]>5){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
 //misty-weather34
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $dayPartNatural == "night" && $weather["temp"]>5){echo "Fog Hazy<br>Conditions";}
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $weather["temp"]>5){echo "Misty Hazy<br>Conditions";}
+else if($weather["temp"] -$weather["dewpoint"] <0.8  && $dayPartNatural == "night" && $weather["temp"]>5){echo w34_cond("Fog Hazy<br>Conditions");}
+else if($weather["temp"] -$weather["dewpoint"] <0.8  && $weather["temp"]>5){echo w34_cond("Misty Hazy<br>Conditions");}
 //windy-weather34
-else if($weather["wind_speed_avg"]>=40){echo "Strong Wind ".$alert."<br>Conditions" ;}
-else if($weather["wind_speed_avg"]>=30){echo "Very Windy ".$alert."<br>Conditions";}
-else if($weather["wind_speed_avg"]>=22){echo "Moderate Wind <br>Conditions";}
-else if($weather["wind_speed_avg"]>=15){echo "Breezy <br>Conditions";}
+else if($weather["wind_speed_avg"]>=40){echo w34_cond("Strong Wind")." ".$alert."<br>".w34t('Conditions', 'Conditions') ;}
+else if($weather["wind_speed_avg"]>=30){echo w34_cond("Very Windy")." ".$alert."<br>".w34t('Conditions', 'Conditions');}
+else if($weather["wind_speed_avg"]>=22){echo w34_cond("Moderate Wind<br>Conditions");}
+else if($weather["wind_speed_avg"]>=15){echo w34_cond("Breezy<br>Conditions");}
 //metar sky description
-else if(filesize('jsondata/me.txt')<160){echo "<uppercase>Conditions<br>Not Available</uppercase>";}
-else {echo nl2br(htmlspecialchars($sky_desc));}
+else if(filesize('jsondata/me.txt')<160){echo "<uppercase>".w34_cond("Conditions<br>Not Available")."</uppercase>";}
+else {echo nl2br(htmlspecialchars(w34_cond($sky_desc)));}
 //oktas
 if($weather["cloud_cover"]<5 and $weather["cloud_cover"]>0) {$weather["cloud_oktas"]="0 oktas";}
 else if($weather["cloud_cover"]<=12.5) {$weather["cloud_oktas"]="1 okta";}
@@ -98,24 +99,24 @@ else if($weather["cloud_cover"]<=100) {$weather["cloud_oktas"]="8 oktas";}
 <?php //weather34 average station data
 //echo "Average <span class=\"ink-oblue\">Cloud Cover</span> last 5 minutes <span class=\"ink-ogreen\">" .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. "(".$weather["cloud_oktas"].")";
 
-if ($visibility!==0){echo "</br>Visibility <span class=\"ink-oorange\">".$visibility."</span></br>";}
+if ($visibility!==0){echo "</br>".w34t('Visibility', 'Visibility')." <span class=\"ink-oorange\">".$visibility."</span></br>";}
 if (strpos($weather["cloud_cover"],"N/A") == false){
-echo "<span class=\"ink-oblue\">Cloud Cover</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")";
+echo "<span class=\"ink-oblue\">".w34t('Cloudcover', 'Cloud Cover')."</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")";
 }
 
 
-echo "<br>Average <span class=\"ink-oorange\">Temperature</span> last 60 minutes ";if($weather["temp_avg"]>=20){echo "<span class=\"ink-oorange\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];} else if($weather["temp_avg"]<=10){echo "<span class=\"ink-oblue\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];}else if($weather["temp_avg"]<20){echo "<span class=\"ink-ogreen\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];}echo "</valuetext><br>";
-echo  "Max <span class=\"ink-oblue\">Wind Gust</span> ";
+echo "<br>".w34t('CcAvg', 'Average')." <span class=\"ink-oorange\">".w34t('Temperature', 'Temperature')."</span> ".w34t('Last60Min', 'last 60 minutes')." ";if($weather["temp_avg"]>=20){echo "<span class=\"ink-oorange\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];} else if($weather["temp_avg"]<=10){echo "<span class=\"ink-oblue\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];}else if($weather["temp_avg"]<20){echo "<span class=\"ink-ogreen\">" .$weather["temp_avg"]."</span>°<valuetext>".$weather['temp_units'];}echo "</valuetext><br>";
+echo  w34t('MaxLabel', 'Max')." <span class=\"ink-oblue\">".w34t('WindGustLabel', 'Wind Gust')."</span> ";
 $wu_display = $weather['wind_units'] === 'kts' ? 'kn' : $weather['wind_units'];
 if($weather["wind_gust_60min"]>=50){echo "<span class=\"ink-ored\">" ,number_format(round($weather["wind_gust_60min"],1))."</span> ".$wu_display;}
 else if($weather["wind_gust_60min"]>=30){echo "<span class=\"ink-oorange\">" ,number_format(round($weather["wind_gust_60min"],1))."</span><valuetext> ".$wu_display;}
-else if($weather["wind_gust_60min"]>=0){echo "<span class=\"ink-ogreen\">" ,number_format(round($weather["wind_gust_60min"],1))."</span><valuetext> ".$wu_display;}echo " </valuetext>last 60 minutes ";
-echo  " <br>Average <span class=\"ink-oblue\">Wind Speed</span> last 10 minutes ";if($weather["wind_speed_avg"]>=30){echo "<span class=\"ink-ored\">" ,number_format(round($weather["wind_speed_avg"]))."</span> ".$wu_display;}else if($weather["wind_speed_avg"]>=20){echo "<span class=\"ink-oorange\">" .$weather["wind_speed_avg"]."</span><valuetext> ".$wu_display;}
+else if($weather["wind_gust_60min"]>=0){echo "<span class=\"ink-ogreen\">" ,number_format(round($weather["wind_gust_60min"],1))."</span><valuetext> ".$wu_display;}echo " </valuetext>".w34t('Last60Min', 'last 60 minutes')." ";
+echo  " <br>".w34t('CcAvg', 'Average')." <span class=\"ink-oblue\">".w34t('WindSpeedLabel', 'Wind Speed')."</span> ".w34t('Last10Min', 'last 10 minutes')." ";if($weather["wind_speed_avg"]>=30){echo "<span class=\"ink-ored\">" ,number_format(round($weather["wind_speed_avg"]))."</span> ".$wu_display;}else if($weather["wind_speed_avg"]>=20){echo "<span class=\"ink-oorange\">" .$weather["wind_speed_avg"]."</span><valuetext> ".$wu_display;}
 else if($weather["wind_speed_avg"]>=0){echo "<span class=\"ink-ogreen\">" ,number_format(round($weather["wind_speed_avg"]))."</span><valuetext> ".$wu_display;}
 echo "</valuetext>";
-if($weather["wind_direction_avg"]>0){echo "<br>Average Direction <span class=\"ink-oorange\">"; if($weather["wind_direction_avg"]<=11.25){echo $lang['Northdir'];}else if($weather["wind_direction_avg"]<=33.75){echo $lang['NNEdir'];}else if($weather["wind_direction_avg"]<=56.25){echo $lang['NEdir'];}else if($weather["wind_direction_avg"]<=78.75){echo $lang['ENEdir'];}else if($weather["wind_direction_avg"]<=101.25){echo $lang['Eastdir'];}else if($weather["wind_direction_avg"]<=123.75){echo $lang['ESEdir'];}else if($weather["wind_direction_avg"]<=146.25){echo $lang['SEdir'];}
-else if($weather["wind_direction_avg"]<=168.75){echo $lang['SSEdir'];}else if($weather["wind_direction_avg"]<=191.25){echo $lang['Southdir'];}else if($weather["wind_direction_avg"]<=213.75){echo $lang['SSWdir'];}else if($weather["wind_direction_avg"]<=236.25){echo $lang['SWdir'];}else if($weather["wind_direction_avg"]<=258.75){echo $lang['WSWdir'];}else if($weather["wind_direction_avg"]<=281.25){echo $lang['Westdir'];}else if($weather["wind_direction_avg"]<=303.75){echo $lang['WNWdir'];}else if($weather["wind_direction_avg"]<=326.25){echo $lang['NWdir'];}else if($weather["wind_direction_avg"]<=348.75){echo $lang['NWNdir'];}else{echo $lang['Northdir'];}
+if($weather["wind_direction_avg"]>0){echo "<br>".w34t('CcAvg', 'Average')." ".w34t('Direction', 'Direction')." <span class=\"ink-oorange\">"; if($weather["wind_direction_avg"]<=11.25){echo w34_nobr($lang['Northdir']);}else if($weather["wind_direction_avg"]<=33.75){echo w34_nobr($lang['NNEdir']);}else if($weather["wind_direction_avg"]<=56.25){echo w34_nobr($lang['NEdir']);}else if($weather["wind_direction_avg"]<=78.75){echo w34_nobr($lang['ENEdir']);}else if($weather["wind_direction_avg"]<=101.25){echo w34_nobr($lang['Eastdir']);}else if($weather["wind_direction_avg"]<=123.75){echo w34_nobr($lang['ESEdir']);}else if($weather["wind_direction_avg"]<=146.25){echo w34_nobr($lang['SEdir']);}
+else if($weather["wind_direction_avg"]<=168.75){echo w34_nobr($lang['SSEdir']);}else if($weather["wind_direction_avg"]<=191.25){echo w34_nobr($lang['Southdir']);}else if($weather["wind_direction_avg"]<=213.75){echo w34_nobr($lang['SSWdir']);}else if($weather["wind_direction_avg"]<=236.25){echo w34_nobr($lang['SWdir']);}else if($weather["wind_direction_avg"]<=258.75){echo w34_nobr($lang['WSWdir']);}else if($weather["wind_direction_avg"]<=281.25){echo w34_nobr($lang['Westdir']);}else if($weather["wind_direction_avg"]<=303.75){echo w34_nobr($lang['WNWdir']);}else if($weather["wind_direction_avg"]<=326.25){echo w34_nobr($lang['NWdir']);}else if($weather["wind_direction_avg"]<=348.75){echo w34_nobr($lang['NWNdir']);}else{echo w34_nobr($lang['Northdir']);}
 echo " </span><span class=\"ink-oblue\"> ".$weather["wind_direction_avg"]."</span>°";}
-echo "<br><span class=\"ink-oblue\">Rainfall</span> for the last 3 hours <span class=\"ink-oblue\"> " .$weather["rain_last3hours"]."</span><valuetext> " .$weather['rain_units'];
+echo "<br><span class=\"ink-oblue\">".w34t('Rainfall', 'Rainfall')."</span> ".w34t('RainLast3h', 'for the last 3 hours')." <span class=\"ink-oblue\"> " .$weather["rain_last3hours"]."</span><valuetext> " .$weather['rain_units'];
 ?></valuetext></div></div></div>
 </div><!-- /mod-conditions -->

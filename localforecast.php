@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 // localforecast.php — Hyperlocal Short-Term Forecast Card (LLM Analogue Matching)
 include('shared_core.php');
@@ -26,7 +27,9 @@ if (file_exists($file_path)) {
         
         // Time Window Calculation
         $gen_ts = $data['generated_ts'] ?? filemtime($file_path);
-        $time_window = date('ga', $gen_ts) . '-' . date('ga', $gen_ts + (6 * 3600));
+        $time_window = w34_is_english()
+            ? date('ga', $gen_ts) . '-' . date('ga', $gen_ts + (6 * 3600))
+            : date('H', $gen_ts) . '-' . date('H', $gen_ts + (6 * 3600)) . 'h';
         
         // Rain classification
         $rain_pct = intval($data['rain_pct_6h'] ?? 0);

@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php include('shared_core.php'); include('common.php');
 $summary_file = 'jsondata/afd_summary.json';
 $bullets = [
@@ -33,10 +34,10 @@ if (file_exists($summary_file)) {
     <div class="mod-fct-lines">
         <?php foreach ($bullets as $b): 
             // Append timeframe notations dynamically to the bullet labels
-            $b = str_replace('<strong>Key Messages</strong>', '<strong>Key Messages <span style="font-size:0.55rem; color:#888; font-weight:normal;">(Active)</span></strong>', $b);
-            $b = str_replace('<strong>Short Term</strong>', '<strong>Short Term <span style="font-size:0.55rem; color:#888; font-weight:normal;">(1-3 Days)</span></strong>', $b);
-            $b = str_replace('<strong>Long Term</strong>', '<strong>Long Term <span style="font-size:0.55rem; color:#888; font-weight:normal;">(3-7 Days)</span></strong>', $b);
-            $b = str_replace('<strong>Outlook</strong>', '<strong>Outlook <span style="font-size:0.55rem; color:#888; font-weight:normal;">(Days 7+)</span></strong>', $b);
+            $b = str_replace('<strong>Key Messages</strong>', '<strong>'.w34t('KeyMessages', 'Key Messages').' <span style="font-size:0.55rem; color:#888; font-weight:normal;">('.w34t('Active', 'Active').')</span></strong>', $b);
+            $b = str_replace('<strong>Short Term</strong>', '<strong>'.w34t('ShortTerm', 'Short Term').' <span style="font-size:0.55rem; color:#888; font-weight:normal;">('.w34t('Days1to3', '1-3 Days').')</span></strong>', $b);
+            $b = str_replace('<strong>Long Term</strong>', '<strong>'.w34t('LongTerm', 'Long Term').' <span style="font-size:0.55rem; color:#888; font-weight:normal;">('.w34t('Days3to7', '3-7 Days').')</span></strong>', $b);
+            $b = str_replace('<strong>Outlook</strong>', '<strong>'.w34t('AfdOutlook', 'Outlook').' <span style="font-size:0.55rem; color:#888; font-weight:normal;">('.w34t('Days7plus', 'Days 7+').')</span></strong>', $b);
         ?>
         <div class="mod-fct-line">
             <?php echo $b; ?>

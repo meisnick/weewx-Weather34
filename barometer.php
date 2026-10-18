@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include_once('common.php');include_once('w34CombinedData.php');
@@ -24,18 +25,18 @@ transform:rotate(<?php if ($weather["barometer_units"]=='mb' OR $weather["barome
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div>  
 <div class="mod-barometer">
 <div class='barometermax'>
-<?php echo '<div class=mod-barometer-max><valuetext>Max ('.$weather["thb0seapressmaxtime"].')<br><maxred><value>',$weather["barometer_max"],'</maxred>&nbsp;',$weather["barometer_units"],' </valuetext></div>';?></div>
+<?php echo '<div class=mod-barometer-max><valuetext>'.w34t('MaxLabel', 'Max').' ('.$weather["thb0seapressmaxtime"].')<br><maxred><value>',$weather["barometer_max"],'</maxred>&nbsp;',$weather["barometer_units"],' </valuetext></div>';?></div>
 <div class='barometermin'>
-<?php echo '<div class=mod-barometer-min><valuetext>Min ('.$weather["thb0seapressmintime"].')<br><minblue><value>',$weather["barometer_min"],'</minblue>&nbsp;',$weather["barometer_units"],' </valuetext></div>';?></div>
+<?php echo '<div class=mod-barometer-min><valuetext>'.w34t('MinLabel', 'Min').' ('.$weather["thb0seapressmintime"].')<br><minblue><value>',$weather["barometer_min"],'</minblue>&nbsp;',$weather["barometer_units"],' </valuetext></div>';?></div>
 <!--weather34 barometer-trend-->
 <div class="mod-barometer-trend">
-<?php  echo "<valuetext>&nbsp;&nbsp;Trend";
+<?php  echo "<valuetext>&nbsp;&nbsp;".w34t('TrendLabel', 'Trend');
 if ($weather["barometer_trend"] > 20  && $weather["barometer_trend"] < 100)  {echo '<rising><rise> '.$risingsymbol.' </rise><span><value>';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}
 else if ($weather["barometer_trend"] < 0) {
 echo '<falling><fall> '.$fallingsymbol.'</fall><value> '; echo number_format($weather["barometer_trend"],2), '</falling><units> ';echo $weather["barometer_units"], '</units>';}
 else if ($weather["barometer_trend"] > 0 && $weather["barometer_trend"] < 100) {
 echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}	  
-else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class="ink-ogreen"><value>Steady</span></steady>';?></valuetext>
+else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class="ink-ogreen"><value>'.w34t('Steady', 'Steady').'</span></steady>';?></valuetext>
 </div>
 
 <div class="homeweathercompass2" >

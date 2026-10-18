@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -172,7 +173,7 @@ Max Recorded <br><blue><?php echo $weather["windydmaxtime"];?></blue></div>
 
 
   <article>
-  <div class=actualt>Max <?php echo date('F Y')?> </div>
+  <div class=actualt>Max <?php echo w34_date('F Y')?> </div>
     <?php
 	// wind month km/h
 	if ($weather["wind_units"]=='km/h' && $weather["windmmax"]>=60)  {

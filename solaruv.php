@@ -1,5 +1,5 @@
 <?php //weather34 solar and uvindex module 27th Jan 2017 //
-include_once('w34CombinedData.php');include('common.php');
+include_once('w34CombinedData.php');include('common.php');include_once('w34_i18n.php');
 // Prefer live sensor during daytime; fall back to daily forecast max at night (when live is 0) or if hardware is missing
 $forecasthourlyuv = 0;
 $uv_label = isset($lang['Current']) ? $lang['Current'] : 'Current';
@@ -35,7 +35,7 @@ $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$resu
 <div class="mod-solaruv">
 <?php
 $solar_val = 0;
-$solar_label = 'Solar Radiation';
+$solar_label = w34t('Solarradiation', 'Solar Radiation');
 $has_solar_hardware = isset($weather["solar"]) && is_numeric($weather["solar"]) && $weather["solar"] !== 'NULL' && $weather["solar"] !== '';
 
 if ($has_solar_hardware && $weather["solar"] > 0) {
@@ -60,7 +60,7 @@ if ($has_solar_hardware && $weather["solar"] > 0) {
     }
     if ($forecast_solar > 0) {
         $solar_val = $forecast_solar;
-        $solar_label = 'Solar Forecast';
+        $solar_label = w34t('SolarForecast', 'Solar Forecast');
     }
 }
 ?>
@@ -79,7 +79,7 @@ else if ($weather["uv3"]>3) {echo '<div class=uvtoday4-5>'.number_format($weathe
 else if (date('Hi')>$sunset && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
 else if (date('Gi')<$sunrise && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
 else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}?></smallrainunit></div></div>
-<div class="uvtrend"><?php echo "UV INDEX"?></div>  
+<div class="uvtrend"><?php echo mb_strtoupper(w34t('UvIndex', 'UV Index'))?></div>  
 <div class="uvcaution"><value>&nbsp;&nbsp;UVI <?php echo $uv_label;?><value></div>
 
 <div class="weather34luxword"><valuetext>Lux</valuetext></div> <div class="weather34luxvalue"><div class="luxtodaycontainer1">
@@ -87,10 +87,10 @@ else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weath
 if ($weather["lux"]>99999) {echo "<div class=luxtoday>".number_format($weather["lux"]/1000,0). "K";}
 else if($weather["lux"]==0) echo "<div class=luxtodaydark>".$weather["lux"];
 else echo "<div class=luxtoday>".$weather["lux"];?> 
-</div></div></div><div class="luxtodayword"><valuetext>Brightness<valuetext></div><div class="luxwrap"></div>
+</div></div></div><div class="luxtodayword"><valuetext><?php echo w34t('Brightness', 'Brightness');?><valuetext></div><div class="luxwrap"></div>
 
 <div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
-else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,"Below Horizon";}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Low';}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> Very Low';}?></div>
+else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvLow', 'Low');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvVeryLow', 'Very Low');}?></div>
 
 <script>
 (function () {

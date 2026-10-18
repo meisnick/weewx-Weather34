@@ -19,6 +19,7 @@
 include ('settings.php');
 include ('shared_core.php');
 include ('shared_icons.php');
+include_once ('w34_i18n.php');
 error_reporting(0);
 //weewx - api December 2019
 try
@@ -244,26 +245,26 @@ if (isset($weewxapi))
     $originalDate1 = ($weewxapi[85] == "   N/A" ? "0" : $weewxapi[85]);
     $tempydmintime = date("H:i", strtotime($originalDate1));
     $originalDate2 = ($weewxapi[87] == "   N/A" ? "0" : $weewxapi[87]);
-    $tempmmaxtime = date('jS M', strtotime($originalDate2));
-    $tempmmaxtime2 = date('jS M', strtotime($originalDate2));
+    $tempmmaxtime = w34_date('jS M', strtotime($originalDate2));
+    $tempmmaxtime2 = w34_date('jS M', strtotime($originalDate2));
     $originalDate3 = ($weewxapi[89] == "   N/A" ? "0" : $weewxapi[89]);
-    $tempmmintime = date('jS M ', strtotime($originalDate3));
+    $tempmmintime = w34_date('jS M ', strtotime($originalDate3));
     $originalDate4 = ($weewxapi[91] == "   N/A" ? "0" : $weewxapi[91]);
-    $tempymaxtime = date('jS M', strtotime($originalDate4));
-    $tempymaxtime2 = date('jS M', strtotime($originalDate4));
+    $tempymaxtime = w34_date('jS M', strtotime($originalDate4));
+    $tempymaxtime2 = w34_date('jS M', strtotime($originalDate4));
     $originalDate5 = ($weewxapi[93] == "   N/A" ? "0" : $weewxapi[93]);
-    $tempymintime = date('jS M ', strtotime($originalDate5));
-    $tempymintime2 = date('jS M', strtotime($originalDate5));
+    $tempymintime = w34_date('jS M ', strtotime($originalDate5));
+    $tempymintime2 = w34_date('jS M', strtotime($originalDate5));
     $originalDate6 = ($weewxapi[27] == "   N/A" ? "0" : $weewxapi[27]);
     $tempdmaxtime = date('H:i', strtotime($originalDate6));
     $originalDate7 = ($weewxapi[29] == "   N/A" ? "0" : $weewxapi[29]);
     $tempdmintime = date('H:i', strtotime($originalDate7));
     $originalDatea9 = ($weewxapi[126] == "   N/A" ? "0" : $weewxapi[126]);
-    $tempamaxtime = date("jS M Y", strtotime($originalDatea9));
+    $tempamaxtime = w34_date("jS M Y", strtotime($originalDatea9));
     $weather["tempamax"] = ($weewxapi[125] == "   N/A" ? "0" : $weewxapi[125]); //temp alltime
     $weather["tempamaxtime"] = $tempamaxtime; //seconds
     $originalDatea10 = ($weewxapi[128] == "   N/A" ? "0" : $weewxapi[128]);
-    $tempamintime = date("jS M Y", strtotime($originalDatea10));
+    $tempamintime = w34_date("jS M Y", strtotime($originalDatea10));
     $weather["tempamin"] = ($weewxapi[127] == "   N/A" ? "0" : $weewxapi[127]); //temp alltime
     $weather["tempamintime"] = $tempamintime; //seconds
     $weather["tempydmax"] = ($weewxapi[82] == "   N/A" ? "0" : $weewxapi[82]); //temp max yesterday
@@ -288,18 +289,18 @@ if (isset($weewxapi))
     //dewpoint year/month/yesterday alltime
     //all time
     $originalDatea11 = $weewxapi[130];
-    $dewamaxtime = date("jS M Y", strtotime($originalDatea11));
+    $dewamaxtime = w34_date("jS M Y", strtotime($originalDatea11));
     $weather["dewamax"] = ($weewxapi[129] == "   N/A" ? "0" : $weewxapi[129]); //temp alltime
     $weather["dewamaxtime"] = $dewamaxtime; //seconds
     $originalDatea12 = ($weewxapi[132] == "   N/A" ? "0" : $weewxapi[132]);
-    $dewamintime = date("jS M Y", strtotime($originalDatea12));
+    $dewamintime = w34_date("jS M Y", strtotime($originalDatea12));
     $weather["dewamin"] = ($weewxapi[131] == "   N/A" ? "0" : $weewxapi[131]); //temp alltime
     $weather["dewamintime"] = $dewamintime; //seconds
     //dewpoint year
     $originalDate44 = ($weewxapi[55] == "   N/A" ? "0" : $weewxapi[55]);
-    $dewymaxtime = date('jS M', strtotime($originalDate44));
+    $dewymaxtime = w34_date('jS M', strtotime($originalDate44));
     $originalDate45 = ($weewxapi[57] == "   N/A" ? "0" : $weewxapi[57]);
-    $dewymintime = date('jS M', strtotime($originalDate45));
+    $dewymintime = w34_date('jS M', strtotime($originalDate45));
     $weather["dewymax"] = ($weewxapi[54] == "   N/A" ? "0" : $weewxapi[54]); //temp max year
     $weather["dewymaxtime"] = $dewymaxtime; //seconds
     $weather["dewymin"] = ($weewxapi[56] == "   N/A" ? "0" : $weewxapi[56]); //temp min year
@@ -315,9 +316,9 @@ if (isset($weewxapi))
     $weather["dewmintime"] = $dewmintime; //seconds
     //dewpoint month
     $originalDate74 = ($weewxapi[49] == "   N/A" ? "0" : $weewxapi[49]);
-    $dewmmaxtime = date('jS M', strtotime($originalDate74));
+    $dewmmaxtime = w34_date('jS M', strtotime($originalDate74));
     $originalDate75 = ($weewxapi[31] == "   N/A" ? "0" : $weewxapi[31]);
-    $dewmmintime = date('jS M', strtotime($originalDate75));
+    $dewmmintime = w34_date('jS M', strtotime($originalDate75));
     $weather["dewmmax"] = ($weewxapi[48] == "   N/A" ? "0" : $weewxapi[48]); //dew max month
     $weather["dewmmaxtime"] = $dewmmaxtime; //seconds
     $weather["dewmmin"] = $weewxapi[50]; //dew min month
@@ -345,22 +346,22 @@ if (isset($weewxapi))
     //hum year max
     $weather["humidity_ymax"] = (is_numeric($weewxapi[163]) ? number_format($weewxapi[163], 0) : null);
     $originalDate754 = ($weewxapi[164] == "   N/A" ? "0" : $weewxapi[164]);
-    $humymaxtime = date('jS M', strtotime($originalDate754));
+    $humymaxtime = w34_date('jS M', strtotime($originalDate754));
     $weather["humidity_ymaxtime"] = $humymaxtime;
     //hum year min
     $weather["humidity_ymin"] = (is_numeric($weewxapi[165]) ? number_format($weewxapi[165], 0) : null);
     $originalDate755 = ($weewxapi[166] == "   N/A" ? "0" : $weewxapi[166]);
-    $humymintime = date('jS M', strtotime($originalDate755));
+    $humymintime = w34_date('jS M', strtotime($originalDate755));
     $weather["humidity_ymintime"] = $humymintime;
     //hum month max
     $weather["humidity_mmax"] = (is_numeric($weewxapi[159]) ? number_format($weewxapi[159], 0) : null);
     $originalDate756 = ($weewxapi[160] == "   N/A" ? "0" : $weewxapi[160]);
-    $hummmaxtime = date('jS M', strtotime($originalDate756));
+    $hummmaxtime = w34_date('jS M', strtotime($originalDate756));
     $weather["humidity_mmaxtime"] = $hummmaxtime;
     //hum month min
     $weather["humidity_mmin"] = (is_numeric($weewxapi[161]) ? number_format($weewxapi[161], 0) : null);
     $originalDate757 = ($weewxapi[162] == "   N/A" ? "0" : $weewxapi[162]);
-    $hummmintime = date('jS M', strtotime($originalDate757));
+    $hummmintime = w34_date('jS M', strtotime($originalDate757));
     $weather["humidity_mmintime"] = $hummmintime;
     //hum yesterday max
     $weather["humidity_ydmax"] = (is_numeric($weewxapi[167]) ? number_format($weewxapi[167], 0) : null);
@@ -375,28 +376,28 @@ if (isset($weewxapi))
     //hum alltime max
     $weather["humidity_amax"] = (is_numeric($weewxapi[206]) ? number_format($weewxapi[206], 0) : null);
     $originalDate758 = ($weewxapi[207] == "   N/A" ? "0" : $weewxapi[207]);
-    $humamaxtime = date('jS M Y', strtotime($originalDate758));
+    $humamaxtime = w34_date('jS M Y', strtotime($originalDate758));
     $weather["humidity_amaxtime"] = $humamaxtime;
     //hum alltime min
     $weather["humidity_amin"] = (is_numeric($weewxapi[208]) ? number_format($weewxapi[208], 0) : null);
     $originalDate759 = ($weewxapi[209] == "   N/A" ? "0" : $weewxapi[209]);
-    $humamintime = date('jS M Y', strtotime($originalDate759));
+    $humamintime = w34_date('jS M Y', strtotime($originalDate759));
     $weather["humidity_amintime"] = $humamintime;
     //wind gust
     $originalDate8 = ($weewxapi[95] == "   N/A" ? "0" : $weewxapi[95]);
     $windydmaxtime = date("H:i", strtotime($originalDate8));
     $originalDate9 = ($weewxapi[97] == "   N/A" ? "0" : $weewxapi[97]);
-    $windmmaxtime = date('jS M', strtotime($originalDate9));
-    $windmmaxtime2 = date('jS M', strtotime($originalDate9));
+    $windmmaxtime = w34_date('jS M', strtotime($originalDate9));
+    $windmmaxtime2 = w34_date('jS M', strtotime($originalDate9));
     $originalDate10 = ($weewxapi[99] == "   N/A" ? "0" : $weewxapi[99]);
-    $windymaxtime = date('jS M', strtotime($originalDate10));
-    $windymaxtime2 = date('jS M', strtotime($originalDate10));
+    $windymaxtime = w34_date('jS M', strtotime($originalDate10));
+    $windymaxtime2 = w34_date('jS M', strtotime($originalDate10));
     $originalDate11 = ($weewxapi[33] == "   N/A" ? "0" : $weewxapi[33]);
     $winddmaxtime = date('H:i', strtotime($originalDate11));
     $originalavgDate = ($weewxapi[31] == "   N/A" ? "0" : $weewxapi[31]);
     $windavgdmaxtime = date("H:i", strtotime($originalavgDate));
     $originalDate8a = ($weewxapi[134] == "   N/A" ? "0" : $weewxapi[134]);
-    $windamaxtime = date("jS M Y", strtotime($originalDate8a));
+    $windamaxtime = w34_date("jS M Y", strtotime($originalDate8a));
     $weather["windamax"] = ($weewxapi[133] == "   N/A" ? "0" : $weewxapi[133]); //wind max yesterday
     $weather["windamaxtime"] = $windamaxtime; //seconds
     $weather["windavgdmaxtime"] = $windavgdmaxtime; //seconds
@@ -412,17 +413,17 @@ if (isset($weewxapi))
     $weather["winddmaxtime"] = $winddmaxtime; //seconds
     //rain
     $originalDate12 = ($weewxapi[102] == "   N/A" ? "0" : $weewxapi[102]);
-    $rainmmaxtime = date("jS M", strtotime($originalDate12));
+    $rainmmaxtime = w34_date("jS M", strtotime($originalDate12));
     $originalDate13 = ($weewxapi[104] == "   N/A" ? "0" : $weewxapi[104]);
-    $rainymaxtime = date("jS M Y", strtotime($originalDate13));
+    $rainymaxtime = w34_date("jS M Y", strtotime($originalDate13));
     $originalDate124 = ($weewxapi[124] == "   N/A" ? "0" : $weewxapi[124]);
-    $rainlasttime = date("jS M Y ", strtotime($originalDate124));
+    $rainlasttime = w34_date("jS M Y ", strtotime($originalDate124));
     $originalDate25 = ($weewxapi[124] == "   N/A" ? "0" : $weewxapi[124]);
-    $rainlastmonth = date("M", strtotime($originalDate25));
+    $rainlastmonth = w34_date("M", strtotime($originalDate25));
     $originalDate26 = ($weewxapi[124] == "   N/A" ? "0" : $weewxapi[124]);
     $rainlasttoday = date("H:i", strtotime($originalDate26));
     $originalDate27 = ($weewxapi[124] == "   N/A" ? "0" : $weewxapi[124]);
-    $rainlasttoday1 = date("jS", strtotime($originalDate27));
+    $rainlasttoday1 = w34_date("jS", strtotime($originalDate27));
     $weather["rainydmax"] = ($weewxapi[21] == "   N/A" ? "0" : $weewxapi[21]); //rain max yesterday
     $weather["rainmmax"] = ($weewxapi[101] == "   N/A" ? "0" : $weewxapi[101]); //wind max month
     $weather["rainmmaxtime"] = $rainmmaxtime; //seconds
@@ -440,27 +441,27 @@ if (isset($weewxapi))
     $weather["thb0seapressydmin"] = ($weewxapi[137] == "   N/A" ? "0" : $weewxapi[137]); //min yesterday
     //pressure month
     $baromaxoriginalDateb2 = ($weewxapi[140] == "   N/A" ? "0" : $weewxapi[140]);
-    $baromaxtimemonth = date("jS M", strtotime($baromaxoriginalDateb2));
+    $baromaxtimemonth = w34_date("jS M", strtotime($baromaxoriginalDateb2));
     $barominoriginalDateb3 = ($weewxapi[142] == "   N/A" ? "0" : $weewxapi[142]);
-    $baromintimemonth = date("jS M", strtotime($barominoriginalDateb3));
+    $baromintimemonth = w34_date("jS M", strtotime($barominoriginalDateb3));
     $weather["thb0seapressmonthmaxtime"] = $baromaxtimemonth; //seconds
     $weather["thb0seapressmonthmintime"] = $baromintimemonth; //seconds
     $weather["thb0seapressmmax"] = ($weewxapi[139] == "   N/A" ? "0" : $weewxapi[139]); //max month
     $weather["thb0seapressmmin"] = ($weewxapi[141] == "   N/A" ? "0" : $weewxapi[141]); //min month
     //pressure year
     $baromaxoriginalDateb4 = ($weewxapi[144] == "   N/A" ? "0" : $weewxapi[144]);
-    $baromaxtimeyear = date("jS M", strtotime($baromaxoriginalDateb4));
+    $baromaxtimeyear = w34_date("jS M", strtotime($baromaxoriginalDateb4));
     $barominoriginalDateb5 = ($weewxapi[146] == "   N/A" ? "0" : $weewxapi[146]);
-    $baromintimeyear = date("jS M", strtotime($barominoriginalDateb5));
+    $baromintimeyear = w34_date("jS M", strtotime($barominoriginalDateb5));
     $weather["thb0seapressyearmaxtime"] = $baromaxtimeyear; //seconds
     $weather["thb0seapressyearmintime"] = $baromintimeyear; //seconds
     $weather["thb0seapressymax"] = ($weewxapi[143] == "   N/A" ? "0" : $weewxapi[143]); //max year
     $weather["thb0seapressymin"] = ($weewxapi[145] == "   N/A" ? "0" : $weewxapi[145]); //min year
     //pressure all time
     $baromaxoriginalDateb6 = ($weewxapi[148] == "   N/A" ? "0" : $weewxapi[148]);
-    $baromaxtimeall = date("jS M Y", strtotime($baromaxoriginalDateb6));
+    $baromaxtimeall = w34_date("jS M Y", strtotime($baromaxoriginalDateb6));
     $barominoriginalDateb7 = ($weewxapi[150] == "   N/A" ? "0" : $weewxapi[150]);
-    $baromintimeall = date("jS M Y", strtotime($barominoriginalDateb7));
+    $baromintimeall = w34_date("jS M Y", strtotime($barominoriginalDateb7));
     $weather["thb0seapressamaxtime"] = $baromaxtimeall; //seconds
     $weather["thb0seapressamintime"] = $baromintimeall; //seconds
     $weather["thb0seapressamax"] = ($weewxapi[147] == "   N/A" ? "0" : $weewxapi[147]); //max all time
@@ -476,13 +477,13 @@ if (isset($weewxapi))
     $solaroriginalDate = ($weewxapi[108] == "   N/A" ? "0" : $weewxapi[108]);
     $solarydmaxtime = date("H:i", strtotime($solaroriginalDate));
     $solaroriginalDate2 = ($weewxapi[110] == "   N/A" ? "0" : $weewxapi[110]);
-    $solarmmaxtime = date('jS M H:i', strtotime($solaroriginalDate2));
+    $solarmmaxtime = w34_date('jS M H:i', strtotime($solaroriginalDate2));
     $solaroriginalDate4 = ($weewxapi[112] == "   N/A" ? "0" : $weewxapi[112]);
-    $solarymaxtime = date('jS M H:i', strtotime($solaroriginalDate4));
+    $solarymaxtime = w34_date('jS M H:i', strtotime($solaroriginalDate4));
     $solaroriginalDate6 = ($weewxapi[106] == "   N/A" ? "0" : $weewxapi[106]);
     $solardmaxtime = date('H:i', strtotime($solaroriginalDate6));
     $solaroriginalDate7 = ($weewxapi[213] == "   N/A" ? "0" : $weewxapi[213]);
-    $solaramaxtime = date('jS M Y', strtotime($solaroriginalDate7));
+    $solaramaxtime = w34_date('jS M Y', strtotime($solaroriginalDate7));
     $weather["solarydmax"] = (is_numeric($weewxapi[107]) ? number_format($weewxapi[107], 0, '.', '') : null); //temp max yesterday
     $weather["solarydmaxtime"] = $solarydmaxtime; //seconds
     $weather["solarmmax"] = (is_numeric($weewxapi[109]) ? number_format($weewxapi[109], 0, '.', '') : null); //temp max month
@@ -497,13 +498,13 @@ if (isset($weewxapi))
     $uvoriginalDate = ($weewxapi[115] == "   N/A" ? "0" : $weewxapi[115]);
     $uvydmaxtime = date("H:i", strtotime($uvoriginalDate));
     $uvoriginalDate2 = ($weewxapi[117] == "   N/A" ? "0" : $weewxapi[117]);
-    $uvmmaxtime = date('jS M H:i', strtotime($uvoriginalDate2));
+    $uvmmaxtime = w34_date('jS M H:i', strtotime($uvoriginalDate2));
     $uvoriginalDate4 = ($weewxapi[119] == "   N/A" ? "0" : $weewxapi[119]);
-    $uvymaxtime = date('jS M H:i', strtotime($uvoriginalDate4));
+    $uvymaxtime = w34_date('jS M H:i', strtotime($uvoriginalDate4));
     $uvoriginalDate6 = ($weewxapi[113] == "   N/A" ? "0" : $weewxapi[113]);
     $uvdmaxtime = date('H:i', strtotime($uvoriginalDate6));
     $uvoriginalDate7 = ($weewxapi[211] == "   N/A" ? "0" : $weewxapi[211]);
-    $uvamaxtime = date('jS M Y', strtotime($uvoriginalDate7));
+    $uvamaxtime = w34_date('jS M Y', strtotime($uvoriginalDate7));
     $weather["uvydmax"] = (is_numeric($weewxapi[114]) ? number_format($weewxapi[114], 1) : null); //temp max yesterday
     $weather["uvydmaxtime"] = $uvydmaxtime; //seconds
     $weather["uvmmax"] = (is_numeric($weewxapi[116]) ? number_format($weewxapi[116], 1) : null); //temp max month
@@ -1293,11 +1294,11 @@ $mod34file = $break[count($break) - 1];
 //Convert Start times for Pro and Nano SD, Other MBs unforunately don't provide this data
 if (is_numeric($weewxapi[186]) && $weewxapi[186] != '--')
 {
-    $weather['tempStartTime'] = date('M jS Y', strtotime($weewxapi[186]));
-    $weather['windStartTime'] = date('M jS Y', strtotime($weewxapi[187]));
-    $weather['pressStartTime'] = date('M jS Y', strtotime($weewxapi[188]));
+    $weather['tempStartTime'] = w34_date('M jS Y', strtotime($weewxapi[186]));
+    $weather['windStartTime'] = w34_date('M jS Y', strtotime($weewxapi[187]));
+    $weather['pressStartTime'] = w34_date('M jS Y', strtotime($weewxapi[188]));
     $weather['rainStartSec'] = strtotime($weewxapi[189]);
-    $weather['rainStartTime'] = date('M jS Y', $weather['rainStartSec']);
+    $weather['rainStartTime'] = w34_date('M jS Y', $weather['rainStartSec']);
 }
 else
 {

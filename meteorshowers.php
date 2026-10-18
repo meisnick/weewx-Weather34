@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php include('settings.php');include('w34CombinedData.php');include('common.php');
 
 
@@ -130,7 +131,7 @@ align-items:center;justify-content:center;margin-bottom:10px;top:0}
 <meteotextshowertext>
 <?php if ($meteor_default)  {	echo "<meteorsvgicon>".$meteorinfo3."</meteorsvgicon> ".$meteor_default;} 
 ?></meteotextshowertext><br>Shower Currently Visible<br>
- <?php	echo date('D jS M Y');?>       
+ <?php	echo w34_date('D jS M Y');?>       
 </article>  
   
   <article>

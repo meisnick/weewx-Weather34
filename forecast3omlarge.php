@@ -50,7 +50,7 @@ if ($Time === "07") {
 } else if ($Time === "19") {
     $forecastTime = "Tonight'";
 }
-$forecastdesc = $parsed_json['response'][0]['periods'][0]['weatherPrimary'];
+$forecastdesc = w34_cond($parsed_json['response'][0]['periods'][0]['weatherPrimary']);
 
 $forecasthumidity  = $parsed_json['response'][0]['periods'][0]['humidity'];
 $forecastheatindex = $parsed_json['response'][0]['periods'][0]['avgFeelslikeC'];

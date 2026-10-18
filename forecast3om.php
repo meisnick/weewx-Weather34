@@ -16,6 +16,7 @@
 
 
 include_once('settings.php');
+include_once('w34_i18n.php');
 include_once('shared_core.php');
 include_once('shared_icons.php');
 error_reporting(0); date_default_timezone_set($TZ);
@@ -44,8 +45,8 @@ for ($k=0;$k<=2;$k++)
      $pngicon[$k] = $parsed_forecastjson['response'][0]['periods'][$k]['icon'];
      $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'];
      $Time[$k] = date("H", $parsed_forecastjson['response'][0]['periods'][$k]['timestamp']);
-     if($Time[0] ==="07"){$forecastdayTime[0] = "Today"; $forecastdayTime[1] = "Tonight"; $forecastdayTime[2] = "Tomorrow";}
-	 else if($Time[0] ==="19"){$forecastdayTime[0] = "Tonight"; $forecastdayTime[1] = "Tomorrow"; $forecastdayTime[2] = "Tomorrow Night";}
+     if($Time[0] ==="07"){$forecastdayTime[0] = w34t('Today', 'Today'); $forecastdayTime[1] = w34t('Tonight', 'Tonight'); $forecastdayTime[2] = w34t('Tomorrow', 'Tomorrow');}
+	 else if($Time[0] ==="19"){$forecastdayTime[0] = w34t('Tonight', 'Tonight'); $forecastdayTime[1] = w34t('Tomorrow', 'Tomorrow'); $forecastdayTime[2] = w34t('Tomorrownight', 'Tomorrow Night');}
      $forecastdayTempHigh = $parsed_forecastjson['response'][0]['periods'][$k]['maxTempC'];
      $forecastdayTempLow = $parsed_forecastjson['response'][0]['periods'][$k]['minTempC'];
      $forecastHumidity = $parsed_forecastjson['response'][0]['periods'][$k]['maxHumidity'].'%';
@@ -60,7 +61,7 @@ for ($k=0;$k<=2;$k++)
      $forecastdayUV = $parsed_forecastjson['response'][0]['periods'][$k]['uvi'];
 	 //$forecastdayUVdesc = $parsed_forecastjson->{'daypart'}[0]->{'uvDescription'}[$k];
      //$forecastdaysnow = $parsed_forecastjson->{'daypart'}[0]->{'qpfSnow'}[$k];
-	 $forecastdaysummary = $parsed_forecastjson['response'][0]['periods'][$k]['weatherPrimary'];
+	 $forecastdaysummary = w34_cond($parsed_forecastjson['response'][0]['periods'][$k]['weatherPrimary']);
      $daynight = $parsed_forecastjson['response'][0]['periods'][$k]['isDay'];
      if ($daynight !== false)
     {
@@ -99,7 +100,7 @@ for ($k=0;$k<=2;$k++)
         $forecastdayWindGust = round((number_format($forecastdayWindGust, 1) * 0.621371) , 0);
         $forecastdayWindSpeed = round((number_format($forecastdayWindSpeed, 1) * 0.621371) , 0);
     }	//convert lightning index shorter phrases
-	if ( $forecastthunder==0 ){$forecastthunder='';}else if ( $forecastthunder==1 ){$forecastthunder=$lightningalert4.' Thunder Risk';}else if ( $forecastthunder==2 ){$forecastthunder=$lightningalert4.' Thunder';}else if ( $forecastthunder>=3 ){$forecastthunder=$lightningalert4.' Severe Tstorm';}	
+	if ( $forecastthunder==0 ){$forecastthunder='';}else if ( $forecastthunder==1 ){$forecastthunder=$lightningalert4.' '.w34t('ThunderRisk', 'Thunder Risk');}else if ( $forecastthunder==2 ){$forecastthunder=$lightningalert4.' '.w34t('Thunder', 'Thunder');}else if ( $forecastthunder>=3 ){$forecastthunder=$lightningalert4.' '.w34t('SevereTstorm', 'Severe Tstorm');}	
 	//icon + day
 	echo '<div class="forecastforecastinghome" style="border:0px">';echo '<div class="forecastweekdayhome">'.$forecastdayTime[$k].'</div><div class=forecasthomeicons>';
 	echo '<img src="css/svg/' . $forecastIcon[$k] . '" width="45%" ></img>';	
@@ -131,7 +132,7 @@ for ($k=0;$k<=2;$k++)
 	}
 	//uvi
 if ($forecastdaynight=='D'){echo '<br><wuuvicon>&#9788;</wuuvicon>&nbsp;<forecasttemplohome><uv>UVI <uvspan>';if ($forecastdayUV>=10){echo "<purpleu>".$forecastdayUV. '</purpleu><greyu> '.$forecastdayUVdesc;}else  if ($forecastdayUV>=7){echo "<redu>".$forecastdayUV. '</redu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>5){ echo "<orangeu>".$forecastdayUV. '</orangeu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>2){  echo "<yellowu>".$forecastdayUV. '</yellowu><greyu> '.$forecastdayUVdesc;}else if ($forecastdayUV>=0){ echo "<greenu>".$forecastdayUV. '</greenu><greyu> '.$forecastdayUVdesc;}echo '</uvspan></uv>';}
-else if ($forecastdaynight=='N'){echo '<br><blueu>'.$humidity.'&nbsp;<forecasttemplohome><uv>Hum <uvspan>'.$forecastHumidity. '</blueu>';}
+else if ($forecastdaynight=='N'){echo '<br><blueu>'.$humidity.'&nbsp;<forecasttemplohome><uv>'.w34t('HumShort', 'Hum').' <uvspan>'.$forecastHumidity. '</blueu>';}
 	//lightning
 	echo '<thunder>'.$forecastthunder;echo '</forecasttemplohome></div>';
 } // end for loop for icons

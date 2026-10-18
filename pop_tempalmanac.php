@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -167,7 +168,7 @@ if ($theme === "dark") {
 
 
   <article>
-  <div class=actualt>&nbsp;<?php echo date('F Y')?> </div>
+  <div class=actualt>&nbsp;<?php echo w34_date('F Y')?> </div>
    <div class="temperaturecontainer1">
 
 			  <?php

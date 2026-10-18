@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php include('shared_core.php'); include('common.php');
 
 // --- Load AQ data safely ---
@@ -41,12 +42,12 @@ elseif ($aqi > 50)   { $badge_col = 'var(--amber)';  $icon = 'css/aqi/modair.svg
 else                 { $badge_col = 'var(--green)';  $icon = 'css/aqi/goodair.svg'; }
 
 // AQI description text (shortened to fit the 85px badge)
-if ($aqi > 300)      $aqi_desc = 'Hazardous';
-elseif ($aqi > 200)  $aqi_desc = 'V. Unhealthy';
-elseif ($aqi > 150)  $aqi_desc = 'Unhealthy';
-elseif ($aqi > 100)  $aqi_desc = 'Unhealthy FS';
-elseif ($aqi > 50)   $aqi_desc = 'Moderate';
-else                 $aqi_desc = 'Good';
+if ($aqi > 300)      $aqi_desc = w34t('AqHazardous', 'Hazardous');
+elseif ($aqi > 200)  $aqi_desc = w34t('AqVeryUnhealthy', 'V. Unhealthy');
+elseif ($aqi > 150)  $aqi_desc = w34t('AqUnhealthy', 'Unhealthy');
+elseif ($aqi > 100)  $aqi_desc = w34t('AqUnhealthyFS', 'Unhealthy FS');
+elseif ($aqi > 50)   $aqi_desc = w34t('AqModerate', 'Moderate');
+else                 $aqi_desc = w34t('AqGood', 'Good');
 
 // Dominant pollutant display label and its colour
 $dom_labels = ['pm25' => 'PM2.5', 'pm10' => 'PM10', 'o3' => 'O3', 'no2' => 'NO₂'];
@@ -83,7 +84,7 @@ $polls = [
     <!-- Right: Refined Pollutants Grid -->
     <div class="mod-aq-details">
         <div class="mod-aq-header">
-            <span class="mod-aq-heading">Pollutants</span>
+            <span class="mod-aq-heading"><?php echo w34t('Pollutants', 'Pollutants');?></span>
             <?php if ($dom_label): ?>
             <span class="mod-aq-dominant-tag" style="color:<?php echo $dom_color; ?>"><?php echo htmlspecialchars($dom_label); ?> &#x29C9;</span>
             <?php endif; ?>

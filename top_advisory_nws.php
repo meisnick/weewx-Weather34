@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 // top_advisory_nws.php — NWS active alerts for Washington County WI
 // Replaces top_advisory_rw.php (EU MeteoAlarm / dead WU API)
@@ -34,7 +35,7 @@ $_sevcolour = [
 <?php if ($_count === 0): ?>
 <spanelightning>
 <alertadvisory><a alt="Alerts" title="Alerts" href="pop_nwsalerts.php" data-lity><?php echo $newalertgreen; ?></a></alertadvisory>
-<alertvalue>No Active <lightgreen>Advisories</lightgreen></alertvalue>
+<alertvalue><?php echo w34t('NoActive', 'No Active');?> <lightgreen><?php echo w34t('Advisories', 'Advisories');?></lightgreen></alertvalue>
 </spanelightning>
 <?php else: $a = $_alerts[0];
     $col  = $_sevcolour[$a['severity']] ?? '#aaaaaa';
@@ -54,7 +55,7 @@ $_sevcolour = [
     if (!empty($a['expires'])) {
         $exp_ts = strtotime($a['expires']);
         if ($exp_ts) {
-            $expires_str = 'Until ' . date('D g:i A', $exp_ts);
+            $expires_str = 'Until ' . w34_date('D g:i A', $exp_ts);
         }
     }
     

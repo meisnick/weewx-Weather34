@@ -3,6 +3,7 @@
 include_once('settings1.php');
 include_once('settings.php');
 include_once('common.php');
+include_once('w34_i18n.php');
 date_default_timezone_set($TZ);
 if (!file_exists('modules.php')) { copy('modules.example.php', 'modules.php'); }
 include('modules.php');
@@ -52,8 +53,8 @@ if (in_array('weather34clock.php', $topbar_modules_files)):
 var clockID;
 var yourTimeZoneFrom = <?php echo $UTC_offset; ?>;
 var d = new Date();
-var weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-var months   = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var weekdays = <?php echo json_encode(array_map('w34_datetext', array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")), JSON_UNESCAPED_UNICODE); ?>;
+var months   = <?php echo json_encode(array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")), JSON_UNESCAPED_UNICODE); ?>;
 var tzDifference = yourTimeZoneFrom * 60 + d.getTimezoneOffset();
 var offset = tzDifference * 60 * 1000;
 function UpdateClock() {

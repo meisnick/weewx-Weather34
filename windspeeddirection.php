@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 require_once('w34CombinedData.php');require_once('common.php');?>
 <meta http-equiv="Content-Type: text/html; charset=UTF-8" />
@@ -14,8 +15,8 @@ require_once('w34CombinedData.php');require_once('common.php');?>
     <!-- LEFT COLUMN -->
     <div class="mod-wind-col-left">
       <div class="mod-wind-block-small top-block">
-        <div class="mod-wind-label wind-max-top">Max <value class="wind-max-gust-val"><?php echo number_format($weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
-        <div class="mod-wind-label">Gust (<?php echo $weather["winddmaxtime"];?>)</div>
+        <div class="mod-wind-label wind-max-top"><?php echo w34t('MaxLabel', 'Max');?> <value class="wind-max-gust-val"><?php echo number_format($weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
+        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?> (<?php echo $weather["winddmaxtime"];?>)</div>
       </div>
       
       <div class="mod-wind-block mid-block">
@@ -102,7 +103,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       </div>
       
       <div class="mod-wind-block mid-block">
-        <div class="mod-wind-label">Gust</div>
+        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?></div>
         <value>
           <?php echo number_format($weather["wind_gust_speed"],1);?>
           <unit><?php echo $weather["wind_units"];?></unit>

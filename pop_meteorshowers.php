@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #
@@ -91,7 +92,7 @@ echo $stationName ?>
 <meteotextshowertext>
 <?php if ($meteor_default)  {	echo "<meteorsvgicon>".$meteorinfo3."</meteorsvgicon> ".$meteor_default;} 
 ?></meteotextshowertext><br>Shower Currently Visible<br>
- <?php	echo date('D jS M Y');?>       
+ <?php	echo w34_date('D jS M Y');?>       
 </article>  
   
   <article>

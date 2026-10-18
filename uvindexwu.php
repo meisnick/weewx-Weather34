@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 include('w34CombinedData.php');
@@ -139,7 +140,7 @@ else if ($weather["uv"]>=0) {echo 'Low UVI<br>No cautions required<br>Safe for a
 </article>  
   
   <article> 
-  <div class=actualt>&nbsp;&nbsp Current Solar Radiation <?php echo date('F Y')?> </div>        
+  <div class=actualt>&nbsp;&nbsp Current Solar Radiation <?php echo w34_date('F Y')?> </div>        
     <div class="solarcontainer1"><?php 
 if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
 else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}

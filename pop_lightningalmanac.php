@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 
@@ -110,7 +111,7 @@ metricsblue {
 </article>
 
 <article>
-    <div class=actualt>Strikes <?php echo date('M Y')?> </div>
+    <div class=actualt>Strikes <?php echo w34_date('M Y')?> </div>
     <?php echo "<div class='lightning'>",$weather["lightningmonth"] . "</value>"?></div>
 </article>
 

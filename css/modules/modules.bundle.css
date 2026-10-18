@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-08-21 21:32:28 UTC
+   Generated: 2026-10-18 03:49:14 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -1227,7 +1227,9 @@
 
   margin: 76px auto auto;
 
-  width: 240px;
+  /* 296px (was 240px): the stats lines wrapped into the footer links, in English too
+     when the wind direction label is two lines, and in every longer language */
+  width: 296px;
 
   line-height: 12px
 

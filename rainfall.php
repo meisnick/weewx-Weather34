@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php  //weather34 rain module
 include_once('w34CombinedData.php');
 ?>
@@ -65,7 +66,7 @@ include_once('w34CombinedData.php');
         
         <!-- Month -->
         <div class="mod-rainfall-block">
-          <valuetextheading1><?php echo date('F');?></valuetextheading1>
+          <valuetextheading1><?php echo w34_date('F');?></valuetextheading1>
           <div class="rainmodulehome">
             <raiblue><?php echo $weather["rain_month"];?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
@@ -74,7 +75,7 @@ include_once('w34CombinedData.php');
 
         <!-- Last Hour -->
         <div class="mod-rainfall-block">
-          <valuetextheading1>Last Hour</valuetextheading1>
+          <valuetextheading1><?php echo w34t('LastHour', 'Last Hour');?></valuetextheading1>
           <div class="rainmodulehome">
             <raiblue><?php echo $weather["rain_lasthour"];?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
@@ -83,7 +84,7 @@ include_once('w34CombinedData.php');
 
         <!-- Last 24hr -->
         <div class="mod-rainfall-block">
-          <valuetextheading1>Last 24hr</valuetextheading1>
+          <valuetextheading1><?php echo w34t('Last24hr', 'Last 24hr');?></valuetextheading1>
           <div class="rainmodulehome">
             <raiblue><?php echo $weather["rain_24hrs"];?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
@@ -94,7 +95,7 @@ include_once('w34CombinedData.php');
       <!-- Bottom Pill (Rate) -->
       <div class="mod-rainfall-bot-pill">
         <div class="rainratemodulehome">
-          <rainratetextheading>&nbsp;Rate&nbsp;</rainratetextheading>
+          <rainratetextheading>&nbsp;<?php echo w34t('Rate', 'Rate');?>&nbsp;</rainratetextheading>
           <raiblue><?php 
             if ($weather["rain_rate"]>100) { echo number_format($weather["rain_rate"],1); } 
             else { echo number_format($weather["rain_rate"],2); }

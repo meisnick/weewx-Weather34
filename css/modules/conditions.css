@@ -83,7 +83,9 @@
 
   margin: 76px auto auto;
 
-  width: 240px;
+  /* 296px (was 240px): the stats lines wrapped into the footer links, in English too
+     when the wind direction label is two lines, and in every longer language */
+  width: 296px;
 
   line-height: 12px
 

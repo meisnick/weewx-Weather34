@@ -1,8 +1,9 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
 include('shared_core.php');
 include_once('settings1.php');
 ?>
-<div class="updatedtime"><span><?php echo $online; ?> <span class="radar-time-text">Live</span></span></div>
+<div class="updatedtime"><span><?php echo $online; ?> <span class="radar-time-text"><?php echo w34t('Live', 'Live'); ?></span></span></div>
 
 <div class="mod-radar">
     <img class="mod-radar-img img-active"

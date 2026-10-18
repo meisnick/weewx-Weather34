@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php
   include('w34CombinedData.php');
   include('settings.php');
@@ -20,7 +21,7 @@
   <?php
     //weather34 weather34 last detect
     if ($lightning['last_time']>=1) {
-      echo "<spanfeelstitle>".$lang['LastStrike'].": <orange> ".date("j M Y", $lightning['last_time'])." </orange> ";}?><br />
+      echo "<spanfeelstitle>".$lang['LastStrike'].": <orange> ".w34_date("j M Y", $lightning['last_time'])." </orange> ";}?><br />
   <?php
     if ($windunit == 'mph'){
       echo "<spanfeelstitle>".$lang['LastDistanceAt'].":<orange> ".number_format($lightning['light_last_distance']*0.621371,1). "  </orange>".$lang['Miles'];

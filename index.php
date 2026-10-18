@@ -12,6 +12,7 @@ if (!file_exists('settings1.php')) { copy('initial_settings1.php', 'settings1.ph
 if (!file_exists('modules.php'))   { copy('modules.example.php', 'modules.php'); }
 include_once('w34CombinedData.php');
 include_once('common.php');
+include_once('w34_i18n.php');
 include_once('webserver_ip_address.php');
 include('settings1.php');
 include('settings.php');
@@ -91,81 +92,81 @@ function modulePopups($module, $vars) {
     $out = '';
     switch ($module) {
         case 'temperaturein.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_temperature.php" data-lity>' . $menucharticonpage . ' Temperature Almanac and Derived Charts</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_temperature.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkTempAlmanac', 'Temperature Almanac and Derived Charts') . '</a></span>';
             break;
         case 'forecast3om.php':
         case 'forecast3omlarge.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_forecast.php" data-lity>' . $chartinfo . ' Forecasts</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_forecast.php" data-lity>' . $chartinfo . ' ' . w34t('LinkForecasts', 'Forecasts') . '</a></span>';
             break;
         case 'forecast3wu.php':
         case 'forecast3wularge.php':
-            $out = '<span class="yearpopup"><a href="pop_outlookwu.php" data-lity>' . $chartinfo . ' Daily F.cast</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_outlookwu.php" data-lity>' . $chartinfo . ' ' . w34t('LinkDailyForecast', 'Daily F.cast') . '</a></span>';
             break;
         case 'currentconditionsw34.php':
-            $metar_offline = (file_exists('jsondata/me.txt') && filesize('jsondata/me.txt') < 160) ? ' (<span class="ink-ored">Offline</span>)' : '';
-            $out  = '<span class="yearpopup"><a href="pop_metarnearby.php" data-lity>' . $chartinfo . ' Nearby Metar' . $metar_offline . '</a></span>';
-            $out .= '<span class="monthpopup"><a href="pop_windyradar.php" data-lity>' . $chartinfo . ' Radar</a></span>';
-            $out .= '<span class="monthpopup"><a href="pop_windywind.php" data-lity>' . $chartinfo . ' Wind Map</a></span>';
-            $out .= '<span class="todaypopup"><a href="' . $chartsource . '/' . $theme1 . '-charts.html?chart=\'cloudcoverplot\'&span=\'weekly\'" data-lity>' . $menucharticonpage . ' Cloud Cover</a></span>';
+            $metar_offline = (file_exists('jsondata/me.txt') && filesize('jsondata/me.txt') < 160) ? ' (<span class="ink-ored">' . w34t('Offline', 'Offline') . '</span>)' : '';
+            $out  = '<span class="yearpopup"><a href="pop_metarnearby.php" data-lity>' . $chartinfo . ' ' . w34t('LinkNearbyMetar', 'Nearby Metar') . $metar_offline . '</a></span>';
+            $out .= '<span class="monthpopup"><a href="pop_windyradar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkRadar', 'Radar') . '</a></span>';
+            $out .= '<span class="monthpopup"><a href="pop_windywind.php" data-lity>' . $chartinfo . ' ' . w34t('LinkWindMap', 'Wind Map') . '</a></span>';
+            $out .= '<span class="todaypopup"><a href="' . $chartsource . '/' . $theme1 . '-charts.html?chart=\'cloudcoverplot\'&span=\'weekly\'" data-lity>' . $menucharticonpage . ' ' . w34t('LinkCloudCover', 'Cloud Cover') . '</a></span>';
             break;
         case 'windspeeddirection.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_wind.php" data-lity>' . $menucharticonpage . ' Wind Almanac and Charts</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_wind.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkWindAlmanac', 'Wind Almanac and Charts') . '</a></span>';
             break;
         case 'barometer.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_barometer.php" data-lity>' . $menucharticonpage . ' Barometer Almanac and Charts</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_barometer.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkBaroAlmanac', 'Barometer Almanac and Charts') . '</a></span>';
             break;
         case 'sun3.php':
         case 'w34skymap.php':
-            $out = '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' Daylight Map</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_daylightmap.php" data-lity>' . $info . ' ' . w34t('LinkDaylightMap', 'Daylight Map') . '</a></span>';
             break;
         case 'moonphase.php':
-            $out = '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' ' . w34t('LinkMoonInfo', 'Moon Info') . '</a></span>';
             break;
         case 'rainfall.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' Rainfall Almanac and Charts</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts') . '</a></span>';
             break;
         case 'lightning34.php':
-            $out = '<span class="yearpopup"><a href="pop_lightningalmanac.php" data-lity>' . $chartinfo . ' Strike Almanac</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_lightningalmanac.php" data-lity>' . $chartinfo . ' ' . w34t('LinkStrikeAlmanac', 'Strike Almanac') . '</a></span>';
             break;
         case 'webcamsmall.php':
             if (!empty($webcamurl) || !empty($videoWeatherCamURL)) {
-                $out = '<span class="yearpopup"><a href="pop_cam.php" data-lity>' . $webcamicon . ' Timelapse Camera</a></span>';
+                $out = '<span class="yearpopup"><a href="pop_cam.php" data-lity>' . $webcamicon . ' ' . w34t('LinkTimelapse', 'Timelapse Camera') . '</a></span>';
             }
-            $out .= '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' Indoor Guide</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' Moon Info</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' ' . w34t('LinkIndoorGuide', 'Indoor Guide') . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' ' . w34t('LinkMoonInfo', 'Moon Info') . '</a></span>';
             break;
         case 'indoortemperature.php':
-            $out = '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' Indoor Guide</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' ' . w34t('LinkIndoorGuide', 'Indoor Guide') . '</a></span>';
             break;
         case 'airqualitymodule.php':
-            $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' Air Quality</a></span>';
+            $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' ' . w34t('AirQuality', 'Air Quality') . '</a></span>';
             break;
         case 'forecastdiscussion.php':
-            $out = '<span class="yearpopup"><a href="afdpopup.php" data-lity>' . $chartinfo . ' Forecast Discussion Details</a></span>';
+            $out = '<span class="yearpopup"><a href="afdpopup.php" data-lity>' . $chartinfo . ' ' . w34t('LinkAfdDetails', 'Forecast Discussion Details') . '</a></span>';
             break;
         case 'localforecast.php':
-            $out = '<span class="yearpopup"><a href="pop_localforecast.php" data-lity>' . $chartinfo . ' Hyperlocal Forecast Details</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_localforecast.php" data-lity>' . $chartinfo . ' ' . w34t('LinkNowcastDetails', 'Hyperlocal Forecast Details') . '</a></span>';
             break;
         case 'purpleairqualitymodule.php':
         case 'ew_airqualitymodule.php':
-            $out = '<span class="yearpopup"><a href="pop_airqualityinfo.php" data-lity>' . $chartinfo . ' Air Quality | Cloudbase</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_airqualityinfo.php" data-lity>' . $chartinfo . ' ' . w34t('AirQuality', 'Air Quality') . ' | ' . w34t('Cloudbase', 'Cloudbase') . '</a></span>';
             break;
         case 'weather34uvsolar.php':
         case 'solaruv.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_solar.php" data-lity>' . $chartinfo . ' UV and Solar Almanacs</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_solar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkSolarAlmanacs', 'UV and Solar Almanacs') . '</a></span>';
             break;
         case 'solaruvwu.php':
-            $out  = '<span class="yearpopup"><a href="uvindexwu.php" data-lity>' . $chartinfo . ' UV Guide</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_solaralmanac.php" data-lity>' . $chartinfo . ' Solar Almanac</a></span>';
+            $out  = '<span class="yearpopup"><a href="uvindexwu.php" data-lity>' . $chartinfo . ' ' . w34t('LinkUvGuide', 'UV Guide') . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_solaralmanac.php" data-lity>' . $chartinfo . ' ' . w34t('LinkSolarAlmanac', 'Solar Almanac') . '</a></span>';
             break;
         case 'aurora_module.php':
-            $kp_label = isset($kp) && $kp >= 5 ? ' <orange>Active</orange>' : '';
-            $out  = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' Space Weather' . $kp_label . '</a></span>';
-            $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' Meteor Showers</a></span>';
+            $kp_label = isset($kp) && $kp >= 5 ? ' <orange>' . w34t('Active', 'Active') . '</orange>' : '';
+            $out  = '<span class="yearpopup"><a href="pop_aurora.php" data-lity>' . $info . ' ' . w34t('SpaceWeather', 'Space Weather') . $kp_label . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' ' . w34t('MeteorShowers', 'Meteor Showers') . '</a></span>';
             break;
         case 'radar_module.php':
-            $out  = '<span class="yearpopup"><a href="pop_radar.php" data-lity>' . $chartinfo . ' Radar Loop (KMKX)</a></span>';
-            $out .= '<span class="monthpopup"><a href="pop_radar_live.php" data-lity>' . $chartinfo . ' Interactive Radar</a></span>';
+            $out  = '<span class="yearpopup"><a href="pop_radar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkRadarLoop', 'Radar Loop') . ' (KMKX)</a></span>';
+            $out .= '<span class="monthpopup"><a href="pop_radar_live.php" data-lity>' . $chartinfo . ' ' . w34t('LinkInteractiveRadar', 'Interactive Radar') . '</a></span>';
             break;
     }
     return $out;
@@ -289,7 +290,7 @@ body.edit-mode .mod-box:active{cursor:grabbing}
   <button data-cols="6" onclick="setColumns(6)">6</button>
 </div>
 <button id="edit-toggle" onclick="toggleEdit()" title="Toggle layout edit mode">
-  <span id="edit-icon">&#128274;</span> <span id="edit-label">Edit Layout</span>
+  <span id="edit-icon">&#128274;</span> <span id="edit-label"><?php echo w34t('EditLayout', 'Edit Layout'); ?></span>
 </button>
 <div id="edit-status"></div>
 
@@ -387,7 +388,7 @@ function toggleEdit() {
     editMode = !editMode;
     document.body.classList.toggle('edit-mode', editMode);
     document.getElementById('edit-icon').textContent  = editMode ? '✏' : '🔒';
-    document.getElementById('edit-label').textContent = editMode ? 'Done' : 'Edit Layout';
+    document.getElementById('edit-label').textContent = editMode ? <?php echo json_encode(w34t('Done', 'Done')); ?> : <?php echo json_encode(w34t('EditLayout', 'Edit Layout')); ?>;
 
     if (editMode) {
         var picker = document.getElementById('col-picker');
@@ -436,8 +437,8 @@ else
 <div class=footertext>&nbsp;<?php echo $info; ?>&nbsp;(<value><?php echo $templateversion; ?></value>)&nbsp;
 <?php echo "WeeWX"; ?>-(<value><maxred><?php echo $weather["swversion"]; ?></maxred></value>)&nbsp;
 <?php echo $info . "&nbsp;" . $weatherhardware; ?></div>
-<div class=footertext><a href="https://github.com/meisnick/weewx-Weather34"><?php echo $github; ?>&nbsp; WeeWX Version Repository at https://github.com/meisnick/weewx-Weather34 &nbsp; <img src="img/flags/<?php echo $flag; ?>.svg" width="20px"></a></div>
-<div class=footertext><a href="https://hjelp.yr.no/hc/en-us/articles/203786121-Weather-symbols-on-Yr">Weather Symbols by <img src="img/yr.svg" width="14px"></a></div>
+<div class=footertext><a href="https://github.com/meisnick/weewx-Weather34"><?php echo $github; ?>&nbsp; <?php echo w34t('RepositoryAt', 'WeeWX Version Repository at'); ?> https://github.com/meisnick/weewx-Weather34 &nbsp; <img src="img/flags/<?php echo $flag; ?>.svg" width="20px"></a></div>
+<div class=footertext><a href="https://hjelp.yr.no/hc/en-us/articles/203786121-Weather-symbols-on-Yr"><?php echo w34t('WeatherSymbolsBy', 'Weather Symbols by'); ?> <img src="img/yr.svg" width="14px"></a></div>
 </div>
 </div></div>
 

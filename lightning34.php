@@ -1,3 +1,4 @@
+<?php include_once('w34_i18n.php'); ?>
 <?php include('w34CombinedData.php'); include('common.php'); date_default_timezone_set($TZ);
 
 $strike_3hr = (int)($lightning['strike_count_3hr'] ?? 0);
@@ -13,7 +14,7 @@ $strikes_yr = str_replace(',', '', $weather['lightningyear']  ?? '0');
 // Last strike: prefer live sensor; fall back to most recent archive row with strikes
 $last_time = null;
 if (isset($lightning['last_time']) && $lightning['last_time'] >= 1) {
-    $last_time = date('j M, H:i', (int)$lightning['last_time']);
+    $last_time = w34_date('j M, H:i', (int)$lightning['last_time']);
 } else {
     try {
         $ltdb = new SQLite3('/var/lib/weewx/weewx.sdb', SQLITE3_OPEN_READONLY);
@@ -23,7 +24,7 @@ if (isset($lightning['last_time']) && $lightning['last_time'] >= 1) {
         );
         $ltdb->close();
         if ($row && isset($row['dateTime'])) {
-            $last_time = date('j M, H:i', (int)$row['dateTime']);
+            $last_time = w34_date('j M, H:i', (int)$row['dateTime']);
         }
     } catch (Exception $e) { /* fail silently */ }
 }
@@ -63,7 +64,7 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
                 <div class="mod-lt-pill"><span class="val"><?php echo $strikes_yr; ?></span></div>
             </div>
             <div class="mod-lt-item">
-                <div class="mod-lt-lbl"><?php echo date('M'); ?></div>
+                <div class="mod-lt-lbl"><?php echo w34_date('M'); ?></div>
                 <div class="mod-lt-pill"><span class="val"><?php echo $strikes_mo; ?></span></div>
             </div>
             <div class="mod-lt-item">

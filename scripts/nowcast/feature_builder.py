@@ -139,6 +139,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--tail",   type=int, default=0)
+    ap.add_argument("--rebuild", action="store_true",
+                    help="drop all rows and rebuild from the whole weewx archive (after backfilling weewx.sdb)")
     args = ap.parse_args()
 
     FEATURES_DB.parent.mkdir(parents=True, exist_ok=True)
@@ -180,6 +182,11 @@ def main():
 
     wconn = sqlite3.connect(f"file:{WEEWX_DB}?mode=ro", uri=True)
     wconn.row_factory = sqlite3.Row
+
+    if args.rebuild:
+        fconn.execute("DELETE FROM hourly_features")
+        fconn.commit()
+        print("Features DB cleared for rebuild.")
 
     # Find where to start: resume after last row already in features.db
     last = fconn.execute("SELECT MAX(ts) FROM hourly_features").fetchone()[0]

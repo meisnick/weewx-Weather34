@@ -1275,7 +1275,7 @@ $RH = $weather['humidity'];
 $Tdc = (($Tc - (14.55 + 0.114 * $Tc) * (1 - (0.01 * $RH)) - pow((2.5 + 0.007 * $Tc) * (1 - (0.01 * $RH)) , 3) - (15.9 + 0.117 * $Tc) * pow(1 - (0.01 * $RH) , 14)));
 $E = (6.11 * pow(10, (7.5 * $Tdc / (237.7 + $Tdc))));
 $wetbulbcalc = (((0.00066 * $P) * $Tc) + ((4098 * $E) / pow(($Tdc + 237.7) , 2) * $Tdc)) / ((0.00066 * $P) + (4098 * $E) / pow(($Tdc + 237.7) , 2));
-$wetbulbx = number_format($wetbulbcalc, 1);
+$wetbulbx = number_format($weather['temp_units'] == 'C' ? $wetbulbcalc : cToFDirect($wetbulbcalc), 1); // computed in degC, shown in the display unit
 // K-INDEX & SOLAR DATA FOR WEATHER34 HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
 // ki.txt also lists NOAA's predicted values, newest last: the current Kp is the newest observed/estimated entry
 $kp = null;

@@ -29,8 +29,8 @@ if (isset($lightning['last_time']) && $lightning['last_time'] >= 1) {
     } catch (Exception $e) { /* fail silently */ }
 }
 
-// Badge colour: amber when quiet, orange when active strikes in last 3hr
-$badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
+// Badge modifier class: default amber when quiet, --active (orange) when strikes in last 3hr
+$badge_cls = ($strike_3hr > 0) ? ' mod-lt-badge-top--active' : '';
 ?>
 <div class="updatedtime"><span>
     <?php if (file_exists($livedata) && time() - filemtime($livedata) > 300):
@@ -50,7 +50,7 @@ $badge_col = ($strike_3hr > 0) ? 'var(--orange)' : 'var(--amber)';
 
         <div class="mod-lt-left-col">
             <div class="mod-lt-badge">
-                <div class="mod-lt-badge-top" style="background-color:<?php echo $badge_col; ?>">
+                <div class="mod-lt-badge-top<?php echo $badge_cls; ?>">
                     <span class="lbl"><?php echo $lang['Strikes']; ?></span>
                     <span class="val"><?php echo $strike_3hr; ?></span>
                 </div>

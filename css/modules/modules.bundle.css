@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:42:39 UTC
+   Generated: 2026-10-18 22:44:42 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -2268,10 +2268,15 @@ position: absolutue;
     align-items: center;
     justify-content: center;
     padding-top: 2px;
+    background-color: var(--amber);
     -webkit-border-top-left-radius: 2px;
     -webkit-border-top-right-radius: 2px;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
+}
+
+.mod-lt-badge-top--active {
+    background-color: var(--orange);
 }
 
 .mod-lt-badge-top .lbl {
@@ -2281,6 +2286,7 @@ position: absolutue;
     margin-bottom: 0px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
 }
 
 .mod-lt-badge-top .val {
@@ -2301,6 +2307,7 @@ position: absolutue;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-indent: 0.5px;
     -webkit-border-bottom-left-radius: 2px;
     -webkit-border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -2414,7 +2421,7 @@ position: absolutue;
   color: var(--card-ink-blue);
 }
 [data-theme="light"] .mod-lt-badge-bot {
-  color: var(--ink-muted);
+  color: var(--card-ink-blue);
 }
 [data-theme="light"] .mod-lt-lbl {
   color: var(--card-ink-blue);

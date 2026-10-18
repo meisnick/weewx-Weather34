@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:24:56 UTC
+   Generated: 2026-10-18 22:26:02 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4948,14 +4948,10 @@ valuetextheading2 {
 }
 
 [data-theme="light"] .mod-wind .wind-conv-pill {
-  background: var(--temp-mild-2);
-  border: 2px solid var(--line-light);
-  border-radius: 3px;
-  color: var(--accent-ink);
+  border-color: var(--line-soft);
 }
-[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-val,
-[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-unit {
-  color: var(--accent-ink);
+[data-theme="light"] .mod-wind .weather34windrun {
+  color: var(--card-ink);
 }
 
 /* ── sandbox-tuned positions ─────────────────────────────────────────────── */

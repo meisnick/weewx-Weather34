@@ -216,14 +216,10 @@
 }
 
 [data-theme="light"] .mod-wind .wind-conv-pill {
-  background: var(--temp-mild-2);
-  border: 2px solid var(--line-light);
-  border-radius: 3px;
-  color: var(--accent-ink);
+  border-color: var(--line-soft);
 }
-[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-val,
-[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-unit {
-  color: var(--accent-ink);
+[data-theme="light"] .mod-wind .weather34windrun {
+  color: var(--card-ink);
 }
 
 /* ── sandbox-tuned positions ─────────────────────────────────────────────── */

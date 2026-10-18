@@ -1,0 +1,3 @@
+// Installed as /etc/apt/apt.conf.d/99-weather34-perms (see scripts/system/README.md).
+// After any dpkg run (weewx upgrades in particular), restore the repo's execute bits and .git ownership.
+DPkg::Post-Invoke { "if [ -x /usr/local/sbin/w34-restore-perms ]; then /usr/local/sbin/w34-restore-perms; fi"; };

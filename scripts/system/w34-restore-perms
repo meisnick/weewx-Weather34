@@ -1,0 +1,17 @@
+#!/bin/sh
+# w34-restore-perms — re-apply what the weewx package's postinst undoes.
+#
+# On every weewx install/upgrade, /var/lib/dpkg/info/weewx.postinst runs
+#   chown -R weewx:weewx /var/www/html/weewx ; find ... -type f -exec chmod 664 {} \;
+# over the whole HTML dir, which includes this repo. That strips the execute bit from the git hooks and
+# w34highcharts/w34_reports and hands .git to weewx, so the next `sudo -u www-data git merge` fails.
+#
+# Installed as /usr/local/sbin/w34-restore-perms and run as root by
+# /etc/apt/apt.conf.d/99-weather34-perms after every dpkg run (see scripts/system/README.md).
+ROOT=/var/www/html/weewx/weather34
+[ -d "$ROOT/.git" ] || exit 0
+chown -R www-data:www-data "$ROOT/.git"
+for f in "$ROOT/.git/hooks/post-merge" "$ROOT/.git/hooks/post-checkout" "$ROOT/w34highcharts/w34_reports"; do
+  [ -f "$f" ] && chmod 775 "$f"
+done
+exit 0

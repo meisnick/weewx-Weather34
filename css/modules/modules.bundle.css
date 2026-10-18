@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 22:21:05 UTC
+   Generated: 2026-10-18 22:24:56 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4898,7 +4898,13 @@ valuetextheading2 {
 }
 
 .wind-conv-val { color: var(--green); font-size: 10.2px; font-family: weathertext2; }
-.wind-conv-unit { color: var(--card-ink); font-size: 8px; font-family: Arial; margin-left: 2px;}
+.wind-conv-unit,
+.mod-wind .wind-pill-unit { color: var(--card-ink); font-size: 8px; font-family: Arial, sans-serif; margin-left: 2px; }
+.mod-wind .weather34beaufort1-3 .wind-pill-unit,
+.mod-wind .weather34beaufort3-4 .wind-pill-unit,
+.mod-wind .weather34beaufort4-5 .wind-pill-unit,
+.mod-wind .weather34beaufort6 .wind-pill-unit,
+.mod-wind .weather34windrun .wind-pill-unit { color: inherit; }
 
 /* Pill Overrides (Disable the legacy absolutism) */
 .mod-wind .weather34beaufort1-3,
@@ -4932,13 +4938,24 @@ valuetextheading2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line-mid);
+  border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   padding: 0 5px;
   margin-top: 0;
   position: relative;
   left: 6px; top: 1px;      /* sandbox-tuned */
   font-size: 10px;
+}
+
+[data-theme="light"] .mod-wind .wind-conv-pill {
+  background: var(--temp-mild-2);
+  border: 2px solid var(--line-light);
+  border-radius: 3px;
+  color: var(--accent-ink);
+}
+[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-val,
+[data-theme="light"] .mod-wind .wind-conv-pill .wind-conv-unit {
+  color: var(--accent-ink);
 }
 
 /* ── sandbox-tuned positions ─────────────────────────────────────────────── */
@@ -4948,9 +4965,9 @@ valuetextheading2 {
 .mod-wind-col-left  .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
 .mod-wind-col-right .mod-wind-block-small.bot-block.pill-block { position: relative; top: 29px; }
 .mod-wind-col-left  .mod-wind-block.mid-block value { position: relative; top: 12px; }
-.mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 16px; }
+.mod-wind-col-right .mod-wind-block.mid-block value { position: relative; top: 19px; }
 .mod-wind-col-left  .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 16px; }
-.mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 21px; }
+.mod-wind-col-right .mod-wind-block.mid-block .mod-wind-label { position: relative; top: 23px; }
 .mod-wind-col-left  .mod-wind-block-small.top-block { position: relative; left: 0; top: -1px; }
 .mod-wind-col-right .mod-wind-block-small.top-block { position: relative; left: 5px; top: 3px; }
 .mod-wind .mod-wind-grid .mod-wind-col-left .mod-wind-block-small.top-block .mod-wind-label { position: relative; left: -7px; top: 2px; font-size: 9px; }

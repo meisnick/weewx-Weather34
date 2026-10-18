@@ -49,7 +49,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
           else if ($weather["wind_speed_bft"] >= 1) { echo $beaufort1 . "&nbsp; " . $weather["wind_speed_bft"]; }
           else if ($weather["wind_speed_bft"] >= 0) { echo $beaufort0 . "&nbsp; " . $weather["wind_speed_bft"]; }
           ?>
-          <span style="font-size: 8px; font-family: Arial; margin-left: 2px;">BFT</span>
+          <span class="wind-pill-unit">BFT</span>
         </div>
         <div class="mod-wind-label bft-text">
           <?php
@@ -113,7 +113,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       <div class="mod-wind-block-small bot-block pill-block">
         <div class="weather34windrun">
           <?php echo $windrunicon . '&nbsp;'. number_format($weather["windrun"],1);?>
-          <span style="font-size: 8px; font-family: Arial; margin-left: 2px;">
+          <span class="wind-pill-unit">
             <?php if ($weather["wind_units"] == 'mph') echo 'mi'; else if ($weather["wind_units"] == 'm/s') echo 'km'; else if ($weather["wind_units"] == 'kts') echo 'mi';else echo 'km';?>
           </span>
         </div>

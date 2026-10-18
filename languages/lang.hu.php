@@ -420,7 +420,7 @@ $lang['NoSummary']                = 'Még nem készült';
 $lang['GeneratedYet']             = 'összefoglaló.';
 $lang['CheckBackgroundScript']    = 'Ellenőrizze a háttérszkript futását.';
 $lang['ConfirmOllamaStatus']      = 'Ellenőrizze az <span class="hl-orange">Ollama állapotát</span> a Pi-n.';
-$lang['Strikes']                  = 'Becsapódások';
+$lang['Strikes']                  = 'Villámok';
 $lang['Last3Hrs']                 = 'Utolsó 3 óra';
 $lang['Distance']                 = 'Távolság';
 $lang['LastStrike']               = 'Utolsó becsapódás';

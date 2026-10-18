@@ -419,7 +419,7 @@ $lang['NoSummary']                = 'Nie wygenerowano';
 $lang['GeneratedYet']             = 'jeszcze podsumowania.';
 $lang['CheckBackgroundScript']    = 'Sprawdź działanie skryptu w tle.';
 $lang['ConfirmOllamaStatus']      = 'Sprawdź <span class="hl-orange">stan Ollama</span> na Pi.';
-$lang['Strikes']                  = 'Wyładowania';
+$lang['Strikes']                  = 'Pioruny';
 $lang['Last3Hrs']                 = 'Ostatnie 3 h';
 $lang['Distance']                 = 'Odległość';
 $lang['LastStrike']               = 'Ostatnie wyładowanie';

@@ -10,6 +10,9 @@
 }
 
 .mod-top-lightning .wflaststrike {
+  position: static !important;
+  margin: 0 !important;
+  width: auto !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +29,8 @@
 }
 
 .mod-top-lightning .lightningicon {
+  position: static !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -34,5 +39,6 @@
 [data-theme="light"] .mod-top-lightning .wflaststrike {
   color: var(--card-ink-strong);
 }
+
 
 

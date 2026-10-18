@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 23:18:24 UTC
+   Generated: 2026-10-18 23:19:41 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4594,6 +4594,9 @@ valuetextheading2 {
 }
 
 .mod-top-lightning .wflaststrike {
+  position: static !important;
+  margin: 0 !important;
+  width: auto !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -4610,6 +4613,8 @@ valuetextheading2 {
 }
 
 .mod-top-lightning .lightningicon {
+  position: static !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -4618,6 +4623,7 @@ valuetextheading2 {
 [data-theme="light"] .mod-top-lightning .wflaststrike {
   color: var(--card-ink-strong);
 }
+
 
 
 

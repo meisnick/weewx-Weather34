@@ -40,3 +40,9 @@ inside the repo, so those are copies.
 
 `/usr/local/bin/w34config.py` is a symlink to `scripts/w34config.py`, which is the single station
 config. The nowcast scripts, the root fetchers and `icao_lookup.php`/`nws_zone_lookup.php` all use it.
+
+## Apache no-cache for live data
+
+`weather34-nocache.conf` sets `Cache-Control: no-cache, must-revalidate` on `jsondata/`, `serverdata/` and
+`w34highcharts/json*`. Dev installs it as a conf file (`a2enmod headers; a2enconf weather34-nocache`);
+prod has the same blocks inside its vhost.

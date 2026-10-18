@@ -39,11 +39,22 @@ function yt_temp_class($v, $u) {
  * strip across the bottom, and the sub-label sitting INSIDE that chin. All one
  * fixed-size card (Prod badge is 53x38 with an 11px dark bottom strip). */
 function yt_side($cls, $cap, $val, $unit, $sub) {
+    $u_html = ($unit !== '') ? '<span class="yt-unit">' . $unit . '</span>' : '';
     return '<div class="yt-pill ' . $cls . '">'
          .   '<span class="yt-top">'
          .     '<span class="yt-cap">' . $cap . '</span>'
-         .     '<span class="yt-val">' . $val . '<span class="yt-unit">' . $unit . '</span></span>'
+         .     '<span class="yt-val">' . $val . $u_html . '</span>'
          .   '</span>'
          .   '<span class="yt-chin">' . $sub . '</span>'
          . '</div>';
 }
+
+function yt_daqi_info($v) {
+    if ($v > 300) return ['yt-maroon',  'Hazardous'];
+    if ($v > 200) return ['yt-purple',  'V Unhealthy'];
+    if ($v > 150) return ['yt-red',     'Unhealthy'];
+    if ($v > 100) return ['yt-orange',  'UnhealthySI'];
+    if ($v > 50)  return ['yt-yellow1', 'Moderate'];
+    return ['yt-green', 'Good'];
+}
+

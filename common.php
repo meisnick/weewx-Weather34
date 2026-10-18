@@ -180,6 +180,14 @@ switch ($lang) {
   $lang_option = 'en';
   setlocale(LC_TIME, "no_NO.UTF-8");
   break;
+
+  //Swedish (lang.sw.php existed but was never selectable)
+  case 'sw':
+  $lang_file = 'lang.sw.php';
+  $lang_flag = 'sw';
+  $lang_option = 'en';
+  setlocale(LC_TIME, "sv_SE.UTF-8");
+  break;
   
 //default
   default:

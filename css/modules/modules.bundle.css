@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 23:05:58 UTC
+   Generated: 2026-10-18 23:15:43 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4893,6 +4893,13 @@ valuetextheading2 {
 .yt-yellow2 .yt-top { background: var(--warn-8); }
 .yt-green   .yt-top { background: var(--good); }
 .yt-blue    .yt-top { background: var(--info-cool); }
+
+[data-theme="light"] .mod-rain-totals .yt-chin,
+[data-theme="light"] .mod-topyear .yt-chin {
+  background: var(--surface-light-2);
+  color: var(--card-ink-strong);
+}
+
 
 /* ==== wind.css ==== */
 /* ── WIND MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */

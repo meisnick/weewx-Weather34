@@ -13,7 +13,7 @@ include_once __DIR__ . '/local_only.php'; // developer tool: LAN only (its frame
 $base   = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');           // /weewx/weather34
 $module = preg_replace('/[^a-zA-Z0-9_.\-]/', '', $_GET['module'] ?? 'barometer.php');
 $theme  = (($_GET['theme'] ?? 'dark') === 'light') ? 'light' : 'dark';
-$isTop  = (strpos($module, 'top_') === 0);
+$isTop  = (strpos($module, 'top_') === 0 || $module === 'weather34clock.php');
 $isPop  = (strpos($module, 'pop_') === 0);
 
 /* ── FRAME MODE: one module / popout, styled exactly like dashboard ──────────── */
@@ -65,10 +65,13 @@ if (isset($_GET['frame'])) {
       .sbx-hidden{visibility:hidden !important}</style>';
     echo '</head><body>';
     if ($isTop) {
-        echo '<div class="mod-box-topbar" style="width:250px;display:block">'
+        $inner = ($module === 'weather34clock.php')
+               ? '<div id="sbx">' . $frag . '</div>'
+               : '<div class="value"><div id="sbx">' . $frag . '</div></div>';
+        echo '<div class="mod-box-topbar" style="width:240px;display:block">'
            . '<div class="mod-box" data-module="' . htmlspecialchars($module) . '">'
            . '<div class="title">&#9432; SANDBOX</div>'
-           . '<div class="value"><div id="sbx">' . $frag . '</div></div></div></div>';
+           . $inner . '</div></div>';
     } else {
         // one real 320px grid column, as index.php lays it out: the card's 2px margin makes it 316px wide.
         // (A 316px display:block wrapper rendered the card 320px wide, so sandbox and dashboard disagreed.)
@@ -85,6 +88,7 @@ if (isset($_GET['frame'])) {
 /* ── EDITOR MODE ─────────────────────────────────────────────────────────────── */
 $top_mods = [];
 foreach (glob('top_*.php') as $f) { if (strpos($f, 'top_year_helpers') === false) $top_mods[] = $f; }
+if (file_exists('weather34clock.php')) { $top_mods[] = 'weather34clock.php'; }
 sort($top_mods);
 
 $card_mods = [];

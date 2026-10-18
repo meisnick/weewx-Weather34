@@ -102,3 +102,10 @@
 .yt-yellow2 .yt-top { background: var(--warn-8); }
 .yt-green   .yt-top { background: var(--good); }
 .yt-blue    .yt-top { background: var(--info-cool); }
+
+[data-theme="light"] .mod-rain-totals .yt-chin,
+[data-theme="light"] .mod-topyear .yt-chin {
+  background: var(--surface-light-2);
+  color: var(--card-ink-strong);
+}
+

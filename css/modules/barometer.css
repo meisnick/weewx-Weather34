@@ -83,6 +83,9 @@
   font-family: weathertext2, Helvetica, system;
   font-size: .85em;
 }
+.mod-barometer .barometerconvertercircleblue smallrainunit {
+  margin-left: 2px;
+}
 
 /* ── radial dial + needles (centred overlay) ──────────────────────────────── */
 .mod-barometer .homeweathercompass2 {
@@ -220,7 +223,6 @@
   font-size: 12px;
 }
 [data-theme="light"] .mod-barometer .homeweathercompass2 > .homeweathercompass-line2 {
-  top: 20px;
   border: 8px solid var(--line-soft);
   border-top: 8px solid var(--line-soft);
   border-right: 8px solid var(--line-soft);
@@ -239,4 +241,7 @@
   border-radius: 3px;
   color: var(--accent-ink);
   font-family: weathertext2;
+}
+[data-theme="light"] .mod-barometer .barometerconvertercircleblue smallrainunit {
+  color: var(--accent-ink);
 }

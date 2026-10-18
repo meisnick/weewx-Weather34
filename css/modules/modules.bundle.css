@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-18 23:19:41 UTC
+   Generated: 2026-10-18 23:23:51 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -126,6 +126,76 @@
   left: auto !important;
   top: auto !important;
 }
+
+.mod-advisory alertadvisory {
+  left: -44px;
+  top: -5px;
+  margin-left: 0;
+}
+
+.mod-advisory alertadvisory2 {
+  left: -44px;
+  top: -5px;
+  margin-left: 0;
+  width: 32px;
+}
+
+.mod-advisory lightgreen {
+  color: var(--good);
+}
+
+.mod-advisory .mod-adv-active {
+  top: 27px;
+  width: 168px;
+  text-align: left;
+}
+
+.mod-advisory .mod-adv-active alertadvisory {
+  top: 0;
+}
+
+.mod-advisory .mod-adv-sev-extreme  { --adv-col: var(--danger); }
+.mod-advisory .mod-adv-sev-severe   { --adv-col: var(--orange); }
+.mod-advisory .mod-adv-sev-moderate { --adv-col: var(--warn); }
+.mod-advisory .mod-adv-sev-minor    { --adv-col: var(--info-cool); }
+.mod-advisory .mod-adv-sev-unknown  { --adv-col: var(--ink-muted-5); }
+
+.mod-advisory .mod-adv-val {
+  color: var(--adv-col, var(--caution));
+  display: block;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.mod-advisory .mod-adv-evt {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-advisory .mod-adv-evt--md {
+  font-size: 0.9em;
+}
+
+.mod-advisory .mod-adv-evt--sm {
+  font-size: 0.82em;
+  line-height: 1.2;
+}
+
+.mod-advisory .mod-adv-exp {
+  font-size: 0.75em;
+  color: var(--card-ink);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-theme="light"] .mod-advisory .mod-adv-exp {
+  color: var(--card-ink-strong);
+}
+
 
 /* ==== airquality.css ==== */
 /* airquality module -- scoped to .mod-airquality */

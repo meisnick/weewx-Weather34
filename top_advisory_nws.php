@@ -20,13 +20,13 @@ $_alerts = array_values(array_filter($_alerts, function($a) use ($_now) {
 $_count  = count($_alerts);
 $_age    = $_data['fetched'] ?? '';
 
-// Colour map by severity
-$_sevcolour = [
-    'Extreme'  => '#d9534f',
-    'Severe'   => '#e8822a',
-    'Moderate' => '#e8c22a',
-    'Minor'    => '#5bc0de',
-    'Unknown'  => '#aaaaaa',
+// Severity CSS modifier map
+$_sevclass = [
+    'Extreme'  => 'mod-adv-sev-extreme',
+    'Severe'   => 'mod-adv-sev-severe',
+    'Moderate' => 'mod-adv-sev-moderate',
+    'Minor'    => 'mod-adv-sev-minor',
+    'Unknown'  => 'mod-adv-sev-unknown',
 ];
 ?>
 <div class="mod-advisory">
@@ -38,16 +38,16 @@ $_sevcolour = [
 <alertvalue><?php echo w34t('NoActive', 'No Active');?> <lightgreen><?php echo w34t('Advisories', 'Advisories');?></lightgreen></alertvalue>
 </spanelightning>
 <?php else: $a = $_alerts[0];
-    $col  = $_sevcolour[$a['severity']] ?? '#aaaaaa';
-    $evt  = htmlspecialchars($a['event']);
+    $sev_cls = $_sevclass[$a['severity'] ?? ''] ?? 'mod-adv-sev-unknown';
+    $evt     = htmlspecialchars($a['event']);
     
-    // Dynamic font-size scaling based on length to prevent truncation cutoff
-    $font_style = '';
+    // Dynamic font-size modifier based on length to prevent truncation cutoff
+    $evt_cls = 'mod-adv-evt';
     $evt_len = strlen($evt);
     if ($evt_len > 22) {
-        $font_style = 'font-size:0.82em;line-height:1.2;';
+        $evt_cls .= ' mod-adv-evt--sm';
     } elseif ($evt_len > 16) {
-        $font_style = 'font-size:0.9em;';
+        $evt_cls .= ' mod-adv-evt--md';
     }
     
     // Construct the second line: "Until [Day] [Time] ([NWS Station])"
@@ -77,13 +77,14 @@ $_sevcolour = [
     
     $more = $_count > 1 ? ' <orange>(+'.(($_count-1)).' more)</orange>' : '';
 ?>
-<spanelightning>
-<alertadvisory><a alt="Alerts" title="<?php echo htmlspecialchars(w34t('NwsWeatherAlerts', 'NWS Weather Alerts')); ?>" href="pop_nwsalerts.php" data-lity><?php echo str_replace('#3b9cad', $col, $newalert); ?></a></alertadvisory>
-<alertvalue style="color:<?php echo $col; ?>;display:block;overflow:hidden;">
-<span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;<?php echo $font_style; ?>"><?php echo $evt; ?><?php echo $more; ?></span>
-<span style="font-size:0.75em;color:#ccc;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?php echo $expires_str; ?></span>
+<spanelightning class="mod-adv-active <?php echo $sev_cls; ?>">
+<alertadvisory><a alt="Alerts" title="<?php echo htmlspecialchars(w34t('NwsWeatherAlerts', 'NWS Weather Alerts')); ?>" href="pop_nwsalerts.php" data-lity><?php echo str_replace('#3b9cad', 'var(--adv-col)', $newalert); ?></a></alertadvisory>
+<alertvalue class="mod-adv-val">
+<span class="<?php echo $evt_cls; ?>"><?php echo $evt; ?><?php echo $more; ?></span>
+<span class="mod-adv-exp"><?php echo $expires_str; ?></span>
 </alertvalue>
 </spanelightning>
 <?php endif; ?>
 </div></div></div></div>
 </div><!-- /mod-advisory -->
+

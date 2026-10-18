@@ -6,11 +6,10 @@ $json_icon = file_get_contents("jsondata/lookupTable.json");
 $parsed_icon = json_decode($json_icon, true);
 // needs the php-xml extension and a Met Office feed in jsondata/uk.txt (nothing fetches one by default)
 $xml = (function_exists('simplexml_load_file') && is_file("jsondata/uk.txt")) ? @simplexml_load_file("jsondata/uk.txt") : false;
-if ($xml === false) die("UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt");
-$jsonData = json_encode($xml, JSON_PRETTY_PRINT);
-$parsed_json = json_decode($jsonData, true);
-if(($parsed_json['channel']['item'][0]['description'])!==null){$description=$parsed_json['channel']['item'][0]['description'];}
-else if (($parsed_json['channel']['item']['description']) !== null){$description=$parsed_json['channel']['item']['description'];}
+$parsed_json = ($xml !== false) ? json_decode(json_encode($xml, JSON_PRETTY_PRINT), true) : [];
+$description = '';
+if (isset($parsed_json['channel']['item'][0]['description'])) { $description = $parsed_json['channel']['item'][0]['description']; }
+else if (isset($parsed_json['channel']['item']['description'])) { $description = $parsed_json['channel']['item']['description']; }
       
        if (strpos($description, "Red") === 0) {$alertlevel="Red"; $lowercasealert="red"; $uppercasealert="Red Alert";}
        else if (strpos($description, "Amber") === 0) {$alertlevel="Orange"; $lowercasealert="amber"; $uppercasealert="Amber Alert";}
@@ -66,12 +65,13 @@ $parsed_weather34wujson = json_decode($weather34wuurl,false);
 	 
 	 }}?>
 
+<div class="mod-advisory">
 <div class="wulargeforecasthome"><div class="wulargediv">
 <div class="eqcirclehomeregional"><div class="eqtexthomeregional">
 <?php
 ///MetOffice
 if ($alertlevel != "")
-{echo '<spanelightning><alertadvisory2><a alt="Alerts" title="Alerts" href="pop_ukalerts.php" data-lity><img src="css/svg/' . $warnimage . '" width="100%" class="iconpos"></img></alertadvisory2><alertpos><alertvalue>'.$uppercasealert.'<br> '.$alerttype.'</alertvalue></alertpos>
+{echo '<spanelightning><alertadvisory2><a alt="Alerts" title="Alerts" href="pop_ukalerts.php" data-lity><img src="css/svg/' . $warnimage . '" width="100%" class="iconpos" alt=""></a></alertadvisory2><alertpos><alertvalue>'.$uppercasealert.'<br> '.$alerttype.'</alertvalue></alertpos>
    </spanelightning></div></div></div>';}
 
     //weather34 //forecast3wularge wu alerts storms 
@@ -87,7 +87,7 @@ else if ($wuskythunder1>0 && $position6=="forecast3wularge.php"){echo '<spanelig
    </spanelightning></div></div></div>';}
     else if ($wuskythunder6>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder</orange> This Week</alertvalue>
    </spanelightning></div></div></div>';}
-    else if ($wuskythunder7>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder</orange> This Week</alertvalue>>
+    else if ($wuskythunder7>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder</orange> This Week</alertvalue>
    </spanelightning></div></div></div>';}
   //forecast3 wu 
     else if ($wuskythunder1>0 && $position6=="forecast3wu.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder</orange> This Week</alertvalue>
@@ -167,9 +167,10 @@ else if ($wuskythunder1>0 && $position6=="forecast3wularge.php"){echo '<spanelig
    </spanelightning></div></div></div>';}  
   
   else if (strpos($alertlevel,'LightGreen') !== false)
-  {echo '<spanelightning><alertadvisory><a alt="Alerts" title="Alerts" href="pop_ukalerts.php" data-lity>'.$newalertwhite.'</alertadvisory><alertvalue> Currently <lightgreen>No Alerts</lightgreen></alertvalue>
+  {echo '<spanelightning><alertadvisory><a alt="Alerts" title="Alerts" href="pop_ukalerts.php" data-lity>'.$newalertwhite.'</a></alertadvisory><alertvalue> Currently <lightgreen>No Alerts</lightgreen></alertvalue>
   </spanelightning></div></div></div>';}  
  //WEATHER34 solar eclipse events and no alerts 
- else {echo '<spanelightning><alertvalue>'.$eclipse_default.'</spanelightning></div></div></div>';}   
+ else {echo '<spanelightning><alertvalue>'.$eclipse_default.'</alertvalue></spanelightning></div></div></div>';}   
  
-  ?></noalert></div></div>
+  ?></div></div><!-- /mod-advisory -->
+

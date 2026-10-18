@@ -44,6 +44,7 @@ $parsed_weather34wujson = json_decode($weather34wuurl,false);
 	 
 	 }}?>
 
+<div class="mod-advisory">
 <div class="wulargeforecasthome"><div class="wulargediv">
 <div class="eqcirclehomeregional"><div class="eqtexthomeregional">
 <?php
@@ -59,7 +60,7 @@ if ($wuskythunder1>0 && $position6=="forecast3wularge.php"){echo '<spanelightnin
    </spanelightning></div></div></div>';}
     else if ($wuskythunder6>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder Storms</orange> This Week</alertvalue>
    </spanelightning></div></div></div>';}
-    else if ($wuskythunder7>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder Storms</orange> This Week</alertvalue>>
+    else if ($wuskythunder7>0 && $position6=="forecast3wularge.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder Storms</orange> This Week</alertvalue>
    </spanelightning></div></div></div>';}
   //forecast3 wu 
     else if ($wuskythunder1>0 && $position6=="forecast3wu.php"){echo '<spanelightning><alertadvisory>'.$newalert.'</alertadvisory><alertvalue>Expect<orange> Thunder Storms</orange> This Week</alertvalue>
@@ -139,9 +140,10 @@ if ($wuskythunder1>0 && $position6=="forecast3wularge.php"){echo '<spanelightnin
    </spanelightning></div></div></div>';}  
   // forecast3ds.php (DarkSky) removed — API shut down
   else if (strpos($alertlevel,'LightGreen') !== false)
-  {echo '<spanelightning><alertadvisory><a alt="Alerts" title="Alerts" href="meteoalarmalerts.php" data-lity>'.$newalertgreen.'</alertadvisory><alertvalue> Currently <lightgreen>No Alerts</lightgreen></alertvalue>
+  {echo '<spanelightning><alertadvisory><a alt="Alerts" title="Alerts" href="meteoalarmalerts.php" data-lity>'.$newalertgreen.'</a></alertadvisory><alertvalue> Currently <lightgreen>No Alerts</lightgreen></alertvalue>
   </spanelightning></div></div></div>';}  
  //WEATHER34 solar eclipse events and no alerts 
- else {echo '<spanelightning><alertvalue>'.$eclipse_default.'</spanelightning></div></div></div>';}   
+ else {echo '<spanelightning><alertvalue>'.$eclipse_default.'</alertvalue></spanelightning></div></div></div>';}   
  
-  ?></noalert></div></div>
+  ?></div></div><!-- /mod-advisory -->
+

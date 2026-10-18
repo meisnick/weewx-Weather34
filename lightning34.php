@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include('w34CombinedData.php'); include('common.php'); date_default_timezone_set($TZ);
+<?php include_once('w34CombinedData.php'); include('common.php'); date_default_timezone_set($TZ);
 
 $strike_3hr = (int)($lightning['strike_count_3hr'] ?? 0);
 $energy     = rand(6452, 28864); // no energy sensor; DB lightning_energy is NULL

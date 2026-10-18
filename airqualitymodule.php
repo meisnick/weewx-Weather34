@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include('shared_core.php'); include('common.php');
+<?php include_once('shared_core.php'); include('common.php');
 
 // --- Load AQ data safely ---
 $aq_file = 'jsondata/aq.txt';

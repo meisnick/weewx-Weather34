@@ -1,3 +1,4 @@
+<?php $units = $units ?? ''; ?>
 <div class="weather34admin">
   
   <!-- Top Bar -->

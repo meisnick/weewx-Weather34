@@ -38,11 +38,6 @@ foreach ($all_modules as $mod):
 }); })(jQuery);
 <?php endforeach; ?>
 
-// Station data / realtime heartbeat
-(function($){ $(document).ready(function(){
-    var c = $("#blank");
-    setInterval(function(){ $.ajax({ cache:false, url:"" }); }, <?php echo (isset($wuupdate) && $wuupdate > 0) ? 1000*$wuupdate : 30000; ?>);
-}); })(jQuery);
 
 </script>
 <?php

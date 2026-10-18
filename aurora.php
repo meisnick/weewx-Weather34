@@ -1,8 +1,13 @@
-<?php include('shared_core.php'); include('shared_icons.php'); include('common.php');
+<?php include_once('shared_core.php'); include('shared_icons.php'); include('common.php');
 // K-INDEX & SOLAR DATA FOR HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
-$str = file_get_contents('jsondata/ki.txt');
-$json = array_reverse(json_decode($str,false));
-$kp =  $json[1][1];
+// ki.txt is NOAA's list of {time_tag, kp, observed}; the current Kp is the newest observed/estimated entry
+$kp = '';
+$entries = json_decode(@file_get_contents('jsondata/ki.txt'), true);
+if (is_array($entries)) {
+    foreach (array_reverse($entries) as $e) {
+        if (in_array($e['observed'] ?? '', ['observed', 'estimated'])) { $kp = $e['kp']; break; }
+    }
+}
 echo $kp;
 
 

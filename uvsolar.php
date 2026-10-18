@@ -1,4 +1,4 @@
-<?php include('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');
+<?php include_once('w34CombinedData.php');header('Content-type: text/html; charset=utf-8');
 // 34 Aqi 
 
 

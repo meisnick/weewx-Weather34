@@ -13,7 +13,7 @@
 // 	                                                                                                				#
 //###################################################################################################################
 include_once ('settings.php');
-include ('w34CombinedData.php');
+include_once ('w34CombinedData.php');
 $iconset = "icon";
 if ($theme === "dark")
 {

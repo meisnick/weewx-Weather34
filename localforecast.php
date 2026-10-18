@@ -1,7 +1,7 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php
 // localforecast.php — Hyperlocal Short-Term Forecast Card (LLM Analogue Matching)
-include('shared_core.php');
+include_once('shared_core.php');
 include_once('settings1.php');
 include('common.php');
 

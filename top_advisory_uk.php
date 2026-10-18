@@ -1,10 +1,12 @@
-<?php include('w34CombinedData.php');error_reporting(0); 
+<?php include_once('w34CombinedData.php');error_reporting(0); 
 ?>
 
 <?php
 $json_icon = file_get_contents("jsondata/lookupTable.json");
 $parsed_icon = json_decode($json_icon, true);
-$xml=simplexml_load_file("jsondata/uk.txt") or die("Error: Cannot create object");
+// needs the php-xml extension and a Met Office feed in jsondata/uk.txt (nothing fetches one by default)
+$xml = (function_exists('simplexml_load_file') && is_file("jsondata/uk.txt")) ? @simplexml_load_file("jsondata/uk.txt") : false;
+if ($xml === false) die("UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt");
 $jsonData = json_encode($xml, JSON_PRETTY_PRINT);
 $parsed_json = json_decode($jsonData, true);
 if(($parsed_json['channel']['item'][0]['description'])!==null){$description=$parsed_json['channel']['item'][0]['description'];}

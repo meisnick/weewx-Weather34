@@ -1,4 +1,5 @@
 <?php
+include_once('w34CombinedData.php'); // already loaded when index.php includes this; needed when requested on its own
 $uvisvg = $uvisvg ?? '';
 if (($notifications ?? 'yes') == 'yes') {
 

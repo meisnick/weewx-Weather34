@@ -13,7 +13,7 @@
 // 	Issues for weewx-Weather34 template should be addressed to https://github.com/meisnick/weewx-Weather34/issues #                                                                                              #
 // 	                                                                                                				#
 //###################################################################################################################
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
 if ($theme === "dark") {
     echo '<style>@font-face {
   font-family: weathertext;

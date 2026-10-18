@@ -10,7 +10,7 @@
           $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
           socket_set_option($socket, SOL_SOCKET, SO_SNDTIMEO, array('sec' => 2, 'usec' => 0));
           if (socket_connect($socket, $weewxserver_address, $weewxserver_port)){
-            sleep(0.1);
+            usleep(100000);
             @socket_close($socket);
           }else
             error_log("Cannot connect to weewx server at ".$weewxserver_address.":".$weewxserver_port);

@@ -17,7 +17,7 @@
 # original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original
 # by weather34 (Brian Underwood)
 include ('settings.php');
-include ('shared_core.php');
+include_once ('shared_core.php');
 include ('shared_icons.php');
 include_once ('w34_i18n.php');
 error_reporting(0);
@@ -72,8 +72,6 @@ if (isset($weewxapi))
     $weather["temp_units"] = $weewxrt[14]; // C
     $weather["temp_indoor"] = $weewxrt[22];
     $weather["temp_indoor_feel"] = heatIndex($weewxrt[22], $weewxrt[23]); // must set temp_units first
-    $weather["temp_indoormax"] = ($weewxapi[120] == "   N/A" ? "0" : $weewxapi[120]);
-    $weather["temp_indoormin"] = ($weewxapi[121] == "   N/A" ? "0" : $weewxapi[121]);
     $weather["humidity_indoor"] = $weewxrt[23];
     $weather["humidity_indoor15"] = ($weewxapi[71] == "   N/A" ? "0" : $weewxapi[71]);
     $weather["humidity_indoortrend"] = $weewxrt[23] - ($weewxapi[71] == "   N/A" ? "0" : $weewxapi[71]);
@@ -92,7 +90,7 @@ if (isset($weewxapi))
     $weather["temp"] = $weewxrt[2];
     $weather["apptemp"] = ($weewxrt[54] == 'NULL' ? $weewxapi[205] : $weewxrt[54]); // Use Archive data if loop data missing^M
     $weather["heatindex"] = ($weewxrt[41] == 'NULL' ? $weewxapi[41] : $weewxrt[41]); // Use Archive data if loop data missing^M
-    $weather["windchill"] = ($weewxrt[24] == 'NULL' ? $weewxapi[24] : $weewxrt[24]); // Use Archive data if loop data missing^M
+    $weather["windchill"] = ($weewxrt[24] == 'NULL' ? $weewxapi[215] : $weewxrt[24]); // Use Archive data if loop data missing^M
     $weather["humidity"] = (is_numeric($weewxrt[3]) ? number_format($weewxrt[3], 0) : null);
     $weather["temp_today_high"] = (is_numeric($weewxrt[26]) ? number_format($weewxrt[26], 1) : null);
     $weather["temp_today_low"] = (is_numeric($weewxrt[28]) ? number_format($weewxrt[28], 1) : null);
@@ -111,10 +109,8 @@ if (isset($weewxapi))
     $weather["wind_units"] = $weewxrt[13]; // m/s or mph or km/h or kts
     $weather["wind_speed_avg15"] = (is_numeric($weewxrt[72]) ? number_format($weewxrt[72], 1) : null);
     $weather["wind_speed_avg30"] = ($weewxapi[73] == "   N/A" ? "0" : $weewxapi[73]);
-    $weather["sunshine"] = ($weewxapi[55] == "   N/A" ? "0" : $weewxapi[55]);
     $weather["maxsolar"] = (is_numeric($weewxapi[80]) ? number_format($weewxapi[80], 0) : null);
     $weather["maxuv"] = ($weewxapi[58] == "   N/A" ? "0" : $weewxapi[58]);
-    $weather["sunny"] = ($weewxapi[57] == "   N/A" ? "0" : $weewxapi[57]);
     // Expose real luminosity from WeeWX (real-time loop value is index 63, archive is index 214)
     if (isset($weewxrt[63]) && is_numeric($weewxrt[63])) {
         $weather["lux"] = round($weewxrt[63], 0);
@@ -132,14 +128,10 @@ if (isset($weewxapi))
     
     $weather["swversion"] = $weewxrt[38];
     $weather["build"] = $weewxrt[39];
-    $weather["actualhardware"] = ($weewxapi[42] == "   N/A" ? "0" : $weewxapi[42]);
-    $weather["mbplatform"] = ($weewxapi[41] == "   N/A" ? "0" : $weewxapi[41]);
     $weather["uptime"] = ($weewxapi[81] == "   N/A" ? "0" : $weewxapi[81]);
     // Verify the below variable of $weewxapi1
     //$weather["vpforecasttext"] = $weewxapi1[1]; //davis console forecast text
     $weather["temp_avgtoday"] = ($weewxapi[152] == "   N/A" ? "0" : $weewxapi[152]);
-    //Verify next two variables as they are duplicates
-    $weather['wind_speed_avg30'] = ($weewxapi[158] == "   N/A" ? "0" : $weewxapi[158]);
     $weather['wind_speed_avgday'] = ($weewxapi[158] == "   N/A" ? "0" : $weewxapi[158]);
     include_once __DIR__ . '/metar34cloudcover.php';
     $cc = metar34_cloudcover();
@@ -167,10 +159,14 @@ if (isset($weewxapi))
     //amusing indoor real feel
     $weather["dewpoint2"] = round(((pow(($weather["humidity_indoor"] / 100) , 0.125)) * (112 + 0.9 * $weather["temp_indoor"]) + (0.1 * $weather["temp_indoor"]) - 112) , 1);
     //humidex josep
-    $t = 7.5 * $weather["temp"] / (237.7 + $weather["temp"]);
-    $et = pow(10, $t);
-    $e = 6.112 * $et * ($weather["humidity"] / 100);
-    $weather["humidex"] = (is_numeric($weather["temp"]) ? number_format($weather["temp"] + (5 / 9) * ($e - 10) , 1) : null);
+    if (is_numeric($weather["temp"])) {
+        $tempc = anyToC($weather["temp"]);
+        $e = 6.112 * pow(10, 7.5 * $tempc / (237.7 + $tempc)) * ($weather["humidity"] / 100);
+        $humidexc = $tempc + (5 / 9) * ($e - 10);
+        $weather["humidex"] = number_format($weather["temp_units"] == 'C' ? $humidexc : cToFDirect($humidexc), 1);
+    } else {
+        $weather["humidex"] = null;
+    }
     if ($weather['luminance'] > 99.9)
     {
         $weather['luminance'] = 100;
@@ -317,7 +313,7 @@ if (isset($weewxapi))
     //dewpoint month
     $originalDate74 = ($weewxapi[49] == "   N/A" ? "0" : $weewxapi[49]);
     $dewmmaxtime = w34_date('jS M', strtotime($originalDate74));
-    $originalDate75 = ($weewxapi[31] == "   N/A" ? "0" : $weewxapi[31]);
+    $originalDate75 = ($weewxapi[51] == "   N/A" ? "0" : $weewxapi[51]);
     $dewmmintime = w34_date('jS M', strtotime($originalDate75));
     $weather["dewmmax"] = ($weewxapi[48] == "   N/A" ? "0" : $weewxapi[48]); //dew max month
     $weather["dewmmaxtime"] = $dewmmaxtime; //seconds
@@ -517,13 +513,11 @@ if (isset($weewxapi))
     $weather["uvamaxtime"] = $uvamaxtime; //seconds
     //trends will update 15 minutes after a reboot or power failure
     $weather["temp_trend"] = number_format($weewxrt[2], 1) - number_format($weewxapi[67], 1);
-    $weather["humidity_trend"] = number_format($weewxapi[3], 0) - number_format($weewxapi[68], 0);
+    $weather["humidity_trend"] = number_format($weewxrt[3], 0) - number_format($weewxapi[68], 0);
     $weather["dewpoint_trend"] = number_format($weewxrt[4], 1) - number_format($weewxapi[69], 1);
     $weather["temp_indoor_trend"] = number_format($weewxrt[22], 1) - number_format($weewxapi[70], 1);
     $weather["temp_humidity_trend"] = number_format($weewxrt[23], 1) - number_format($weewxapi[71], 1);
     $weather["barotrend"] = $weewxrt[10] - $barotrend[0];
-    $weather['barometer6h'] = $weewxrt[10] - $weewxapi[73];
-    $weather['winddir6h'] = ($weewxapi[72] == "   N/A" ? "0" : $weewxapi[72]);
     $weather["dirtrend"] = $dirtrend[0];
     //barometer units
     if ($weather["barometer_units"] == "in")
@@ -577,7 +571,7 @@ if ($tempunit != $weather["temp_units"])
         fToC($weather, "realfeel");
         fToCrel($weather, "temp_trend");
         fToCrel($weather, "dewpoint_trend");
-        fToCrel($weather, "humidex");
+        fToC($weather, "humidex");
         $weather["temp_units"] = $tempunit;
     }
     else if ($tempunit == "F")
@@ -622,7 +616,7 @@ if ($tempunit != $weather["temp_units"])
         cToF($weather, "realfeel");
         cToFrel($weather, "temp_trend");
         cToFrel($weather, "dewpoint_trend");
-        cToFrel($weather, "humidex");
+        cToF($weather, "humidex");
         $weather["temp_units"] = $tempunit;
     }
 }
@@ -911,16 +905,16 @@ if ($windunit != $weather["wind_units"])
         mphToms($weather, "wind_gust_speed_max");
         mphToms($weather, "wind_run");
         mphToms($weather, "wind_speed_avg");
-        mphTokmh($weather, "wind_speed_avg15");
-        mphTokmh($weather, "wind_speed_avg30");
-        mphTokmh($weather, "wind_speed_avgday");
-        mphTokmh($weather, "winddmax");
-        mphTokmh($weather, "windamax");
-        mphTokmh($weather, "windydmax");
-        mphTokmh($weather, "windmmax");
-        mphTokmh($weather, "windymax");
+        mphToms($weather, "wind_speed_avg15");
+        mphToms($weather, "wind_speed_avg30");
+        mphToms($weather, "wind_speed_avgday");
+        mphToms($weather, "winddmax");
+        mphToms($weather, "windamax");
+        mphToms($weather, "windydmax");
+        mphToms($weather, "windmmax");
+        mphToms($weather, "windymax");
         mphToms($weather, "windrun34");
-        mphTokmh($weather, "wind_gust_60min");
+        mphToms($weather, "wind_gust_60min");
         $weather["wind_units"] = $windunit;
     }
     else if ($windunit == 'm/s' && $weather["wind_units"] == 'km/h')
@@ -1272,27 +1266,30 @@ foreach ($eclipse_events as $eclipse_check)
 //end lunar and solar eclipse /meteor shpwers advisory 2018-2019-2020
 // This is not used in Australia, where is it used?
 // firerisk based on cumulus forum thread http://sandaysoft.com/forum/viewtopic.php?f=14&t=2789&sid=77ffab8f6f2359e09e6c58d8b13a0c3c&start=30
-$firerisk = number_format((((110 - 1.373 * $weather["humidity"]) - 0.54 * (10.20 - $weather["temp"])) * (124 * pow(10, (-0.0142 * $weather["humidity"])))) / 60, 0);
+$firerisk = number_format((((110 - 1.373 * $weather["humidity"]) - 0.54 * (10.20 - anyToC($weather["temp"]))) * (124 * pow(10, (-0.0142 * $weather["humidity"])))) / 60, 0);
 
 //wetbulb
-$Tc = ($weather['temp']);
-$P = $weather['barometer'];
+$Tc = anyToC($weather['temp']);
+$P = $weather['barometer'] * ($weather['barometer_units'] == 'inHg' ? 33.8639 : ($weather['barometer_units'] == 'kPa' ? 10 : 1)); // hPa
 $RH = $weather['humidity'];
 $Tdc = (($Tc - (14.55 + 0.114 * $Tc) * (1 - (0.01 * $RH)) - pow((2.5 + 0.007 * $Tc) * (1 - (0.01 * $RH)) , 3) - (15.9 + 0.117 * $Tc) * pow(1 - (0.01 * $RH) , 14)));
 $E = (6.11 * pow(10, (7.5 * $Tdc / (237.7 + $Tdc))));
 $wetbulbcalc = (((0.00066 * $P) * $Tc) + ((4098 * $E) / pow(($Tdc + 237.7) , 2) * $Tdc)) / ((0.00066 * $P) + (4098 * $E) / pow(($Tdc + 237.7) , 2));
 $wetbulbx = number_format($wetbulbcalc, 1);
 // K-INDEX & SOLAR DATA FOR WEATHER34 HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
-$str = file_get_contents('jsondata/ki.txt');
-$json = array_reverse(json_decode($str, true));
-$kp = $json[1]['kp'];
+// ki.txt also lists NOAA's predicted values, newest last: the current Kp is the newest observed/estimated entry
+$kp = null;
+$json = json_decode(@file_get_contents('jsondata/ki.txt'), true);
+foreach (array_reverse(is_array($json) ? $json : array()) as $e) {
+    if (in_array($e['observed'] ?? '', array('observed', 'estimated'))) { $kp = $e['kp']; break; }
+}
 $file = $_SERVER["SCRIPT_NAME"];
 $break = Explode('/', $file);
 $mod34file = $break[count($break) - 1];
 
 //Can this be removed, it appears to be Metobridge specific
 //Convert Start times for Pro and Nano SD, Other MBs unforunately don't provide this data
-if (is_numeric($weewxapi[186]) && $weewxapi[186] != '--')
+if (is_numeric($weewxapi[186] ?? null) && $weewxapi[186] != '--')
 {
     $weather['tempStartTime'] = w34_date('M jS Y', strtotime($weewxapi[186]));
     $weather['windStartTime'] = w34_date('M jS Y', strtotime($weewxapi[187]));
@@ -1316,7 +1313,8 @@ if (isset($GLOBALS['fixture_weather_override']) && is_array($GLOBALS['fixture_we
     }
 }
 
-$weather['consoleLowBattery'] = intval($weewxapi[171]); # Console battery, 0 when battery is good, 1 when battery is low
-$weather['stationLowBattery'] = intval($weewxapi[172]); # Station battery, 0 when battery is good, 1 when battery is low
+// Davis/Meteobridge console flags; archivedata.php.tmpl has no [171]/[172] for this station (sensor_health.php covers batteries)
+$weather['consoleLowBattery'] = intval($weewxapi[171] ?? 0); # Console battery, 0 when battery is good, 1 when battery is low
+$weather['stationLowBattery'] = intval($weewxapi[172] ?? 0); # Station battery, 0 when battery is good, 1 when battery is low
 
 ?>

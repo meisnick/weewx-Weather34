@@ -101,11 +101,11 @@
           #set $dysc = $day.lightning_strike_count.sum 
         #end if
 	#set $atsc = "N/A"
-        #if $varExists('day.lightning_strike_count') and $day.lightning_strike_count.sum is not None
+        #if $varExists('alltime.lightning_strike_count') and $alltime.lightning_strike_count.sum is not None
           #set $atsc = $alltime.lightning_strike_count.sum
         #end if
         #set $ysc = "N/A"
-        #if $varExists('day.lightning_strike_count') and $day.lightning_strike_count.sum is not None
+        #if $varExists('yesterday.lightning_strike_count') and $yesterday.lightning_strike_count.sum is not None
           #set $ysc = $yesterday.lightning_strike_count.sum
         #end if
         #set $ldlt = "N/A"
@@ -291,6 +291,7 @@ $weewxapi[211] = "$alltime.UV.maxtime.format(format_string="%Y%m%d%H%M%S")";
 $weewxapi[212] = "$alltime.radiation.max.format(add_label=False, $localize=False)";
 $weewxapi[213] = "$alltime.radiation.maxtime.format(format_string="%Y%m%d%H%M%S")";
 $weewxapi[214] = "$current.luminosity.format(add_label=False, $localize=False)";
+$weewxapi[215] = "$current.windchill.format(add_label=False, $localize=False)";
 $startcivil = "$almanac(horizon=-6).sun(use_center=1).rise.raw";
 $endcivil = "$almanac(horizon=-6).sun(use_center=1).set.raw";
 $sunrise = "$almanac.sun.rise";
@@ -322,7 +323,7 @@ $pm10avg24 = "$span($hour_delta=24).pm10_0.avg.format(add_label=False, $localize
 $lightning['light_last_distance'] = "$alltime.lightning_distance.lastnonzero.format(add_label=False, $localize=False)";
 $lightning['last_time'] = "$alltime.lightning_last_det_time.lastnonzero.raw";
 $lightning['strike_count'] = "$alltime.lightning_strike_count.sum";
-$lightning['strike_count_3hr'] = "$span($hour_delta=3)lightning_strike_count.sum";
+$lightning['strike_count_3hr'] = "$span($hour_delta=3).lightning_strike_count.sum";
 
 ## $current_windchill = "$current.windchill.format(add_label=False, $localize=False)";   
 ## $current_heatindex = "$current.heatindex.format(add_label=False, $localize=False)";

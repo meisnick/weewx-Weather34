@@ -1,6 +1,6 @@
 <?php
 include_once('settings.php');
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
 	//###################################################################################################
 	//	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2016-18-19                                    #
 	//	CREATED FOR HOMEWEATHERSTATION TEMPLATE https://weather34.com/homeweatherstation/index.html    # 

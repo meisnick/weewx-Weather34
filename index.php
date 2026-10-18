@@ -13,7 +13,6 @@ if (!file_exists('modules.php'))   { copy('modules.example.php', 'modules.php');
 include_once('w34CombinedData.php');
 include_once('common.php');
 include_once('w34_i18n.php');
-include_once('webserver_ip_address.php');
 include('settings1.php');
 include('settings.php');
 include('modules.php');

@@ -1,4 +1,4 @@
-<?php include('w34CombinedData.php'); error_reporting(0);
+<?php include_once('w34CombinedData.php'); error_reporting(0);
 
 $sensorDesc = [
     'WH65'  => 'Outdoor weather array — temp, humidity, wind, UV, solar, rain',

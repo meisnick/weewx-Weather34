@@ -5,7 +5,7 @@ uppercase{ text-transform:capitalize;}
 </style>
 <?php
 include('settings1.php');
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
 include_once('w34_i18n.php');
 include('metar34sky.php');
 $cloud_region = explode("/", $TZ);

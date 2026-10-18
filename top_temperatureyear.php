@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include('w34CombinedData.php'); include('top_year_helpers.php');
+<?php include_once('w34CombinedData.php'); include('top_year_helpers.php');
 header('Content-type: text/html; charset=utf-8'); date_default_timezone_set($TZ);
 $u = $weather["temp_units"];
 ?>

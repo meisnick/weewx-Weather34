@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include('w34CombinedData.php');include('common.php');?>
+<?php include_once('w34CombinedData.php');include('common.php');?>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></div><br />
 <div class="mod-temperature">
 <div class="mod-temperature-grid">

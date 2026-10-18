@@ -15,7 +15,7 @@
 //###################################################################################################################
   
 include_once ('settings.php');
-include ('w34CombinedData.php');
+include_once ('w34CombinedData.php');
 date_default_timezone_set($TZ);
 if($theme==="light"){$background="white";$text="black";}
 else if($theme==="dark"){$background="rgba(34, 35, 40)";$text="white";}

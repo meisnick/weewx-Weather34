@@ -1,7 +1,7 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php 
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
  ?>
 <!DOCTYPE html>
 <html lang="en">

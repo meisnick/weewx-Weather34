@@ -1,6 +1,6 @@
 <?php
 // pop_localforecast.php — Hyperlocal Nowcast Verification Details (Lity Lightbox Popup)
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
 include_once('settings1.php');
 error_reporting(0);
 

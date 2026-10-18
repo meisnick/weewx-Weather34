@@ -1,5 +1,5 @@
 <?php
-include('w34CombinedData.php'); error_reporting(0);
+include_once('w34CombinedData.php'); error_reporting(0);
 include('common.php');
 
 $summary_file = 'jsondata/afd_summary.json';

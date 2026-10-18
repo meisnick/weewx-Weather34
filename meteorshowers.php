@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include('settings.php');include('w34CombinedData.php');include('common.php');
+<?php include('settings.php');include_once('w34CombinedData.php');include('common.php');
 
 
 

@@ -14,7 +14,7 @@
 // 	                                                                                                				#
 //###################################################################################################################
 include_once ('settings.php');
-include ('w34CombinedData.php');
+include_once ('w34CombinedData.php');
 $iconset = "icon";
 //start the aw output
 

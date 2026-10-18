@@ -1,6 +1,6 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php
-include('w34CombinedData.php');
+include_once('w34CombinedData.php');
 include('settings1.php');
 include('common.php');
 error_reporting(0);

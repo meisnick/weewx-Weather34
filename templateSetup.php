@@ -39,6 +39,23 @@ $_POST["showDate"] = "false";
 
 IF (ISSET($_POST["Submit"])) {
 
+// The save form carries the password entered at login; without it nothing is written
+if (!isset($_POST["passwd"]) || $_POST["passwd"] !== $password) {
+    http_response_code(403);
+    die('Access Denied: wrong or missing setup password.');
+}
+// Values go into settings1.php inside double quotes: escape anything that would end the string or start a
+// PHP variable. The few written bare must be a number or true/false.
+foreach ($_POST as $k => $v) {
+    if (is_string($v)) $_POST[$k] = addcslashes($v, "\"\\\$");
+}
+foreach (array('lat', 'lon') as $k) {
+    $_POST[$k] = is_numeric($_POST[$k] ?? '') ? $_POST[$k] + 0 : (is_numeric($$k ?? '') ? $$k : 0);
+}
+foreach (array('metric', 'showDate') as $k) {
+    $_POST[$k] = (($_POST[$k] ?? '') === 'true') ? 'true' : 'false';
+}
+
 $string = '<?php
 $theme = isset($theme) ? $theme : "dark";
 $theme1 = $theme;
@@ -210,6 +227,7 @@ FCLOSE($fp);
 <div class="theframe1">
     <div class="theframe">
         <form action="" method="post" name="install" id="install">
+        <input type="hidden" name="passwd" value="<?php echo htmlspecialchars($_POST['passwd'] ?? '', ENT_QUOTES); ?>">
         <!--##########################################################################################
             #########                        Start of Easy Password Sidebar                  #########
             ##########################################################################################-->

@@ -1,5 +1,5 @@
 <?php
-include('w34CombinedData.php');error_reporting(0);
+include_once('w34CombinedData.php');error_reporting(0);
 if($theme==="dark"){$text1="silver";}
 else if($theme==="light"){$text1="black";}
 $forecastime = filemtime ('jsondata/uk.txt');

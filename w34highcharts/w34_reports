@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 import weewx
 import weecfg
@@ -8,7 +8,7 @@ import weewx.reportengine
 def w34_reports():
     _config_path, config_dict = weecfg.read_config(None, None)
     save_entries = ["SKIN_ROOT","HTML_ROOT","data_binding","log_success","log_failure","w34Highcharts"]
-    for key in config_dict['StdReport']:
+    for key in list(config_dict['StdReport']):
         if key not in save_entries:
             del config_dict['StdReport'][key]
     config_dict['StdReport']['w34Highcharts']['skin'] = 'w34Highcharts-day'

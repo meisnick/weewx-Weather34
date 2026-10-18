@@ -1302,10 +1302,10 @@ if (is_numeric($weewxapi[186]) && $weewxapi[186] != '--')
 }
 else
 {
-    $weather['tempStartTime'] = 'All Time';
-    $weather['windStartTime'] = 'All Time';
-    $weather['pressStartTime'] = 'All Time';
-    $weather['rainStartTime'] = 'All Time';
+    $weather['tempStartTime'] = w34t('AllTime', 'All-Time');
+    $weather['windStartTime'] = w34t('AllTime', 'All-Time');
+    $weather['pressStartTime'] = w34t('AllTime', 'All-Time');
+    $weather['rainStartTime'] = w34t('AllTime', 'All-Time');
 }
 
 // Indoortemperature includes w34CombinedData.php which populates $weather.

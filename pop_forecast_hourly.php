@@ -315,7 +315,7 @@ for ($k = 0;$k < 12;$k++)
     }
     else if ($forecastWindGust[$k] < 25)
     {
-        echo "<wind> Wind <orangeu>";
+        echo "<wind> " . w34t('Wind', 'Wind') . " <orangeu>";
         echo w34_dir($forecastWinddircardinal[$k]);
         echo "</orangeu>&nbsp;<blueu>" . number_format($forecastWindGust[$k], 0) , "&nbsp;<wuunits>" . $windunit;
         echo '</wuunits></blueu></wind>';

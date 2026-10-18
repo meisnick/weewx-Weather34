@@ -1058,7 +1058,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        options = create_chart_options(options, 'scatter', 'Wind Direction', null, [['Wind Direction', 'scatter']]);
 	        options.series[0].data = reinflate_time(seriesData[0].winddirplot.windDir);
 	    }
-	    options.yAxis[0].title.text = "Direction";
+	    options.yAxis[0].title.text = getTranslation("Direction");
 	    options.yAxis[0].tickPositioner = function(){var positions = [0,90,180,270,360]; return positions;};
 	    return options;
 	};
@@ -1082,7 +1082,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    }
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].title.text = "(" + units.wind + ")";
-	    options.yAxis[1].title.text = "Direction";
+	    options.yAxis[1].title.text = getTranslation("Direction");
 	    options.yAxis[1].tickPositioner = function(){var positions = [0,90,180,270,360]; return positions;};
 	    return options;
 	};
@@ -1106,6 +1106,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.tooltip.valueSuffix ='%';
 	    options.xAxis.tickmarkPlacement = "on";
 	    options.xAxis[0].showLastLabel = false;
+	    options.xAxis[0].labels = Object.assign({}, options.xAxis[0].labels, {formatter: function () {return getTranslation(String(this.value));}});
 	    options.yAxis= {
 	        lineWidth: 1,
 	        minorGridLineWidth: 0,
@@ -1273,7 +1274,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options = create_chart_options(options, 'column', 'Strikes Count', null, [['Strikes Count', 'column']]);
 	    options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount || []));
 	    options.yAxis[0].min = 0;
-	    options.yAxis[0].title.text = "Strikes";
+	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
 	    options.xAxis[0].minTickInterval =0;
 	    return options;
@@ -1303,7 +1304,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        }
 	    }
 	    options.yAxis[0].min = 0;
-	    options.yAxis[0].title.text = "Strikes";
+	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
 	    options.yAxis[1].min = 0;
 	    options.yAxis[1].title.text = "Distance";
@@ -1335,7 +1336,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options = create_chart_options(options, 'column', 'Monthly Lightning Strikes',null,[['Lightning Strikes', 'column']], month_name);
 	    options.series[0].data = month_data;
 	    options.plotOptions.column.pointWidth = 10;
-	    options.yAxis[0].title.text = "Strikes";
+	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].allowDecimals = false;
 	    options.xAxis[0].minTickInterval =0;

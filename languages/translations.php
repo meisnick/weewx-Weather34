@@ -51,7 +51,7 @@ if (!w34_is_english()) {
         'Rainfall' => 'Rainfall', 'Strikes' => 'Strikes', 'Distance' => 'Distance', 'Solar Radiation' => 'Solarradiation',
         'UV Index' => 'UvIndex', 'Air Quality' => 'AirQuality', 'Cloud Cover' => 'Cloudcover', 'Calm' => 'Calm',
         'Clear' => 'CondClear', 'Partly Cloudy' => 'CondPartlyCloudy', 'Overcast' => 'CondOvercast', 'All' => 'HcAll',
-        'February' => 'Febuary');
+        'February' => 'Febuary', 'N' => 'DirN', 'E' => 'DirE', 'S' => 'DirS', 'W' => 'DirW', 'NNW' => 'DirNNW');
     foreach ($more as $p => $k) {
         $out[$p] = w34t($k, isset($out[$p]) ? $out[$p] : $p);
     }
@@ -61,6 +61,8 @@ if (!w34_is_english()) {
 $months = array('January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 $monthsEn = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+$w34_hc_locales = array('dk' => 'da-DK', 'nl' => 'nl-NL', 'pl' => 'pl-PL', 'dl' => 'de-DE', 'it' => 'it-IT', 'sp' => 'es-ES',
+    'cat' => 'ca-ES', 'fr' => 'fr-FR', 'gr' => 'el-GR', 'tr' => 'tr-TR', 'hu' => 'hu-HU', 'no' => 'nb-NO', 'sw' => 'sv-SE');
 $hcLang = null;
 if (!w34_is_english()) {
     $hcLang = array(
@@ -76,6 +78,11 @@ if (!w34_is_english()) {
             'ytdTitle' => w34t('HcViewYtd', 'View year to date'),
         ),
         'resetZoom' => w34t('Reset', 'Reset'),
+        // %[ebY]-style formats (range-selector inputs) go through Intl with this locale; numbers keep the
+        // dashboard's 1,234.5 style rather than the locale's
+        'locale' => isset($w34_hc_locales[$lang_flag]) ? $w34_hc_locales[$lang_flag] : 'en-US',
+        'decimalPoint' => '.',
+        'thousandsSep' => ',',
         'loading' => w34t('HcLoading', 'Loading...'),
     );
 }

@@ -224,7 +224,15 @@ def _ungrounded_numbers(summary, source):
     """Numbers in the summary that never appear in the source text (the 1b model
     sometimes copies figures from the prompt examples instead of the AFD)."""
     have = set(re.findall(r'\d+', source))
-    return [n for n in re.findall(r'\d+', summary) if n not in have]
+    bad = [n for n in re.findall(r'\d+', summary) if n not in have]
+    # 'upper 60s' when the AFD says 'lower 60s' is just as wrong
+    band = r'\b(lower|low|mid|middle|upper)[ -]?(\d0s)\b'
+    src_bands = {(q.lower().replace('lower', 'low').replace('middle', 'mid'), d)
+                 for q, d in re.findall(band, ' '.join(source.split()), re.IGNORECASE)}
+    for q, d in re.findall(band, summary, re.IGNORECASE):
+        if (q.lower().replace('lower', 'low').replace('middle', 'mid'), d) not in src_bands:
+            bad.append(f'{q} {d}')
+    return bad
 
 
 def build_short_term_fallback(section_text):

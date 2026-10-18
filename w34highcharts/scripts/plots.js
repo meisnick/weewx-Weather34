@@ -219,10 +219,12 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                     },
 	            series: {states: {hover: {halo: {size: 0,}}},
                             turboThreshold:5000,
-                            // with the time axis not ordinal, break the line where no record exists for > 70 min
-                            // (an outage) instead of drawing straight across; 70 min keeps hourly backfill continuous
-                            gapUnit: 'value',
-                            gapSize: 70 * 60 * 1000,
+                            // with the time axis not ordinal, break the line at outages instead of drawing straight
+                            // across. Relative to each chart's own spacing: 14 x 5 min = 70 min on day/week charts
+                            // (hourly backfill stays continuous), 14 days on daily year/almanac charts. A fixed
+                            // 70-min value broke every daily point apart and left year charts blank.
+                            gapUnit: 'relative',
+                            gapSize: 14,
 	            },
 	            scatter: {
 	                marker: {

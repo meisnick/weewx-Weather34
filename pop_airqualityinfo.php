@@ -39,10 +39,10 @@ body,html{background-color:var(--pop-bg);font-size:13px;font-family:weathertext2
 [data-theme="light"] .grid>article{border:1px solid rgba(0,0,0,0.08);box-shadow:2px 2px 6px 0 rgba(0,0,0,.1);background:#fff;}
 .weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px;}
 .weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-link);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px;}
-blue{color:#01a4b4}orange{color:#009bb4}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:#aaa}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#cc0}purple{color:#916392}meteotextshowertext{font-size:1.2rem;color:#009bb4}meteorsvgicon{color:#f5f7fc}
+blue{color:#01a4b4}orange{color:#009bb4}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:#aaa}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#cc0}purple{color:#b48bb5}meteotextshowertext{font-size:1.2rem;color:#009bb4}meteorsvgicon{color:#f5f7fc}
 .weather34aqi{color:#ff8841;position:absolute;margin-left:36px;margin-top:17px;font-size:12px;width:20px;font-family:-apple-system,BlinkMacSystemFont,weathertext2,Roboto,Helvetica,Arial,sans-serif;max-height:100px;line-height:10px;font-weight:400}
 .weather34aqi span{color:#777;font-family:weathertext2,arial,sans-serif;font-size:12px}
-maroon{color:rgba(208,80,65,1)}orange{color:rgba(255,124,57,1)}yellow{color:rgba(186,146,58,1)}green{color:rgba(144,177,42,1)}grey{color:#aaa}
+maroon{color:#e07a6c}orange{color:rgba(255,124,57,1)}yellow{color:rgba(186,146,58,1)}green{color:rgba(144,177,42,1)}grey{color:#aaa}
 [data-theme="light"] blue{color:#007a8a}
 [data-theme="light"] red{color:#c00000}
 [data-theme="light"] purple{color:#800080}

@@ -94,7 +94,7 @@ function formatPressureDiff($diff_inHg, $unit) {
   --pop-chrome: #1e2124;
   --pop-card: #252729;
   --pop-text: #ddd;
-  --pop-text-dim: #777;
+  --pop-text-dim: #8a8f99;
   --pop-border: #2e3033;
   --dist-normal: #eee;
   --dist-good: #90b12a;
@@ -279,6 +279,9 @@ body { display: flex; flex-direction: column; }
 .rain-green { color: #90b12a; font-weight: bold; }
 .rain-blue  { color: #4a8b9f; font-weight: bold; }
 .rain-amber { color: #e6a141; font-weight: bold; }
+[data-theme="light"] .rain-green { color: #4f6b0d; }
+[data-theme="light"] .rain-blue  { color: #2f6577; }
+[data-theme="light"] .rain-amber { color: #8a5a10; }
 .rain-red   { color: #d35d4e; font-weight: bold; }
 
 .dist-normal { color: var(--dist-normal); font-weight: bold; }

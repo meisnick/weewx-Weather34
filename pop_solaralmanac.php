@@ -64,6 +64,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
 .solar-meta{font-size:8.5px;line-height:12px;text-align:right;flex-grow:1;padding-left:4px;color:var(--pop-meta-ink);}
 .meta-label{color:var(--pop-meta-ink);}
 .lotemp{color:var(--pop-footer-ink);font-size:8.5px;text-align:center;margin-top:4px;}
+  .solar-badge{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

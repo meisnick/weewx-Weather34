@@ -45,7 +45,7 @@ $parsed_icon = json_decode($json_icon, true);
 // needs the php-xml extension and a Met Office feed in jsondata/uk.txt (nothing fetches one by default)
 $xml = (function_exists('simplexml_load_file') && is_file("jsondata/uk.txt")) ? @simplexml_load_file("jsondata/uk.txt") : false;
 if ($xml === false) {
-    echo '<div style="text-align:center;padding:40px;color:var(--card-ink-dim, #777);font-size:13px;">UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt</div></body></html>';
+    echo '<div style="text-align:center;padding:40px;color:var(--modal-meta-ink);font-size:13px;">UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt</div></body></html>';
     exit;
 }
 $jsonData = json_encode($xml, JSON_PRETTY_PRINT);

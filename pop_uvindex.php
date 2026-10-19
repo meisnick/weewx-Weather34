@@ -38,7 +38,7 @@ html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-
 .weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0px;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px;}
 .weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-link);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px;}
 [data-theme="light"] .weather34darkbrowser[url]:after{color:black;font-size:12px;}
-blue{color:#01a4b4;}orange{color:#009bb4;}orange1{color:rgba(255,131,47,1);}green{color:#aaa;}red{color:#f37867;}red6{color:#d65b4a;}value{color:#fff;}yellow{color:#cc0;}purple{color:#916392;}
+blue{color:#01a4b4;}orange{color:#009bb4;}orange1{color:rgba(255,131,47,1);}green{color:#aaa;}red{color:#f37867;}red6{color:#d65b4a;}value{color:#fff;}yellow{color:#cc0;}purple{color:#b48bb5;}
 [data-theme="light"] blue{color:#007a8a;}
 [data-theme="light"] orange{color:#007a8c;}
 [data-theme="light"] orange1{color:#b05000;}
@@ -104,6 +104,7 @@ supwm2{font-size:0.7em;vertical-align:super;}
 .hitempy{position:relative;background:rgba(61,64,66,0.5);color:#fff;width:90px;padding:1px;-webit-border-radius:2px;border-radius:2px;margin-top:-20px;margin-left:92px;padding-left:3px;line-height:11px;font-size:9px;}
 .actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:teal;padding:5px;font-family:Arial,Helvetica,sans-serif;width:170px;height:0.8em;font-size:0.8rem;padding-top:2px;color:white;align-items:center;justify-content:center;margin-bottom:10px;top:0;}
 .actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,0.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:0.8em;font-size:0.8rem;padding-top:2px;color:#fff;align-items:center;justify-content:center;margin-bottom:10px;top:0;}
+  [class^="uvtoday"],[class^="luxtoday"],[class^="solartoday"]{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

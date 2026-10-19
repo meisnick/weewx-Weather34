@@ -59,7 +59,7 @@ if ($_issued) {
   --nws-chrome: #1e2124;
   --nws-card: #252729;
   --nws-text: #ddd;
-  --nws-text-dim: #777;
+  --nws-text-dim: #8a8f99;
   --nws-border: #2e3033;
 }
 [data-theme="light"] {

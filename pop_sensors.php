@@ -103,32 +103,32 @@ body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font
 [data-theme="light"] .row{border-bottom:1px solid #e2e6ef}
 .row:last-child{border-bottom:0}
 .hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(150,155,165,1);font-weight:bold}
-[data-theme="light"] .hdr{color:#999}
+[data-theme="light"] .hdr{color:var(--modal-meta-ink)}
 .left{flex:1;min-width:0}
 .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .sname{font-weight:bold;color:#ccc;font-size:12px;margin-right:8px}
 [data-theme="light"] .sname{color:#333}
 .sdesc{color:rgba(150,155,165,1);font-size:10px}
-[data-theme="light"] .sdesc{color:#888}
-.snote{font-size:9px;color:rgba(100,105,115,1);font-style:italic;margin-top:2px}
-[data-theme="light"] .snote{color:#bbb}
-.sid{font-family:monospace;font-size:10px;color:rgba(100,105,115,1);width:62px}
-[data-theme="light"] .sid{color:#bbb}
+[data-theme="light"] .sdesc{color:var(--modal-meta-ink)}
+.snote{font-size:9px;color:var(--modal-footer-ink);font-style:italic;margin-top:2px}
+[data-theme="light"] .snote{color:var(--modal-footer-ink)}
+.sid{font-family:monospace;font-size:10px;color:var(--modal-footer-ink);width:62px}
+[data-theme="light"] .sid{color:var(--modal-footer-ink)}
 .bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:22px}
 .bar{display:inline-block;width:4px;background:rgba(84,85,86,0.4)}
 [data-theme="light"] .bar{background:#ddd}
 .bar.on{background:#5a9}
 .batt{width:62px;text-align:right;font-size:11px}
 .ok{color:#5a9;font-weight:bold}
-[data-theme="light"] .ok{color:#3a8}
+[data-theme="light"] .ok{color:#1f7a5c}
 .low{color:#e08020;font-weight:bold}
 [data-theme="light"] .low{color:#c70}
-.unk{color:rgba(100,105,115,1)}
-[data-theme="light"] .unk{color:#bbb}
+.unk{color:var(--modal-footer-ink)}
+[data-theme="light"] .unk{color:var(--modal-footer-ink)}
 .dead{color:#e0625a;font-weight:bold}
 [data-theme="light"] .dead{color:#c2352d}
-.reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
-[data-theme="light"] .reg{color:#888}
+.reg{color:var(--modal-footer-ink);font-size:10px;line-height:1.9}
+[data-theme="light"] .reg{color:var(--modal-footer-ink)}
 </style>
 </head>
 <body>

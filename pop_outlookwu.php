@@ -1514,6 +1514,7 @@ valuer{color:#fff;font-size:.9em}
 thunder{font-size:.9em;color:#aaa}
 wind{color:#fff;font-size:.9em}
 [data-theme="light"] wind{color:#000;}
+  bluet,blueu,bluer,greent,oranget,orangeu,yellowt,yellowu,wuunits,spantemp{text-shadow:var(--badge-text-shadow)}
   </style>
 <?php
 $text1 = ($theme === "light") ? "black" : "silver";

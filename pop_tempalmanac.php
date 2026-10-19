@@ -55,6 +55,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
 .meta-max{color:var(--pop-meta-max);}
 .meta-min{color:var(--pop-meta-min);}
 .lotemp{color:var(--pop-footer-ink);font-size:8.5px;text-align:center;margin-top:4px;}
+  .temp-badge{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

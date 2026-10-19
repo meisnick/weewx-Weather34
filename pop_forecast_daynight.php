@@ -72,6 +72,7 @@ wind{color:#fff;font-size:.9em}
 .gridw>articlew{border:1px solid rgba(245,247,252,.02);box-shadow:2px 2px 6px 0 rgba(0,0,0,.6);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:hsla(233,12%,13%,.5)}
 [data-theme="light"] .gridw>articlew{background-color:#fff;color:#000;}
 .grid>article_small{border:1px solid rgba(245,247,252,.02);box-shadow:2px 2px 6px 0 rgba(0,0,0,.6);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:hsla(233,12%,13%,.5)}
+  bluet,blueu,greent,oranget,orangeu,yellowt,yellowu,wuunits{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

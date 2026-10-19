@@ -87,7 +87,7 @@ html, body {
 /* Color codes mapping */
 .demo th#CELL2, .demo td#CELL2 { background-color: #2e7d32; color: #fff !important; } /* Low / Good */
 .demo th#CELL3, .demo td#CELL3 { background-color: #4caf50; color: #fff !important; } /* Low / Good */
-.demo th#CELL4, .demo td#CELL4 { background-color: #81c784; color: #1b5e20 !important; } /* Low / Good */
+.demo th#CELL4, .demo td#CELL4 { background-color: #81c784; color: #0d3b10 !important; } /* Low / Good */
 
 .demo th#CELL5, .demo td#CELL5 { background-color: #fbc02d; color: #3e2723 !important; } /* Moderate */
 .demo th#CELL6, .demo td#CELL6 { background-color: #fdd835; color: #3e2723 !important; } /* Moderate */

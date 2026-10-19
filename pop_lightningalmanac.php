@@ -38,6 +38,7 @@ a{color:var(--pop-link);text-decoration:none;}
 .lightning-pill{margin:8px auto 4px auto;font-family:weathertext2,Arial,sans-serif;width:68px;height:24px;line-height:24px;border-radius:12px;font-size:0.95rem;color:#fff;background:rgba(68,166,181,1);display:flex;align-items:center;justify-content:center;box-sizing:border-box;border-bottom:3px solid rgba(56,56,60,1);}
 [data-theme="light"] .lightning-pill{border-bottom:3px solid #555555;}
 .lotemp{color:var(--pop-footer-ink);font-size:8.5px;text-align:center;margin-top:4px;}
+  .lightning-pill{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

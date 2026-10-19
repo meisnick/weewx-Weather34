@@ -156,11 +156,12 @@ align-items:center;justify-content:center;margin-bottom:10px;top:0}
 .metarwindtoday30{background:rgba(211, 93, 78, 1.000)}
 smalluvunit{font-size:.8rem;font-family:Arial,Helvetica,system;}
 valuecalm{font-size:.8em;font-family:weathertext2;}
-stationid{font-size:1.4em;font-family:weathertext2;color:#009bb4}
+stationid{font-size:1.4em;font-family:weathertext2;color:#009bb4}[data-theme="light"] blue,[data-theme="light"] orange,[data-theme="light"] stationid,[data-theme="light"] .directiontext span{color:#007a8a}
 .hitemp,.lotemp{font-size:9px;}
 .iconcondition{float:left;margin-bottom:65px;}
 .icontext{position:absolute;float:left;margin-top:60px;text-align:left;}
 .pressure{position:absolute;float:left;margin-top:60px;text-align:left;}
+[class^="metartemptoday"],[class^="metarhumtoday"],[class^="metarwindtoday"],.tword,.humword,.dewword{text-shadow:var(--badge-text-shadow)}
 </style>
 <div class="weather34darkbrowser" url="<?php echo htmlspecialchars(w34t('NearbyAirportConditions', 'Nearby Airport Conditions')); ?>"></div>
   

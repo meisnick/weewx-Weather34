@@ -99,6 +99,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
 .hitempy{margin-left:64px;color:var(--pop-meta-ink);line-height:13px;font-size:9px;text-align:right;min-height:34px;display:flex;flex-direction:column;justify-content:center;}
 .actualt{border-radius:3px;background:var(--pop-pill-bg);padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:var(--pop-pill-ink);margin-bottom:6px;text-align:left;}
 [data-theme="light"] .actualt{padding:1px 6px;border:1px solid rgba(0,0,0,0.1);}
+  [class^="windtoday"]{text-shadow:var(--badge-text-shadow)}
   </style>
 </head>
 <body>

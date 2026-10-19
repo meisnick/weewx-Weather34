@@ -3,6 +3,8 @@
 :root,
 [data-theme="dark"],
 :root[data-theme="dark"] {
+  /* white readings on coloured badges (same as the dashboard cards) */
+  --badge-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.3);
   --green:     #90b12a;
   --green2:    #9aba2f;
   --amber:     #e6a141;
@@ -95,9 +97,9 @@
   --modal-pill-bg:       #e2e5e9;
   --modal-pill-ink:      #212428;
   --modal-meta-ink:      #555555;
-  --modal-meta-max:      #d85c18;
+  --modal-meta-max:      #b5490e;
   --modal-meta-min:      #007a8a;
-  --modal-footer-ink:    #777777;
+  --modal-footer-ink:    #6e6e6e;
   --modal-link:          #000000;
 
   /* ---- --pop-* aliases (light) ---- */

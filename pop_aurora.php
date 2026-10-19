@@ -148,7 +148,7 @@ $south_json = json_encode($south_pts);
   --aurora-chrome: #1e2124;
   --aurora-card: #252729;
   --aurora-text: #ddd;
-  --aurora-text-dim: #777;
+  --aurora-text-dim: #8a8f99;
   --aurora-border: #2e3033;
   --aurora-box-none: #393d40;
 }
@@ -312,6 +312,7 @@ body { display: flex; flex-direction: column; }
   top: 0; left: 0; width: 100%; height: 100%;
   object-fit: contain; display: block;
 }
+[data-theme="light"] .img-label { color: var(--modal-meta-ink); }
 .img-label {
   flex-shrink: 0;
   font-size: .65em; color: silver;
@@ -357,6 +358,7 @@ body { display: flex; flex-direction: column; }
   height: 100%; font-size: .8em; color: var(--aurora-text-dim);
   font-family: Arial, sans-serif;
 }
+.pop-kp-badge,.pop-prob-badge,.mod-aurora-rsg-mini{text-shadow:var(--badge-text-shadow)}
 </style>
 </head>
 <body>

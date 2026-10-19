@@ -1,7 +1,8 @@
 <?php include_once('w34_i18n.php'); ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
 //###################################################################################################################
@@ -17,83 +18,96 @@
 include_once ('settings.php');
 include_once ('w34CombinedData.php');
 date_default_timezone_set($TZ);
-if($theme==="light"){$background="white";$text="black";}
-else if($theme==="dark"){$background="rgba(34, 35, 40)";$text="white";}
-?>  
-  <style>
-* {box-sizing: border-box}
-
-/* Set height of body and the document to 100% */
-body {
-  overflow:hidden
-  }
-    
-  body, html {
-  height: 90%;
-  margin: 0;
-  font-family: Arial;
-  
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
+if ($theme === "light") {
+    $background = "#ffffff";
+    $text = "#212428";
+    $tab_bg = "#e2e5e9";
+    $tab_border = "rgba(0,0,0,0.12)";
+    $tab_color = "#212428";
+} else {
+    $background = "rgba(30, 33, 36, 1)";
+    $text = "#f5f7fc";
+    $tab_bg = "#383c44";
+    $tab_border = "rgba(255,255,255,0.12)";
+    $tab_color = "#f5f7fc";
 }
-
-/* Style tab links */
+?>  
+<style>
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: <?php echo $background; ?>;
+  color: <?php echo $text; ?>;
+  font-family: Arial, sans-serif;
+}
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 5px 50px 5px 6px;
+  background: <?php echo $background; ?>;
+}
 .tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: 2px solid <?php echo $background ?>;
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-left:5px;
+  background-color: <?php echo $tab_bg; ?>;
+  color: <?php echo $tab_color; ?>;
+  border: 1px solid <?php echo $tab_border; ?>;
+  border-radius: 4px;
   outline: none;
   cursor: pointer;
-  padding: 6px 6px;
-  font-size: 10px;
-  
+  padding: 5px 8px;
+  font-size: 10.5px;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
 }
-
 .tablink:hover {
-  background-color: #777;
+  background-color: #666;
+  color: #fff;
 }
-
-/* Style the tab content (and add height:100% for full page content) */
+.tablink.active {
+  background-color: #c2663a !important;
+  color: #fff !important;
+  border-color: #c2663a !important;
+}
 .tabcontent {
-  color: white;
   display: none;
-  padding: 0px 0px;
-  height: 570px;
+  width: 100%;
+  height: calc(100vh - 36px);
+  background-color: <?php echo $background; ?>;
 }
-
-#Tab1 {background-color: <?php echo $background ?>;}
-#Tab2 {background-color: <?php echo $background ?>;}
-#Tab2 {background-color: <?php echo $background ?>;}
-    
+.tabcontent iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
 </style>
 </head>
 <body>
-
-<button class="tablink" onclick="openPage('Tab1', this, 'rgba(194, 102, 58)')" id="defaultOpen"><?php echo w34t('TabBaroAlmanac', 'Barometer Almanac'); ?></button>
-<button class="tablink" onclick="openPage('Tab2', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabYearlyBaro', 'Yearly Barometer'); ?></button>
-<button class="tablink" onclick="openPage('Tab3', this, 'rgba(194, 102, 58)')"><?php echo w34t('TabWeeklyBaro', 'Weekly Barometer'); ?></button>
-  
-  <div id="Tab1" class="tabcontent">
-  
-  <iframe width="100%" height="92%" scrolling="no" src="pop_barometeralmanac.php" frameborder="0"></iframe>
+<div class="tab-bar">
+  <button class="tablink" onclick="openPage('Tab1', this)" id="defaultOpen"><?php echo w34t('TabBaroAlmanac', 'Barometer Almanac'); ?></button>
+  <button class="tablink" onclick="openPage('Tab2', this)"><?php echo w34t('TabYearlyBaro', 'Yearly Barometer'); ?></button>
+  <button class="tablink" onclick="openPage('Tab3', this)"><?php echo w34t('TabWeeklyBaro', 'Weekly Barometer'); ?></button>
 </div>
   
-  <div id="Tab2" class="tabcontent">
+<div id="Tab1" class="tabcontent">
+  <iframe scrolling="no" src="pop_barometeralmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+</div>
   
-  <iframe width="100%" height="92%" scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='barometerplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>"frameborder="0"></iframe>
+<div id="Tab2" class="tabcontent">
+  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=barometerplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab3" class="tabcontent">
-  
-  <iframe width="100%" height="92%" scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='barometerplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>"frameborder="0"></iframe>
+  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=barometerplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
-    
-
 <script>
-function openPage(pageName,elmnt,color) {
+function openPage(pageName, elmnt) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -101,15 +115,12 @@ function openPage(pageName,elmnt,color) {
   }
   tablinks = document.getElementsByClassName("tablink");
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
+    tablinks[i].classList.remove("active");
   }
   document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
+  elmnt.classList.add("active");
 }
-
-// Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-   
 </body>
-</html> 
+</html>

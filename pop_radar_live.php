@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
 <meta charset="utf-8">
+<title>Live Radar</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#000}

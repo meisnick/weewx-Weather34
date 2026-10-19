@@ -1,4 +1,8 @@
-<?php include_once('w34CombinedData.php'); error_reporting(0); ?>
+<?php include_once('w34CombinedData.php'); error_reporting(0);
+if (isset($_GET['theme'])) {
+    $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
+}
+?>
 <!DOCTYPE html>
 <html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
 <head>
@@ -7,10 +11,17 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
 body{
-  background:#1a1b1f;display:flex;flex-direction:column;
+  background:rgba(30,33,36,1);display:flex;flex-direction:column;
   padding:50px 12px 10px;font-family:Arial,sans-serif;color:silver;
 }
-<?php if($theme==='light'):?>body{background:#ddd;color:#333}<?php endif;?>
+<?php if($theme==='light'):?>
+body{background:#fff;color:#333}
+.rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
+.rp-load,.rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
+.rp-load:hover,.rp-reset:hover{background:#d8dadf;color:#000}
+.rp-title{color:#555}
+.rp-hint{color:#888}
+<?php endif;?>
 
 .rp-bar{
   display:flex;align-items:center;gap:12px;

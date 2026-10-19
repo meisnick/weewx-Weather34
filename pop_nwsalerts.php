@@ -47,12 +47,29 @@ if ($_issued) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo $lang['NwsWeatherAlerts']; ?></title>
+<link rel="stylesheet" href="css/tokens.css">
 <style>
+:root, [data-theme="dark"] {
+  --nws-bg: rgba(30,33,36,1);
+  --nws-chrome: #1e2124;
+  --nws-card: #252729;
+  --nws-text: #ddd;
+  --nws-text-dim: #777;
+  --nws-border: #2e3033;
+}
+[data-theme="light"] {
+  --nws-bg: #fff;
+  --nws-chrome: #f0f2f5;
+  --nws-card: #e8eaef;
+  --nws-text: #222;
+  --nws-text-dim: #666;
+  --nws-border: #ccc;
+}
 @font-face {
   font-family: weathertext2;
   src: url(css/fonts/verbatim-regular.woff) format("woff"),
@@ -64,8 +81,8 @@ html, body {
   height: 100%; overflow: hidden;
   font-family: Arial, sans-serif;
   font-size: 13px;
-  background: <?php echo $bg; ?>;
-  color: <?php echo $text; ?>;
+  background: var(--nws-bg);
+  color: var(--nws-text);
   -webkit-font-smoothing: antialiased;
 }
 body { display: flex; flex-direction: column; }
@@ -73,8 +90,8 @@ body { display: flex; flex-direction: column; }
 /* ── Header strip ─────────────────────────────────────────────────────────── */
 .pop-header {
   flex: 0 0 auto;
-  background: <?php echo $bg_chrome; ?>;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  background: var(--nws-chrome);
+  border-bottom: 1px solid var(--nws-border);
   padding: 5px 10px;
   display: flex;
   align-items: center;
@@ -83,12 +100,12 @@ body { display: flex; flex-direction: column; }
 .pop-title {
   font-family: weathertext2, Arial, sans-serif;
   font-size: .8em;
-  color: <?php echo $text; ?>;
+  color: var(--nws-text);
   letter-spacing: 0.3px;
 }
 .pop-issued {
   font-size: .65em;
-  color: <?php echo $text_dim; ?>;
+  color: var(--nws-text-dim);
   white-space: nowrap;
   margin-right: 50px; /* clear lity close button */
 }
@@ -116,7 +133,7 @@ body { display: flex; flex-direction: column; }
 }
 
 .fcst-card {
-  background: <?php echo $bg_card; ?>;
+  background: var(--nws-card);
   border-radius: 3px;
   padding: 10px 12px;
   display: flex;
@@ -124,7 +141,6 @@ body { display: flex; flex-direction: column; }
   margin-bottom: 10px;
   flex: 0 0 auto;
 }
-
 
 .fcst-card-title {
   font-family: weathertext2, Arial, sans-serif;
@@ -141,7 +157,7 @@ body { display: flex; flex-direction: column; }
 .fcst-card-text {
   font-family: Arial, sans-serif;
   font-size: .85em;
-  color: <?php echo $text; ?>;
+  color: var(--nws-text);
   line-height: 1.5;
   white-space: pre-wrap;
   text-align: left;
@@ -150,7 +166,7 @@ body { display: flex; flex-direction: column; }
 .no-alerts {
   text-align: center;
   padding: 30px;
-  color: <?php echo $text_dim; ?>;
+  color: var(--nws-text-dim);
   font-size: 13px;
 }
 </style>

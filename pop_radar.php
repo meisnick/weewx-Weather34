@@ -4,17 +4,18 @@ if (isset($_GET['theme'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="css/tokens.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
 body{
-  background:rgba(30,33,36,1);display:flex;flex-direction:column;
+  background:var(--pop-bg);display:flex;flex-direction:column;
   padding:50px 12px 10px;font-family:Arial,sans-serif;color:silver;
 }
-
+[data-theme="light"] body{color:#333}
 .rp-bar{
   display:flex;align-items:center;gap:12px;
   flex-shrink:0;margin-bottom:8px;flex-wrap:wrap;
@@ -26,6 +27,7 @@ body{
   width:4.5rem;padding:3px 6px;border-radius:3px;text-transform:uppercase;
   letter-spacing:.1em;text-align:center;
 }
+[data-theme="light"] .rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
 .rp-station-input:focus{outline:none;border-color:#ffca32}
 .rp-station-input.error{border-color:#f44336}
 .rp-load{
@@ -35,6 +37,7 @@ body{
 }
 .rp-load:hover{background:rgba(255,255,255,.22);color:#fff}
 .rp-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;flex:1;text-align:center}
+[data-theme="light"] .rp-title{color:#555}
 .rp-controls{display:flex;align-items:center;gap:10px;font-size:.7rem;margin-left:auto}
 .rp-controls input[type=range]{width:110px;cursor:pointer;accent-color:#ffca32}
 .rp-invert-lbl{
@@ -48,6 +51,8 @@ body{
   cursor:pointer;font-family:Arial,sans-serif;
 }
 .rp-reset:hover{background:rgba(255,255,255,.2);color:#fff}
+[data-theme="light"] .rp-load,[data-theme="light"] .rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
+[data-theme="light"] .rp-load:hover,[data-theme="light"] .rp-reset:hover{background:#d8dadf;color:#000}
 .rp-save{
   background:#ffca32;border:none;color:#1a1b1f;
   font-size:.68rem;font-weight:bold;padding:4px 14px;border-radius:3px;
@@ -71,14 +76,7 @@ body{
 .rp-hint{
   flex-shrink:0;text-align:center;font-size:.62rem;color:#555;margin-top:6px;
 }
-<?php if($theme==='light'):?>
-body{background:#fff;color:#333}
-.rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
-.rp-load,.rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
-.rp-load:hover,.rp-reset:hover{background:#d8dadf;color:#000}
-.rp-title{color:#555}
-.rp-hint{color:#888}
-<?php endif;?>
+[data-theme="light"] .rp-hint{color:#888}
 </style>
 </head>
 <body>

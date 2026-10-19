@@ -46,3 +46,9 @@ config. The nowcast scripts, the root fetchers and `icao_lookup.php`/`nws_zone_l
 `weather34-nocache.conf` sets `Cache-Control: no-cache, must-revalidate` on `jsondata/`, `serverdata/` and
 `w34highcharts/json*`. Dev installs it as a conf file (`a2enmod headers; a2enconf weather34-nocache`);
 prod has the same blocks inside its vhost.
+
+## Apache compression for chart JSON and SVG
+
+`weather34-deflate.conf` adds `application/json` and `image/svg+xml` to mod_deflate (the stock list has neither).
+`year.json` goes from 587K to 131K on the wire; Cloudflare doesn't cache these files, so every public chart popup
+pulled the full size through the home uplink. Both boxes: `a2enconf weather34-deflate`.

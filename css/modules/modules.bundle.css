@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 03:55:00 UTC
+   Generated: 2026-10-19 03:58:23 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4720,9 +4720,10 @@ valuetextheading2 {
   position: absolute !important;
   top: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
-  /* no padding: the reading's digits centre in the coloured area above the Trend chin
-     (measured: 26.8px above / 27.0px below), with the max/min line above it */
-  padding: 0 !important;
+  /* the max/min line + reading are centred together as one block in the coloured area above the
+     Trend chin (measured ink: 17.5px above max/min, 17.0px below the digits). Centring the digits
+     alone left the max/min crowding the top and looked low-heavy. Pairs with .maxdata top:15px. */
+  padding: 20px 0 0 0 !important;
   box-sizing: border-box !important;
   background-size: 100% 100% !important;   /* keep the data-coded temp gradient, fill the box */
   align-items: center !important;
@@ -4730,7 +4731,7 @@ valuetextheading2 {
 }
 .mod-temperature-col-left .tempcontainer > .maxdata {
   position: absolute !important;
-  top: 5px !important; left: 0 !important; right: 0 !important;
+  top: 15px !important; left: 0 !important; right: 0 !important;   /* block-centred with the reading */
   z-index: 2; text-align: center; margin: 0 !important;
 }
 .mod-temperature-col-left .tempcontainer > .temptrendx {

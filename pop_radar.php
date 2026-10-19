@@ -14,14 +14,6 @@ body{
   background:rgba(30,33,36,1);display:flex;flex-direction:column;
   padding:50px 12px 10px;font-family:Arial,sans-serif;color:silver;
 }
-<?php if($theme==='light'):?>
-body{background:#fff;color:#333}
-.rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
-.rp-load,.rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
-.rp-load:hover,.rp-reset:hover{background:#d8dadf;color:#000}
-.rp-title{color:#555}
-.rp-hint{color:#888}
-<?php endif;?>
 
 .rp-bar{
   display:flex;align-items:center;gap:12px;
@@ -79,6 +71,14 @@ body{background:#fff;color:#333}
 .rp-hint{
   flex-shrink:0;text-align:center;font-size:.62rem;color:#555;margin-top:6px;
 }
+<?php if($theme==='light'):?>
+body{background:#fff;color:#333}
+.rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
+.rp-load,.rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
+.rp-load:hover,.rp-reset:hover{background:#d8dadf;color:#000}
+.rp-title{color:#555}
+.rp-hint{color:#888}
+<?php endif;?>
 </style>
 </head>
 <body>

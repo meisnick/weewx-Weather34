@@ -87,60 +87,49 @@ foreach ($lines as $line) {
 
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GW1000 Sensor Status</title>
-<?php
-if ($theme === 'dark') {
-    echo '<style>body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:rgba(30,33,36,1)}
+<link rel="stylesheet" href="css/tokens.css">
+<style>
+body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:var(--pop-bg)}
+[data-theme="light"] body{color:#333}
 .weather34darkbrowser{position:relative;background:0;width:100%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
 .weather34darkbrowser[url]:after{content:attr(url);color:#ccc;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px}
+[data-theme="light"] .weather34darkbrowser[url]:after{color:#333}
 .row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid rgba(84,85,86,0.3)}
+[data-theme="light"] .row{border-bottom:1px solid #e2e6ef}
 .row:last-child{border-bottom:0}
 .hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(150,155,165,1);font-weight:bold}
+[data-theme="light"] .hdr{color:#999}
 .left{flex:1;min-width:0}
 .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .sname{font-weight:bold;color:#ccc;font-size:12px;margin-right:8px}
+[data-theme="light"] .sname{color:#333}
 .sdesc{color:rgba(150,155,165,1);font-size:10px}
+[data-theme="light"] .sdesc{color:#888}
 .snote{font-size:9px;color:rgba(100,105,115,1);font-style:italic;margin-top:2px}
+[data-theme="light"] .snote{color:#bbb}
 .sid{font-family:monospace;font-size:10px;color:rgba(100,105,115,1);width:62px}
+[data-theme="light"] .sid{color:#bbb}
 .bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:22px}
 .bar{display:inline-block;width:4px;background:rgba(84,85,86,0.4)}
+[data-theme="light"] .bar{background:#ddd}
 .bar.on{background:#5a9}
 .batt{width:62px;text-align:right;font-size:11px}
 .ok{color:#5a9;font-weight:bold}
+[data-theme="light"] .ok{color:#3a8}
 .low{color:#e08020;font-weight:bold}
+[data-theme="light"] .low{color:#c70}
 .unk{color:rgba(100,105,115,1)}
+[data-theme="light"] .unk{color:#bbb}
 .dead{color:#e0625a;font-weight:bold}
+[data-theme="light"] .dead{color:#c2352d}
 .reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
-</style>';
-} else {
-    echo '<style>body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#333;background-color:#fff}
-.weather34darkbrowser{position:relative;background:0;width:100%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
-.weather34darkbrowser[url]:after{content:attr(url);color:#333;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px}
-.row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid #e2e6ef}
-.row:last-child{border-bottom:0}
-.hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999;font-weight:bold}
-.left{flex:1;min-width:0}
-.right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.sname{font-weight:bold;color:#333;font-size:12px;margin-right:8px}
-.sdesc{color:#888;font-size:10px}
-.snote{font-size:9px;color:#bbb;font-style:italic;margin-top:2px}
-.sid{font-family:monospace;font-size:10px;color:#bbb;width:62px}
-.bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:22px}
-.bar{display:inline-block;width:4px;background:#ddd}
-.bar.on{background:#5a9}
-.batt{width:62px;text-align:right;font-size:11px}
-.ok{color:#3a8;font-weight:bold}
-.low{color:#c70;font-weight:bold}
-.unk{color:#bbb}
-.dead{color:#c2352d;font-weight:bold}
-.reg{color:#888;font-size:10px;line-height:1.9}
-</style>';
-}
-?>
+[data-theme="light"] .reg{color:#888}
+</style>
 </head>
 <body>
 <div class="weather34darkbrowser" url="GW1000 Sensor Status &nbsp;— &nbsp;<?php echo date('H:i:s'); ?>"></div>

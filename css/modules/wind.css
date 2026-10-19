@@ -213,7 +213,7 @@
   box-sizing: border-box;
   margin-top: 0;
   position: relative;
-  left: 6px; top: 1px;      /* sandbox-tuned */
+  left: -1px; top: 1px;     /* right edge on x304, flush with the Wind Run pill below (was 6px: 7px overhang) */
   font-size: 10px;
 }
 

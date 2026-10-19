@@ -143,7 +143,7 @@
 .mod-temperature-top-pill {
   display: flex;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 4px;    /* converter right edge on x303, flush with the pills below */
   margin-bottom: 2px;
 }
 

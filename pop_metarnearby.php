@@ -4,26 +4,14 @@
 if (isset($_GET['theme'])) {
     $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
 }
-if ($theme === "light") {
-    $background = "white";
-    $text = "black";
-    $cardbg = "#ffffff";
-    $cardborder = "rgba(0,0,0,0.08)";
-    $cardshadow = "rgba(0,0,0,0.1)";
-} else {
-    $background = "rgba(30, 33, 36, 1)";
-    $text = "white";
-    $cardbg = "hsla(233,12%,13%,.5)";
-    $cardborder = "rgba(245, 247, 252, .02)";
-    $cardshadow = "rgba(0,0,0,0.6)";
-}
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo w34t('LinkNearbyMetar', 'Nearby Metar'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
 <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}
 html,body
@@ -32,44 +20,42 @@ html,body
     font-family: "weathertext2", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;	
     -moz-osx-font-smoothing: grayscale;
-    background-color:<?php echo $background; ?>;
+    background-color:var(--pop-bg);
+    color:var(--pop-ink);
   }
-  /* unvisited link */
-a:link {
-  color: <?php echo $text; ?>;
+a:link,a:visited,a:hover,a:active {
+  color: var(--pop-ink);
 }
-
-/* visited link */
-a:visited {
-  color: <?php echo $text; ?>;
-}
-
-/* mouse over link */
-a:hover {
-  color: <?php echo $text; ?>;
-}
-
-/* selected link */
-a:active {
-  color: <?php echo $text; ?>;
+[data-theme="light"] a:link,[data-theme="light"] a:visited,[data-theme="light"] a:hover,[data-theme="light"] a:active {
+  color: #007a8c;
 }
 .grid { 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 2fr));
   grid-gap: 4px;
   align-items: stretch;
-  color:<?php echo $text; ?>;
+  color:var(--pop-ink);
   padding: 4px 44px 4px 4px;
   box-sizing: border-box;
 }
+[data-theme="light"] .grid {
+  color:#000;
+}
 .grid > article {
-  border: 1px solid <?php echo $cardborder; ?>;
-  box-shadow: 2px 2px 6px 0px <?php echo $cardshadow; ?>;
+  border: 1px solid rgba(245, 247, 252, .02);
+  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
   padding:5px;
   font-size:0.8em;
   -webkit-border-radius:4px;
   border-radius:4px;
-  background:<?php echo $cardbg; ?>;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;
+  background:hsla(233,12%,13%,.5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[data-theme="light"] .grid > article {
+  background:#ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.1);
 }
 .grid > article img {
   max-width: 100%;
@@ -85,7 +71,10 @@ a:active {
   border-top-right-radius: 5px;
   padding-top: 10px;
   margin-right: 44px;
-  color: <?php echo $text; ?>;
+  color: var(--pop-ink);
+}
+[data-theme="light"] .weather34darkbrowser {
+  color: #000;
 }
 
 .weather34darkbrowser[url]:after {

@@ -34,13 +34,6 @@ if ($data_ok) {
 $precip_name = $is_freezing ? w34t('CondSnow', 'Snow') : w34t('Rain', 'Rain');
 
 if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
-$is_dark   = ($theme !== 'light');
-$bg        = $is_dark ? 'rgba(30, 33, 36, 1)' : '#fff';
-$bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
-$bg_card   = $is_dark ? '#252729' : '#e8eaef';
-$text      = $is_dark ? '#ddd'    : '#222';
-$text_dim  = $is_dark ? '#777'    : '#666';
-$border    = $is_dark ? '#2e3033' : '#ccc';
 
 // Unit conversion helper functions
 function formatTemp($temp_f, $unit) {
@@ -95,7 +88,28 @@ function formatPressureDiff($diff_inHg, $unit) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo w34t('LinkNowcastDetails', 'Hyperlocal Forecast Details'); ?></title>
+<link rel="stylesheet" href="css/tokens.css">
 <style>
+:root, [data-theme="dark"] {
+  --pop-chrome: #1e2124;
+  --pop-card: #252729;
+  --pop-text: #ddd;
+  --pop-text-dim: #777;
+  --pop-border: #2e3033;
+  --dist-normal: #eee;
+  --dist-good: #90b12a;
+  --dist-fair: #e6a141;
+}
+[data-theme="light"] {
+  --pop-chrome: #f0f2f5;
+  --pop-card: #e8eaef;
+  --pop-text: #222;
+  --pop-text-dim: #666;
+  --pop-border: #ccc;
+  --dist-normal: #111;
+  --dist-good: #5e8210;
+  --dist-fair: #b27214;
+}
 @font-face {
   font-family: weathertext2;
   src: url(css/fonts/verbatim-regular.woff) format("woff"),
@@ -107,8 +121,8 @@ html, body {
   height: 100%; overflow: hidden;
   font-family: Arial, sans-serif;
   font-size: 13px;
-  background: <?php echo $bg; ?>;
-  color: <?php echo $text; ?>;
+  background: var(--pop-bg);
+  color: var(--pop-text);
   -webkit-font-smoothing: antialiased;
 }
 body { display: flex; flex-direction: column; }
@@ -116,8 +130,8 @@ body { display: flex; flex-direction: column; }
 /* ── Header strip ─────────────────────────────────────────────────────────── */
 .pop-header {
   flex: 0 0 auto;
-  background: <?php echo $bg_chrome; ?>;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  background: var(--pop-chrome);
+  border-bottom: 1px solid var(--pop-border);
   padding: 5px 10px;
   display: flex;
   align-items: center;
@@ -126,12 +140,12 @@ body { display: flex; flex-direction: column; }
 .pop-title {
   font-family: weathertext2, Arial, sans-serif;
   font-size: .8em;
-  color: <?php echo $text; ?>;
+  color: var(--pop-text);
   letter-spacing: 0.3px;
 }
 .pop-issued {
   font-size: .65em;
-  color: <?php echo $text_dim; ?>;
+  color: var(--pop-text-dim);
   white-space: nowrap;
   margin-right: 50px; /* clear lity close button */
 }
@@ -139,8 +153,8 @@ body { display: flex; flex-direction: column; }
 /* ── Tab row ──────────────────────────────────────────────────────────────── */
 .pop-tabs {
   flex: 0 0 auto;
-  background: <?php echo $bg_chrome; ?>;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  background: var(--pop-chrome);
+  border-bottom: 1px solid var(--pop-border);
   padding: 4px 5px;
   display: flex;
   flex-wrap: wrap;
@@ -149,7 +163,7 @@ body { display: flex; flex-direction: column; }
 .tablink {
   background-color: #555;
   color: white;
-  border: 2px solid <?php echo $bg_chrome; ?>;
+  border: 2px solid var(--pop-chrome);
   border-radius: 5px;
   margin-top: 0;
   margin-left: 5px;
@@ -183,7 +197,7 @@ body { display: flex; flex-direction: column; }
   padding: 8px 10px;
 }
 .fcst-card {
-  background: <?php echo $bg_card; ?>;
+  background: var(--pop-card);
   border-radius: 3px;
   padding: 10px 12px;
   display: flex;
@@ -194,7 +208,7 @@ body { display: flex; flex-direction: column; }
 .fcst-card-title {
   font-family: weathertext2, Arial, sans-serif;
   font-size: .75em;
-  color: silver;
+  color: var(--card-ink, silver);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 6px;
@@ -205,7 +219,7 @@ body { display: flex; flex-direction: column; }
   overflow-y: auto;
   font-family: Arial, sans-serif;
   font-size: .85em;
-  color: <?php echo $text; ?>;
+  color: var(--pop-text);
   line-height: 1.5;
   padding-right: 2px;
   
@@ -227,17 +241,17 @@ body { display: flex; flex-direction: column; }
 }
 .pop-table th, .pop-table td {
   padding: 6px 8px;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  border-bottom: 1px solid var(--pop-border);
   vertical-align: middle;
 }
 .pop-table th {
   font-family: weathertext2, Arial, sans-serif;
-  color: silver;
+  color: var(--card-ink, silver);
   text-transform: uppercase;
   font-size: 0.72em;
   letter-spacing: 0.4px;
   background: rgba(0, 0, 0, 0.12);
-  border-top: 1px solid <?php echo $border; ?>;
+  border-top: 1px solid var(--pop-border);
 }
 .pop-table tr:hover td {
   background: rgba(255, 255, 255, 0.02);
@@ -248,7 +262,7 @@ body { display: flex; flex-direction: column; }
 
 .nowcast-bubble {
   background: rgba(33, 34, 39, 0.25);
-  border: 1px solid <?php echo $border; ?>;
+  border: 1px solid var(--pop-border);
   border-radius: 4px;
   padding: 10px 12px;
   font-style: italic;
@@ -266,6 +280,10 @@ body { display: flex; flex-direction: column; }
 .rain-blue  { color: #4a8b9f; font-weight: bold; }
 .rain-amber { color: #e6a141; font-weight: bold; }
 .rain-red   { color: #d35d4e; font-weight: bold; }
+
+.dist-normal { color: var(--dist-normal); font-weight: bold; }
+.dist-good   { color: var(--dist-good); font-weight: bold; }
+.dist-fair   { color: var(--dist-fair); font-weight: bold; }
 </style>
 </head>
 <body>
@@ -359,9 +377,9 @@ body { display: flex; flex-direction: column; }
               <?php else: 
                 foreach ($analogues as $a): 
                   $dist = floatval($a['distance']);
-                  $d_col = $is_dark ? '#eee' : '#111';
-                  if ($dist < 0.8) $d_col = $is_dark ? '#90b12a' : '#5e8210';
-                  elseif ($dist < 1.0) $d_col = $is_dark ? '#e6a141' : '#b27214';
+                  $d_class = 'dist-normal';
+                  if ($dist < 0.8) $d_class = 'dist-good';
+                  elseif ($dist < 1.0) $d_class = 'dist-fair';
                   
                   $temp_val = formatTemp($a['temp_f'], $tempunit);
                   $press_val = formatPressure($a['pressure'], $pressureunit);
@@ -370,7 +388,7 @@ body { display: flex; flex-direction: column; }
               ?>
                 <tr>
                   <td><strong><?php echo htmlspecialchars(w34_datetext($a['date'])); ?></strong></td>
-                  <td><span style="color:<?php echo $d_col; ?>;font-weight:bold;"><?php echo number_format($dist, 3); ?></span></td>
+                  <td><span class="<?php echo $d_class; ?>"><?php echo number_format($dist, 3); ?></span></td>
                   <td><?php echo $temp_val; ?>&deg;<?php echo $tempunit; ?></td>
                   <td><?php echo $press_val; ?> <?php echo $pressureunit; ?></td>
                   <td><?php echo $dp_val; ?></td>

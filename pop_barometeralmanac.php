@@ -62,7 +62,7 @@ html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-
 .grid1{display:block;color:#212428;margin-top:5px;padding:0 4px;box-sizing:border-box;}
 .grid1 > articlegraph{border:1px solid rgba(0,0,0,0.12);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);padding:4px;font-size:0.8em;border-radius:4px;background:#ffffff;height:380px;box-sizing:border-box;display:block;}
 a{color:black;text-decoration:none;}
-.actualt{border-radius:3px;background:#e2e5e9;padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:#212428;border:1px solid rgba(0,0,0,0.1);margin-bottom:6px;text-align:left;}
+.actualt{border-radius:3px;background:#e2e5e9;padding:1px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:#212428;border:1px solid rgba(0,0,0,0.1);margin-bottom:6px;text-align:left;}
 .baro-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
 .baro-badge{width:70px;height:20px;line-height:20px;border-radius:3px;font-family:weathertext2,Arial,sans-serif;font-size:0.82rem;text-align:center;color:white;box-sizing:border-box;white-space:nowrap;flex-shrink:0;border-bottom:4px solid #555555;}
 .baro-max{background:rgba(255,124,57,1);}

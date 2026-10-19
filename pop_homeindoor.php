@@ -20,12 +20,61 @@ $windchillwu='<svg "weather34 windchill icon" width="10px" height="10px" viewBox
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo w34t('LinkIndoorGuide', 'Indoor Guide'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/homeindoor.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/homeindoor.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+@font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
+html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:var(--pop-bg);color:var(--pop-ink);margin:0;padding:0;}
+[data-theme="light"] body,[data-theme="light"] html{color:black;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,2fr));grid-gap:5px;align-items:stretch;color:var(--pop-ink);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:4px 44px 4px 4px;box-sizing:border-box;}
+[data-theme="light"] .grid{color:black;}
+.grid > article{border:1px solid rgba(245,247,252,0.02);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.3);padding:5px;font-size:0.8em;-webkit-border-radius:4px;border-radius:4px;height:160px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:hsla(233,12%,13%,.5);}
+[data-theme="light"] .grid > article{border:1px solid rgba(0,0,0,0.08);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.1);background:#fff;}
+.weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0px;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px;}
+.weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-link);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px;}
+[data-theme="light"] .weather34darkbrowser[url]:after{color:black;}
+blue{color:#01a4b4;}orange{color:#009bb4;}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem;}green{color:#aaa;}red{color:#f37867;}red6{color:#d65b4a;}value{color:#fff;}yellow{color:#cc0;}purple{color:#916392;}
+humgreen{color:rgba(132,169,39,1);}humred{color:#e27667;}humyellow{color:rgba(231,150,59,1);}humblue{color:rgba(0,155,180,1);}humorange{color:#ff832f;}
+[data-theme="light"] blue{color:#007a8a;}
+[data-theme="light"] red{color:#c00000;}
+[data-theme="light"] yellow{color:#8a5a00;}
+[data-theme="light"] purple{color:#800080;}
+[data-theme="light"] green{color:#008000;}
+[data-theme="light"] humred{color:#c00000;}
+[data-theme="light"] humblue{color:#007a8a;}
+[data-theme="light"] humgreen{color:#2d7a2d;}
+[data-theme="light"] humyellow{color:#8a5a00;}
+[data-theme="light"] humorange{color:#b05000;}
+.actualt{position:relative;left:0px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:teal;padding:5px;font-family:Arial,Helvetica,sans-serif;width:130px;height:0.85em;font-size:0.8rem;padding-top:1px;color:white;align-items:center;justify-content:center;margin-bottom:10px;top:0;}
+smalluvunit{font-size:0.5rem;font-family:weathertext2,Arial,Helvetica,system;vertical-align:super;}
+smalltempunit{font-size:0.85rem;font-family:weathertext2,Arial,Helvetica,system;vertical-align:super;color:#aaa;}
+smallhumunit{font-size:0.85rem;font-family:weathertext2,Arial,Helvetica,system;vertical-align:super;}
+.indoorsvgnest{position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center;margin-top:-15px;}
+.indoorsvgnestvalue{margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:1.55em;font-family:weathertext2;position:absolute;}
+.weather34indoortrendup{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#d35d4e;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoortrenddown{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#00a4b4;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoortrendsteady{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#90b12a;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px;position:absolute;left:130px;top:128px;}
+.weather34indoorcomfort{font-family:weathertext2,Arial,Helvetica,system;width:4rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#90b12a;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoorhumid{font-family:weathertext2,Arial,Helvetica,system;width:4rem;height:1rem;font-size:0.89rem;padding-top:0;color:#fff;background:#00a4b4;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoordry{font-family:weathertext2,Arial,Helvetica,system;width:4rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#d35d4e;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px;position:absolute;left:130px;top:128px;}
+.weather34indoorwarm{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#ff832f;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoorcold{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:#00a4b4;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+.weather34indoormild{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:rgba(230,161,65,1);border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px;position:absolute;left:130px;top:128px;}
+.weather34indoorhot{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.8rem;padding-top:0;color:#fff;background:rgba(211,93,78,1);border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px;position:absolute;left:130px;top:128px;}
+.weather34indoorpm{font-family:weathertext2,Arial,Helvetica,system;width:3.2rem;height:1rem;font-size:0.65rem;padding-top:0;color:#fff;background:#00a4b4;border:0;display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;position:absolute;left:130px;top:128px;}
+div.output{width:90px;height:90px;position:absolute;left:45px;top:86px;color:#fff;text-transform:uppercase;text-align:center;margin:0 auto;display:flex;align-items:center;justify-content:center;}
+div.output small{display:block;margin:0;padding:0;font-size:1em;color:#c0c0c0;}
+[data-theme="light"] div.output small{color:black;}
+.trendicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
+.airqicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
+.humicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
+.tempicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
+.lotemp{color:var(--pop-footer-ink);font-size:11px;}
+  </style>
 </head>
 <body>
 

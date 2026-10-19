@@ -3,6 +3,7 @@
 include_once('shared_core.php');
 include('settings.php');
 include('common.php');
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
 
 // ── Current Kp ───────────────────────────────────────────────────────────────
 $kp = 0.0; $kp_type = 'estimated';
@@ -199,9 +200,8 @@ body { display: flex; flex-direction: column; }
   font-size: .65em;
   color: <?php echo $text_dim; ?>;
   white-space: nowrap;
-  margin-right: 50px;
 }
-.pop-rsg-mini { display: flex; gap: 3px; margin-right: 50px; }
+.pop-rsg-mini { display: flex; gap: 3px; margin-right: 44px; }
 .mod-aurora-rsg-mini {
   width: 22px; height: 28px;
   border-radius: 2px;

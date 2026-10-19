@@ -29,8 +29,13 @@ if (isset($lightning['last_time']) && $lightning['last_time'] >= 1) {
     } catch (Exception $e) { /* fail silently */ }
 }
 
-// Badge modifier class: default amber when quiet, --active (orange) when strikes in last 3hr
-$badge_cls = ($strike_3hr > 0) ? ' mod-lt-badge-top--active' : '';
+// Badge colour band by strikes in the last 3 hours: quiet teal at 0, then yellow -> amber -> orange
+// -> red -> purple as activity builds (same ramp as the UV badge)
+if ($strike_3hr >= 200)     { $badge_cls = ' mod-lt-badge-top--200'; }
+else if ($strike_3hr >= 50) { $badge_cls = ' mod-lt-badge-top--50'; }
+else if ($strike_3hr >= 10) { $badge_cls = ' mod-lt-badge-top--10'; }
+else if ($strike_3hr >= 1)  { $badge_cls = ' mod-lt-badge-top--1'; }
+else                        { $badge_cls = ' mod-lt-badge-top--0'; }
 ?>
 <div class="updatedtime"><span>
     <?php if (file_exists($livedata) && time() - filemtime($livedata) > 300):

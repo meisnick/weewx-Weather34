@@ -85,14 +85,15 @@
     width: 155px; /* Locked to exact Lightning grid width */
     display: flex;
     flex-direction: column;
-    margin-top: -3px; /* Aligns vertical center with 72px badge */
+    height: 4.5rem; /* = the 72px badge: header top and pill bottoms line up with the badge's top and bottom */
+    box-sizing: border-box;
 }
 
 .mod-aq-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     padding-right: 2px;
 }
 
@@ -111,7 +112,8 @@
 .mod-aq-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 4px 6px;
+    margin-top: auto; /* pin the pills to the bottom of the 72px column */
 }
 
 .mod-aq-pill {
@@ -121,9 +123,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3px 0 2px 0;
+    padding: 2px 0 1px 0;
     color: var(--accent-ink);
-    height: 28px;
+    height: 26px;
     box-sizing: border-box;
 }
 

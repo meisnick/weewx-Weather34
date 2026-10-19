@@ -99,9 +99,13 @@
     border-top-right-radius: 2px;
 }
 
-.mod-lt-badge-top--active {
-    background-color: var(--orange);
-}
+/* Strike-count bands (last 3 hours), the same yellow -> purple ramp as the UV badge. */
+.mod-lt-badge-top--0   { background: var(--ink-teal-dark); }
+.mod-lt-badge-top--1   { background: linear-gradient(90deg, var(--warn-4), var(--amber)); }
+.mod-lt-badge-top--10  { background: linear-gradient(90deg, var(--amber), var(--orange)); }
+.mod-lt-badge-top--50  { background: linear-gradient(90deg, var(--orange), var(--uv-red)); }
+.mod-lt-badge-top--200 { background: linear-gradient(90deg, var(--uv-red), var(--uv-purple)); }
+.mod-lt-badge-top[class*="--"] .val { text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); }
 
 .mod-lt-badge-top .lbl {
     font-size: 0.65rem;

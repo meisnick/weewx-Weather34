@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 02:11:02 UTC
+   Generated: 2026-10-19 02:19:26 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -539,14 +539,15 @@
     width: 155px; /* Locked to exact Lightning grid width */
     display: flex;
     flex-direction: column;
-    margin-top: -3px; /* Aligns vertical center with 72px badge */
+    height: 4.5rem; /* = the 72px badge: header top and pill bottoms line up with the badge's top and bottom */
+    box-sizing: border-box;
 }
 
 .mod-aq-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     padding-right: 2px;
 }
 
@@ -565,7 +566,8 @@
 .mod-aq-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 4px 6px;
+    margin-top: auto; /* pin the pills to the bottom of the 72px column */
 }
 
 .mod-aq-pill {
@@ -575,9 +577,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3px 0 2px 0;
+    padding: 2px 0 1px 0;
     color: var(--accent-ink);
-    height: 28px;
+    height: 26px;
     box-sizing: border-box;
 }
 
@@ -1249,6 +1251,14 @@
 
 .mod-clock .orangeclock {
   margin: 3px auto 0;
+}
+
+/* One fixed-width cell per digit (widest digit in weathertext2 is 0.652em) so the time doesn't shift
+   sideways as the seconds tick; the font has no tabular figures. */
+.orangeclock .ck-d {
+  display: inline-block;
+  width: 0.66em;
+  text-align: center;
 }
 
 .mod-clock .mod-box.clock {
@@ -2507,9 +2517,13 @@ position: static;
     border-top-right-radius: 2px;
 }
 
-.mod-lt-badge-top--active {
-    background-color: var(--orange);
-}
+/* Strike-count bands (last 3 hours), the same yellow -> purple ramp as the UV badge. */
+.mod-lt-badge-top--0   { background: var(--ink-teal-dark); }
+.mod-lt-badge-top--1   { background: linear-gradient(90deg, var(--warn-4), var(--amber)); }
+.mod-lt-badge-top--10  { background: linear-gradient(90deg, var(--amber), var(--orange)); }
+.mod-lt-badge-top--50  { background: linear-gradient(90deg, var(--orange), var(--uv-red)); }
+.mod-lt-badge-top--200 { background: linear-gradient(90deg, var(--uv-red), var(--uv-purple)); }
+.mod-lt-badge-top[class*="--"] .val { text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); }
 
 .mod-lt-badge-top .lbl {
     font-size: 0.65rem;
@@ -3647,7 +3661,6 @@ rainratetextheading {
 
 .mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
 
-.mod-solaruv .uvtoday1-3 { background: var(--good); }
 .mod-solaruv .uvtodaydark { background: var(--ink-teal-dark); }
 
 .mod-solaruv .uvcontainer1 { font-family: weathertext2; }
@@ -3695,10 +3708,18 @@ rainratetextheading {
 
 .mod-solaruv .uvcaution time { font-size: .55rem; }
 
-.mod-solaruv .uvtoday4-5 { background: var(--warn); }
-.mod-solaruv .uvtoday6-8 { background: var(--warn-soft); }
-.mod-solaruv .uvtoday9-10 { background: var(--red-fade); }
-.mod-solaruv .uvtoday11 { background: var(--purple-4); }
+/* UV bands as a continuous ramp (each band starts where the one below ends): green -> yellow -> amber
+   -> orange -> red -> purple. Used for the live UVI and the night-time forecast UVI alike. */
+.mod-solaruv .uvtoday1-3  { background: linear-gradient(90deg, var(--green), var(--warn-4)); }
+.mod-solaruv .uvtoday4-5  { background: linear-gradient(90deg, var(--warn-4), var(--amber)); }
+.mod-solaruv .uvtoday6-8  { background: linear-gradient(90deg, var(--amber), var(--orange)); }
+.mod-solaruv .uvtoday9-10 { background: linear-gradient(90deg, var(--orange), var(--uv-red)); }
+.mod-solaruv .uvtoday11   { background: linear-gradient(90deg, var(--uv-red), var(--uv-purple)); }
+.mod-solaruv [class^="uvtoday"] { text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); }
+
+/* .solarwrap / .luxwrap are empty legacy frames that drew a second border around the tiles */
+.mod-solaruv .solarwrap,
+.mod-solaruv .luxwrap { display: none; }
 
 .mod-solaruv .uvcaution {
   margin-left: 33px;
@@ -4696,7 +4717,9 @@ valuetextheading2 {
   position: absolute !important;
   top: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
-  padding: 0 !important;               /* framework padding-top:10px shrank the paint area */
+  /* top padding = the max/min line (top 5px + 12px), so the reading centres in the space between that
+     line and the Trend chin instead of on the whole box (it sat ~8px high). Background still fills. */
+  padding: 17px 0 0 0 !important;
   box-sizing: border-box !important;
   background-size: 100% 100% !important;   /* keep the data-coded temp gradient, fill the box */
   align-items: center !important;

@@ -63,9 +63,12 @@ function UpdateClock() {
     if (c < 10) c = "0" + c;
     var el = document.getElementById("theTime");
     if (!el) return;
+    // each digit in a fixed-width cell (.ck-d): the clock font has proportional digits, so the time
+    // otherwise shifts sideways every second as 1s and 0s come and go
+    var t = (c + ":" + a + ":" + g).replace(/\d/g, "<span class='ck-d'>$&</span>");
     el.innerHTML =
         "<div class='weatherclock34'> " + i + " " + b + " " + h + " " + f +
-        "<div class='orangeclock'>" + c + ":" + a + ":" + g + amorpm;
+        "<div class='orangeclock'>" + t + amorpm + "</div></div>";
 }
 // Populate immediately (setInterval's first tick is +500ms), and start as soon as the DOM is
 // parsed -- the old window.onload gated the clock behind every image/webcam/AJAX finishing.

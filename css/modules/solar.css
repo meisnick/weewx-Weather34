@@ -29,7 +29,6 @@
 
 .mod-solaruv .weather34luxvalue span { font-size: 10px; display: block; z-index: 1; }
 
-.mod-solaruv .uvtoday1-3 { background: var(--good); }
 .mod-solaruv .uvtodaydark { background: var(--ink-teal-dark); }
 
 .mod-solaruv .uvcontainer1 { font-family: weathertext2; }
@@ -77,10 +76,18 @@
 
 .mod-solaruv .uvcaution time { font-size: .55rem; }
 
-.mod-solaruv .uvtoday4-5 { background: var(--warn); }
-.mod-solaruv .uvtoday6-8 { background: var(--warn-soft); }
-.mod-solaruv .uvtoday9-10 { background: var(--red-fade); }
-.mod-solaruv .uvtoday11 { background: var(--purple-4); }
+/* UV bands as a continuous ramp (each band starts where the one below ends): green -> yellow -> amber
+   -> orange -> red -> purple. Used for the live UVI and the night-time forecast UVI alike. */
+.mod-solaruv .uvtoday1-3  { background: linear-gradient(90deg, var(--green), var(--warn-4)); }
+.mod-solaruv .uvtoday4-5  { background: linear-gradient(90deg, var(--warn-4), var(--amber)); }
+.mod-solaruv .uvtoday6-8  { background: linear-gradient(90deg, var(--amber), var(--orange)); }
+.mod-solaruv .uvtoday9-10 { background: linear-gradient(90deg, var(--orange), var(--uv-red)); }
+.mod-solaruv .uvtoday11   { background: linear-gradient(90deg, var(--uv-red), var(--uv-purple)); }
+.mod-solaruv [class^="uvtoday"] { text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); }
+
+/* .solarwrap / .luxwrap are empty legacy frames that drew a second border around the tiles */
+.mod-solaruv .solarwrap,
+.mod-solaruv .luxwrap { display: none; }
 
 .mod-solaruv .uvcaution {
   margin-left: 33px;

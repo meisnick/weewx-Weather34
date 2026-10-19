@@ -83,6 +83,14 @@
   margin: 3px auto 0;
 }
 
+/* One fixed-width cell per digit (widest digit in weathertext2 is 0.652em) so the time doesn't shift
+   sideways as the seconds tick; the font has no tabular figures. */
+.orangeclock .ck-d {
+  display: inline-block;
+  width: 0.66em;
+  text-align: center;
+}
+
 .mod-clock .mod-box.clock {
   background-repeat: no-repeat;
   background-position: left 10px bottom 18px;

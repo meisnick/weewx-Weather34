@@ -63,7 +63,7 @@ $_months   = array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun"
         var secInt = now2.getSeconds();
         el.innerHTML = "<div class='weatherclock34'> "
           + weekdays[now2.getDay()] + ' ' + now2.getDate() + ' ' + months[now2.getMonth()] + ' ' + now2.getFullYear()
-          + "<div class='orangeclock'>" + pad(dispH) + ':' + pad(m) + ':' + pad(secInt) + amorpm + '</div></div>';
+          + "<div class='orangeclock'>" + (pad(dispH) + ':' + pad(m) + ':' + pad(secInt)).replace(/\d/g, "<span class='ck-d'>$&</span>") + amorpm + '</div></div>';
       }
     }
   }

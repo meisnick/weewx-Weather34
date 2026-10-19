@@ -303,6 +303,7 @@ valuetextheading2 {
   font-size: 18px;                     /* card type scale: small-badge reading */
   font-weight: 500;
   color: var(--white);
+  text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); /* white reading on a coloured badge */
   z-index: 2;
   display: flex;
   align-items: baseline;

@@ -56,6 +56,7 @@
     font-size: 1.45rem;
     line-height: 1.1;
     color: var(--accent-ink);
+    text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong); /* white reading on a coloured badge */
 }
 
 .mod-aq-badge-bot {

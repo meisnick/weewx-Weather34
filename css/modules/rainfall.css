@@ -162,7 +162,7 @@
 .mod-rainfall-top-pill {
   display: flex;
   justify-content: flex-end;
-  padding-right: 12px;   /* validated vs prod: pill right edge ~x304 */
+  padding-right: 8px;    /* right edge on x306, flush with the 2x2 pills and the Rate pill */
 }
 
 .mod-rainfall .rainconvertercircle {
@@ -257,7 +257,7 @@ valuetextheading1 {
 .mod-rainfall-bot-pill {
   display: flex;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 8px;    /* right edge on x306, flush with the 2x2 pills and the converter */
 }
 
 .mod-rainfall .rainratemodulehome {

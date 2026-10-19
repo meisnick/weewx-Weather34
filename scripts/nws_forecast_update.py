@@ -417,10 +417,12 @@ def build_awh(data):
         wind_kph = mph_to_kph(wind_mph)
         gust_kph = mph_to_kph(gust_mph)
         solar_wm2 = safe_get(hourly.get("shortwave_radiation"), i, 0)
-        uvi      = safe_get(hourly.get("uv_index"), i, 0)
+        uvi      = round(safe_get(hourly.get("uv_index"), i, 0) or 0, 1)   # 0.85 -> 0.9: one decimal like the daily UV
         is_day   = bool(safe_get(hourly.get("is_day"), i, 1))
         icon_code = wmo_icon(wcode, is_day)
         summary  = wmo_primary(wcode)
+        if not is_day:
+            summary = summary.replace('Sunny', 'Clear')   # night hours: "Clear"/"Mostly Clear", as the night periods do
 
         out_periods.append({
             "timestamp":        ts,

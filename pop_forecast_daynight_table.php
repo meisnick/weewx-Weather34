@@ -119,19 +119,24 @@ for ($k = 0;$k < 14;$k++)
         $forecastheatindex[$k] = round(($forecastheatindex[$k] * 9 / 5) + 32, 0);
     }
 
-    //rain mm to in
-    if ($forecastprecipIntensity[$k] === 0)
+    //rain: same format as the hourly table ("0.04 in · 30%", "30% chance" or "-").
+    // The old `=== 0` test never matched the float 0.0, so every period read "0in 0%".
+    if ($forecastprecipIntensity[$k] > 0 && $rainunit == 'in')
     {
-        $forecastPrecip[$k] = "-";
+        $forecastprecipIntensity[$k] = number_format($forecastprecipIntensity[$k] * 0.0393701, 2);
+        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . "</bluet><span class=\"fc-u\">in</span> &middot; <greyt>" . $forecastPrecipProb[$k] . "%</greyt>";
     }
-    else if ($rainunit == 'in')
+    else if ($forecastprecipIntensity[$k] > 0)
     {
-        $forecastprecipIntensity[$k] = round(($forecastprecipIntensity[$k] * 0.0393701) , 2);
-        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
+        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . "</bluet><span class=\"fc-u\">mm</span> &middot; <greyt>" . $forecastPrecipProb[$k] . "%</greyt>";
     }
-    else if ($rainunit == 'mm')
+    else if ($forecastPrecipProb[$k] > 0)
     {
-        $forecastPrecip[$k] = "<bluet>" . $forecastprecipIntensity[$k] . $rainunit . " " . $forecastPrecipProb[$k] . "%";
+        $forecastPrecip[$k] = "<greyt>" . $forecastPrecipProb[$k] . "%&nbsp;" . w34t('ChanceLc', 'chance') . "</greyt>";
+    }
+    else
+    {
+        $forecastPrecip[$k] = "<greyt>-</greyt>";
     }
 
     //kmh to ms
@@ -252,44 +257,62 @@ for ($k = 0;$k < 14;$k++)
 
 
 
-<main class="grid3" style="height:400px">
-  <articlegraph3> 
-<table class="demo" style="width: 100%; height: 100%; text-center: left; overflow: auto;">
-    
-
-<th style="font-size: 12px;"><?php echo w34t('Period', 'Period'); ?></th>
-<th colspan="2" style="font-size: 12px;"><?php echo w34t('Conditions', 'Conditions'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('Temperature', 'Temperature'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('Precipitation', 'Precipitation'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('WindSpeedLabel', 'Wind Speed'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('Direction', 'Direction'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('UvIndex', 'UV Index'); ?></th>
-<th style="font-size: 12px;"><?php echo w34t('Humidity', 'Humidity'); ?></th>
-</tr>
-<?php for ($k = 0;$k < 14;$k++)
-{ ?>
-<tr style="border-top: 0.125px grey solid; ">
-<td><span style="font-size: 11px;";><?php echo $forecastTime[$k]; ?></span></td>
-<td><img src="css/svg/<?php echo $forecastIcon[$k]; ?>" width="45" height="30" alt="mc_day" style="display: block; margin-left: auto; margin-right: auto;"></td>
-<td><span style="font-size: 11px;";><?php echo $forecastsummary[$k]; ?></span></td>
-<td><span style="font-size: 11px;";><?php echo $colorTempHigh[$k]; ?><?php echo $forecastTempHigh[$k] . "&deg" . $tempunit; ?></span></td>
-<td><span style="font-size: 11px; ";><?php echo $forecastPrecip[$k]; ?>
-</td>
-<td><span style="font-size: 11px; ";><redt><?php echo $forecastWindSpeedMax[$k]; ?><small><?php echo $windunit; ?></small></span></td>
-<td><?php echo w34_dir($forecastWinddircardinal[$k]); ?></td>
-<td><span style="font-size: 11px; ";><?php echo $colorUV[$k]; ?><?php echo $forecastUV[$k]; ?></span></td>
-<td><span style="font-size: 11px;";><?php echo $colorHumidity[$k]; ?><?php echo $forecasthumidity[$k]; ?><small> %</small></span></td>
-</tr>
-  <?php
-} ?>
-
-
+<?php
+// Shared forecast-table layout (hourly + day/night). Replaces the legacy .demo/.grid3 sizing:
+// no 50px gaps, one text size, sticky header row, the page scrolls inside the tab's frame.
+$fcBg   = ($theme === 'light') ? '#ffffff' : 'rgba(30,33,36,1)';
+$fcInk  = ($theme === 'light') ? '#222222' : '#c8c8c8';
+$fcHead = ($theme === 'light') ? '#2d3a4b' : '#e6e8ec';
+$fcLine = ($theme === 'light') ? '#e2e5ea' : 'rgba(255,255,255,.08)';
+$fcRule = ($theme === 'light') ? '#c9ced6' : 'rgba(255,255,255,.22)';
+function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
+?>
+<style>
+  html, body { height: auto; }
+  body { margin: 0 !important; padding: 0 10px 10px !important; background: <?php echo $fcBg; ?> !important; }
+  .fc-wrap { display: block; }
+  .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: <?php echo $fcInk; ?>; }
+  .fc-table thead th { position: sticky; top: 0; z-index: 1; background: <?php echo $fcBg; ?>; color: <?php echo $fcHead; ?>;
+    font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid <?php echo $fcRule; ?>; text-align: center; white-space: nowrap; }
+  .fc-table td { padding: 5px 6px; text-align: center; border-bottom: 1px solid <?php echo $fcLine; ?>; white-space: nowrap; vertical-align: middle; }
+  .fc-table th.fc-first, .fc-table td.fc-first { text-align: left; padding-left: 8px; }
+  .fc-table th.fc-cond, .fc-table td.fc-cond { text-align: left; }
+  .fc-table td.fc-cond img { width: 30px; height: 24px; margin: 0 8px 0 0 !important; vertical-align: middle; display: inline-block; }
+  .fc-u { font-size: 10px; margin-left: 2px; opacity: .85; }
+  .fc-credit { font-size: 9px; color: #999; padding: 10px 8px 2px; }
+  .fc-credit a { color: #999 !important; }
+</style>
+<main class="fc-wrap">
+<table class="fc-table">
+  <thead><tr>
+    <th class="fc-first"><?php echo w34t('Period', 'Period'); ?></th>
+    <th class="fc-cond"><?php echo w34t('Conditions', 'Conditions'); ?></th>
+    <th><?php echo w34t('Temperature', 'Temperature'); ?></th>
+    <th><?php echo w34t('Precipitation', 'Precipitation'); ?></th>
+    <th><?php echo w34t('WindSpeedLabel', 'Wind Speed'); ?></th>
+    <th><?php echo w34t('Direction', 'Direction'); ?></th>
+    <th><?php echo w34t('UvIndex', 'UV Index'); ?></th>
+    <th><?php echo w34t('Humidity', 'Humidity'); ?></th>
+  </tr></thead>
+  <tbody>
+<?php for ($k = 0; $k < 14; $k++) { ?>
+  <tr>
+    <td class="fc-first"><?php echo $forecastTime[$k]; ?></td>
+    <td class="fc-cond"><img src="css/svg/<?php echo $forecastIcon[$k]; ?>" alt=""><?php echo $forecastsummary[$k]; ?></td>
+    <td><?php echo $colorTempHigh[$k] . $forecastTempHigh[$k] . '&deg;' . $tempunit . fc_close($colorTempHigh[$k]); ?></td>
+    <td><?php echo $forecastPrecip[$k]; ?></td>
+    <td><?php echo $forecastWindSpeedMax[$k]; ?><span class="fc-u"><?php echo $windunit; ?></span></td>
+    <td><?php echo w34_dir($forecastWinddircardinal[$k]); ?></td>
+    <td><?php echo $colorUV[$k] . $forecastUV[$k] . fc_close($colorUV[$k]); ?></td>
+    <td><?php echo $colorHumidity[$k] . $forecasthumidity[$k] . fc_close($colorHumidity[$k]); ?><span class="fc-u">%</span></td>
+  </tr>
+<?php } ?>
+  </tbody>
 </table>
-    </articlegraph3>
-  <div style="font-size:9px;color:#aaa;padding:6px 4px;">
-    <?php echo w34t('DataLabel', 'Data'); ?>: <a href="https://open-meteo.com/" target="_blank" style="color:#aaa;">Open-Meteo</a>
-    (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:#aaa;">CC BY 4.0</a>)
-    &nbsp;&middot;&nbsp;
-    <?php echo w34t('IconsLabel', 'Icons'); ?>: <a href="https://github.com/basmilius/weather-icons" target="_blank" style="color:#aaa;">basmilius/weather-icons</a> (MIT)
-  </div>
-   </main>
+<div class="fc-credit">
+  <?php echo w34t('DataLabel', 'Data'); ?>: <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a>
+  (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>)
+  &nbsp;&middot;&nbsp;
+  <?php echo w34t('IconsLabel', 'Icons'); ?>: <a href="https://github.com/basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> (MIT)
+</div>
+</main>

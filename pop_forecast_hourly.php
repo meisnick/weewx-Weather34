@@ -332,9 +332,9 @@ for ($k = 0;$k < 12;$k++)
     </article>
   <article>
     <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?>;margin-bottom:3px;">
-  <?php echo $knfo ?> <?php echo w34t('ForecastDataBy', 'Forecast data provided by'); ?> <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;">CC BY 4.0</a></div>
+  <?php echo $knfo ?> <?php echo w34t('ForecastDataBy', 'Forecast data provided by'); ?> <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank" style="white-space:nowrap;">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;white-space:nowrap;">CC BY 4.0</a></div>
     <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> <?php echo w34t('ForecastIconsBy', 'Forecast icons provided by'); ?> <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;">MIT</a></div>
+  <?php echo $knfo ?> <?php echo w34t('ForecastIconsBy', 'Forecast icons provided by'); ?> <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank" style="word-break:break-all;">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;white-space:nowrap;">MIT</a></div>
     </article>
 </main>
   </div>

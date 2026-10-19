@@ -1,14 +1,13 @@
 <?php include_once('w34CombinedData.php');error_reporting(0);
 if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
-$is_dark = ($theme !== 'light');
-$bg = $is_dark ? 'rgba(30,33,36,1)' : '#ffffff';
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo w34t('DaylightMapTitle', 'Equirectangular Projection World Daylight Map'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -16,7 +15,7 @@ $bg = $is_dark ? 'rgba(30,33,36,1)' : '#ffffff';
       padding: 0;
       width: 100%;
       height: 100%;
-      background-color: <?php echo $bg; ?>;
+      background-color: var(--pop-bg);
       overflow: hidden;
     }
     .roundcornerframe {

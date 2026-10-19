@@ -33,8 +33,9 @@ if ($data_ok) {
 }
 $precip_name = $is_freezing ? w34t('CondSnow', 'Snow') : w34t('Rain', 'Rain');
 
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
 $is_dark   = ($theme !== 'light');
-$bg        = $is_dark ? '#151819' : '#fff';
+$bg        = $is_dark ? 'rgba(30, 33, 36, 1)' : '#fff';
 $bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
 $bg_card   = $is_dark ? '#252729' : '#e8eaef';
 $text      = $is_dark ? '#ddd'    : '#222';

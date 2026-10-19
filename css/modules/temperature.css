@@ -104,7 +104,7 @@
 /* Big Value */
 .mod-temperature .maxdata {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 8.25px;
+  font-size: 10.4px;                   /* card type scale: pill value (was 8.25px, too small to read) */
   font-weight: 500;
   color: var(--white);
   position: static !important;
@@ -468,9 +468,9 @@ valuetextheading2 {
   position: absolute !important;
   top: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
-  /* top padding = the max/min line (top 5px + 12px), so the reading centres in the space between that
-     line and the Trend chin instead of on the whole box (it sat ~8px high). Background still fills. */
-  padding: 17px 0 0 0 !important;
+  /* no padding: the reading's digits centre in the coloured area above the Trend chin
+     (measured: 26.8px above / 27.0px below), with the max/min line above it */
+  padding: 0 !important;
   box-sizing: border-box !important;
   background-size: 100% 100% !important;   /* keep the data-coded temp gradient, fill the box */
   align-items: center !important;

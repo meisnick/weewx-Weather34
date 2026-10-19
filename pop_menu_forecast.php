@@ -1,9 +1,16 @@
-<?php include_once('w34_i18n.php'); ?>
+<?php
+include_once('w34_i18n.php');
+include_once('settings.php');
+include_once('w34CombinedData.php');
+date_default_timezone_set($TZ);
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
+?>
 <!DOCTYPE html>
-<html lang="<?php echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/tokens.css">
 <?php
 //###################################################################################################################
 //  weewx-Weather34 Template — originally by Ian Millard (Steepleian) and collaborators              			#
@@ -11,34 +18,26 @@
 //  Forecast data: Open-Meteo (open-meteo.com) — CC BY 4.0                                          			#
 //  Issues: https://github.com/meisnick/weewx-Weather34/issues                                       			#
 //###################################################################################################################
-
-include_once ('settings.php');
-include_once ('w34CombinedData.php');
-date_default_timezone_set($TZ);
-if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
-if ($theme === "light") {
-    $background = "#ffffff";
-    $text = "#212428";
-    $tab_bg = "#e2e5e9";
-    $tab_border = "rgba(0,0,0,0.12)";
-    $tab_color = "#212428";
-} else {
-    $background = "rgba(30, 33, 36, 1)";
-    $text = "#f5f7fc";
-    $tab_bg = "#383c44";
-    $tab_border = "rgba(255,255,255,0.12)";
-    $tab_color = "#f5f7fc";
-}
-?>  
+?>
 <style>
 * { box-sizing: border-box; }
+:root, [data-theme="dark"] {
+  --tab-bg: #383c44;
+  --tab-border: rgba(255, 255, 255, 0.12);
+  --tab-color: #f5f7fc;
+}
+[data-theme="light"] {
+  --tab-bg: #e2e5e9;
+  --tab-border: rgba(0, 0, 0, 0.12);
+  --tab-color: #212428;
+}
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: <?php echo $background; ?>;
-  color: <?php echo $text; ?>;
+  background: var(--pop-bg);
+  color: var(--pop-ink);
   font-family: Arial, sans-serif;
 }
 .tab-bar {
@@ -46,12 +45,12 @@ html, body {
   flex-wrap: wrap;
   gap: 4px;
   padding: 5px 50px 5px 6px;
-  background: <?php echo $background; ?>;
+  background: var(--pop-bg);
 }
 .tablink {
-  background-color: <?php echo $tab_bg; ?>;
-  color: <?php echo $tab_color; ?>;
-  border: 1px solid <?php echo $tab_border; ?>;
+  background-color: var(--tab-bg);
+  color: var(--tab-color);
+  border: 1px solid var(--tab-border);
   border-radius: 4px;
   outline: none;
   cursor: pointer;
@@ -74,7 +73,7 @@ html, body {
   display: none;
   width: 100%;
   height: calc(100vh - 36px);
-  background-color: <?php echo $background; ?>;
+  background-color: var(--pop-bg);
 }
 .tabcontent iframe {
   width: 100%;

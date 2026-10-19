@@ -426,8 +426,34 @@ echo "METAR: " .$metar34raw."";?>
 </div>
 <div class="hitemp">
 <?php //update timestamp
-date_default_timezone_set($tz);$date = $metar34time;$date=str_replace('@', ' ', $date);
-$date=str_replace('Z', ' ', $date);$date1 = strtotime($date) + 60*60*$UTC;echo w34_date('D jS F H:i a ',$date1);
+if (!empty($TZ)) {
+    date_default_timezone_set($TZ);
+}
+$metar_ts = null;
+if (!empty($metar34raw) && preg_match('/\b(\d{2})(\d{2})(\d{2})Z\b/', $metar34raw, $m)) {
+    $day = (int)$m[1];
+    $hour = (int)$m[2];
+    $min = (int)$m[3];
+    $utc_now = time();
+    $year = (int)gmdate('Y', $utc_now);
+    $month = (int)gmdate('m', $utc_now);
+    $cur_day = (int)gmdate('d', $utc_now);
+    if ($day > $cur_day + 1) {
+        $month--;
+        if ($month < 1) {
+            $month = 12;
+            $year--;
+        }
+    }
+    $metar_ts = gmmktime($hour, $min, 0, $month, $day, $year);
+}
+if (!$metar_ts && !empty($metar34time)) {
+    $metar_ts = strtotime($metar34time);
+}
+$fmt = !empty($timeFormatShort) ? $timeFormatShort : 'H:i';
+if ($metar_ts) {
+    echo w34_date('D jS F ' . $fmt, $metar_ts);
+}
 ?> </div></div>
 
   </article> 

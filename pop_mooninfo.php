@@ -66,12 +66,25 @@ document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}
   <?php echo $info;?> <?php echo w34t('MoonRiseSetInfo', 'Moon Rise/Set Information'); ?><br><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#39739f" stroke="#39739f" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('Moonrise', 'Moon Rise'); ?>:
-
-<?php echo w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit'))," ";?>
+<?php
+$mr_clean = trim(strip_tags($weather['moonrise']));
+if (preg_match('/(\d{1,2}:\d{2}(?:\s*[ap]m)?)$/i', $mr_clean, $m)) {
+    echo " " . $m[1] . " ";
+} else {
+    echo " " . w34_words($weather['moonrise'], array('Rise' => 'MoonRiseShort', 'In Transit' => 'InTransit')) . " ";
+}
+?>
 <svg id="i-chevron-top" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 20 L16 8 2 20" /></svg>
 </span><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#D46842" stroke="#D46842" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo w34t('Moonset', 'Moon Set'); ?>: 
-<?php echo w34_words($weather['moonset'], array('Set' => 'MoonSetShort'))," ";?>
+<?php
+$ms_clean = trim(strip_tags($weather['moonset']));
+if (preg_match('/(\d{1,2}:\d{2}(?:\s*[ap]m)?)$/i', $ms_clean, $m)) {
+    echo " " . $m[1] . " ";
+} else {
+    echo " " . w34_words($weather['moonset'], array('Set' => 'MoonSetShort', 'In Transit' => 'InTransit')) . " ";
+}
+?>
 <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 12 L16 24 2 12" /></svg>
 </span><br>
 <?php  // full/new moon for homeweather station  // ?>

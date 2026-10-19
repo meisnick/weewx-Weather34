@@ -16,11 +16,12 @@ if (isset($_GET['theme'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
-  <title>AerisWeather Alerts</title>
+  <title><?php echo w34t('AerisWeatherAlerts', 'AerisWeather Alerts'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
   <link href="css/popup.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/popup.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
   <style>
     body { height: auto; overflow: auto; padding: 10px 44px 10px 15px; }
@@ -44,7 +45,7 @@ $parsed_icon = json_decode($json_icon, true);
 // needs the php-xml extension and a Met Office feed in jsondata/uk.txt (nothing fetches one by default)
 $xml = (function_exists('simplexml_load_file') && is_file("jsondata/uk.txt")) ? @simplexml_load_file("jsondata/uk.txt") : false;
 if ($xml === false) {
-    echo '<div style="text-align:center;padding:40px;color:rgba(150,155,165,1);font-size:13px;">UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt</div></body></html>';
+    echo '<div style="text-align:center;padding:40px;color:var(--card-ink-dim, #777);font-size:13px;">UK weather alerts unavailable: no Met Office feed in jsondata/uk.txt</div></body></html>';
     exit;
 }
 $jsonData = json_encode($xml, JSON_PRETTY_PRINT);

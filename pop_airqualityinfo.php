@@ -126,6 +126,7 @@ function map($value, $fromLow, $fromHigh, $toLow, $toHigh){
 }
 $json_string             = file_get_contents("jsondata/pu.txt");
 $parsed_json             = json_decode($json_string);
+$hasPurple               = isset($parsed_json->results[0]->PM2_5Value); // no PurpleAir feed -> no card (was a fake 0.0 Good)
 //$aqiweather["aqi"]       = $parsed_json->{'results'}[1]->{'PM2_5Value'};
 $aqiweather["aqi"]       = number_format(pm25_to_aqi(($parsed_json->{'results'}[0]->{'PM2_5Value'} + $parsed_json->{'results'}[1]->{'PM2_5Value'}) / 2),1);
 $aqiweather["aqiozone"]  = 'N/A';
@@ -166,6 +167,7 @@ $windchillwu='<svg "weather34 windchill wu icon" width="10px" height="10px" view
 <div class="weather34darkbrowser" url="Air Quality"></div>
   
 <main class="grid">
+<?php if ($hasPurple): ?>
 <article>
 <div class=actualt>Purple Air Quality </div> 
   <div class=indoorsvgnest> 
@@ -253,10 +255,8 @@ else if ($aqiweather["aqi"]>=0) echo "#90b12a";
 ?>" stroke-width="0.09375" opacity="1.00" d=" M 26.44 157.60 C 40.14 154.39 54.65 158.24 66.35 165.64 C 77.14 172.14 85.34 181.89 94.99 189.83 C 106.04 199.15 118.02 208.17 132.13 212.13 C 139.32 214.27 147.04 213.87 154.14 211.59 C 156.28 210.49 158.15 213.79 156.18 215.09 C 147.11 222.60 135.83 227.63 124.02 228.51 C 106.54 229.76 90.07 220.91 77.61 209.29 C 63.90 196.42 49.84 183.15 32.41 175.48 C 23.21 171.33 12.55 170.13 2.91 173.51 C 1.29 174.56 -1.18 171.20 0.84 170.21 C 8.51 164.54 17.09 159.79 26.44 157.60 Z" /></svg></div>
 </div>
 </div></div>
-</article> 
-
-
-  </article> 
+</article>
+<?php endif; ?>
   <article>
   <div class=actualt>&nbsp;&nbsp Particle Info</div>
   <div class=indoorsvgnest> 

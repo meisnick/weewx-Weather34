@@ -2,23 +2,22 @@
 if (isset($_GET['theme'])) {
     $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
 }
-$is_dark = ($theme !== 'light');
-$bg = $is_dark ? 'rgba(30,33,36,1)' : '#ffffff';
-$txt_col = $is_dark ? '#f5f7fc' : '#333333';
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title>Wind Map for <?php echo htmlspecialchars($stationlocation); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: <?php echo $bg; ?>;
+      background-color: var(--pop-bg);
+      color: var(--pop-ink);
       font-family: Arial, Helvetica, sans-serif;
     }
     .weather34darkbrowser {
@@ -30,7 +29,7 @@ $txt_col = $is_dark ? '#f5f7fc' : '#333333';
     }
     .weather34darkbrowser[url]:after {
       content: attr(url);
-      color: <?php echo $txt_col; ?>;
+      color: var(--pop-ink);
       font-size: 14px;
       font-family: Arial, Helvetica, sans-serif;
       text-align: center;

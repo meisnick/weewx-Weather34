@@ -26,6 +26,26 @@ $sensorDesc = [
     'GW2000'=> 'Ecowitt gateway console',
 ];
 
+$sensorBattType = [
+    'WH68'  => 'volt',
+    'WS80'  => 'volt',
+    'WS85'  => 'volt',
+    'WS90'  => 'volt',
+    'WN34'  => 'volt',
+    'WN35'  => 'volt',
+    'WH51'  => 'volt',
+    'WH40'  => 'volt',
+    'WH41'  => 'level',
+    'WH43'  => 'level',
+    'WH57'  => 'level',
+    'WH55'  => 'level',
+    'WH45'  => 'level',
+    'WH65'  => 'binary',
+    'WH32'  => 'binary',
+    'WH26'  => 'binary',
+    'WH31'  => 'binary',
+];
+
 $output = shell_exec('sudo /usr/bin/weectl device --sensors 2>&1');
 $lines  = explode("\n", trim($output));
 $active = []; $registering = [];
@@ -140,9 +160,18 @@ if (!empty($active)) {
     echo "<div class='hdr'>Active sensors (" . count($active) . ")</div>";
     foreach ($active as $s) {
         $desc = isset($sensorDesc[$s['model']]) ? $sensorDesc[$s['model']] : '';
-        if ($s['battOK'] === 'ok')      { $bClass = 'ok';  $bLabel = htmlspecialchars($s['battVal']) . ' OK'; $note = ''; }
-        elseif ($s['battOK'] === 'low') { $bClass = 'low'; $bLabel = htmlspecialchars($s['battVal']) . ' LOW'; $note = ''; }
-        elseif ($s['battVal'] === null || strcasecmp($s['battVal'], 'None') === 0) {
+        $bType = isset($sensorBattType[$s['model']]) ? $sensorBattType[$s['model']] : 'binary';
+        if ($s['battOK'] === 'ok' || $s['battOK'] === 'low') {
+            $bClass = $s['battOK'];
+            $note = '';
+            if ($bType === 'volt') {
+                $bLabel = htmlspecialchars($s['battVal']) . ' V';
+            } elseif ($bType === 'level') {
+                $bLabel = htmlspecialchars($s['battVal']) . '/5';
+            } else {
+                $bLabel = ($s['battOK'] === 'low') ? 'LOW' : 'OK';
+            }
+        } elseif ($s['battVal'] === null || strcasecmp($s['battVal'], 'None') === 0) {
             // Hardware genuinely cannot report battery (e.g. WH40 rain gauge).
             $bClass = 'unk'; $bLabel = '—'; $note = 'battery not reported by hardware';
         } else {

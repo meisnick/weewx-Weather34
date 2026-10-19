@@ -509,13 +509,13 @@ body { display: flex; flex-direction: column; }
     <div class="img-row">
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['NorthernHemisphereOvation']; ?>">
+          <img loading="lazy" src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['NorthernHemisphereOvation']; ?>">
         </div>
         <div class="img-label"><?php echo $lang['NorthernHemisphereOvation']; ?></div>
       </div>
       <div class="img-panel">
         <div class="img-frame">
-          <img src="https://services.swpc.noaa.gov/images/animations/ovation/south/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['SouthernHemisphereOvation']; ?>">
+          <img loading="lazy" src="https://services.swpc.noaa.gov/images/animations/ovation/south/latest.jpg?t=<?php echo $cb; ?>" alt="<?php echo $lang['SouthernHemisphereOvation']; ?>">
         </div>
         <div class="img-label"><?php echo $lang['SouthernHemisphereOvation']; ?></div>
       </div>

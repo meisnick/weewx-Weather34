@@ -92,19 +92,19 @@ html, body {
 </div>
 
 <div id="Tab1" class="tabcontent">
-  <iframe scrolling="auto" src="pop_forecast_hourly.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="auto" data-src="pop_forecast_hourly.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab2" class="tabcontent">
-  <iframe scrolling="auto" src="pop_forecast_hourly_table.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="auto" data-src="pop_forecast_hourly_table.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab3" class="tabcontent">
-  <iframe scrolling="auto" src="pop_forecast_daynight.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="auto" data-src="pop_forecast_daynight.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab4" class="tabcontent">
-  <iframe scrolling="auto" src="pop_forecast_daynight_table.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="auto" data-src="pop_forecast_daynight_table.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <script>
@@ -119,6 +119,8 @@ function openPage(pageName, elmnt) {
     tablinks[i].classList.remove("active");
   }
   document.getElementById(pageName).style.display = "block";
+  var frame = document.getElementById(pageName).querySelector("iframe[data-src]");
+  if (frame) { frame.src = frame.getAttribute("data-src"); frame.removeAttribute("data-src"); }
   elmnt.classList.add("active");
 }
 document.getElementById("defaultOpen").click();

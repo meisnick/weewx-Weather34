@@ -98,31 +98,31 @@ html, body {
 </div>
   
 <div id="Tab1" class="tabcontent">
-  <iframe scrolling="no" src="pop_tempalmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="pop_tempalmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
   
 <div id="Tab2" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=temperatureplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=temperatureplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab3" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempderivedplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempderivedplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
   
 <div id="Tab4" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=humidityplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=humidityplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
   
 <div id="Tab5" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempallplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempallplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
   
 <div id="Tab6" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempderivedplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=tempderivedplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
   
 <div id="Tab7" class="tabcontent">
-  <iframe scrolling="no" src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=humidityplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=humidityplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <script>
@@ -137,6 +137,8 @@ function openPage(pageName, elmnt) {
     tablinks[i].classList.remove("active");
   }
   document.getElementById(pageName).style.display = "block";
+  var frame = document.getElementById(pageName).querySelector("iframe[data-src]");
+  if (frame) { frame.src = frame.getAttribute("data-src"); frame.removeAttribute("data-src"); }
   elmnt.classList.add("active");
 }
 document.getElementById("defaultOpen").click();

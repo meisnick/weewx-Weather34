@@ -94,15 +94,15 @@ html, body {
 </div>
 
 <div id="Tab1" class="tabcontent">
-  <iframe scrolling="no" src="pop_uvalmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="pop_uvalmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab2" class="tabcontent">
-  <iframe scrolling="no" src="pop_solaralmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="pop_solaralmanac.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab3" class="tabcontent">
-  <iframe scrolling="no" src="pop_uvindex.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="pop_uvindex.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
 </div>
 
 <script>
@@ -117,6 +117,8 @@ function openPage(pageName, elmnt) {
     tablinks[i].classList.remove("active");
   }
   document.getElementById(pageName).style.display = "block";
+  var frame = document.getElementById(pageName).querySelector("iframe[data-src]");
+  if (frame) { frame.src = frame.getAttribute("data-src"); frame.removeAttribute("data-src"); }
   elmnt.classList.add("active");
 }
 document.getElementById("defaultOpen").click();

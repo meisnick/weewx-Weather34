@@ -618,6 +618,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	function post_create_small_chart(chart, height){
 	    chart.update({
 	        exporting: {enabled: false },
+	        credits: {enabled: false},   // almanac popups credit Highcharts in their footer text
 	        rangeSelector: {enabled: false},
 	        navigator: {enabled: false},
 	        scrollbar: {enabled: false},

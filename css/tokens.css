@@ -1,0 +1,117 @@
+/* css/tokens.css — Shared design tokens for Weather34 dashboard & popups */
+
+:root,
+[data-theme="dark"],
+:root[data-theme="dark"] {
+  --green:     #90b12a;
+  --green2:    #9aba2f;
+  --amber:     #e6a141;
+  --amber-rgb: 230, 161, 65;
+  --orange:    #ff7c39;
+  --orange-d:  #d05f2d;
+  --orange-h:  #f5650a;
+  --teal:      #3b9cac;
+  --teal-b:    #00a4b4;
+  --teal-bb:   #00adbc;
+  --red:       #d35d4e;
+  --red-l:     #d86858;
+  --bg0:       #393d40;
+  --bg1:       #38383c;
+  --text-d:    #bbb;
+  --text-m:    #777;
+  --text:      #e8e8e8;
+
+  /* ---- Phase 4 semantic tokens: per-theme values (dark) ---- */
+  --page-bg:        #151819;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        rgba(33, 34, 39, .8);
+  --card-bg-2:      #38383c;
+  --card-surface:   #393d40;
+  --card-ink:       silver;
+  --card-ink-blue:  silver;
+  --card-ink-soft:  #777;
+  --card-ink-dim:   #bbb;
+  --card-ink-strong:#e8e8e8;
+  --card-line:      #151718;
+
+  /* ---- Shared Modal & Popup Tokens (dark) ---- */
+  --modal-bg:            rgba(30, 33, 36, 1);
+  --modal-ink:           #f5f7fc;
+  --modal-article-bg:    rgba(40, 45, 52, 0.5);
+  --modal-article-border:#212428;
+  --modal-graph-bg:      rgba(40, 45, 52, 0.4);
+  --modal-graph-border:  rgba(245, 247, 252, 0.05);
+  --modal-pill-bg:       #555555;
+  --modal-pill-ink:      #ffffff;
+  --modal-meta-ink:      #aaaaaa;
+  --modal-meta-max:      #ff7c39;
+  --modal-meta-min:      #00a4b4;
+  --modal-footer-ink:    #888888;
+  --modal-link:          #ffffff;
+
+  /* ---- --pop-* aliases (dark) ---- */
+  --pop-bg:              var(--modal-bg);
+  --pop-ink:             var(--modal-ink);
+  --pop-article-bg:      var(--modal-article-bg);
+  --pop-article-border:  var(--modal-article-border);
+  --pop-graph-bg:        var(--modal-graph-bg);
+  --pop-graph-border:    var(--modal-graph-border);
+  --pop-link:            var(--modal-link);
+  --pop-pill-bg:         var(--modal-pill-bg);
+  --pop-pill-ink:        var(--modal-pill-ink);
+  --pop-meta-ink:        var(--modal-meta-ink);
+  --pop-meta-max:        var(--modal-meta-max);
+  --pop-meta-min:        var(--modal-meta-min);
+  --pop-footer-ink:      var(--modal-footer-ink);
+}
+
+[data-theme="light"],
+:root[data-theme="light"] {
+  --bg0:    #fff;
+  --bg1:    #f8f8f8;
+  --text:   #2d2d2d;
+  --text-d: #aaa;
+  --text-m: #888;
+
+  --page-bg:        #fff;
+  --header-bg:      rgba(33, 34, 39, .8);
+  --card-bg:        #fff;
+  --card-bg-2:      #f8f8f8;
+  --card-surface:   #fff;
+  --card-ink:       #2d2d2d;
+  --card-ink-blue:  #2d3a4b;
+  --card-ink-soft:  #888;
+  --card-ink-dim:   #aaa;
+  --card-ink-strong:#2d2d2d;
+  --card-line:      rgba(230, 232, 239, .8);
+
+  /* ---- Shared Modal & Popup Tokens (light) ---- */
+  --modal-bg:            #ffffff;
+  --modal-ink:           #212428;
+  --modal-article-bg:    #f8f9fa;
+  --modal-article-border:rgba(0, 0, 0, 0.12);
+  --modal-graph-bg:      #ffffff;
+  --modal-graph-border:  rgba(0, 0, 0, 0.12);
+  --modal-pill-bg:       #e2e5e9;
+  --modal-pill-ink:      #212428;
+  --modal-meta-ink:      #555555;
+  --modal-meta-max:      #d85c18;
+  --modal-meta-min:      #007a8a;
+  --modal-footer-ink:    #777777;
+  --modal-link:          #000000;
+
+  /* ---- --pop-* aliases (light) ---- */
+  --pop-bg:              var(--modal-bg);
+  --pop-ink:             var(--modal-ink);
+  --pop-article-bg:      var(--modal-article-bg);
+  --pop-article-border:  var(--modal-article-border);
+  --pop-graph-bg:        var(--modal-graph-bg);
+  --pop-graph-border:    var(--modal-graph-border);
+  --pop-link:            var(--modal-link);
+  --pop-pill-bg:         var(--modal-pill-bg);
+  --pop-pill-ink:        var(--modal-pill-ink);
+  --pop-meta-ink:        var(--modal-meta-ink);
+  --pop-meta-max:        var(--modal-meta-max);
+  --pop-meta-min:        var(--modal-meta-min);
+  --pop-footer-ink:      var(--modal-footer-ink);
+}

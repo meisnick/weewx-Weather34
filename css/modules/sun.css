@@ -209,7 +209,7 @@
 }
 .mod-sun .daylightvalue1 hours {
   font-family: weathertext2;
-  font-size: 20px;                 /* Prod measured */
+  font-size: 18px;                 /* card type scale: dial reading */
   color: var(--card-ink);
   position: relative;
   left: -6px;
@@ -217,7 +217,7 @@
 }
 .mod-sun .daylightvalue1 minutes {
   font-family: weathertext2;
-  font-size: 20px;                 /* Prod measured */
+  font-size: 18px;                 /* card type scale: dial reading */
   color: var(--card-ink);
   position: relative;
   left: 10px;

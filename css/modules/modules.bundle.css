@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 01:55:22 UTC
+   Generated: 2026-10-19 02:03:16 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -705,7 +705,7 @@
 
 .mod-aurora-rsg-letter {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 17px;
+  font-size: 18px;                     /* card type scale: small-badge reading */
   font-weight: bold;
   line-height: 1;
   color: var(--accent-ink);
@@ -797,7 +797,7 @@
 /* Kp max pill — Weather34 badge style */
 .mod-aurora-kpmax {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: .8em;
+  font-size: 10.4px;                   /* card type scale: pill value (was .8em = 11.2px) */
   padding: 3px 5px;
   border-radius: 3px;
   margin-bottom: 6px;
@@ -998,10 +998,11 @@
   color: var(--card-ink-blue);
   line-height: 16px;
   font-family: weathertext2, Helvetica, system;
-  font-size: .85em;
+  font-size: 10.4px;                   /* card type scale: pill value */
 }
 .mod-barometer .barometerconvertercircleblue smallrainunit {
   margin-left: 2px;
+  font-size: 8px;                      /* card type scale: unit inside a pill */
 }
 
 /* ── radial dial + needles (centred overlay) ──────────────────────────────── */
@@ -2753,7 +2754,7 @@ position: static;
 
 .ym-val {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 0.85em;
+  font-size: 10.4px;                   /* card type scale: pill value (was 0.85em = 11.9px) */
   color: var(--accent-ink);
   line-height: 1.1;
   margin-top: 1px;
@@ -2956,14 +2957,14 @@ position: static;
 .mod-moonphase .moonset1 {
   width: 108px;
 
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   -moz-osx-font-smoothing: grayscale
 
 }
 
 .mod-moonphase .newmoon1 {
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 
@@ -2975,7 +2976,7 @@ position: static;
   line-height: 10px;
   text-align: center;
   width: 108px;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -2997,7 +2998,7 @@ position: static;
   line-height: 10px;
   text-align: center;
   width: 108px;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -3025,7 +3026,7 @@ position: static;
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   width: 7.4rem;
   color: var(--card-ink-blue);
   font-family: weathertext2;
@@ -3055,7 +3056,7 @@ position: static;
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   width: 120px;
   color: var(--card-ink-blue);
   font-family: weathertext2;
@@ -3187,14 +3188,14 @@ position: static;
 
   margin-left: 100px;
 
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 
@@ -3404,7 +3405,7 @@ position: static;
 .mod-rainfall .raintoday1 {
   /* Prod measured */
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;                     /* card type scale: smallest badge (18px would not fit 50px) */
   font-weight: 500;
   color: var(--white);
   line-height: 17.1px;
@@ -3441,7 +3442,9 @@ position: static;
 
 .mod-rainfall .rainconvertercircle {
   /* Inherits from framework.base.css: flex, center, border, border-radius */
-  width: 4.2rem;         /* prod converter is 67px, not 51 */
+  width: 56px;           /* card type scale: converter pill 56 x 16 (was 67px) */
+  height: 16px;
+  box-sizing: border-box;
   overflow: hidden;
   line-height: 16px;
   /* Prod measured */
@@ -3479,7 +3482,7 @@ position: static;
 valuetextheading1 {
   /* Prod measured */
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 9.9px;
+  font-size: 9.1px;                    /* card type scale: section label (shared: temp, rain, indoor) */
   font-weight: 500;
   color: var(--card-ink);
   line-height: 15px;
@@ -4199,7 +4202,7 @@ rainratetextheading {
 }
 .mod-sun .daylightvalue1 hours {
   font-family: weathertext2;
-  font-size: 20px;                 /* Prod measured */
+  font-size: 18px;                 /* card type scale: dial reading */
   color: var(--card-ink);
   position: relative;
   left: -6px;
@@ -4207,7 +4210,7 @@ rainratetextheading {
 }
 .mod-sun .daylightvalue1 minutes {
   font-family: weathertext2;
-  font-size: 20px;                 /* Prod measured */
+  font-size: 18px;                 /* card type scale: dial reading */
   color: var(--card-ink);
   position: relative;
   left: 10px;
@@ -4338,7 +4341,7 @@ rainratetextheading {
 
 .mod-temperature .tempcontainer > div[class*="mod-temp-band--"] {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 25.6px;
+  font-size: 23.2px;                   /* card type scale: large-badge reading */
   font-weight: 500;
   color: var(--ink-bright);
   display: flex;
@@ -4348,7 +4351,7 @@ rainratetextheading {
 
 .mod-temperature smalltempunit {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 15.36px;
+  font-size: 12px;                     /* card type scale: reading unit */
   font-weight: 500;
   color: var(--ink-bright);
   margin-left: 2px;
@@ -4375,8 +4378,9 @@ rainratetextheading {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.2rem;
+  width: 56px;                         /* card type scale: converter pill 56 x 16 */
   height: 1rem;
+  box-sizing: border-box;
   border: 1px solid var(--card-surface);
   border-radius: 2px;
   overflow: hidden;
@@ -4387,9 +4391,14 @@ rainratetextheading {
 
 .mod-temperature smalltempunit2 {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 8.8px;
+  font-size: 8px;                      /* card type scale: unit inside a pill */
   font-weight: 400;
   margin-left: 2px;
+}
+
+/* card type scale: pill value (framework sets the humidity pills to 10.2px) */
+.mod-temperature div[class^="temphumcircle"] {
+  font-size: 10.4px;
 }
 
 /* 2x2 Grid */
@@ -4517,7 +4526,7 @@ valuetextheading2 {
   left: 50%;
   transform: translateX(-50%);
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;                     /* card type scale: small-badge reading */
   font-weight: 500;
   color: var(--white);
   z-index: 2;
@@ -4955,7 +4964,7 @@ valuetextheading2 {
   justify-content: center;
 }
 .mod-wind-block value {
-  font-size: 24.8px;
+  font-size: 23.2px;                   /* card type scale: large-badge reading */
   font-family: weathertext2, Arial, sans-serif;
   color: var(--card-ink);
   font-weight: 500;
@@ -5068,7 +5077,7 @@ valuetextheading2 {
  * on one line, "Gust (time)" plain below. Value is inline within the label line. */
 .wind-max-gust-val {
   color: var(--caution) !important;
-  font-size: 10.2px !important;
+  font-size: 10.4px !important;        /* card type scale: pill value */
   font-family: weathertext2, Arial, sans-serif;
   font-weight: 500;
   display: inline;
@@ -5081,7 +5090,7 @@ valuetextheading2 {
   font-family: Arial, sans-serif;
 }
 
-.wind-conv-val { color: var(--green); font-size: 10.2px; font-family: weathertext2; }
+.wind-conv-val { color: var(--green); font-size: 10.4px; font-family: weathertext2; }
 .wind-conv-unit,
 .mod-wind .wind-pill-unit { color: var(--card-ink); font-size: 8px; font-family: Arial, sans-serif; margin-left: 2px; }
 .mod-wind .weather34beaufort1-3 .wind-pill-unit,
@@ -5108,7 +5117,7 @@ valuetextheading2 {
 .mod-wind .weather34beaufort3-4,
 .mod-wind .weather34beaufort4-5,
 .mod-wind .weather34beaufort6 {
-  font-size: 11.2px;
+  font-size: 10.4px;                   /* card type scale: pill value */
 }
 
 .mod-wind .weather34windrun {
@@ -5125,6 +5134,8 @@ valuetextheading2 {
   border: 1px solid var(--card-bg-2);
   border-radius: 2px;
   padding: 0 5px;
+  width: 56px; height: 16px;           /* card type scale: converter pill 56 x 16 */
+  box-sizing: border-box;
   margin-top: 0;
   position: relative;
   left: 6px; top: 1px;      /* sandbox-tuned */

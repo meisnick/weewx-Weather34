@@ -87,14 +87,14 @@
 .mod-moonphase .moonset1 {
   width: 108px;
 
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   -moz-osx-font-smoothing: grayscale
 
 }
 
 .mod-moonphase .newmoon1 {
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 
@@ -106,7 +106,7 @@
   line-height: 10px;
   text-align: center;
   width: 108px;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -128,7 +128,7 @@
   line-height: 10px;
   text-align: center;
   width: 108px;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -156,7 +156,7 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   width: 7.4rem;
   color: var(--card-ink-blue);
   font-family: weathertext2;
@@ -186,7 +186,7 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
   width: 120px;
   color: var(--card-ink-blue);
   font-family: weathertext2;
@@ -318,14 +318,14 @@
 
   margin-left: 100px;
 
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
-  font-size: .55rem;
+  font-size: 9.1px;  /* card type scale: label */
 
   width: 7.4rem
 

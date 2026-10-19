@@ -81,10 +81,11 @@
   color: var(--card-ink-blue);
   line-height: 16px;
   font-family: weathertext2, Helvetica, system;
-  font-size: .85em;
+  font-size: 10.4px;                   /* card type scale: pill value */
 }
 .mod-barometer .barometerconvertercircleblue smallrainunit {
   margin-left: 2px;
+  font-size: 8px;                      /* card type scale: unit inside a pill */
 }
 
 /* ── radial dial + needles (centred overlay) ──────────────────────────────── */

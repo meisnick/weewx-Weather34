@@ -64,7 +64,7 @@
 
 .mod-aurora-rsg-letter {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 17px;
+  font-size: 18px;                     /* card type scale: small-badge reading */
   font-weight: bold;
   line-height: 1;
   color: var(--accent-ink);
@@ -156,7 +156,7 @@
 /* Kp max pill — Weather34 badge style */
 .mod-aurora-kpmax {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: .8em;
+  font-size: 10.4px;                   /* card type scale: pill value (was .8em = 11.2px) */
   padding: 3px 5px;
   border-radius: 3px;
   margin-bottom: 6px;

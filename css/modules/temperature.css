@@ -113,7 +113,7 @@
 
 .mod-temperature .tempcontainer > div[class*="mod-temp-band--"] {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 25.6px;
+  font-size: 23.2px;                   /* card type scale: large-badge reading */
   font-weight: 500;
   color: var(--ink-bright);
   display: flex;
@@ -123,7 +123,7 @@
 
 .mod-temperature smalltempunit {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 15.36px;
+  font-size: 12px;                     /* card type scale: reading unit */
   font-weight: 500;
   color: var(--ink-bright);
   margin-left: 2px;
@@ -150,8 +150,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.2rem;
+  width: 56px;                         /* card type scale: converter pill 56 x 16 */
   height: 1rem;
+  box-sizing: border-box;
   border: 1px solid var(--card-surface);
   border-radius: 2px;
   overflow: hidden;
@@ -162,9 +163,14 @@
 
 .mod-temperature smalltempunit2 {
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 8.8px;
+  font-size: 8px;                      /* card type scale: unit inside a pill */
   font-weight: 400;
   margin-left: 2px;
+}
+
+/* card type scale: pill value (framework sets the humidity pills to 10.2px) */
+.mod-temperature div[class^="temphumcircle"] {
+  font-size: 10.4px;
 }
 
 /* 2x2 Grid */
@@ -292,7 +298,7 @@ valuetextheading2 {
   left: 50%;
   transform: translateX(-50%);
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;                     /* card type scale: small-badge reading */
   font-weight: 500;
   color: var(--white);
   z-index: 2;

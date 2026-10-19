@@ -130,7 +130,7 @@
 .mod-rainfall .raintoday1 {
   /* Prod measured */
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;                     /* card type scale: smallest badge (18px would not fit 50px) */
   font-weight: 500;
   color: var(--white);
   line-height: 17.1px;
@@ -167,7 +167,9 @@
 
 .mod-rainfall .rainconvertercircle {
   /* Inherits from framework.base.css: flex, center, border, border-radius */
-  width: 4.2rem;         /* prod converter is 67px, not 51 */
+  width: 56px;           /* card type scale: converter pill 56 x 16 (was 67px) */
+  height: 16px;
+  box-sizing: border-box;
   overflow: hidden;
   line-height: 16px;
   /* Prod measured */
@@ -205,7 +207,7 @@
 valuetextheading1 {
   /* Prod measured */
   font-family: weathertext2, Arial, sans-serif;
-  font-size: 9.9px;
+  font-size: 9.1px;                    /* card type scale: section label (shared: temp, rain, indoor) */
   font-weight: 500;
   color: var(--card-ink);
   line-height: 15px;

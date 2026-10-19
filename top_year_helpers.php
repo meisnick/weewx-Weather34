@@ -50,11 +50,11 @@ function yt_side($cls, $cap, $val, $unit, $sub) {
 }
 
 function yt_daqi_info($v) {
-    if ($v > 300) return ['yt-maroon',  'Hazardous'];
-    if ($v > 200) return ['yt-purple',  'V Unhealthy'];
-    if ($v > 150) return ['yt-red',     'Unhealthy'];
-    if ($v > 100) return ['yt-orange',  'UnhealthySI'];
-    if ($v > 50)  return ['yt-yellow1', 'Moderate'];
-    return ['yt-green', 'Good'];
+    if ($v > 300) return ['yt-maroon',  w34t('AqHazardous', 'Hazardous')];
+    if ($v > 200) return ['yt-purple',  w34t('AqVeryUnhealthy', 'V. Unhealthy')];
+    if ($v > 150) return ['yt-red',     w34t('AqUnhealthy', 'Unhealthy')];
+    if ($v > 100) return ['yt-orange',  w34t('AqUnhealthyFS', 'Unhealthy FS')];
+    if ($v > 50)  return ['yt-yellow1', w34t('AqModerate', 'Moderate')];
+    return ['yt-green', w34t('AqGood', 'Good')];
 }
 

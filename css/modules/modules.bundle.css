@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 01:09:31 UTC
+   Generated: 2026-10-19 01:55:22 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4557,6 +4557,17 @@ valuetextheading2 {
 
 [data-theme="light"] .mod-temperature .maxdata {
   color: var(--white);
+}
+/* Mid bands (6-40 C) are pale enough that white max/min falls to ~2.1-2.7:1; dark ink measures 3.8-5.5:1.
+   Cold and hot ends stay white (white is the better of the two there). .maxdata precedes the band div. */
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--6-10) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--11-15) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--16-20) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--21-25) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--26-30) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--31-35) > .maxdata,
+[data-theme="light"] .mod-temperature .tempcontainer:has(> .mod-temp-band--36-40) > .maxdata {
+  color: var(--card-ink-strong);
 }
 
 [data-theme="light"] .mod-temperature trendmovementfallingx,

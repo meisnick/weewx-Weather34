@@ -136,12 +136,31 @@ $north_json = json_encode($north_pts);
 $south_json = json_encode($south_pts);
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo $lang['SpaceWeather']; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
 <style>
+:root, [data-theme="dark"] {
+  --aurora-bg: #151819;
+  --aurora-chrome: #1e2124;
+  --aurora-card: #252729;
+  --aurora-text: #ddd;
+  --aurora-text-dim: #777;
+  --aurora-border: #2e3033;
+  --aurora-box-none: #393d40;
+}
+[data-theme="light"] {
+  --aurora-bg: #fff;
+  --aurora-chrome: #f0f2f5;
+  --aurora-card: #e8eaef;
+  --aurora-text: #222;
+  --aurora-text-dim: #666;
+  --aurora-border: #ccc;
+  --aurora-box-none: #d0d4db;
+}
 @font-face {
   font-family: weathertext2;
   src: url(css/fonts/verbatim-regular.woff) format("woff"),
@@ -153,8 +172,8 @@ html, body {
   height: 100%; overflow: hidden;
   font-family: weathertext2, Arial, sans-serif;
   font-size: 13px;
-  background: <?php echo $bg; ?>;
-  color: <?php echo $text; ?>;
+  background: var(--aurora-bg);
+  color: var(--aurora-text);
   -webkit-font-smoothing: antialiased;
 }
 body { display: flex; flex-direction: column; }
@@ -162,8 +181,8 @@ body { display: flex; flex-direction: column; }
 /* ── Header strip ─────────────────────────────────────────────────────────── */
 .pop-header {
   flex: 0 0 auto;
-  background: <?php echo $bg_chrome; ?>;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  background: var(--aurora-chrome);
+  border-bottom: 1px solid var(--aurora-border);
   padding: 5px 10px;
   display: flex;
   align-items: center;
@@ -173,7 +192,7 @@ body { display: flex; flex-direction: column; }
   flex: 1;
   font-family: weathertext2, Arial, sans-serif;
   font-size: .8em;
-  color: <?php echo $text; ?>;
+  color: var(--aurora-text);
   letter-spacing: 0.3px;
 }
 .pop-kp-badge {
@@ -192,13 +211,13 @@ body { display: flex; flex-direction: column; }
   padding: 2px 8px;
   border-radius: 3px;
   border-bottom: 3px solid rgba(0,0,0,0.3);
-  background: <?php echo ($aurora_prob >= 50) ? '#d35d4e' : (($aurora_prob >= 25) ? '#ff7c39' : (($aurora_prob >= 10) ? '#e6a141' : (($aurora_prob > 0) ? '#90b12a' : $box_none))); ?>;
+  background: <?php echo ($aurora_prob >= 50) ? '#d35d4e' : (($aurora_prob >= 25) ? '#ff7c39' : (($aurora_prob >= 10) ? '#e6a141' : (($aurora_prob > 0) ? '#90b12a' : 'var(--aurora-box-none)'))); ?>;
   color: #fff;
   white-space: nowrap;
 }
 .pop-storm {
   font-size: .65em;
-  color: <?php echo $text_dim; ?>;
+  color: var(--aurora-text-dim);
   white-space: nowrap;
 }
 .pop-rsg-mini { display: flex; gap: 3px; margin-right: 44px; }
@@ -211,7 +230,7 @@ body { display: flex; flex-direction: column; }
 }
 .mod-aurora-rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
 .mod-aurora-rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
-.mod-aurora-rsg-scale-0 { background: <?php echo $box_none; ?>; }
+.mod-aurora-rsg-scale-0 { background: var(--aurora-box-none); }
 .mod-aurora-rsg-scale-1 { background: #ebd825; }
 .mod-aurora-rsg-scale-2 { background: #e6a141; }
 .mod-aurora-rsg-scale-3 { background: #ff7c39; }
@@ -233,8 +252,8 @@ body { display: flex; flex-direction: column; }
 /* ── Tab row — matches pop_menu_forecast.php style exactly ───────────────── */
 .pop-tabs {
   flex: 0 0 auto;
-  background: <?php echo $bg_chrome; ?>;
-  border-bottom: 1px solid <?php echo $border; ?>;
+  background: var(--aurora-chrome);
+  border-bottom: 1px solid var(--aurora-border);
   padding: 4px 5px;
   display: flex;
   flex-wrap: wrap;
@@ -243,7 +262,7 @@ body { display: flex; flex-direction: column; }
 .tablink {
   background-color: #555;
   color: white;
-  border: 2px solid <?php echo $bg_chrome; ?>;
+  border: 2px solid var(--aurora-chrome);
   border-radius: 5px;
   margin-top: 0;
   margin-left: 5px;
@@ -284,8 +303,8 @@ body { display: flex; flex-direction: column; }
   flex: 1; min-height: 0;
   position: relative;
   border-radius: 3px;
-  border: 1px solid <?php echo $border; ?>;
-  background: <?php echo $bg_chrome; ?>;
+  border: 1px solid var(--aurora-border);
+  background: var(--aurora-chrome);
   overflow: hidden;
 }
 .img-frame img {
@@ -306,7 +325,7 @@ body { display: flex; flex-direction: column; }
   display: flex; flex-direction: column; gap: 8px;
 }
 .fcst-card {
-  background: <?php echo $bg_card; ?>;
+  background: var(--aurora-card);
   border-radius: 3px; padding: 8px 10px; flex-shrink: 0;
 }
 .fcst-card-title {
@@ -319,14 +338,14 @@ body { display: flex; flex-direction: column; }
   font-size: .7em; font-family: Arial, sans-serif;
 }
 .fcst-table th {
-  color: <?php echo $text_dim; ?>; font-weight: normal;
-  padding: 3px 8px; text-align: right; border-bottom: 1px solid <?php echo $border; ?>;
+  color: var(--aurora-text-dim); font-weight: normal;
+  padding: 3px 8px; text-align: right; border-bottom: 1px solid var(--aurora-border);
 }
-.fcst-table td { padding: 3px 8px; text-align: right; color: <?php echo $text; ?>; }
+.fcst-table td { padding: 3px 8px; text-align: right; color: var(--aurora-text); }
 .fcst-table th:first-child, .fcst-table td:first-child { text-align: left; }
 .fcst-table tbody tr:nth-child(even) td { background: rgba(128,128,128,0.06); }
 .fcst-issued {
-  font-size: .6em; color: <?php echo $text_dim; ?>;
+  font-size: .6em; color: var(--aurora-text-dim);
   text-align: right; padding: 2px 0;
 }
 
@@ -335,7 +354,7 @@ body { display: flex; flex-direction: column; }
 #hemi-chart { width: 100%; height: 100%; }
 .unavail {
   display: flex; align-items: center; justify-content: center;
-  height: 100%; font-size: .8em; color: <?php echo $text_dim; ?>;
+  height: 100%; font-size: .8em; color: var(--aurora-text-dim);
   font-family: Arial, sans-serif;
 }
 </style>

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import urllib.request
+import hashlib
 import json
 import re
 import os
@@ -403,6 +404,23 @@ def main():
         print("Fetching raw weather discussion...")
         raw_text = get_latest_afd()
 
+        # Only summarise a new NWS issuance: each run costs minutes of CPU on the Pi, and the AFD is
+        # reissued only a few times a day. --force summarises anyway.
+        source_sha = hashlib.sha256(raw_text.strip().encode('utf-8')).hexdigest()
+        m = re.search(r'^\d{3,4} [AP]M [A-Z]{3,4} .*\d{4}$', raw_text, re.M)
+        source_issued = m.group(0).strip() if m else ""
+        if '--force' not in sys.argv and os.path.exists(CACHE_PATH):
+            try:
+                with open(CACHE_PATH, 'r') as f:
+                    prev = json.load(f)
+                if prev.get("success") and prev.get("source_sha") == source_sha:
+                    print(f"{datetime.now():%Y-%m-%d %H:%M} NWS discussion unchanged "
+                          f"({source_issued or source_sha[:12]}); skipping.")
+                    return
+            except Exception as e:
+                print(f"Could not read the previous summary ({e}); summarising.")
+        print(f"{datetime.now():%Y-%m-%d %H:%M} New NWS discussion: {source_issued or source_sha[:12]}")
+
         print("Extracting relevant discussion sections...")
         sections = extract_sections(raw_text)
 
@@ -436,6 +454,8 @@ def main():
         output = {
             "success": True,
             "issued": datetime.now().isoformat(),
+            "source_issued": source_issued,
+            "source_sha": source_sha,
             "bullets": bullets,
             "raw_sections": {
                 "key_messages": key_msg_src.strip(),

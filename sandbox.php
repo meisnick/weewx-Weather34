@@ -18,7 +18,8 @@ $isPop  = (strpos($module, 'pop_') === 0);
 
 /* ── FRAME MODE: one module / popout, styled exactly like dashboard ──────────── */
 if (isset($_GET['frame'])) {
-    $url  = 'http://127.0.0.1' . $base . '/' . $module;
+    $themeParam = isset($_GET['theme']) ? ('?theme=' . urlencode($_GET['theme'])) : '';
+    $url  = 'http://127.0.0.1' . $base . '/' . $module . $themeParam;
     $ctx  = stream_context_create(['http' => ['timeout' => 10, 'header' => "User-Agent: sandbox\r\n"]]);
     $frag = @file_get_contents($url, false, $ctx);
     if ($frag === false) { $frag = '<div style="color:#c33;padding:20px">Could not load ' . htmlspecialchars($module) . '</div>'; }

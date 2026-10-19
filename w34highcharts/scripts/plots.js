@@ -77,6 +77,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    barsmallplot: [post_create_small_chart],
 	    windsmallplot: [post_create_small_chart],
 	    rainsmallplot: [post_create_small_chart],
+	    strikesmallplot: [post_create_small_chart],
 
 	    rainmonthplot: [remove_range_selector],
 	    lightningmonthplot: [remove_range_selector],

@@ -88,9 +88,10 @@ OUTLOOK_FEW_SHOT = [
 SECTION_PROMPTS = {
     "key_messages": (
         "8 words max. State ONLY the single most significant active advisory "
-        "by its exact issued name and when it ends. One advisory only. "
+        "by its exact issued name and when it ends, using the end time exactly as the text "
+        "writes it (never a day the text does not name). One advisory only. "
         "If no active advisory, name the biggest hazard and when. No filler. "
-        "Example: 'Beach Hazards Statement ends Thursday afternoon.'"
+        "Example: 'Beach Hazards Statement ends this evening.'"
     ),
     "short_term": (
         "Write: 'Highs [TEMP], [WEATHER].' Max 8 words total. "
@@ -99,6 +100,13 @@ SECTION_PROMPTS = {
         "For [WEATHER] use one brief weather fact. "
         "No 'and', 'with', 'also'. "
         "Example: 'Highs upper 70s, beach hazards Saturday.'"
+    ),
+    # used when the short-term text gives no high temperature (the template above then forces
+    # the model to invent one, which the grounding check rejects every time)
+    "short_term_notemp": (
+        "8 words max. State the main weather for tonight and tomorrow in plain words. "
+        "Use only facts written in the text. No 'with', 'also'. "
+        "Example: 'Breezy and dry, clear skies tonight.'"
     ),
     "long_term": (
         "One sentence, 8 words max. "
@@ -122,7 +130,7 @@ SECTION_PROMPTS = {
 OUTPUT_JARGON = {
     "shortwave", "trough", "ridge", "advection", "vorticity", "gradient",
     "isobar", "return flow", "omega block", "synoptic", "confluence",
-    "divergence", "upper level", "low level", "mid level",
+    "divergence", "upper level", "low level", "mid level", "pop", "pops",
 }
 
 # Input scrubbing: replace jargon in the source text before sending to the model.
@@ -146,6 +154,7 @@ _INPUT_SUBS = [
     (r'\bbackdoor\b',              ''),
     (r'\bconvective\s+pulses?\b', 'storms'),
     (r'\bpulses?\b',              'storms'),
+    (r'\bPoPs?\b',                'rain chances'),
 ]
 
 def scrub_jargon(text):
@@ -239,6 +248,10 @@ def _ungrounded_numbers(summary, source):
     for q, d in re.findall(band, summary, re.IGNORECASE):
         if (q.lower().replace('lower', 'low').replace('middle', 'mid'), d) not in src_bands:
             bad.append(f'{q} {d}')
+    # Day names too: 'Gale warnings end Thursday' when the AFD says 'through tonight'
+    days = r'\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b'
+    src_days = {d.lower() for d in re.findall(days, source, re.IGNORECASE)}
+    bad += [d for d in re.findall(days, summary, re.IGNORECASE) if d.lower() not in src_days]
     return bad
 
 
@@ -259,13 +272,19 @@ def query_section(section_text, section_key, retries=2):
     if section_key in ("long_term", "outlook"):
         section_text = scrub_jargon(section_text)
 
+    # No "highs ..." figure in the short-term text: ask for a plain weather fact instead of a
+    # temperature the model would have to make up
+    prompt_key = section_key
+    if section_key == "short_term" and not build_short_term_fallback(section_text):
+        prompt_key = "short_term_notemp"
+
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     for user_ex, asst_ex in GLOBAL_FEW_SHOT:
         messages.append({"role": "user",      "content": user_ex})
         messages.append({"role": "assistant", "content": asst_ex})
 
-    if section_key == "short_term":
+    if prompt_key == "short_term":
         for user_ex, asst_ex in SHORT_TERM_FEW_SHOT:
             messages.append({"role": "user",      "content": user_ex})
             messages.append({"role": "assistant", "content": asst_ex})
@@ -280,7 +299,7 @@ def query_section(section_text, section_key, retries=2):
 
     messages.append({
         "role": "user",
-        "content": f"{SECTION_PROMPTS[section_key]}\n\nWeather text:\n{section_text}"
+        "content": f"{SECTION_PROMPTS[prompt_key]}\n\nWeather text:\n{section_text}"
     })
 
     data = {
@@ -338,7 +357,7 @@ def query_section(section_text, section_key, retries=2):
                         print(f"[{section_key}] Jargon detected in '{summary}', retrying...")
                     else:
                         # Never keep a summary with numbers the AFD doesn't contain
-                        print(f"[{section_key}] Ungrounded numbers {invented} in '{summary}', retrying...")
+                        print(f"[{section_key}] Ungrounded numbers/days {invented} in '{summary}', retrying...")
                     data["options"]["temperature"] = 0.2
 
         except Exception as e:

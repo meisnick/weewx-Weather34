@@ -1,8 +1,13 @@
+<?php
+include_once('w34_i18n.php');
+$theme = (isset($_GET['theme']) && $_GET['theme'] === 'light') ? 'light' : 'dark';
+?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
-<title>Live Radar</title>
+<title><?php echo w34t('LiveRadar', 'Live Radar'); ?></title>
+<link rel="stylesheet" href="css/tokens.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#000}

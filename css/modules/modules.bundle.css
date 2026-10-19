@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 02:04:17 UTC
+   Generated: 2026-10-19 02:11:02 UTC
    Source count: 22
    Manifest:
      - [1/22] advisory.css
@@ -4345,6 +4345,8 @@ rainratetextheading {
   font-size: 23.2px;                   /* card type scale: large-badge reading */
   font-weight: 500;
   color: var(--ink-bright);
+  /* white on the pale mid-band gradients measures ~2.2:1; a soft dark halo keeps the glyph edges readable */
+  text-shadow: 0 1px 2px var(--shadow-heavy), 0 0 1px var(--shadow-strong);
   display: flex;
   align-items: baseline;
   justify-content: center;

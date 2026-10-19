@@ -11,28 +11,39 @@
 include_once ('settings.php');
 include_once ('w34CombinedData.php');
 if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
-if ($theme === "dark")
-{
-    echo '<style>.demo{border:0 solid #aaa;border-collapse:collapse;padding:50px;font-family:arial,helvetica,verdana,sans-serif;font-size:10px;margin-bottom:50px;margin-top:50px;width:100%;color:silver}.demo th{border-bottom:.5px solid #aaa;padding:5px;color:silver}.demo td{border:0 solid #aaa;padding:0;background:0;text-align:center}.demo td#CELL1{background-color:transparent;color:#000}.demo td#CELL2{background-color:#9cff9c}.demo td#CELL3{background-color:#31ff00}.demo td#CELL4{background-color:#31cf00}.demo td#CELL5{background-color:#ff0}.demo td#CELL6{background-color:#ffcf00}.demo td#CELL7{background-color:#ff9a00}.demo td#CELL8{background-color:#ff6464}.demo td#CELL9{background-color:red;color:#fff}.demo td#CELL10{background-color:#900;color:#fff}.demo td#CELL11{background-color:#ce30ff;color:#fff}img{margin-left:10px;margin-right:10px;width:60px;background-color:transparent}body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#fff;font-weight:400;background-color:rgba(30,33,36,1)}html{margin:0;padding:0}a:link,a:visited,a:hover,a:active{color:#fff}table{font-size:11px;vertical-align:bottom;width:auto}.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(100%,1fr));grid-gap:20px;color:#000}.grid3>articlegraph3{border:1px solid rgba(245,247,252,.02);box-shadow:2px 2px 6px 0 rgba(0,0,0,.6);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;width:100%;height:90%}</style>';
-}
-else if ($theme === "light")
-{
-    echo '<style>.demo{border:0 solid #aaa;border-collapse:collapse;padding:50px;font-family:arial,helvetica,verdana,sans-serif;font-size:10px;margin-bottom:50px;margin-top:50px;width:100%;color:#000}.demo th{border-bottom:1px solid #aaa;padding:5px;color:#000}.demo td{border:0 solid #aaa;padding:0;background:#FFF;text-align:center}.demo td#CELL1{background-color:transparent;color:#000}.demo td#CELL2{background-color:#9cff9c}.demo td#CELL3{background-color:#31ff00}.demo td#CELL4{background-color:#31cf00}.demo td#CELL5{background-color:#ff0}.demo td#CELL6{background-color:#ffcf00}.demo td#CELL7{background-color:#ff9a00}.demo td#CELL8{background-color:#ff6464}.demo td#CELL9{background-color:red;color:#fff}.demo td#CELL10{background-color:#900;color:#fff}.demo td#CELL11{background-color:#ce30ff;color:#fff}img{margin-left:10px;margin-right:10px;width:60px;background-color:transparent}body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#222;font-weight:400;background-color:#fff}html{margin:0;padding:0}a:link,a:visited,a:hover,a:active{color:#000}table{font-size:11px;vertical-align:bottom;width:auto}.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(100%,1fr));grid-gap:20px;color:#000}.grid3>articlegraph3{border:1px solid rgba(0,0,0,.08);box-shadow:2px 2px 6px 0 rgba(0,0,0,.1);padding:5px;font-size:.8em;-webkit-border-radius:4px;border-radius:4px;background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;width:100%;height:90%}</style>';
-}
+function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
 $forecastTime[0] = "0";
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
   <meta charset="UTF-8">
   <title>Hourly Forecast</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tokens.css">
   <style>
-  /* mobile: the hourly table is laid out ~790px wide (9 columns), wider than a
-     phone. Fit the grid to the viewport and let the table scroll horizontally
-     inside it rather than clipping (right edge stays reachable). */
+  html, body { height: auto; }
+  body { margin: 0 !important; padding: 0 10px 10px !important; background: var(--pop-bg) !important; color: var(--pop-ink); font-family: Arial, Helvetica, sans-serif; }
+  .fc-wrap { display: block; }
+  .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #c8c8c8; }
+  [data-theme="light"] .fc-table { color: #222222; }
+  .fc-table thead th { position: sticky; top: 0; z-index: 1; background: var(--pop-bg); color: #e6e8ec;
+    font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid rgba(255,255,255,.22); text-align: center; white-space: nowrap; }
+  [data-theme="light"] .fc-table thead th { color: #2d3a4b; border-bottom: 1px solid #c9ced6; }
+  .fc-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; vertical-align: middle; }
+  [data-theme="light"] .fc-table td { border-bottom: 1px solid #e2e5ea; }
+  .fc-table th.fc-first, .fc-table td.fc-first { text-align: left; padding-left: 8px; }
+  .fc-table th.fc-cond, .fc-table td.fc-cond { text-align: left; }
+  .fc-ci { display: inline-flex; align-items: center; gap: 8px; }
+  .fc-table td.fc-cond img { width: 28px; height: 20px; margin: 0 !important; display: block; flex: none; }
+  [data-theme="light"] .fc-table td.fc-cond img { filter: drop-shadow(0 0 1px rgba(0,0,0,.45)); }
+  .fc-u { font-size: 10px; margin-left: 2px; opacity: .85; }
+  .fc-credit { font-size: 9px; color: #999; padding: 10px 8px 2px; }
+  .fc-credit a { color: #999 !important; }
+  [data-theme="light"] .fc-credit { color: #666; }
+  [data-theme="light"] .fc-credit a { color: #007a8c !important; }
   @media screen and (max-width:768px) {
-    main.grid3 {
+    main.fc-wrap {
       width: 100% !important;
       max-width: 100%;
       overflow-x: auto;
@@ -40,6 +51,8 @@ $forecastTime[0] = "0";
     }
   }
   </style>
+</head>
+<body>
 
 <?php
 $jsonIcon = 'jsondata/lookupTable.json';
@@ -224,33 +237,6 @@ for ($k = 0;$k < 24;$k++)
 
 
 
-<?php
-// Shared forecast-table layout (hourly + day/night). Replaces the legacy .demo/.grid3 sizing:
-// no 50px gaps, one text size, sticky header row, the page scrolls inside the tab's frame.
-$fcBg   = ($theme === 'light') ? '#ffffff' : 'rgba(30,33,36,1)';
-$fcInk  = ($theme === 'light') ? '#222222' : '#c8c8c8';
-$fcHead = ($theme === 'light') ? '#2d3a4b' : '#e6e8ec';
-$fcLine = ($theme === 'light') ? '#e2e5ea' : 'rgba(255,255,255,.08)';
-$fcRule = ($theme === 'light') ? '#c9ced6' : 'rgba(255,255,255,.22)';
-function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
-?>
-<style>
-  html, body { height: auto; }
-  body { margin: 0 !important; padding: 0 10px 10px !important; background: <?php echo $fcBg; ?> !important; }
-  .fc-wrap { display: block; }
-  .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: <?php echo $fcInk; ?>; }
-  .fc-table thead th { position: sticky; top: 0; z-index: 1; background: <?php echo $fcBg; ?>; color: <?php echo $fcHead; ?>;
-    font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid <?php echo $fcRule; ?>; text-align: center; white-space: nowrap; }
-  .fc-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid <?php echo $fcLine; ?>; white-space: nowrap; vertical-align: middle; }
-  .fc-table th.fc-first, .fc-table td.fc-first { text-align: left; padding-left: 8px; }
-  .fc-table th.fc-cond, .fc-table td.fc-cond { text-align: left; }
-  .fc-ci { display: inline-flex; align-items: center; gap: 8px; }
-  .fc-table td.fc-cond img { width: 28px; height: 20px; margin: 0 !important; display: block; flex: none;
-    <?php if ($theme === 'light') echo 'filter: drop-shadow(0 0 1px rgba(0,0,0,.45));'; /* white cloud icons on white */ ?> }
-  .fc-u { font-size: 10px; margin-left: 2px; opacity: .85; }
-  .fc-credit { font-size: 9px; color: #999; padding: 10px 8px 2px; }
-  .fc-credit a { color: #999 !important; }
-</style>
 <main class="fc-wrap">
 <table class="fc-table">
   <thead><tr>
@@ -285,3 +271,5 @@ function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
   <?php echo w34t('IconsLabel', 'Icons'); ?>: <a href="https://github.com/basmilius/weather-icons" target="_blank">basmilius/weather-icons</a> (MIT)
 </div>
 </main>
+</body>
+</html>

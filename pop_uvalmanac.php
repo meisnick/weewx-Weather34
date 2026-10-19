@@ -13,171 +13,117 @@
 // 	Issues for weewx-Weather34 template should be addressed to https://github.com/meisnick/weewx-Weather34/issues #                                                                                              #
 // 	                                                                                                				#
 //###################################################################################################################
-include_once('w34CombinedData.php');include('settings1.php');
-if ($theme === "dark") {
-    echo '<style>@font-face{font-family: weathertext2; src: url(css/fonts/verbatim-regular.woff) format("woff"), url(fonts/verbatim-regular.woff2) format("woff2"), url(fonts/verbatim-regular.ttf) format("truetype");}html,body{font-size: 13px; font-family: "weathertext2", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}/* unvisited link */a:link{color: white;}/* visited link */a:visited{color: white;}/* mouse over link */a:hover{color: white;}/* selected link */a:active{color: white;}.grid{display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 2fr)); grid-gap: 10px; align-items: stretch; color: #f5f7fc; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.grid > article{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 20px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 90px;}.grid1{display: grid; grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); grid-gap: 5px; color: white;}.grid1 > articlegraph{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 350px;}.weather34darkbrowser{position: relative; background: 0; width: 97%; height: 30px; margin: auto; margin-top: -5px; margin-left: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 10px;}.weather34darkbrowser[url]:after{content: attr(url); color: white; font-size: 14px; text-align: center; position: absolute; left: 0; right: 0; top: 0; padding: 4px 15px; margin: 11px 10px 0 auto; font-family: arial; height: 20px;}blue{color: #01a4b4;}orange{color: #009bb4;}orange1{color: rgba(255, 131, 47, 1);}green{color: #aaa;}red{color: #f37867;}red6{color: #d65b4a;}value{color: #fff;}yellow{color: #cc0;}purple{color: #916392;}.hitempyposx{position: relative; top: -90px; margin-left: 40px; margin-bottom: -30px;}.hitempypos{position: absolute; margin-top: -100px; margin-left: 40px; margin-bottom: 20px; display: block;}.hitempd{position: absolute; font-family: weathertext2, Arial, Helvetica, sans-serif; background: rgba(86, 95, 103, 0.3); color: #aaa; font-size: 0.7rem; width: 140px; padding: 0; margin-left: 30px; padding-left: 3px; align-items: center; justify-content: center; display: block; margin-top: 5px;}.hitempd1{position: absolute; font-family: weathertext2, Arial, Helvetica, sans-serif; background: rgba(86, 95, 103, 0.3); color: #aaa; font-size: 0.7rem; width: 140px; padding: 0; margin-left: 30px; padding-left: 3px; align-items: center; justify-content: center; display: block; margin-top: 40px; margin-bottom: 5px;}.uvmaxi3{position: absolute; left: -30px; color: rgba(0, 154, 171, 1); margin-top: -40px; font-size: 16px; width: 240px;}.uvmaxi3 span{color: #aaa;}.hitemp{color: #aaa; font-size: 0.7rem; display: inline;}.hitemp span{color: rgba(255, 124, 57, 1);}blue{color: rgba(0, 154, 171, 1);}.temperaturecontainer1{position: absolute; left: 20px; margin-top: -5px; margin-bottom: 20px;}.temperaturecontainer2{position: absolute; left: 20px; margin-top: 60px;}smalluvunit{font-size: 0.9rem; font-family: Arial, Helvetica, system;}.uvcontainer1{left: 70px; top: 0;}.uvtoday1,.uvtoday1-3,.uvtoday11,.uvtoday4-5,.uvtoday6-8,.uvtoday9-10{font-family: weathertext2, Arial, Helvetica, system; width: 5rem; height: 2.5rem; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; display: flex;}.uvtoday1,.uvtoday1-3,.uvtoday11,.uvtoday4-5,.uvtoday6-8,.uvtoday9-10{font-size: 1.25rem; padding-top: 2px; color: #fff; border-bottom: 5px solid rgba(56, 56, 60, 1); align-items: center; justify-content: center; border-radius: 3px; margin-bottom: 10px;}.uvcaution,.uvtrend{position: absolute; font-size: 1rem;}.uvtoday1,.uvtoday1-3{background: #9aba2f;}.uvtoday4-5{background: #ff7c39; background: -webkit-linear-gradient(90deg, #90b12a, #ff7c39); background: linear-gradient(90deg, #90b12a, #ff7c39);}.uvtoday6-8{background: #efa80f; background: -webkit-linear-gradient(90deg, #efa80f, #d86858); background: linear-gradient(90deg, #efa80f, #d86858);}.uvtoday9-10{background: #d05f2d; background: -webkit-linear-gradient(90deg, #d65b4a, #ac2816); background: linear-gradient(90deg, #d65b4a, #ac2816);}.uvtoday11{background: #95439f; background: -webkit-linear-gradient(90deg, #95439f, #a475cb); background: linear-gradient(90deg, #95439f, #a475cb);}.higust{position: relative; left: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: 0; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 2em; font-size: 0.8rem; padding-top: 2px; color: white; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}.uvcaution{margin-left: 120px; margin-top: 112px; font-family: Arial, Helvetica, system;}.uvtrend{margin-left: 135px; margin-top: 48px; z-index: 1; color: #fff;}.simsekcontainer{float: left; font-family: weathertext, system; -o-font-smoothing: antialiased; left: 0; bottom: 0; right: 0; position: relative; margin: 40px 10px 10px 40px; left: -10px; top: 13px;}.simsek{font-size: 1.55rem; padding-top: 12px; color: #f8f8f8; background: rgba(230, 161, 65, 1); border-bottom: 18px solid rgba(56, 56, 60, 1); align-items: center; justify-content: center; border-radius: 3px;}smalluvunit{font-size: 0.65rem; font-family: Arial, Helvetica, system;}sup{font-size: 1em;}supwm2{font-size: 0.7em; vertical-align: super;}.w34convertrain{position: relative; font-size: 0.5em; top: 10px; color: #c0c0c0; margin-left: 5px;}.hitempy{position: relative; background: rgba(61, 64, 66, 0.5); color: #aaa; width: 90px; padding: 1px; -webit-border-radius: 2px; border-radius: 2px; margin-top: -20px; margin-left: 92px; padding-left: 3px; line-height: 11px; font-size: 9px;}.actualt{position: relative; left: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: teal; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: white; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}.actualw{position: relative; left: 5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: rgba(74, 99, 111, 0.1); padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: #aaa; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}
-    </style>';
-} elseif ($theme === "light") {
-    echo '<style>@font-face{font-family: weathertext2; src: url(css/fonts/verbatim-regular.woff) format("woff"), url(fonts/verbatim-regular.woff2) format("woff2"), url(fonts/verbatim-regular.ttf) format("truetype");}html,body{font-size: 13px; font-family: "weathertext2", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background-color: white;}/* unvisited link */a:link{color: black;}/* visited link */a:visited{color: black;}/* mouse over link */a:hover{color: black;}/* selected link */a:active{color: black;}.grid{display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 2fr)); grid-gap: 10px; align-items: stretch; color: #f5f7fc; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.grid > article{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 20px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 90px;}.grid1{display: grid; grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); grid-gap: 5px; color: black;}.grid1 > articlegraph{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 350px;}.weather34darkbrowser{position: relative; background: 0; width: 97%; height: 30px; margin: auto; margin-top: -5px; margin-left: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 10px;}.weather34darkbrowser[url]:after{content: attr(url); color: black; font-size: 14px; text-align: center; position: absolute; left: 0; right: 0; top: 0; padding: 4px 15px; margin: 11px 10px 0 auto; font-family: arial; height: 20px;}blue{color: #01a4b4;}orange{color: #009bb4;}orange1{color: rgba(255, 131, 47, 1);}green{color: #aaa;}red{color: #f37867;}red6{color: #d65b4a;}value{color: #fff;}yellow{color: #cc0;}purple{color: #916392;}.hitempyposx{position: relative; top: -90px; margin-left: 40px; margin-bottom: -30px;}.hitempypos{position: absolute; margin-top: -100px; margin-left: 40px; margin-bottom: 20px; display: block;}.hitempd{position: absolute; font-family: weathertext2, Arial, Helvetica, sans-serif; background: rgba(86, 95, 103, 0.3); color: #aaa; font-size: 0.7rem; width: 140px; padding: 0; margin-left: 30px; padding-left: 3px; align-items: center; justify-content: center; display: block; margin-top: 5px;}.hitempd1{position: absolute; font-family: weathertext2, Arial, Helvetica, sans-serif; background: rgba(86, 95, 103, 0.3); color: #aaa; font-size: 0.7rem; width: 140px; padding: 0; margin-left: 30px; padding-left: 3px; align-items: center; justify-content: center; display: block; margin-top: 40px; margin-bottom: 5px;}.uvmaxi3{position: absolute; left: -30px; color: rgba(0, 154, 171, 1); margin-top: -40px; font-size: 16px; width: 240px;}.uvmaxi3 span{color: #aaa;}.hitemp{color: #aaa; font-size: 0.7rem; display: inline;}.hitemp span{color: rgba(255, 124, 57, 1);}blue{color: rgba(0, 154, 171, 1);}.temperaturecontainer1{position: absolute; left: 20px; margin-top: -5px; margin-bottom: 20px;}.temperaturecontainer2{position: absolute; left: 20px; margin-top: 60px;}smalluvunit{font-size: 0.9rem; font-family: Arial, Helvetica, system;}.uvcontainer1{left: 70px; top: 0;}.uvtoday1,.uvtoday1-3,.uvtoday11,.uvtoday4-5,.uvtoday6-8,.uvtoday9-10{font-family: weathertext2, Arial, Helvetica, system; width: 5rem; height: 2.5rem; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; display: flex;}.uvtoday1,.uvtoday1-3,.uvtoday11,.uvtoday4-5,.uvtoday6-8,.uvtoday9-10{font-size: 1.25rem; padding-top: 2px; color: #fff; border-bottom: 5px solid rgba(56, 56, 60, 1); align-items: center; justify-content: center; border-radius: 3px; margin-bottom: 10px;}.uvcaution,.uvtrend{position: absolute; font-size: 1rem;}.uvtoday1,.uvtoday1-3{background: #9aba2f;}.uvtoday4-5{background: #ff7c39; background: -webkit-linear-gradient(90deg, #90b12a, #ff7c39); background: linear-gradient(90deg, #90b12a, #ff7c39);}.uvtoday6-8{background: #efa80f; background: -webkit-linear-gradient(90deg, #efa80f, #d86858); background: linear-gradient(90deg, #efa80f, #d86858);}.uvtoday9-10{background: #d05f2d; background: -webkit-linear-gradient(90deg, #d65b4a, #ac2816); background: linear-gradient(90deg, #d65b4a, #ac2816);}.uvtoday11{background: #95439f; background: -webkit-linear-gradient(90deg, #95439f, #a475cb); background: linear-gradient(90deg, #95439f, #a475cb);}.higust{position: relative; left: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: 0; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 2em; font-size: 0.8rem; padding-top: 2px; color: black; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}.uvcaution{margin-left: 120px; margin-top: 112px; font-family: Arial, Helvetica, system;}.uvtrend{margin-left: 135px; margin-top: 48px; z-index: 1; color: #fff;}.simsekcontainer{float: left; font-family: weathertext, system; -o-font-smoothing: antialiased; left: 0; bottom: 0; right: 0; position: relative; margin: 40px 10px 10px 40px; left: -10px; top: 13px;}.simsek{font-size: 1.55rem; padding-top: 12px; color: #f8f8f8; background: rgba(230, 161, 65, 1); border-bottom: 18px solid rgba(56, 56, 60, 1); align-items: center; justify-content: center; border-radius: 3px;}smalluvunit{font-size: 0.65rem; font-family: Arial, Helvetica, system;}sup{font-size: 1em;}supwm2{font-size: 0.7em; vertical-align: super;}.w34convertrain{position: relative; font-size: 0.5em; top: 10px; color: #c0c0c0; margin-left: 5px;}.hitempy{position: relative; background: rgba(61, 64, 66, 0.5); color: #aaa; width: 90px; padding: 1px; -webit-border-radius: 2px; border-radius: 2px; margin-top: -20px; margin-left: 92px; padding-left: 3px; line-height: 11px; font-size: 9px;}.actualt{position: relative; left: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: teal; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: white; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}.actualw{position: relative; left: 5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: rgba(74, 99, 111, 0.1); padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 100px; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: #aaa; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}
-    </style>';
+include_once('w34CombinedData.php'); include('settings1.php');
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
+
+function w34_uv_class($val) {
+    if ($val >= 10) return 'uv-extreme';
+    if ($val >= 8)  return 'uv-veryhigh';
+    if ($val >= 5)  return 'uv-high';
+    if ($val >= 3)  return 'uv-moderate';
+    return 'uv-low';
+}
+
+function w34_uv_row($val, $time) {
+    $cls = w34_uv_class(floatval($val));
+    echo '<div class="uv-row">';
+    echo '<div class="uv-badge ' . $cls . '">' . $val . '<smalluvunit> UVI</smalluvunit></div>';
+    echo '<div class="uv-meta"><span class="meta-label"><b>' . w34t('MaxRecorded', 'Max Recorded') . '</b></span><br><blue>' . $time . '</blue></div>';
+    echo '</div>';
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>">
 <head>
   <meta charset="UTF-8">
   <title><?php echo w34t('LinkSolarAlmanacs', 'UV and Solar Almanacs'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  
+<?php
+if ($theme === "dark") {
+    echo '<style>
+@font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
+html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:rgba(30,33,36,1);color:#f5f7fc;margin:0;padding:4px;overflow:hidden;}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:6px;align-items:stretch;color:white;padding:4px 44px 4px 4px;box-sizing:border-box;}
+.grid > article{border:1px solid #212428;box-shadow:2px 2px 6px 0px rgba(0,0,0,0.3);padding:6px;font-size:0.8em;border-radius:4px;background:rgba(40,45,52,0.5);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;min-height:80px;}
+.grid1{display:block;color:#f5f7fc;margin-top:5px;padding:0 4px;box-sizing:border-box;}
+.grid1 > articlegraph{border:1px solid rgba(245,247,252,0.05);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.6);padding:4px;font-size:0.8em;border-radius:4px;background:rgba(40,45,52,0.4);height:380px;box-sizing:border-box;display:block;}
+a{color:white;text-decoration:none;}
+blue{color:#01a4b4;font-weight:600;}
+.actualt{border-radius:3px;background:#555555;padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:white;margin-bottom:6px;text-align:left;}
+.uv-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.uv-badge{width:70px;height:24px;line-height:24px;border-radius:3px;font-family:weathertext2,Arial,sans-serif;font-size:0.88rem;text-align:center;color:#fff;box-sizing:border-box;white-space:nowrap;flex-shrink:0;border-bottom:4px solid rgba(56,56,60,1);}
+.uv-low{background:#9aba2f;}
+.uv-moderate{background:#ff7c39;}
+.uv-high{background:#efa80f;}
+.uv-veryhigh{background:#d05f2d;}
+.uv-extreme{background:#95439f;}
+smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
+.uv-meta{font-size:8.5px;line-height:12px;text-align:right;flex-grow:1;padding-left:4px;color:#aaa;}
+.meta-label{color:#aaa;}
+.lotemp{color:#888;font-size:8.5px;text-align:center;margin-top:4px;}
+</style>';
+} elseif ($theme === "light") {
+    echo '<style>
+@font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
+html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#ffffff;color:#212428;margin:0;padding:4px;overflow:hidden;}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:6px;align-items:stretch;color:#212428;padding:4px 44px 4px 4px;box-sizing:border-box;}
+.grid > article{border:1px solid rgba(0,0,0,0.12);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);padding:6px;font-size:0.8em;border-radius:4px;background:#f8f9fa;color:#212428;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;min-height:80px;}
+.grid1{display:block;color:#212428;margin-top:5px;padding:0 4px;box-sizing:border-box;}
+.grid1 > articlegraph{border:1px solid rgba(0,0,0,0.12);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);padding:4px;font-size:0.8em;border-radius:4px;background:#ffffff;height:380px;box-sizing:border-box;display:block;}
+a{color:black;text-decoration:none;}
+blue{color:#007a8a;font-weight:600;}
+.actualt{border-radius:3px;background:#e2e5e9;padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:#212428;border:1px solid rgba(0,0,0,0.1);margin-bottom:6px;text-align:left;}
+.uv-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.uv-badge{width:70px;height:24px;line-height:24px;border-radius:3px;font-family:weathertext2,Arial,sans-serif;font-size:0.88rem;text-align:center;color:white;box-sizing:border-box;white-space:nowrap;flex-shrink:0;border-bottom:4px solid #555555;}
+.uv-low{background:#9aba2f;}
+.uv-moderate{background:#ff7c39;}
+.uv-high{background:#efa80f;}
+.uv-veryhigh{background:#d05f2d;}
+.uv-extreme{background:#95439f;}
+smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
+.uv-meta{font-size:8.5px;line-height:12px;text-align:right;flex-grow:1;padding-left:4px;color:#555;}
+.meta-label{color:#555;}
+.lotemp{color:#777;font-size:8.5px;text-align:center;margin-top:4px;}
+</style>';
+}
+?>
+</head>
+<body>
 <main class="grid">
-  <article>  
-   <div class=actualt><?php echo w34t('Today', 'Today'); ?> </div>        
-   <div class="temperaturecontainer">
-	
-             <?php
-	// UV INDEX
-	if ($weather["uvdmax"]>=10)  {
-	echo "<div class='uvtoday11'>",$weather["uvdmax"] . "</value>";} 	
-	else if ($weather["uvdmax"]>=8)  {
-	echo "<div class='uvtoday9-10'>",$weather["uvdmax"] . "</value>";}
-	else if ($weather["uvdmax"]>=5)  {
-	echo "<div class='uvtoday6-8'>",$weather["uvdmax"] . "</value>";}
-	else if ($weather["uvdmax"]>=3)  {
-	echo "<div class='uvtoday4-5'>",$weather["uvdmax"] . "</value>";} 		
-	else if ($weather["uvdmax"]>=-0) {
-	echo "<div class='uvtoday1'>",$weather["uvdmax"] . "</value>";}		
-	echo "<smalluvunit> UVI</smalluvunit>"
-?>
+  <article>
+    <div class="actualt"><?php echo w34t('Today', 'Today'); ?></div>
+    <?php w34_uv_row($weather["uvdmax"], $weather["uvdmaxtime"]); ?>
+  </article>
 
-</div>
+  <article>
+    <div class="actualt"><?php echo w34t('Yesterday', 'Yesterday'); ?></div>
+    <?php w34_uv_row($weather["uvydmax"], $weather["uvydmaxtime"]); ?>
+  </article>
 
-<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?><br><blue><?php echo $weather["uvdmaxtime"];?></blue></div>
+  <article>
+    <div class="actualt"><?php echo w34_date('M Y'); ?></div>
+    <?php w34_uv_row($weather["uvmmax"], $weather["uvmmaxtime"]); ?>
+  </article>
 
+  <article>
+    <div class="actualt"><?php echo date('Y'); ?></div>
+    <?php w34_uv_row($weather["uvymax"], $weather["uvymaxtime"]); ?>
+  </article>
 
-
-</article> 
-
- <article> 
-  <div class=actualt><?php echo w34t('Yesterday', 'Yesterday'); ?> </div>        
-   <div class="temperaturecontainer">
-	
-            <?php
-	// UV INDEX
-	if ($weather["uvydmax"]>=10)  {
-	echo "<div class='uvtoday11'>",$weather["uvydmax"] . "</value>";} 	
-	else if ($weather["uvydmax"]>=8)  {
-	echo "<div class='uvtoday9-10'>",$weather["uvydmax"] . "</value>";}
-	else if ($weather["uvydmax"]>=5)  {
-	echo "<div class='uvtoday6-8'>",$weather["uvydmax"] . "</value>";}
-	else if ($weather["uvydmax"]>=3)  {
-	echo "<div class='uvtoday4-5'>",$weather["uvydmax"] . "</value>";} 		
-	else if ($weather["uvydmax"]>=-0) {
-	echo "<div class='uvtoday1'>",$weather["uvydmax"] . "</value>";}		
-	echo "<smalluvunit> UVI</smalluvunit>"
-?>
-
-</div>
-
-<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?><br><blue><?php echo $weather["uvydmaxtime"];?></blue></div>
-
-
-
-</article>  
-  
- 
-  
-  <article> 
-  <div class=actualt><?php echo w34_date('M Y')?> </div>        
-   <div class="temperaturecontainer">
-	
-            <?php
-	// UV INDEX
-	if ($weather["uvmmax"]>=10)  {
-	echo "<div class='uvtoday11'>",$weather["uvmmax"] . "</value>";} 	
-	else if ($weather["uvmmax"]>=8)  {
-	echo "<div class='uvtoday9-10'>",$weather["uvmmax"] . "</value>";}
-	else if ($weather["uvmmax"]>=5)  {
-	echo "<div class='uvtoday6-8'>",$weather["uvmmax"] . "</value>";}
-	else if ($weather["uvmmax"]>=3)  {
-	echo "<div class='uvtoday4-5'>",$weather["uvmmax"] . "</value>";} 		
-	else if ($weather["uvmmax"]>=-0) {
-	echo "<div class='uvtoday1'>",$weather["uvmmax"] . "</value>";}		
-	echo "<smalluvunit> UVI</smalluvunit>"
-?>
-
-</div>
-
-<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["uvmmaxtime"];?></blue></div>
-
-
-
-</article>  
-  
-  
-    <article> 
-  <div class=actualt><?php echo date('Y')?> </div>        
-   <div class="temperaturecontainer">
-	
-            <?php
-	// UV INDEX
-	if ($weather["uvymax"]>=10)  {
-	echo "<div class='uvtoday11'>",$weather["uvymax"] . "</value>";} 	
-	else if ($weather["uvymax"]>=8)  {
-	echo "<div class='uvtoday9-10'>",$weather["uvymax"] . "</value>";}
-	else if ($weather["uvymax"]>=5)  {
-	echo "<div class='uvtoday6-8'>",$weather["uvymax"] . "</value>";}
-	else if ($weather["uvymax"]>=3)  {
-	echo "<div class='uvtoday4-5'>",$weather["uvymax"] . "</value>";} 		
-	else if ($weather["uvymax"]>=-0) {
-	echo "<div class='uvtoday1'>",$weather["uvymax"] . "</value>";}		
-	echo "<smalluvunit> UVI</smalluvunit>"
-?>
-
-</div>
-
-<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["uvymaxtime"];?></blue></div>
-
-
-</article>
-  <article> 
-  <div class=actualt><?php echo w34t('AllTime', 'All-Time'); ?> </div>        
-   <div class="temperaturecontainer">
-	
-            <?php
-	// UV INDEX
-	if ($weather["uvamax"]>=10)  {
-	echo "<div class='uvtoday11'>",$weather["uvamax"] . "</value>";} 	
-	else if ($weather["uvamax"]>=8)  {
-	echo "<div class='uvtoday9-10'>",$weather["uvamax"] . "</value>";}
-	else if ($weather["uvymax"]>=5)  {
-	echo "<div class='uvtoday6-8'>",$weather["uvamax"] . "</value>";}
-	else if ($weather["uvamax"]>=3)  {
-	echo "<div class='uvtoday4-5'>",$weather["uvamax"] . "</value>";} 		
-	else if ($weather["uvamax"]>=-0) {
-	echo "<div class='uvtoday1'>",$weather["uvamax"] . "</value>";}		
-	echo "<smalluvunit> UVI</smalluvunit>"
-?>
-
-</div>
-
-<div class="higust"><?php echo w34t('MaxRecorded', 'Max Recorded'); ?> <br><blue><?php echo $weather["uvamaxtime"];?></blue></div>
-
-
-</article>
+  <article>
+    <div class="actualt"><?php echo w34t('AllTime', 'All-Time'); ?></div>
+    <?php w34_uv_row($weather["uvamax"], $weather["uvamaxtime"]); ?>
+  </article>
 </main>
- <main class="grid1">
+
+<main class="grid1">
   <articlegraph> 
-  <!--<div class=actualt>Today <span style="color:#ff9350">UV-INDEX</div>  //-->
-  <iframe  src="w34highcharts/<?php echo $theme1;?>-charts.html?chart='uvsmallplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
- 
+    <iframe src="w34highcharts/<?php echo $theme1; ?>-charts.html?chart=uvsmallplot&span=yearly&temp=<?php echo $weather['temp_units']; ?>&pressure=<?php echo $weather['barometer_units']; ?>&wind=<?php echo $weather['wind_units']; ?>&rain=<?php echo $weather['rain_units']; ?>&height=380" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </articlegraph> 
-     <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
   <div class="lotemp">
-  <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsUsingHighcharts', 'Charts rendered using Highcharts.'); ?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y'); ?></a></div>
-   
-  </articlegraph> 
-  
+    <a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="color:inherit;text-decoration:none;font-size:8px;"><?php echo w34t('ChartsUsingHighcharts', 'Charts rendered using Highcharts.'); ?></a>
+    &bull; <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin'); ?> &copy; 2015-<?php echo date('Y');?>
+  </div>
 </main>
+</body>
+</html>

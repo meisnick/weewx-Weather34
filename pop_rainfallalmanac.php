@@ -13,135 +13,164 @@
 // 	Issues for weewx-Weather34 template should be addressed to https://github.com/meisnick/weewx-Weather34/issues #                                                                                              #
 // 	                                                                                                				#
 //###################################################################################################################
+include_once('w34CombinedData.php'); include('settings1.php');
+if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
 
-include_once('w34CombinedData.php');include('settings1.php');
-if ($theme === "dark") {
-    echo '<style>@font-face{font-family: weathertext2; src: url(css/fonts/verbatim-regular.woff) format("woff"), url(fonts/verbatim-regular.woff2) format("woff2"), url(fonts/verbatim-regular.ttf) format("truetype");}html,body{font-size: 13px; font-family: "weathertext2", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.grid{display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 2fr)); grid-gap: 5px; align-items: stretch; color: #f5f7fc;}.grid > article{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.grid1{display: grid; grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); grid-gap: 5px; align-items: stretch; color: #f5f7fc; margin-top: 5px;}.grid1 > articlegraph{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 350px;}/* unvisited link */a:link{color: white;}/* visited link */a:visited{color: white;}/* mouse over link */a:hover{color: white;}/* selected link */a:active{color: white;}.weather34darkbrowser{position: relative; background: 0; width: 97%; height: 30px; margin: auto; margin-top: -5px; margin-left: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 10px;}.weather34darkbrowser[url]:after{content: attr(url); color: white; font-size: 14px; text-align: center; position: absolute; left: 0; right: 0; top: 0; padding: 4px 15px; margin: 11px 10px 0 auto; font-family: arial; height: 20px;}a{color: #aaa; text-decoration: none;}blue{color: #01a4b4;}orange{color: #009bb4;}orange1{position: relative; color: #009bb4; margin: 0 auto; text-align: center; margin-left: 5%; font-size: 1.1rem;}green{color: #aaa;}red{color: #f37867;}red6{color: #d65b4a;}value{color: #fff;}yellow{color: #cc0;}purple{color: #916392;}.actualt{position: relative; left: 0px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: #555; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: max-content; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: white; align-items: center; justify-content: center; margin-bottom: 10px; top: 0; text-align: center;}.actual{position: relative; left: 5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 95%; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: #aaa; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}<!-- weather34 rain beaker css -- > .rainfallcontainer1{left: 5px; top: 0;}.rainfalltoday1{font-family: weathertext2, Arial, Helvetica, system; width: 4.25rem; height: 1.5rem; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; font-weight: normal; font-size: 0.9rem; padding-top: 5px; color: #fff; border-bottom: 12px solid #555; align-items: center; justify-content: center; text-align: center; border-radius: 3px; background: rgba(68, 166, 181, 1); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.rainfallcaution,.rainfalltrend{position: absolute; font-size: 1rem;}smalluvunit{font-size: 0.6rem; font-family: Arial, Helvetica, system;}.lotemp{color: white; font-size: 0.6rem;}.almanac{font-size: 1.25em; margin-top: 30px; color: rgba(56, 56, 60, 1); width: 12em;}metricsblue{color: #44a6b5; font-family: "weathertext2", Helvetica, Arial, sans-serif; background: rgba(86, 95, 103, 0.5); -webkit-border-radius: 2px; border-radius: 2px; align-items: center; justify-content: center; font-size: 0.9em; left: 10px; padding: 0 3px 0 3px;}.w34convertrain{position: relative; font-size: 0.8em; top: 6px; color: white; margin-left: auto; margin-right: auto;}.hitempy{position: relative; background: rgba(61, 64, 66, 0.5); color: white; width: 75px; padding: 1px; -webit-border-radius: 2px; border-radius: 2px; margin-top: -33px; margin-left: 56px; padding-left: 3px; line-height: 11px; font-size: 9px;}
-    </style>';
-} elseif ($theme === "light") {
-    echo '<style>@font-face{font-family: weathertext2; src: url(css/fonts/verbatim-regular.woff) format("woff"), url(fonts/verbatim-regular.woff2) format("woff2"), url(fonts/verbatim-regular.ttf) format("truetype");}html,body{font-size: 13px; font-family: "weathertext2", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background-color: white;}.grid{display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 2fr)); grid-gap: 5px; align-items: stretch; color: #f5f7fc;}.grid > article{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.grid1{display: grid; grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); grid-gap: 5px; align-items: stretch; color: #f5f7fc; margin-top: 5px;}.grid1 > articlegraph{border: 1px solid rgba(245, 247, 252, 0.02); box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); padding: 5px; font-size: 0.8em; -webkit-border-radius: 4px; border-radius: 4px; background: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height: 350px;}/* unvisited link */a:link{color: black;}/* visited link */a:visited{color: black;}/* mouse over link */a:hover{color: black;}/* selected link */a:active{color: black;}.weather34darkbrowser{position: relative; background: 0; width: 97%; height: 30px; margin: auto; margin-top: -5px; margin-left: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 10px;}.weather34darkbrowser[url]:after{content: attr(url); color: black; font-size: 14px; text-align: center; position: absolute; left: 0; right: 0; top: 0; padding: 4px 15px; margin: 11px 10px 0 auto; font-family: arial; height: 20px;}a{color: #aaa; text-decoration: none;}blue{color: #01a4b4;}orange{color: #009bb4;}orange1{position: relative; color: #009bb4; margin: 0 auto; text-align: center; margin-left: 5%; font-size: 1.1rem;}green{color: #aaa;}red{color: #f37867;}red6{color: #d65b4a;}value{color: #fff;}yellow{color: #cc0;}purple{color: #916392;}.actualt{position: relative; left: 0px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background: #555555; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: max-content; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: white; align-items: center; justify-content: center; margin-bottom: 10px; top: 0; text-align: center;}.actual{position: relative; left: 5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; padding: 5px; font-family: Arial, Helvetica, sans-serif; width: 95%; height: 0.8em; font-size: 0.8rem; padding-top: 2px; color: #aaa; align-items: center; justify-content: center; margin-bottom: 10px; top: 0;}<!-- weather34 rain beaker css -- > .rainfallcontainer1{left: 5px; top: 0;}.rainfalltoday1{font-family: weathertext2, Arial, Helvetica, system; width: 4.25rem; height: 1.5rem; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; font-weight: normal; font-size: 0.9rem; padding-top: 5px; color: #fff; border-bottom: 12px solid #555555; align-items: center; justify-content: center; text-align: center; border-radius: 3px; background: rgba(68, 166, 181, 1); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}.rainfallcaution,.rainfalltrend{position: absolute; font-size: 1rem;}smalluvunit{font-size: 0.6rem; font-family: Arial, Helvetica, system;}.lotemp{color: black; font-size: 0.6rem;}.almanac{font-size: 1.25em; margin-top: 30px; color: rgba(56, 56, 60, 1); width: 12em;}metricsblue{color: #44a6b5; font-family: "weathertext2", Helvetica, Arial, sans-serif; background: rgba(86, 95, 103, 0.5); -webkit-border-radius: 2px; border-radius: 2px; align-items: center; justify-content: center; font-size: 0.9em; left: 10px; padding: 0 3px 0 3px;}.w34convertrain{position: relative; font-size: 0.8em; top: 6px; color: white; margin-left: auto; margin-right: auto;}.hitempy{position: relative; background: 0; color: black; width: 75px; padding: 1px; -webit-border-radius: 2px; border-radius: 2px; margin-top: -33px; margin-left: 56px; padding-left: 3px; line-height: 11px; font-size: 9px;}
-    </style>';
+function w34_convert_rain($val, $unit) {
+    if ($val === '' || $val === 'N/A') return '';
+    $fval = floatval($val);
+    if ($unit === 'mm') {
+        return number_format($fval * 0.0393701, 2) . '<smalluvunit>in</smalluvunit>';
+    }
+    if ($unit === 'in') {
+        return number_format($fval * 25.400013716, 2) . '<smalluvunit>mm</smalluvunit>';
+    }
+    return '';
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<html lang="<?php echo w34_html_lang(); ?>">
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts'); ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<main class="grid">
-    <article>
-     <div class=actualt><?php echo w34f('AlmToday', '%s Today', w34t('Rainfall', 'Rainfall')); ?></div>
-    <?php // rain today
-echo "<div class='rainfalltoday1'>",$weather["rain_today"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
-<div class='w34convertrain'>
-<?php //convert rain
-if($weather["rain_units"] =='mm'){ echo number_format($weather["rain_today"]*0.0393701,2)."<smalluvunit>in</smalluvunit>";}
-elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_today"]*25.400013716,2)."<smalluvunit>mm</smalluvunit>";}
-?>
-<div></div>
-
-<div class="hitempy"><?php echo $raininfo . w34t('LastHour', 'Last Hour') . "<blue> ", $weather["rain_lasthour"]."</blue> " .$weather["rain_units"] ?></div>
-</article>
-
- <article>
-        <div class=actualt><?php echo w34f('AlmYesterday', '%s Yesterday', w34t('Rainfall', 'Rainfall')); ?></div>
-    <?php // rain yesterday
-echo "<div class='rainfalltoday1'>",$weather["rainydmax"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
-<div class='w34convertrain'>
-<?php //convert rain
-if($weather["rain_units"] =='mm'){ echo number_format($weather["rainydmax"]*0.0393701,2)."<smalluvunit>in</smalluvunit>";}
-elseif($weather["rain_units"] =='in'){ echo number_format($weather["rainydmax"]*25.400013716,2)."<smalluvunit>mm</smalluvunit>";}
-?>
-<div></div>
-
-<div class="hitempy"><?php echo $raininfo;?><?php echo w34t('Last24Hours', 'Last 24 Hours'); ?><br/><blue><?php echo $weather["rain_24hrs"];?></blue> <?php echo $weather["rain_units"] ?></div>
-</article>
-
-
-    <article>
-    <div class=actualt><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo w34_date('M Y')?> </div>
-    <?php // rain month
-echo "<div class='rainfalltoday1'>",$weather["rain_month"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
-<div class='w34convertrain'>
-<?php //convert rain
-if($weather["rain_units"] =='mm'){ echo number_format($weather["rain_month"]*0.0393701,2)."<smalluvunit>in</smalluvunit>";}
-elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_month"]*25.400013716,2)."<smalluvunit>mm</smalluvunit>";}
-?>
-<div></div>
-
-<div class="hitempy">
-    <?php echo $raininfo;?><?php echo w34t('LastRainfall', 'Last Rainfall'); ?><br/>
-    <blue><?php if ($meteobridgeapi[124]=='--'){
-        echo w34t('Unknown', 'Unknown');
-    } else if ($rainlasttime == w34_date("jS M Y ")) {
-        echo 'Today';
-    } else {
-        echo $rainlasttime;
-    }?></blue>
-</div>
-</article>
-
-
-     <article>
-     <div class=actualt><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo date("Y");?> </div>
-    <?php // rain year
-echo "<div class='rainfalltoday1'>",$weather["rain_year"] . "</value>";echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>"?>
-<div class='w34convertrain'>
-<?php //convert rain
-if($weather["rain_units"] =='mm'){ echo number_format($weather["rain_year"]*0.0393701,2)."<smalluvunit>in</smalluvunit>";}
-elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_year"]*25.400013716,2)."<smalluvunit>mm</smalluvunit>";}
-?>
-<div></div>
-
-<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>--><?php echo w34t('Since', 'Since'); ?><br/>
-    <blue><?php echo w34_datetext('Jan');?> <?php echo date('Y');?></blue>
-</div>
-</article>
-
-<article>
- <div class=actualt>&nbsp;<?php echo w34f('AlmAllTime', '%s All-Time', w34t('Rainfall', 'Rainfall')); ?> </div>
-    <?php
-    if ($weather["rain_alltime"]==''){echo "<div class='rainfalltoday1'>N/A</value>";}
- // rain alltime
-else {echo "<div class='rainfalltoday1'>",$weather["rain_alltime"] . "</value>";
-echo "<smalluvunit>".$weather["rain_units"]."</smalluvunit>";}?>
-<div class='w34convertrain'>
-<?php //convert rain
-if ($weather["rain_alltime"]==''){echo '';}
-else{
-if($weather["rain_units"] =='mm'){ echo number_format($weather["rain_alltime"]*0.0393701,2)." <smalluvunit>in</smalluvunit>";}
-elseif($weather["rain_units"] =='in'){ echo number_format($weather["rain_alltime"]*25.400013716,2,'.','')."<smalluvunit>mm</smalluvunit>";}
+  <meta charset="UTF-8">
+  <title><?php echo w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts'); ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+if ($theme === "dark") {
+    echo '<style>
+@font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
+html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:rgba(30,33,36,1);color:#f5f7fc;margin:0;padding:4px;overflow:hidden;}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:6px;align-items:stretch;color:white;padding:4px 44px 4px 4px;box-sizing:border-box;}
+.grid > article{border:1px solid #212428;box-shadow:2px 2px 6px 0px rgba(0,0,0,0.3);padding:6px;font-size:0.8em;border-radius:4px;background:rgba(40,45,52,0.5);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;min-height:80px;}
+.grid1{display:block;color:#f5f7fc;margin-top:5px;padding:0 4px;box-sizing:border-box;}
+.grid1 > articlegraph{border:1px solid rgba(245,247,252,0.05);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.6);padding:4px;font-size:0.8em;border-radius:4px;background:rgba(40,45,52,0.4);height:380px;box-sizing:border-box;display:block;}
+a{color:white;text-decoration:none;}
+blue{color:#01a4b4;font-weight:600;}
+.badge-col{float:left;width:64px;}
+.rainfalltoday1{font-family:weathertext2,Arial,sans-serif;width:64px;height:18px;border-radius:3px 3px 0 0;font-size:0.9rem;line-height:18px;padding-top:2px;color:#fff;background:rgba(68,166,181,1);display:block;text-align:center;box-sizing:content-box;white-space:nowrap;}
+smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
+.w34convertrain{font-size:0.65em;color:#fff;width:64px;text-align:center;line-height:14px;height:14px;white-space:nowrap;border-radius:0 0 3px 3px;background:rgba(56,56,60,1);display:block;}
+.lotemp{color:#888;font-size:8.5px;text-align:center;margin-top:4px;}
+.hitempy{margin-left:68px;color:#aaa;line-height:13px;font-size:9px;text-align:right;min-height:34px;display:flex;flex-direction:column;justify-content:center;}
+.actualt{border-radius:3px;background:#555555;padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:white;margin-bottom:6px;text-align:left;}
+</style>';
+} elseif ($theme === "light") {
+    echo '<style>
+@font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
+html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#ffffff;color:#212428;margin:0;padding:4px;overflow:hidden;}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:6px;align-items:stretch;color:#212428;padding:4px 44px 4px 4px;box-sizing:border-box;}
+.grid > article{border:1px solid rgba(0,0,0,0.12);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);padding:6px;font-size:0.8em;border-radius:4px;background:#f8f9fa;color:#212428;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;min-height:80px;}
+.grid1{display:block;color:#212428;margin-top:5px;padding:0 4px;box-sizing:border-box;}
+.grid1 > articlegraph{border:1px solid rgba(0,0,0,0.12);box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);padding:4px;font-size:0.8em;border-radius:4px;background:#ffffff;height:380px;box-sizing:border-box;display:block;}
+a{color:black;text-decoration:none;}
+blue{color:#007a8a;font-weight:600;}
+.badge-col{float:left;width:64px;}
+.rainfalltoday1{font-family:weathertext2,Arial,sans-serif;width:64px;height:18px;border-radius:3px 3px 0 0;font-size:0.9rem;line-height:18px;padding-top:2px;color:white;background:rgba(68,166,181,1);display:block;text-align:center;box-sizing:content-box;white-space:nowrap;}
+smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
+.w34convertrain{font-size:0.65em;color:#fff;width:64px;text-align:center;line-height:14px;height:14px;white-space:nowrap;border-radius:0 0 3px 3px;background:#555555;display:block;}
+.lotemp{color:#777;font-size:8.5px;text-align:center;margin-top:4px;}
+.hitempy{margin-left:68px;color:#555;line-height:13px;font-size:9px;text-align:right;min-height:34px;display:flex;flex-direction:column;justify-content:center;}
+.actualt{border-radius:3px;background:#e2e5e9;padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:#212428;border:1px solid rgba(0,0,0,0.1);margin-bottom:6px;text-align:left;}
+</style>';
 }
 ?>
-<div></div>
+</head>
+<body>
+<main class="grid">
+  <article>
+    <div class="actualt"><?php echo w34f('AlmToday', '%s Today', w34t('Rainfall', 'Rainfall')); ?></div>
+    <div class="badge-col">
+      <div class="rainfalltoday1">
+        <?php echo $weather["rain_today"]; ?><smalluvunit><?php echo $weather["rain_units"]; ?></smalluvunit>
+      </div>
+      <div class="w34convertrain">
+        <?php echo w34_convert_rain($weather["rain_today"], $weather["rain_units"]); ?>
+      </div>
+    </div>
+    <div class="hitempy">
+      <?php echo w34t('LastHour', 'Last Hour'); ?><br><blue><?php echo $weather["rain_lasthour"] . ' ' . $weather["rain_units"]; ?></blue>
+    </div>
+  </article>
 
-<div class="hitempy"><?php echo $raininfo;?><!--<blue>Rainfall</blue>--><?php echo w34t('Since', 'Since'); ?><br/>
-    <blue><?php echo $weather['rainStartTime'];?></blue>
-</div>
-</article> </main>
+  <article>
+    <div class="actualt"><?php echo w34f('AlmYesterday', '%s Yesterday', w34t('Rainfall', 'Rainfall')); ?></div>
+    <div class="badge-col">
+      <div class="rainfalltoday1">
+        <?php echo $weather["rainydmax"]; ?><smalluvunit><?php echo $weather["rain_units"]; ?></smalluvunit>
+      </div>
+      <div class="w34convertrain">
+        <?php echo w34_convert_rain($weather["rainydmax"], $weather["rain_units"]); ?>
+      </div>
+    </div>
+    <div class="hitempy">
+      <?php echo w34t('Last24Hours', 'Last 24 Hours'); ?><br><blue><?php echo $weather["rain_24hrs"] . ' ' . $weather["rain_units"]; ?></blue>
+    </div>
+  </article>
 
+  <article>
+    <div class="actualt"><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo w34_date('M Y'); ?></div>
+    <div class="badge-col">
+      <div class="rainfalltoday1">
+        <?php echo $weather["rain_month"]; ?><smalluvunit><?php echo $weather["rain_units"]; ?></smalluvunit>
+      </div>
+      <div class="w34convertrain">
+        <?php echo w34_convert_rain($weather["rain_month"], $weather["rain_units"]); ?>
+      </div>
+    </div>
+    <div class="hitempy">
+      <?php echo w34t('LastRainfall', 'Last Rainfall'); ?><br>
+      <blue><?php
+        if (isset($meteobridgeapi[124]) && $meteobridgeapi[124] == '--') {
+          echo w34t('Unknown', 'Unknown');
+        } else if (isset($rainlasttime) && $rainlasttime == w34_date("jS M Y ")) {
+          echo 'Today';
+        } else if (isset($rainlasttime)) {
+          echo $rainlasttime;
+        } else {
+          echo w34t('Unknown', 'Unknown');
+        }
+      ?></blue>
+    </div>
+  </article>
 
+  <article>
+    <div class="actualt"><?php echo w34t('Rainfall', 'Rainfall'); ?> <?php echo date("Y"); ?></div>
+    <div class="badge-col">
+      <div class="rainfalltoday1">
+        <?php echo $weather["rain_year"]; ?><smalluvunit><?php echo $weather["rain_units"]; ?></smalluvunit>
+      </div>
+      <div class="w34convertrain">
+        <?php echo w34_convert_rain($weather["rain_year"], $weather["rain_units"]); ?>
+      </div>
+    </div>
+    <div class="hitempy">
+      <?php echo w34t('Since', 'Since'); ?><br><blue><?php echo w34_datetext('Jan') . ' ' . date('Y'); ?></blue>
+    </div>
+  </article>
 
- <main class="grid1">
-    <articlegraph> 
-   
-  <iframe  src="w34highcharts/<?php echo $theme1;?>-charts.html?chart='rainsmallplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" frameborder="0" scrolling="no" width="100%"  height="100%"></iframe>
-   
-  </articlegraph> 
-  
-    <articlegraph style="height:auto; min-height:50px; padding-bottom:15px; border-bottom:5px solid transparent; overflow:visible;">  
-  <div class="lotemp">
-  <?php echo $info?> 
-<a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="font-size:8px;"> <?php echo w34t('ChartsByHighcharts', 'Charts rendered and compiled using Highcharts'); ?> </a>
-  </div>   
-    
-  <div class="lotemp">
-  <?php echo $info?> <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin from the original CSS/SVG/PHP scripts by weather34.com'); ?> &copy; 2015-<?php echo date('Y');?>
-  </div>
-   
-  </articlegraph>
-  
+  <article>
+    <div class="actualt"><?php echo w34f('AlmAllTime', '%s All-Time', w34t('Rainfall', 'Rainfall')); ?></div>
+    <div class="badge-col">
+      <div class="rainfalltoday1">
+        <?php echo ($weather["rain_alltime"] === '' || $weather["rain_alltime"] === null) ? 'N/A' : ($weather["rain_alltime"] . '<smalluvunit>' . $weather["rain_units"] . '</smalluvunit>'); ?>
+      </div>
+      <div class="w34convertrain">
+        <?php echo w34_convert_rain($weather["rain_alltime"], $weather["rain_units"]); ?>
+      </div>
+    </div>
+    <div class="hitempy">
+      <?php echo w34t('Since', 'Since'); ?><br><blue><?php echo $weather['rainStartTime']; ?></blue>
+    </div>
+  </article>
 </main>
+
+<main class="grid1">
+  <articlegraph> 
+    <iframe src="w34highcharts/<?php echo $theme1; ?>-charts.html?chart=rainsmallplot&span=yearly&temp=<?php echo $weather['temp_units']; ?>&pressure=<?php echo $weather['barometer_units']; ?>&wind=<?php echo $weather['wind_units']; ?>&rain=<?php echo $weather['rain_units']; ?>&height=380" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+  </articlegraph> 
+  <div class="lotemp">
+    <a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="color:inherit;text-decoration:none;font-size:8px;"><?php echo w34t('ChartsByHighcharts', 'Charts rendered and compiled using Highcharts'); ?></a>
+    &bull; <?php echo w34t('CreditAdapted', 'Adapted by Steepleian for the WeeWX Weather34 skin'); ?> &copy; 2015-<?php echo date('Y');?>
+  </div>
+</main>
+</body>
+</html>

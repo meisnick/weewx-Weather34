@@ -5,6 +5,8 @@ html,body{
   -webkit-font-smoothing: antialiased;	
   -moz-osx-font-smoothing: grayscale; 
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
 .grid { 
   display: grid;
@@ -14,16 +16,18 @@ html,body{
   color:black;
   -webkit-font-smoothing: antialiased;	
   -moz-osx-font-smoothing: grayscale;
-  
-  }
+  padding: 4px 44px 4px 4px;
+  box-sizing: border-box;
+}
 .grid > article {
-  border: 1px solid #212428;
-  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.1);
   padding:5px;
   font-size:0.8em;
   -webkit-border-radius:4px;
   border-radius:4px;
   height:160px;
+  background: #fff;
   -webkit-font-smoothing: antialiased;	
   -moz-osx-font-smoothing: grayscale;
 }
@@ -61,6 +65,7 @@ html,body{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding-top: 10px;
+  margin-right: 44px;
 }
 .weather34darkbrowser[url]:after {
   content: attr(url);
@@ -72,7 +77,7 @@ html,body{
   right: 0;
   top: 0;
   padding: 4px 15px;
-  margin: 11px 10px 0 auto;
+  margin: 11px 44px 0 auto;
   font-family: arial;
   height: 20px;
 

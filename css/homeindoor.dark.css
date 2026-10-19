@@ -1,21 +1,23 @@
 @font-face{font-family:weathertext2;src:url(fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}
-html,body{font-size:13px;font-family: "weathertext2", Helvetica, Arial, sans-serif;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;}
+html,body{font-size:13px;font-family: "weathertext2", Helvetica, Arial, sans-serif;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;background-color:rgba(30,33,36,1);margin:0;padding:0;}
 .grid { 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
   grid-gap: 5px;
   align-items: stretch;
   color:#f5f7fc;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;
-  
-  }
+  padding: 4px 44px 4px 4px;
+  box-sizing: border-box;
+}
 .grid > article {
-  border: 1px solid #212428;
+  border: 1px solid rgba(245,247,252,0.02);
   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
   padding:5px;
   font-size:0.8em;
   -webkit-border-radius:4px;
   border-radius:4px;
   height:160px;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;
+  background: hsla(233,12%,13%,.5);
 }
 
 .grid1 { 
@@ -48,6 +50,7 @@ html,body{font-size:13px;font-family: "weathertext2", Helvetica, Arial, sans-ser
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding-top: 10px;
+  margin-right: 44px;
 }
 .weather34darkbrowser[url]:after {
   content: attr(url);
@@ -59,7 +62,7 @@ html,body{font-size:13px;font-family: "weathertext2", Helvetica, Arial, sans-ser
   right: 0;
   top: 0;
   padding: 4px 15px;
-  margin: 11px 10px 0 auto;
+  margin: 11px 44px 0 auto;
   font-family: arial;
   height: 20px;
 

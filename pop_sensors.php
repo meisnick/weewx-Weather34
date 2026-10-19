@@ -1,4 +1,7 @@
 <?php include_once('w34CombinedData.php'); error_reporting(0);
+if (isset($_GET['theme'])) {
+    $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
+}
 
 $sensorDesc = [
     'WH65'  => 'Outdoor weather array — temp, humidity, wind, UV, solar, rain',
@@ -62,11 +65,21 @@ foreach ($lines as $line) {
     }
 }
 
+?>
+<!DOCTYPE html>
+<html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GW1000 Sensor Status</title>
+<?php
 if ($theme === 'dark') {
-    echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:rgba(33,34,39,.95)}
+    echo '<style>body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:rgba(30,33,36,1)}
+.weather34darkbrowser{position:relative;background:0;width:100%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
+.weather34darkbrowser[url]:after{content:attr(url);color:#ccc;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px}
 .row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid rgba(84,85,86,0.3)}
 .row:last-child{border-bottom:0}
-.hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(84,85,86,1);font-weight:bold}
+.hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:rgba(150,155,165,1);font-weight:bold}
 .left{flex:1;min-width:0}
 .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .sname{font-weight:bold;color:#ccc;font-size:12px;margin-right:8px}
@@ -84,7 +97,9 @@ if ($theme === 'dark') {
 .reg{color:rgba(100,105,115,1);font-size:10px;line-height:1.9}
 </style>';
 } else {
-    echo '<style>body{margin:8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#333;background-color:#fff}
+    echo '<style>body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:#333;background-color:#fff}
+.weather34darkbrowser{position:relative;background:0;width:100%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
+.weather34darkbrowser[url]:after{content:attr(url);color:#333;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px}
 .row{display:flex;align-items:center;gap:0;padding:5px 4px;border-bottom:1px solid #e2e6ef}
 .row:last-child{border-bottom:0}
 .hdr{padding:4px;margin:8px 0 2px 0;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999;font-weight:bold}
@@ -102,10 +117,11 @@ if ($theme === 'dark') {
 .low{color:#c70;font-weight:bold}
 .unk{color:#bbb}
 .dead{color:#c2352d;font-weight:bold}
-.reg{color:#bbb;font-size:10px;line-height:1.9}
+.reg{color:#888;font-size:10px;line-height:1.9}
 </style>';
 }
 ?>
+</head>
 <body>
 <div class="weather34darkbrowser" url="GW1000 Sensor Status &nbsp;— &nbsp;<?php echo date('H:i:s'); ?>"></div>
 
@@ -167,5 +183,9 @@ if (!empty($regModels)) {
     }
     echo "<div class='reg'>" . implode('<br>', $parts) . "</div>";
 }
+if (empty($active) && empty($regModels)) {
+    echo "<div class='reg' style='padding:20px 4px;'>No active sensor data available.</div>";
+}
 ?>
 </body>
+</html>

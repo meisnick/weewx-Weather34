@@ -1,8 +1,22 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php include('metar34get.php');
 //weather34 original metarnearby script 201-2019//
-if($theme==="light"){$background="white";$text="black";}
-else if($theme==="dark"){$background="rgba(33, 34, 39, .8)";$text="white";}
+if (isset($_GET['theme'])) {
+    $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
+}
+if ($theme === "light") {
+    $background = "white";
+    $text = "black";
+    $cardbg = "#ffffff";
+    $cardborder = "rgba(0,0,0,0.08)";
+    $cardshadow = "rgba(0,0,0,0.1)";
+} else {
+    $background = "rgba(30, 33, 36, 1)";
+    $text = "white";
+    $cardbg = "hsla(233,12%,13%,.5)";
+    $cardborder = "rgba(245, 247, 252, .02)";
+    $cardshadow = "rgba(0,0,0,0.6)";
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php include_once __DIR__ . '/w34_i18n.php'; echo w34_html_lang(); ?>">
@@ -42,18 +56,20 @@ a:active {
 .grid { 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 2fr));
-  grid-gap: 2px;
+  grid-gap: 4px;
   align-items: stretch;
-  color:<?php echo $text; ?>;  
-  }
+  color:<?php echo $text; ?>;
+  padding: 4px 44px 4px 4px;
+  box-sizing: border-box;
+}
 .grid > article {
-  border: 1px solid rgba(245, 247, 252,.02);
-  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.6);
+  border: 1px solid <?php echo $cardborder; ?>;
+  box-shadow: 2px 2px 6px 0px <?php echo $cardshadow; ?>;
   padding:5px;
   font-size:0.8em;
   -webkit-border-radius:4px;
   border-radius:4px;
-  background:0;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;
+  background:<?php echo $cardbg; ?>;-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;
 }
 .grid > article img {
   max-width: 100%;
@@ -68,6 +84,7 @@ a:active {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding-top: 10px;
+  margin-right: 44px;
   color: <?php echo $text; ?>;
 }
 
@@ -80,7 +97,7 @@ a:active {
   right: 0;
   top: 0;
   padding: 4px 15px;
-  margin: 11px 10px 0 auto;
+  margin: 11px 44px 0 auto;
   font-family: arial;
   height: 20px;
 } 
@@ -91,7 +108,7 @@ a:active {
 .windseparator{color:rgba(57,61,64,1)}
 .text1,.windvalue1{color:#aaa}
 .metar34compass1{position:relative;width:165px;height:165px;margin:0 auto;z-index:1;text-align:center;align-items:center;justify-content:center;}
-.directiontext{display:flex;font-size:1.2em;position:absolute;text-align:center;align-items:center;justify-content:center;vertical-align: middle;top:35%;width:10rem;left:10%}
+.directiontext{display:flex;font-size:1.2em;position:absolute;text-align:center;align-items:center;justify-content:center;vertical-align: middle;top:35%;width:100%;left:0;right:0}
 
 .directiontext span{color:rgba(0, 155, 180, 1.000)}
 text1{z-index:10;text-align:center;margin:5px 0 auto}
@@ -205,70 +222,67 @@ if ($distanceunit =='mi') {
 
 
   <article>       
-<div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('Temperature', 'Temperature'); ?> </div>   
+<div class=actualt style="background:teal;color:white;">&nbsp;&nbsp;<?php echo w34t('Temperature', 'Temperature'); ?> </div>   
 
- <div class="metartempcontainer1"><?php
+<div style="display:flex;flex-direction:column;align-items:center;margin-top:4px;">
+<?php
  if ($tempunit == 'C') {
-	if ($metar34temperaturec >30) {echo '<div class=metartemptoday30>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec >25) {echo '<div class=metartemptoday25>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec >20) {echo '<div class=metartemptoday20>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec >10) {echo '<div class=metartemptoday10>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec >5) {echo '<div class=metartemptoday5>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec >-50) {echo '<div class=metartemptoday0>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34temperaturec =='') {echo '<div class=metartemptoday0>'.$metar34temperaturec."<smalluvunit> N/A";}
+	if ($metar34temperaturec >30) {echo '<div class=metartemptoday30>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec >25) {echo '<div class=metartemptoday25>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec >20) {echo '<div class=metartemptoday20>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec >10) {echo '<div class=metartemptoday10>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec >5) {echo '<div class=metartemptoday5>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec >-50) {echo '<div class=metartemptoday0>'.$metar34temperaturec."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34temperaturec =='') {echo '<div class=metartemptoday0>'.$metar34temperaturec."<smalluvunit> N/A</div>";}
  } else {
-	 if ($metar34temperaturef >86) {echo '<div class=metartemptoday30>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef >77) {echo '<div class=metartemptoday25>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef >68) {echo '<div class=metartemptoday20>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef >50) {echo '<div class=metartemptoday10>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef >41) {echo '<div class=metartemptoday5>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef >-50) {echo '<div class=metartemptoday0>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34temperaturef =='') {echo '<div class=metartemptoday0>'.$metar34temperaturef."<smalluvunit> N/A";}
+	if ($metar34temperaturef >86) {echo '<div class=metartemptoday30>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef >77) {echo '<div class=metartemptoday25>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef >68) {echo '<div class=metartemptoday20>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef >50) {echo '<div class=metartemptoday10>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef >41) {echo '<div class=metartemptoday5>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef >-50) {echo '<div class=metartemptoday0>'.$metar34temperaturef."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34temperaturef =='') {echo '<div class=metartemptoday0>'.$metar34temperaturef."<smalluvunit> N/A</div>";}
  }
-?></smalluvunit></div></div>
-<div class="tword"><?php if ($tempunit == 'F') {echo $metar34temperaturec."&deg;C";} else if ($tempunit == 'C'){echo $metar34temperaturef."&deg;F";}?></div>
+?>
+<div style="font-size:0.75rem;color:<?php echo $text; ?>;margin-top:-16px;text-align:center;"><?php if ($tempunit == 'F') {echo $metar34temperaturec."&deg;C";} else if ($tempunit == 'C'){echo $metar34temperaturef."&deg;F";}?></div>
 </div>
 
-
-
-
-
-
-	 
-<div class="lotemp">
-
-<div class="metardewcontainer1"><?php
+<div style="display:flex;justify-content:space-around;align-items:flex-start;margin-top:14px;">
+  <div style="display:flex;flex-direction:column;align-items:center;">
+<?php
 if ($tempunit == 'C') {
-	if ($metar34dewpointc >30) {echo '<div class=metardewtoday30>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc >25) {echo '<div class=metardewtoday25>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc >20) {echo '<div class=metardewtoday20>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc >10) {echo '<div class=metardewtoday10>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc >5) {echo '<div class=metardewtoday5>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc >-50) {echo '<div class=metardewtoday0>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C";}
-	else if ($metar34dewpointc=='') {echo '<div class=metartemptoday0>'.$metar34dewpointc."<smalluvunit> N/A";}
+	if ($metar34dewpointc >30) {echo '<div class=metardewtoday30>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc >25) {echo '<div class=metardewtoday25>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc >20) {echo '<div class=metardewtoday20>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc >10) {echo '<div class=metardewtoday10>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc >5) {echo '<div class=metardewtoday5>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc >-50) {echo '<div class=metardewtoday0>'.$metar34dewpointc."<smalluvunit> &nbsp;&deg;C</div>";}
+	else if ($metar34dewpointc=='') {echo '<div class=metartemptoday0>'.$metar34dewpointc."<smalluvunit> N/A</div>";}
 } else {
-	if ($metar34dewpointf>86) {echo '<div class=metartemptoday30>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf>77) {echo '<div class=metartemptoday25>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf>68) {echo '<div class=metartemptoday20>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf>50) {echo '<div class=metartemptoday10>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf>41) {echo '<div class=metartemptoday5>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf>-50) {echo '<div class=metartemptoday0>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F";}
-	else if ($metar34dewpointf=='') {echo '<div class=metartemptoday0>'.$metar34dewpointf."<smalluvunit> N/A";}
+	if ($metar34dewpointf>86) {echo '<div class=metartemptoday30>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf>77) {echo '<div class=metartemptoday25>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf>68) {echo '<div class=metartemptoday20>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf>50) {echo '<div class=metartemptoday10>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf>41) {echo '<div class=metartemptoday5>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf>-50) {echo '<div class=metartemptoday0>'.$metar34dewpointf."<smalluvunit> &nbsp;&deg;F</div>";}
+	else if ($metar34dewpointf=='') {echo '<div class=metartemptoday0>'.$metar34dewpointf."<smalluvunit> N/A</div>";}
 }
-?></smalluvunit></div></div> 
- <div class="dewword"><?php echo w34t('Dewpoint', 'Dewpoint'); ?></div>
+?>
+    <div style="font-size:0.7rem;color:<?php echo $text; ?>;margin-top:-16px;text-align:center;"><?php echo w34t('Dewpoint', 'Dewpoint'); ?></div>
+  </div>
 
- <div class="metarhumcontainer1"><?php 
-if ($metar34humidity >85) {echo '<div class=metarhumtoday85-100>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
-else if ($metar34humidity >70) {echo '<div class=metarhumtoday70-85>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
-else if ($metar34humidity  >35) {echo '<div class=metarhumtoday35-70>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
-else if ($metar34humidity >=0) {echo '<div class=metarhumtoday0-35>'.$metar34humidity ."<smalluvunit> &nbsp;%";}
-else if ($metar34humidity=='') {echo '<div class=metarhumtoday0-35><smalluvunit> N/A';}
-?></smalluvunit></div></div> 
-<div class="humword">&nbsp;<?php echo w34t('Humidity', 'Humidity'); ?></div>
+  <div style="display:flex;flex-direction:column;align-items:center;">
+<?php 
+if ($metar34humidity >85) {echo '<div class=metarhumtoday85-100>'.$metar34humidity ."<smalluvunit> &nbsp;%</div>";}
+else if ($metar34humidity >70) {echo '<div class=metarhumtoday70-85>'.$metar34humidity ."<smalluvunit> &nbsp;%</div>";}
+else if ($metar34humidity  >35) {echo '<div class=metarhumtoday35-70>'.$metar34humidity ."<smalluvunit> &nbsp;%</div>";}
+else if ($metar34humidity >=0) {echo '<div class=metarhumtoday0-35>'.$metar34humidity ."<smalluvunit> &nbsp;%</div>";}
+else if ($metar34humidity=='') {echo '<div class=metarhumtoday0-35><smalluvunit> N/A</div>';}
+?>
+    <div style="font-size:0.7rem;color:<?php echo $text; ?>;margin-top:-16px;text-align:center;"><?php echo w34t('Humidity', 'Humidity'); ?></div>
+  </div>
 </div>
-  
-</article>  
+  </article>
   
    
   <article>

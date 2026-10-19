@@ -274,10 +274,12 @@ function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
   .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: <?php echo $fcInk; ?>; }
   .fc-table thead th { position: sticky; top: 0; z-index: 1; background: <?php echo $fcBg; ?>; color: <?php echo $fcHead; ?>;
     font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid <?php echo $fcRule; ?>; text-align: center; white-space: nowrap; }
-  .fc-table td { padding: 5px 6px; text-align: center; border-bottom: 1px solid <?php echo $fcLine; ?>; white-space: nowrap; vertical-align: middle; }
+  .fc-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid <?php echo $fcLine; ?>; white-space: nowrap; vertical-align: middle; }
   .fc-table th.fc-first, .fc-table td.fc-first { text-align: left; padding-left: 8px; }
   .fc-table th.fc-cond, .fc-table td.fc-cond { text-align: left; }
-  .fc-table td.fc-cond img { width: 30px; height: 24px; margin: 0 8px 0 0 !important; vertical-align: middle; display: inline-block; }
+  .fc-ci { display: inline-flex; align-items: center; gap: 8px; }
+  .fc-table td.fc-cond img { width: 28px; height: 20px; margin: 0 !important; display: block; flex: none;
+    <?php if ($theme === 'light') echo 'filter: drop-shadow(0 0 1px rgba(0,0,0,.45));'; /* white cloud icons on white */ ?> }
   .fc-u { font-size: 10px; margin-left: 2px; opacity: .85; }
   .fc-credit { font-size: 9px; color: #999; padding: 10px 8px 2px; }
   .fc-credit a { color: #999 !important; }
@@ -298,7 +300,7 @@ function fc_close($open) { return $open ? str_replace('<', '</', $open) : ''; }
 <?php for ($k = 0; $k < 14; $k++) { ?>
   <tr>
     <td class="fc-first"><?php echo $forecastTime[$k]; ?></td>
-    <td class="fc-cond"><img src="css/svg/<?php echo $forecastIcon[$k]; ?>" alt=""><?php echo $forecastsummary[$k]; ?></td>
+    <td class="fc-cond"><span class="fc-ci"><img src="css/svg/<?php echo $forecastIcon[$k]; ?>" alt=""><?php echo $forecastsummary[$k]; ?></span></td>
     <td><?php echo $colorTempHigh[$k] . $forecastTempHigh[$k] . '&deg;' . $tempunit . fc_close($colorTempHigh[$k]); ?></td>
     <td><?php echo $forecastPrecip[$k]; ?></td>
     <td><?php echo $forecastWindSpeedMax[$k]; ?><span class="fc-u"><?php echo $windunit; ?></span></td>

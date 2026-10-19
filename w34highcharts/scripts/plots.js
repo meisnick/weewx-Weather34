@@ -23,10 +23,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    windroseplot: [addWindRoseOptions, setWindRose, create_windrose_chart],
 	    windrosegustplot: [addWindRoseOptions, setWindRose, create_windrose_chart],
 	    lightningplot: [addWeekOptions, create_lightning_chart],
-	    lightningmonthplot: [create_lightning_month_chart],
 	    rainplot: [addWeekOptions, create_rain_chart],
 	    rainmonthplot: [create_rain_month_chart],
-	    luminosityplot: [addWeekOptions, create_luminosity_chart],
 	    radiationplot: [addWeekOptions, create_radiation_chart],
 	    radsmallplot: [addYearOptions, setRadSmall, create_radiation_chart],
 	    raduvplot: [addWeekOptions, create_raduv_chart],
@@ -61,8 +59,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    rainsmallplot: [addYearOptions, setRainSmall, create_rain_chart],
 	    strikesmallplot: [addYearOptions, setStrikeSmall, create_strike_chart],
 	    lightningplot: [addYearOptions, create_lightning_chart],
-	    lightningmonthplot: [create_lightning_month_chart],
-	    luminosityplot: [addYearOptions, create_luminosity_chart],
 	    radiationplot: [addYearOptions, create_radiation_chart],
 	    raduvplot: [addYearOptions, create_raduv_chart],
 	    airqualityplot: [addYearOptions, create_aq_chart],
@@ -80,7 +76,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    strikesmallplot: [post_create_small_chart],
 
 	    rainmonthplot: [remove_range_selector],
-	    lightningmonthplot: [remove_range_selector],
 	    radsmallplot: [post_create_small_chart],
 	    uvsmallplot: [post_create_small_chart],
 	    windroseplot: [post_create_windrose_chart],
@@ -111,8 +106,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    rainsmallplot: [['bar_rain_week.json'],['year.json']],
 	    strikesmallplot: [['bar_rain_week.json'],['year.json']],
 	    lightningplot: [['bar_rain_week.json'],['year.json']],
-	    lightningmonthplot: [['year.json'],['year.json']],
-	    luminosityplot: [['solar_week.json'],['year.json']],
 	    radiationplot: [['solar_week.json'],['year.json']],
 	    raduvplot: [['solar_week.json'],['year.json']],
 	    airqualityplot: [['solar_week.json'],['year.json']],
@@ -127,9 +120,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	var barcolors = [[28.0,"#3369e7"],[28.25,"#3b9cac"],[28.5,"#00a4b4"],[28.75,"#00a4b4"],[29.0,"#88b04b"],[29.25,"#e6a141"],[29.5,"#ff7c39"],[29.75,"#efa80f"],[30.0,"#d05f2d"],[30.25,"#d86858"],[30.5,"#fd7641"],[30.75,"#de2c52"],[31,"#de2c52"]];
 	var windcolors = [[0,"#3369e7"],[2.5,"#3b9cac"],[5,"#00a4b4"],[7.5,"#00a4b4"],[10,"#88b04b"],[12.5,"#e6a141"],[15,"#ff7c39"],[17.5,"#efa80f"],[20,"#d05f2d"],[22.5,"#d86858"],[25,"#fd7641"],[27.5,"#de2c52"],[30,"#de2c52"]];
 	var aqcolors = [[50,"#90b12a"],[100,"#ba923a"],[150,"#ff7c39"],[200,"#ff7c39"],[300,"#916392"],[400,"#d05041"]];
-	var plotsnoswitch = ['rainmonthplot','lightningmonthplot','windroseplot','windrosegustplot','bartempwindplot','windbarbplot'];
+	var plotsnoswitch = ['rainmonthplot','windroseplot','windrosegustplot','bartempwindplot','windbarbplot'];
 	var radialplots = ['tempallplot','dewpointplot','temperatureplot','indoorplot','humidityplot','barometerplot','tempderivedplot','apparentplot','windplot','airqualityplot','cloudcoverplot'];
-	var compareplots = ['dewpointplot','temperatureplot','tempallplot','indoorplot','humidityplot','barometerplot','tempderivedplot','apparentplot','windplot','lightningplot','luminosityplot','radiationplot','uvplot','airqualityplot','cloudcoverplot'];
+	var compareplots = ['dewpointplot','temperatureplot','tempallplot','indoorplot','humidityplot','barometerplot','tempderivedplot','apparentplot','windplot','lightningplot','radiationplot','uvplot','airqualityplot','cloudcoverplot'];
 	var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 	var windrosespans = ["1h","24h","Week","Month","Year"];
         var compassdirections = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
@@ -1320,65 +1313,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.yAxis[2].min = 0;
 	    options.yAxis[2].title.text = "Energy";
 	    options.yAxis[2].allowDecimals = true;
-	    options.xAxis[0].minTickInterval =0;
-	    return options;
-	};
-	
-	function create_lightning_month_chart(options, span, seriesData, units){
-	    var data = reinflate_time(seriesData[0].lightningplot.lightningsum);
-	    var index = 0;
-	    var month_data = [];
-	    var month_name = [];
-	    month_name[index] = getTranslation(monthNames[new Date(data[0][0]).getMonth()]);
-	    month_data[index] = data[0][1];
-	    for (var i = 1; i < data.length; i++){
-	        var new_month = getTranslation(monthNames[new Date(data[i][0]).getMonth()]);
-	        if (month_name[index] != new_month){
-	            index  +=1;
-	            month_name[index] = new_month;
-	            month_data[index] = data[i][1];
-	        }
-	        else
-	           month_data[index] +=  data[i][1];
-	    }
-	    options = create_chart_options(options, 'column', 'Monthly Lightning Strikes',null,[['Lightning Strikes', 'column']], month_name);
-	    options.series[0].data = month_data;
-	    options.plotOptions.column.pointWidth = 10;
-	    options.yAxis[0].title.text = getTranslation("Strikes");
-	    options.yAxis[0].min = 0;
-	    options.yAxis[0].allowDecimals = false;
-	    options.xAxis[0].minTickInterval =0;
-	    options.xAxis[0].type ='category';
-	    options.xAxis[0].labels = {formatter: function (){return month_name[this.value]}};
-	    return options;
-	};
-	
-	function create_luminosity_chart(options, span, seriesData, units){
-	    if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'Luminosity Spectrum/Lux/Infrared Max & Avg', null, [['Spectrum Max', 'column'], ['Spectrum Avg', 'column'], ['Lux Max', 'column'], ['Lux Avg', 'column'], ['Infrared Max', 'column'], ['Infrared Avg', 'column']]);
-	        options.series[0].data = reinflate_time(seriesData[0].uvplot.full_spectrumMax);
-	        options.series[1].data = reinflate_time(seriesData[0].uvplot.full_spectrumAvg);
-	        options.series[2].data = reinflate_time(seriesData[0].uvplot.luxMax);
-	        options.series[3].data = reinflate_time(seriesData[0].uvplot.luxAvg);
-	        options.series[4].data = reinflate_time(seriesData[0].uvplot.infraredMax);
-	        options.series[5].data = reinflate_time(seriesData[0].uvplot.infraredAvg);
-	    }else if (span[0] == "weekly"){
-	        if (compare_dates)
-	            options = create_chart_options(options, 'spline', 'Luminosity Spectrum/Lux/Infrared', null, [['Spectrum', 'spline'], ['Lux', 'spline'], ['Infrared', 'spline'],['Spectrum', 'spline',,,,,1], ['Lux', 'spline',,,,,1], ['Infrared', 'spline',,,,,1]]);
-	        else
-	            options = create_chart_options(options, 'spline', 'Luminosity Spectrum/Lux/Infrared', null, [['Spectrum', 'spline'], ['Lux', 'spline'], ['Infrared', 'spline']]);
-	        options.series[0].data = reinflate_time(seriesData[0].uvplot.full_spectrumWeek);
-	        options.series[1].data = reinflate_time(seriesData[0].uvplot.luxWeek);
-	        options.series[2].data = reinflate_time(seriesData[0].uvplot.infraredWeek);
-	        if (compare_dates){
-	            create_compare_days_ts(options.series[0].data, seriesData[1].uvplot.full_spectrumWeek);
-	            options.series[3].data = reinflate_time(seriesData[1].uvplot.full_spectrumWeek, options.series[0].data[0][0]);
-	            options.series[4].data = reinflate_time(seriesData[1].uvplot.luxWeek, options.series[0].data[0][0]);
-	            options.series[5].data = reinflate_time(seriesData[1].uvplot.infraredWeek, options.series[0].data[0][0]);
-	        }
-	    }
-	    options.yAxis[0].min = 0;
-	    options.yAxis[0].allowDecimals = true;
 	    options.xAxis[0].minTickInterval =0;
 	    return options;
 	};

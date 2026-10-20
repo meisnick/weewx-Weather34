@@ -108,11 +108,9 @@ else               { $storm = $lang['Quiet'];          $kp_color = '#90b12a'; }
 $is_dark   = ($theme !== 'light');
 $bg        = $is_dark ? '#151819' : '#fff';
 $bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
-$bg_card   = $is_dark ? '#252729' : '#e8eaef';
 $text      = $is_dark ? '#ddd'    : '#222';
 $text_dim  = $is_dark ? '#777'    : '#666';
 $border    = $is_dark ? '#2e3033' : '#ccc';
-$box_none  = $is_dark ? '#393d40' : '#d0d4db';
 $grid_ln   = $is_dark ? '#2a2c2f' : '#e0e2e6';
 
 function rsg_cls(int $s): string {
@@ -143,19 +141,18 @@ $south_json = json_encode($south_pts);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/tokens.css">
 <style>
+:root {
+  --aurora-bg: var(--page-bg);
+  --aurora-chrome: var(--pop-chrome-bg);
+  --aurora-card: var(--pop-chrome-card);
+}
 :root, [data-theme="dark"] {
-  --aurora-bg: #151819;
-  --aurora-chrome: #1e2124;
-  --aurora-card: #252729;
   --aurora-text: #ddd;
-  --aurora-text-dim: #8a8f99;
-  --aurora-border: #2e3033;
+  --aurora-text-dim: var(--pop-chrome-text-dim);
+  --aurora-border: var(--pop-chrome-border);
   --aurora-box-none: #393d40;
 }
 [data-theme="light"] {
-  --aurora-bg: #fff;
-  --aurora-chrome: #f0f2f5;
-  --aurora-card: #e8eaef;
   --aurora-text: #222;
   --aurora-text-dim: #666;
   --aurora-border: #ccc;
@@ -202,7 +199,7 @@ body { display: flex; flex-direction: column; }
   border-radius: 3px;
   border-bottom: 3px solid rgba(0,0,0,0.3);
   background: <?php echo $kp_color; ?>;
-  color: #fff;
+  color: var(--pop-badge-text);
   white-space: nowrap;
 }
 .pop-prob-badge {
@@ -212,7 +209,7 @@ body { display: flex; flex-direction: column; }
   border-radius: 3px;
   border-bottom: 3px solid rgba(0,0,0,0.3);
   background: <?php echo ($aurora_prob >= 50) ? '#d35d4e' : (($aurora_prob >= 25) ? '#ff7c39' : (($aurora_prob >= 10) ? '#e6a141' : (($aurora_prob > 0) ? '#90b12a' : 'var(--aurora-box-none)'))); ?>;
-  color: #fff;
+  color: var(--pop-badge-text);
   white-space: nowrap;
 }
 .pop-storm {
@@ -228,7 +225,7 @@ body { display: flex; flex-direction: column; }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 1px;
 }
-.mod-aurora-rsg-mini-letter { font-size: 12px; font-weight: bold; color: #fff; line-height: 1; font-family: weathertext2, Arial; }
+.mod-aurora-rsg-mini-letter { font-size: 12px; font-weight: bold; color: var(--pop-badge-text); line-height: 1; font-family: weathertext2, Arial; }
 .mod-aurora-rsg-mini-val    { font-size: 7px; color: rgba(255,255,255,0.8); }
 .mod-aurora-rsg-scale-0 { background: var(--aurora-box-none); }
 .mod-aurora-rsg-scale-1 { background: #ebd825; }

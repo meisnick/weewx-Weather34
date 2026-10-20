@@ -10,7 +10,7 @@ $theme = (isset($_GET['theme']) && $_GET['theme'] === 'light') ? 'light' : 'dark
 <link rel="stylesheet" href="css/tokens.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;background:#000}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--radar-black);}
 iframe{width:100%;height:100%;border:none;display:block}
 </style>
 </head>

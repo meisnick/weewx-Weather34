@@ -36,18 +36,7 @@ html,body{background-color:var(--pop-bg);margin:0;padding:0;font-size:13px;font-
 .grid>article img{max-width:100%}
 .weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
 .weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-link);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 10px 0 auto;font-family:arial;height:20px}
-[data-theme="light"] .weather34darkbrowser[url]:after{color:#000;}
-blue{color:#01a4b4}orange{color:#009bb4}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:#aaa}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#cc0}purple{color:#916392}meteotextshowertext{font-size:1.2rem;color:#009bb4}meteorsvgicon{color:#f5f7fc}
-[data-theme="light"] orange{color:#007a8c}
-[data-theme="light"] orange1{color:#007a8c}
-[data-theme="light"] green{color:#555}
-[data-theme="light"] red{color:#d65b4a}
-[data-theme="light"] red6{color:#b54030}
-[data-theme="light"] value{color:#000}
-[data-theme="light"] yellow{color:#b38600}
-[data-theme="light"] purple{color:#7a4f7b}
-[data-theme="light"] meteotextshowertext{color:#007a8c}
-[data-theme="light"] meteorsvgicon{color:#000}
+blue{color:var(--pop-blue)}orange{color:var(--pop-cyan)}orange1{position:relative;color:var(--pop-cyan);margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:var(--pop-green-dim)}red{color:var(--pop-red)}red6{color:var(--pop-red-dark)}value{color:var(--pop-value)}yellow{color:var(--pop-yellow-dim)}purple{color:var(--pop-purple)}meteotextshowertext{font-size:1.2rem;color:var(--pop-cyan)}meteorsvgicon{color:var(--pop-ink)}
 .moonphasesvg{align-items:right;justify-content:center;display:flex;max-height:120px}
 .moonhead{margin-bottom:12px}
 .moonphasetext{font-size:.8rem;color:var(--pop-ink);position:absolute;display:inline;left:125px;top:100px}

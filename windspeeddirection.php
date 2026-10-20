@@ -7,6 +7,10 @@ require_once('w34CombinedData.php');require_once('common.php');?>
 .mod-wind .thearrow2:before{content:'  o o o';color:rgba(255, 124, 57, 1);font-family:Arial, Helvetica, sans-serif;font-size:6px;width:6px;height:6px;position:absolute;z-index:9;left:2px;top:-5px;border:2px solid RGBA(255,255,255,0.8);-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
 .mod-wind .thearrow1{-webkit-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-moz-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-o-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);-ms-transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);transform:rotate(<?php echo $weather["wind_direction_avg"];?>deg);position:absolute;z-index:150;top:0;left:50%;margin-left:-5px;-webkit-transform-origin:50% 100%;-moz-transform-origin:50% 100%;-o-transform-origin:50% 100%;-ms-transform-origin:50% 100%;transform-origin:50% 100%;-webkit-transition-duration:0s;-moz-transition-duration:0s;-o-transition-duration:0s;-ms-transition-duration:0s;transition-duration:0s;background:0}
 .mod-wind .thearrow1:after{content:'';position:absolute;text-align:left;left:50%;font-size:8px;top:0;width:0;height:0;-webkit-border-radius:0;border-radius:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid rgb(144, 177, 42);border-bottom:0;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transition-duration:3s;-moz-transition-duration:3s;-o-transition-duration:3s;-ms-transition-duration:3s;transition-duration:3s;background:0}
+.mod-wind .thearrow3{transform:rotate(<?php echo (int)$weather["wind_gust_dir"];?>deg);position:absolute;z-index:140;top:0;left:50%;margin-left:-5px;width:10px;height:50%;transform-origin:50% 100%;background:0}
+.mod-wind .thearrow3:after{content:'';position:absolute;left:50%;top:0;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid rgb(0,164,180);border-bottom:0;transform:translate(-50%,-50%)}
+.mod-wind .thearrow3:before{content:'  o o o o';color:rgb(0,164,180);font-family:Arial, Helvetica, sans-serif;font-size:4px;width:1px;height:1px;position:absolute;z-index:1;left:3px;top:-4px;border:2px dotted RGBA(255,255,255,0.8);border-radius:100%}
+.mod-wind .wind-gust-dir{color:rgb(0,164,180)}
 .mod-wind .thearrow1:before{content:'  o o o o';color:rgb(144, 177, 42);font-family:Arial, Helvetica, sans-serif;font-size:4px;width:1px;height:1px;position:absolute;z-index:1;left:3px;top:-4px;border:2px dotted RGBA(255,255,255,0.8);-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
 </style>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>
@@ -16,7 +20,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
     <div class="mod-wind-col-left">
       <div class="mod-wind-block-small top-block">
         <div class="mod-wind-label wind-max-top"><?php echo w34t('MaxLabel', 'Max');?> <value class="wind-max-gust-val"><?php echo number_format($weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
-        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?> (<?php echo $weather["winddmaxtime"];?>)</div>
+        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?> (<?php echo $weather["winddmaxtime"];?>)<?php if ($weather["wind_gust_max_dir"] !== null) echo ' <span class="wind-gust-dir">' . w34_compass($weather["wind_gust_max_dir"]) . '</span>';?></div>
       </div>
       
       <div class="mod-wind-block mid-block">
@@ -72,6 +76,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
           <div class="homeweathercompass-line1">
             <div class="thearrow2"></div>
             <div class="thearrow1"></div>
+            <?php if ($weather["wind_gust_dir"] !== null && $weather["wind_gust_speed"] > 0) echo '<div class="thearrow3"></div>';?>
           </div>
         </div>
         <div class="mod-wind-center-text">
@@ -103,7 +108,7 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       </div>
       
       <div class="mod-wind-block mid-block">
-        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?></div>
+        <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?><?php if ($weather["wind_gust_dir"] !== null && $weather["wind_gust_speed"] > 0) echo ' <span class="wind-gust-dir">' . w34_compass($weather["wind_gust_dir"]) . '</span>';?></div>
         <value>
           <?php echo number_format($weather["wind_gust_speed"],1);?>
           <unit><?php echo $weather["wind_units"];?></unit>

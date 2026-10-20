@@ -378,7 +378,7 @@ else{echo w34t('Northdir', 'Due <span>North<br></span>');}?></div>
  
   <article>
   <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('AirportData', 'Airport Data'); ?> </div>   
-  <stationid><?php echo $metar34stationid ; ?></stationid><br>
+  <stationid><?php echo $metar34stationid ; ?></stationid> <?php echo w34_fltcat_badge($metar34fltcat, '11px'); ?><br>
   <div class="lotemp">
    <?php
 

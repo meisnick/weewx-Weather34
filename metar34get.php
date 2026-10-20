@@ -13,6 +13,7 @@ $metar34time       = $parsed_json->{'data'}[0]->{'observed'};
 $metar34raw       = $parsed_json->{'data'}[0]->{'raw_text'};
 $metar34stationid       = $parsed_json->{'data'}[0]->{'icao'};
 $metar34stationname       = $parsed_json->{'data'}[0]->{'station'}->{'name'};
+$metar34fltcat       = $parsed_json->{'data'}[0]->{'flight_category'} ?? '';
 
 $metar34lat = $parsed_json->{'data'}[0]->{'station'}->{'geometry'}->{'coordinates'}[1];
 $metat34lon = $parsed_json->{'data'}[0]->{'station'}->{'geometry'}->{'coordinates'}[0];

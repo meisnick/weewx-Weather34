@@ -918,4 +918,10 @@ $lang['HcViewMonths']             = 'Ver {count} mes(es)';
 $lang['HcViewYears']              = 'Ver {count} año(s)';
 $lang['HcViewYtd']                = 'Desde comienzo de año';
 $lang['HcLoading']                = 'Cargando...';
+
+# METAR flight category hover text (w34_i18n.php w34_fltcat_badge)
+$lang['FltCatVFR']                = 'Reglas de vuelo visual';
+$lang['FltCatMVFR']               = 'VFR marginal';
+$lang['FltCatIFR']                = 'Reglas de vuelo por instrumentos';
+$lang['FltCatLIFR']               = 'IFR bajo';
 ?>

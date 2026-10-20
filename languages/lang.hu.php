@@ -919,4 +919,10 @@ $lang['HcViewMonths']             = '{count} hónap';
 $lang['HcViewYears']              = '{count} év';
 $lang['HcViewYtd']                = 'Év elejétől';
 $lang['HcLoading']                = 'Betöltés...';
+
+# METAR flight category hover text (w34_i18n.php w34_fltcat_badge)
+$lang['FltCatVFR']                = 'Látva repülési szabályok';
+$lang['FltCatMVFR']               = 'Marginális VFR';
+$lang['FltCatIFR']                = 'Műszeres repülési szabályok';
+$lang['FltCatLIFR']               = 'Alacsony IFR';
 ?>

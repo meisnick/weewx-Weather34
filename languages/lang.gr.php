@@ -920,4 +920,10 @@ $lang['HcViewMonths']             = 'Προβολή {count} μηνών';
 $lang['HcViewYears']              = 'Προβολή {count} ετών';
 $lang['HcViewYtd']                = 'Από την αρχή του έτους';
 $lang['HcLoading']                = 'Φόρτωση...';
+
+# METAR flight category hover text (w34_i18n.php w34_fltcat_badge)
+$lang['FltCatVFR']                = 'Κανόνες Πτήσης Εξ Όψεως';
+$lang['FltCatMVFR']               = 'Οριακό VFR';
+$lang['FltCatIFR']                = 'Κανόνες Πτήσης με Όργανα';
+$lang['FltCatLIFR']               = 'Χαμηλό IFR';
 ?>

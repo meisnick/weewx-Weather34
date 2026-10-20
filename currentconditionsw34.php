@@ -27,7 +27,16 @@ if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]>=1999){ech
 else if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]<1999){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
 else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
 else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+}
+//nearby airport and its flight category, under the cloudbase pill; opens the METAR popup
+$fltcat = w34_fltcat_badge($_d->{'flight_category'} ?? '', '8px');
+if (!empty($_d->{'icao'}) && $fltcat !== '' && filesize('jsondata/me.txt') >= 160) {
+  echo '<a class="metarpill" href="pop_metarnearby.php" data-lity><div class="cloudconvertercircle">' . htmlspecialchars($_d->{'icao'}) . ' ' . $fltcat . '</div></a>';
 }?></div>
+<style>
+.mod-conditions .metarpill { display: block; margin-top: 4px; color: inherit; text-decoration: none; }
+.mod-conditions .metarpill .cloudconvertercircle { display: flex; justify-content: center; gap: 5px; height: 1rem; line-height: 16px; letter-spacing: .3px; }
+</style>
 <div class="forecasticoncurrent"><span1>
 <?php 
 //homeweatherstation weather34 current conditions using hardware values

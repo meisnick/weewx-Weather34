@@ -29,7 +29,7 @@ if (isset($_GET['theme'])) {
     .weather34darkbrowser[url]::after { margin: 11px 44px 0 auto; }
     .alert-row { display: flex; flex-direction: row; height: 120px; padding: 10px 0; background-color: whitesmoke; }
     .alert-row-narrow { display: flex; flex-direction: row; padding: 10px; border-radius: 4px; margin-bottom: 8px; font-size: 12px; align-items: center; }
-    .alert-text-container { font-family: Arial, Helvetica, sans-serif; font-size: 11px; display: flex; flex-direction: column; justify-content: center; margin-right: 10px; color: #000; }
+    .alert-text-container { font-family: Arial, Helvetica, sans-serif; font-size: 11px; display: flex; flex-direction: column; justify-content: center; margin-right: 10px; color: var(--modal-link); }
   </style>
 </head>
 <body>

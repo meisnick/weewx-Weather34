@@ -107,18 +107,22 @@ function w34_compass($deg) {
     return w34_dir($points[((int)round(fmod($deg + 360, 360) / 22.5)) % 16]);
 }
 
-// METAR flight category as a coloured badge (FAA chart colours); '' when the report has none.
+// METAR flight category as a coloured badge in the dashboard's status colours (good green, cold blue, danger red,
+// UV purple; css/tokens.css + framework.base.css, with fallbacks); '' when the report has none.
 // $cat defaults to the category in jsondata/me.txt.
 function w34_fltcat_badge($cat = null, $size = '9px') {
     if ($cat === null) {
         $me = @json_decode(@file_get_contents(__DIR__ . '/jsondata/me.txt'), true);
         $cat = isset($me['data'][0]['flight_category']) ? $me['data'][0]['flight_category'] : '';
     }
-    $info = array('VFR' => array('#2e9e3e', 'Visual Flight Rules'), 'MVFR' => array('#2f6fd6', 'Marginal VFR'),
-        'IFR' => array('#d23b3b', 'Instrument Flight Rules'), 'LIFR' => array('#b03ab0', 'Low IFR'));
+    $info = array('VFR' => array('var(--green, #90b12a)', 'Visual Flight Rules'),
+        'MVFR' => array('var(--temp-cold-2, #3369e7)', 'Marginal VFR'),
+        'IFR' => array('var(--red, #d35d4e)', 'Instrument Flight Rules'),
+        'LIFR' => array('var(--uv-purple, #a475cb)', 'Low IFR'));
     if (!isset($info[$cat])) return '';
     return '<span title="' . w34t('FltCat' . $cat, $info[$cat][1]) . '" style="display:inline-block;padding:0 4px;border-radius:3px;'
-        . 'background:' . $info[$cat][0] . ';color:#fff;font-size:' . $size . ';line-height:1.5;font-weight:bold;letter-spacing:.3px">' . $cat . '</span>';
+        . 'background:' . $info[$cat][0] . ';color:#fff;text-shadow:var(--badge-text-shadow, none);font-size:' . $size
+        . ';line-height:1.5;font-weight:bold;letter-spacing:.3px">' . $cat . '</span>';
 }
 
 // Meteor shower event text, e.g. 'Orionids peak', 'Approaching Lyrids' or the popup's

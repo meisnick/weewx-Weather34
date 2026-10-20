@@ -199,7 +199,7 @@ switch ($lang) {
 
 
 //path to language files. English is loaded first and merged under the selected language, so keys a
-//translation lacks (or a language with no file, e.g. br/ar) render in English instead of blank. Plain
+//translation lacks (or a language with no file of its own) render in English instead of blank. Plain
 //include, not include_once: this file can run twice per request and resets $lang to the language code above.
 include __DIR__ . '/languages/lang.en.php';
 if ($lang_file !== 'lang.en.php' && is_file(__DIR__ . '/languages/' . $lang_file)) {

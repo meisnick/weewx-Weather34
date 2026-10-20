@@ -439,6 +439,7 @@ if (!empty($webcamurl) && $webcamurl != ' ' && $webcamurl != 'Null' && $webcamur
           <a href="index.php?lang=cat"><img src="img/flags/cat.svg" title="Català" class="flags" alt="cat"/></a>&nbsp;
           <a href="index.php?lang=sp"><img src="img/flags/sp.svg" title="Español" class="flags" alt="sp"/></a>&nbsp;
           <a href="index.php?lang=tr"><img src="img/flags/tr.svg" title="Türkçe" class="flags" alt="tr"/></a>&nbsp;
+          <a href="index.php?lang=br"><img src="img/flags/br.svg" title="Português (Brasil)" class="flags" alt="br"/></a>&nbsp;
         </li>
 
         <li class="flagsbottom">

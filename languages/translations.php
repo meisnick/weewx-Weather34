@@ -62,7 +62,8 @@ $months = array('January', 'Febuary', 'March', 'April', 'May', 'June', 'July', '
 $monthsEn = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 $w34_hc_locales = array('dk' => 'da-DK', 'nl' => 'nl-NL', 'pl' => 'pl-PL', 'dl' => 'de-DE', 'it' => 'it-IT', 'sp' => 'es-ES',
-    'cat' => 'ca-ES', 'fr' => 'fr-FR', 'gr' => 'el-GR', 'tr' => 'tr-TR', 'hu' => 'hu-HU', 'no' => 'nb-NO', 'sw' => 'sv-SE');
+    'cat' => 'ca-ES', 'fr' => 'fr-FR', 'gr' => 'el-GR', 'tr' => 'tr-TR', 'hu' => 'hu-HU', 'no' => 'nb-NO', 'sw' => 'sv-SE',
+    'br' => 'pt-BR');
 $hcLang = null;
 if (!w34_is_english()) {
     $hcLang = array(

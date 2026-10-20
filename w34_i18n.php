@@ -18,7 +18,8 @@ function w34_html_lang() {
     global $lang_file;
     $tags = array('lang.dk.php' => 'da', 'lang.nl.php' => 'nl', 'lang.pl.php' => 'pl', 'lang.dl.php' => 'de',
         'lang.it.php' => 'it', 'lang.sp.php' => 'es', 'lang.cat.php' => 'ca', 'lang.fr.php' => 'fr',
-        'lang.gr.php' => 'el', 'lang.tr.php' => 'tr', 'lang.hu.php' => 'hu', 'lang.no.php' => 'nb', 'lang.sw.php' => 'sv');
+        'lang.gr.php' => 'el', 'lang.tr.php' => 'tr', 'lang.hu.php' => 'hu', 'lang.no.php' => 'nb', 'lang.sw.php' => 'sv',
+        'lang.br.php' => 'pt-BR');
     return isset($lang_file, $tags[$lang_file]) ? $tags[$lang_file] : 'en';
 }
 

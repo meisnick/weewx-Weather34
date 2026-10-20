@@ -1041,6 +1041,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.plotOptions.series.turboThreshold = 0; //Need this to work around highcharts bug with wind barb 
 	    options.series[0].data = wb;
 	    options.series[1].data = wb1;
+	    // why: offset xAxis by 20px and barb series by -10px to prevent wind barb glyphs from colliding with x-axis baseline and datetime labels
 	    options.xAxis[0].offset = 20;
 	    options.series[0].yOffset = -10;
 	    options.series[0].vectorLength = 20;
@@ -1093,25 +1094,31 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	function setWindRose(options){
+	    var isNarrow = (window.innerWidth < 600);
 	    options.legend= {
-	        align: 'right',
-	        verticalAlign: 'top',
-	        y: 100,
-	        layout: 'vertical',
-	        text: getTranslation('Wind Speed'),
+	        align: isNarrow ? 'center' : 'right',
+	        verticalAlign: isNarrow ? 'bottom' : 'middle',
+	        layout: isNarrow ? 'horizontal' : 'vertical',
 	        itemStyle: {font: '8pt Trebuchet MS, Verdana, sans-serif'},
 	        enabled: true
 	    };
 	    options.chart.polar = true;
 	    options.chart.type = 'column';
-	    options.chart.pane = {size: '100%'};
+	    options.chart.pane = {size: isNarrow ? '75%' : '85%'};
+	    options.pane = {size: isNarrow ? '75%' : '85%'};
 	    options.title = {text: getTranslation('Wind Rose')};
 	    options.tooltip.split = false; 
 	    options.tooltip.shared = false;
 	    options.tooltip.valueSuffix ='%';
-	    options.xAxis.tickmarkPlacement = "on";
+	    options.xAxis[0].tickmarkPlacement = "on";
 	    options.xAxis[0].showLastLabel = false;
-	    options.xAxis[0].labels = Object.assign({}, options.xAxis[0].labels, {formatter: function () {return getTranslation(String(this.value));}});
+	    options.xAxis[0].labels = Object.assign({}, options.xAxis[0].labels, {
+	        formatter: function () {
+	            var val = this.value;
+	            if (val === '16' || val === 16) return '';
+	            return getTranslation(String(val));
+	        }
+	    });
 	    options.yAxis= {
 	        lineWidth: 1,
 	        minorGridLineWidth: 0,
@@ -1204,10 +1211,25 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	 
 	function post_create_windrose_chart(chart){
+	    var isNarrow = (window.innerWidth < 600);
 	    chart.update({
+	        pane: {size: isNarrow ? '75%' : '85%'},
+	        legend: {
+	            align: isNarrow ? 'center' : 'right',
+	            verticalAlign: isNarrow ? 'bottom' : 'middle',
+	            layout: isNarrow ? 'horizontal' : 'vertical'
+	        },
 	        xAxis: {
 	            type: "category",
-	            categories: categories 
+	            categories: categories,
+	            showLastLabel: false,
+	            labels: {
+	                formatter: function () {
+	                    var val = this.value;
+	                    if (val === '16' || val === 16) return '';
+	                    return getTranslation(String(val));
+	                }
+	            }
 	        },
 	        navigator: {enabled: false},
 	        scrollbar: {enabled: false},

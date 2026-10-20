@@ -13,7 +13,7 @@
     <script src="scripts/dark-theme.js" type="text/javascript"></script>
     <script src="scripts/plots_config.js" type="text/javascript"></script>
     <script src="scripts/sandbox-overrides.js?v=20260822f" type="text/javascript"></script>
-    <script src="scripts/plots.js?v=20261020a" type="text/javascript"></script>
+    <script src="scripts/plots.js?v=20261020b" type="text/javascript"></script>
     <script src="scripts/convert_units.js" type="text/javascript"></script>
     <script src="../languages/translations.php" type="text/javascript"></script>
     <script type="text/javascript">
@@ -28,8 +28,8 @@
                 (function(vars){new plot_js({temp:vars['temp'], pressure:vars['pressure'], wind:vars['wind'], rain:vars['rain']}, vars['chart'], vars['span'], "plot_div");}(vars));
             }else{
                 $("#plot_div").css("display", "none");
-                $("#plot_div1").css("display","inline-block");
-                $("#plot_div2").css("display","inline-block");
+                $("#plot_div1").css("display","block");
+                $("#plot_div2").css("display","block");
                 $("#plot_div1").css("height", chartHeight);
                 $("#plot_div2").css("height", chartHeight);
                 (function(vars){new plot_js({temp:vars['temp'], pressure:vars['pressure'], wind:vars['wind'], rain:vars['rain']}, vars['chart'], vars['span'], "plot_div1");}(vars));
@@ -44,10 +44,10 @@
 </style>
   </head>
   <body>
-       <div style="width:100%;">  
+       <div style="width:100%;display:flex;">  
        <div id="plot_div"  style="width:100%;"></div>
-       <div id="plot_div1" style="width:49.6%;display:none;"></div>
-       <div id="plot_div2" style="width:49.6%;display:none;"></div>
+       <div id="plot_div1" style="width:50%;display:none;"></div>
+       <div id="plot_div2" style="width:50%;display:none;"></div>
        </div>
 </body>   
 </html>

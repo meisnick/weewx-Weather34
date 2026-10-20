@@ -1179,7 +1179,7 @@ class w34highchartsYear(SearchList):
 
         # Create uva json
         try:
-                (uva_time_vt, uva_dict) = getDaySummaryVectors(db_lookup(), 'uva', timespan,['max', 'avg'])
+                (uva_time_vt, uva_dict) = getDaySummaryVectors(db_lookup(), 'uva', _timespan,['max', 'avg'])
                 time_ms = [uva_time_vt[0][0] if (x == 0) else uva_time_vt[0][x] - uva_time_vt[0][0] for x in range(len(uva_time_vt[0]))]
                 uvaPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(uva_dict['max'][1], "1f")[-2])
                 uvaMaxRound = [roundNone(x,uvaPlaces) for x in uva_dict['max'][0]]
@@ -1192,7 +1192,7 @@ class w34highchartsYear(SearchList):
                 
         # Create uvb json
         try:
-                (uvb_time_vt, uvb_dict) = getDaySummaryVectors(db_lookup(), 'uvb', timespan,['max', 'avg'])
+                (uvb_time_vt, uvb_dict) = getDaySummaryVectors(db_lookup(), 'uvb', _timespan,['max', 'avg'])
                 time_ms = [uvb_time_vt[0][0] if (x == 0) else uvb_time_vt[0][x] - uvb_time_vt[0][0] for x in range(len(uvb_time_vt[0]))]
                 uvbPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(uvb_dict['max'][1], "1f")[-2])
                 uvbMaxRound = [roundNone(x,uvbPlaces) for x in uvb_dict['max'][0]]
@@ -1205,7 +1205,7 @@ class w34highchartsYear(SearchList):
                 
         # Create uvaWm json
         try:
-                (uvaWm_time_vt, uvaWm_dict) = getDaySummaryVectors(db_lookup(), 'uvaWm', timespan,['max', 'avg'])
+                (uvaWm_time_vt, uvaWm_dict) = getDaySummaryVectors(db_lookup(), 'uvaWm', _timespan,['max', 'avg'])
                 time_ms = [uvaWm_time_vt[0][0] if (x == 0) else uvaWm_time_vt[0][x] - uvaWm_time_vt[0][0] for x in range(len(uvaWm_time_vt[0]))]
                 uvaWmPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(uvaWm_dict['max'][1], "1f")[-2])
                 uvaWmMaxRound = [roundNone(x,uvaWmPlaces) for x in uvaWm_dict['max'][0]]
@@ -1218,7 +1218,7 @@ class w34highchartsYear(SearchList):
                 
         # Create uvbWm json
         try:
-                (uvbWm_time_vt, uvbWm_dict) = getDaySummaryVectors(db_lookup(), 'uvbWm', timespan,['max', 'avg'])
+                (uvbWm_time_vt, uvbWm_dict) = getDaySummaryVectors(db_lookup(), 'uvbWm', _timespan,['max', 'avg'])
                 time_ms = [uvbWm_time_vt[0][0] if (x == 0) else uvbWm_time_vt[0][x] - uvbWm_time_vt[0][0] for x in range(len(uvbWm_time_vt[0]))]
                 uvbWmPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(uvbWm_dict['max'][1], "1f")[-2])
                 uvbWmMaxRound = [roundNone(x,uvbWmPlaces) for x in uvbWm_dict['max'][0]]
@@ -1231,7 +1231,7 @@ class w34highchartsYear(SearchList):
                                             
         # Create energy json
         try:
-                (energy_time_vt, energy_dict) = getDaySummaryVectors(db_lookup(), 'lightning_energy', timespan,['max', 'avg'])
+                (energy_time_vt, energy_dict) = getDaySummaryVectors(db_lookup(), 'lightning_energy', _timespan,['max', 'avg'])
                 time_ms = [energy_time_vt[0][0] if (x == 0) else energy_time_vt[0][x] - energy_time_vt[0][0] for x in range(len(energy_time_vt[0]))]
                 energyPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(energy_dict['max'][1], "1f")[-2])
                 energyMaxRound = [roundNone(x,energyPlaces) for x in energy_dict['max'][0]]
@@ -1244,7 +1244,7 @@ class w34highchartsYear(SearchList):
                 
         # Create distance json
         try:
-                (distance_time_vt, distance_dict) = getDaySummaryVectors(db_lookup(), 'lightning_distance', timespan,['max', 'avg'])
+                (distance_time_vt, distance_dict) = getDaySummaryVectors(db_lookup(), 'lightning_distance', _timespan,['max', 'avg'])
                 time_ms = [distance_time_vt[0][0] if (x == 0) else distance_time_vt[0][x] - distance_time_vt[0][0] for x in range(len(distance_time_vt[0]))]
                 distancePlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(distance_dict['max'][1], "1f")[-2])
                 distanceMaxRound = [roundNone(x,distancePlaces) for x in distance_dict['max'][0]]
@@ -1257,7 +1257,7 @@ class w34highchartsYear(SearchList):
                 
         # Create strike count json
         try:
-                (strike_time_vt, strike_dict) = getDaySummaryVectors(db_lookup(), 'lightning_strike_count', timespan,['sum'])
+                (strike_time_vt, strike_dict) = getDaySummaryVectors(db_lookup(), 'lightning_strike_count', _timespan,['sum'])
                 time_ms = [strike_time_vt[0][0] if (x == 0) else strike_time_vt[0][x] - strike_time_vt[0][0] for x in range(len(strike_time_vt[0]))]
                 strikePlaces = 0
                 strikeCountRound = [roundNone(x,strikePlaces) for x in strike_dict['sum'][0]]
@@ -1267,7 +1267,7 @@ class w34highchartsYear(SearchList):
 
         # Create noise count json
         try:
-                (noise_time_vt, noise_dict) = getDaySummaryVectors(db_lookup(), 'lightning_noise_count', timespan,['sum'])
+                (noise_time_vt, noise_dict) = getDaySummaryVectors(db_lookup(), 'lightning_noise_count', _timespan,['sum'])
                 time_ms = [noise_time_vt[0][0] if (x == 0) else noise_time_vt[0][x] - noise_time_vt[0][0] for x in range(len(noise_time_vt[0]))]
                 noisePlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(noise_dict['sum'][1], "1f")[-2])
                 noiseCountRound = [roundNone(x,noisePlaces) for x in noise_dict['sum'][0]]
@@ -1277,7 +1277,7 @@ class w34highchartsYear(SearchList):
 
         # Create disturber count json
         try:
-                (disturber_time_vt, disturber_dict) = getDaySummaryVectors(db_lookup(), 'lightning_disturber_count', timespan,['sum'])
+                (disturber_time_vt, disturber_dict) = getDaySummaryVectors(db_lookup(), 'lightning_disturber_count', _timespan,['sum'])
                 time_ms = [disturber_time_vt[0][0] if (x == 0) else disturber_time_vt[0][x] - disturber_time_vt[0][0] for x in range(len(disturber_time_vt[0]))]
                 disturberPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(disturber_dict['sum'][1], "1f")[-2])
                 disturberCountRound = [roundNone(x,disturberPlaces) for x in disturber_dict['sum'][0]]
@@ -1287,7 +1287,7 @@ class w34highchartsYear(SearchList):
 
         # Create full_spectrum json
         try:
-                (full_spectrum_time_vt, full_spectrum_dict) = getDaySummaryVectors(db_lookup(), 'full_spectrum', timespan,['max', 'avg'])
+                (full_spectrum_time_vt, full_spectrum_dict) = getDaySummaryVectors(db_lookup(), 'full_spectrum', _timespan,['max', 'avg'])
                 time_ms = [full_spectrum_time_vt[0][0] if (x == 0) else full_spectrum_time_vt[0][x] - full_spectrum_time_vt[0][0] for x in range(len(full_spectrum_time_vt[0]))]
                 full_spectrumPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(full_spectrum_dict['max'][1], "1f")[-2])
                 full_spectrumMaxRound = [roundNone(x,full_spectrumPlaces) for x in full_spectrum_dict['max'][0]]
@@ -1300,7 +1300,7 @@ class w34highchartsYear(SearchList):
                 
         # Create lux json
         try:
-                (lux_time_vt, lux_dict) = getDaySummaryVectors(db_lookup(), 'lux', timespan,['max', 'avg'])
+                (lux_time_vt, lux_dict) = getDaySummaryVectors(db_lookup(), 'lux', _timespan,['max', 'avg'])
                 time_ms = [lux_time_vt[0][0] if (x == 0) else lux_time_vt[0][x] - lux_time_vt[0][0] for x in range(len(lux_time_vt[0]))]
                 luxPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(lux_dict['max'][1], "1f")[-2])
                 luxMaxRound = [roundNone(x,luxPlaces) for x in lux_dict['max'][0]]
@@ -1313,7 +1313,7 @@ class w34highchartsYear(SearchList):
 
         # Create infrared json
         try:
-                (infrared_time_vt, infrared_dict) = getDaySummaryVectors(db_lookup(), 'infrared', timespan,['max', 'avg'])
+                (infrared_time_vt, infrared_dict) = getDaySummaryVectors(db_lookup(), 'infrared', _timespan,['max', 'avg'])
                 time_ms = [infrared_time_vt[0][0] if (x == 0) else infrared_time_vt[0][x] - infrared_time_vt[0][0] for x in range(len(infrared_time_vt[0]))]
                 infraredPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(infrared_dict['max'][1], "1f")[-2])
                 infraredMaxRound = [roundNone(x,infraredPlaces) for x in infrared_dict['max'][0]]
@@ -1326,7 +1326,7 @@ class w34highchartsYear(SearchList):
                 
         # Create cloudcover json
         try:
-                (cloudcover_time_vt, cloudcover_dict) = getDaySummaryVectors(db_lookup(), self.db_field, timespan,['max', 'avg'])
+                (cloudcover_time_vt, cloudcover_dict) = getDaySummaryVectors(db_lookup(), self.db_field, _timespan,['max', 'avg'])
                 time_ms = [cloudcover_time_vt[0][0] if (x == 0) else cloudcover_time_vt[0][x] - cloudcover_time_vt[0][0] for x in range(len(cloudcover_time_vt[0]))]
                 cloudcoverPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(cloudcover_dict['max'][1], "1f")[-2])
                 cloudcoverMaxRound = [roundNone(x,cloudcoverPlaces) for x in cloudcover_dict['max'][0]]
@@ -1339,7 +1339,7 @@ class w34highchartsYear(SearchList):
                 
         # Create pm2_5 json
         try:
-                (pm2_5_time_vt, pm2_5_dict) = getDaySummaryVectors(db_lookup(), 'pm2_5', timespan,['max', 'avg'])
+                (pm2_5_time_vt, pm2_5_dict) = getDaySummaryVectors(db_lookup(), 'pm2_5', _timespan,['max', 'avg'])
                 time_ms = [pm2_5_time_vt[0][0] if (x == 0) else pm2_5_time_vt[0][x] - pm2_5_time_vt[0][0] for x in range(len(pm2_5_time_vt[0]))]
                 pm2_5Places = int(self.generator.skin_dict['Units']['StringFormats'].get(pm2_5_dict['max'][1], "1f")[-2])
                 pm2_5MaxRound = [roundNone(x,pm2_5Places) for x in pm2_5_dict['max'][0]]
@@ -1352,7 +1352,7 @@ class w34highchartsYear(SearchList):
                 
         # Create pm10_0 json
         try:
-                (pm10_0_time_vt, pm10_0_dict) = getDaySummaryVectors(db_lookup(), 'pm10_0', timespan,['max', 'avg'])
+                (pm10_0_time_vt, pm10_0_dict) = getDaySummaryVectors(db_lookup(), 'pm10_0', _timespan,['max', 'avg'])
                 time_ms = [pm10_0_time_vt[0][0] if (x == 0) else pm10_0_time_vt[0][x] - pm10_0_time_vt[0][0] for x in range(len(pm10_0_time_vt[0]))]
                 pm10_0Places = int(self.generator.skin_dict['Units']['StringFormats'].get(pm10_0_dict['max'][1], "1f")[-2])
                 pm10_0MaxRound = [roundNone(x,pm10_0Places) for x in pm10_0_dict['max'][0]]

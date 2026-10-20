@@ -1,0 +1,40 @@
+##errorCatcher Echo
+##
+##This program is free software; you can redistribute it and/or modify it
+##under the terms of the GNU General Public License as published by the Free
+##Software Foundation; either version 2 of the License, or (at your option)
+##any later version.
+##
+##This program is distributed in the hope that it will be useful, but WITHOUT
+##ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+##FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+##more details.
+##
+##############################################################################
+##                                                                           #
+## Highcharts for weewx Extension                                            #
+##                                                                           #
+## Year plots JSON, aqplot (split from year.json)                            #
+##                                                                           #
+## Version: 0.2.1                                     Date: 16 May 2017      #
+##                                                                           #
+##############################################################################
+[{
+"_version": "year_aq.json.tmpl version 1.0.0", 
+"utcoffset": $utcOffset, 
+"timespan": {"start": $yearPlotStart, "stop": $yearPlotEnd}, 
+"aqplot": {
+#if $pm2_5Max_json is not None
+"pm2_5Max": $pm2_5Max_json, 
+#end if
+#if $pm2_5Avg_json is not None
+"pm2_5Avg": $pm2_5Avg_json, 
+#end if
+#if $pm10_0Max_json is not None
+"pm10_0Max": $pm10_0Max_json, 
+#end if
+#if $pm10_0Avg_json is not None
+"pm10_0Avg": $pm10_0Avg_json 
+#end if
+}
+}]

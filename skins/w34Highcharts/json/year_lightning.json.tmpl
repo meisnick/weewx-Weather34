@@ -1,0 +1,53 @@
+##errorCatcher Echo
+##
+##This program is free software; you can redistribute it and/or modify it
+##under the terms of the GNU General Public License as published by the Free
+##Software Foundation; either version 2 of the License, or (at your option)
+##any later version.
+##
+##This program is distributed in the hope that it will be useful, but WITHOUT
+##ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+##FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+##more details.
+##
+##############################################################################
+##                                                                           #
+## Highcharts for weewx Extension                                            #
+##                                                                           #
+## Year plots JSON, lightningplot (split from year.json)                            #
+##                                                                           #
+## Version: 0.2.1                                     Date: 16 May 2017      #
+##                                                                           #
+##############################################################################
+[{
+"_version": "year_lightning.json.tmpl version 1.0.0", 
+"utcoffset": $utcOffset, 
+"timespan": {"start": $yearPlotStart, "stop": $yearPlotEnd}, 
+"lightningplot": {
+#if $distanceMax_json is not None
+"distanceMax": $distanceMax_json, 
+#end if
+#if $distanceAvg_json is not None
+"distanceAvg": $distanceAvg_json, 
+#end if
+#if $strikeCount_json is not None
+"strikeCount": $strikeCount_json, 
+#end if
+#if $noiseCount_json is not None
+"noiseCount": $noiseCount_json, 
+#end if
+#if $disturberCount_json is not None
+"disturberCount": $disturberCount_json, 
+#end if
+#if $energyMax_json is not None
+"energyMax": $energyMax_json, 
+#end if
+#if $energyAvg_json is not None
+"energyAvg": $energyAvg_json, 
+#end if
+#if $lightningSum_json is not None
+"lightningsum": $lightningSum_json,
+#end if
+"units": "$unit.label.rain"#slurp
+}
+}]

@@ -83,35 +83,35 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	};
 	
 	var jsonfileforplot = {
-	    temperatureplot: [['temp_week.json'],['year.json']],
-	    indoorplot: [['indoor_derived_week.json'],['year.json']],
-	    tempsmallplot: [['temp_week.json'],['year.json']],
-	    tempallplot: [['temp_week.json'],['year.json']],
-	    tempderivedplot: [['indoor_derived_week.json','temp_week.json','wind_week.json'],['year.json']],
-	    apparentplot: [['indoor_derived_week.json','temp_week.json','wind_week.json'],['year.json']],
-	    dewpointplot: [['temp_week.json'],['year.json']],
-	    humidityplot: [['temp_week.json'],['year.json']],
-	    barometerplot: [['bar_rain_week.json'],['year.json']],
-	    barsmallplot: [['bar_rain_week.json'],['year.json']],
+	    temperatureplot: [['temp_week.json'],['year_temp.json']],
+	    indoorplot: [['indoor_derived_week.json'],['year_temp.json','year_humidity.json']],
+	    tempsmallplot: [['temp_week.json'],['year_temp.json']],
+	    tempallplot: [['temp_week.json'],['year_temp.json','year_humidity.json']],
+	    tempderivedplot: [['indoor_derived_week.json','temp_week.json','wind_week.json'],['year_feels.json']],
+	    apparentplot: [['indoor_derived_week.json','temp_week.json','wind_week.json'],['year_temp.json','year_feels.json']],
+	    dewpointplot: [['temp_week.json'],['year_temp.json']],
+	    humidityplot: [['temp_week.json'],['year_humidity.json']],
+	    barometerplot: [['bar_rain_week.json'],['year_barometer.json']],
+	    barsmallplot: [['bar_rain_week.json'],['year_barometer.json']],
 	    bartempwindplot: [['bar_rain_week.json','temp_week.json','wind_week.json'],[null]],
-	    windbarbplot: [['wind_week.json'],['year.json']],
-	    windplot: [['wind_week.json'],['year.json']],
-	    windsmallplot: [['wind_week.json'],['year.json']],
-	    windallplot: [['wind_week.json'],['year.json']],
-	    winddirplot: [['wind_week.json'],['year.json']],
+	    windbarbplot: [['wind_week.json'],['year_wind.json']],
+	    windplot: [['wind_week.json'],['year_wind.json']],
+	    windsmallplot: [['wind_week.json'],['year_wind.json']],
+	    windallplot: [['wind_week.json'],['year_wind.json']],
+	    winddirplot: [['wind_week.json'],['year_wind.json']],
 	    windroseplot: [['wind_rose_week.json'],[]],
 	    windrosegustplot: [['wind_rose_week.json'],[]],
-	    rainplot: [['bar_rain_week.json'],['year.json']],
-	    rainmonthplot: [['year.json'],['year.json']],
-	    rainsmallplot: [['bar_rain_week.json'],['year.json']],
-	    strikesmallplot: [['bar_rain_week.json'],['year.json']],
-	    lightningplot: [['bar_rain_week.json'],['year.json']],
-	    radiationplot: [['solar_week.json'],['year.json']],
-	    raduvplot: [['solar_week.json'],['year.json']],
-	    airqualityplot: [['solar_week.json'],['year.json']],
-	    radsmallplot: [['solar_week.json'],['year.json']],
-	    uvplot: [['solar_week.json'],['year.json']],
-	    uvsmallplot: [['solar_week.json'],['year.json']],
+	    rainplot: [['bar_rain_week.json'],['year_rain.json']],
+	    rainmonthplot: [['year_rain.json'],['year_rain.json']],
+	    rainsmallplot: [['bar_rain_week.json'],['year_rain.json']],
+	    strikesmallplot: [['bar_rain_week.json'],['year_lightning.json']],
+	    lightningplot: [['bar_rain_week.json'],['year_lightning.json']],
+	    radiationplot: [['solar_week.json'],['year_solar.json']],
+	    raduvplot: [['solar_week.json'],['year_solar.json']],
+	    airqualityplot: [['solar_week.json'],['year_aq.json']],
+	    radsmallplot: [['solar_week.json'],['year_solar.json']],
+	    uvplot: [['solar_week.json'],['year_solar.json']],
+	    uvsmallplot: [['solar_week.json'],['year_solar.json']],
 	    cloudcoverplot: [['cloudcover_week.json'],['cloudcover_year.json']],
 	};
 	
@@ -1811,7 +1811,11 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            files[index] = pathjsondayfiles + jsonfileforplot[plot_type][0][i].split(".")[0] + "1.json";
 	    jQuery.getMultipleJSON(...files).done(function(...results){
 	        //var options = setup_plots(results.flat(), units, create_common_options(), plot_type, span); //Correct Way
-	        var options = setup_plots(results.reduce((acc, val) => acc.concat(val), []), units, create_common_options(), plot_type, span); //Microsoft Way
+	        var series = results.reduce((acc, val) => acc.concat(val), []);
+	        // year data comes split per chart family (year_*.json); the chart code reads it all from seriesData[0]
+	        var nyear = jsonfileforplot[plot_type][span[0] == "weekly" ? 0 : 1].filter(f => f && f.startsWith("year_")).length;
+	        if (nyear > 1) series = [Object.assign({}, ...series.slice(0, nyear))].concat(series.slice(nyear));
+	        var options = setup_plots(series, units, create_common_options(), plot_type, span); //Microsoft Way
 	        if (options == null){
 	            $("#"+plot_div).load("../404.html");
 	            return;

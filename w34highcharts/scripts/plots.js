@@ -251,11 +251,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        },
 	        rangeSelector: {},
                 exporting: {
+                    enabled: (plot_div != 'plot_div2'),
                     buttons: {
                         contextButton: {enabled: false,},
-                        redButton:     {y: (plot_div=='plot_div2'?-100:0),},
-                        yellowButton:  {y: (plot_div=='plot_div2'?-100:0),},
-                        greenButton:   {y: (plot_div=='plot_div2'?-100:0),},
                         toggle: {
                             text: getTranslation('Select'),
                             x: -10,
@@ -615,7 +613,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    return options;
 	};
 	
-	function post_create_small_chart(chart, height){
+	function post_create_small_chart(chart){
 	    chart.update({
 	        exporting: {enabled: false },
 	        credits: {enabled: false},   // almanac popups credit Highcharts in their footer text

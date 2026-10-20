@@ -96,9 +96,6 @@ function formatPressureDiff($diff_inHg, $unit) {
   --pop-text: #ddd;
   --pop-text-dim: #8a8f99;
   --pop-border: #2e3033;
-  --dist-normal: #eee;
-  --dist-good: #90b12a;
-  --dist-fair: #e6a141;
 }
 [data-theme="light"] {
   --pop-chrome: #f0f2f5;
@@ -106,9 +103,6 @@ function formatPressureDiff($diff_inHg, $unit) {
   --pop-text: #222;
   --pop-text-dim: #666;
   --pop-border: #ccc;
-  --dist-normal: #111;
-  --dist-good: #5e8210;
-  --dist-fair: #b27214;
 }
 @font-face {
   font-family: weathertext2;
@@ -261,7 +255,7 @@ body { display: flex; flex-direction: column; }
 }
 
 .nowcast-bubble {
-  background: rgba(33, 34, 39, 0.25);
+  background: var(--nowcast-bubble-bg);
   border: 1px solid var(--pop-border);
   border-radius: 4px;
   padding: 10px 12px;
@@ -269,20 +263,13 @@ body { display: flex; flex-direction: column; }
   font-size: 0.9em;
   line-height: 1.45;
   margin-bottom: 10px;
-  color: #fff;
-}
-[data-theme="light"] .nowcast-bubble {
-  background: rgba(240, 242, 245, 0.6);
-  color: #222;
+  color: var(--nowcast-bubble-color);
 }
 
-.rain-green { color: #90b12a; font-weight: bold; }
-.rain-blue  { color: #4a8b9f; font-weight: bold; }
-.rain-amber { color: #e6a141; font-weight: bold; }
-[data-theme="light"] .rain-green { color: #4f6b0d; }
-[data-theme="light"] .rain-blue  { color: #2f6577; }
-[data-theme="light"] .rain-amber { color: #8a5a10; }
-.rain-red   { color: #d35d4e; font-weight: bold; }
+.rain-green { color: var(--rain-green); font-weight: bold; }
+.rain-blue  { color: var(--rain-blue); font-weight: bold; }
+.rain-amber { color: var(--rain-amber); font-weight: bold; }
+.rain-red   { color: var(--rain-red); font-weight: bold; }
 
 .dist-normal { color: var(--dist-normal); font-weight: bold; }
 .dist-good   { color: var(--dist-good); font-weight: bold; }

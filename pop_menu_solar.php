@@ -89,7 +89,7 @@ html, body {
 <body>
 <div class="tab-bar">
   <button class="tablink" onclick="openPage('Tab1', this)" id="defaultOpen"><?php echo w34t('TabUvAlmanac', 'UV Index Almanac'); ?></button>
-  <!-- <button class="tablink" onclick="openPage('Tab2', this)">Solar Almanac</button> -->
+  <button class="tablink" onclick="openPage('Tab2', this)"><?php echo w34t('LinkSolarAlmanac', 'Solar Almanac'); ?></button>
   <button class="tablink" onclick="openPage('Tab3', this)"><?php echo w34t('LinkUvGuide', 'UV Guide'); ?></button>  
 </div>
 

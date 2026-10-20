@@ -94,7 +94,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    barometerplot: [['bar_rain_week.json'],['year_barometer.json']],
 	    barsmallplot: [['bar_rain_week.json'],['year_barometer.json']],
 	    bartempwindplot: [['bar_rain_week.json','temp_week.json','wind_week.json'],[null]],
-	    windbarbplot: [['wind_week.json'],['year_wind.json']],
+	    windbarbplot: [['wind_week.json'],[]],
 	    windplot: [['wind_week.json'],['year_wind.json']],
 	    windsmallplot: [['wind_week.json'],['year_wind.json']],
 	    windallplot: [['wind_week.json'],['year_wind.json']],
@@ -627,6 +627,11 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    });
 	};
 	
+	// a series' x values: Highcharts 12 dropped series.xData for getColumn('x')
+	function series_x(series){
+	    return series.getColumn ? series.getColumn('x') : series.xData;
+	};
+
 	function reinflate_time(series, ts_start = null, returnDate = false){
 	    series[0][0] = ts_start == null ? (series[0][0] + (utcoffset *60)) *1000: ts_start; 
 	    for (var i = 1; i < series.length; i++)
@@ -1274,7 +1279,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 
 	function create_strike_chart(options, span, seriesData, units){
 	    options = create_chart_options(options, 'column', 'Strikes Count', null, [['Strikes Count', 'column']]);
-	    options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount || []));
+	    // clicking a bar of the yearly chart opens the weekly one, whose counts are strikeCountWeek
+	    var counts = span[0] == "weekly" ? seriesData[0].lightningplot.strikeCountWeek : seriesData[0].lightningplot.strikeCount;
+	    options.series[0].data = remove_zero_dps(reinflate_time(counts || []));
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
@@ -1666,9 +1673,10 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                            var positions = [];
                            info = this.tickPositions.info;
                            crop_start = e.target.series[0].cropStart;
-                           while ((e.target.series[0].xData.length - crop_start)%15 != 0) crop_start++; 
-                           for (var x = e.target.series[0].cropStart; x < e.target.series[0].xData.length; x += (e.target.series[0].xData.length - crop_start)/15)
-                              positions.push(e.target.series[0].xData[x]);
+                           var xs = series_x(e.target.series[0]);
+                           while ((xs.length - crop_start)%15 != 0) crop_start++;
+                           for (var x = e.target.series[0].cropStart; x < xs.length; x += (xs.length - crop_start)/15)
+                              positions.push(xs[x]);
                            positions.info = info;
                            return positions;
                        }
@@ -1901,12 +1909,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                                    setTimeout(display_chart, 0, units, plot_type, ['weekly'], plot_div);
                                             return;
                                         }
-	                                var epoch = 0;
-	                                for (var i= 0; i < this.series.xData.length; i++)
-	                                    if (this.series.xData[i] == this.x){
-	                                       epoch = this.series.xData[i];
-	                                       break;
-	                                     }
+	                                // undo reinflate_time's display shift and aim at the clicked day's noon: the day
+	                                // report covers the day holding this time and the one before it
+	                                var epoch = this.x - utcoffset*60*1000 + 12*3600*1000;
 	                                chart.showLoading('Loading data from database...');
 	                                $.ajax({url:'getDayChart.php',method:'get',
 	                                    data:{plot_info:pathjsondayfiles+","+jsonfileforplot[plot_type][0].join(":")+","+weereportcmd, epoch:epoch/1000},

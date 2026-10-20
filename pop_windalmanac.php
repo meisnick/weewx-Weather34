@@ -74,8 +74,7 @@ html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-
 [data-theme="light"] .grid1 > articlegraph{box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);}
 a{color:var(--pop-link);text-decoration:none;}
 [data-theme="light"] a{color:#007a8c;}
-blue{color:#01a4b4;font-weight:600;}
-[data-theme="light"] blue{color:#007a8a;}
+blue{color:var(--pop-blue);font-weight:600;}
 orange{color:#009bb4;}
 orange1{color:rgba(255,131,47,1);}
 green{color:#aaa;}
@@ -86,15 +85,14 @@ value{color:#fff;}
 yellow{color:#cc0;}
 purple{color:#916392;}
 .badge-col{float:left;width:60px;}
-.windtoday,.windtoday10,.windtoday30,.windtoday40,.windtoday60{font-family:weathertext2,Arial,Helvetica,sans-serif;width:60px;height:18px;border-radius:3px 3px 0 0;font-size:0.9rem;line-height:18px;padding-top:2px;color:#fff;display:block;text-align:center;box-sizing:content-box;white-space:nowrap;}
+.windtoday,.windtoday10,.windtoday30,.windtoday40,.windtoday60{font-family:weathertext2,Arial,Helvetica,sans-serif;width:60px;height:18px;border-radius:3px 3px 0 0;font-size:0.9rem;line-height:18px;padding-top:2px;color:var(--pop-badge-text);display:block;text-align:center;box-sizing:content-box;white-space:nowrap;}
 .windtoday{background:#9aba2f;}
 .windtoday10{background:rgba(230,161,65,1);}
 .windtoday30{background:rgba(255,124,57,0.8);}
 .windtoday40{background:rgba(255,124,57,0.8);}
 .windtoday60{background:rgba(211,93,78,1);}
 smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
-.w34convertrain{font-size:0.65em;color:#fff;width:60px;text-align:center;line-height:14px;height:14px;white-space:nowrap;border-radius:0 0 3px 3px;background:rgba(56,56,60,1);display:block;}
-[data-theme="light"] .w34convertrain{background:#555555;}
+.w34convertrain{font-size:0.65em;color:var(--pop-badge-text);width:60px;text-align:center;line-height:14px;height:14px;white-space:nowrap;border-radius:0 0 3px 3px;background:var(--pop-badge-border);display:block;}
 .lotemp{color:var(--pop-footer-ink);font-size:8.5px;text-align:center;margin-top:4px;}
 .hitempy{margin-left:64px;color:var(--pop-meta-ink);line-height:13px;font-size:9px;text-align:right;min-height:34px;display:flex;flex-direction:column;justify-content:center;}
 .actualt{border-radius:3px;background:var(--pop-pill-bg);padding:2px 6px;font-family:Arial,Helvetica,sans-serif;width:max-content;font-size:0.75rem;color:var(--pop-pill-ink);margin-bottom:6px;text-align:left;}

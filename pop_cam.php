@@ -11,11 +11,8 @@ if (isset($_GET['theme'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/tokens.css">
   <style>
-    :root, [data-theme="dark"] {
-      --cam-border: rgba(84, 85, 86, 1);
-    }
-    [data-theme="light"] {
-      --cam-border: #ccd0d5;
+    :root {
+      --cam-border: var(--pop-cam-border);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -60,7 +57,7 @@ if (isset($_GET['theme'])) {
       max-height: 100%;
       object-fit: contain;
       border-radius: 4px;
-      border: 2px solid var(--cam-border);
+      border: 2px solid var(--pop-cam-border);
       display: block;
     }
     .streamframe {

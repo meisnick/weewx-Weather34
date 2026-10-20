@@ -404,8 +404,8 @@ def build_awh(data):
         wcode    = safe_get(hourly.get("weathercode"), i, 0)
         temp_f   = safe_get(hourly.get("temperature_2m"), i, None)
         temp_c   = f_to_c(temp_f)
-        dew_c    = safe_get(hourly.get("dewpoint_2m"), i, None)
-        dew_f    = round(dew_c * 9/5 + 32, 1) if dew_c is not None else None
+        dew_f    = safe_get(hourly.get("dewpoint_2m"), i, None)   # °F: temperature_unit=fahrenheit covers dewpoint too
+        dew_c    = f_to_c(dew_f)
         humidity = safe_get(hourly.get("relativehumidity_2m"), i, 0)
         precip_in = safe_get(hourly.get("precipitation"), i, 0.0)
         precip_mm = in_to_mm(precip_in)
@@ -438,8 +438,8 @@ def build_awh(data):
             "minTempF":         temp_f,
             "feelslikeC":       temp_c,
             "feelslikeF":       temp_f,
-            "dewpointC":        round(dew_c, 1) if dew_c is not None else None,
-            "dewpointF":        dew_f,
+            "dewpointC":        dew_c,
+            "dewpointF":        round(dew_f, 1) if dew_f is not None else None,
             "humidity":         humidity,
             "pop":              int(pop),
             "precipMM":         precip_mm,

@@ -1,5 +1,9 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php include_once('w34CombinedData.php');include('common.php');?>
+<style>
+/* three pills (humidity, feels, dewpoint) in the right column: tighter and higher so the third clears the footer */
+.weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 { gap: 3px; margin-top: -16px; }
+</style>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div><br />
 <div class="mod-temperature">
 <div class="mod-temperature-grid">
@@ -59,6 +63,19 @@ else if (anyToC($weather["temp_indoor_feel"])>0){ echo "<div class=tempmodulehom
 
 echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?>
 </div></div></div>
+
+<?php //indoor dewpoint (Magnus formula, as weewx computes inDewpoint) from the live indoor temp and humidity
+$tin = anyToC($weather["temp_indoor"]);
+$rhin = max(1, min(100, (float)$weather["humidity_indoor"]));
+$g = log($rhin / 100) + 17.62 * $tin / (243.12 + $tin);
+$dewin_c = 243.12 * $g / (17.62 - $g);
+$dewin = $weather["temp_units"] == 'F' ? $dewin_c * 9 / 5 + 32 : $dewin_c;
+// colour by mugginess: dry, comfortable, humid, muggy
+if ($dewin_c > 18) $dewclass = 'tempmodulehome25-30c'; else if ($dewin_c > 13) $dewclass = 'tempmodulehome20-25c';
+else if ($dewin_c > 4) $dewclass = 'tempmodulehome10-15c'; else $dewclass = 'tempmodulehome0-5c';
+?>
+<div class="mod-temperature-block mod-gauge-ring--7"><div class="mod-gauge-ring-content--indoor-feels"><valuetextheading1><?php echo w34t('Dewpoint', 'Dewpoint');?></valuetextheading1>
+<div class=<?php echo $dewclass;?>><div class=rainratesmall></div><?php echo number_format($dewin,1),"&deg;";?></div></div></div>
 </div> <!-- close 1x2 -->
 </div> <!-- close col-right -->
 </div> <!-- close grid -->

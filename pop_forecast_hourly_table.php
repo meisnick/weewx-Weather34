@@ -25,13 +25,10 @@ $forecastTime[0] = "0";
   html, body { height: auto; }
   body { margin: 0 !important; padding: 0 10px 10px !important; background: var(--pop-bg) !important; color: var(--pop-ink); font-family: Arial, Helvetica, sans-serif; }
   .fc-wrap { display: block; }
-  .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #c8c8c8; }
-  [data-theme="light"] .fc-table { color: #222222; }
-  .fc-table thead th { position: sticky; top: 0; z-index: 1; background: var(--pop-bg); color: #e6e8ec;
-    font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid rgba(255,255,255,.22); text-align: center; white-space: nowrap; }
-  [data-theme="light"] .fc-table thead th { color: #2d3a4b; border-bottom: 1px solid #c9ced6; }
-  .fc-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; vertical-align: middle; }
-  [data-theme="light"] .fc-table td { border-bottom: 1px solid #e2e5ea; }
+  .fc-table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: var(--pop-table-text); }
+  .fc-table thead th { position: sticky; top: 0; z-index: 1; background: var(--pop-bg); color: var(--pop-table-th-text);
+    font-weight: 600; font-size: 12px; padding: 12px 6px 7px; border-bottom: 1px solid var(--pop-table-th-border); text-align: center; white-space: nowrap; }
+  .fc-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid var(--pop-table-td-border); white-space: nowrap; vertical-align: middle; }
   .fc-table th.fc-first, .fc-table td.fc-first { text-align: left; padding-left: 8px; }
   .fc-table th.fc-cond, .fc-table td.fc-cond { text-align: left; }
   .fc-ci { display: inline-flex; align-items: center; gap: 8px; }
@@ -39,9 +36,8 @@ $forecastTime[0] = "0";
   [data-theme="light"] .fc-table td.fc-cond img { filter: drop-shadow(0 0 1px rgba(0,0,0,.45)); }
   .fc-u { font-size: 10px; margin-left: 2px; opacity: .85; }
   .fc-credit { font-size: 9px; color: #999; padding: 10px 8px 2px; }
-  .fc-credit a { color: #999 !important; }
+  .fc-credit a { color: var(--pop-table-credit-link) !important; }
   [data-theme="light"] .fc-credit { color: #666; }
-  [data-theme="light"] .fc-credit a { color: #007a8c !important; }
   @media screen and (max-width:768px) {
     main.fc-wrap {
       width: 100% !important;

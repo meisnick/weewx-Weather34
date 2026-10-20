@@ -74,40 +74,29 @@ html,body{background-color:var(--pop-bg);margin:0;padding:0;font-size:13px;font-
 [data-theme="light"] .grid>article{border:1px solid rgba(0,0,0,.08);box-shadow:2px 2px 6px 0 rgba(0,0,0,.1);background:#fff;color:#000;}
 .grid>article img{max-width:100%}
 a:link,a:visited,a:hover{color:silver}
-a:active{color:#fff}
-[data-theme="light"] a:link,[data-theme="light"] a:visited,[data-theme="light"] a:hover,[data-theme="light"] a:active{color:#007a8c}
+a:active{color:var(--pop-value)}
+[data-theme="light"] a:link,[data-theme="light"] a:visited,[data-theme="light"] a:hover,[data-theme="light"] a:active{color:var(--pop-cyan)}
 .weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px}
-.weather34darkbrowser[url]:after{content:attr(url);color:#fff;font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 10px 0 auto;font-family:arial;height:20px}
-[data-theme="light"] .weather34darkbrowser[url]:after{color:#000;}
-blue{color:#01a4b4}
-orange{color:#009bb4}
-[data-theme="light"] orange{color:#007a8c}
-orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}
-[data-theme="light"] orange1{color:#007a8c}
+.weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-value);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 10px 0 auto;font-family:arial;height:20px}
+blue{color:var(--pop-blue)}
+orange{color:var(--pop-cyan)}
+orange1{position:relative;color:var(--pop-cyan);margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}
 green{color:#aaa}
 [data-theme="light"] green{color:#2d7a2d}
-red{color:#f37867}
-[data-theme="light"] red{color:#d65b4a}
-red6{color:#d65b4a}
-[data-theme="light"] red6{color:#b54030}
-value{color:#fff}
-[data-theme="light"] value{color:#000}
-yellow{color:#cc0}
-[data-theme="light"] yellow{color:#b38600}
-purple{color:#916392}
-[data-theme="light"] purple{color:#7a4f7b}
-meteotextshowertext{font-size:1.2rem;color:#009bb4}
-[data-theme="light"] meteotextshowertext{color:#007a8c}
+red{color:var(--pop-red)}
+red6{color:var(--pop-red-dark)}
+value{color:var(--pop-value)}
+yellow{color:var(--pop-yellow-dim)}
+purple{color:var(--pop-purple)}
+meteotextshowertext{font-size:1.2rem;color:var(--pop-cyan)}
 meteorsvgicon{color:#f5f7fc}
 [data-theme="light"] meteorsvgicon{color:#000}
-.moonphasetext{font-size:1.1rem;color:#f5f7fc;position:absolute;display:inline;left:140px;top:80px}
-[data-theme="light"] .moonphasetext{color:#000}
+.moonphasetext{font-size:1.1rem;color:var(--pop-value);position:absolute;display:inline;left:140px;top:80px}
 moonphaseriseset{font-size:.9rem}
 credit{position:relative;font-size:.8em;top:10%}
 .actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;align-items:center;justify-content:center;margin-bottom:10px;top:0}
 [data-theme="light"] .actualt{background:teal;color:#fff;}
-.actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;border-bottom:2px solid rgba(56,56,60,1);align-items:center;justify-content:center;margin-bottom:10px;top:0}
-[data-theme="light"] .actualw{color:#555;}
+.actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:var(--pop-green-dim);border-bottom:2px solid var(--pop-badge-border);align-items:center;justify-content:center;margin-bottom:10px;top:0}
   </style>
 </head>
 <body>

@@ -170,12 +170,38 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
         }
 
         // On narrow charts (phones, the half-width wind roses) the centred title ran under the left-aligned 'Select'
-        // menu button: keep the title clear of the button on both sides, smaller, wrapping if it has to
+        // menu button. Highcharts 12 shrinks a long title to the full width instead of wrapping it (widthAdjust and
+        // style.width don't change that), so break the title into lines that fit the space clear of the button on
+        // both sides, 14px down to 11px; the plot moves down for the extra lines. If a single word still doesn't fit
+        // (half-width wind roses in German/Hungarian), the button shows the menu icon instead of the word 'Select'.
         function fit_title_beside_menu(c){
-                var menu = c.container.querySelector('.highcharts-exporting-group');
-                if (c.chartWidth >= 600 || !menu || !c.title) return;
-                var r = menu.getBoundingClientRect(), right = r.right - c.container.getBoundingClientRect().left;
-                if (r.width) c.setTitle({widthAdjust: -2 * (right + 6), style: {fontSize: '14px'}}, null, true);
+                if (c.chartWidth >= 600 || !c.title || !c.title.textStr) return;
+                var menu = function(){ var g = c.container.querySelector('.highcharts-exporting-group'); return g ? g.getBoundingClientRect() : null; };
+                var r = menu();
+                if (!r || !r.width) return;
+                var clear = function(){ var t = c.title.element.getBoundingClientRect(); r = menu(); return t.left >= r.right + 4 || t.top >= r.bottom; };
+                if (clear()) return;
+                var cs = getComputedStyle(c.title.element), ctx = document.createElement('canvas').getContext('2d');
+                var words = String(c.title.textStr).replace(/<br\s*\/?>/gi, ' ').split(/\s+/);
+                var fit = function(){
+                        var right = r.right - c.container.getBoundingClientRect().left, avail = c.chartWidth - 2 * (right + 6);
+                        for (var px = 14; px >= 11; px--){
+                                ctx.font = cs.fontWeight + ' ' + px + 'px ' + cs.fontFamily;
+                                var lines = [], line = '';
+                                words.forEach(function(w){
+                                        var t = line ? line + ' ' + w : w;
+                                        if (line && ctx.measureText(t).width > avail){ lines.push(line); line = w; } else line = t;
+                                });
+                                lines.push(line);
+                                c.setTitle({text: lines.join('<br>'), minScale: 1, style: {fontSize: px + 'px'}}, null, true);
+                                if (clear()) return true;
+                        }
+                        return false;
+                };
+                if (fit()) return;
+                c.update({exporting: {buttons: {toggle: {text: null, symbol: 'menu', symbolStroke: c.options.title.style.color || '#888'}}}}, true);
+                r = menu();
+                fit();
         }
 
 	function create_common_options(){

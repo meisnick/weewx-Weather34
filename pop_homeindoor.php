@@ -37,18 +37,11 @@ html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-
 .weather34darkbrowser{position:relative;background:0;width:97%;height:30px;margin:auto;margin-top:-5px;margin-left:0px;border-top-left-radius:5px;border-top-right-radius:5px;padding-top:10px;margin-right:44px;}
 .weather34darkbrowser[url]:after{content:attr(url);color:var(--pop-link);font-size:14px;text-align:center;position:absolute;left:0;right:0;top:0;padding:4px 15px;margin:11px 44px 0 auto;font-family:arial;height:20px;}
 [data-theme="light"] .weather34darkbrowser[url]:after{color:black;}
-blue{color:#01a4b4;}orange{color:#009bb4;}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem;}green{color:#aaa;}red{color:#f37867;}red6{color:#d65b4a;}value{color:#fff;}yellow{color:#cc0;}purple{color:#916392;}
-humgreen{color:rgba(132,169,39,1);}humred{color:#e27667;}humyellow{color:rgba(231,150,59,1);}humblue{color:rgba(0,155,180,1);}humorange{color:#ff832f;}
-[data-theme="light"] blue{color:#007a8a;}
-[data-theme="light"] red{color:#c00000;}
+blue{color:var(--pop-blue);}orange{color:var(--pop-cyan);}orange1{position:relative;color:var(--pop-cyan);margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem;}green{color:var(--pop-green-dim);}red{color:var(--pop-red);}red6{color:var(--pop-red-dark);}value{color:var(--pop-value);}yellow{color:#cc0;}purple{color:var(--pop-purple);}
+humgreen{color:var(--pop-green);}humred{color:#e27667;}humyellow{color:var(--pop-yellow);}humblue{color:rgba(0,155,180,1);}humorange{color:var(--pop-orange);}
 [data-theme="light"] yellow{color:#8a5a00;}
-[data-theme="light"] purple{color:#800080;}
-[data-theme="light"] green{color:#008000;}
 [data-theme="light"] humred{color:#c00000;}
 [data-theme="light"] humblue{color:#007a8a;}
-[data-theme="light"] humgreen{color:#2d7a2d;}
-[data-theme="light"] humyellow{color:#8a5a00;}
-[data-theme="light"] humorange{color:#b05000;}
 .actualt{position:relative;left:0px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:teal;padding:5px;font-family:Arial,Helvetica,sans-serif;width:130px;height:0.85em;font-size:0.8rem;padding-top:1px;color:white;align-items:center;justify-content:center;margin-bottom:10px;top:0;}
 smalluvunit{font-size:0.5rem;font-family:weathertext2,Arial,Helvetica,system;vertical-align:super;}
 smalltempunit{font-size:0.85rem;font-family:weathertext2,Arial,Helvetica,system;vertical-align:super;color:#aaa;}

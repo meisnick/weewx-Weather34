@@ -107,8 +107,9 @@ function w34_compass($deg) {
     return w34_dir($points[((int)round(fmod($deg + 360, 360) / 22.5)) % 16]);
 }
 
-// METAR flight category as a coloured badge on the dashboard's status scale (green, amber, orange, red, as the
-// Kp/UV/AQI badges; css/tokens.css, with fallbacks); '' when the report has none.
+// METAR flight category as a coloured badge in the board's tile colours (green, teal, amber, red; css/tokens.css),
+// softened 25% toward the slate --ink-teal-dark (the lightning badge) so it sits quietly in its pill. The plain
+// tile colour comes first for browsers without color-mix(). '' when the report has none.
 // $cat defaults to the category in jsondata/me.txt.
 function w34_fltcat_badge($cat = null, $size = '9px') {
     if ($cat === null) {
@@ -116,12 +117,12 @@ function w34_fltcat_badge($cat = null, $size = '9px') {
         $cat = isset($me['data'][0]['flight_category']) ? $me['data'][0]['flight_category'] : '';
     }
     $info = array('VFR' => array('var(--green, #90b12a)', 'Visual Flight Rules'),
-        'MVFR' => array('var(--amber, #e6a141)', 'Marginal VFR'),
-        'IFR' => array('var(--orange, #ff7c39)', 'Instrument Flight Rules'),
+        'MVFR' => array('var(--teal, #3b9cac)', 'Marginal VFR'),
+        'IFR' => array('var(--amber, #e6a141)', 'Instrument Flight Rules'),
         'LIFR' => array('var(--red, #d35d4e)', 'Low IFR'));
     if (!isset($info[$cat])) return '';
     return '<span title="' . w34t('FltCat' . $cat, $info[$cat][1]) . '" style="display:inline-block;padding:0 4px;border-radius:3px;'
-        . 'background:' . $info[$cat][0] . ';color:#fff;text-shadow:var(--badge-text-shadow, none);font-size:' . $size
+        . 'background:' . $info[$cat][0] . ';background:color-mix(in srgb, ' . $info[$cat][0] . ' 75%, var(--ink-teal-dark, #4a636f));color:#fff;text-shadow:var(--badge-text-shadow, none);font-size:' . $size
         . ';line-height:1.5;font-weight:bold;letter-spacing:.3px">' . $cat . '</span>';
 }
 

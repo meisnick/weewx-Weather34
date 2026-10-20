@@ -30,7 +30,12 @@ html, body {
   color: var(--pop-ink);
   font-family: Arial, sans-serif;
 }
+body {
+  display: flex;
+  flex-direction: column;
+}
 .tab-bar {
+  flex: none;
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
@@ -62,7 +67,8 @@ html, body {
 .tabcontent {
   display: none;
   width: 100%;
-  height: calc(100vh - 36px);
+  flex: 1 1 auto;
+  min-height: 0;
   background-color: var(--pop-bg);
 }
 .tabcontent iframe {

@@ -251,7 +251,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        },
 	        rangeSelector: {},
                 exporting: {
-                    enabled: (plot_div != 'plot_div2'),
                     buttons: {
                         contextButton: {enabled: false,},
                         toggle: {

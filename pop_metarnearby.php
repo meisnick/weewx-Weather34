@@ -27,7 +27,7 @@ a:link,a:visited,a:hover,a:active {
   color: var(--pop-ink);
 }
 [data-theme="light"] a:link,[data-theme="light"] a:visited,[data-theme="light"] a:hover,[data-theme="light"] a:active {
-  color: #007a8c;
+  color: var(--pop-cyan);
 }
 .grid { 
   display: grid;
@@ -90,14 +90,14 @@ a:link,a:visited,a:hover,a:active {
   font-family: arial;
   height: 20px;
 } 
-  blue{color:#01a4b4}orange{color:#009bb4}orange1{position:relative;color:#009bb4;margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:#aaa}red{color:#f37867}red6{color:#d65b4a}value{color:#fff}yellow{color:#CC0}purple{color:#916392}
+  blue{color:var(--pop-blue)}orange{color:var(--pop-cyan)}orange1{position:relative;color:var(--pop-cyan);margin:0 auto;text-align:center;margin-left:5%;font-size:1.1rem}green{color:var(--pop-green-dim)}red{color:var(--pop-red)}red6{color:var(--pop-red-dark)}value{color:var(--pop-value)}yellow{color:var(--pop-yellow-dim)}purple{color:var(--pop-purple)}
 .metar34compass1>.metar34compass-line1,.metar34compass>.metar34compass-line{right:25px;-webkit-clip-path:polygon(100%0,100%100%,100%100%,0100%,00);-ms-clip-path:polygon(100%0,100%100%,100%100%,0100%,00);-webkit-border-radius:100%;-moz-border-radius:100%;-ms-border-radius:100%}
 .text1{font-family:weathertext2,Arial;font-size:20px;margin-left:3px;}
-.text1{color:#aaa}
+.text1{color:var(--pop-green-dim)}
 .metar34compass1{position:relative;width:165px;height:165px;margin:0 auto;z-index:1;text-align:center;align-items:center;justify-content:center;}
 .directiontext{display:flex;font-size:1.2em;position:absolute;text-align:center;align-items:center;justify-content:center;vertical-align: middle;top:35%;width:100%;left:0;right:0}
 
-.directiontext span{color:rgba(0, 155, 180, 1.000)}
+.directiontext span{color:var(--pop-cyan)}
 text1{z-index:10;text-align:center;margin:5px 0 auto}
 .metar34compass1>.metar34compass-line1{position:absolute;z-index:10;left:24px;top:25px;bottom:25px;-o-border-radius:100%;border-radius:100%;border-left:8px solid rgba(95,96,97,.5);border-top:8px solid rgba(95,96,97,.8);border-right:8px solid rgba(95,96,97,.5);border-bottom:8px solid rgba(95,96,97,.8);}
 .thearrow2{-webkit-transform:rotate(<?php echo $metar34windir;?>deg);-moz-transform:rotate(<?php echo $metar34windir;?>deg);-o-transform:rotate(<?php echo $metar34windir;?>deg);-ms-transform:rotate(<?php echo $metar34windir;?>deg);transform:rotate(<?php echo $metar34windir;?>deg);position:absolute;z-index:200;top:0;left:50%;margin-left:-5px;width:10px;height:50%;-webkit-transform-origin:50% 100%;-moz-transform-origin:50% 100%;-o-transform-origin:50% 100%;-ms-transform-origin:50% 100%;transform-origin:50% 100%;-webkit-transition-duration:3s;-moz-transition-duration:3s;-o-transition-duration:3s;-ms-transition-duration:3s;transition-duration:3s}.thearrow2:after{content:'';position:absolute;left:50%;top:0;height:10px;width:10px;background-color:NONE;width:0;height:0;border-style:solid;border-width:14px 9px 0 9px;border-color:RGBA(255,121,58,1.00) transparent transparent transparent;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transition-duration:3s;-moz-transition-duration:3s;-o-transition-duration:3s;-ms-transition-duration:3s;transition-duration:3s}.thearrow2:before{content:'';width:3px;height:3px;position:absolute;z-index:9;left:2px;top:-5px;border:1px solid RGBA(255,255,255,0.8);-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
@@ -110,25 +110,25 @@ spancalm{postion:relative;font-family:weathertext2,Arial;font-size:16px;}
 .metarwindcontainer3{margin-top:-95px;margin-left:85px;position:relative}
 /*ms*/
 .metarwindcontainer4{margin-top:10px;margin-left:85px;position:relative}
-.metartemptoday0,.metartemptoday5,.metartemptoday10,.metartemptoday20,.metartemptoday25,.metartemptoday30{font-family:weathertext2,Arial,Helvetica,system;width:4.5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}.metartemptoday0,.metartemptoday5,.metartemptoday10,.metartemptoday20,.metartemptoday25,.metartemptoday30{font-size:1.1rem;padding-top:0;color:#fff;border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:21px;}
+.metartemptoday0,.metartemptoday5,.metartemptoday10,.metartemptoday20,.metartemptoday25,.metartemptoday30{font-family:weathertext2,Arial,Helvetica,system;width:4.5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}.metartemptoday0,.metartemptoday5,.metartemptoday10,.metartemptoday20,.metartemptoday25,.metartemptoday30{font-size:1.1rem;padding-top:0;color:var(--pop-badge-text);border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:21px;}
 .metartemptoday0{background:rgba(68, 166, 181, 1.000)}.metartemptoday5{background:rgba(144, 177, 42, 1.000)}.metartemptoday10{background:rgba(230, 161, 65, 1.000)}.metartemptoday20{background:rgba(255, 124, 57, 1.000)}.metartemptoday25{background:rgba(255, 124, 57, 0.7)}.metartemptoday30{background:rgba(211, 93, 78, 1.000)}.metardewcontainer1{left:70px;margin-top:10px}
-.metardewtoday0,.metardewtoday5,.metardewtoday10,.metardewtoday20,.metardewtoday25,.metardewtoday30{font-family:weathertext2,Arial,Helvetica,system;width:4.5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}.metardewtoday0,.metardewtoday5,.metardewtoday10,.metardewtoday20,.metardewtoday25,.metardewtoday30{font-size:1.1rem;padding-top:0;color:#fff;border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:21px;}
+.metardewtoday0,.metardewtoday5,.metardewtoday10,.metardewtoday20,.metardewtoday25,.metardewtoday30{font-family:weathertext2,Arial,Helvetica,system;width:4.5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}.metardewtoday0,.metardewtoday5,.metardewtoday10,.metardewtoday20,.metardewtoday25,.metardewtoday30{font-size:1.1rem;padding-top:0;color:var(--pop-badge-text);border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:21px;}
 .metardewtoday0{background:rgba(68, 166, 181, 1.000)}.metardewtoday5{background:rgba(144, 177, 42, 1.000)}.metardewtoday10{background:rgba(230, 161, 65, 1.000)}.metardewtoday20{background:rgba(255, 124, 57, 1.000)}.metardewtoday25{background:rgba(255, 124, 57, 0.7)}.metardewtoday30{background:rgba(211, 93, 78, 1.000)}
-.metarhumcontainer1{position:relative;top:-100px;font-size:.7rem;z-index:1;color:#fff;margin-left:92px;display:inline-block;}
-.humword{position:relative;top:-90px;font-size:.65rem;z-index:1;color:#fff;margin-left:102px}
+.metarhumcontainer1{position:relative;top:-100px;font-size:.7rem;z-index:1;color:var(--pop-badge-text);margin-left:92px;display:inline-block;}
+.humword{position:relative;top:-90px;font-size:.65rem;z-index:1;color:var(--pop-badge-text);margin-left:102px}
 .metarhumtoday0-35,.metarhumtoday35-70,.metarhumtoday70-85,.metarhumtoday85-100{font-family:weathertext2,Arial,Helvetica,system;width:4.5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}
-.metarhumtoday0-35,.metarhumtoday35-70,.metarhumtoday70-85,.metarhumtoday85-100{font-size:1.1rem;padding-top:2px;color:#fff;border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:-70px;}
+.metarhumtoday0-35,.metarhumtoday35-70,.metarhumtoday70-85,.metarhumtoday85-100{font-size:1.1rem;padding-top:2px;color:var(--pop-badge-text);border-bottom:12px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;margin-bottom:-70px;}
 .metarhumtoday0-35{background:rgba(211, 93, 78, 1.000)}.metarhumtoday35-70{background:rgba(230, 161, 65, 1.000)}.metarhumtoday70-85{background:rgba(230, 161, 65, 1.000)}.metarhumtoday85-100{background:rgba(68, 166, 181, 1.000)}
-.dewword,.tword{position:absolute;margin-top:-33px;font-size:.7rem;z-index:1;color:#fff}
-.dewword{margin-left:8px}.tword{margin-left:20px}.tword2{position:absolute;margin-top:-32px;font-size:.65rem;z-index:1;color:#fff}
-.dewword2{position:absolute;margin-top:33px;font-size:.65rem;z-index:1;color:#fff;margin-left:75px}.tword2{margin-left:70px}
+.dewword,.tword{position:absolute;margin-top:-33px;font-size:.7rem;z-index:1;color:var(--pop-badge-text)}
+.dewword{margin-left:8px}.tword{margin-left:20px}.tword2{position:absolute;margin-top:-32px;font-size:.65rem;z-index:1;color:var(--pop-badge-text)}
+.dewword2{position:absolute;margin-top:33px;font-size:.65rem;z-index:1;color:var(--pop-badge-text);margin-left:75px}.tword2{margin-left:70px}
 .metarwindtoday10,.metarwindtoday20,.metarwindtoday25,.metarwindtoday30{font-family:weathertext2,Arial,Helvetica,system;width:5rem;height:2.5rem;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;display:flex}
-.metarwindtoday10,.metarwindtoday20,.metarwindtoday25,.metarwindtoday30{font-size:1.1rem;padding-top:0;color:#fff;border-bottom:10px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;display:flex}
+.metarwindtoday10,.metarwindtoday20,.metarwindtoday25,.metarwindtoday30{font-size:1.1rem;padding-top:0;color:var(--pop-badge-text);border-bottom:10px solid rgba(56,56,60,1);align-items:center;justify-content:center;border-radius:3px;display:flex}
 .actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74, 99, 111, 0.1);
-padding:5px;font-family:Arial, Helvetica, sans-serif;width:100px;height:0.8em;font-size:0.8rem;padding-top:2px;color:#aaa;
+padding:5px;font-family:Arial, Helvetica, sans-serif;width:100px;height:0.8em;font-size:0.8rem;padding-top:2px;color:var(--pop-green-dim);
 align-items:center;justify-content:center;margin-bottom:10px;top:0}
 .actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74, 99, 111, 0.1);
-padding:5px;font-family:Arial, Helvetica, sans-serif;width:100px;height:0.8em;font-size:0.8rem;padding-top:2px;color:#aaa;
+padding:5px;font-family:Arial, Helvetica, sans-serif;width:100px;height:0.8em;font-size:0.8rem;padding-top:2px;color:var(--pop-green-dim);
 align-items:center;justify-content:center;margin-bottom:10px;top:0}
 .metarwindtoday10{background:rgba(230, 161, 65, 1.000)}
 .metarwindtoday20{background:rgba(255, 124, 57, 1.000)}
@@ -136,7 +136,7 @@ align-items:center;justify-content:center;margin-bottom:10px;top:0}
 .metarwindtoday30{background:rgba(211, 93, 78, 1.000)}
 smalluvunit{font-size:.8rem;font-family:Arial,Helvetica,system;}
 valuecalm{font-size:.8em;font-family:weathertext2;}
-stationid{font-size:1.4em;font-family:weathertext2;color:#009bb4}[data-theme="light"] blue,[data-theme="light"] orange,[data-theme="light"] stationid,[data-theme="light"] .directiontext span{color:#007a8a}
+stationid{font-size:1.4em;font-family:weathertext2;color:var(--pop-cyan)}[data-theme="light"] orange,[data-theme="light"] stationid,[data-theme="light"] .directiontext span{color:#007a8a}
 .hitemp,.lotemp{font-size:9px;}
 .iconcondition{float:left;margin-bottom:65px;}
 .icontext{position:absolute;float:left;margin-top:60px;text-align:left;}

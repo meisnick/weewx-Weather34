@@ -24,12 +24,6 @@ if (isset($_GET['theme'])) {
     $theme = ($_GET['theme'] === 'light') ? 'light' : 'dark';
 }
 $is_dark   = ($theme !== 'light');
-$bg        = $is_dark ? 'rgba(30,33,36,1)' : '#fff';
-$bg_chrome = $is_dark ? '#1e2124' : '#f0f2f5';
-$bg_card   = $is_dark ? '#252729' : '#e8eaef';
-$text      = $is_dark ? '#ddd'    : '#222';
-$text_dim  = $is_dark ? '#777'    : '#666';
-$border    = $is_dark ? '#2e3033' : '#ccc';
 
 // Curated premium desaturated color palette
 $sev_colors = [
@@ -193,11 +187,11 @@ body { display: flex; flex-direction: column; }
     <div class="fcst-card <?php echo $sev_class; ?>">
       <div class="fcst-card-title">
         <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars($a['event']); ?></span>
-        <span style="font-size:0.75em;opacity:0.9;background-color:<?php echo $col; ?>;color:#fff;padding:2px 6px;border-radius:3px;font-family:Arial,sans-serif;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;"><?php echo htmlspecialchars($sev); ?></span>
+        <span style="font-size:0.75em;opacity:0.9;background-color:<?php echo $col; ?>;color:var(--pop-badge-text);padding:2px 6px;border-radius:3px;font-family:Arial,sans-serif;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;"><?php echo htmlspecialchars($sev); ?></span>
       </div>
       
-      <div style="font-size:0.7em;color:<?php echo $text_dim; ?>;margin-bottom:8px;line-height:1.4;border-bottom:1px solid <?php echo $border; ?>;padding-bottom:6px;">
-        <strong><?php echo $lang['Headline']; ?>:</strong> <span style="color: <?php echo $is_dark ? '#eee' : '#222'; ?>;"><?php echo htmlspecialchars($a['headline']); ?></span><br>
+      <div style="font-size:0.7em;color:var(--nws-text-dim);margin-bottom:8px;line-height:1.4;border-bottom:1px solid var(--nws-border);padding-bottom:6px;">
+        <strong><?php echo $lang['Headline']; ?>:</strong> <span style="color: var(--nws-text);"><?php echo htmlspecialchars($a['headline']); ?></span><br>
         <?php if (!empty($a['effective'])): ?><strong><?php echo $lang['Effective']; ?>:</strong> <?php echo htmlspecialchars(w34_date('D, M j, g:i A', strtotime($a['effective']))); ?> &nbsp;|&nbsp; <?php endif; ?>
         <?php if (!empty($a['expires'])): ?><strong><?php echo $lang['Expires']; ?>:</strong> <span style="color: <?php echo $col; ?>; font-weight: bold;"><?php echo htmlspecialchars(w34_date('D, M j, g:i A', strtotime($a['expires']))); ?></span><?php endif; ?>
       </div>

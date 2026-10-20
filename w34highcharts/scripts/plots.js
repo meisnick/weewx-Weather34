@@ -1577,6 +1577,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
             options.yAxis[0].max = 100
 	    options.yAxis[0].minorTickInterval = 25;
 	    options.yAxis[0].title.text = "(%)";
+            // why: x: 5 provides left-padding for plotBand text labels against chart border
             options.yAxis[0].plotBands = [{
                              color: Highcharts.theme=='white'?Highcharts.theme:'transparent',
                              from: 0,

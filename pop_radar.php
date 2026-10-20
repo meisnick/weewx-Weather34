@@ -22,12 +22,11 @@ body{
 }
 .rp-station-group{display:flex;align-items:center;gap:6px;font-size:.7rem}
 .rp-station-input{
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-  color:#fff;font-size:.78rem;font-family:'Courier New',monospace;
+  background:var(--radar-input-bg);border:1px solid var(--radar-input-border);
+  color:var(--radar-input-color);font-size:.78rem;font-family:'Courier New',monospace;
   width:4.5rem;padding:3px 6px;border-radius:3px;text-transform:uppercase;
   letter-spacing:.1em;text-align:center;
 }
-[data-theme="light"] .rp-station-input{background:#f0f2f5;border:1px solid #ccd0d5;color:#222}
 .rp-station-input:focus{outline:none;border-color:#ffca32}
 .rp-station-input.error{border-color:#f44336}
 .rp-load{
@@ -35,7 +34,7 @@ body{
   font-size:.65rem;padding:3px 9px;border-radius:3px;
   cursor:pointer;font-family:Arial,sans-serif;
 }
-.rp-load:hover{background:rgba(255,255,255,.22);color:#fff}
+.rp-load:hover{background:var(--radar-btn-hover-bg);color:var(--radar-btn-hover-color)}
 .rp-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;flex:1;text-align:center}
 [data-theme="light"] .rp-title{color:#555}
 .rp-controls{display:flex;align-items:center;gap:10px;font-size:.7rem;margin-left:auto}
@@ -50,9 +49,8 @@ body{
   font-size:.65rem;padding:3px 9px;border-radius:3px;
   cursor:pointer;font-family:Arial,sans-serif;
 }
-.rp-reset:hover{background:rgba(255,255,255,.2);color:#fff}
+.rp-reset:hover{background:var(--radar-btn-hover-bg);color:var(--radar-btn-hover-color)}
 [data-theme="light"] .rp-load,[data-theme="light"] .rp-reset{background:#e4e6eb;border:1px solid #ccd0d5;color:#333}
-[data-theme="light"] .rp-load:hover,[data-theme="light"] .rp-reset:hover{background:#d8dadf;color:#000}
 .rp-save{
   background:#ffca32;border:none;color:#1a1b1f;
   font-size:.68rem;font-weight:bold;padding:4px 14px;border-radius:3px;
@@ -74,9 +72,8 @@ body{
   box-shadow:0 0 0 9999px rgba(0,0,0,.45);border-radius:2px;cursor:move;
 }
 .rp-hint{
-  flex-shrink:0;text-align:center;font-size:.62rem;color:#555;margin-top:6px;
+  flex-shrink:0;text-align:center;font-size:.62rem;color:var(--radar-hint);margin-top:6px;
 }
-[data-theme="light"] .rp-hint{color:#888}
 </style>
 </head>
 <body>

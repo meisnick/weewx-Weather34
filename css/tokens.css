@@ -65,6 +65,79 @@
   --pop-meta-max:        var(--modal-meta-max);
   --pop-meta-min:        var(--modal-meta-min);
   --pop-footer-ink:      var(--modal-footer-ink);
+  /* ---- B1-rev Popup UI Tokens (dark) ---- */
+  --pop-badge-border:     rgba(56, 56, 60, 1);
+  --pop-badge-text:       #ffffff;
+  --pop-chrome-title:     #cccccc;
+  --pop-chrome-bg:        #1e2124;
+  --pop-chrome-card:      #252729;
+  --pop-chrome-text:      #dddddd;
+  --pop-chrome-text-dim:  #8a8f99;
+  --pop-chrome-border:    #2e3033;
+
+  /* Menu tabs */
+  --tab-bg:               #383c44;
+  --tab-border:           rgba(255, 255, 255, 0.12);
+  --tab-color:            #f5f7fc;
+  --tab-hover-bg:         #666666;
+  --tab-hover-color:      #ffffff;
+  --pop-tab-bg:           var(--tab-bg);
+  --pop-tab-border:       var(--tab-border);
+  --pop-tab-color:        var(--tab-color);
+  --pop-tab-hover-bg:     var(--tab-hover-bg);
+  --pop-tab-hover-color:  var(--tab-hover-color);
+
+  /* Semantic UI text & tag colours */
+  --pop-blue:             #01a4b4;
+  --pop-cyan:             #009bb4;
+  --pop-green:            #90b12a;
+  --pop-green-dim:        #aaaaaa;
+  --pop-red:              #f37867;
+  --pop-red-dark:         #d65b4a;
+  --pop-orange:           rgba(255, 124, 57, 1);
+  --pop-yellow:           rgba(186, 146, 58, 1);
+  --pop-yellow-dim:       #cccc00;
+  --pop-purple:           #b48bb5;
+  --pop-maroon:           #e07a6c;
+  --pop-value:            #ffffff;
+
+  /* Sensors & status */
+  --pop-status-ok:        #55aa99;
+  --pop-status-warn:      #e08020;
+  --pop-status-dead:      #e0625a;
+  --pop-sensor-row-border:rgba(84, 85, 86, 0.3);
+  --pop-sensor-bar:       rgba(84, 85, 86, 0.4);
+  --pop-cam-border:       rgba(84, 85, 86, 1);
+
+  /* Forecast tables */
+  --pop-table-text:       #c8c8c8;
+  --pop-table-th-text:    #e6e8ec;
+  --pop-table-th-border:  rgba(255, 255, 255, 0.22);
+  --pop-table-td-border:  rgba(255, 255, 255, 0.08);
+  --pop-table-credit-link:#999999;
+
+  /* Local forecast */
+  --dist-normal:          #eeeeee;
+  --dist-good:            #90b12a;
+  --dist-fair:            #e6a141;
+  --rain-green:           #90b12a;
+  --rain-blue:            #4a8b9f;
+  --rain-amber:           #e6a141;
+  --rain-red:             #d35d4e;
+  --nowcast-bubble-bg:    rgba(33, 34, 39, 0.25);
+  --nowcast-bubble-color: #ffffff;
+
+  /* Radar UI */
+  --radar-input-bg:       rgba(255, 255, 255, 0.08);
+  --radar-input-border:   rgba(255, 255, 255, 0.15);
+  --radar-input-color:    #ffffff;
+  --radar-btn-bg:         rgba(255, 255, 255, 0.1);
+  --radar-btn-color:      silver;
+  --radar-btn-border:     transparent;
+  --radar-btn-hover-bg:   rgba(255, 255, 255, 0.2);
+  --radar-btn-hover-color:#ffffff;
+  --radar-hint:           #555555;
+  --radar-black:          #000000;
 }
 
 [data-theme="light"],
@@ -116,4 +189,77 @@
   --pop-meta-max:        var(--modal-meta-max);
   --pop-meta-min:        var(--modal-meta-min);
   --pop-footer-ink:      var(--modal-footer-ink);
+  /* ---- B1-rev Popup UI Tokens (light) ---- */
+  --pop-badge-border:     #555555;
+  --pop-badge-text:       #ffffff;
+  --pop-chrome-title:     #333333;
+  --pop-chrome-bg:        #f0f2f5;
+  --pop-chrome-card:      #e8eaef;
+  --pop-chrome-text:      #222222;
+  --pop-chrome-text-dim:  #666666;
+  --pop-chrome-border:    #cccccc;
+
+  /* Menu tabs */
+  --tab-bg:               #e2e5e9;
+  --tab-border:           rgba(0, 0, 0, 0.12);
+  --tab-color:            #212428;
+  --tab-hover-bg:         #777777;
+  --tab-hover-color:      #ffffff;
+  --pop-tab-bg:           var(--tab-bg);
+  --pop-tab-border:       var(--tab-border);
+  --pop-tab-color:        var(--tab-color);
+  --pop-tab-hover-bg:     var(--tab-hover-bg);
+  --pop-tab-hover-color:  var(--tab-hover-color);
+
+  /* Semantic UI text & tag colours */
+  --pop-blue:             #007a8a;
+  --pop-cyan:             #007a8c;
+  --pop-green:            #2d7a2d;
+  --pop-green-dim:        #555555;
+  --pop-red:              #c00000;
+  --pop-red-dark:         #b54030;
+  --pop-orange:           #b05000;
+  --pop-yellow:           #8a5a00;
+  --pop-yellow-dim:       #b38600;
+  --pop-purple:           #800080;
+  --pop-maroon:           rgba(180, 50, 40, 1);
+  --pop-value:            #000000;
+
+  /* Sensors & status */
+  --pop-status-ok:        #1f7a5c;
+  --pop-status-warn:      #cc7700;
+  --pop-status-dead:      #c2352d;
+  --pop-sensor-row-border:#e2e6ef;
+  --pop-sensor-bar:       #dddddd;
+  --pop-cam-border:       #ccd0d5;
+
+  /* Forecast tables */
+  --pop-table-text:       #222222;
+  --pop-table-th-text:    #2d3a4b;
+  --pop-table-th-border:  #c9ced6;
+  --pop-table-td-border:  #e2e5ea;
+  --pop-table-credit-link:#007a8c;
+
+  /* Local forecast */
+  --dist-normal:          #111111;
+  --dist-good:            #5e8210;
+  --dist-fair:            #b27214;
+  --rain-green:           #4f6b0d;
+  --rain-blue:            #2f6577;
+  --rain-amber:           #8a5a10;
+  --rain-red:             #d35d4e;
+  --nowcast-bubble-bg:    rgba(240, 242, 245, 0.6);
+  --nowcast-bubble-color: #222222;
+
+  /* Radar UI */
+  --radar-input-bg:       #f0f2f5;
+  --radar-input-border:   #ccd0d5;
+  --radar-input-color:    #222222;
+  --radar-btn-bg:         #e4e6eb;
+  --radar-btn-color:      #222222;
+  --radar-btn-border:     #ccd0d5;
+  --radar-btn-hover-bg:   #d8dadf;
+  --radar-btn-hover-color:#000000;
+  --radar-hint:           #888888;
+  --radar-black:          #000000;
 }

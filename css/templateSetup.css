@@ -29,21 +29,6 @@ h3 {
     margin: 20px 0
 }
 
-.weathersetuptitle {
-    font-size: 18px;
-    text-align: center;
-    font-weight: 200;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 5px;
-    border: 0;
-    background: rgba(67, 58, 80, 1.000);
-    border-radius: 5px;
-    color: #fff;
-    width: 600px;
-    margin: 0 auto;
-    border: 0;
-    border: 1px solid #777
-}
 
 .theframe1 {
     font-size: 14px;
@@ -98,19 +83,6 @@ h3 {
     color: #777
 }
 
-.weatheroptionssidebarbottom {
-    margin: 1px;
-    margin-top: -145px;
-    margin-left: 200px;
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #e9ebf1;
-    border-bottom: 18px solid #f6f8fc;
-    width: 200px;
-    position: relative;
-    float: right;
-    color: #777
-}
 
 .weatherbottominfo {
     position: absolute;
@@ -120,13 +92,6 @@ h3 {
     margin-top: 3px
 }
 
-.weatherbottomwarning {
-    position: absolute;
-    font-size: 12px;
-    color: #777;
-    padding: 3px;
-    margin-top: 7px
-}
 
 .weatheroptions .button {
     background: rgba(240, 94, 64, 1);
@@ -274,11 +239,6 @@ a {
     -webkit-appearance: none
 }
 
-#weatherpopupcontainer {
-    width: 960px;
-    margin: auto;
-    padding: 30px
-}
 
 p {
     margin-bottom: 20px;
@@ -293,32 +253,7 @@ p {
     opacity: .6
 }
 
-#weatherpopup {
-    position: fixed;
-    width: 600px;
-    height: 320px;
-    background: white;
-    left: 50%;
-    top: 25%;
-    border-radius: 5px;
-    padding: 60px 0;
-    margin-left: -320px;
-    margin-top: -100px;
-    text-align: center;
-    border: 1px solid #e9ebf1;
-    border-bottom: 23px solid rgba(40, 39, 39, 0.7);
-    color: #fff;
-    padding: 10px
-}
 
-.weatherpopupbottom {
-    margin-top: 55px;
-    padding: 10px;
-    float: left;
-    color: #fff;
-    position: absolute;
-    font-size: 11px
-}
 
 #close {
     position: absolute;
@@ -341,12 +276,6 @@ body {
     background: white
 }
 
-.seperator {
-    width: 700px;
-    border-top: 1px #ddd dotted;
-    margin-top: 5px;
-    padding: 10px
-}
 
 * {
     box-sizing: border-box
@@ -373,27 +302,9 @@ a:hover {
     color: #7bbb28
 }
 
-.login-screen {
-    background-color: none;
-    padding: 20px;
-    border-radius: 5px;
-    margin: 0 auto
-}
 
-.app-title {
-    text-align: center;
-    color: #ccc;
-    background-color: none
-}
 
-.login-form {
-    text-align: center;
-    background-color: none
-}
 
-.control-group {
-    margin-bottom: 10px
-}
 
 input {
     text-align: center;
@@ -445,12 +356,6 @@ select {
     background-color: rgba(86, 95, 103, 1.000)
 }
 
-.login-link {
-    font-size: 12px;
-    color: #444;
-    display: block;
-    margin-top: 12px
-}
 
 .loginformarea {
     margin: 0 auto;
@@ -483,15 +388,12 @@ white {
     padding: 10px 40px
 }
 
-.input-block input,
 .input-button,
 .modal-button {
     font-family: Arial, sans-serif;
     border: 1px solid #ccc;
 }
 
-.icon-button,
-.input-block input,
 .input-button,
 .modal-button {
     outline: 0;
@@ -523,66 +425,12 @@ white {
     color: #fff
 }
 
-.input-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    font-family: Arial, sans-serif;
-    font-weight: 600;
-    letter-spacing: .7px;
-    color: #8c7569;
-}
 
-.input-block {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 10px 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
 
-.input-block input {
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 40px;
-    border-radius: 5px;
-    background: rgba(144, 177, 42, 1)
-}
 
-.input-block input::-webkit-input-placeholder {
-    color: #ccc;
-    opacity: 1
-}
 
-.input-block input:-ms-input-placeholder {
-    color: #ccc;
-    opacity: 1
-}
 
-.input-block input::-ms-input-placeholder {
-    color: #ccc;
-    opacity: 1
-}
 
-.input-block input::placeholder {
-    color: #ccc;
-    opacity: 1
-}
 
-.input-block:focus-within {
-    border-color: #8c7569
-}
 
-.input-block:focus-within .input-label {
-    color: rgba(140, 117, 105, .8)
-}
 
-.icon-button {
-    position: absolute;
-    right: 10px;
-    top: 12px;
-    width: 32px;
-    height: 32px;
-    background: 0;
-    padding: 0
-}

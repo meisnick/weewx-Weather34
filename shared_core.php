@@ -63,22 +63,6 @@ function msTomph(&$weather, $field){
 	$weather[$field] = number_format(2.236936*$weather[$field], 1);
 }
 
-function anyWtomph($field){
-	global $weather;
-	if($weather["wind_units"]=='mph') return $field;
-	if($weather["wind_units"]=='kts') return number_format(1.150779*$field,1);
-	if($weather["wind_units"]=='km/h') return number_format(0.621371*$field,1);
-	if($weather["wind_units"]=='m/s')  return number_format(2.236936*$field,1);
-}
-
-function anyWtoms($field){
-	global $weather;
-	if($weather["wind_units"]=='m/s')  return $field;
-	if($weather["wind_units"]=='kts') return number_format(0.514444*$field,1);
-	if($weather["wind_units"]=='km/h') return number_format(0.2777778*$field,1);
-	if($weather["wind_units"]=='mph') return number_format(0.44704*$field,1);
-}
-
 // Temperature
 function cToF(&$weather, $field){
 	if(!isset($weather[$field])) return;
@@ -174,17 +158,6 @@ if ($weather["temp_units"] == 'C'){
 	$heatIndex = fToCDirect($heatIndex);
 }
 	return round($heatIndex, 1);
-}
-
-function getUpdatedString($datetime) {
-	global $showDate, $dateFormat, $timeFormat;
-	
-	if ($showDate) {
-		return '<div class="updatedtime"><span>' . date($dateFormat) . '</span><br />' . date($timeFormat) . '</div>';
-	}
-	else {
-		return '<div class="updatedtime"><span>Updated</span><br />' . date($timeFormat) . '</div>';
-	}
 }
 
 function anyToC($field){

@@ -1199,83 +1199,8 @@ foreach ($meteor_events as $meteor_check)
     }
 };
 //end meteor
-$uptime = $weather["uptime"];
-function convert_uptime($uptime)
-{
-    $dt1 = new DateTime("@0");
-    $dt2 = new DateTime("@$uptime");
-    return $dt1->diff($dt2)->format('%a day(s) %h hrs %i min');
-}
-//
-//  Why are these in here still? Check necessity and validitity of this area
-//
-//
-//
-//
-//
-//lunar and solar eclipse /meteor shpwers advisory 2018-2019-2020
+// default advisory line for the UK/RW advisory cards
 $eclipse_default = " <noalert>No Current Weather <spanyellow><span class=\"ink-ored\">Alerts " . $alert . "</span></spanyellow></noalert>";
-//2 jul solar 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 7, 2, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $solareclipsesvg . " <alert>Total Solar <spanyellow>Eclipse</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 7, 2, 2019) ,
-);
-//16/17 jul solar 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 7, 16, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $solareclipsesvg . "  <alert>Partial Lunar <spanyellow>Eclipse</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 7, 17, 2019) ,
-);
-//persieds 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 8, 12, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $meteorsvg . " <alert>Perseids <spanyellow>Meteor Shower</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 8, 13, 2019) ,
-);
-//leonids 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 11, 17, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $meteorsvg . " <alert>Leonids <spanyellow>Meteor Shower</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 11, 18, 2018) ,
-);
-//geminids 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 12, 13, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $meteorsvg . " <alert>Geminids <spanyellow>Meteor Shower</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 12, 14, 2019) ,
-);
-//5/6 dec solar 2019
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 12, 26, 2019) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $solareclipsesvg . "  <alert>Annular Solar <spanyellow>Eclipse</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 12, 26, 2019) ,
-);
-//Quadrantids 2020
-$eclipse_events[] = array(
-    "event_start" => mktime(0, 0, 0, 1, 3, 2020) ,
-    "event_title" => "<div style ='margin-top:5px;'>" . $meteorsvg . "  <alert>Quadrantids <spanyellow>Meteor Shower</spanyellow></alert>  </div>
-",
-    "event_end" => mktime(23, 59, 59, 1, 4, 2020) ,
-);
-//output eclipse events
-$eclipseNow = time();
-$eclipseOP = false;
-foreach ($eclipse_events as $eclipse_check)
-{
-    if ($eclipse_check["event_start"] <= $eclipseNow && $eclipseNow <= $eclipse_check["event_end"])
-    {
-        $eclipseOP = true;
-        $eclipse_default = $eclipse_check["event_title"];
-    }
-};
-//end lunar and solar eclipse /meteor shpwers advisory 2018-2019-2020
 // This is not used in Australia, where is it used?
 // firerisk based on cumulus forum thread http://sandaysoft.com/forum/viewtopic.php?f=14&t=2789&sid=77ffab8f6f2359e09e6c58d8b13a0c3c&start=30
 $firerisk = number_format((((110 - 1.373 * $weather["humidity"]) - 0.54 * (10.20 - anyToC($weather["temp"]))) * (124 * pow(10, (-0.0142 * $weather["humidity"])))) / 60, 0);

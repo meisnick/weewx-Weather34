@@ -1,30 +1,29 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-19 04:00:02 UTC
-   Source count: 22
+   Generated: 2026-10-20 00:49:18 UTC
+   Source count: 21
    Manifest:
-     - [1/22] advisory.css
-     - [2/22] airquality.css
-     - [3/22] airqualitymodule.css
-     - [4/22] aurora.css
-     - [5/22] barometer.css
-     - [6/22] clock.css
-     - [7/22] conditions.css
-     - [8/22] forecast.css
-     - [9/22] forecastdiscussion.css
-     - [10/22] lightning34.css
-     - [11/22] localforecast.css
-     - [12/22] moon.css
-     - [13/22] moonphase.css
-     - [14/22] radar.css
-     - [15/22] rain-totals.css
-     - [16/22] rainfall.css
-     - [17/22] solar.css
-     - [18/22] sun.css
-     - [19/22] temperature.css
-     - [20/22] top-lightning.css
-     - [21/22] topyears.css
-     - [22/22] wind.css
+     - [1/21] advisory.css
+     - [2/21] airquality.css
+     - [3/21] airqualitymodule.css
+     - [4/21] aurora.css
+     - [5/21] barometer.css
+     - [6/21] clock.css
+     - [7/21] conditions.css
+     - [8/21] forecast.css
+     - [9/21] forecastdiscussion.css
+     - [10/21] lightning34.css
+     - [11/21] localforecast.css
+     - [12/21] moonphase.css
+     - [13/21] radar.css
+     - [14/21] rain-totals.css
+     - [15/21] rainfall.css
+     - [16/21] solar.css
+     - [17/21] sun.css
+     - [18/21] temperature.css
+     - [19/21] top-lightning.css
+     - [20/21] topyears.css
+     - [21/21] wind.css
    ========================================================================== */
 
 /* ==== advisory.css ==== */
@@ -236,11 +235,6 @@
   top: -4px
 }
 
-.mod-airquality .tempcontainerx {
-  position: relative;
-  left: -20px;
-  top: -11px
-}
 
 .mod-airquality .tempconverter2 {
   position: absolute;
@@ -1278,25 +1272,6 @@
   font-weight: 500
 }
 
-.mod-clock .clock-container {
-  float: left;
-  color: var(--accent-ink);
-  font: 1em weathertext2;
-  top: 10px;
-  list-style: none;
-  width: 140px;
-  height: 1.55em;
-  right: 137px;
-  border: 0;
-  padding-top: 0;
-  line-height: 16px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  background: var(--danger-5)
-}
 
 .mod-clock .calendar34 {
   position: absolute;
@@ -1321,24 +1296,6 @@
   background-color: var(--card-ink-blue);
 }
 
-[data-theme="light"] .mod-clock .clock-container {
-  float: left;
-  color: var(--accent-ink);
-  top: 10px;
-  list-style: none;
-  width: 140px;
-  height: 1.55em;
-  right: 147px;
-  border: 0;
-  padding-top: 0;
-  line-height: 16px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  background: var(--danger-5)
-}
 
 [data-theme="light"] .mod-clock .calendar34 {
   position: absolute;
@@ -2865,24 +2822,6 @@ position: static;
   color: var(--ink-dark);
 }
 
-/* ==== moon.css ==== */
-
-/* Fix Forward: Restore missing Phase 3 legacy rules for Moon */
-.moonphasem {
-  position: absolute !important;
-  margin-top: -50px !important;
-  left: -85px !important;
-}
-.luminancem {
-  left: 115px !important;
-}
-.moonphasem span {
-  left: 0 !important;
-}
-.luminancem span {
-  left: 5px !important;
-}
-
 /* ==== moonphase.css ==== */
 /* moonphase module -- scoped to .mod-moonphase */
 .mod-moonphase { display: grid; position: relative; width: 100%; height: 0; top: 2px; /* Prod measured: whole card sat -2px high on dev; nudge origin down 2 */ }
@@ -2917,19 +2856,7 @@ position: static;
 
 }
 
-.mod-moonphase .moonsetblue {
-  width: 65px;
 
-  line-height: 10px
-
-}
-
-.mod-moonphase .moonsetblue {
-  font-weight: 600;
-
-  color: var(--accent-ink)
-
-}
 
 .mod-moonphase .moonphasemoduleposition {
   position: relative;
@@ -3149,21 +3076,7 @@ position: static;
 
 
 /* -- Light theme overrides -- */
-[data-theme="light"] .mod-moonphase .moonsetblue {
-  width: 65px;
 
-  margin-top: 0;
-
-  line-height: 10px
-
-}
-
-[data-theme="light"] .mod-moonphase .moonrisered {
-  position: relative;
-
-  background: var(--temp-hot-2)
-
-}
 
 [data-theme="light"] .mod-moonphase .moonset1 {
   -moz-font-smoothing: antialiased
@@ -3612,15 +3525,11 @@ rainratetextheading {
   width: auto !important;
 }
 
-.mod-rainfall .tempconverter, .mod-rainfall .tempconverter1 {
+.mod-rainfall .tempconverter1 {
   position: static !important;
   margin: 0 !important;
 }
 
-.mod-rainfall .rainrateextra, .mod-rainfall .rainconverter {
-  position: static !important;
-  margin: 0 !important;
-}
 
 .mod-rainfall .raincontainer1 {
   position: static !important;
@@ -3673,7 +3582,6 @@ rainratetextheading {
   top: 15px;
 }
 
-.mod-solaruv .uvtoday1,
 .mod-solaruv .uvtoday1-3,
 .mod-solaruv .uvtoday11,
 .mod-solaruv .uvtoday4-5,
@@ -3689,7 +3597,6 @@ rainratetextheading {
   display: flex;
 }
 
-.mod-solaruv .uvtoday1,
 .mod-solaruv .uvtoday1-3,
 .mod-solaruv .uvtoday11,
 .mod-solaruv .uvtoday4-5,
@@ -4279,7 +4186,6 @@ rainratetextheading {
   padding: 0 !important;
 }
 
-.mod-temperature .tempconverter,
 .mod-temperature .tempconverter1,
 .mod-temperature .tempconverter2 {
   position: static !important;

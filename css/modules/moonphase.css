@@ -31,19 +31,7 @@
 
 }
 
-.mod-moonphase .moonsetblue {
-  width: 65px;
 
-  line-height: 10px
-
-}
-
-.mod-moonphase .moonsetblue {
-  font-weight: 600;
-
-  color: var(--accent-ink)
-
-}
 
 .mod-moonphase .moonphasemoduleposition {
   position: relative;
@@ -263,21 +251,7 @@
 
 
 /* -- Light theme overrides -- */
-[data-theme="light"] .mod-moonphase .moonsetblue {
-  width: 65px;
 
-  margin-top: 0;
-
-  line-height: 10px
-
-}
-
-[data-theme="light"] .mod-moonphase .moonrisered {
-  position: relative;
-
-  background: var(--temp-hot-2)
-
-}
 
 [data-theme="light"] .mod-moonphase .moonset1 {
   -moz-font-smoothing: antialiased

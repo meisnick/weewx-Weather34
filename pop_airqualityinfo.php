@@ -50,22 +50,14 @@ maroon{color:#e07a6c}orange{color:rgba(255,124,57,1)}yellow{color:rgba(186,146,5
 [data-theme="light"] orange{color:#b05000}
 [data-theme="light"] yellow{color:#8a5a00}
 [data-theme="light"] green{color:#2d7a2d}
-aqiimage1{position:absolute;left:-5px;top:-2px}.aqilocation{position:absolute;top:25px;left:20px;font-size:.5em;font-family:Arial,Helvetica,sans-serif}
-.aqilocation span{position:absolute;top:30px;left:10px;font-size:12px;font-family:Arial,Helvetica,sans-serif;display:block;width:70px}
-.aqilocation span2{position:absolute;top:15px;left:-20px;font-size:12px;font-family:Arial,Helvetica,sans-serif;width:130px;color:#aaa}
-.aqilocation span3{position:absolute;top:5px;left:35px;font-size:12px;font-family:Arial,Helvetica,sans-serif;width:100px}
-.aqilocation mod{position:absolute;top:5px}.aqitime{font-size:11px;color:#aaa;position:absolute;top:27px;left:140px;width:130px}
-.aqigraphic{position:relative;left:20px}
-.extraqiinfo{position:relative;top:0;font-size:.9em;color:#aaa;left:120px;width:100px}
+aqiimage1{position:absolute;left:-5px;top:-2px}.extraqiinfo{position:relative;top:0;font-size:.9em;color:#aaa;left:120px;width:100px}
 [data-theme="light"] .extraqiinfo{color:#000;}
 .extraqiinfo2{position:relative;top:0;font-size:12px;color:#aaa;left:0;width:100px}
 airvalue{position:relative;top:5px;left:-10px;font-size:24px}airvalue0{position:relative;top:5px;left:-10px;font-size:24px}
 span11{position:relative;top:50px;font-size:14px;line-height:14px;width:200px;margin-left:20px}
-.airwarning{position:relative;margin-left:70px;font-size:1.6rem}.airwarning1{position:relative;margin-left:100px;top:5px}.airwarning2{position:relative;margin-left:55px;top:0}
 smalluvunit{position:absolute;display:inline;font-size:.8rem;font-family:Arial,Helvetica,system;vertical-align:top}
 .air0,.air100,.air150,.air200,.air300,.air50{position:relative;font-family:weathertext2,Arial,Helvetica,system;width:8rem;height:5.68rem;font-size:1.5rem;padding-top:0;color:#fff;border-bottom:15px solid rgba(56,56,60,1);display:flex;align-items:center;justify-content:center;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px}
 .air0{background:rgba(144,177,42,1)}.air50{background:rgba(230,161,65,1)}.air100{background:rgba(255,124,57,.8)}.air150{background:rgba(211,93,78,.8)}.air200{background:#a475cb}.air250{background:#a475cb}.air300{background:#a475cb}
-.airpm25{position:relative;font-family:weathertext2,Arial,Helvetica,system;width:6.5rem;height:6.5rem;font-size:1.35rem;padding-top:0;color:#fff;border:10px solid rgba(56,56,60,1);display:flex;align-items:center;justify-content:center;-webkit-border-radius:50%;border-radius:50%;background:#00a4b4;left:49px}
 pm25{position:relative;font-family:weathertext2,Arial,Helvetica,system;font-size:.5rem;vertical-align:super}
 .actualt{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:teal;padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#fff;border-bottom:2px solid rgba(56,56,60,1);align-items:center;justify-content:center;margin-bottom:10px;top:0}
 .actualw{position:relative;left:5px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;background:rgba(74,99,111,.1);padding:5px;font-family:Arial,Helvetica,sans-serif;width:100px;height:.8em;font-size:.8rem;padding-top:2px;color:#aaa;border-bottom:2px solid rgba(56,56,60,1);align-items:center;justify-content:center;margin-bottom:10px;top:0}
@@ -88,7 +80,6 @@ div.output small1{display:block;margin:0;padding:0;font-size:.9em;color:rgba(255
 div.output{width:90px;height:90px;position:absolute;left:70px;top:88px;color:#fff;text-transform:uppercase;text-align:center;margin:0 auto;display:flex;align-items:center;justify-content:center}
 div.output small{display:block;margin:0;padding:0;font-size:1em;color:var(--pop-link);margin-left:10px;margin-top:-5px}
 .trendicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute}
-.listitem{position:relative;left:10px}
   </style>
 
 <?php  // PURPLE AIR additional conversion script included by Andrew Billits 24 April 2018

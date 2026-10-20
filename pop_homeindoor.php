@@ -71,7 +71,6 @@ div.output small{display:block;margin:0;padding:0;font-size:1em;color:#c0c0c0;}
 [data-theme="light"] div.output small{color:black;}
 .trendicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
 .airqicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
-.humicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
 .tempicon{margin:0 auto;display:flex;margin-top:37px;align-items:center;justify-content:center;font-size:1.85em;font-family:weathertext2;position:absolute;}
 .lotemp{color:var(--pop-footer-ink);font-size:11px;}
   .weather34indoortrenddown,.weather34indoortrendsteady,.weather34indoortrendup,.weather34indoorcold,.weather34indoorhot,.weather34indoormild,.weather34indoorwarm,.weather34indoorcomfort,.weather34indoordry,.weather34indoorhumid{text-shadow:var(--badge-text-shadow)}

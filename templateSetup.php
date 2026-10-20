@@ -173,14 +173,12 @@ FCLOSE($fp);
             body { background: #1b1c20 !important; color: #aaa; }
             .theframe { background: #232428 !important; border-color: rgba(84,85,86,0.4); }
             .weatheroptions { border-color: rgba(84,85,86,0.35); border-bottom-color: rgba(84,85,86,0.35); }
-            .weatheroptionssidebar, .weatheroptionssidebarbottom { border-color: rgba(84,85,86,0.35); border-bottom-color: rgba(84,85,86,0.35); }
+            .weatheroptionssidebar { border-color: rgba(84,85,86,0.35); border-bottom-color: rgba(84,85,86,0.35); }
             h1, h2 { color: #bbb; }
             #hover { background: #1b1c20; }
-            #weatherpopup { background: #232428; border-color: rgba(84,85,86,0.4); border-bottom-color: rgba(84,85,86,0.6); color: #ccc; }
             #close { background: #333; color: #ccc; }
             .login_screen { border-color: rgba(84,85,86,0.5) !important; color: #aaa !important; }
-            .weatherbottominfo, .weatherbottomwarning { color: #888; }
-            .seperator { border-top-color: rgba(84,85,86,0.4); }
+            .weatherbottominfo { color: #888; }
         </style>
         <?php endif; ?>
     </head>

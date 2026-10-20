@@ -109,62 +109,6 @@ purple {
   left: 10px;
   margin-top: 0px;
 }
-.temperaturetoday0,
-.temperaturetoday10,
-.temperaturetoday18,
-.temperaturetoday24,
-.temperaturetoday30 {
-  font-family: weathertext2, Arial, Helvetica, system;
-  width: 8rem;
-  height: 2.3rem;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  display: flex;
-  font-size: 1.2rem;
-  padding-top: 2px;
-  color: #fff;
-  border-bottom: 15px solid rgba(56, 56, 60, 1);
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-.temperaturecaution,
-.temperaturetrend,
-.temperaturetrend1 {
-  position: absolute;
-  font-size: 1rem;
-}
-.temperaturetoday0 {
-  background: rgba(68, 166, 181, 1);
-}
-.temperaturetoday10 {
-  background: rgba(144, 177, 42, 1);
-}
-.temperaturetoday18 {
-  background: rgba(230, 161, 65, 1);
-}
-.temperaturetoday24 {
-  background: rgba(255, 124, 57, 1);
-}
-.temperaturetoday30 {
-  background: rgba(211, 93, 78, 1);
-}
-.temperaturetrend {
-  margin-left: 30px;
-  margin-top: -23px;
-  z-index: 1;
-  color: #fff;
-  font-size: 0.7rem;
-}
-.temperaturetrend1 {
-  margin-left: 10px;
-  margin-top: -23px;
-  z-index: 1;
-  color: #fff;
-  font-size: 0.7rem;
-}
 
 .w34convertrain {
   position: relative;
@@ -198,8 +142,7 @@ purple {
   z-index: 1;
   color: #fff;
 }
-.indoorhomevalue1,
-.indoorhomevalue2 {
+.indoorhomevalue1 {
   font-size: 23px;
   padding-right: 4px;
   padding-left: 0;
@@ -207,22 +150,6 @@ purple {
 .indoorhomevalue1 {
   position: relative;
   margin-top: -89px;
-  left: 0;
-}
-.indoorhomesvg2 {
-  margin-top: -22px;
-  left: 53px;
-  color: rgba(53, 56, 58, 1);
-  margin-left: -40px;
-}
-.indoortrendhouse2 {
-  position: absolute;
-  margin-left: 195px;
-  margin-top: 25px;
-}
-.indoorhomevalue2 {
-  position: relative;
-  margin-top: -79px;
   left: 0;
 }
 

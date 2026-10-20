@@ -107,25 +107,6 @@
   font-weight: 500
 }
 
-.mod-clock .clock-container {
-  float: left;
-  color: var(--accent-ink);
-  font: 1em weathertext2;
-  top: 10px;
-  list-style: none;
-  width: 140px;
-  height: 1.55em;
-  right: 137px;
-  border: 0;
-  padding-top: 0;
-  line-height: 16px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  background: var(--danger-5)
-}
 
 .mod-clock .calendar34 {
   position: absolute;
@@ -150,24 +131,6 @@
   background-color: var(--card-ink-blue);
 }
 
-[data-theme="light"] .mod-clock .clock-container {
-  float: left;
-  color: var(--accent-ink);
-  top: 10px;
-  list-style: none;
-  width: 140px;
-  height: 1.55em;
-  right: 147px;
-  border: 0;
-  padding-top: 0;
-  line-height: 16px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  background: var(--danger-5)
-}
 
 [data-theme="light"] .mod-clock .calendar34 {
   position: absolute;

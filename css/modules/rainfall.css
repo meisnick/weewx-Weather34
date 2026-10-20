@@ -321,15 +321,11 @@ rainratetextheading {
   width: auto !important;
 }
 
-.mod-rainfall .tempconverter, .mod-rainfall .tempconverter1 {
+.mod-rainfall .tempconverter1 {
   position: static !important;
   margin: 0 !important;
 }
 
-.mod-rainfall .rainrateextra, .mod-rainfall .rainconverter {
-  position: static !important;
-  margin: 0 !important;
-}
 
 .mod-rainfall .raincontainer1 {
   position: static !important;

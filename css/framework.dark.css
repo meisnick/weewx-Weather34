@@ -59,8 +59,6 @@ h6 {
   font-smoothing: antialiased
 }
 
-.barometertrend,
-.barometertrend steady,
 .logo,
 .logo span {
   color: var(--card-ink)
@@ -147,9 +145,7 @@ a {
 }
 
 #day,
-#dayaftertomo,
-#night,
-#tomo {
+#night {
   color: var(--card-ink);
   padding: 5px;
   border-bottom: 0 solid var(--line-soft);
@@ -157,8 +153,7 @@ a {
 }
 
 .updatedtime,
-.updatedtime1,
-.updatedtimeuv {
+.updatedtime1 {
   font: .65em weathertext2;
   margin-left: 235px;
   padding: 0;
@@ -198,57 +193,26 @@ sup {
   vertical-align: baseline
 }
 
-.text,
-.windvalue {
+.text {
   font-size: 26px;
   color: var(--card-ink)
 }
 
-.homeweathercompass>.windirectiontext {
-  display: block;
-  text-align: center;
-  color: var(--card-ink);
-  font-family: Arial, system;
-  font-weight: 600;
-  line-height: 12px;
-  font-size: 12px;
-  z-index: 10;
-  margin: 0 0 auto
-}
 
-.fgtext,
-.hrstillsunset,
-.hrstillsunset period,
-.hrswassunrise,
-.hrswassunrise period,
-.moduletitle,
-.sunrisehome,
-.sunrisehome period,
-.sunsethome,
-.sunsethome period {
+.moduletitle {
   color: var(--card-ink)
 }
 
 .chartforecast:hover,
-.homeweathernotify warmer,
 .menu li a:hover,
-.temptrendrising,
 a:hover {
   color: var(--good)
 }
 
 #temp,
 .a,
-.averagetemp span2,
-.barometertrend falling,
-.barometertrend rising,
-.homeweathernotify colder,
-.indoorfeels span,
 .luminance,
 .sun,
-.temptrendfalling,
-.windir,
-.windirectiontext span,
 suprain,
 suprain1,
 suprain2,
@@ -276,74 +240,26 @@ suptempindoor {
 }
 
 .average span,
-.averagedir span,
-.averageindoor span,
-.averageuv span,
 .updatedtime span,
-.updatedtimealert span,
-.updatedtimecurrent span,
-.updatedtimedir span {
+.updatedtimecurrent span {
   margin-bottom: 0;
   color: var(--card-ink);
   font-family: weathertext2;
   text-rendering: optimizeLegibility
 }
 
-.humidityindoor span,
-.temperatureindoor span {
-  margin-bottom: 0;
-  font-size: .4em;
-  color: var(--card-ink);
-  font-family: weathertext2
-}
 
-.windspeedtrend span {
-  margin-bottom: 0;
-  color: var(--card-ink);
-  font-family: arial, system
-}
 
-.text1,
-.windvalue1 {
+.text1 {
   font-family: weathertext2;
   font-size: 1.45rem;
   color: var(--card-ink)
 }
 
-.homeweathercompass1>.windirectiontext1 {
-  display: block;
-  text-align: center;
-  color: var(--card-ink);
-  font-family: Arial, system;
-  font-weight: 600;
-  line-height: 12px;
-  font-size: 12px;
-  z-index: 10;
-  margin: 0 0 auto
-}
 
-.windunits {
-  color: var(--card-ink)
-}
 
-.windgustvalue,
-.windspeedvalue {
-  font-size: 1.55rem;
-  margin-top: 50px;
-  color: var(--card-ink)
-}
 
-.windspeedtrend1,
-.windspeedtrend1 span {
-  color: var(--card-ink);
-  font: 10px arial, system;
-  line-height: 9px
-}
 
-.gustspeedtrend1 max,
-.windspeedtrend1 max {
-  color: var(--warn-2)
-}
 
 .footertext,
 .online {
@@ -408,7 +324,6 @@ suptempindoor {
   font-weight: 500
 }
 
-.clockiconsvg,
 grey,
 raingrey,
 spanm,
@@ -423,28 +338,17 @@ spanm {
 }
 
 .active a.area,
-.main-menu .nav-text,
-.main-menu a,
-.main-menu li,
 nav,
 nav li,
 nav ul {
   color: var(--card-ink)
 }
 
-.rainblue1,
-.windgrey1,
 grey,
 rainblue1 {
   font-size: 10px
 }
 
-.main-menu,
-.main-menu li>a,
-.main-menu menu {
-  font-size: 12px;
-  color: var(--card-ink)
-}
 
 adv,
 bluefi,
@@ -486,14 +390,12 @@ solartrend {
 }
 
 .homeweathercompass2,
-.raintodayblue span,
 todayrain {
   color: var(--card-ink);
   font-size: 12px
 }
 
-.pressuretext,
-.pressuretextfast {
+.pressuretext {
   position: absolute;
   font-size: .7rem;
   color: var(--card-ink);
@@ -510,17 +412,11 @@ todayrain {
   color: var(--card-ink)
 }
 
-.barometerconv span,
 convtext {
   color: var(--card-ink);
   display: block;
   font-weight: 500
-}.sundarkday, .sunlightday, .sunriseday, .sunsetday {
-  width: 100px;
-  position: absolute;
-  color: var(--card-ink)
 }
-
 aurora {
   color: var(--card-ink)
 }
@@ -628,7 +524,7 @@ timeago {
   display: block;
   font-size: .7rem;
   color: var(--card-ink)
-}.azimuth, .elevation, .luxratedark, .solarsun, nosun1 {
+}.azimuth, .elevation, nosun1 {
   position: absolute
 }
 
@@ -668,7 +564,6 @@ talert {
 
 .azimuth,
 .elevation,
-.homeweatheralert2 spanbold,
 supunit {
   font-weight: 500
 }
@@ -726,15 +621,6 @@ body {
   color-adjust: exact
 }
 
-.consoleoutlook {
-  position: relative;
-  color: var(--card-ink);
-  font-size: .42em;
-  margin-top: 1.5rem;
-  line-height: 1em;
-  margin-left: 20px;
-  width: 170px
-}
 
 .mod-box .value1 {
   position: absolute;
@@ -760,25 +646,6 @@ smallrainunit {
   font-size: .7em
 }
 
-.windconvertercircleblue1,
-.windconvertercirclegreen1,
-.windconvertercircleorange1,
-.windconvertercirclered1,
-.windconvertercircleyellow1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1rem;
-  width: 3.4rem;
-  border: 1px solid var(--card-bg-2);
-  overflow: hidden;
-  -webkit-border-radius: 2px;
-  line-height: 16px;
-  font-family: weathertext2;
-  font-size: .85em;
-  color: var(--card-ink);
-  background: 0
-}
 
 smalltempunit {
   font-size: .6em
@@ -837,7 +704,6 @@ smalluvunit {
   font-family: Arial, Helvetica, system
 }
 
-.simsek,
 topyellow1 {
   background: var(--warn)
 }
@@ -942,15 +808,6 @@ topdaqi10 {
   background: var(--aqi-hazard)
 }
 
-.maxtimedate,
-.mintimedate {
-  position: absolute;
-  margin-top: 61px;
-  font-size: .54rem;
-  z-index: 1;
-  color: var(--card-ink);
-  width: 50px
-}
 
 smallwindunit {
   font-size: .45rem;
@@ -958,23 +815,7 @@ smallwindunit {
   padding-left: 2px
 }
 
-.windunitidspeed {
-  color: var(--card-ink);
-  margin-top: -35px;
-  font-size: 10px;
-  position: absolute;
-  width: 55px;
-  margin-left: 0
-}
 
-.windunitidgust {
-  color: var(--card-ink);
-  margin-top: -35px;
-  font-size: 10px;
-  position: absolute;
-  width: 85px;
-  left: -16px
-}
 
 weather34bftspan {
   margin-left: 3px;
@@ -993,12 +834,11 @@ weather34windrunspan {
 weather34windrunspan {
   margin-left: 3px;
   font-size: .5rem
-}.mod-barometer-min span, .rainaverage span, .rainblue1, .raintodayblue, .tempblue span, .tempbluedew span, .tempbluefeels span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, .ink-oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
+}.mod-barometer-min span, .weather34windrun, .yearrain, .yearrain span, blue, fall, lowtempspan, lowtemptitle, monthrainspan, oblue, .ink-oblue, oblueh1, rainblue, rainblue1, rainrateblue, tempblue, tfalling, wfblue, windchill {
   color: var(--info-cool)
 }
 
 .raintoday1,
-.suncircleblue,
 topblue1 {
   background: var(--info-cool)
 }
@@ -1012,7 +852,7 @@ rainu {
   font-size: 10px;
   color: var(--card-ink);
   left: 3px
-}.eqcaution, .eqt, .rainratesmall, .sundown34, .sunup34, .wflaststrike, .wfstrike, wfstriketoday {
+}.rainratesmall, .sundown34, .wflaststrike, wfstriketoday {
   position: absolute
 }
 
@@ -1035,7 +875,6 @@ smallrainunit3 {
   font-family: Arial, Helvetica, system
 }
 
-.rainconvertercircleblue1,
 value,
 valuetext,
 valuetext1,
@@ -1325,8 +1164,7 @@ rainratetextheading {
 .intempmodulehome10-15c,
 .intempmodulehome15-20c,
 .intempmodulehome20-25c,
-.intempmodulehome25-30c,
-.intempmodulehome5-10c {
+.intempmodulehome25-30c {
   height: 1.1rem;
   width: 4.3rem;
   line-height: 16px;
@@ -1338,7 +1176,6 @@ rainratetextheading {
   overflow: hidden
 }
 
-.eqcontainer1,
 wfstriketoday {
   font-family: weathertext2, system
 }
@@ -1360,12 +1197,7 @@ wfstriketoday {
   top: -5px
 }
 
-.eqt {
-  margin-left: 10px;
-  margin-top: -15px;
-  color: var(--card-ink);
-  font-size: .65rem
-}.moonphase {
+.moonphase {
   color: var(--card-ink)
 }
 
@@ -1377,7 +1209,6 @@ wfstriketoday {
   line-height: 14px
 }
 
-.feelsindoorcircleyellow,
 .mod-indoor-temp--mild {
   background: var(--warn)
 }
@@ -1422,17 +1253,14 @@ indoortrends {
   background: var(--good)
 }
 
-.feelsindoorcircleblue,
 .raintoday1,
-.suncircleblue,
 .mod-indoor-temp--cold,
 topblue1 {
   background: var(--info-cool)
 }
 
 .updatedtime,
-.updatedtime1,
-.updatedtimeuv {
+.updatedtime1 {
   font: .65em weathertext2;
   margin-left: 235px;
   color: var(--card-ink);
@@ -1451,9 +1279,7 @@ updatedtime {
 }
 
 .updatedtime span,
-.updatedtimealert span,
-.updatedtimecurrent span,
-.updatedtimedir span {
+.updatedtimecurrent span {
   margin-bottom: 0;
   color: var(--card-ink);
   font-family: weathertext2;
@@ -1634,17 +1460,6 @@ topbarmetric {
   font-weight: 500
 }
 
-.wuthunder {
-  position: absolute;
-  font-family: weathertext2;
-  width: 8.5rem;
-  height: 1rem;
-  font-size: 10px;
-  color: var(--card-ink);
-  justify-content: center;
-  margin-left: 140px;
-  margin-top: 27px
-}
 
 heatindexwu,
 redwu,
@@ -2019,15 +1834,6 @@ body {
     padding:0
     
 
-}
-.maxtimedate,
-.mintimedatex {
-  position: absolute;
-  margin-top: 61px;
-  font-size: .54rem;
-  z-index: 1;
-  color: var(--card-ink);
-  width: 50px
 }
 /* ── Light mode direct overrides ───────────────────────────────────────── */
 [data-theme="light"] body {

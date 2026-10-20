@@ -21,16 +21,6 @@ if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'da
 ?>
 <style>
 * { box-sizing: border-box; }
-:root, [data-theme="dark"] {
-  --tab-bg: #383c44;
-  --tab-border: rgba(255, 255, 255, 0.12);
-  --tab-color: #f5f7fc;
-}
-[data-theme="light"] {
-  --tab-bg: #e2e5e9;
-  --tab-border: rgba(0, 0, 0, 0.12);
-  --tab-color: #212428;
-}
 html, body {
   height: 100%;
   margin: 0;
@@ -48,9 +38,9 @@ html, body {
   background: var(--pop-bg);
 }
 .tablink {
-  background-color: var(--tab-bg);
-  color: var(--tab-color);
-  border: 1px solid var(--tab-border);
+  background-color: var(--pop-tab-bg);
+  color: var(--pop-tab-color);
+  border: 1px solid var(--pop-tab-border);
   border-radius: 4px;
   outline: none;
   cursor: pointer;
@@ -61,8 +51,8 @@ html, body {
   white-space: nowrap;
 }
 .tablink:hover {
-  background-color: #666;
-  color: #fff;
+  background-color: var(--pop-tab-hover-bg);
+  color: var(--pop-tab-hover-color);
 }
 .tablink.active {
   background-color: #c2663a !important;

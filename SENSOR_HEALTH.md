@@ -29,11 +29,16 @@ is needed.
         signal1 = wh40_sig
         signal2 = wh68_sig
         signal3 = wh32_sig
+        signal4 = wh31_ch1_sig
         signal5 = wh57_sig
         rainBatteryStatus = wh40_batt
         windBatteryStatus = wh68_batt
         outTempBatteryStatus = wh32_batt
         batteryStatus5 = wh57_batt
+        inTempBatteryStatus = wh31_ch1_batt
+        # indoor obs come from the WN31 (WH31 ch1), not the gateway's built-in sensor
+        inTemp = temp1
+        inHumidity = humid1
 
 [Accumulator]
     # health is state, not a rate -- take the last value in the interval
@@ -48,12 +53,13 @@ confirm with:
 
 ```sh
 sqlite3 /var/lib/weewx/weewx.sdb \
-  "SELECT signal1,signal2,signal3,signal5,batteryStatus5 \
+  "SELECT signal1,signal2,signal3,signal4,signal5,batteryStatus5,inTempBatteryStatus \
    FROM archive ORDER BY dateTime DESC LIMIT 1;"
 ```
 
 Adjust the sensor list to match the station — this maps WH40 (rain), WH68
-(wind), WH32 (outdoor T/H) and WH57 (lightning).
+(wind), WH32 (outdoor T/H), WH57 (lightning) and the WN31 indoor T/H (the
+gateway reports it as WH31 ch1).
 
 ## Battery scales differ per sensor
 
@@ -64,6 +70,7 @@ There is no single threshold. `sensor_health.php` encodes these:
 | WH57   | `int`    | 0-5 level; `<=1` low, `6` = DC mains, `>5` dead |
 | WH68   | `volt`   | voltage; `<=1.2` low                            |
 | WH32   | `binary` | `0` OK, `1` low                                 |
+| WH31   | `binary` | `0` OK, `1` low (WN31 indoor, ch1)              |
 | WH40   | `none`   | **always** None — hardware cannot report it, so signal is its only health indicator |
 
 ## Parts

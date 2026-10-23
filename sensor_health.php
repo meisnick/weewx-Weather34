@@ -33,6 +33,7 @@ function w34_health_sensors() {
         'WH40' => ['label' => 'Rain gauge',   'sig' => 'signal1', 'batt' => 'rainBatteryStatus',    'batt_type' => 'none'],
         'WH32' => ['label' => 'Outdoor T/H',  'sig' => 'signal3', 'batt' => 'outTempBatteryStatus', 'batt_type' => 'binary'],
         'WH57' => ['label' => 'Lightning',    'sig' => 'signal5', 'batt' => 'batteryStatus5',       'batt_type' => 'int'],
+        'WH31' => ['label' => 'Indoor T/H',   'sig' => 'signal4', 'batt' => 'inTempBatteryStatus',  'batt_type' => 'binary'],
     ];
 }
 

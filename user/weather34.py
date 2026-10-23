@@ -36,6 +36,7 @@ import re
 import sys
 import json
 import time
+import datetime
 import weeutil.rsyncupload
 try: import xmltodict
 except: pass
@@ -523,6 +524,41 @@ class ForecastData():
                 do_rsync_transfer(self.webserver_addresses, os.path.join(self.remote_html_root, "jsondata/"), os.path.dirname(lfilename), self.user, self.rsync_port)
             time.sleep(60)
 
+class AirQuality():
+    """Stamps each archive record with PM2.5 and PM10 (ug/m3) from the WAQI feed in jsondata/aq.txt, so the
+    Air Quality chart has history; the station has no PM sensor. WAQI gives US AQI sub-indices, converted back
+    to concentrations with the EPA breakpoints. A value the station supplied is never overwritten."""
+    # (AQI low, AQI high, concentration low, concentration high). PM2.5 is the pre-2024 table, which WAQI still uses:
+    # 18 of 18 monitors around Chicago/Milwaukee matched AirNow's raw hourly ug/m3 with it on 2026-10-23, 1 with 2024's.
+    PM2_5 = ((0, 50, 0.0, 12.0), (51, 100, 12.1, 35.4), (101, 150, 35.5, 55.4), (151, 200, 55.5, 150.4),
+             (201, 300, 150.5, 250.4), (301, 500, 250.5, 500.4))
+    PM10_0 = ((0, 50, 0, 54), (51, 100, 55, 154), (101, 150, 155, 254), (151, 200, 255, 354),
+              (201, 300, 355, 424), (301, 500, 425, 604))
+    MAX_AGE = 3 * 3600   # the monitor's reading time; older means the feed or the monitor has stalled
+
+    def __init__(self, html_root):
+        self.aq_file = os.path.join(html_root, "jsondata", "aq.txt")
+
+    @staticmethod
+    def aqi_to_conc(aqi, table):
+        for alo, ahi, clo, chi in table:
+            if aqi <= ahi:
+                return round(clo + (max(aqi, alo) - alo) * (chi - clo) / (ahi - alo), 1)
+        return None
+
+    def update_air_quality(self, event):
+        try:
+            with open(self.aq_file) as f:
+                data = json.load(f)['data']
+            if time.time() - datetime.datetime.fromisoformat(data['time']['iso']).timestamp() > self.MAX_AGE:
+                return
+            for field, key, table in (('pm2_5', 'pm25', self.PM2_5), ('pm10_0', 'pm10', self.PM10_0)):
+                aqi = data.get('iaqi', {}).get(key, {}).get('v')
+                if event.record.get(field) is None and isinstance(aqi, (int, float)) and aqi >= 0:
+                    event.record[field] = self.aqi_to_conc(aqi, table)
+        except Exception as e:
+            logdbg("AirQuality: no reading: %s" % e)
+
 class CloudCover():
     def __init__(self, weewx_dict):
         if weewx_dict.get('Weather34CloudCover').get('enable').upper() != 'TRUE':
@@ -799,6 +835,7 @@ class Weather34RealTime(StdService):
         except Exception as e:
             self.cc = None
             loginf("CloudCover Not Installed due to " + str(e))
+        self.aq = AirQuality(self.html_root) if self.html_root else None
 
         try:
             self.chk_lightning_cnt = True if config_dict['Weather34RealTime'].get('chk_lightning_cnt').upper() == 'TRUE' else False; 
@@ -850,6 +887,8 @@ class Weather34RealTime(StdService):
             #do_rsync_transfer(self.webserver_addresses, os.path.join(self.remote_html_root, "serverdata/"), os.path.join(self.config_dict['StdReport']['Weather34Report'].get('HTML_ROOT'), 'serverdata/') if len(self.webserver_addresses) == 0 else '/tmp/weather34/serverdata/', self.config_dict['StdReport']['RSYNC'].get('user', None), self.config_dict['StdReport']['RSYNC'].get('port',None))
         if self.cc != None:
             self.cc.update_cloud_cover(event)
+        if self.aq != None:
+            self.aq.update_air_quality(event)
 
     def handle_new_loop(self, event):
         if self.cache_enable:

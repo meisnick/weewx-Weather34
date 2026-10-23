@@ -753,7 +753,7 @@ class w34highcharts_solar_week(SearchList):
         try:
                 (time_start_vt, time_stop_vt, pm2_5_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts, timespan.stop), 'pm2_5')
                 pm2_5Round = int(self.generator.skin_dict['Units']['StringFormats'].get(pm2_5_vt[1], "1f")[-2])
-                pm2_5Round_vt =  [roundNone(x,pm2_5Round) if x != None else 0 for x in pm2_5_vt[0]]
+                pm2_5Round_vt =  [roundNone(x,pm2_5Round) for x in pm2_5_vt[0]]   # missing stays a gap, not 0
                 pm2_5time_ms =  [time_stop_vt[0][0] if (x == 0) else time_stop_vt[0][x] - time_stop_vt[0][0] for x in range(len(time_stop_vt[0]))]
                 pm2_5_json = json.dumps(list(zip(pm2_5time_ms, pm2_5Round_vt)))
         except:
@@ -763,7 +763,7 @@ class w34highcharts_solar_week(SearchList):
         try:
                 (time_start_vt, time_stop_vt, pm10_0_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts, timespan.stop), 'pm10_0')
                 pm10_0Round = int(self.generator.skin_dict['Units']['StringFormats'].get(pm10_0_vt[1], "1f")[-2])
-                pm10_0Round_vt =  [roundNone(x,pm10_0Round) if x != None else 0 for x in pm10_0_vt[0]]
+                pm10_0Round_vt =  [roundNone(x,pm10_0Round) for x in pm10_0_vt[0]]   # missing stays a gap, not 0
                 pm10_0time_ms =  [time_stop_vt[0][0] if (x == 0) else time_stop_vt[0][x] - time_stop_vt[0][0] for x in range(len(time_stop_vt[0]))]
                 pm10_0_json = json.dumps(list(zip(pm10_0time_ms, pm10_0Round_vt)))
         except:

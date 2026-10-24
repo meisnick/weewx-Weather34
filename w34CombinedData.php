@@ -40,6 +40,7 @@ $weewxrt = array_map(function ($v)
     return $v;
 }
 , explode(" ", file_get_contents($livedata)));
+$weewxrt = array_pad($weewxrt, 64, null); // a missing or short realtime line reads as all-null fields
 if (isset($weewxapi))
 {
     $weather["rain_alltime"] = $weewxapi[151];
@@ -52,7 +53,7 @@ if (isset($weewxapi))
             $weewxrt[23] = number_format((float)$weewxrt[23], 0, '.', '');
         }
     }
-    $recordDate = mktime(substr($weewxrt[1], 0, 2) , substr($weewxrt[1], 3, 2) , substr($weewxrt[1], 6, 2) , substr($weewxrt[0], 3, 2) , substr($weewxrt[0], 0, 2) , $year);
+    $recordDate = mktime((int)substr($weewxrt[1] ?? '', 0, 2) , (int)substr($weewxrt[1] ?? '', 3, 2) , (int)substr($weewxrt[1] ?? '', 6, 2) , (int)substr($weewxrt[0], 3, 2) , (int)substr($weewxrt[0], 0, 2) , (int)$year);
 
     $stationlocation = $sta['location'];
     $lat = $sta['latitude'];
@@ -236,7 +237,7 @@ if (isset($weewxapi))
     {
         $parts = explode(" ", $weewxapi[77]);
         $parts1 = explode("/", $parts[0]);
-        $weather["lightningtimeago"] = time() - strtotime("20" . $parts1[2] . $parts1[1] . $parts1[0] . " " . $parts[1]);
+        $weather["lightningtimeago"] = time() - strtotime("20" . ($parts1[2] ?? '') . ($parts1[1] ?? '') . $parts1[0] . " " . ($parts[1] ?? ''));
     }
     $weather["lightningday"] = ($weewxapi[76] == "   N/A" ? "0" : $weewxapi[76]);
     $weather["lightningmonth"] = ($weewxapi[74] == "   N/A" ? "0" : $weewxapi[74]);
@@ -526,14 +527,14 @@ if (isset($weewxapi))
     $weather["uvamax"] = (is_numeric($weewxapi[210]) ? number_format($weewxapi[210], 1) : null); //temp max alltime
     $weather["uvamaxtime"] = $uvamaxtime; //seconds
     //trends will update 15 minutes after a reboot or power failure
-    $weather["temp_trend"] = number_format($weewxrt[2], 1) - number_format($weewxapi[67], 1);
-    $weather["humidity_trend"] = number_format($weewxrt[3], 0) - number_format($weewxapi[68], 0);
-    $weather["dewpoint_trend"] = number_format($weewxrt[4], 1) - number_format($weewxapi[69], 1);
-    $weather["temp_indoor_trend"] = number_format($weewxrt[22], 1) - number_format($weewxapi[70], 1);
-    $weather["temp_humidity_trend"] = number_format($weewxrt[23], 1) - number_format($weewxapi[71], 1);
+    $weather["temp_trend"] = number_format((float)$weewxrt[2], 1) - number_format((float)$weewxapi[67], 1);
+    $weather["humidity_trend"] = number_format((float)$weewxrt[3], 0) - number_format((float)$weewxapi[68], 0);
+    $weather["dewpoint_trend"] = number_format((float)$weewxrt[4], 1) - number_format((float)$weewxapi[69], 1);
+    $weather["temp_indoor_trend"] = number_format((float)$weewxrt[22], 1) - number_format((float)$weewxapi[70], 1);
+    $weather["temp_humidity_trend"] = number_format((float)$weewxrt[23], 1) - number_format((float)$weewxapi[71], 1);
     $weather["humidity_indoor_trend"] = $weather["temp_humidity_trend"]; // clearer name: indoor humidity vs its 15-minute average
-    $weather["barotrend"] = $weewxrt[10] - $barotrend[0];
-    $weather["dirtrend"] = $dirtrend[0];
+    $weather["barotrend"] = $weewxrt[10] - ($barotrend[0] ?? 0);
+    $weather["dirtrend"] = $dirtrend[0] ?? null;
     //barometer units
     if ($weather["barometer_units"] == "in")
     {

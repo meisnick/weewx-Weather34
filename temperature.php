@@ -8,26 +8,26 @@ include_once('w34CombinedData.php');include('common.php');include('theme.php');?
 if ($weather["temp_today_high"]<10){echo "&nbsp;".$weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}else if ($weather["temp_today_high"]>=10){echo $weather["temp_today_high"]."&deg;\n";?> | <?php echo $weather["temp_today_low"]."&deg;";}?>
 </div>
 <?php //weather34 sez lets make the temperature look nice 
-     if(anyToC($weather['temp'])<=-10){echo '<div class="mod-temp-band--m10">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<=-5){echo  '<div class="mod-temp-band--m5">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<=0){ echo  '<div class="mod-temp-band--0">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<=5){ echo  '<div class="mod-temp-band--0-5">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<10){ echo  '<div class="mod-temp-band--6-10">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<15){ echo  '<div class="mod-temp-band--11-15">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<20){ echo  '<div class="mod-temp-band--16-20">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<25){ echo  '<div class="mod-temp-band--21-25">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<30){ echo  '<div class="mod-temp-band--26-30">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<35){ echo  '<div class="mod-temp-band--31-35">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<40){ echo  '<div class="mod-temp-band--36-40">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<45){ echo  '<div class="mod-temp-band--41-45">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
-else if(anyToC($weather['temp'])<100){echo  '<div class="mod-temp-band--50">'.number_format($weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+     if(anyToC($weather['temp'])<=-10){echo '<div class="mod-temp-band--m10">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<=-5){echo  '<div class="mod-temp-band--m5">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<=0){ echo  '<div class="mod-temp-band--0">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<=5){ echo  '<div class="mod-temp-band--0-5">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<10){ echo  '<div class="mod-temp-band--6-10">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<15){ echo  '<div class="mod-temp-band--11-15">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<20){ echo  '<div class="mod-temp-band--16-20">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<25){ echo  '<div class="mod-temp-band--21-25">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<30){ echo  '<div class="mod-temp-band--26-30">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<35){ echo  '<div class="mod-temp-band--31-35">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<40){ echo  '<div class="mod-temp-band--36-40">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<45){ echo  '<div class="mod-temp-band--41-45">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
+else if(anyToC($weather['temp'])<100){echo  '<div class="mod-temp-band--50">'.number_format((float)$weather['temp'],1).'<smalltempunit>&deg;'.$weather["temp_units"];}
 ?></smalltempunit></div>
 <div class="temptrendx">
 <?php echo $weather["temp_trend"]."\n";
 //falling
-if($weather["temp_trend"]<0){echo '<trendmovementfallingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$fallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+if($weather["temp_trend"]<0){echo '<trendmovementfallingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$fallingsymbol.' '.number_format((float)$weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
 //rising
-elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$risingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
+elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx>&nbsp;&nbsp;&nbsp;<valuetext>Trend '.$risingsymbol.' '.number_format((float)$weather["temp_trend"],1).'&deg;</valuetext></trendmovementfallingx>';}
 //steady
 else echo '<trendmovementsteadyx><valuetext>Trend '.$steadysymbol.'Steady</valuetext></trendmovementsteadyx>';?>
 </div></div>

@@ -61,29 +61,29 @@ $parsed_json = json_decode($json, true);
 for ($k = 0;$k < 24;$k++)
 {
 
-    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'];
-    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'];
-    $forecastTime[$k] = date("H:i", $parsed_json['response'][0]['periods'][$k]['timestamp']);
+    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'] ?? null;
+    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'] ?? null;
+    $forecastTime[$k] = date("H:i", $parsed_json['response'][0]['periods'][$k]['timestamp'] ?? null);
 
-    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['maxTempC'];
-    $forecastTempLow[$k] = $parsed_json['response'][0]['periods'][$k]['minTempC'];
+    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['maxTempC'] ?? null;
+    $forecastTempLow[$k] = $parsed_json['response'][0]['periods'][$k]['minTempC'] ?? null;
     if ($forecastTempHigh[$k] === null)
     {
         $forecastTempHigh[$k] = $forecastTempLow[$k];
     }
-    $forecastWindSpeedMax[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMaxKPH'];
-    $forecastWindSpeedMin[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMinKPH'];
+    $forecastWindSpeedMax[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMaxKPH'] ?? null;
+    $forecastWindSpeedMin[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMinKPH'] ?? null;
 
-    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'];
-    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'];
-    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
-    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
-    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
-    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
+    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'] ?? null;
+    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'] ?? null;
+    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'] ?? null;
+    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'] ?? null;
+    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'] ?? null;
+    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'] ?? null;
+    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'] ?? null;
+    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'] ?? null;
     if ($forecastUV[$k] === 0 or $forecastUV[$k] === null)
     {
         $forecastUV[$k] = "-";
@@ -129,8 +129,8 @@ for ($k = 0;$k < 24;$k++)
     //kmh to mph
     if ($windunit == 'mph')
     {
-        $forecastWindSpeedMax[$k] = round((number_format($forecastWindSpeedMax[$k], 1) * 0.621371) , 0);
-        $forecastWindSpeedMin[$k] = round((number_format($forecastWindSpeedMin[$k], 1) * 0.621371) , 0);
+        $forecastWindSpeedMax[$k] = round((number_format((float)$forecastWindSpeedMax[$k], 1) * 0.621371) , 0);
+        $forecastWindSpeedMin[$k] = round((number_format((float)$forecastWindSpeedMin[$k], 1) * 0.621371) , 0);
     }
     //kmh to kts
     if ($windunit == 'kts')
@@ -261,7 +261,7 @@ for ($k = 0;$k < 24;$k++)
     <td><?php echo $forecastWindSpeedMax[$k]; ?><span class="fc-u"><?php echo $windunit; ?></span></td>
     <td><?php echo w34_dir($forecastWinddircardinal[$k]); ?></td>
     <td><?php echo $colorUV[$k] . $forecastUV[$k] . fc_close($colorUV[$k]); ?></td>
-    <td><?php echo $colorHumidity[$k] . $forecasthumidity[$k] . fc_close($colorHumidity[$k]); ?><span class="fc-u">%</span></td>
+    <td><?php echo ($colorHumidity[$k] ?? null) . ($forecasthumidity[$k] ?? null) . fc_close($colorHumidity[$k] ?? null); ?><span class="fc-u">%</span></td>
   </tr>
 <?php } ?>
   </tbody>

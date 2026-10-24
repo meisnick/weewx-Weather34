@@ -24,11 +24,11 @@ include_once('w34CombinedData.php');
           <div class="raintoday1">
             <?php 
               if ($weather["rain_units"] =='in') {
-                echo number_format($weather["rain_today"],2)."<smallrainunita> ".$weather["rain_units"]."</smallrainunita>";
+                echo number_format((float)$weather["rain_today"],2)."<smallrainunita> ".$weather["rain_units"]."</smallrainunita>";
               } else if ($weather["rain_units"] =='mm' && $weather["rain_today"]<10) {
-                echo number_format($weather["rain_today"],2)."<smallrainunita>".$weather["rain_units"]."</smallrainunita>";
+                echo number_format((float)$weather["rain_today"],2)."<smallrainunita>".$weather["rain_units"]."</smallrainunita>";
               } else if ($weather["rain_units"] =='mm') {
-                echo number_format($weather["rain_today"],1)."<smallrainunita>".$weather["rain_units"]."</smallrainunita>";
+                echo number_format((float)$weather["rain_today"],1)."<smallrainunita>".$weather["rain_units"]."</smallrainunita>";
               }
             ?>
           </div>
@@ -57,7 +57,7 @@ include_once('w34CombinedData.php');
           <valuetextheading1><?php echo date('Y');?></valuetextheading1>
           <div class="rainmodulehome">
             <raiblue><?php 
-              if($weather["rain_year"]>=1000) { echo round($weather["rain_year"],0); }
+              if($weather["rain_year"]>=1000) { echo round((float)$weather["rain_year"],0); }
               else { echo $weather["rain_year"]; }
             ?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
@@ -97,8 +97,8 @@ include_once('w34CombinedData.php');
         <div class="rainratemodulehome">
           <rainratetextheading>&nbsp;<?php echo w34t('Rate', 'Rate');?>&nbsp;</rainratetextheading>
           <raiblue><?php 
-            if ($weather["rain_rate"]>100) { echo number_format($weather["rain_rate"],1); } 
-            else { echo number_format($weather["rain_rate"],2); }
+            if ($weather["rain_rate"]>100) { echo number_format((float)$weather["rain_rate"],1); } 
+            else { echo number_format((float)$weather["rain_rate"],2); }
           ?></raiblue>
           <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
         </div>

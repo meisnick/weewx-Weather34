@@ -80,25 +80,25 @@ $json = file_get_contents($json);
 $parsed_json = json_decode($json, true);
 for ($k = 0;$k < 12;$k++)
 {
-    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'];
-    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]][$iconset];
-    $forecastTime[$k] = date("H:i", $parsed_json['response'][0]['periods'][$k]['timestamp']);
-    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['avgTempC'];
+    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'] ?? null;
+    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]][$iconset] ?? null;
+    $forecastTime[$k] = date("H:i", $parsed_json['response'][0]['periods'][$k]['timestamp'] ?? null);
+    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['avgTempC'] ?? null;
 
-    $forecastWindSpeed[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedKPH'];
+    $forecastWindSpeed[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedKPH'] ?? null;
     $forecastWindGust[$k] = $parsed_json['response'][0]['periods'][$k]['windGustKPH'] ?? $forecastWindSpeed[$k];
 
-    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'];
+    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'] ?? null;
 
-    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'];
-    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
-    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
-    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
-    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
+    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'] ?? null;
+    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'] ?? null;
+    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'] ?? null;
+    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'] ?? null;
+    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'] ?? null;
+    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'] ?? null;
+    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'] ?? null;
 
     //aw convert temps-rain
     //metric to F
@@ -110,7 +110,7 @@ for ($k = 0;$k < 12;$k++)
     //heatindex
     if ($tempunit == 'F')
     {
-        $wuskyheatindex[$k] = ($wuskyheatindex[$k] * 9 / 5) + 32;
+        $wuskyheatindex[$k] = (($wuskyheatindex[$k] ?? null) * 9 / 5) + 32;
     }
 
     //rain inches to mm
@@ -128,8 +128,8 @@ for ($k = 0;$k < 12;$k++)
     //kmh to mph
     if ($windunit == 'mph')
     {
-        $forecastWindGust[$k] = round((number_format($forecastWindGust[$k], 1) * 0.621371) , 0);
-        $forecastWindSpeed[$k] = round((number_format($forecastWindSpeed[$k], 1) * 0.621371) , 0);
+        $forecastWindGust[$k] = round((number_format((float)$forecastWindGust[$k], 1) * 0.621371) , 0);
+        $forecastWindSpeed[$k] = round((number_format((float)$forecastWindSpeed[$k], 1) * 0.621371) , 0);
     }
     //kmh to kts
     if ($windunit == 'kts')
@@ -174,7 +174,7 @@ for ($k = 0;$k < 12;$k++)
     }
     else if ($forecastTempHigh[$k] < 7)
     {
-        echo "<bluet>" . $forecastTime[$k] . "h&nbsp;&nbsp;   " . number_format($forecastTempHigh[$k], 0);
+        echo "<bluet>" . $forecastTime[$k] . "h&nbsp;&nbsp;   " . number_format((float)$forecastTempHigh[$k], 0);
     }
     else if ($forecastTempHigh[$k] > 27)
     {
@@ -302,18 +302,18 @@ for ($k = 0;$k < 12;$k++)
 } ?>
  <!-- copyright needs to be kept please be ethical--->
   <article>
-    <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> <?php echo w34f('CreditWeather34', 'CSS/SVG/PHP scripts were developed by %s for use in the weather34 template', '<a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:8px;">weather34.com</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
+    <span style="font-size:9px;color:<?php echo $text1 ?? '' ?>;">
+  <?php echo $knfo ?? '' ?> <?php echo w34f('CreditWeather34', 'CSS/SVG/PHP scripts were developed by %s for use in the weather34 template', '<a href="https://weather34.com" title="weather34.com" target="_blank" style="font-size:8px;">weather34.com</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
     </article>
   <article>
-    <span style="font-size:9px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> <?php echo w34f('CreditSteepleian', 'CSS/SVG/PHP scripts were adapted by %s for use in the weewx-Weather34 skin', '<a href="https://claydonsweather.org.uk" title="Steepleian" target="_blank" style="font-size:8px;">Steepleian</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
+    <span style="font-size:9px;color:<?php echo $text1 ?? '' ?>;">
+  <?php echo $knfo ?? '' ?> <?php echo w34f('CreditSteepleian', 'CSS/SVG/PHP scripts were adapted by %s for use in the weewx-Weather34 skin', '<a href="https://claydonsweather.org.uk" title="Steepleian" target="_blank" style="font-size:8px;">Steepleian</a>'); ?> &copy; 2015-<?php echo date('Y'); ?></span> <br>
     </article>
   <article>
-    <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?>;margin-bottom:3px;">
-  <?php echo $knfo ?> <?php echo w34t('ForecastDataBy', 'Forecast data provided by'); ?> <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank" style="white-space:nowrap;">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;white-space:nowrap;">CC BY 4.0</a></div>
-    <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?>;">
-  <?php echo $knfo ?> <?php echo w34t('ForecastIconsBy', 'Forecast icons provided by'); ?> <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank" style="white-space:nowrap;">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;white-space:nowrap;">MIT</a></div>
+    <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?? '' ?>;margin-bottom:3px;">
+  <?php echo $knfo ?? '' ?> <?php echo w34t('ForecastDataBy', 'Forecast data provided by'); ?> <a href="https://open-meteo.com/" title="Open-Meteo API" target="_blank" style="white-space:nowrap;">Open-Meteo</a> &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" title="CC BY 4.0" target="_blank" style="font-size:8px;white-space:nowrap;">CC BY 4.0</a></div>
+    <div style="font-size:9px;line-height:13px;color:<?php echo $text1 ?? '' ?>;">
+  <?php echo $knfo ?? '' ?> <?php echo w34t('ForecastIconsBy', 'Forecast icons provided by'); ?> <a href="https://github.com/basmilius/weather-icons" title="basmilius/weather-icons" target="_blank" style="white-space:nowrap;">basmilius/weather-icons</a> &mdash; <a href="https://github.com/basmilius/weather-icons/blob/dev/LICENSE" target="_blank" style="font-size:8px;white-space:nowrap;">MIT</a></div>
     </article>
 </main>
   </div>

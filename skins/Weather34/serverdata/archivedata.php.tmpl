@@ -411,7 +411,7 @@ $uranus_hlongitude	       = "$almanac.uranus.hlong";
 $neptune_hlongitude	       = "$almanac.neptune.hlong";
 $pluto_hlongitude	       = "$almanac.pluto.hlong";
 
-$civilam = $sun['civil_twilight_begin'];
+$civilam = $sun['civil_twilight_begin'] ?? null;
 
 if (
     strtotime(date("G.i")) >= strtotime($civil_twighlight_begin) &&

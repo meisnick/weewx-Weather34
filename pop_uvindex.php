@@ -101,11 +101,11 @@ supwm2{font-size:0.7em;vertical-align:super;}
    <div class=actualt><?php echo w34t('CurrentUvIndex', 'Current UV Index'); ?></div>        
    <div class="uvcontainer1"><?php 
 $uvr = round((float)$weather["uv"]); // EPA scale on the rounded index
-if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 
 ?></smalluvunit></div></div>
  
@@ -123,10 +123,10 @@ else if ($weather["uv"]>=0) {echo w34t('UvCautionLow', 'Low UVI<br>No cautions r
   <article> 
   <div class=actualt><?php echo w34t('CurrentSolarRadiation', 'Current Solar Radiation'); ?> </div>        
     <div class="solarcontainer1"><?php 
-if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=10) {echo '<div class=solartoday200>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=10) {echo '<div class=solartoday200>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
 
 ?></smalluvunit></div></div>     
              <?php
@@ -184,10 +184,10 @@ else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($we
 $b="--";if($weather["lux"]==$b){$weather["lux"] = "N/A" ;}	?>		   
 
 <div class="solarcontainer1"><?php 
-if ($weather["lux"]>=100000) {echo '<div class=luxtoday1000>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
-else if ($weather["lux"]>=50000) {echo '<div class=luxtoday500>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbspLux";}
-else if ($weather["lux"]>=10) {echo '<div class=luxtoday200>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
-else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+if ($weather["lux"]>=100000) {echo '<div class=luxtoday1000>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+else if ($weather["lux"]>=50000) {echo '<div class=luxtoday500>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbspLux";}
+else if ($weather["lux"]>=10) {echo '<div class=luxtoday200>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
 
 ?></smalluvunit></div></div>  
 

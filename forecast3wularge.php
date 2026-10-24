@@ -10,19 +10,19 @@
 $json='jsondata/wu.txt';
 $weather34wuurl=file_get_contents($json);
 $parsed_weather34wujson = json_decode($weather34wuurl,false);
-{    if ($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0]==null){
-	 $wuskydayIcon=$parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[1];$wuskydayTime = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[1];	
-	 $wuskydayTempHigh = $parsed_weather34wujson->{'daypart'}[0]->{'temperature'}[1];$wuskydayTempLow = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureWindChill'}[1];	 
-	 $wuskydayWindGust = $parsed_weather34wujson->{'daypart'}[0]->{'windSpeed'}[1];$wuskydayWinddir = $parsed_weather34wujson->{'daypart'}[0]->{'windDirection'}[1];
-	 $wuskydayWinddircardinal = $parsed_weather34wujson->{'daypart'}[0]->{'windDirectionCardinal'}[1];$wuskydayacumm = $parsed_weather34wujson->{'daypart'}[0]->{'snowRange'}[1];
-	 $wuskydayPrecipType = $parsed_weather34wujson->{'daypart'}[0]->{'precipType'}[1];$wuskydayprecipIntensity = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[1];
-	 $wuskydayPrecipProb = $parsed_weather34wujson->{'daypart'}[0]->{'precipChance'}[1];$wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1];
-	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1];$wuskydaysnow = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[1];
-	 $wuskydaysummary = $parsed_weather34wujson->{'daypart'}[0]->{'narrative'}[1];$wuskydaynight = $parsed_weather34wujson->{'daypart'}[0]->{'dayOrNight'}[1];
-	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[1];$wuskythunderidx = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[1];
-	 $wuskyhumidity = $parsed_weather34wujson->{'daypart'}[0]->{'relativeHumidity'}[1];
-	 $wuskyheatindex = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[1];
-	 $wuskywindchill = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureWindChill'}[1];
+{    if (($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0] ?? null)==null){
+	 $wuskydayIcon=$parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[1] ?? null;$wuskydayTime = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[1] ?? null;	
+	 $wuskydayTempHigh = $parsed_weather34wujson->{'daypart'}[0]->{'temperature'}[1] ?? null;$wuskydayTempLow = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureWindChill'}[1] ?? null;	 
+	 $wuskydayWindGust = $parsed_weather34wujson->{'daypart'}[0]->{'windSpeed'}[1] ?? null;$wuskydayWinddir = $parsed_weather34wujson->{'daypart'}[0]->{'windDirection'}[1] ?? null;
+	 $wuskydayWinddircardinal = $parsed_weather34wujson->{'daypart'}[0]->{'windDirectionCardinal'}[1] ?? null;$wuskydayacumm = $parsed_weather34wujson->{'daypart'}[0]->{'snowRange'}[1] ?? null;
+	 $wuskydayPrecipType = $parsed_weather34wujson->{'daypart'}[0]->{'precipType'}[1] ?? null;$wuskydayprecipIntensity = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[1] ?? null;
+	 $wuskydayPrecipProb = $parsed_weather34wujson->{'daypart'}[0]->{'precipChance'}[1] ?? null;$wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1] ?? null;
+	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1] ?? null;$wuskydaysnow = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[1] ?? null;
+	 $wuskydaysummary = $parsed_weather34wujson->{'daypart'}[0]->{'narrative'}[1] ?? null;$wuskydaynight = $parsed_weather34wujson->{'daypart'}[0]->{'dayOrNight'}[1] ?? null;
+	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[1] ?? null;$wuskythunderidx = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[1] ?? null;
+	 $wuskyhumidity = $parsed_weather34wujson->{'daypart'}[0]->{'relativeHumidity'}[1] ?? null;
+	 $wuskyheatindex = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[1] ?? null;
+	 $wuskywindchill = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureWindChill'}[1] ?? null;
 	 }	 
 	 else {
 	 $wuskydayIcon=$parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0];$wuskydayTime = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[0];	
@@ -39,68 +39,68 @@ $parsed_weather34wujson = json_decode($weather34wuurl,false);
 	 $wuskywindchill = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureWindChill'}[0];
 	 }
 	 //thunder
-	 $wuskythunderidx1 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[1];
-	 $wuskythunderidx2 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[2];
-	 $wuskythunderidx3 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[3];
-	 $wuskythunderidx4 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[4];
-	 $wuskythunderidx5 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[5];
-	 $wuskythunderidx6 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[6];
-	 $wuskythunderidx7 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[7];
-	 $wuskythunderidx8 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[8];
-	 $wuskythunderidx9 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[9];
-	 $wuskythunderidx10 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[10];
+	 $wuskythunderidx1 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[1] ?? null;
+	 $wuskythunderidx2 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[2] ?? null;
+	 $wuskythunderidx3 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[3] ?? null;
+	 $wuskythunderidx4 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[4] ?? null;
+	 $wuskythunderidx5 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[5] ?? null;
+	 $wuskythunderidx6 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[6] ?? null;
+	 $wuskythunderidx7 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[7] ?? null;
+	 $wuskythunderidx8 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[8] ?? null;
+	 $wuskythunderidx9 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[9] ?? null;
+	 $wuskythunderidx10 = $parsed_weather34wujson->{'daypart'}[0]->{'thunderIndex'}[10] ?? null;
 	 //period
-	 $wuskydayTime1 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[1];
-	 $wuskydayTime2 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[2];
-	 $wuskydayTime3 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[3];
-	 $wuskydayTime4 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[4];
-	 $wuskydayTime5 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[5];
-	 $wuskydayTime6 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[6];
-	 $wuskydayTime7 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[7];
-	 $wuskydayTime8 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[8];
-	 $wuskydayTime9 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[9];
-	 $wuskydayTime10 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[10];
+	 $wuskydayTime1 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[1] ?? null;
+	 $wuskydayTime2 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[2] ?? null;
+	 $wuskydayTime3 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[3] ?? null;
+	 $wuskydayTime4 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[4] ?? null;
+	 $wuskydayTime5 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[5] ?? null;
+	 $wuskydayTime6 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[6] ?? null;
+	 $wuskydayTime7 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[7] ?? null;
+	 $wuskydayTime8 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[8] ?? null;
+	 $wuskydayTime9 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[9] ?? null;
+	 $wuskydayTime10 = $parsed_weather34wujson->{'daypart'}[0]->{'daypartName'}[10] ?? null;
 	 //rain
-	 $wuskyrain1 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[1];
-	 $wuskyrain2 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[2];
-	 $wuskyrain3 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[3];
-	 $wuskyrain4 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[4];
-	 $wuskyrain5 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[5];
-	 $wuskyrain6 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[6];
-	 $wuskyrain7 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[7];
-	 $wuskyrain8 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[8];
-	 $wuskyrain9 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[9];
-	 $wuskyrain10 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[10];
+	 $wuskyrain1 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[1] ?? null;
+	 $wuskyrain2 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[2] ?? null;
+	 $wuskyrain3 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[3] ?? null;
+	 $wuskyrain4 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[4] ?? null;
+	 $wuskyrain5 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[5] ?? null;
+	 $wuskyrain6 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[6] ?? null;
+	 $wuskyrain7 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[7] ?? null;
+	 $wuskyrain8 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[8] ?? null;
+	 $wuskyrain9 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[9] ?? null;
+	 $wuskyrain10 = $parsed_weather34wujson->{'daypart'}[0]->{'qpf'}[10] ?? null;
 			 
 	 //snow
-	 $wuskysnow1 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[1];
-	 $wuskysnow2 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[2];
-	 $wuskysnow3 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[3];
-	 $wuskysnow4 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[4];
-	 $wuskysnow5 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[5];
-	 $wuskysnow6 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[6];
-	 $wuskysnow7 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[7]; 
-	 $wuskysnow8 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[8];
-	 $wuskysnow9 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[9];
-	 $wuskysnow10 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[10];
+	 $wuskysnow1 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[1] ?? null;
+	 $wuskysnow2 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[2] ?? null;
+	 $wuskysnow3 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[3] ?? null;
+	 $wuskysnow4 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[4] ?? null;
+	 $wuskysnow5 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[5] ?? null;
+	 $wuskysnow6 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[6] ?? null;
+	 $wuskysnow7 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[7] ?? null; 
+	 $wuskysnow8 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[8] ?? null;
+	 $wuskysnow9 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[9] ?? null;
+	 $wuskysnow10 = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[10] ?? null;
 	  //heatindex
-	 $wuskyheatindex1 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[1];
-	 $wuskyheatindex2 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[2];
-	 $wuskyheatindex3 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[3];
-	 $wuskyheatindex4 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[4];
-	 $wuskyheatindex5 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[5];
-	 $wuskyheatindex6 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[6];
-	 $wuskyheatindex7 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[7];
+	 $wuskyheatindex1 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[1] ?? null;
+	 $wuskyheatindex2 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[2] ?? null;
+	 $wuskyheatindex3 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[3] ?? null;
+	 $wuskyheatindex4 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[4] ?? null;
+	 $wuskyheatindex5 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[5] ?? null;
+	 $wuskyheatindex6 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[6] ?? null;
+	 $wuskyheatindex7 = $parsed_weather34wujson->{'daypart'}[0]->{'temperatureHeatIndex'}[7] ?? null;
 	
 	  //uv index
-	 $wuskydayUV1 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1];
-	 $wuskydayUV2 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[2];
-	 $wuskydayUV3 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[3];
-	 $wuskydayUV4 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[4];
-	 $wuskydayUV5 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[5];
-	 $wuskydayUV6 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[6];
-	 $wuskydayUV7 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[7];
-	 $wuskydayUV8 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[8];
+	 $wuskydayUV1 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1] ?? null;
+	 $wuskydayUV2 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[2] ?? null;
+	 $wuskydayUV3 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[3] ?? null;
+	 $wuskydayUV4 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[4] ?? null;
+	 $wuskydayUV5 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[5] ?? null;
+	 $wuskydayUV6 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[6] ?? null;
+	 $wuskydayUV7 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[7] ?? null;
+	 $wuskydayUV8 = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[8] ?? null;
 	 
 	 }?>
 <div class="updatedtime1"><?php $forecastime=filemtime('jsondata/wu.txt');$weather34wuurl = file_get_contents("jsondata/wu.txt");if(filesize('jsondata/wu.txt')<1){echo "".$offline. "";}else echo $online,"";echo " ",date($timeFormat,$forecastime);	?></div>
@@ -130,7 +130,7 @@ if ($tempunit=='C' && $wuapiunit=='e' ){$wuskywindchill=($wuskywindchill-32)/1.8
 // mph to kmh US
 if ($windunit=='km/h' && $wuapiunit=='e' ){$wuskydayWindGust=(number_format($wuskydayWindGust,1)*1.60934);}
 // mph to kmh UK
-if ($windunit=='km/h' && $wuapiunit=='h' ){$wuskydayWindGust=(number_format($wuskydayWindGust,1)*1.60934);}
+if ($windunit=='km/h' && $wuapiunit=='h' ){$wuskydayWindGust=(number_format((float)$wuskydayWindGust,1)*1.60934);}
 //mph to ms US
 if ($windunit=='m/s' && $wuapiunit=='e' ){$wuskydayWindGust=(number_format($wuskydayWindGust,1)*0.44704);}
 //mph to ms uk
@@ -144,7 +144,7 @@ if ($rainunit=='mm' && $wuapiunit=='e' ){$wuskydayprecipIntensity=$wuskydaypreci
 //rain mm to inches scandinavia
 if ($rainunit=='in' && $wuapiunit=='s' ){$wuskydayprecipIntensity=$wuskydayprecipIntensity*0.0393701;}
 //rain mm to inches uk
-if ($rainunit=='in' && $wuapiunit=='h' ){$wuskydayprecipIntensity2=$wuskydayprecipIntensity2*0.0393701;}
+if ($rainunit=='in' && $wuapiunit=='h' ){$wuskydayprecipIntensity2=($wuskydayprecipIntensity2 ?? null)*0.0393701;}
 //rain mm to inches metric
 if ($rainunit=='in' && $wuapiunit=='m' ){$wuskydayprecipIntensity=$wuskydayprecipIntensity*0.0393701;}
 //icon + day wu
@@ -160,7 +160,7 @@ else if($tempunit=='F' && $wuskydayTempHigh>64.4){echo '<wulargetemphihome><oran
 else if($tempunit=='F' && $wuskydayTempHigh>55){echo '<wulargetemphihome><yellowwu>'.number_format($wuskydayTempHigh,0).'°<wuunits>F</wuunits></yellowwu></wulargetemphihome>';}
 else if($tempunit=='F' && $wuskydayTempHigh>=44.6){echo '<wulargetemphihome><greenwu>'.number_format($wuskydayTempHigh,0).'°<wuunits>F</wuunits></greenwu></wulargetemphihome>';}
 //temp metric wu
-else if($wuskydayTempHigh<7){echo '<wulargetemphihome><bluewu>'.number_format($wuskydayTempHigh,0).'°<wuunits>C</wuunits></bluewu></wulargetemphihome>';}
+else if($wuskydayTempHigh<7){echo '<wulargetemphihome><bluewu>'.number_format((float)$wuskydayTempHigh,0).'°<wuunits>C</wuunits></bluewu></wulargetemphihome>';}
 else if($wuskydayTempHigh>40){echo '<wulargetemphihome><purplewu>'.number_format($wuskydayTempHigh,0).'°<wuunits>C</wuunits></purplewu></wulargetemphihome>';}
 else if($wuskydayTempHigh>27){echo '<wulargetemphihome><redwu>'.number_format($wuskydayTempHigh,0).'°<wuunits>C</wuunits></redwu></wulargetemphihome>';}
 else if($wuskydayTempHigh>18){echo '<wulargetemphihome><orangewu>'.number_format($wuskydayTempHigh,0).'°<wuunits>C</wuunits></orangewu></wulargetemphihome>';}
@@ -169,14 +169,14 @@ else if($wuskydayTempHigh>=7){echo '<wulargetemphihome><greenwu>'.number_format(
 //wind wu
 echo "<div class='wulargewindspeedicon'> Winds from  <blueu>";
 echo $wuskydayWinddircardinal; 
-echo " </blueu>at ".$windalert2." <div class=wuwindspeed> ".number_format($wuskydayWindGust,0),"&nbsp;<wuunits>".$windunit;echo  '</wuunits></div></div>';'<br><br>';
+echo " </blueu>at ".$windalert2." <div class=wuwindspeed> ".number_format((float)$wuskydayWindGust,0),"&nbsp;<wuunits>".$windunit;echo  '</wuunits></div></div>';'<br><br>';
 echo "<div class='wulargerain'>";
 //snow wu
 if ( $wuskydaysnow>0 && $rainunit=='in'){ echo ' Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> in</wuunits></wulargetempwindhome>';}
 else if ( $wuskydaysnow>0 && $rainunit=='mm'){ echo 'Snowfall Accumulation '.$snowflakesvg.'&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;'.$wuskydaysnow.'</span><wuunits> cm</wuunits></wulargetempwindhome>';}
 //rain wu
-else if ($wuskydayPrecipType='rain' && $rainunit=='in'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,2).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
-else if ($wuskydayPrecipType='rain' && $rainunit=='mm'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format($wuskydayprecipIntensity,1).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
+else if ($wuskydayPrecipType='rain' && $rainunit=='in'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format((float)$wuskydayprecipIntensity,2).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
+else if ($wuskydayPrecipType='rain' && $rainunit=='mm'){echo 'Rainfall Accumulation '.$rainsvg.'&nbsp;<div class=wurainfall>'. number_format((float)$wuskydayprecipIntensity,1).'&nbsp;<wuunits>'.$rainunit.'</wuunits></div>';}
 //uvindex wu
 echo '<br><div class=wulargeuvindex>UV Index &nbsp;<wuuvicon>&#9788;</wuuvicon>';
 if ($wuskydayUV>=10){echo 	"<purplewuv>".$wuskydayUV. '</purplewuv><wuinfo>'.$wuskydayUVdesc.'</wuinfo>';}
@@ -204,7 +204,7 @@ else if ($wuskythunderidx8>0 )  {echo $infowu.'<span class="ink-ored">Thunder</s
 else if ($wuskythunderidx9>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime9. '&nbsp;'.$lightningalert8.'';}
 else if ($wuskythunderidx10>0 )  {echo $infowu.'<span class="ink-ored">Thunder</span> '.$wuskydayTime10. '&nbsp;'.$lightningalert8.'';}
 //snowfall wu
-else if ($wuskysnow>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime. '&nbsp;'.$freezing.'';}
+else if (($wuskysnow ?? null)>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime. '&nbsp;'.$freezing.'';}
 else if ($wuskysnow1>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime1. '&nbsp;'.$freezing.'';}
 else if ($wuskysnow2>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime2. '&nbsp;'.$freezing.'';}
 else if ($wuskysnow3>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime3. '&nbsp;'.$freezing.'';}
@@ -216,7 +216,7 @@ else if ($wuskysnow8>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime8. '&n
 else if ($wuskysnow9>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime9. '&nbsp;'.$freezing.'';}
 else if ($wuskysnow10>0 )  {echo $infowu.'<blue>Snow</blue> '.$wuskydayTime10. '&nbsp;'.$freezing.'';}
 //rainfall wu
-else if ($wuskyrain>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime. '&nbsp;'.$rainfallalert8.'';}
+else if (($wuskyrain ?? null)>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime. '&nbsp;'.$rainfallalert8.'';}
 else if ($wuskyrain1>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime1.'&nbsp;'.$rainfallalert8.'';}
 else if ($wuskyrain2>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime2.'&nbsp;'.$rainfallalert8.'';}
 else if ($wuskyrain3>0 )  {echo $infowu.'<blue>Rain</blue> '.$wuskydayTime3. '&nbsp;'.$rainfallalert8.'';}

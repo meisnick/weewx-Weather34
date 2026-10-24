@@ -4,87 +4,88 @@ error_reporting(0);
 $copyYear = 2015;$curYear = date('Y');$copyrightcredit='&copy; weather34.com original CSS/SVG/PHP '.$copyYear . (($copyYear != $curYear) ? '-' . $curYear : 'Copyright');
 // Speed
 function ktsTokmh(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(1.852*$weather[$field],1);
 }
 
 function ktsTomph(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(1.150779*$weather[$field],1);
 }
 
 function ktsToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.514444*$weather[$field],2);
 }
 
 function mphTokmh(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(1.609344*$weather[$field],1);
 }
 
 function mphTokts(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.868976*$weather[$field],1);
 }
 
 function mphToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.44704*$weather[$field],1);
 }
 
 function kmhTokts(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.5399568*$weather[$field],1);
 }
 
 function kmhTomph(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.621371*$weather[$field],1);
 }
 
 function kmhToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.2777778*$weather[$field],1);
 }
 
 function msTokmh(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(3.6*$weather[$field],1);
 }
 
 function msTokts(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = round((float)(1.943844*$weather[$field]), 1);
 }
 
 function msTomph(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(2.236936*$weather[$field], 1);
 }
 
 // Temperature
 function cToF(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = cToFDirect($weather[$field]);
 }
 
 function fToC(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = fToCDirect($weather[$field]);
 }
 
 function cToFrel(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = round((float)((9/5)*($weather[$field])), 1);
 }
 
 function fToCrel(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = round((float)((5/9)*($weather[$field])), 1);
 }
 
 function fToCDirect($field){
+	if (is_string($field) && !is_numeric($field)) return $field;
 	return round((float)((5/9)*($field-32)), 1);
 }
 
@@ -94,23 +95,23 @@ function cToFDirect($field){
 
 // Pressure
 function mbToin(&$weather, $field, $conversion){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = round((float)(0.02952999*$weather[$field] * $conversion), 2);
 }
 
 function inTomb(&$weather, $field, $conversion){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = round((float)(33.86388158*$weather[$field] * $conversion), 2);
 }
 
 // Depth
 function mmToin(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] = number_format(0.03937008*$weather[$field], 2);
 }
 
 function inTomm(&$weather, $field){
-	if(!isset($weather[$field])) return;
+	if(!isset($weather[$field]) || !is_numeric($weather[$field])) return;
 	$weather[$field] =number_format(25.4*$weather[$field], 1);
 }
 
@@ -179,10 +180,10 @@ function anyToF($field){
 }
 
 function distance($lat, $lon, $lati, $longi) {
-	$lat1 = deg2rad($lati);
-	$lat2 = deg2rad($lat);
-	$long1 = deg2rad($longi);
-	$long2 = deg2rad($lon);
+	$lat1 = deg2rad((float)$lati);
+	$lat2 = deg2rad((float)$lat);
+	$long1 = deg2rad((float)$longi);
+	$long2 = deg2rad((float)$lon);
 
 	// Great circle calculation uses the radius of earth, 6371 km
 	return 6371 * acos(sin($lat1)*sin($lat2) + cos($lat1)*cos($lat2)*cos($long2-$long1));

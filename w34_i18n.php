@@ -66,7 +66,7 @@ function w34_datetext($text) {
 
 // date() with localized month/day names.
 function w34_date($format, $ts = null) {
-    return w34_datetext(date($format, $ts === null ? time() : $ts));
+    return w34_datetext(date($format, $ts === null ? time() : (int)$ts));
 }
 
 // Weather condition phrases (forecast, METAR sky, current conditions), e.g. 'Mostly Sunny',

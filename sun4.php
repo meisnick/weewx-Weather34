@@ -199,11 +199,11 @@ $azimuth = $_SunPos->azimuth;
 $elev = $_SunPos->elevation;
 $light = $weather["daylight"]; 
 $daylight = ltrim($light, '0'); 
-$dark = 24 - str_replace(':', '.', $daylight);
+$dark = 24 - (float)str_replace(':', '.', $daylight);
 $lighthours = substr($daylight, 0, 2); 
 $lightmins = substr($daylight, - 2);
-$darkhours = 23 - $lighthours; 
-$darkminutes = 60 - $lightmins;
+$darkhours = 23 - (float)$lighthours; 
+$darkminutes = 60 - (float)$lightmins;
 if ($darkminutes < 10) $darkminutes = '0' .$darkminutes;
 else $darkminutes = $darkminutes;
 $thehour = date('H'); // minus 1 hour for CEST
@@ -239,7 +239,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
         <span class="daylighttext"><?php echo $lang['TotalDaylight'];?></span>
       </div>
       
-      <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
+      <?php if ($position12 != 'moonphase.php' && ($positionlastmodule ?? '') != 'moonphase.php'): ?>
       <div class="sun-block">
         <span class="moonphasetext"><?php echo w34t('MoonPhase', 'Moon Phase');?></span><br>
         <value class="moonphasevalue"><?php echo w34_moonphase($weather["moonphase"]);?></value><br>
@@ -290,7 +290,7 @@ $elev1 = $_SunPos->elevation."&deg;<div class=sunbelowweather34>&nbsp;</div>"; }
         <span class="darknesstext"><?php echo $lang['TotalDarkness'];?></span>
       </div>
       
-      <?php if ($position12 != 'moonphase.php' && $positionlastmodule != 'moonphase.php'): ?>
+      <?php if ($position12 != 'moonphase.php' && ($positionlastmodule ?? '') != 'moonphase.php'): ?>
       <div class="sun-block">
         <span class="luminancetext"><?php echo w34t('Luminance', 'Luminance');?></span><br>
         <value class="luminancevalue"><?php echo $weather["luminance"];?>%</value><br>

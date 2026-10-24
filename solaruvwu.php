@@ -2,7 +2,7 @@
 //original weather34 script original css/svg/php by weather34 2015-2019 clearly marked as original by weather34//
 //weather34 solar and uvindex module 27th Jan 2017 //
 include_once('w34CombinedData.php');include('common.php');
-$hi = 0;foreach ($forecasthourlyCond as $cond) {$forecasthourlyuv = $cond['uvIndex']; if ($hi++ == 0) break; }$weather["uv3"]=$forecasthourlyuv ;
+$hi = 0;foreach (($forecasthourlyCond ?? []) as $cond) {$forecasthourlyuv = $cond['uvIndex']; if ($hi++ == 0) break; }$weather["uv3"]=$forecasthourlyuv ?? null ;
 $result = date_sun_info(time(), $lat, $lon); '<pre>'.time().print_r($result,true); $nextday = time() + 24*60*60; $result2 = date_sun_info($nextday,$lat, $lon); '<pre>'.print_r($result2,true); 
 $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise = date('H:i',$result2['sunrise']);} else {$nextrise = date('H:i',$nextrise);} 
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);
@@ -19,9 +19,9 @@ $json='jsondata/wu.txt';
 $weather34wuurl=file_get_contents($json);
 $parsed_weather34wujson = json_decode($weather34wuurl,false);
 $parsed_weather34wujson1 = json_decode($weather34wuurl,true);
-{    if ($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0]==null){
-	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1];
-	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1];}	 
+{    if (($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0] ?? null)==null){
+	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1] ?? null;
+	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1] ?? null;}	 
 	 else {
 	 $wuskydayIcon=$parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0];	 
 	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[0];
@@ -35,7 +35,7 @@ else if ($wuskydayUV>8) {echo '<div class=uvtoday9-10>'.number_format($wuskydayU
 else if ($wuskydayUV>5) {echo '<div class=uvtoday6-8>'.number_format($wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}
 else if ($wuskydayUV>3) {echo '<div class=uvtoday4-5>'.number_format($wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}
 else if (date('Hi')>$sunset && $wuskydayUV==0) {echo '<div class=uvtodaydark>'.number_format($wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}
-else if (date('Gi')<$sunrise && $wuskydayUV==0) {echo '<div class=uvtodaydark>'.number_format($wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}
+else if (date('Gi')<$sunrise && $wuskydayUV==0) {echo '<div class=uvtodaydark>'.number_format((float)$wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}
 else if ($wuskydayUV>=0) {echo '<div class=uvtoday1-3>'.number_format($wuskydayUV,0)."<smalluvunit> &nbsp;UVI";}?></smalluvunit></div></div>
 <div class="uvtrend"><?php echo "UV INDEX"?></div>  
 <div class="uvcaution"><value><?php echo "UVI ",$lang['Forecast'];?></value></div>

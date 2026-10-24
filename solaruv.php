@@ -31,7 +31,7 @@ $result = date_sun_info(time(), $lat, $lon); '<pre>'.time().print_r($result,true
 $nextrise = $result['sunrise']; $now = time(); if ($now > $nextrise) { $nextrise = date('H:i',$result2['sunrise']);} else {$nextrise = date('H:i',$nextrise);} 
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);} else {$nextset = date('H:i',$nextset);} $firstrise = $result['sunrise']; $secondrise = $result2['sunrise']; $firstset = $result ['sunset']; if ($now < $firstrise) { $time = $firstrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);;} elseif ($now < $firstset) { $time = $firstset - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time); } else { $time = $secondrise - $now; $hrs = gmdate ('G',$time); $min = gmdate ('i',$time);}$sunset=date('Hi',$firstset);$sunrise=date('Gi',$firstrise);
 $nextset = $result['sunset']; if ($now > $nextset) { $nextset = date('H:i',$result2['sunset']);}?>
-<div class="updatedtime"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
+<div class="updatedtime"><span><?php if(isset($livedata2)&&file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 <div class="mod-solaruv">
 <?php
 $solar_val = 0;
@@ -72,13 +72,13 @@ else if ($solar_val>0){echo "<div class=solarluxtoday>".$solar_val;}?></div></di
 
 
 <div class="uvcontainer1"><?php 
-if ($weather["uv3"]>10) {echo '<div class=uvtoday11>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv3"]>8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv3"]>5) {echo '<div class=uvtoday6-8>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv3"]>3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if (date('Hi')>$sunset && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if (date('Gi')<$sunrise && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}?></smalluvunit></div></div>
+if ($weather["uv3"]>10) {echo '<div class=uvtoday11>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv3"]>8) {echo '<div class=uvtoday9-10>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv3"]>5) {echo '<div class=uvtoday6-8>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv3"]>3) {echo '<div class=uvtoday4-5>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if (date('Hi')>$sunset && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if (date('Gi')<$sunrise && $weather["uv3"]==0) {echo '<div class=uvtodaydark>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv3"]>=0) {echo '<div class=uvtoday1-3>'.number_format((float)$weather["uv3"],1)."<smalluvunit> &nbsp;UVI";}?></smalluvunit></div></div>
 <div class="uvtrend"><?php echo mb_strtoupper(w34t('UvIndex', 'UV Index'))?></div>  
 <div class="uvcaution"><value>UVI <?php echo $uv_label;?></value></div>
 

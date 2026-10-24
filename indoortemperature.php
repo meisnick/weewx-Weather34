@@ -18,7 +18,7 @@
  if (anyToC($weather["temp_indoor"]) >30){echo "<div class=\"mod-indoor-temp--hot\">",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"]."</smalluvunit></div>" ; } else if (anyToC($weather["temp_indoor"]) >24){echo "<div class=\"mod-indoor-temp--warm\">",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"]."</smalluvunit></div>" ; } else if (anyToC($weather["temp_indoor"]) >20){echo "<div class=\"mod-indoor-temp--mild\">",$weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"]."</smalluvunit></div>" ; }
  else if (anyToC($weather["temp_indoor"]) >15){ echo "<div class=\"mod-indoor-temp--cool\">", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"]."</smalluvunit></div>" ; } else { echo "<div class=\"mod-indoor-temp--cold\">", $weather["temp_indoor"]  ;echo "&deg;<smalluvunit>".$weather["temp_units"]."</smalluvunit></div>" ; }?></div>
 <div class="weather34indoorword">
-<?php if($weather["temp_indoor_trend"] >0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp; '.$risingsymbol;else if($weather["temp_indoor_trend"]<0)echo number_format($weather["temp_indoor_trend"],1).'&deg;&nbsp;'.$fallingsymbol;else if($weather["temp_indoor_trend"] ==0)echo w34t('Steady', 'Steady'); ?></div>
+<?php if($weather["temp_indoor_trend"] >0)echo number_format((float)$weather["temp_indoor_trend"],1).'&deg;&nbsp; '.$risingsymbol;else if($weather["temp_indoor_trend"]<0)echo number_format((float)$weather["temp_indoor_trend"],1).'&deg;&nbsp;'.$fallingsymbol;else if($weather["temp_indoor_trend"] ==0)echo w34t('Steady', 'Steady'); ?></div>
 
 </div> <!-- close graphic -->
 </div> <!-- close col-left -->
@@ -61,7 +61,7 @@ else if (anyToC($weather["temp_indoor_feel"])>0){ echo "<div class=tempmodulehom
 
 
 
-echo "</div>". number_format($weather["temp_indoor_feel"],1),"&deg;";?>
+echo "</div>". number_format((float)$weather["temp_indoor_feel"],1),"&deg;";?>
 </div></div></div>
 
 <?php //indoor dewpoint (Magnus formula, as weewx computes inDewpoint) from the live indoor temp and humidity

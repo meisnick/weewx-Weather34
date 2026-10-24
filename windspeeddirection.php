@@ -19,14 +19,14 @@ require_once('w34CombinedData.php');require_once('common.php');?>
     <!-- LEFT COLUMN -->
     <div class="mod-wind-col-left">
       <div class="mod-wind-block-small top-block">
-        <div class="mod-wind-label wind-max-top"><?php echo w34t('MaxLabel', 'Max');?> <value class="wind-max-gust-val"><?php echo number_format($weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
+        <div class="mod-wind-label wind-max-top"><?php echo w34t('MaxLabel', 'Max');?> <value class="wind-max-gust-val"><?php echo number_format((float)$weather["wind_gust_speed_max"],1);?><unit><?php echo $weather["wind_units"];?></unit></value></div>
         <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?> (<?php echo $weather["winddmaxtime"];?>)<?php if ($weather["wind_gust_max_dir"] !== null) echo ' <span class="wind-gust-dir">' . w34_compass($weather["wind_gust_max_dir"]) . '</span>';?></div>
       </div>
       
       <div class="mod-wind-block mid-block">
         <div class="mod-wind-label"><?php echo $lang['Currently'];?></div>
         <value>
-          <?php echo number_format($weather["wind_speed"],1);?>
+          <?php echo number_format((float)$weather["wind_speed"],1);?>
           <unit><?php echo $weather["wind_units"];?></unit>
         </value>
       </div>
@@ -110,14 +110,14 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       <div class="mod-wind-block mid-block">
         <div class="mod-wind-label"><?php echo w34t('Gust', 'Gust');?><?php if ($weather["wind_gust_dir"] !== null && $weather["wind_gust_speed"] > 0) echo ' <span class="wind-gust-dir">' . w34_compass($weather["wind_gust_dir"]) . '</span>';?></div>
         <value>
-          <?php echo number_format($weather["wind_gust_speed"],1);?>
+          <?php echo number_format((float)$weather["wind_gust_speed"],1);?>
           <unit><?php echo $weather["wind_units"];?></unit>
         </value>
       </div>
 
       <div class="mod-wind-block-small bot-block pill-block">
         <div class="weather34windrun">
-          <?php echo $windrunicon . '&nbsp;'. number_format($weather["windrun"],1);?>
+          <?php echo $windrunicon . '&nbsp;'. number_format((float)$weather["windrun"],1);?>
           <span class="wind-pill-unit">
             <?php if ($weather["wind_units"] == 'mph') echo 'mi'; else if ($weather["wind_units"] == 'm/s') echo 'km'; else if ($weather["wind_units"] == 'kts') echo 'mi';else echo 'km';?>
           </span>

@@ -1,5 +1,5 @@
 <?php  include_once('shared_core.php'); include('shared_icons.php');include('common.php');include('serverdata/airqualitydata.php');
-$pm25 = $pm2_5_now_ecowitt;
+$pm25 = $pm2_5_now_ecowitt ?? null;
 
 function pm25_to_aqi($pm25){
 	if ($pm25 > 500.5) {
@@ -19,7 +19,7 @@ function pm25_to_aqi($pm25){
 	} else if ($pm25 > 0 && $pm25 <= 12 ) {
 	  $aqi = map($pm25, 0, 12, 0, 50);
 	}
-	return $aqi;
+	return $aqi ?? null;
 }
 function map($value, $fromLow, $fromHigh, $toLow, $toHigh){
     $fromRange = $fromHigh - $fromLow;
@@ -34,7 +34,7 @@ function map($value, $fromLow, $fromHigh, $toLow, $toHigh){
     return $tmpValue + $toLow;
 }
 
-$aqiweather["aqi"]       = number_format(pm25_to_aqi($pm25),0);
+$aqiweather["aqi"]       = number_format((float)pm25_to_aqi($pm25),0);
 
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
 ?>

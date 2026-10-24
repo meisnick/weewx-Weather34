@@ -94,7 +94,7 @@ function pm25_to_aqi($pm25){
 	} else if ($pm25 > 0 && $pm25 <= 12 ) {
 	  $aqi = map($pm25, 0, 12, 0, 50);
 	}
-	return $aqi;
+	return $aqi ?? null;
 }
 function map($value, $fromLow, $fromHigh, $toLow, $toHigh){
     $fromRange = $fromHigh - $fromLow;
@@ -112,12 +112,12 @@ $json_string             = file_get_contents("jsondata/pu.txt");
 $parsed_json             = json_decode($json_string);
 $hasPurple               = isset($parsed_json->results[0]->PM2_5Value); // no PurpleAir feed -> no card (was a fake 0.0 Good)
 //$aqiweather["aqi"]       = $parsed_json->{'results'}[1]->{'PM2_5Value'};
-$aqiweather["aqi"]       = number_format(pm25_to_aqi(($parsed_json->{'results'}[0]->{'PM2_5Value'} + $parsed_json->{'results'}[1]->{'PM2_5Value'}) / 2),1);
+$aqiweather["aqi"]       = number_format((float)pm25_to_aqi((($parsed_json->{'results'}[0]->{'PM2_5Value'} ?? null) + ($parsed_json->{'results'}[1]->{'PM2_5Value'} ?? null)) / 2),1);
 $aqiweather["aqiozone"]  = 'N/A';
-$aqiweather["time2"]     = $parsed_json->{'results'}[0]->{'LastSeen'};
+$aqiweather["time2"]     = $parsed_json->{'results'}[0]->{'LastSeen'} ?? null;
 $aqiweather["time"]      = date("H:i",$aqiweather["time2"]);
-$aqiweather["city"]      = $parsed_json->{'results'}[0]->{'ID'};
-$aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'};
+$aqiweather["city"]      = $parsed_json->{'results'}[0]->{'ID'} ?? null;
+$aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'} ?? null;
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
 
 

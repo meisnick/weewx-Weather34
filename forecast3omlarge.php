@@ -24,36 +24,36 @@ $parsed_icon = json_decode($jsonIcon, true);
 $json        = 'jsondata/forecast_daily.txt';
 $forecasturl = file_get_contents($json);
 $parsed_json = json_decode($forecasturl, true);
-$pngicon = $parsed_json['response'][0]['periods'][0]['icon'];
-$forecastIcon = $parsed_icon[$pngicon]['icon'];
+$pngicon = $parsed_json['response'][0]['periods'][0]['icon'] ?? null;
+$forecastIcon = $parsed_icon[$pngicon]['icon'] ?? null;
 
-$Time     = date("H", $parsed_json['response'][0]['periods'][0]['timestamp']);
-$forecastTempHigh = $parsed_json['response'][0]['periods'][0]['maxTempC'];
-$forecastTempLow  = $parsed_json['response'][0]['periods'][0]['minTempC'];
+$Time     = date("H", $parsed_json['response'][0]['periods'][0]['timestamp'] ?? null);
+$forecastTempHigh = $parsed_json['response'][0]['periods'][0]['maxTempC'] ?? null;
+$forecastTempLow  = $parsed_json['response'][0]['periods'][0]['minTempC'] ?? null;
 if ($forecastTempHigh === null) {
     $forecastTempHigh = $forecastTempLow;
 }
-$forecastWindGust = $parsed_json['response'][0]['periods'][0]['windSpeedKPH'];
+$forecastWindGust = $parsed_json['response'][0]['periods'][0]['windSpeedKPH'] ?? null;
 
-$forecastWinddircardinal = $parsed_json['response'][0]['periods'][0]['windDir'];
-$forecastacumm           = $parsed_json->{'daypart'}[0]->{'snowRange'}[0];
+$forecastWinddircardinal = $parsed_json['response'][0]['periods'][0]['windDir'] ?? null;
+$forecastacumm           = $parsed_json->{'daypart'}[0]->{'snowRange'}[0] ?? null;
 
-$forecastprecipIntensity = $parsed_json['response'][0]['periods'][0]['precipMM'];
-$forecastPrecipProb      = $parsed_json['response'][0]['periods'][0]['pop'];
-$forecastUV              = $parsed_json['response'][0]['periods'][0]['uvi'];
-$forecastUVdesc          = $parsed_json->{'daypart'}[0]->{'uvDescription'}[0];
+$forecastprecipIntensity = $parsed_json['response'][0]['periods'][0]['precipMM'] ?? null;
+$forecastPrecipProb      = $parsed_json['response'][0]['periods'][0]['pop'] ?? null;
+$forecastUV              = $parsed_json['response'][0]['periods'][0]['uvi'] ?? null;
+$forecastUVdesc          = $parsed_json->{'daypart'}[0]->{'uvDescription'}[0] ?? null;
 
-$forecastsummary = $parsed_json['response'][0]['periods'][0]['weather'];
-$daynight        = $parsed_forecastjson['response'][0]['periods'][0]['isDay'];
+$forecastsummary = $parsed_json['response'][0]['periods'][0]['weather'] ?? null;
+$daynight        = $parsed_forecastjson['response'][0]['periods'][0]['isDay'] ?? null;
 if ($Time === "07") {
     $forecastTime = "Today'";
 } else if ($Time === "19") {
     $forecastTime = "Tonight'";
 }
-$forecastdesc = w34_cond($parsed_json['response'][0]['periods'][0]['weatherPrimary']);
+$forecastdesc = w34_cond($parsed_json['response'][0]['periods'][0]['weatherPrimary'] ?? null);
 
-$forecasthumidity  = $parsed_json['response'][0]['periods'][0]['humidity'];
-$forecastheatindex = $parsed_json['response'][0]['periods'][0]['avgFeelslikeC'];
+$forecasthumidity  = $parsed_json['response'][0]['periods'][0]['humidity'] ?? null;
+$forecastheatindex = $parsed_json['response'][0]['periods'][0]['avgFeelslikeC'] ?? null;
 
 ?>
 <div class="updatedtime1"><?php
@@ -68,7 +68,7 @@ echo " ", date($timeFormat, $forecastime);
 <div class="mod-forecast"><div class="wulargeforecasthome"><div class="wulargediv">
 <?php //begin aw stuff 
 //convert lightning index
-if ($forecastthunderidx == 0) {
+if (($forecastthunderidx ?? null) == 0) {
     $forecastthunder = $lightningalert8 . ' &nbsp;No Thunder Storm';
 } else if ($forecastthunderidx == 1) {
     $forecastthunder = $lightningalert8 . ' &nbsp;Thunder Storm Risk';
@@ -107,12 +107,12 @@ if ($forecastthunderidx == 0) {
     //kmh to mph
     if ($windunit == 'mph')
     {
-        $forecastWindGust = round((number_format($forecastWindGust, 1) * 0.621371) , 0);
-        $forecastWindSpeed = round((number_format($forecastWindSpeed, 1) * 0.621371) , 0);
+        $forecastWindGust = round((number_format((float)$forecastWindGust, 1) * 0.621371) , 0);
+        $forecastWindSpeed = round((number_format((float)($forecastWindSpeed ?? null), 1) * 0.621371) , 0);
     }	//convert lightning index shorter phrases
 //icon + day aw
 echo '<div class="wulargeforecastinghome">';
-echo '<div class="wulargeweekdayhome">' . $forecastTime . 's Forecast</div><div class="wulargehomeicons">';
+echo '<div class="wulargeweekdayhome">' . ($forecastTime ?? null) . 's Forecast</div><div class="wulargehomeicons">';
 echo '<img src="css/svg/'.$forecastIcon.'" width="52px" height="41px" alt="">';
 echo '</div><wulargetempdesc><value>' . $forecastdesc . '</value></wulargetempdesc><br><br>';
 //temp non metric aw
@@ -131,7 +131,7 @@ if ($tempunit == 'F' && $forecastTempHigh < 44.6) {
 }
 //temp metric wu
 else if ($forecastTempHigh < 7) {
-    echo '<wulargetemphihome><bluewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></bluewu></wulargetemphihome>';
+    echo '<wulargetemphihome><bluewu>' . number_format((float)$forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></bluewu></wulargetemphihome>';
 } else if ($forecastTempHigh > 40) {
     echo '<wulargetemphihome><purplewu>' . number_format($forecastTempHigh, 0) . '°<wuunits>' . $tempunit . '</wuunits></purplewu></wulargetemphihome>';
 } else if ($forecastTempHigh > 27) {
@@ -151,16 +151,16 @@ echo '</wuunits></div></div>';
 '<br><br>';
 echo "<div class='wulargerain'>";
 //snow aw
-if ($forecastsnow > 0 && $rainunit == 'in') {
+if (($forecastsnow ?? null) > 0 && $rainunit == 'in') {
     echo ' Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> in</wuunits></wulargetempwindhome>';
-} else if ($forecastsnow > 0 && $rainunit == 'mm') {
+} else if (($forecastsnow ?? null) > 0 && $rainunit == 'mm') {
     echo 'Snowfall Accumulation ' . $snowflakesvg . '&nbsp;<wulargetempwindhome><span class="ink-oblue">&nbsp;' . $forecastsnow . '</span><wuunits> cm</wuunits></wulargetempwindhome>';
 }
 //rain aw
 else if ($forecastPrecipType = 'rain' && $rainunit == 'in') {
     echo 'Rainfall Accumulation ' . $rainsvg . '&nbsp;<div class=wurainfall>' . number_format($forecastprecipIntensity, 2) . '&nbsp;<wuunits>' . $rainunit . '</wuunits></div>';
 } else if ($forecastPrecipType = 'rain' && $rainunit == 'mm') {
-    echo 'Rainfall Accumulation ' . $rainsvg . '&nbsp;<div class=wurainfall>' . number_format($forecastprecipIntensity, 1) . '&nbsp;<wuunits>' . $rainunit . '</wuunits></div>';
+    echo 'Rainfall Accumulation ' . $rainsvg . '&nbsp;<div class=wurainfall>' . number_format((float)$forecastprecipIntensity, 1) . '&nbsp;<wuunits>' . $rainunit . '</wuunits></div>';
 }
 //uvindex aw
 echo '<br><div class=wulargeuvindex>UV Index &nbsp;<wuuvicon>&#9788;</wuuvicon>';
@@ -189,75 +189,75 @@ if ($tempunit == 'C' && $forecastheatindex >= 29) {
 }
 //lightning aw
 echo '</div><div class="wulargeheatindex wulargeheatindex--alert">';
-if ($forecastthunderidx > 0) {
+if (($forecastthunderidx ?? null) > 0) {
     echo 'Thunderstorms expected ' . $forecastTime;
-} else if ($forecastthunderidx1 > 0) {
+} else if (($forecastthunderidx1 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx2 > 0) {
+} else if (($forecastthunderidx2 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx3 > 0) {
+} else if (($forecastthunderidx3 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx4 > 0) {
+} else if (($forecastthunderidx4 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx5 > 0) {
+} else if (($forecastthunderidx5 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx6 > 0) {
+} else if (($forecastthunderidx6 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx7 > 0) {
+} else if (($forecastthunderidx7 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx8 > 0) {
+} else if (($forecastthunderidx8 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx9 > 0) {
+} else if (($forecastthunderidx9 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime9 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastthunderidx10 > 0) {
+} else if (($forecastthunderidx10 ?? null) > 0) {
     echo $infowu . '<span class="ink-ored">Thunder</span> ' . $forecastTime10 . '&nbsp;' . $lightningalert8 . '';
 }
 //snowfall aw
-else if ($forecastsnow > 0) {
+else if (($forecastsnow ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow1 > 0) {
+} else if (($forecastsnow1 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime1 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow2 > 0) {
+} else if (($forecastsnow2 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime2 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow3 > 0) {
+} else if (($forecastsnow3 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime3 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow4 > 0) {
+} else if (($forecastsnow4 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime4 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow5 > 0) {
+} else if (($forecastsnow5 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime5 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow6 > 0) {
+} else if (($forecastsnow6 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime6 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow7 > 0) {
+} else if (($forecastsnow7 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime7 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow8 > 0) {
+} else if (($forecastsnow8 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime8 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow9 > 0) {
+} else if (($forecastsnow9 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime9 . '&nbsp;' . $freezing . '';
-} else if ($forecastsnow10 > 0) {
+} else if (($forecastsnow10 ?? null) > 0) {
     echo $infowu . '<blue>Snow</blue> ' . $forecastTime10 . '&nbsp;' . $freezing . '';
 }
 //rainfall aw
-else if ($forecastrain > 0) {
+else if (($forecastrain ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain1 > 0) {
+} else if (($forecastrain1 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime1 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain2 > 0) {
+} else if (($forecastrain2 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime2 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain3 > 0) {
+} else if (($forecastrain3 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime3 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain4 > 0) {
+} else if (($forecastrain4 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime4 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain5 > 0) {
+} else if (($forecastrain5 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime5 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain6 > 0) {
+} else if (($forecastrain6 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime6 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain7 > 0) {
+} else if (($forecastrain7 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime7 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain8 > 0) {
+} else if (($forecastrain8 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime8 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain9 > 0) {
+} else if (($forecastrain9 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime9 . '&nbsp;' . $rainfallalert8 . '';
-} else if ($forecastrain10 > 0) {
+} else if (($forecastrain10 ?? null) > 0) {
     echo $infowu . '<blue>Rain</blue> ' . $forecastTime10 . '&nbsp;' . $rainfallalert8 . '';
 }
 //heat index today caution aw
@@ -267,21 +267,21 @@ else if ($tempunit == 'C' && $forecastheatindex > 29) {
     echo $infowu . '<wuheatindex>Heat Index </wuheatindex>High ' . $forecastTime . '&nbsp;' . $lightningalert8 . '';
 }
 //uv index aw
-else if ($forecastUV1 > 6) {
+else if (($forecastUV1 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime1 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV2 > 6) {
+} else if (($forecastUV2 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime2 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV3 > 6) {
+} else if (($forecastUV3 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime3 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV4 > 6) {
+} else if (($forecastUV4 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime4 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV5 > 6) {
+} else if (($forecastUV5 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime5 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV6 > 6) {
+} else if (($forecastUV6 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime6 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV7 > 6) {
+} else if (($forecastUV7 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime7 . '&nbsp;' . $lightningalert8 . '';
-} else if ($forecastUV8 > 6) {
+} else if (($forecastUV8 ?? null) > 6) {
     echo $infowu . '<span class="ink-ored">High UV </span> ' . $forecastTime8 . '&nbsp;' . $lightningalert8 . '';
 }
 //else

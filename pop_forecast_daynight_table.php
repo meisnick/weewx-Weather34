@@ -53,10 +53,10 @@ $json = file_get_contents($json);
 $parsed_json = json_decode($json, true);
 for ($k = 0;$k < 14;$k++)
 {
-    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'];
-    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'];
-    $Time[$k] = date("H", $parsed_json['response'][0]['periods'][$k]['timestamp']);
-    $nameDay[$k] = w34_date("l", $parsed_json['response'][0]['periods'][$k]['timestamp']);
+    $pngicon[$k] = $parsed_json['response'][0]['periods'][$k]['icon'] ?? null;
+    $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'] ?? null;
+    $Time[$k] = date("H", $parsed_json['response'][0]['periods'][$k]['timestamp'] ?? null);
+    $nameDay[$k] = w34_date("l", $parsed_json['response'][0]['periods'][$k]['timestamp'] ?? null);
 
     if ($Time[0] === "07")
     {
@@ -64,20 +64,20 @@ for ($k = 0;$k < 14;$k++)
         $forecastTime[1] = w34t('Tonight', 'Tonight');
         $forecastTime[2] = w34t('Tomorrow', 'Tomorrow');
         $forecastTime[3] = w34t('Tomorrownight', 'Tomorrow Night');
-        $forecastTime[4] = $nameDay[4];
-        $forecastTime[5] = $nameDay[5] . ' ' . w34t('Night', 'Night');
-        $forecastTime[6] = $nameDay[6];
-        $forecastTime[7] = $nameDay[7] . ' ' . w34t('Night', 'Night');
-        $forecastTime[8] = $nameDay[8];
-        $forecastTime[9] = $nameDay[9] . ' ' . w34t('Night', 'Night');
-        $forecastTime[10] = $nameDay[10];
-        $forecastTime[11] = $nameDay[11] . ' ' . w34t('Night', 'Night');
-        $forecastTime[12] = $nameDay[12];
-        $forecastTime[13] = $nameDay[13] . ' ' . w34t('Night', 'Night');
-        $forecastTime[14] = $nameDay[14];
-        $forecastTime[15] = $nameDay[15] . ' ' . w34t('Night', 'Night');
-        $forecastTime[16] = $nameDay[16];
-        $forecastTime[17] = $nameDay[17] . ' ' . w34t('Night', 'Night');
+        $forecastTime[4] = $nameDay[4] ?? null;
+        $forecastTime[5] = ($nameDay[5] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[6] = $nameDay[6] ?? null;
+        $forecastTime[7] = ($nameDay[7] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[8] = $nameDay[8] ?? null;
+        $forecastTime[9] = ($nameDay[9] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[10] = $nameDay[10] ?? null;
+        $forecastTime[11] = ($nameDay[11] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[12] = $nameDay[12] ?? null;
+        $forecastTime[13] = ($nameDay[13] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[14] = $nameDay[14] ?? null;
+        $forecastTime[15] = ($nameDay[15] ?? null) . ' ' . w34t('Night', 'Night');
+        $forecastTime[16] = $nameDay[16] ?? null;
+        $forecastTime[17] = ($nameDay[17] ?? null) . ' ' . w34t('Night', 'Night');
     }
     else if ($Time[0] === "19")
     {
@@ -98,24 +98,24 @@ for ($k = 0;$k < 14;$k++)
         $forecastTime[14] = $nameDay[14] . ' ' . w34t('Night', 'Night');
     }
 
-    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['maxTempC'];
-    $forecastTempLow[$k] = $parsed_json['response'][0]['periods'][$k]['minTempC'];
+    $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['maxTempC'] ?? null;
+    $forecastTempLow[$k] = $parsed_json['response'][0]['periods'][$k]['minTempC'] ?? null;
     if ($forecastTempHigh[$k] === null)
     {
         $forecastTempHigh[$k] = $forecastTempLow[$k];
     }
-    $forecastWindSpeedMax[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMaxKPH'];
-    $forecastWindSpeedMin[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMinKPH'];
-    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'];
-    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'];
-    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'];
-    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'];
-    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'];
-    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'];
-    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary']);
-    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'];
-    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'];
+    $forecastWindSpeedMax[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMaxKPH'] ?? null;
+    $forecastWindSpeedMin[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedMinKPH'] ?? null;
+    $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'] ?? null;
+    $forecastprecipIntensity[$k] = $parsed_json['response'][0]['periods'][$k]['precipMM'] ?? null;
+    $forecastPrecipProb[$k] = $parsed_json['response'][0]['periods'][$k]['pop'] ?? null;
+    $forecastUV[$k] = $parsed_json['response'][0]['periods'][$k]['uvi'] ?? null;
+    $forecastsnow[$k] = $parsed_json['response'][0]['periods'][$k]['snowCM'] ?? null;
+    $forecastsummary[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastnight[$k] = $parsed_json['response'][0]['periods'][$k]['isDay'] ?? null;
+    $forecastdesc[$k] = w34_cond($parsed_json['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+    $forecastheatindex[$k] = $parsed_json['response'][0]['periods'][$k]['avgFeelslikeC'] ?? null;
+    $forecasthumidity[$k] = $parsed_json['response'][0]['periods'][$k]['humidity'] ?? null;
     if ($forecastUV[$k] === 0 or $forecastUV[$k] === null)
     {
         $forecastUV[$k] = "-";
@@ -162,8 +162,8 @@ for ($k = 0;$k < 14;$k++)
     //kmh to mph
     if ($windunit == 'mph')
     {
-        $forecastWindSpeedMax[$k] = round((number_format($forecastWindSpeedMax[$k], 1) * 0.621371) , 0);
-        $forecastWindSpeedMin[$k] = round((number_format($forecastWindSpeedMin[$k], 1) * 0.621371) , 0);
+        $forecastWindSpeedMax[$k] = round((number_format((float)$forecastWindSpeedMax[$k], 1) * 0.621371) , 0);
+        $forecastWindSpeedMin[$k] = round((number_format((float)$forecastWindSpeedMin[$k], 1) * 0.621371) , 0);
     }
     //kmh to kts
     if ($windunit == 'kts')
@@ -289,7 +289,7 @@ for ($k = 0;$k < 14;$k++)
   <tbody>
 <?php for ($k = 0; $k < 14; $k++) { ?>
   <tr>
-    <td class="fc-first"><?php echo $forecastTime[$k]; ?></td>
+    <td class="fc-first"><?php echo $forecastTime[$k] ?? null; ?></td>
     <td class="fc-cond"><span class="fc-ci"><img src="css/svg/<?php echo $forecastIcon[$k]; ?>" alt=""><?php echo $forecastsummary[$k]; ?></span></td>
     <td><?php echo $colorTempHigh[$k] . $forecastTempHigh[$k] . '&deg;' . $tempunit . fc_close($colorTempHigh[$k]); ?></td>
     <td><?php echo $forecastPrecip[$k]; ?></td>

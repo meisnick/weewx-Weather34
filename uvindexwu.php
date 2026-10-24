@@ -88,9 +88,9 @@ align-items:center;justify-content:center;margin-bottom:10px;top:0}
 $weather34wuurl=file_get_contents($json);
 $parsed_weather34wujson = json_decode($weather34wuurl,false);
 $parsed_weather34wujson1 = json_decode($weather34wuurl,true);
-{    if ($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0]==null){
-	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1];
-	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1];}	 
+{    if (($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[0] ?? null)==null){
+	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[1] ?? null;
+	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[1] ?? null;}	 
 	 else {	  
 	 $wuskydayUV = $parsed_weather34wujson->{'daypart'}[0]->{'uvIndex'}[0];
 	 $wuskydayUVdesc = $parsed_weather34wujson->{'daypart'}[0]->{'uvDescription'}[0];	 
@@ -100,11 +100,11 @@ $parsed_weather34wujson1 = json_decode($weather34wuurl,true);
    
    
 $uvr = round((float)$weather["uv"]); // EPA scale on the rounded index
-if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format((float)$weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 
 ?></smallrainunit></div></div>
  
@@ -122,10 +122,10 @@ else if ($weather["uv"]>=0) {echo 'Low UVI<br>No cautions required<br>Safe for a
   <article> 
   <div class=actualt>&nbsp;&nbsp Current Solar Radiation <?php echo w34_date('F Y')?> </div>        
     <div class="solarcontainer1"><?php 
-if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=10) {echo '<div class=solartoday200>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
-else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+if ($weather["solar"]>=1000) {echo '<div class=solartoday1000>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=500) {echo '<div class=solartoday500>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=10) {echo '<div class=solartoday200>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
+else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format((float)$weather["solar"],0)."<smalluvunit> &nbsp;W/m<sup>2</sup>";}
 
 ?></smallrainunit></div></div>     
              <?php
@@ -183,10 +183,10 @@ else if ($weather["solar"]>=0) {echo '<div class=solartoday1>'.number_format($we
 $b="--";if($weather["lux"]==$b){$weather["lux"] = "N/A" ;}	?>		   
 
 <div class="solarcontainer1"><?php 
-if ($weather["lux"]>=100000) {echo '<div class=luxtoday1000>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
-else if ($weather["lux"]>=50000) {echo '<div class=luxtoday500>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbspLux";}
-else if ($weather["lux"]>=10) {echo '<div class=luxtoday200>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
-else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format($weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+if ($weather["lux"]>=100000) {echo '<div class=luxtoday1000>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+else if ($weather["lux"]>=50000) {echo '<div class=luxtoday500>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbspLux";}
+else if ($weather["lux"]>=10) {echo '<div class=luxtoday200>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
+else if ($weather["lux"]>=0) {echo '<div class=luxtoday1>'.number_format((float)$weather["lux"],0,'.','')."<smalluvunit> &nbsp;Lux";}
 
 ?></smallrainunit></div></div>  
 

@@ -42,27 +42,27 @@ $parsed_forecastjson = json_decode($forecasturl,true);
 $wucount = 0;
 for ($k=0;$k<=2;$k++) 
 {
-     $pngicon[$k] = $parsed_forecastjson['response'][0]['periods'][$k]['icon'];
-     $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'];
-     $Time[$k] = date("H", $parsed_forecastjson['response'][0]['periods'][$k]['timestamp']);
+     $pngicon[$k] = $parsed_forecastjson['response'][0]['periods'][$k]['icon'] ?? null;
+     $forecastIcon[$k] = $parsed_icon[$pngicon[$k]]['icon'] ?? null;
+     $Time[$k] = date("H", $parsed_forecastjson['response'][0]['periods'][$k]['timestamp'] ?? null);
      if($Time[0] ==="07"){$forecastdayTime[0] = w34t('Today', 'Today'); $forecastdayTime[1] = w34t('Tonight', 'Tonight'); $forecastdayTime[2] = w34t('Tomorrow', 'Tomorrow');}
 	 else if($Time[0] ==="19"){$forecastdayTime[0] = w34t('Tonight', 'Tonight'); $forecastdayTime[1] = w34t('Tomorrow', 'Tomorrow'); $forecastdayTime[2] = w34t('Tomorrownight', 'Tomorrow Night');}
-     $forecastdayTempHigh = $parsed_forecastjson['response'][0]['periods'][$k]['maxTempC'];
-     $forecastdayTempLow = $parsed_forecastjson['response'][0]['periods'][$k]['minTempC'];
-     $forecastHumidity = $parsed_forecastjson['response'][0]['periods'][$k]['maxHumidity'].'%';
+     $forecastdayTempHigh = $parsed_forecastjson['response'][0]['periods'][$k]['maxTempC'] ?? null;
+     $forecastdayTempLow = $parsed_forecastjson['response'][0]['periods'][$k]['minTempC'] ?? null;
+     $forecastHumidity = ($parsed_forecastjson['response'][0]['periods'][$k]['maxHumidity'] ?? null).'%';
      if($forecastdayTempHigh ===null){$forecastdayTempHigh = $forecastdayTempLow;}
-     $forecastdayWindGust = $parsed_forecastjson['response'][0]['periods'][$k]['windSpeedKPH'];
+     $forecastdayWindGust = $parsed_forecastjson['response'][0]['periods'][$k]['windSpeedKPH'] ?? null;
      //$forecastdayWinddir = $parsed_forecastjson->{'daypart'}[0]->{'windDirection'}[$k];
-	 $forecastdayWinddircardinal = $parsed_forecastjson['response'][0]['periods'][$k]['windDir']; 
+	 $forecastdayWinddircardinal = $parsed_forecastjson['response'][0]['periods'][$k]['windDir'] ?? null; 
      //$forecastdayacumm = $parsed_forecastjson->{'daypart'}[0]->{'snowRange'}[$k];
 	 //$forecastdayPrecipType = $parsed_forecastjson->{'daypart'}[0]->{'precipType'}[$k];
-     $forecastdayprecipIntensity = $parsed_forecastjson['response'][0]['periods'][$k]['precipMM'];
-	 $forecastdayPrecipProb = $parsed_forecastjson['response'][0]['periods'][$k]['pop'];
-     $forecastdayUV = $parsed_forecastjson['response'][0]['periods'][$k]['uvi'];
+     $forecastdayprecipIntensity = $parsed_forecastjson['response'][0]['periods'][$k]['precipMM'] ?? null;
+	 $forecastdayPrecipProb = $parsed_forecastjson['response'][0]['periods'][$k]['pop'] ?? null;
+     $forecastdayUV = $parsed_forecastjson['response'][0]['periods'][$k]['uvi'] ?? null;
 	 //$forecastdayUVdesc = $parsed_forecastjson->{'daypart'}[0]->{'uvDescription'}[$k];
      //$forecastdaysnow = $parsed_forecastjson->{'daypart'}[0]->{'qpfSnow'}[$k];
-	 $forecastdaysummary = w34_cond($parsed_forecastjson['response'][0]['periods'][$k]['weatherPrimary']);
-     $daynight = $parsed_forecastjson['response'][0]['periods'][$k]['isDay'];
+	 $forecastdaysummary = w34_cond($parsed_forecastjson['response'][0]['periods'][$k]['weatherPrimary'] ?? null);
+     $daynight = $parsed_forecastjson['response'][0]['periods'][$k]['isDay'] ?? null;
      if ($daynight !== false)
     {
         $forecastdaynight = "D";
@@ -79,7 +79,7 @@ for ($k=0;$k<=2;$k++)
     //heatindex
     if ($tempunit == 'F')
     {
-        $wuskyheatindex = ($wuskyheatindex * 9 / 5) + 32;
+        $wuskyheatindex = (($wuskyheatindex ?? null) * 9 / 5) + 32;
     }
 
     //rain inches to mm
@@ -97,12 +97,12 @@ for ($k=0;$k<=2;$k++)
     //kmh to mph
     if ($windunit == 'mph')
     {
-        $forecastdayWindGust = round((number_format($forecastdayWindGust, 1) * 0.621371) , 0);
-        $forecastdayWindSpeed = round((number_format($forecastdayWindSpeed, 1) * 0.621371) , 0);
+        $forecastdayWindGust = round((number_format((float)$forecastdayWindGust, 1) * 0.621371) , 0);
+        $forecastdayWindSpeed = round((number_format((float)($forecastdayWindSpeed ?? null), 1) * 0.621371) , 0);
     }	//convert lightning index shorter phrases
-	if ( $forecastthunder==0 ){$forecastthunder='';}else if ( $forecastthunder==1 ){$forecastthunder=$lightningalert4.' '.w34t('ThunderRisk', 'Thunder Risk');}else if ( $forecastthunder==2 ){$forecastthunder=$lightningalert4.' '.w34t('Thunder', 'Thunder');}else if ( $forecastthunder>=3 ){$forecastthunder=$lightningalert4.' '.w34t('SevereTstorm', 'Severe Tstorm');}	
+	if ( ($forecastthunder ?? null)==0 ){$forecastthunder='';}else if ( ($forecastthunder ?? null)==1 ){$forecastthunder=$lightningalert4.' '.w34t('ThunderRisk', 'Thunder Risk');}else if ( ($forecastthunder ?? null)==2 ){$forecastthunder=$lightningalert4.' '.w34t('Thunder', 'Thunder');}else if ( ($forecastthunder ?? null)>=3 ){$forecastthunder=$lightningalert4.' '.w34t('SevereTstorm', 'Severe Tstorm');}	
 	//icon + day
-	echo '<div class="forecastforecastinghome forecastforecastinghome--borderless">';echo '<div class="forecastweekdayhome">'.$forecastdayTime[$k].'</div><div class="forecasthomeicons">';
+	echo '<div class="forecastforecastinghome forecastforecastinghome--borderless">';echo '<div class="forecastweekdayhome">'.($forecastdayTime[$k] ?? null).'</div><div class="forecasthomeicons">';
 	echo '<img src="css/svg/' . $forecastIcon[$k] . '" width="45%" alt="">';	
 	echo '</div><div class="forecasttempdesc forecasttempdesc--sm">'.$forecastdaysummary.'</div>';
 	//temp non metric
@@ -113,7 +113,7 @@ for ($k=0;$k<=2;$k++)
 	else if($tempunit=='F' && $forecastdayTempHigh>55){echo '<forecasttemphihome><yellowt>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</yellowt></forecasttemphihome>';}
 	else if($tempunit=='F' && $forecastdayTempHigh>=44.6){echo '<forecasttemphihome><greent>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</greent></forecasttemphihome>';}
 	//temp metric
-	else if($forecastdayTempHigh<7){echo '<forecasttemphihome><bluet>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</bluet></forecasttemphihome>';}
+	else if($forecastdayTempHigh<7){echo '<forecasttemphihome><bluet>'.number_format((float)$forecastdayTempHigh,0).'°'.$tempunit.'</bluet></forecasttemphihome>';}
 	else if($forecastdayTempHigh>40){echo '<forecasttemphihome><purplet>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</purplet></forecasttemphihome>';}
 	else if($forecastdayTempHigh>27){echo '<forecasttemphihome><redt>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</redt></forecasttemphihome>';}
 	else if($forecastdayTempHigh>18){echo '<forecasttemphihome><oranget>'.number_format($forecastdayTempHigh,0).'°'.$tempunit.'</oranget></forecasttemphihome>';}
@@ -124,14 +124,14 @@ for ($k=0;$k<=2;$k++)
 	echo $windalert2." ".w34_dir($forecastdayWinddircardinal); 
 	echo " ".number_format($forecastdayWindGust,0)," <valuewindunit>".$windunit."</valuewindunit></div>";
 	//snow
-	if ($forecastdaysnow > 0) {
+	if (($forecastdaysnow ?? null) > 0) {
 		$snow_unit_str = ($rainunit == 'in' ? ' in' : ' cm');
 		echo '<precip>'.$snowflakesvg.'&nbsp;<forecasttempwindhome><span><span class="ink-oblue">&nbsp;'.$forecastdaysnow.'</span><valuewindunit>'.$snow_unit_str.'</valuewindunit></span></forecasttempwindhome></precip>';
 	} else if ($forecastdayprecipIntensity > 0) {
 		echo '<precip>'.$rainsvg.'&nbsp;<forecasttempwindhome><span><span class="ink-oblue">&nbsp;'. number_format($forecastdayprecipIntensity, 2).'</span>&nbsp;<valuewindunit>'.$rainunit.'</valuewindunit></span></forecasttempwindhome></precip>';
 	}
 	//uvi
-if ($forecastdaynight=='D'){echo '<br><wuuvicon>&#9788;</wuuvicon>&nbsp;<forecasttemplohome><uv>UVI <uvspan>';if ($forecastdayUV>=10){echo "<purpleu>".$forecastdayUV. '</purpleu><greyu> '.$forecastdayUVdesc.'</greyu>';}else  if ($forecastdayUV>=7){echo "<redu>".$forecastdayUV. '</redu><greyu> '.$forecastdayUVdesc.'</greyu>';}else if ($forecastdayUV>5){ echo "<orangeu>".$forecastdayUV. '</orangeu><greyu> '.$forecastdayUVdesc.'</greyu>';}else if ($forecastdayUV>2){  echo "<yellowu>".$forecastdayUV. '</yellowu><greyu> '.$forecastdayUVdesc.'</greyu>';}else if ($forecastdayUV>=0){ echo "<greenu>".$forecastdayUV. '</greenu><greyu> '.$forecastdayUVdesc.'</greyu>';}echo '</uvspan></uv>';}
+if ($forecastdaynight=='D'){echo '<br><wuuvicon>&#9788;</wuuvicon>&nbsp;<forecasttemplohome><uv>UVI <uvspan>';if ($forecastdayUV>=10){echo "<purpleu>".$forecastdayUV. '</purpleu><greyu> '.($forecastdayUVdesc ?? null).'</greyu>';}else  if ($forecastdayUV>=7){echo "<redu>".$forecastdayUV. '</redu><greyu> '.($forecastdayUVdesc ?? null).'</greyu>';}else if ($forecastdayUV>5){ echo "<orangeu>".$forecastdayUV. '</orangeu><greyu> '.($forecastdayUVdesc ?? null).'</greyu>';}else if ($forecastdayUV>2){  echo "<yellowu>".$forecastdayUV. '</yellowu><greyu> '.($forecastdayUVdesc ?? null).'</greyu>';}else if ($forecastdayUV>=0){ echo "<greenu>".$forecastdayUV. '</greenu><greyu> '.($forecastdayUVdesc ?? null).'</greyu>';}echo '</uvspan></uv>';}
 else if ($forecastdaynight=='N'){echo '<br><blueu>'.$humidity.'&nbsp;</blueu><forecasttemplohome><uv>'.w34t('HumShort', 'Hum').' <uvspan>'.$forecastHumidity. '</uvspan></uv>';}
 	//lightning
 	echo '<thunder>'.$forecastthunder.'</thunder></forecasttemplohome></div>';

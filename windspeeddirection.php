@@ -74,16 +74,16 @@ require_once('w34CombinedData.php');require_once('common.php');?>
       <div class="mod-wind-graphic-container">
         <div class="homeweathercompass1">
           <div class="homeweathercompass-line1">
-            <div class="thearrow2"></div>
-            <div class="thearrow1"></div>
+            <?php if ($weather["wind_direction"] !== null) echo '<div class="thearrow2"></div>';?>
+            <?php if ($weather["wind_direction_avg"] !== null) echo '<div class="thearrow1"></div>';?>
             <?php if ($weather["wind_gust_dir"] !== null && $weather["wind_gust_speed"] > 0) echo '<div class="thearrow3"></div>';?>
           </div>
         </div>
         <div class="mod-wind-center-text">
-          <div class="mod-wind-deg"><?php echo $weather["wind_direction"],'&deg;';?></div>
+          <div class="mod-wind-deg"><?php echo $weather["wind_direction"] !== null ? $weather["wind_direction"] . '&deg;' : '---';?></div>
           <div class="mod-wind-dir">
             <?php  
-            if($weather["wind_direction"]<=11.25){echo $lang['Northdir'] ;}else if($weather["wind_direction"]<=33.75){echo $lang['NNEdir'];}else if($weather["wind_direction"]<=56.25){echo $lang['NEdir'];}else if($weather["wind_direction"]<=78.75){echo $lang['ENEdir'];}else if($weather["wind_direction"]<=101.25){echo $lang['Eastdir'];}else if($weather["wind_direction"]<=123.75){echo $lang['ESEdir'];}else if($weather["wind_direction"]<=146.25){echo $lang['SEdir'];}else if($weather["wind_direction"]<=168.75){echo $lang['SSEdir'];}else if($weather["wind_direction"]<=191.25){echo $lang['Southdir'];}  else if($weather["wind_direction"]<=213.75){echo $lang['SSWdir'];}else if($weather["wind_direction"]<=236.25){echo $lang['SWdir'];}else if($weather["wind_direction"]<=258.75){echo $lang['WSWdir'];}else if($weather["wind_direction"]<=281.25){echo $lang['Westdir'];}else if($weather["wind_direction"]<=303.75){echo $lang['WNWdir'];}else if($weather["wind_direction"]<=326.25){echo $lang['NWdir'];}else if($weather["wind_direction"]<=348.75){echo $lang['NWNdir'];}else {echo $lang['Northdir'];}
+            if($weather["wind_direction"]===null){echo '&nbsp;';}else if($weather["wind_direction"]<=11.25){echo $lang['Northdir'] ;}else if($weather["wind_direction"]<=33.75){echo $lang['NNEdir'];}else if($weather["wind_direction"]<=56.25){echo $lang['NEdir'];}else if($weather["wind_direction"]<=78.75){echo $lang['ENEdir'];}else if($weather["wind_direction"]<=101.25){echo $lang['Eastdir'];}else if($weather["wind_direction"]<=123.75){echo $lang['ESEdir'];}else if($weather["wind_direction"]<=146.25){echo $lang['SEdir'];}else if($weather["wind_direction"]<=168.75){echo $lang['SSEdir'];}else if($weather["wind_direction"]<=191.25){echo $lang['Southdir'];}  else if($weather["wind_direction"]<=213.75){echo $lang['SSWdir'];}else if($weather["wind_direction"]<=236.25){echo $lang['SWdir'];}else if($weather["wind_direction"]<=258.75){echo $lang['WSWdir'];}else if($weather["wind_direction"]<=281.25){echo $lang['Westdir'];}else if($weather["wind_direction"]<=303.75){echo $lang['WNWdir'];}else if($weather["wind_direction"]<=326.25){echo $lang['NWdir'];}else if($weather["wind_direction"]<=348.75){echo $lang['NWNdir'];}else {echo $lang['Northdir'];}
             ?>
           </div>
         </div>

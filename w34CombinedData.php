@@ -99,6 +99,9 @@ if (isset($weewxapi))
     $weather["wind_speed_avg"] = $weewxrt[5]; //Console's Average Wind Speed
     $weather["wind_direction"] = (is_numeric($weewxrt[7]) ? number_format($weewxrt[7], 0) : null);
     $weather["wind_direction_avg"] = (is_numeric($weewxapi[46]) ? number_format($weewxapi[46], 0) : null);
+    // No live direction (anemometer not reporting): use the 10-minute average. If that is missing too it stays null,
+    // and the wind dial hides its arrow instead of pointing north.
+    if ($weather["wind_direction"] === null) $weather["wind_direction"] = $weather["wind_direction_avg"];
     $weather["wind_gust_dir"] = (isset($weewxapi[216]) && is_numeric(trim($weewxapi[216])) ? (int)round(trim($weewxapi[216])) : null); // archive interval
     $weather["wind_gust_max_dir"] = (isset($weewxapi[217]) && is_numeric(trim($weewxapi[217])) ? (int)round(trim($weewxapi[217])) : null); // today's peak gust
     $weather["wind_speed"] = (is_numeric($weewxrt[6]) ? number_format($weewxrt[6], 0) : null); // Instant Wind Speed

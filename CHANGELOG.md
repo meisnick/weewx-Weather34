@@ -2,6 +2,23 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [Unreleased]
+
+Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory.
+
+- Popups open as popups again: the jQuery 3.7.1 update had dropped the bundled Lity lightbox, so card links
+  opened full pages. Lity is now its own `js/lity.js`.
+- Lightning card: a 24-hour strike-distance strip replaces the energy pill (whose value was random — no
+  energy sensor); the last-strike distance was converted twice (8.7 mi showed as 5.4) and is now right, in
+  the dashboard's units.
+- Lightning and UV popups: the lightning card opens Strike Almanac / Yearly / Weekly Lightning tabs, and the
+  UV popup gains Yearly and Weekly UV and Solar tabs — full charts with timeframe buttons, like rain, wind,
+  temperature and barometer. The lightning chart leaves out the Energy series when there is no energy data
+  and draws distance as dots.
+- Rainfall card: the year and month headings sit above their pills like Last Hour / Last 24hr.
+- Nowcast card: the RAIN 6H badge lines up with the rainfall card's pills.
+- README feature list brought up to date.
+
 ## [5.1.1] — 2026-10-24 — Evapotranspiration, clocks, jQuery 3.7
 
 Upgrading: pull, then copy `user/w34highchartsSearchX.py` into WeeWX's `bin/user`, and

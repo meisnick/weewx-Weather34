@@ -39,19 +39,26 @@ no paid or deprecated APIs.
   including the settings UI.
 - **📡 Live NWS radar** — polished radar module with real-time station picking, dark-mode
   inversion, zero-flash double-buffered loop transitions, and an interactive pan/zoom popup.
-- **🌫️ Air quality** — two-column module with per-pollutant pills (PM2.5, PM10, NO₂, SO₂, O₃, CO),
-  a tabbed details popup, and a historical AQI trend chart.
-- **⚡ Lightning (v2)** — live strike statistics from the archive database, distances in miles,
-  high-contrast badge + strike-history layout.
+- **🌫️ Air quality** — two-column module with per-pollutant pills for whatever the nearest WAQI
+  station measures (PM2.5, O₃, NO₂, …), a tabbed details popup, and a historical AQI trend chart.
+- **⚡ Lightning** — live strike statistics from the archive database, a 24-hour strike-distance
+  strip across the sensor's range (heat-shaded by count, with the latest strike marked), distances
+  in the dashboard's units, and a Strike Almanac with yearly and weekly charts.
+- **💧 Rain & evapotranspiration** — rain and ET totals side by side on the rainfall card, ET and
+  the rain − ET balance in the Rain Almanac, and ET drawn alongside rain in the rain charts.
+- **🩺 Sensor health light** — a top-bar check-engine light for low batteries and sensors that have
+  gone silent (see [SENSOR_HEALTH.md](SENSOR_HEALTH.md)).
 - **🌌 Space Weather** — real-time NOAA OVATION 30-minute auroral-visibility probability alongside
   the Kp index.
 - **🤖 AI Forecast Discussion** — a local [Ollama](https://ollama.com/) (`gemma3:1b`) summarizer
   distills the NWS Area Forecast Discussion right onto the dashboard, plus a short-term Local
   Nowcast card.
-- **📈 Highcharts history popups** for temperature, wind, rain, barometer, solar/UV and more.
+- **📈 Almanacs & history charts** — each card's popup opens an almanac (today, yesterday, month,
+  year, all-time records) plus tabbed Highcharts yearly and weekly charts with timeframe buttons,
+  for temperature, wind, rain, barometer, lightning, UV and solar radiation.
 - **🔔 Dashboard notifications** — toast alerts for low battery, UV caution, heat exhaustion, wind
   advisory/warning, wind chill, and freezing dewpoint.
-- **🌍 Internationalized** — localized module titles and Beaufort-scale descriptions via `$lang[]`.
+- **🌍 Internationalized** — 15 languages across the cards, popups and charts via `$lang[]`.
 - **🆓 Free & keyless data** — Open-Meteo, NOAA Aviation Weather METAR, and NWS alerts require no
   API key; only optional extended forecast / AQI use free tokens.
 

@@ -9,6 +9,7 @@ if (!file_exists('modules.php')) { copy('modules.example.php', 'modules.php'); }
 include('modules.php');
 ?>
 <script src="js/jquery.js?v=3.7.1"></script>
+<script src="js/lity.js?v=2.3.1"></script>
 <script src="js/w34time.js"></script>
 <script>
 <?php

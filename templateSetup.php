@@ -143,19 +143,7 @@ $meteogramPlace = "'. $_POST["meteogramPlace"]. '";
 $meteogramURL = "'. $_POST["meteogramURL"]. '";
 ?>';
 
-$fn = FOPEN('languages/lang.'.$defaultlanguage.'.php', 'r') or die("Cannot read input file ".'languages/lang.'.$defaultlanguage.'.php');
-$rWrite = FOPEN('languages/translations.js', 'w') or die("Cannot write output file ".'languages/translations.js');
-FWRITE( $rWrite, "var translations = {" . PHP_EOL);
-while($row = fgets($fn)) {
-    if ((strpos($row, "#") == 0) && (strpos($row, "span") == 0) && (strpos($row, "=") > 0)){
-      $row = str_replace(array("'", "]", ";", "\$lang["), "", $row);
-      $row = str_replace("'", '"', $row);
-      if (strpos($row, "//") > 0) $row = substr($row, 0, strpos($row, "//"));
-      list($key, $value ) = explode( "=", $row );
-      FWRITE($rWrite, "'".trim($key)."': "."'".trim($value)."',\n");}}
-FWRITE($rWrite,"};" . PHP_EOL);
-FCLOSE($fn);
-FCLOSE($rWrite);
+// chart strings come from languages/translations.php per visitor; the old static translations.js is gone
 $fp = FOPEN("settings1.php", "w") or die("Unable to open settings1.php file check file permissions !");
 FWRITE($fp, $string);
 FCLOSE($fp);
@@ -166,7 +154,7 @@ FCLOSE($fp);
     <head>
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
         <link href="favicon.ico" rel="icon" type="image/x-icon">
-        <script src="js/jquery.js"></script>
+        <script src="js/jquery.js?v=3.7.1"></script>
         <link href="css/templateSetup.css" rel="stylesheet prefetch">
         <?php if ($theme === "dark"): ?>
         <style>

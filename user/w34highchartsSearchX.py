@@ -410,8 +410,11 @@ class w34highcharts_bar_rain_week(SearchList):
                 distanceRound_vt =  [roundNone(x,distanceRound) for x in distance_vt[0]]
                 distanceTime_ms =  [time_stop_vt[0][0] if (x == 0) else time_stop_vt[0][x] - time_stop_vt[0][0] for x in range(len(time_stop_vt[0]))]
                 distance_json = json.dumps(list(zip(distanceTime_ms, distanceRound_vt)))
+                # the values are in the database's unit (not converted), so the chart labels the axis with it
+                distance_unit = {'mile': 'mi', 'km': 'km', 'meter': 'm', 'foot': 'ft'}.get(distance_vt[1], distance_vt[1] or '')
         except:
                 distance_json = None
+                distance_unit = ''
                 
         # Create strike count json
         try:
@@ -452,6 +455,7 @@ class w34highcharts_bar_rain_week(SearchList):
                                  'noiseCountWeek_json' : noiseCount_json,
                                  'disturberCountWeek_json' : disturberCount_json,
                                  'distanceWeek_json' : distance_json,
+                                 'distanceWeekUnit' : distance_unit,
                                  'energyWeek_json' : energy_json,
                                  'utcOffset': utc_offset,
                                  'weekPlotStart' : _start_ts * 1000,
@@ -1252,9 +1256,11 @@ class w34highchartsYear(SearchList):
                 distanceAvgRound = [roundNone(x,distancePlaces) for x in distance_dict['avg'][0]]
                 distanceMax_json = json.dumps(list(zip(time_ms, distanceMaxRound)))
                 distanceAvg_json = json.dumps(list(zip(time_ms, distanceAvgRound)))
+                distance_unit = {'mile': 'mi', 'km': 'km', 'meter': 'm', 'foot': 'ft'}.get(distance_dict['max'][1], distance_dict['max'][1] or '')
         except:
                 distanceMax_json = None
                 distanceAvg_json = None
+                distance_unit = ''
                 
         # Create strike count json
         try:
@@ -1414,6 +1420,7 @@ class w34highchartsYear(SearchList):
                                  'disturberCount_json' : disturberCount_json,
                                  'distanceMax_json' : distanceMax_json ,
                                  'distanceAvg_json' : distanceAvg_json,
+                                 'distanceUnit' : distance_unit,
                                  'energyMax_json' : energyMax_json,
                                  'energyAvg_json' : energyAvg_json,
                                  'lightningSum_json' : lightningSum_json,

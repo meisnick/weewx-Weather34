@@ -25,7 +25,7 @@ $iconset = "icon";
   <meta charset="UTF-8">
   <title>Day and Night Forecast</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/jquery.js"></script>
+  <script src="js/jquery.js?v=3.7.1"></script>
   <link rel="stylesheet" href="css/tokens.css">
   <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(css/fonts/verbatim-regular.woff2) format("woff2"),url(css/fonts/verbatim-regular.ttf) format("truetype")}

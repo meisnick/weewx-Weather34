@@ -8,7 +8,8 @@ date_default_timezone_set($TZ);
 if (!file_exists('modules.php')) { copy('modules.example.php', 'modules.php'); }
 include('modules.php');
 ?>
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js?v=3.7.1"></script>
+<script src="js/w34time.js"></script>
 <script>
 <?php
 // Build unified module list with div IDs
@@ -47,13 +48,11 @@ if (in_array('weather34clock.php', $topbar_modules_files)):
 <script>
 var clockID;
 var yourTimeZoneFrom = <?php echo $UTC_offset; ?>;
-var d = new Date();
+var stationTz = <?php echo json_encode($TZ); ?>;
 var weekdays = <?php echo json_encode(array_map('w34_datetext', array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")), JSON_UNESCAPED_UNICODE); ?>;
 var months   = <?php echo json_encode(array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")), JSON_UNESCAPED_UNICODE); ?>;
-var tzDifference = yourTimeZoneFrom * 60 + d.getTimezoneOffset();
-var offset = tzDifference * 60 * 1000;
 function UpdateClock() {
-    var e = new Date(new Date().getTime() + offset);
+    var e = w34StationNow(stationTz, yourTimeZoneFrom);   // js/w34time.js: follows DST while the page is open
     var c = e.getHours()<?php echo ($clockformat == '12') ? ' % 12 || 12' : ' % 24 || 0'; ?>;
     <?php echo ($clockformat == '12') ? "if(e.getHours()<12){amorpm=' am'}else{amorpm=' pm'}" : "amorpm='';"; ?>
     var a = e.getMinutes(), g = e.getSeconds(), f = e.getFullYear();

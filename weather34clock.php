@@ -28,19 +28,18 @@ $_months   = array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun"
     <div class="center"></div>
   </div>
 </div><!-- /mod-clock -->
+<script src="js/w34time.js"></script>
 <script>
 (function() {
   if (window._clockHandsTimer) { clearInterval(window._clockHandsTimer); }
   var yourTimeZoneFrom = <?php echo (float)$UTC_offset; ?>;
+  var stationTz = <?php echo json_encode($TZ); ?>;
   var is12h = <?php echo ($clockformat == '12') ? 'true' : 'false'; ?>;
   var weekdays = <?php echo json_encode($_weekdays, JSON_UNESCAPED_UNICODE); ?>;
   var months   = <?php echo json_encode($_months, JSON_UNESCAPED_UNICODE); ?>;
 
   function getTime() {
-    var now = new Date();
-    var tzDifference = yourTimeZoneFrom * 60 + now.getTimezoneOffset();
-    var offset = tzDifference * 60 * 1000;
-    var now2 = new Date(now.getTime() + offset);
+    var now2 = w34StationNow(stationTz, yourTimeZoneFrom);   // js/w34time.js: follows DST while the page is open
 
     var s = now2.getSeconds() + (now2.getMilliseconds() / 1000);
     var m = now2.getMinutes();
@@ -69,7 +68,7 @@ $_months   = array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun"
   }
 
   getTime();
-  window._clockHandsTimer = setInterval(getTime, 50);
+  window._clockHandsTimer = setInterval(getTime, 100);   // smooth enough for the sweep, half the work
 })();
 </script>
 

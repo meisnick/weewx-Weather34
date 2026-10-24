@@ -133,6 +133,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	var compare_dates_ts = [];
 	var compare_dates = false;
 	var do_realtime = false;
+	var do_radial = false;   // radial view of the yearly charts, set by display_chart
 	var auto_update = false;
 	var day_plots = false;
 	var timer1 = null;
@@ -650,7 +651,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    options.title = {text: getTranslation(title)};
 	    for (var i = 0; i < values.length; i++){
 	        options.series[i] = [];
-	        for (field in fields) options.series[i].push(field);
+	        for (var field in fields) options.series[i].push(field);
 	        for (var j = 0; j < fields.length; j++)
 	            if (values[i][j] != null){
 	                options.series[i][fields[j]] = (fields[j] == 'name' ? getTranslation(values[i][j]) : values[i][j]);  
@@ -691,7 +692,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	};
 	
 	function remove_zero_dps(seriesData){
-	    data = [];
+	    var data = [];
 	    for (var i = 0; i < seriesData.length; i++)
 	        if (i == 0 || i == seriesData.length -1 || seriesData[i][1] > 0 || i % 1000 == 0)
 	            data.push(seriesData[i]);
@@ -1083,11 +1084,11 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	
 	function create_wind_barb_chart(options, span, seriesData, units){
 	    options = create_chart_options(options, 'windbarb', 'Wind Gust and Direction with Barb', units.wind,[['Wind Barb', 'windbarb'],['Wind Gust', 'spline']], null);
-	    wb  = [];
-	    wb1 = [];
-	    wd = reinflate_time(seriesData[0].winddirplot.windDir);
-	    ws = convert_wind(seriesData[0].windplot.units, units.wind, reinflate_time(seriesData[0].windplot.windGust));
-	    for (var i = j = 0; i < ws.length; i+=10, j++){
+	    var wb  = [];
+	    var wb1 = [];
+	    var wd = reinflate_time(seriesData[0].winddirplot.windDir);
+	    var ws = convert_wind(seriesData[0].windplot.units, units.wind, reinflate_time(seriesData[0].windplot.windGust));
+	    for (var i = 0, j = 0; i < ws.length; i+=10, j++){
 	       wb[j]  = [ws[i][0], ws[i][1] > 0 || !hide_zero_wind_barb ? convert_wind(units.wind, "mph", ws[i][1])*0.44704 : null, wd[i][1]]; 
 	       wb1[j] = [ws[i][0], ws[i][1], wd[i][1]]; }
 	    options.plotOptions.series.turboThreshold = 0; //Need this to work around highcharts bug with wind barb 
@@ -1101,7 +1102,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    options.yAxis[0].min = 0;
 	    options.rangeSelector.selected = 1;
 	    options.yAxis[0].title.text = "(" + units.wind + ")";
-            options.tooltip.formatter = function(){if (this.points[1] == undefined) tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[0].series.color+'">' + getTranslation("WindBarb") + ": " + 0 + " " + units.wind + " (" + getTranslation('Calm') + ')</span><br/>';
+            options.tooltip.formatter = function(){var tooltip, spd, bn; if (this.points[1] == undefined) tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[0].series.color+'">' + getTranslation("WindBarb") + ": " + 0 + " " + units.wind + " (" + getTranslation('Calm') + ')</span><br/>';
                                                 else {spd = this.points[1].y;bn = this.points[0].series.beaufortName[Math.min(12, Math.round(Math.pow(Math.pow((convert_wind(units.wind, "mph", spd)/1.8702),0.33),2)))];tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[1].series.color+'">' + getTranslation("WindBarb") + ": " + spd + " " + units.wind + " (" + getTranslation(bn) + ')</span><br/><span style="color: '+ this.points[0].series.color + '">' + getTranslation("Wind Direction") + ": " + (this.points[0].point.options.direction == null ? getTranslation("Calm") : this.points[0].point.options.direction + '\xB0') + '</span><br/>';}
                                                   return tooltip;};
 	    return options;
@@ -1388,7 +1389,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
 	    options.yAxis[1].min = 0;
-	    options.yAxis[1].title.text = getTranslation("Distance");
+	    options.yAxis[1].title.text = getTranslation("Distance") + (seriesData[0].lightningplot.distanceunits ? " (" + seriesData[0].lightningplot.distanceunits + ")" : "");
 	    options.yAxis[1].allowDecimals = true;
 	    options.yAxis[2].min = 0;
 	    options.yAxis[2].title.text = getTranslation("Energy");
@@ -1704,7 +1705,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	
 	function do_radial_chart(options, dataMinMax, type, names, colors){
             if (type == 'columnrange'){
-    	        minMax = [];
+    	        var minMax = [];
 	        for (var k = 0; k < dataMinMax.length; k++){
 	            minMax[k] = [];
 	            for (var i = 0; i < dataMinMax[k].length; i++){
@@ -1744,8 +1745,8 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
                    this.update({
                        tickPositioner: function() {
                            var positions = [];
-                           info = this.tickPositions.info;
-                           crop_start = e.target.series[0].cropStart;
+                           var info = this.tickPositions.info;
+                           var crop_start = e.target.series[0].cropStart;
                            var xs = series_x(e.target.series[0]);
                            while ((xs.length - crop_start)%15 != 0) crop_start++;
                            for (var x = e.target.series[0].cropStart; x < xs.length; x += (xs.length - crop_start)/15)
@@ -1783,7 +1784,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	            if (parts[0] + parts[1] == prevrealtime) return;
 	            else prevrealtime = parts[0] + parts[1];
 	            if (plot_type =='windroseplot' || plot_type =='windrosegustplot'){
-	                var compassindex = 0, speedindex = 0; speed = 0;
+	                var compassindex = 0, speedindex = 0, speed = 0;
 	                for (compassindex = 0; compassindex < categories.length; compassindex++)
 	                    if ((isNaN(parts[realtimeplot[plot_type][0][1]])?parts[realtimeplot[plot_type][0][1]]:compassdirections[Math.round((parts[realtimeplot[plot_type][0][1]]%360)/22.5)%16]) == categories[compassindex])
 	                        break;
@@ -1883,6 +1884,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    Highcharts.setOptions({lang:{rangeSelectorZoom: ""}});
 	    var results, files = [], index = 0;
 	    if (!jsonfileforplot.hasOwnProperty(plot_type) || !(span[0] == "weekly" || span[0] == "yearly")){console.error("Bad plot_type (" + plot_type + ") or span (" + span[0] + ")"); return};
+	    if (span[0] == "yearly" && jsonfileforplot[plot_type][1].length == 0) span = ['weekly'];   // e.g. the wind roses have no year data
 	    for (var i = 0; i < jsonfileforplot[plot_type][span[0] == "weekly" ? 0 : 1].length; i++,index++)
 	        files[index] = (day_plots || compare_dates ? pathjsondayfiles : pathjsonfiles) + jsonfileforplot[plot_type][span[0] == "weekly" ? 0 : 1][i];
 	    for (var i = 0; i < jsonfileforplot[plot_type][0].length; i++,index++)

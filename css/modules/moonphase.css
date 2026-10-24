@@ -73,7 +73,7 @@
 }
 
 .mod-moonphase .moonset1 {
-  width: 108px;
+  width: 94px;
 
   font-size: 9.1px;  /* card type scale: label */
 
@@ -84,7 +84,7 @@
 .mod-moonphase .newmoon1 {
   font-size: 9.1px;  /* card type scale: label */
 
-  width: 7.4rem
+  width: 110px
 
 }
 
@@ -93,14 +93,14 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  width: 108px;
+  width: 94px;
   font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   color: var(--card-ink-blue);
   top: 0;
-  margin-left: -105px
+  margin-left: -98px
 }
 
 .mod-moonphase .moonrise1 span {
@@ -115,13 +115,13 @@
   padding-top: 5px;
   line-height: 10px;
   text-align: center;
-  width: 108px;
+  width: 94px;
   font-size: 9.1px;  /* card type scale: label */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   margin-top: 120px;
-  margin-left: -105px;
+  margin-left: -98px;
   color: var(--card-ink-blue)
 }
 
@@ -145,11 +145,11 @@
   line-height: 10px;
   text-align: center;
   font-size: 9.1px;  /* card type scale: label */
-  width: 7.4rem;
+  width: 110px;
   color: var(--card-ink-blue);
   font-family: weathertext2;
   top: 0;
-  margin-left: 100px
+  margin-left: 104px
 }
 
 .mod-moonphase .fullmoon1 span {
@@ -160,7 +160,7 @@
 .mod-moonphase .newmoon1 {
   margin-top: 120px;
 
-  margin-left: 100px
+  margin-left: 104px
 
 }
 
@@ -186,7 +186,7 @@
 
   height: 4.1rem;
 
-  width: 7.4rem;
+  width: 94px;
 
   overflow: hidden;
 
@@ -207,14 +207,14 @@
 
   justify-content: center;
 
-  left: -110px
+  left: -98px
 
 }
 
 .mod-moonphase .weather34luminancem2 {
   position: absolute;
   height: 4.1rem;
-  width: 7.4rem;
+  width: 110px;
   overflow: hidden;
   color: var(--card-ink-blue);
   line-height: 11px;
@@ -223,7 +223,7 @@
   font-family: weathertext2;
   align-items: center;
   justify-content: center;
-  left: 100px;
+  left: 104px;
 }
 
 .mod-moonphase .weather34moonmodule {
@@ -271,7 +271,7 @@
 [data-theme="light"] .mod-moonphase .moonset1 {
   margin-top: 120px;
 
-  margin-left: -105px
+  margin-left: -98px
 
 }
 
@@ -290,25 +290,25 @@
 [data-theme="light"] .mod-moonphase .fullmoon1 {
   top: 0;
 
-  margin-left: 100px;
+  margin-left: 104px;
 
   font-size: 9.1px;  /* card type scale: label */
 
-  width: 7.4rem
+  width: 110px
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
   font-size: 9.1px;  /* card type scale: label */
 
-  width: 7.4rem
+  width: 110px
 
 }
 
 [data-theme="light"] .mod-moonphase .newmoon1 {
   margin-top: 120px;
 
-  margin-left: 100px
+  margin-left: 104px
 
 }
 
@@ -317,7 +317,7 @@
 
   height: 4.1rem;
 
-  width: 7.4rem;
+  width: 94px;
 
   overflow: hidden;
 

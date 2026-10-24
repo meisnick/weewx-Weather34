@@ -539,7 +539,7 @@ function initHemiChart() {
   if (hemiChart) { hemiChart.reflow(); return; }
   if (typeof Highcharts !== 'undefined') { buildChart(); return; }
   var s = document.createElement('script');
-  s.src = 'https://code.highcharts.com/highcharts.js';
+  s.src = 'w34highcharts/scripts/highstock.js';   // the bundled, pinned build (includes Highcharts.chart)
   s.onload = buildChart;
   document.head.appendChild(s);
 }

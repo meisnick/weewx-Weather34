@@ -934,4 +934,15 @@ $lang['MetarHoursOld']            = 'πριν από %s ώρες';
 $lang['LiveRadar']                = 'Ζωντανό ραντάρ';
 $lang['AerisWeatherAlerts']       = 'Ειδοποιήσεις AerisWeather';
 $lang['Current']                  = 'Τρέχων';
+# Layout editor, UV forecast label, sensor light states, chart loading (index.php, solaruv.php, menu.php, plots.js)
+$lang['LayoutSaving']             = 'Αποθήκευση…';
+$lang['LayoutSaved']              = 'Η διάταξη αποθηκεύτηκε';
+$lang['LayoutSaveFailed']         = 'Η αποθήκευση απέτυχε';
+$lang['EditModeHint']             = 'Λειτουργία επεξεργασίας — σύρετε τις μονάδες για αναδιάταξη';
+$lang['UviFcstShort']             = 'UVI πρόγν.';
+$lang['UviForecast']              = 'Πρόγνωση UVI';
+$lang['HealthWarn']               = 'ΠΡΟΣΟΧΗ';
+$lang['HealthFault']              = 'ΒΛΑΒΗ';
+$lang['HcLoadingDataFromDatabase'] = 'Φόρτωση δεδομένων…';
+$lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Δεν υπάρχουν δεδομένα για αυτή την ημερομηνία. Επιλέξτε άλλη.';
 ?>

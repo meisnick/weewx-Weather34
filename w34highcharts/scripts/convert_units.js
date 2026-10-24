@@ -34,13 +34,10 @@ function convert_wind(source, dest, fields, fixed = 2){
 }
 
 function do_speed_conversion(source, dest, data, fixed){
-   if (source == 'mph'  && dest == 'm/s')       return parseFloat((data * 0.44704).toFixed(fixed));
-   else if (source == 'mph'  && dest == 'km/h') return parseFloat((data * 1.609344).toFixed(fixed));
-   else if (source == 'm/s'  && dest == 'mph')  return parseFloat((data * 2.23694).toFixed(fixed));
-   else if (source == 'm/s'  && dest == 'km/h') return parseFloat((data * 3.6).toFixed(fixed)); 
-   else if (source == 'km/h' && dest == 'mph')  return parseFloat((data * 0.621371).toFixed(fixed));
-   else if (source == 'km/h' && dest == 'm/s')  return parseFloat((data * 0.277778).toFixed(fixed));
-   return data;
+   // m/s per unit; knots arrive as 'kts', 'knot' or 'knots'
+   var ms = {'mph': 0.44704, 'm/s': 1, 'km/h': 1/3.6, 'kts': 0.514444, 'knot': 0.514444, 'knots': 0.514444};
+   if (!(source in ms) || !(dest in ms) || source == dest) return data;
+   return parseFloat((data * ms[source] / ms[dest]).toFixed(fixed));
 }
 
 //function to convert pressure 

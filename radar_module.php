@@ -78,39 +78,47 @@ include_once('settings1.php');
   function loadRadar(sta) {
     var srcUrl = makeSrc(sta);
     
+    // this load's image, held locally: bufferImg/activeImg trade places on every swap. Each load removes both of
+    // its listeners, so a failed load leaves nothing behind to swap the old image back in on the next one.
+    var img = bufferImg;
+    var done = function() {
+      img.removeEventListener('load', onBufferLoad);
+      img.removeEventListener('error', onError);
+    };
     var onBufferLoad = function() {
-      bufferImg.removeEventListener('load', onBufferLoad);
-      setDefault(bufferImg);
-      apply(bufferImg);
-      
+      done();
+      setDefault(img);
+      apply(img);
+
       var swap = function() {
-        bufferImg.style.opacity = '1';
+        if (img !== bufferImg) return;   // already swapped
+        img.style.opacity = '1';
         activeImg.style.opacity = '0';
-        
-        var temp = activeImg;
-        activeImg = bufferImg;
-        bufferImg = temp;
+
+        bufferImg = activeImg;
+        activeImg = img;
 
         var timeText = container.parentElement.querySelector('.radar-time-text');
         if (timeText) {
           timeText.textContent = formatTime(new Date());
         }
       };
-      
-      if (typeof bufferImg.decode === 'function') {
-        bufferImg.decode().then(swap).catch(swap);
+
+      if (typeof img.decode === 'function') {
+        img.decode().then(swap).catch(swap);
       } else {
         swap();
       }
     };
-    
-    bufferImg.addEventListener('load', onBufferLoad);
-    bufferImg.addEventListener('error', function onError() {
-      bufferImg.removeEventListener('error', onError);
-      bufferImg.style.opacity = '0.15';
-    });
-    
-    bufferImg.src = srcUrl;
+    var onError = function() {
+      done();
+      img.style.opacity = '0.15';
+    };
+
+    img.addEventListener('load', onBufferLoad);
+    img.addEventListener('error', onError);
+
+    img.src = srcUrl;
     updatePopLink(sta);
   }
 

@@ -932,4 +932,15 @@ $lang['MetarHoursOld']            = 'fa %s h';
 $lang['LiveRadar']                = 'Radar en directe';
 $lang['AerisWeatherAlerts']       = 'Alertes d’AerisWeather';
 $lang['Current']                  = 'Actual';
+# Layout editor, UV forecast label, sensor light states, chart loading (index.php, solaruv.php, menu.php, plots.js)
+$lang['LayoutSaving']             = 'Desant…';
+$lang['LayoutSaved']              = 'Disseny desat';
+$lang['LayoutSaveFailed']         = 'Error en desar';
+$lang['EditModeHint']             = 'Mode edició — arrossega els mòduls per reordenar-los';
+$lang['UviFcstShort']             = 'UVI prev.';
+$lang['UviForecast']              = 'Previsió UVI';
+$lang['HealthWarn']               = 'AVÍS';
+$lang['HealthFault']              = 'FALLADA';
+$lang['HcLoadingDataFromDatabase'] = 'Carregant dades…';
+$lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'No hi ha dades per a aquesta data. Tria una altra data.';
 ?>

@@ -33,7 +33,8 @@ $w34_chart_phrases = array(
     'UV Max', 'UV Avg', 'Cloud Cover Max', 'Cloud Cover Avg', 'Week', 'Month', 'Year', 'Lowest', 'Highest',
     'Select', 'View in full screen', 'Export Chart', 'Reload Chart', 'Auto Update Chart', 'Realtime Update', 'Radial Chart',
     'Hays Chart', 'Compare Dates', 'Scattered Clouds', 'Mostly Cloudy',
-    'When mouse cursor turns to a hand then left click to drill down into chart data'
+    'When mouse cursor turns to a hand then left click to drill down into chart data',
+    'Loading data from database...', 'No data found for that date. Please choose another date.'
 );
 
 function w34_chart_key($phrase) {
@@ -41,7 +42,13 @@ function w34_chart_key($phrase) {
 }
 
 $out = is_array($lang) ? $lang : array();
-if (!w34_is_english()) {
+if (w34_is_english()) {
+    // the phrases as themselves, so the exact-phrase lookup wins over word-by-word $lang values
+    // ('Avg' => '<span2> Avg: </span2>', 'Wind Gust' => 'Wind Speed | Gusts' are dashboard strings)
+    foreach ($w34_chart_phrases as $p) {
+        $out[$p] = $p;
+    }
+} else {
     foreach ($w34_chart_phrases as $p) {
         $out[$p] = w34t(w34_chart_key($p), $p);
     }

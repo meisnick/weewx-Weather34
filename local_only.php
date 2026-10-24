@@ -52,6 +52,11 @@ if (!function_exists('w34_client_ip')) {
     }
 }
 
+// a page that only needs is_local_ip()/w34_client_ip() sets this before including: no gate
+if (!empty($w34_local_only_functions)) {
+    return;
+}
+
 $client_ip = w34_client_ip();
 if (!is_local_ip($client_ip)) {
     http_response_code(403);

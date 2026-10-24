@@ -14,11 +14,11 @@ var enable_radial_charts_reload = true; //Hack for highcharts radial charts
 var realtimeplot = {
     temperatureplot:[[2,4],[14,14],['convert_temp','convert_temp'],['temperatureplot'],[150]],
     tempallplot:[[2,4,3],[14,14,-1],['convert_temp','convert_temp',null],['tempallplot'], [150]],
-    winddirplot:[[7],[13],['convert_wind'],['winddirplot'], [150]],
+    winddirplot:[[7],[-1],[null],['winddirplot'], [150]],  // degrees: no unit conversion
     windplot:[[6],[13],['convert_wind'],['windplot'],[150]],
     windallplot:[[5,40,46],[13,13,-1],['convert_wind','convert_wind',null],['windallplot'],[150]],
     barometerplot:[[10],[15],['convert_pressure'],['barometerplot'],[150]],
     rainplot:[[47,8],[16,16],['convert_rain','convert_rain'],['rainplot'],[50],[]],
     windroseplot:[[6,11],[13,-1],['convert_wind', null],['windroseplot'],[150]],
-    windrosegustplot:[[63,46],[13,-1],['convert_wind', null],['windrosegustplot'],[150]]
+    windrosegustplot:[[62,46],[13,-1],['convert_wind', null],['windrosegustplot'],[150]]  // 62 = 10-minute gust
 };

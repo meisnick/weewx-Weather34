@@ -932,4 +932,15 @@ $lang['MetarHoursOld']            = '%s t gammel';
 $lang['LiveRadar']                = 'Direkte radar';
 $lang['AerisWeatherAlerts']       = 'AerisWeather-varsler';
 $lang['Current']                  = 'Nå';
+# Layout editor, UV forecast label, sensor light states, chart loading (index.php, solaruv.php, menu.php, plots.js)
+$lang['LayoutSaving']             = 'Lagrer…';
+$lang['LayoutSaved']              = 'Oppsett lagret';
+$lang['LayoutSaveFailed']         = 'Lagring mislyktes';
+$lang['EditModeHint']             = 'Redigeringsmodus — dra moduler for å endre rekkefølge';
+$lang['UviFcstShort']             = 'UVI prog.';
+$lang['UviForecast']              = 'UVI-prognose';
+$lang['HealthWarn']               = 'ADVARSEL';
+$lang['HealthFault']              = 'FEIL';
+$lang['HcLoadingDataFromDatabase'] = 'Laster data…';
+$lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Ingen data for denne datoen. Velg en annen dato.';
 ?>

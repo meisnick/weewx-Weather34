@@ -126,7 +126,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 	var windrosespans = ["1h","24h","Week","Month","Year"];
         var compassdirections = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
-	var realtimeinterval = 2;
 	var realtimeXscaleFactor = 300/realtimeinterval;
 	var reload_plot_type = null;
 	var reload_span = null;
@@ -157,7 +156,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	jQuery.getMultipleJSON = function(){
 	  return jQuery.when.apply(jQuery, jQuery.map(arguments, function(jsonfile){
 	    return jQuery.getJSON(jsonfile).fail(function(){
-	      alert("!!!!NO DATA FOUND in database. Please choose another date!!!!\n" + jsonfile);return true;});
+	      alert(getTranslation("No data found for that date. Please choose another date.")); console.error("missing chart data", jsonfile);return true;});
 	  })).then(function(){
 	    var def = jQuery.Deferred();
 	    return def.resolve.apply(def, jQuery.map(arguments, function(response){
@@ -611,18 +610,36 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function getTranslation(term){
 	    if (typeof translations == 'undefined') return term;
-	    if (translations.hasOwnProperty(term)) return translations[term];
+	    // dashboard strings with markup (e.g. 'Avg' => '<span2> Avg: </span2>') are not chart text
+	    var has = function(k){ return translations.hasOwnProperty(k) && typeof translations[k] == 'string' && translations[k].indexOf('<') < 0; };
+	    if (has(term)) return translations[term];
 	    var trimmed = term.trim();  // e.g. 'Wind Speed ' in the wind rose title
-	    if (trimmed !== term && translations.hasOwnProperty(trimmed)) return term.replace(trimmed, translations[trimmed]);
-	    if (translations.hasOwnProperty(term.replace(' ', ''))) return translations[term.replace(' ', '')];
+	    if (trimmed !== term && has(trimmed)) return term.replace(trimmed, translations[trimmed]);
+	    if (has(term.replace(' ', ''))) return translations[term.replace(' ', '')];
 	    var parts = term.split(/([" ", "/", "&"])/);
 	    var translation = "";
 	    for (var i = 0; i < parts.length; i++)
-	       translation += translations.hasOwnProperty(parts[i]) ? translations[parts[i]] : parts[i];
+	       translation += has(parts[i]) ? translations[parts[i]] : parts[i];
 	    return translation.length > 0 ? translation : term;
 	};
 	
-	function create_chart_options(options, type, title, valueSuffix, values, first_line = "date"){
+	// Axis title from a JSON unit label: the chart skin writes ASCII only, so " W/m²" arrives as " W/m";
+// an empty label (UV index) gets the quantity name instead of "()".
+function unit_title(units, name){
+    var u = (units || "").trim();
+    if (u == "W/m") u = "W/m\xB2";
+    return u ? "(" + u + ")" : getTranslation(name);
+};
+
+// A picked date ('2026-10-20') as the epoch of that day's noon at the station, like a click on a yearly bar.
+// new Date('2026-10-20') is UTC midnight, the evening before in the Americas, so the day report missed the day.
+function station_noon_epoch(value){
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(value || '');
+    if (!m) return new Date(value).getTime()/1000;
+    return (Date.UTC(+m[1], m[2]-1, +m[3], 12) - (utcoffset || 0)*60*1000)/1000;
+};
+
+function create_chart_options(options, type, title, valueSuffix, values, first_line = "date"){
 	    var fields = ['name', 'type', 'yAxis', 'visible', 'showInLegend', 'tooltip', 'xAxis'];
 	    options.series = [];
 	    options.chart.type = type;
@@ -810,10 +827,10 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        try{
 	            dataMinMax.push(convert_temp(seriesData[0].windchillplot.units, units.temp, reinflate_time(seriesData[0].windchillplot.appTempminmax)));
 	        }catch{}
-	        return do_radial_chart(options, dataMinMax, 'columnrange', ['Windchill', 'Heatindex', 'Apparent'], convert_tempcolors(units.temp));
+	        return do_radial_chart(options, dataMinMax, 'columnrange', ['Heatindex', 'Windchill', 'Apparent'], convert_tempcolors(units.temp));
 	    }
 	    else if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'columnrange', 'HeatIndex/Windchill/Apparent Ranges & Averages', '\xB0' + units.temp, [['Windchill Range', 'columnrange'],['Avg Windchill','spline'],['Heatindex Range', 'columnrange'],['Avg Heatindex','spline'],['AppT Range', 'columnrange'],['Avg AppT','spline']]);
+	        options = create_chart_options(options, 'columnrange', 'HeatIndex/Windchill/Apparent Ranges & Averages', '\xB0' + units.temp, [['Heatindex Range', 'columnrange'],['Avg Heatindex','spline'],['Windchill Range', 'columnrange'],['Avg Windchill','spline'],['AppT Range', 'columnrange'],['Avg AppT','spline']]);
 	        options.series[2].data = convert_temp(seriesData[0].windchillplot.units, units.temp, reinflate_time(seriesData[0].windchillplot.windchillminmax));
 	        options.series[3].data = convert_temp(seriesData[0].windchillplot.units, units.temp, reinflate_time(seriesData[0].windchillplot.windchillaverage));
 	        options.series[0].data = convert_temp(seriesData[0].windchillplot.units, units.temp, reinflate_time(seriesData[0].windchillplot.heatindexminmax));
@@ -957,8 +974,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            options.series[1].data = reinflate_time(seriesData[1].humidityplot.outHumidity, options.series[0].data[0][0]);
 	        }
 	    }
-	    options.yAxis.min = 0;
-	    options.yAxis.max = 100;
+	    options.yAxis[0].min = 0;
+	    options.yAxis[0].max = 100;
 	    options.yAxis[0].minorTickInterval = 5;
 	    options.yAxis[0].title.text = "(" + seriesData[0].humidityplot.units + ")";
 	    return options;
@@ -1085,7 +1102,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.rangeSelector.selected = 1;
 	    options.yAxis[0].title.text = "(" + units.wind + ")";
             options.tooltip.formatter = function(){if (this.points[1] == undefined) tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[0].series.color+'">' + getTranslation("WindBarb") + ": " + 0 + " " + units.wind + " (" + getTranslation('Calm') + ')</span><br/>';
-                                                else {spd = this.points[1].y;bn = this.points[0].series.beaufortName[Math.round(Math.pow(Math.pow((convert_wind(units.wind, "mph", spd)/1.8702),0.33),2))];tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[1].series.color+'">' + getTranslation("WindBarb") + ": " + spd + " " + units.wind + " (" + getTranslation(bn) + ')</span><br/><span style="color: '+ this.points[0].series.color + '">' + getTranslation("Wind Direction") + ": " + (this.points[0].point.options.direction == null ? getTranslation("Calm") : this.points[0].point.options.direction + '\xB0') + '</span><br/>';}
+                                                else {spd = this.points[1].y;bn = this.points[0].series.beaufortName[Math.min(12, Math.round(Math.pow(Math.pow((convert_wind(units.wind, "mph", spd)/1.8702),0.33),2)))];tooltip = '<span style="font-size: 10px">' + Highcharts.dateFormat('%e %B %Y %H:%M',new Date(this.points[0].x)) + '</span><br/>' + '<span style="color: ' + this.points[1].series.color+'">' + getTranslation("WindBarb") + ": " + spd + " " + units.wind + " (" + getTranslation(bn) + ')</span><br/><span style="color: '+ this.points[0].series.color + '">' + getTranslation("Wind Direction") + ": " + (this.points[0].point.options.direction == null ? getTranslation("Calm") : this.points[0].point.options.direction + '\xB0') + '</span><br/>';}
                                                   return tooltip;};
 	    return options;
 	};
@@ -1231,7 +1248,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            if (series_record.series == null)
 	                speed = parseInt(parts[j]);
 	            else
-	                speed = convert_wind(series_record.units, units['wind'], parseInt(parts[j]), 0);
+	                speed = convert_wind(series_record.units, units['wind'], parseInt(parts[j]), 1);  // 1-2 km/h is 0.6-1.2 mph, not 1-1
 	            if (!usey) windrosespeeds.push(speed);
 	            newName += speed;
 	            if (j + 1 < parts.length && i != 0) newName += "-";
@@ -1371,10 +1388,10 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
 	    options.yAxis[1].min = 0;
-	    options.yAxis[1].title.text = "Distance";
+	    options.yAxis[1].title.text = getTranslation("Distance");
 	    options.yAxis[1].allowDecimals = true;
 	    options.yAxis[2].min = 0;
-	    options.yAxis[2].title.text = "Energy";
+	    options.yAxis[2].title.text = getTranslation("Energy");
 	    options.yAxis[2].allowDecimals = true;
 	    options.xAxis[0].minTickInterval =0;
 	    return options;
@@ -1453,7 +1470,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        }
 	    }
 	    options.yAxis[0].min = 0;
-	    options.yAxis[0].title.text = "(" + seriesData[0].radiationplot.units + ")";
+	    options.yAxis[0].title.text = unit_title(seriesData[0].radiationplot.units, "Solar Radiation");
 	    return options;
 	};
 	
@@ -1478,8 +1495,8 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            options.series[3].data = reinflate_time(seriesData[1].uvplot.uv, options.series[0].data[0][0]);
 	        }
 	    }
-	    options.yAxis[0].title.text = "(" + seriesData[0].radiationplot.units + ")";
-	    options.yAxis[1].title.text = "(" + seriesData[0].uvplot.units + ")";
+	    options.yAxis[0].title.text = unit_title(seriesData[0].radiationplot.units, "Solar Radiation");
+	    options.yAxis[1].title.text = unit_title(seriesData[0].uvplot.units, "UV Index");
 	    options.yAxis[0].min = 0;
 	    options.yAxis[1].max = 20;
 	    return options;
@@ -1550,7 +1567,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    options.yAxis[0].max = 20;
 	    options.yAxis[0].minorTickInterval = 1;
 	    options.yAxis[0].tickInterval = 4;
-	    options.yAxis[0].title.text = "(" + seriesData[0].uvplot.units + ")";
+	    options.yAxis[0].title.text = unit_title(seriesData[0].uvplot.units, "UV Index");
 	    return options;
 	};
 	
@@ -1760,7 +1777,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    }
             $.ajax({
             url: "../" + realtimefilename,
-            async: false,
             success: function (data){
 	        try{
 	            var parts = data.split(" ");
@@ -1769,7 +1785,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	            if (plot_type =='windroseplot' || plot_type =='windrosegustplot'){
 	                var compassindex = 0, speedindex = 0; speed = 0;
 	                for (compassindex = 0; compassindex < categories.length; compassindex++)
-	                    if ((isNaN(parts[realtimeplot[plot_type][0][1]])?parts[realtimeplot[plot_type][0][1]]:compassdirections[Math.round((parts[realtimeplot[plot_type][0][1]]%360)/22.5)+1]) == categories[compassindex])
+	                    if ((isNaN(parts[realtimeplot[plot_type][0][1]])?parts[realtimeplot[plot_type][0][1]]:compassdirections[Math.round((parts[realtimeplot[plot_type][0][1]]%360)/22.5)%16]) == categories[compassindex])
 	                        break;
 	                speed = parseFloat(window[realtimeplot[plot_type][2][0]](parts[realtimeplot[plot_type][1][0]],units[realtimeplot[plot_type][2][0].split("_")[1]],parts[realtimeplot[plot_type][0][0]]));
 	                windrosesamples += 1;
@@ -1810,7 +1826,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                }else chart.setTitle(null,{text: getTranslation("Calm")});
 	            }else{
 	                var tparts = (parts[0]+" "+parts[1]).match(/(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
-	                var x = Date.UTC(+"20"+tparts[3],tparts[2]-1,+tparts[1],+tparts[4],+tparts[5],+tparts[6]) + (utcoffset *60);
+	                var x = Date.UTC(+"20"+tparts[3],tparts[2]-1,+tparts[1],+tparts[4],+tparts[5],+tparts[6]);  // station time as UTC, like reinflate_time's points
 	                for (var j = 0; j < realtimeplot[plot_type][0].length; j++)
 	                    if (chart.series[j] != undefined && chart.series[j].data.length > realtimeinterval*realtimeXscaleFactor)
 	                        chart.series[j].setData(chart.series[j].data.slice(-realtimeinterval*realtimeXscaleFactor));
@@ -1850,7 +1866,6 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	
 	function display_chart(units, ptype, span, plt_div, dplots = false, cdates = false, reload_plot_type_span = null, realtime = false, radial = false){
 	    if (!Array.isArray(span)) span = [span];
-	    console.log(units, ptype, span, dplots, cdates, reload_plot_type_span, realtime, radial, plt_div);
 	    day_plots = dplots;
 	    url_units = units;
 	    plot_type = ptype;
@@ -1867,7 +1882,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	    Highcharts.setOptions({global:{timezoneOffset: 0,}, accessibility:{enabled:false}});
 	    Highcharts.setOptions({lang:{rangeSelectorZoom: ""}});
 	    var results, files = [], index = 0;
-	    if (!jsonfileforplot.hasOwnProperty(plot_type) || !(span[0] == "weekly" || span[0] == "yearly")){alert("Bad plot_type (" + plot_type + ") or span (" + span[0] + ")"); return};
+	    if (!jsonfileforplot.hasOwnProperty(plot_type) || !(span[0] == "weekly" || span[0] == "yearly")){console.error("Bad plot_type (" + plot_type + ") or span (" + span[0] + ")"); return};
 	    for (var i = 0; i < jsonfileforplot[plot_type][span[0] == "weekly" ? 0 : 1].length; i++,index++)
 	        files[index] = (day_plots || compare_dates ? pathjsondayfiles : pathjsonfiles) + jsonfileforplot[plot_type][span[0] == "weekly" ? 0 : 1][i];
 	    for (var i = 0; i < jsonfileforplot[plot_type][0].length; i++,index++)
@@ -1909,10 +1924,10 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	         function compare_callback(){return function(){
 	                                     if (auto_update) return;
 	                                     if (do_realtime) return;
-	                                     var epoch  = (new Date($('input.highcharts-range-selector:eq(0)').val()).getTime()/1000);
-	                                     var epoch1 = (new Date($('input.highcharts-range-selector:eq(1)').val()).getTime()/1000);
+	                                     var epoch  = station_noon_epoch($('input.highcharts-range-selector:eq(0)').val());
+	                                     var epoch1 = station_noon_epoch($('input.highcharts-range-selector:eq(1)').val());
 	                                     if (isNaN(epoch) || isNaN(epoch1)) return;
-	                                     chart.showLoading('Loading data from database...');
+	                                     chart.showLoading(getTranslation('Loading data from database...'));
 	                                     $.ajax({url:'getDayChart.php',method:'get',
 	                                         data:{plot_info:pathjsondayfiles+","+jsonfileforplot[plot_type][0].join(":")+","+weereportcmd, epoch:epoch, epoch1:epoch1},
 	                                         success:function(data){setTimeout(display_chart,0,units,plot_type,['weekly'],plot_div,false,true,reload_plot_type+":"+reload_span,false,false)},
@@ -1968,7 +1983,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                                // undo reinflate_time's display shift and aim at the clicked day's noon: the day
 	                                // report covers the day holding this time and the one before it
 	                                var epoch = this.x - utcoffset*60*1000 + 12*3600*1000;
-	                                chart.showLoading('Loading data from database...');
+	                                chart.showLoading(getTranslation('Loading data from database...'));
 	                                $.ajax({url:'getDayChart.php',method:'get',
 	                                    data:{plot_info:pathjsondayfiles+","+jsonfileforplot[plot_type][0].join(":")+","+weereportcmd, epoch:epoch/1000},
 	                                    success:function(data){setTimeout(display_chart,0,units,plot_type,['weekly'],plot_div,true,false,reload_plot_type+":"+reload_span,false,do_radial)},
@@ -1996,9 +2011,9 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
                    return;
                 }
                 if (disable_day_plots) return;
-	        chart.showLoading('Loading data from database...');
+	        chart.showLoading(getTranslation('Loading data from database...'));
 	        $.ajax({url:'getDayChart.php',method:'get',
-	            data:{plot_info:pathjsondayfiles+","+jsonfileforplot[plot_type][0].join(":")+","+weereportcmd, epoch:+(new Date(this.value).getTime()/1000)},
+	            data:{plot_info:pathjsondayfiles+","+jsonfileforplot[plot_type][0].join(":")+","+weereportcmd, epoch:station_noon_epoch(this.value)},
 	            success:function(data){setTimeout(display_chart,0,units,plot_type,['weekly'],plot_div,true,false,reload_plot_type+":"+reload_span,false,do_radial)},
 	            error:function(data){$("#"+plot_div).load("../404.html")}
 	        });

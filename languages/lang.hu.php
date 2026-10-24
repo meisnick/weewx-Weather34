@@ -933,4 +933,15 @@ $lang['MetarHoursOld']            = '%s órás';
 $lang['LiveRadar']                = 'Élő radar';
 $lang['AerisWeatherAlerts']       = 'AerisWeather figyelmeztetések';
 $lang['Current']                  = 'Jelenlegi';
+# Layout editor, UV forecast label, sensor light states, chart loading (index.php, solaruv.php, menu.php, plots.js)
+$lang['LayoutSaving']             = 'Mentés…';
+$lang['LayoutSaved']              = 'Elrendezés mentve';
+$lang['LayoutSaveFailed']         = 'Mentés sikertelen';
+$lang['EditModeHint']             = 'Szerkesztő mód — húzd a modulokat az átrendezéshez';
+$lang['UviFcstShort']             = 'UVI előr.';
+$lang['UviForecast']              = 'UVI-előrejelzés';
+$lang['HealthWarn']               = 'FIGYELEM';
+$lang['HealthFault']              = 'HIBA';
+$lang['HcLoadingDataFromDatabase'] = 'Adatok betöltése…';
+$lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Nincs adat erre a napra. Válassz másik dátumot.';
 ?>

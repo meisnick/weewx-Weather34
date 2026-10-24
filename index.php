@@ -16,6 +16,9 @@ include_once('w34_i18n.php');
 include('settings1.php');
 include('settings.php');
 include('modules.php');
+$w34_local_only_functions = true;
+include_once('local_only.php');
+$w34_is_lan = is_local_ip(w34_client_ip());   // layout saving is LAN-only (module_save.php)
 $grid_columns = $grid_columns ?? 'auto';
 $col_style = ($grid_columns === 'auto') ? 'repeat(auto-fill, 320px)' : 'repeat(' . intval($grid_columns) . ', 320px)';
 date_default_timezone_set($TZ);
@@ -290,9 +293,11 @@ body.edit-mode .mod-box:active{cursor:grabbing}
   <button data-cols="4" onclick="setColumns(4)">4</button>
   <button data-cols="6" onclick="setColumns(6)">6</button>
 </div>
+<?php if ($w34_is_lan): ?>
 <button id="edit-toggle" onclick="toggleEdit()" title="<?php echo htmlspecialchars(w34t('ToggleEditMode', 'Toggle layout edit mode')); ?>">
   <span id="edit-icon">&#128274;</span> <span id="edit-label"><?php echo w34t('EditLayout', 'Edit Layout'); ?></span>
 </button>
+<?php endif; ?>
 <div id="edit-status"></div>
 
 <!-- ── TOP BAR ─────────────────────────────────────────────────────────────── -->
@@ -355,7 +360,7 @@ function saveOrder() {
     var st = document.getElementById('edit-status');
     st.style.display = 'block';
     st.style.color = 'rgba(150,155,165,1)';
-    st.textContent = 'Saving…';
+    st.textContent = <?php echo json_encode(w34t('LayoutSaving', 'Saving…')); ?>;
     var fd = new FormData();
     fd.append('topbar', JSON.stringify(collect('topbar-sortable')));
     fd.append('grid',   JSON.stringify(collect('grid-sortable')));
@@ -364,10 +369,10 @@ function saveOrder() {
         .then(function(r){return r.json();})
         .then(function(d){
             st.style.color = d.success ? '#5a9' : '#e05a27';
-            st.textContent = d.success ? 'Layout saved' : (d.error || 'Save failed');
+            st.textContent = d.success ? <?php echo json_encode(w34t('LayoutSaved', 'Layout saved')); ?> : (d.error || <?php echo json_encode(w34t('LayoutSaveFailed', 'Save failed')); ?>);
             setTimeout(function(){ if (!editMode) st.style.display='none'; }, 3000);
         })
-        .catch(function(){ st.style.color='#e05a27'; st.textContent='Save failed'; });
+        .catch(function(){ st.style.color='#e05a27'; st.textContent=<?php echo json_encode(w34t('LayoutSaveFailed', 'Save failed')); ?>; });
 }
 
 function setColumns(cols) {
@@ -406,7 +411,7 @@ function toggleEdit() {
         var st = document.getElementById('edit-status');
         st.style.display = 'block';
         st.style.color = 'rgba(240,94,64,1)';
-        st.textContent = 'Edit mode — drag modules to reorder';
+        st.textContent = <?php echo json_encode(w34t('EditModeHint', 'Edit mode — drag modules to reorder')); ?>;
     } else {
         if (topSort)  topSort.destroy();
         if (gridSort) gridSort.destroy();

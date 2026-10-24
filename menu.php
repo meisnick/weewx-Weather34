@@ -15,7 +15,9 @@
   $w34hTip = $w34h['state'] === 'ok'
            ? w34t('AllSensorsOk', 'All sensors reporting normally')
            : implode(' | ', $w34h['issues']);
-  $w34hTxt = $w34h['state'] === 'ok' ? mb_strtoupper(w34t('Sensors', 'Sensors')) : strtoupper($w34h['state']);
+  $w34hWords = array('ok' => mb_strtoupper(w34t('Sensors', 'Sensors')), 'warn' => w34t('HealthWarn', 'WARN'),
+                     'fault' => w34t('HealthFault', 'FAULT'));
+  $w34hTxt = $w34hWords[$w34h['state']] ?? strtoupper($w34h['state']);
 ?>
         <weather34mbhealth id="w34health" class="is-<?php echo $w34h['state']; ?>"
           title="<?php echo htmlspecialchars($w34hTip, ENT_QUOTES); ?>">
@@ -37,7 +39,8 @@
                   ? <?php echo json_encode(w34t('AllSensorsOk', 'All sensors reporting normally')); ?>
                   : d.issues.join(' | ');
                 var t = el.querySelector('.w34health__txt');
-                if (t) t.textContent = d.state === 'ok' ? <?php echo json_encode(mb_strtoupper(w34t('Sensors', 'Sensors'))); ?> : d.state.toUpperCase();
+                var words = <?php echo json_encode($w34hWords); ?>;
+                if (t) t.textContent = words[d.state] || String(d.state).toUpperCase();
               })
               .catch(function () { /* leave last known state on the light */ });
           }

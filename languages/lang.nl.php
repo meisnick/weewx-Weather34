@@ -932,4 +932,15 @@ $lang['MetarHoursOld']            = '%s u oud';
 $lang['LiveRadar']                = 'Live radar';
 $lang['AerisWeatherAlerts']       = 'AerisWeather-waarschuwingen';
 $lang['Current']                  = 'Huidig';
+# Layout editor, UV forecast label, sensor light states, chart loading (index.php, solaruv.php, menu.php, plots.js)
+$lang['LayoutSaving']             = 'Opslaan…';
+$lang['LayoutSaved']              = 'Indeling opgeslagen';
+$lang['LayoutSaveFailed']         = 'Opslaan mislukt';
+$lang['EditModeHint']             = 'Bewerkmodus — sleep modules om te ordenen';
+$lang['UviFcstShort']             = 'UVI verw.';
+$lang['UviForecast']              = 'UVI-verwachting';
+$lang['HealthWarn']               = 'WAARSCH.';
+$lang['HealthFault']              = 'STORING';
+$lang['HcLoadingDataFromDatabase'] = 'Gegevens laden…';
+$lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Geen gegevens voor deze datum. Kies een andere datum.';
 ?>

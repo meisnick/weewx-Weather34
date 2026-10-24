@@ -117,9 +117,9 @@ else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHo
                     : uvVal >= 1 ? 'uvtoday1-3'
                     :              'uvtodaydark';
             innerDiv.className = cls;
-            innerDiv.innerHTML = uvVal.toFixed(1) + '<smalluvunit>&nbsp;fcst UVI</smalluvunit>';
+            innerDiv.innerHTML = uvVal.toFixed(1) + '<smalluvunit>&nbsp;' + <?php echo json_encode(htmlspecialchars(w34t('UviFcstShort', 'fcst UVI'))); ?> + '</smalluvunit>';
             var lbl = document.querySelector('.uvcaution');
-            if (lbl) lbl.innerHTML = '<value>UVI Forecast</value>';
+            if (lbl) lbl.innerHTML = '<value>' + <?php echo json_encode(htmlspecialchars(w34t('UviForecast', 'UVI Forecast'))); ?> + '</value>';
         }
     }, 500);
 })();

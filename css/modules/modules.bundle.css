@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-20 00:49:18 UTC
+   Generated: 2026-10-24 08:35:03 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -4154,7 +4154,7 @@ rainratetextheading {
 
 /* Fix missing icons for rise/set */
 .mod-sun .sunaboveweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--caution); margin-left:2px;}
-.mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-faint); margin-left:2px;}
+.mod-sun .sunbelowweather34 { display: inline-block; width:0; height:0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--card-ink-soft); margin-left:2px;}
 
 /* ==== temperature.css ==== */
 /* ── TEMPERATURE MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */

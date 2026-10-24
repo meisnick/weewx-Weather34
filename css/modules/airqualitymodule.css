@@ -173,6 +173,12 @@
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
+/* a pill with no reading sits on the page background: white text vanished on the light page */
+[data-theme="light"] .mod-aq-pill.mod-aq-bg--none,
+[data-theme="light"] .mod-aq-pill.mod-aq-bg--none .lbl {
+    color: var(--card-ink-soft);
+}
+
 [data-theme="light"] .mod-aq-badge {
     /* border-box would shrink the fixed 4.5rem interior by 2px and clip the fixed
        bottom bar; content-box keeps the interior identical to dark (border outside) */

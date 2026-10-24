@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Niekomfortowo';
 $lang['FeelingVeryHot']         = 'Bardzo Gorąco';
 $lang['FeelingExtremelyHot']    = 'Upalnie';
 //wind
-$lang['Windspeed']              = 'Prędkość Wiatru';
 $lang['Gust']                   = 'Porywy';
 $lang['Direction']              = 'Kierunek';
 $lang['Gusting']                = 'W porywach';
@@ -187,7 +186,6 @@ $lang['Mintill']                = '<br>min. dopóki';
 $lang['Till']                   = 'Do ';
 $lang['Minago']                 = 'min. temu';
 $lang['Hrs']                    = ' godz.';
-$lang['Min']                    = ' min.';
 $lang['TotalDarkness']          = 'Ogólnie noc';
 $lang['TotalDaylight']          = 'Ogólnie dzień';
 $lang['Below']                  = 'jest poniżej horyzontu';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Postaraj się unikać <color>słońca</color>
 //solar
 $lang['Poor']                   = 'Słabe <color> <br>Promieniowanie</color>';
 $lang['Low']                    = 'Niskie <br><color>Promieniowanie</color>';
-$lang['Moderate']               = 'Umiarkowana jakość powietrza';
-$lang['Good']                   = 'Dobra jakość powietrza';
 $lang['Solarradiation']         = 'Promieniowanie Słoneczne';
 //current sky
 $lang['Currentsky']             = 'Obecne warunki';

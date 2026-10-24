@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']    = 'Føles Ukomfortabelt';
 $lang['FeelingVeryHot']          = 'Føles Meget Varmt';
 $lang['FeelingExtremelyHot']     = 'Føles Ekstremt Varmt';
 //wind
-$lang['Windspeed']               = 'Hastighet';
 $lang['Gust']                    = 'Kast';
 $lang['Direction']               = 'Retning';
 $lang['Gusting']                 = 'Kast på';
@@ -187,7 +186,6 @@ $lang['Mintill']                 = '<br>min. til';
 $lang['Till']                    = 'Til ';          
 $lang['Minago']                  = ' min. siden';       
 $lang['Hrs']                     = ' timer';           
-$lang['Min']                     = ' min.';           
 $lang['TotalDarkness']           = 'Total Mørke';           
 $lang['TotalDaylight']           = 'Total Dagslys';           
 $lang['Below']                   = 'er under horisonten';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']              = 'Forsøk og unngå <color>solens</color> str�
 //solar
 $lang['Poor']                    = 'Lite <color><br>Stråling</color>';
 $lang['Low']                     = 'Lav <br><color>Stråling</color>';
-$lang['Moderate']                = 'Moderat <br><color>Stråling</color>';
-$lang['Good']                    = 'God <br><color>Stråling</color>';
 $lang['Solarradiation']          = 'Sol Stråling';
 //current sky
 $lang['Currentsky']              = 'Nåværende Forhold';

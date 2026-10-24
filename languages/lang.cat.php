@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Sensació incòmoda';
 $lang['FeelingVeryHot']         = 'Sensació molta calor';
 $lang['FeelingExtremelyHot']    = 'Molta calor';
 //wind
-$lang['Windspeed']              = 'Velocitat';
 $lang['Gust']                   = 'Ràfega';
 $lang['Direction']              = 'Direcció';
 $lang['Gusting']                = 'Ratxes a';
@@ -187,7 +186,6 @@ $lang['Mintill']                = ' min fins a';
 $lang['Till']                   = 'Per ';
 $lang['Minago']                 = ' Fa minuts';
 $lang['Hrs']                    = ' h';
-$lang['Min']                    = ' min';
 $lang['TotalDarkness']          = 'Total Nit';
 $lang['TotalDaylight']          = 'Total Dia';
 $lang['Below']                  = 'Està per sota de l horitzó';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Tractar de evitar el <color>sol</color> entre
 //solar
 $lang['Poor']                   = 'Radiació solar<color> <br>Pobre</color>';
 $lang['Low']                    = 'Radiació solar<br><color>Baixa</color>';
-$lang['Moderate']               = 'Radiació solar<br><color>Moderada</color>';
-$lang['Good']                   = 'Radiació solar<br><color>Bona</color>';
 $lang['Solarradiation']         = 'Radiacio Solar';
 //current sky
 $lang['Currentsky']             = 'Condicions actuals';

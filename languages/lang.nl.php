@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Oncomfortabel';
 $lang['FeelingVeryHot']         = 'Erg heet';
 $lang['FeelingExtremelyHot']    = 'Extreem heet';
 //wind
-$lang['Windspeed']              = 'Wind Snelheid';
 $lang['Gust']                   = 'Vlaag';
 $lang['Direction']              = 'Richting';
 $lang['Gusting']                = 'Windvlaag';
@@ -186,7 +185,6 @@ $lang['Mintill']                = 'min tot';
 $lang['Till']                   = 'Tot ';
 $lang['Minago']                 = 'min geleden';
 $lang['Hrs']                    = ' u';
-$lang['Min']                    = ' min';
 $lang['TotalDarkness']          = 'Totale Duisternis';
 $lang['TotalDaylight']          = 'Totale Daglicht';
 $lang['Below']                  = 'is achter de horizon';
@@ -215,8 +213,6 @@ $lang['Trytoavoid']             = 'Probeer<color>zon</color> te vermijden tussen
 //solar
 $lang['Poor']                   = 'Zonnestraling<br><color2> Pover</color>';
 $lang['Low']                    = 'Zonnestraling<br><color2> Laag</color>';
-$lang['Moderate']               = 'Matige luchtkwaliteit';
-$lang['Good']                   = 'Goede luchtkwaliteit';
 $lang['Solarradiation']         = 'Zonnestraling';
 //current sky
 $lang['Currentsky']             = 'Huidige Situatie';

@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Kánikula';
 $lang['FeelingVeryHot']         = 'Forróság';
 $lang['FeelingExtremelyHot']    = 'Extrém meleg';
 //wind
-$lang['Windspeed']              = 'Szélsebesség';
 $lang['Gust']                   = 'Széllökés';
 $lang['Direction']              = 'Szélirány';
 $lang['Gusting']                = 'Széllökés';
@@ -187,7 +186,6 @@ $lang['Mintill']                = ' perc múlva';
 $lang['Till']                   = 'Még ';
 $lang['Minago']                 = ' perccel ezelőtt';
 $lang['Hrs']                    = ' óra';
-$lang['Min']                    = ' perc';
 $lang['TotalDarkness']          = 'Teljes sötétség';
 $lang['TotalDaylight']          = 'Teljes napfény';
 $lang['Below']                  = 'a horizont alatt van';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Próbáljon <color>sun</color> árnyékban ma
 //solar
 $lang['Poor']                   = 'Gyenge<color> <br>napsugárzás</color>';
 $lang['Low']                    = 'Alacsony <br><color>napsugárzás</color>';
-$lang['Moderate']               = 'Komfortos <br><color>napsugárzás</color>';
-$lang['Good']                   = 'Kellemes<br><color>napsugárzás</color>';
 $lang['Solarradiation']         = 'Napsugárzás';
 //current sky
 $lang['Currentsky']             = 'Jelenlegi időjárás';

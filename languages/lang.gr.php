@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Αίσθηση Δυσφορίας';
 $lang['FeelingVeryHot']         = 'Πολύ ζεστός';
 $lang['FeelingExtremelyHot']    = 'Αίσθηση Καύσωνα';
 //wind
-$lang['Windspeed']              = 'Ταχύτητα Ανέμου';
 $lang['Gust']                   = 'Ριπές';
 $lang['Direction']              = 'Διεύθυνση';
 $lang['Gusting']                = 'Ριπές στα';
@@ -187,7 +186,6 @@ $lang['Mintill']                = '<br>λεπτά ακόμα';
 $lang['Till']                   = 'να ';
 $lang['Minago']                 = ' λεπτά πριν';
 $lang['Hrs']                    = ' ώρες';
-$lang['Min']                    = ' λεπτά';
 $lang['TotalDarkness']          = 'Διάρκεια Νύχτας';
 $lang['TotalDaylight']          = 'Διάρκεια Ημέρας';
 $lang['Below']                  = 'κάτω από τον ορίζοντα';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Αποφύγετε την έκθεση στο
 //solar
 $lang['Poor']                   = 'Ελάχιστη-Μηδέν<color> <br>Ηλ. Ακτινοβολία</color>';
 $lang['Low']                    = 'Χαμηλή <br><color>Ηλ. Ακτινοβολία</color>';
-$lang['Moderate']               = 'Μέτρια ποιότητα αέρα';
-$lang['Good']                   = 'Καλή ποιότητα αέρα';
 $lang['Solarradiation']         = 'Ηλιακή Ακτινοβολία';
 //current sky
 $lang['Currentsky']             = 'Παρούσες Συνθήκες';

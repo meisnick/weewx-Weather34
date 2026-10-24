@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Rahatsız';
 $lang['FeelingVeryHot']         = 'Çok Sıcak';
 $lang['FeelingExtremelyHot']    = 'Aşırı Sıcak';
 //wind
-$lang['Windspeed']              = 'Rüzgar hızı';
 $lang['Gust']                   = 'Hamle';
 $lang['Direction']              = 'Yön';
 $lang['Gusting']                = 'Max Rüzgar ';
@@ -186,7 +185,6 @@ $lang['Mintill']                = '<br>sonra';
 $lang['Till']                   = 'Için ';
 $lang['Minago']                 = 'son';
 $lang['Hrs']                    = ' sa';
-$lang['Min']                    = ' min';
 $lang['TotalDarkness']          = 'Toplam Karanlık';
 $lang['TotalDaylight']          = 'Toplam Aydınlık';
 $lang['Below']                  = 'ufuktan aşağıda';
@@ -215,8 +213,6 @@ $lang['Trytoavoid']             = 'Öğlen <color>güneş</color> e çıkmayın.
 //solar
 $lang['Poor']                   = 'Çok Zayıf<color> <br>Işın</color>';
 $lang['Low']                    = 'Düşük<br><color>Işın</color>';
-$lang['Moderate']               = 'Orta <br><color>Işın</color>';
-$lang['Good']                   = 'İyi <br><color>Işın</color>';
 $lang['Solarradiation']         = 'Güneş Işınları';
 //current sky
 $lang['Currentsky']             = 'Güncel Hava';

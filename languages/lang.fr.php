@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Ressenti inconfortable';
 $lang['FeelingVeryHot']         = 'Ressenti très chaud';
 $lang['FeelingExtremelyHot']    = 'Ressenti extrèmement chaud';
 //wind
-$lang['Windspeed']              = 'Vitesse du vent';
 $lang['Gust']                   = 'Rafale';
 $lang['Direction']              = 'Direction';
 $lang['Gusting']                = 'Rafale de';
@@ -187,7 +186,6 @@ $lang['Mintill']                = '<br>Jusqu à min:';
 $lang['Till']                   = 'à ';
 $lang['Minago']                 = ' Il y a min:';
 $lang['Hrs']                    = ' Hrs';
-$lang['Min']                    = ' Min';
 $lang['TotalDarkness']          = 'Durée de la nuit';
 $lang['TotalDaylight']          = 'Durée du jour';
 $lang['Below']                  = "est sous l'horizon";
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Eviter de vous <color> exposer</color> entre 
 //solar
 $lang['Poor']                   = 'Radiations<color><br>Faibles</color>';
 $lang['Low']                    = 'Radiations<color><br>Modérées</color>';
-$lang['Moderate']               = 'Radiations<color><br>Fortes <br></color>';
-$lang['Good']                   = 'Radiations<color><br>Extrème <br></color>';
 $lang['Solarradiation']         = 'Radiations solaire';
 //current sky
 $lang['Currentsky']             = 'Conditions Actuelles';

@@ -86,7 +86,6 @@ $lang['FeelingUncomfortable']   = 'Obekvämt varmt';
 $lang['FeelingVeryHot']         = 'Väldigt hett';
 $lang['FeelingExtremelyHot']    = 'Extremt hett';
 //wind
-$lang['Windspeed']              = 'Vind hast.';
 $lang['Gust']                   = 'Vindby';
 $lang['Direction']              = 'Vind riktn.';
 $lang['Gusting']                = 'Vindbyar på';
@@ -187,7 +186,6 @@ $lang['Mintill']                = '<br>min. till';
 $lang['Till']                   = 'Till ';
 $lang['Minago']                 = ' min. sedan';
 $lang['Hrs']                    = ' timmar';
-$lang['Min']                    = ' min.';
 $lang['TotalDarkness']          = 'Totalt mörker';
 $lang['TotalDaylight']          = 'Totalt ljus';
 $lang['Below']                  = 'är under horisonten';
@@ -216,8 +214,6 @@ $lang['Trytoavoid']             = 'Försök undvika <color>sun</color> exponerin
 //solar
 $lang['Poor']                   = 'Ingen <color> <br>solstrålning</color>';
 $lang['Low']                    = 'Låg <br><color>solstrålning</color>';
-$lang['Moderate']               = 'Måttlig luftkvalitet';
-$lang['Good']                   = 'Bra luftkvalitet';
 $lang['Solarradiation']         = 'Solstrålning';
 //current sky
 $lang['Currentsky']             = 'Nuvarande förhållanden';

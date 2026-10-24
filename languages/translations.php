@@ -34,7 +34,8 @@ $w34_chart_phrases = array(
     'Select', 'View in full screen', 'Export Chart', 'Reload Chart', 'Auto Update Chart', 'Realtime Update', 'Radial Chart',
     'Hays Chart', 'Compare Dates', 'Scattered Clouds', 'Mostly Cloudy',
     'When mouse cursor turns to a hand then left click to drill down into chart data',
-    'Loading data from database...', 'No data found for that date. Please choose another date.'
+    'Loading data from database...', 'No data found for that date. Please choose another date.',
+    'ET', 'ET (per hour)'
 );
 
 function w34_chart_key($phrase) {

@@ -944,4 +944,9 @@ $lang['HealthWarn']               = 'FIGYELEM';
 $lang['HealthFault']              = 'HIBA';
 $lang['HcLoadingDataFromDatabase'] = 'Adatok betöltése…';
 $lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Nincs adat erre a napra. Válassz másik dátumot.';
+# Evapotranspiration (rainfall card, rain almanac, rain charts)
+$lang['EtShort']                  = 'ET';
+$lang['RainEtBalance']            = 'Eső − ET';
+$lang['HcEt']                     = 'ET';
+$lang['HcEtperHour']              = 'ET (óránként)';
 ?>

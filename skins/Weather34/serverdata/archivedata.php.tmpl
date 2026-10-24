@@ -155,6 +155,11 @@ $weewxapi[46] = "$span($time_delta=600).wind.vecdir.format(add_label=False, $loc
 ## 171/172 are the console/station low-battery flags read by w34CombinedData.php: never reuse them
 $weewxapi[216] = "$current.windGustDir.format(add_label=False, $localize=False)";
 $weewxapi[217] = "$day.wind.gustdir.format(add_label=False, $localize=False)";
+## evapotranspiration totals (inches, like the rain totals)
+$weewxapi[218] = "$month.ET.sum.inch.format(add_label=False, $localize=False)";
+$weewxapi[219] = "$year.ET.sum.inch.format(add_label=False, $localize=False)";
+$weewxapi[220] = "$alltime.ET.sum.inch.format(add_label=False, $localize=False)";
+$weewxapi[221] = "$yesterday.ET.sum.inch.format(add_label=False, $localize=False)";
 $weewxapi[47] = "$span($hour_delta=1).rain.sum.inch.format(add_label=False, $localize=False)";
 $weewxapi[48] = "$month.dewpoint.max.degree_F.format(add_label=False, $localize=False)";
 $weewxapi[49] = "$month.dewpoint.maxtime.format(format_string="%Y%m%d%H%M%S")";

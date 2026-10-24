@@ -27,6 +27,11 @@ function w34_convert_rain($val, $unit) {
     }
     return '';
 }
+// rain minus evapotranspiration, signed: positive = more water fell than the grass lost
+function w34_rain_balance($rain, $et) {
+    $d = (float)$rain - (float)$et;
+    return ($d > 0 ? '+' : '') . number_format($d, 2);
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
@@ -46,6 +51,9 @@ html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-
 [data-theme="light"] .grid1 > articlegraph{box-shadow:2px 2px 6px 0px rgba(0,0,0,0.06);}
 a{color:var(--pop-link);text-decoration:none;}
 blue{color:var(--pop-blue);font-weight:600;}
+et{color:var(--et-ink);font-weight:600;}
+bal{color:var(--pop-ink);font-weight:600;}
+.et-alm{margin-top:3px;white-space:nowrap;}
 .badge-col{float:left;width:64px;}
 .rainfalltoday1{font-family:weathertext2,Arial,sans-serif;width:64px;height:18px;border-radius:3px 3px 0 0;font-size:0.9rem;line-height:18px;padding-top:2px;color:var(--pop-badge-text);background:rgba(68,166,181,1);display:block;text-align:center;box-sizing:content-box;white-space:nowrap;}
 smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left:2px;}
@@ -71,6 +79,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
     </div>
     <div class="hitempy">
       <?php echo w34t('LastHour', 'Last Hour'); ?><br><blue><?php echo $weather["rain_lasthour"] . ' ' . $weather["rain_units"]; ?></blue>
+      <div class="et-alm"><?php echo w34t('EtShort', 'ET'); ?> <et><?php echo $weather["et_today"]; ?> <?php echo $weather["rain_units"]; ?></et></div>
     </div>
   </article>
 
@@ -86,6 +95,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
     </div>
     <div class="hitempy">
       <?php echo w34t('Last24Hours', 'Last 24 Hours'); ?><br><blue><?php echo $weather["rain_24hrs"] . ' ' . $weather["rain_units"]; ?></blue>
+      <div class="et-alm"><?php echo w34t('EtShort', 'ET'); ?> <et><?php echo $weather["et_yesterday"]; ?> <?php echo $weather["rain_units"]; ?></et></div>
     </div>
   </article>
 
@@ -112,6 +122,8 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
           echo w34t('Unknown', 'Unknown');
         }
       ?></blue>
+      <div class="et-alm"><?php echo w34t('EtShort', 'ET'); ?> <et><?php echo $weather["et_month"]; ?> <?php echo $weather["rain_units"]; ?></et></div>
+      <div class="et-alm"><?php echo w34t('RainEtBalance', 'Rain − ET'); ?> <bal><?php echo w34_rain_balance($weather["rain_month"], $weather["et_month"]); ?> <?php echo $weather["rain_units"]; ?></bal></div>
     </div>
   </article>
 
@@ -127,6 +139,8 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
     </div>
     <div class="hitempy">
       <?php echo w34t('Since', 'Since'); ?><br><blue><?php echo w34_datetext('Jan') . ' ' . date('Y'); ?></blue>
+      <div class="et-alm"><?php echo w34t('EtShort', 'ET'); ?> <et><?php echo $weather["et_year"]; ?> <?php echo $weather["rain_units"]; ?></et></div>
+      <div class="et-alm"><?php echo w34t('RainEtBalance', 'Rain − ET'); ?> <bal><?php echo w34_rain_balance($weather["rain_year"], $weather["et_year"]); ?> <?php echo $weather["rain_units"]; ?></bal></div>
     </div>
   </article>
 
@@ -142,6 +156,7 @@ smalluvunit{font-size:0.55rem;font-family:Arial,Helvetica,sans-serif;margin-left
     </div>
     <div class="hitempy">
       <?php echo w34t('Since', 'Since'); ?><br><blue><?php echo $weather['rainStartTime']; ?></blue>
+      <div class="et-alm"><?php echo w34t('EtShort', 'ET'); ?> <et><?php echo $weather["et_alltime"]; ?> <?php echo $weather["rain_units"]; ?></et></div>
     </div>
   </article>
 </main>

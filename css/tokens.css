@@ -9,6 +9,7 @@
   --green2:    #9aba2f;
   --amber:     #e6a141;
   --amber-rgb: 230, 161, 65;
+  --et-ink:    var(--amber);   /* evapotranspiration: water out (rain is teal) */
   --orange:    #ff7c39;
   --orange-d:  #d05f2d;
   --orange-h:  #f5650a;
@@ -142,6 +143,7 @@
 
 [data-theme="light"],
 :root[data-theme="light"] {
+  --et-ink:    #95560a;   /* amber dark enough for white (5.6:1) */
   --bg0:    #fff;
   --bg1:    #f8f8f8;
   --text:   #2d2d2d;

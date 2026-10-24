@@ -945,4 +945,9 @@ $lang['HealthWarn']               = 'ΠΡΟΣΟΧΗ';
 $lang['HealthFault']              = 'ΒΛΑΒΗ';
 $lang['HcLoadingDataFromDatabase'] = 'Φόρτωση δεδομένων…';
 $lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Δεν υπάρχουν δεδομένα για αυτή την ημερομηνία. Επιλέξτε άλλη.';
+# Evapotranspiration (rainfall card, rain almanac, rain charts)
+$lang['EtShort']                  = 'ET';
+$lang['RainEtBalance']            = 'Βροχή − ET';
+$lang['HcEt']                     = 'ET';
+$lang['HcEtperHour']              = 'ET (ανά ώρα)';
 ?>

@@ -392,6 +392,19 @@ class w34highcharts_bar_rain_week(SearchList):
         rain_json = json.dumps(list(zip(timeRain_ms, rainRound_vt)))
         rainRate_json = json.dumps(list(zip(timeRain_ms, rainRateRound_vt)))
 
+        # ET per hour, drawn over the rain bars (evapotranspiration is in the rain unit group)
+        try:
+            (et_start_vt, et_stop_vt, et_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts - _start_ts % 3600, timespan.stop), 'ET', 'sum', 3600)   # bins on clock hours
+            et_vt = self.generator.converter.convert(et_vt)
+            # an hour's ET is a fraction of a day's: one more decimal than rain
+            etRound = int(self.generator.skin_dict['Units']['StringFormats'].get(et_vt[1], "1f")[-2]) + 1
+            etRound_vt = [roundNone(x, etRound) for x in et_vt[0]]
+            etTime_ms = [et_start_vt[0][0] if (x == 0) else et_start_vt[0][x] - et_start_vt[0][0] for x in range(len(et_start_vt[0]))]
+            etHour_json = json.dumps(list(zip(etTime_ms, etRound_vt))) if et_start_vt[0] else None
+        except Exception as e:
+            log.debug("w34highcharts: no hourly ET: %s", e)
+            etHour_json = None
+
         # Create energy json
         try:
                 (time_start_vt, time_stop_vt, energy_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts, timespan.stop), 'lightning_energy')
@@ -451,6 +464,7 @@ class w34highcharts_bar_rain_week(SearchList):
                                  'barometerWeekjson' : barometer_json,
                                  'rainWeekjson' : rain_json,
                                  'rainRateWeekjson' : rainRate_json,
+                                 'etHourWeek_json' : etHour_json,
                                  'strikeCountWeek_json' : strikeCount_json,
                                  'noiseCountWeek_json' : noiseCount_json,
                                  'disturberCountWeek_json' : disturberCount_json,
@@ -1043,6 +1057,17 @@ class w34highchartsYear(SearchList):
                                                          ['sum'])
         # Get our vector ValueTuple out of the dictionary and convert it
         rainSum_vt = self.generator.converter.convert(rain_dict['sum'])
+        # Daily ET, drawn beside the daily rain (and summed per month by the month chart)
+        try:
+            (et_time_vt, et_dict) = getDaySummaryVectors(db_lookup(), 'ET', _timespan, ['sum'])
+            etSum_vt = self.generator.converter.convert(et_dict['sum'])
+            etPlaces = int(self.generator.skin_dict['Units']['StringFormats'].get(etSum_vt[1], "1f")[-2]) + 1
+            etSumRound = [roundNone(x, etPlaces) for x in etSum_vt[0]]
+            et_ms = [et_time_vt[0][0] if (x == 0) else et_time_vt[0][x] - et_time_vt[0][0] for x in range(len(et_time_vt[0]))]
+            etSum_json = json.dumps(list(zip(et_ms, etSumRound))) if et_time_vt[0] else None
+        except Exception as e:
+            log.debug("w34highcharts: no daily ET: %s", e)
+            etSum_json = None
 
         # Get our radiation vectors
         (radiation_time_vt, radiation_dict) = getDaySummaryVectors(db_lookup(),
@@ -1403,6 +1428,7 @@ class w34highchartsYear(SearchList):
                                  'windSpeedAvg_json' : windSpeedAvg_json,
                                  'windDir_json' : windDir_json,
                                  'rainSum_json' : rainSum_json,
+                                 'etSum_json' : etSum_json,
                                  'radiationMax_json' : radiationMax_json,
                                  'radiationAvg_json' : radiationAvg_json,
                                  'uvMax_json' : uvMax_json,

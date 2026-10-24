@@ -949,4 +949,9 @@ $lang['HealthWarn']               = 'ALERTA';
 $lang['HealthFault']              = 'FALHA';
 $lang['HcLoadingDataFromDatabase'] = 'Carregando dados…';
 $lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Sem dados para esta data. Escolha outra data.';
+# Evapotranspiration (rainfall card, rain almanac, rain charts)
+$lang['EtShort']                  = 'ET';
+$lang['RainEtBalance']            = 'Chuva − ET';
+$lang['HcEt']                     = 'ET';
+$lang['HcEtperHour']              = 'ET (por hora)';
 ?>

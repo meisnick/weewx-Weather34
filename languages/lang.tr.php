@@ -943,4 +943,9 @@ $lang['HealthWarn']               = 'UYARI';
 $lang['HealthFault']              = 'ARIZA';
 $lang['HcLoadingDataFromDatabase'] = 'Veriler yükleniyor…';
 $lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Bu tarih için veri yok. Başka bir tarih seçin.';
+# Evapotranspiration (rainfall card, rain almanac, rain charts)
+$lang['EtShort']                  = 'ET';
+$lang['RainEtBalance']            = 'Yağmur − ET';
+$lang['HcEt']                     = 'ET';
+$lang['HcEtperHour']              = 'ET (saatlik)';
 ?>

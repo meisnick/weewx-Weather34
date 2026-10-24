@@ -279,7 +279,61 @@ rainratetextheading {
   margin-right: 2px;
 }
 
+/* ET (evapotranspiration, water out): the year and month pills hold heading + rain + ET, drawn with the
+   pill's own border (the inner rain pill drops its border); the ET today pill sits beside Rate */
+.mod-rainfall .mod-rainfall-2x2 {
+  row-gap: 6px;
+}
+
+.mod-rainfall-etbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 4rem;
+  box-sizing: border-box;
+  border: 1px solid var(--card-surface);
+  border-radius: 2px;
+  padding: 1px 0 2px;
+}
+
+.mod-rainfall .mod-rainfall-etbox valuetextheading1 {
+  line-height: 12px;
+}
+
+.mod-rainfall .mod-rainfall-etbox .rainmodulehome {
+  border: 0;
+}
+
+.mod-rainfall-et {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.1px;
+  line-height: 11px;
+  color: var(--et-ink);
+  white-space: nowrap;
+}
+
+.mod-rainfall-et span {
+  font-size: 7.8px;
+  color: var(--card-ink);
+  margin-right: 3px;
+}
+
+.mod-rainfall .mod-rainfall-et smallrainunit2 {
+  font-size: 8px;
+}
+
+.mod-rainfall-bot-pill {
+  gap: 6px;
+}
+
+.mod-rainfall .mod-rainfall-etpill raiblue {
+  color: var(--et-ink);
+}
+
 /* Light theme overrides */
+[data-theme="light"] .mod-rainfall-etbox {
+  border-color: var(--line-soft);
+}
 [data-theme="light"] .mod-rainfall #weather34rainbeaker {
   border-color: var(--line-soft);
 }

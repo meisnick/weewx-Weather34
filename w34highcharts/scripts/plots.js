@@ -1293,15 +1293,32 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    return options;
 	};
 	
+	// rain in the dashboard's rain blue; ET (evapotranspiration, water out) in amber, darker on the light theme
+	var rain_color = '#3b9cac';
+	function et_color(){ return Highcharts.theme == 'white' ? '#b8740f' : '#e6a141'; };
+
 	function create_rain_chart(options, span, seriesData, units){
+	    var rp = seriesData[0].rainplot;
 	    if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'RainFall', units.rain,[['RainFall', 'column']]);
-	        options.series[0].data = remove_zero_dps(convert_rain(seriesData[0].rainplot.units, units.rain, reinflate_time(seriesData[0].rainplot.rainsum)));
+	        var values = [['RainFall', 'column']];
+	        if (rp.etsum) values.push(['ET', 'spline']);
+	        options = create_chart_options(options, 'column', 'RainFall', units.rain, values);
+	        options.series[0].data = remove_zero_dps(convert_rain(rp.units, units.rain, reinflate_time(rp.rainsum)));
+	        if (rp.etsum){
+	            options.series[1].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etsum));
+	            Object.assign(options.series[1], {color: et_color(), lineWidth: 1.5, marker: {enabled: false}});
+	        }
 	    }
 	    if (span[0] == "weekly"){
-	        options = create_chart_options(options, 'column', 'RainFall', units.rain,[['RainFall', 'column'], ['RainRate', 'spline', 1]], null);
-	        options.series[0].data = convert_rain(seriesData[0].rainplot.units, units.rain, reinflate_time(seriesData[0].rainplot.rain));
-	        options.series[1].data = convert_rain(seriesData[0].rainplot.units, units.rain, reinflate_time(seriesData[0].rainplot.rainRate));
+	        var values = [['RainFall', 'column'], ['RainRate', 'spline', 1]];
+	        if (rp.etHour) values.push(['ET (per hour)', 'spline']);
+	        options = create_chart_options(options, 'column', 'RainFall', units.rain, values, null);
+	        options.series[0].data = convert_rain(rp.units, units.rain, reinflate_time(rp.rain));
+	        options.series[1].data = convert_rain(rp.units, units.rain, reinflate_time(rp.rainRate));
+	        if (rp.etHour){
+	            options.series[2].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etHour));
+	            Object.assign(options.series[2], {color: et_color(), lineWidth: 2, marker: {enabled: false}});
+	        }
 	        options.yAxis[1].title.text = "(" + units.rain + ")";
 	        options.yAxis[1].min = 0;
 	        if (do_realtime){
@@ -1312,30 +1329,37 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	                else break;
 	        }
 	    }
+	    options.series[0].color = rain_color;
 	    options.yAxis[0].title.text = "(" + units.rain + ")";
 	    options.yAxis[0].min = 0;
 	    return options;
 	};
-	
+
 	function create_rain_month_chart(options, span, seriesData, units){
-	    var data = convert_rain(seriesData[0].rainplot.units, units.rain, reinflate_time(seriesData[0].rainplot.rainsum));
-	    var index = 0;
-	    var month_data = [];
-	    var month_name = [];
-	    month_name[index] = getTranslation(monthNames[new Date(data[0][0]).getMonth()]);
-	    month_data[index] = data[0][1];
-	    for (var i = 1; i < data.length; i++){
-	        var new_month = getTranslation(monthNames[new Date(data[i][0]).getMonth()]);
-	        if (month_name[index] != new_month){
-	            index  +=1;
-	            month_name[index] = new_month;
-	            month_data[index] = data[i][1];
+	    var rp = seriesData[0].rainplot;
+	    // daily sums -> one value per calendar month, in the order the days run
+	    function by_month(daily){
+	        var keys = [], sums = [];
+	        for (var i = 0; i < daily.length; i++){
+	            var d = new Date(daily[i][0]), k = d.getFullYear() * 12 + d.getMonth();
+	            if (keys.length == 0 || keys[keys.length-1] != k){ keys.push(k); sums.push(0); }
+	            sums[sums.length-1] += daily[i][1] || 0;
 	        }
-	        else
-	           month_data[index] +=  data[i][1];
+	        return {keys: keys, sums: sums};
 	    }
-	    options = create_chart_options(options, 'column', 'Monthly Rainfall', units.rain,[['Rainfall', 'column']], month_name);
-	    options.series[0].data = month_data;
+	    var rain = by_month(convert_rain(rp.units, units.rain, reinflate_time(rp.rainsum)));
+	    var month_name = rain.keys.map(function(k){ return getTranslation(monthNames[k % 12]); });
+	    var values = [['Rainfall', 'column']];
+	    if (rp.etsum) values.push(['ET', 'column']);
+	    options = create_chart_options(options, 'column', 'Monthly Rainfall', units.rain, values, month_name);
+	    options.series[0].data = rain.sums.map(function(v){ return parseFloat(v.toFixed(2)); });
+	    options.series[0].color = rain_color;
+	    if (rp.etsum){
+	        var et = by_month(convert_rain(rp.units, units.rain, reinflate_time(rp.etsum)));
+	        // matched by calendar month, so ET and rain line up even if one starts a day later
+	        options.series[1].data = rain.keys.map(function(k){ var i = et.keys.indexOf(k); return i < 0 ? null : parseFloat(et.sums[i].toFixed(2)); });
+	        options.series[1].color = et_color();
+	    }
 	    options.yAxis[0].title.text = "(" + units.rain + ")";
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].tickInterval = 1;
@@ -1345,7 +1369,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    options.xAxis[0].labels = {formatter: function (){return month_name[this.value]}};
 	    return options;
 	};
-	
+
 	function setStrikeSmall(options) {
 	    return options;
 	};

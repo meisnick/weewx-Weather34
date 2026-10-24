@@ -80,6 +80,7 @@ if (isset($weewxapi))
     $weather["rain_rate"] = $weewxrt[8];
     $weather["dewpoint"] = (is_numeric($weewxrt[4]) ? number_format($weewxrt[4], 1) : null);
     $weather["rain_today"] = $weewxrt[9];
+    $weather["et_today"] = is_numeric($weewxrt[44] ?? null) ? $weewxrt[44] : "0";   // realtime field 45, ET so far today
     $weather["rain_lasthour"] = ($weewxapi[47] == "   N/A" ? "0" : $weewxapi[47]);
     $weather["rain_last3hours"] = ($weewxapi[202] == "   N/A" ? "0" : $weewxapi[202]);
     $weather["rain_yesterday"] = ($weewxapi[21] == "   N/A" ? "0" : $weewxapi[21]);
@@ -441,6 +442,10 @@ if (isset($weewxapi))
     $weather["rainymax"] = ($weewxapi[103] == "   N/A" ? "0" : $weewxapi[103]); //wind max year
     $weather["rainymaxtime"] = $rainymaxtime; //seconds
     $weather["rain_alltime"] = ($weewxapi[151] == "   N/A" ? "0" : $weewxapi[151]); // Total rain, all years
+    // evapotranspiration totals (archivedata.php fields 218-221, inches like the rain totals)
+    foreach (array("et_month" => 218, "et_year" => 219, "et_alltime" => 220, "et_yesterday" => 221) as $k => $i) {
+        $weather[$k] = (isset($weewxapi[$i]) && is_numeric(trim($weewxapi[$i]))) ? trim($weewxapi[$i]) : "0";
+    }
     //pressure yesterday
     $baromaxoriginalDateb0 = ($weewxapi[136] == "   N/A" ? "0" : $weewxapi[136]);
     $baromaxtimeyest = date("H:i", strtotime($baromaxoriginalDateb0));
@@ -653,6 +658,7 @@ if ($rainunit != $weather["rain_units"])
         inTomm($weather, "rainmmax");
         inTomm($weather, "rain_24hrs");
         inTomm($weather, "rain_alltime");
+        foreach (array("et_today", "et_yesterday", "et_month", "et_year", "et_alltime") as $k) inTomm($weather, $k);
         $weather["rain_units"] = $rainunit;
     }
     else if ($rainunit == "in")
@@ -669,6 +675,7 @@ if ($rainunit != $weather["rain_units"])
         mmToin($weather, "rainmmax");
         mmToin($weather, "rain_24hrs");
         mmToin($weather, "rain_alltime");
+        foreach (array("et_today", "et_yesterday", "et_month", "et_year", "et_alltime") as $k) mmToin($weather, $k);
         $weather["rain_units"] = $rainunit;
     }
 }

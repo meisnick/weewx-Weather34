@@ -27,6 +27,9 @@
 "rainplot": {
 "rain": $rainWeekjson,
 "rainRate": $rainRateWeekjson,
+#if $etHourWeek_json is not None
+"etHour": $etHourWeek_json,
+#end if
 "units": "$unit.label.rain"#slurp
 },
 ##

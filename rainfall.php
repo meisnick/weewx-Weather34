@@ -52,24 +52,30 @@ include_once('w34CombinedData.php');
 
       <!-- The 2x2 grid -->
       <div class="mod-rainfall-2x2">
-        <!-- Year -->
+        <!-- Year: rain and ET (evapotranspiration) in one pill -->
         <div class="mod-rainfall-block">
+          <div class="mod-rainfall-etbox">
           <valuetextheading1><?php echo date('Y');?></valuetextheading1>
           <div class="rainmodulehome">
-            <raiblue><?php 
+            <raiblue><?php
               if($weather["rain_year"]>=1000) { echo round((float)$weather["rain_year"],0); }
               else { echo $weather["rain_year"]; }
             ?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
           </div>
+          <div class="mod-rainfall-et"><span><?php echo w34t('EtShort', 'ET'); ?></span><?php echo ($weather["et_year"] >= 1000) ? round((float)$weather["et_year"], 0) : $weather["et_year"]; ?><smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2></div>
+          </div>
         </div>
         
-        <!-- Month -->
+        <!-- Month: rain and ET in one pill -->
         <div class="mod-rainfall-block">
+          <div class="mod-rainfall-etbox">
           <valuetextheading1><?php echo w34_date('F');?></valuetextheading1>
           <div class="rainmodulehome">
             <raiblue><?php echo $weather["rain_month"];?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
+          </div>
+          <div class="mod-rainfall-et"><span><?php echo w34t('EtShort', 'ET'); ?></span><?php echo $weather["et_month"]; ?><smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2></div>
           </div>
         </div>
 
@@ -92,8 +98,13 @@ include_once('w34CombinedData.php');
         </div>
       </div>
 
-      <!-- Bottom Pill (Rate) -->
+      <!-- Bottom Pills (ET today, Rate) -->
       <div class="mod-rainfall-bot-pill">
+        <div class="rainratemodulehome mod-rainfall-etpill">
+          <rainratetextheading>&nbsp;<?php echo w34t('EtShort', 'ET'); ?>&nbsp;</rainratetextheading>
+          <raiblue><?php echo number_format((float)$weather["et_today"], $weather["rain_units"] == 'mm' ? 1 : 2); ?></raiblue>
+          <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>
+        </div>
         <div class="rainratemodulehome">
           <rainratetextheading>&nbsp;<?php echo w34t('Rate', 'Rate');?>&nbsp;</rainratetextheading>
           <raiblue><?php 

@@ -943,4 +943,9 @@ $lang['HealthWarn']               = 'ADVARSEL';
 $lang['HealthFault']              = 'FEJL';
 $lang['HcLoadingDataFromDatabase'] = 'Indlæser data…';
 $lang['HcNoDataFoundForThatDatePleaseChooseAnotherDate'] = 'Ingen data for denne dato. Vælg en anden dato.';
+# Evapotranspiration (rainfall card, rain almanac, rain charts)
+$lang['EtShort']                  = 'ET';
+$lang['RainEtBalance']            = 'Regn − ET';
+$lang['HcEt']                     = 'ET';
+$lang['HcEtperHour']              = 'ET (pr. time)';
 ?>

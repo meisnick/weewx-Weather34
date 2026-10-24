@@ -25,6 +25,9 @@
 "timespan": {"start": $yearPlotStart, "stop": $yearPlotEnd}, 
 "rainplot": {
 "rainsum": $rainSum_json, 
+#if $etSum_json is not None
+"etsum": $etSum_json,
+#end if
 "units": "$unit.label.rain"#slurp
 }
 }]

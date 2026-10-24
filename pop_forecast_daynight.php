@@ -296,10 +296,11 @@ for ($k = 0;$k < 12;$k++)
             echo '<grey>-</grey>';
         }
     }
-    //uvi
-    else if ($forecastUV[$k] > 0)
+    //uvi (the div is always opened: its </div> follows the rain line)
+    else
     {
-        echo '<div class=uvforecast><grey>' . $sunlight . ' UVI ';
+        echo '<div class=uvforecast><grey>';
+        if ($forecastUV[$k] > 0) echo $sunlight . ' UVI ';
     }
     if ($forecastUV[$k] > 10)
     {

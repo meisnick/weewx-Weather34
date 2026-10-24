@@ -34,6 +34,7 @@ import math
 import os
 import re
 import sys
+import ast
 import json
 import time
 import datetime
@@ -222,7 +223,7 @@ def calc_windrun(dbm, ts, db_us):
         if row[1] is not None:
             inc = row[1] * row[0]
             if db_us == weewx.METRICWX:
-                inc *= 60.0
+                inc *= 60.0 / 1000.0   # m/s x min -> m -> km (METRICWX distance unit)
             else:
                 inc /= 60.0
             run += inc
@@ -250,23 +251,32 @@ def calc_rain_hour(dbm, ts):
                      (sts, ts))
     return val[0] if val is not None else None
 
+def calc_rain_since(dbm, start_ts, ts):
+    """Rain in (start_ts, ts]: whole days from the daily summary (one row a day) plus today's archive rows.
+    Runs on every loop packet; summing a year of archive rows here took ~85k reads each time."""
+    sod = weeutil.weeutil.startOfDay(ts)
+    try:
+        days = dbm.getSql("SELECT SUM(`sum`), COUNT(*) FROM %s_day_rain "
+                          "WHERE dateTime>=? AND dateTime<?" % dbm.table_name, (start_ts, sod))
+        today = calc_rain_day(dbm, ts)
+        if days is None or (days[0] is None and today is None):
+            return None
+        return (days[0] or 0.0) + (today or 0.0)
+    except Exception:
+        # no daily summary table (plain archive manager): sum the archive
+        val = dbm.getSql("SELECT SUM(rain) FROM %s "
+                         "WHERE dateTime>? AND dateTime<=?" % dbm.table_name, (start_ts, ts))
+        return val[0] if val is not None else None
+
 def calc_rain_month(dbm, ts):
-    span = weeutil.weeutil.archiveMonthSpan(ts)
-    val = dbm.getSql("SELECT SUM(rain) FROM %s "
-                     "WHERE dateTime>? AND dateTime<=?" % dbm.table_name,
-                     (span.start, ts))
-    return val[0] if val is not None else None
+    return calc_rain_since(dbm, weeutil.weeutil.archiveMonthSpan(ts).start, ts)
 
 def calc_rain_year(dbm, ts):
-    span = weeutil.weeutil.archiveYearSpan(ts)
-    val = dbm.getSql("SELECT SUM(rain) FROM %s "
-                     "WHERE dateTime>? AND dateTime<=?" % dbm.table_name,
-                     (span.start, ts))
-    return val[0] if val is not None else None
+    return calc_rain_since(dbm, weeutil.weeutil.archiveYearSpan(ts).start, ts)
 
 def calc_rain_yesterday(dbm, ts):
     ts = weeutil.weeutil.startOfDay(ts)
-    sts = ts - 3600 * 24
+    sts = weeutil.weeutil.startOfDay(ts - 1)   # not ts - 24 h: a clock-change day is 23 or 25 hours
     val = dbm.getSql("SELECT SUM(rain) FROM %s "
                      "WHERE dateTime>? AND dateTime<=?" % dbm.table_name,
                      (sts, ts))
@@ -365,6 +375,18 @@ def lost_sensor_contact(packet):
         ('h_5_state' in packet and packet['h_5_state'] == 'no_link')):
         return 1
     return 0
+
+def write_text_atomic(path, text):
+    """Write next to the target, then rename over it: PHP reads these files at any moment and an in-place
+    write ('w' truncates first) can hand it an empty or half-written file."""
+    tmp = path + '.tmp'
+    with open(tmp, 'w') as f:
+        f.write(text)
+    try:
+        os.chmod(tmp, 0o664)
+    except OSError:
+        pass
+    os.replace(tmp, path)
 
 def do_file_transfer(mode, rpath, conn, address, lpath, user, port):
     logdbg("do_file_transfer: Port = " + str(port))
@@ -504,10 +526,14 @@ class ForecastData():
                                 response = json.dumps(xmltodict.parse(response))
                             except Exception as err:
                                 response = ""
-                                logerr("Web service " + service + " Failed XML2Json parsing with error: " + err)
+                                logerr("Web service " + service + " Failed XML2Json parsing with error: " + str(err))
                         try:
-                            with open(lfilename, 'w+') as file_handle:
-                                file_handle.write(str(response))
+                            json.loads(response)   # an error page or empty reply must not replace good data
+                        except ValueError:
+                            logerr("Web service %s: reply is not JSON, kept the previous file" % service)
+                            continue
+                        try:
+                            write_text_atomic(lfilename, str(response))
                         except Exception as err:
                             logerr("Error writing web service file: %s, Error: %s" % (lfilename, err))
                             continue
@@ -639,8 +665,19 @@ class CloudCover():
             logdbg("CloudCover:calculate_cloud_cover " + str(e))
                
 class Webserver():
+    """Day-chart requests from getDayChart.php. Only the weewx box itself (or a web server named in
+    [Weather34RealTime] webserver_address) may ask; any other peer is closed unanswered. The template and
+    output folder come from the configuration, never from the request."""
+    TEMPLATE_RE = re.compile(r'^json_day/[A-Za-z0-9_]+\.json\.tmpl$')
+
     def __init__(self, config_dict, webserver_addresses):
         self.webserver_addresses = webserver_addresses
+        self.allowed_peers = set()
+        for a in list(webserver_addresses):
+            try:
+                self.allowed_peers.add(socket.gethostbyname(a))
+            except Exception:
+                logerr("Webserver: cannot resolve webserver_address %s" % a)
         thread = threading.Thread(target=self.listen_data_requests, args=(int(config_dict['Weather34RealTime'].get('weewx_port', '25252')), config_dict['Weather34RealTime'].get('weewxserver_address', '')))
         thread.daemon = True
         thread.start()
@@ -668,10 +705,13 @@ class Webserver():
         while True:
             try:
                 conn, address = s.accept()
-                webserver_address = str(address).split(",")[0][1:].replace("'","")
-                if webserver_address != host:
-                    self.webserver_addresses[webserver_address] = conn
-                    logdbg("Webserver: webserver ip " + webserver_address)
+                webserver_address = address[0]
+                if webserver_address != host and not webserver_address.startswith('127.') \
+                        and webserver_address not in self.allowed_peers:
+                    loginf("Webserver: refused connection from %s" % webserver_address)
+                    conn.close()
+                    continue
+                conn.settimeout(10)   # a client that connects and sends nothing must not hold the listener
                 recv_data = conn.recv(256)
                 if recv_data:
                     thread = threading.Thread(target=self.execute_report, args=(recv_data.decode('utf-8', 'replace').strip().split(" "), conn, webserver_address))
@@ -690,7 +730,12 @@ class Webserver():
         try:
             _config_path, config_dict = weecfg.read_config(None, None)
             ts = float(args[1])
-            html_root = args[3]
+            template = args[2]
+            if not self.TEMPLATE_RE.match(template):
+                raise ValueError("refused template %r" % template[:80])
+            # the output folder is the configured w34Highcharts HTML_ROOT, never the one in the request
+            html_root = os.path.join(config_dict.get('WEEWX_ROOT', ''),
+                                     config_dict['StdReport']['w34Highcharts'].get('HTML_ROOT', ''))
             stn_info = weewx.station.StationInfo(**config_dict['Station'])
             save_entries = ["SKIN_ROOT","HTML_ROOT","RSYNC","data_binding","log_success","log_failure","w34Highcharts"]
             for key in list(config_dict['StdReport']):
@@ -698,7 +743,7 @@ class Webserver():
                     del config_dict['StdReport'][key]
             config_dict['StdReport']['w34Highcharts']['skin'] = 'w34Highcharts-day'
             config_dict['StdReport']['w34Highcharts']['enable'] = 'true'
-            config_dict['StdReport']['w34Highcharts']['CheetahGenerator'] =  {'search_list_extensions': 'user.w34highchartsSearchX.w34highcharts_' + args[2].split('/')[-1].split('.')[0], 'encoding': 'strict_ascii', 'ToDate': {'DayJSON': {'template': args[2],'HTML_ROOT': html_root}}}
+            config_dict['StdReport']['w34Highcharts']['CheetahGenerator'] =  {'search_list_extensions': 'user.w34highchartsSearchX.w34highcharts_' + template.split('/')[-1].split('.')[0], 'encoding': 'strict_ascii', 'ToDate': {'DayJSON': {'template': template,'HTML_ROOT': html_root}}}
             try:
                 binding = config_dict['StdArchive']['data_binding']
             except KeyError:
@@ -716,8 +761,8 @@ class Webserver():
                 weewx.reportengine.StdReportEngine(config_dict, stn_info, record=record, gen_ts=ts).run()
                 logdbg("Webserver: Report complete")
                 # the transfer mode is the 5th word, and is empty (absent after strip) when PHP sends no mode
-                mode = args[4] if len(args) > 4 else ''
-                do_file_transfer(mode, os.path.join(html_root,args[2].split(".tmpl")[0]), conn, address, None, config_dict['StdReport']['RSYNC'].get('user',None), config_dict['StdReport']['RSYNC'].get('port',None))
+                mode = args[4] if len(args) > 4 and args[4] in ('socket', 'rsync') else ''
+                do_file_transfer(mode, os.path.join(html_root, template.split(".tmpl")[0]), conn, address, None, config_dict['StdReport']['RSYNC'].get('user',None), config_dict['StdReport']['RSYNC'].get('port',None))
                 conn = None
         except Exception as e:
             logerr("Webserver Error in execute_report: " + str(e))
@@ -865,7 +910,7 @@ class Weather34RealTime(StdService):
         self.retainedLoopValues = {}
         self.excludeFields = set([])
         if not os.path.exists(os.path.dirname(self.cache_file)):
-            os.mkdir(os.path.dirname(self.cache_file), 0o777)
+            os.mkdir(os.path.dirname(self.cache_file), 0o755)
         if 'Weather34RealTime' in config_dict:
             if 'cache_enable' in config_dict['Weather34RealTime']:
                 self.cache_enable = True if config_dict['Weather34RealTime'].get('cache_enable').upper() == 'TRUE' else False; 
@@ -906,7 +951,7 @@ class Weather34RealTime(StdService):
             try:
                 if (time.time() - os.path.getmtime(self.cache_file)) < self.cache_stale_time: 
                     with open(self.cache_file, 'r') as in_file:
-                        self.retainedLoopValues = eval(in_file.read())
+                        self.retainedLoopValues = ast.literal_eval(in_file.read())   # never eval a /tmp file
                 else:
                     loginf("Cache values not use since they are past the sell by date")	
             except Exception as e:
@@ -925,7 +970,7 @@ class Weather34RealTime(StdService):
                 out_file.write(str(self.retainedLoopValues))
         except Exception as e:
             logerr(str(e))	
-        if self.chk_lightning_cnt and event.packet['lightning_strike_count'] == 0:
+        if self.chk_lightning_cnt and event.packet.get('lightning_strike_count') == 0:
             event.packet['lightning_distance'] = None
             event.packet['lightning_energy'] = None
         if self.cache_debug:
@@ -951,8 +996,7 @@ class Weather34RealTime(StdService):
                 lfilename = os.path.join(self.html_root, "serverdata", "w34realtime.txt") if len(self.webserver_addresses) == 0 else "/tmp/weather34/serverdata/w34realtime.txt"
             if len(self.webserver_addresses) > 0  and not os.path.exists(os.path.dirname(lfilename)):
                 os.mkdir(os.path.dirname(lfilename), 0o777)
-            with open(lfilename, 'w') as f:
-                f.write(data + "\n")
+            write_text_atomic(lfilename, data + "\n")
             do_rsync_transfer(self.webserver_addresses, os.path.join(self.remote_html_root, "serverdata/"), os.path.dirname(lfilename), self.config_dict['StdReport']['RSYNC'].get('user', None), self.config_dict['StdReport']['RSYNC'].get('port',None))
         except Exception as err:
             logerr("Error writing file: Error: %s" % (err,))
@@ -1129,7 +1173,7 @@ class Weather34RealTime(StdService):
         data['rain_hour'] = self._cvt(
             calc_rain_hour(dbm, ts), r_u, 'rain', 'group_rain')
 
-        data['ET_today'] = calc_ET_today(dbm, ts)
+        data['ET_today'] = self._cvt(calc_ET_today(dbm, ts), r_u, 'ET', 'group_rain')
         data['lost_sensors_contact'] = lost_sensor_contact(packet)
 
         t_C = _convert_us(packet.get('outTemp'), self.pkt_us, 'degree_C',

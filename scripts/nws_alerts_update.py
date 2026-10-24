@@ -50,8 +50,8 @@ def main():
     alerts = []
     for f in features:
         p = f.get("properties", {})
-        # Skip cancelled/expired
-        if p.get("status") in ("Cancel", "Expire"):
+        # real alerts only: status is Actual/Exercise/System/Test/Draft; Cancel is a messageType
+        if p.get("status") != "Actual" or p.get("messageType") == "Cancel":
             continue
         alerts.append({
             "event":       p.get("event", ""),

@@ -13,6 +13,7 @@ import urllib.parse
 import sys
 import os
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from w34config import LAT, LON, TZ, FORECAST_DAILY_PATH, FORECAST_HOURLY_PATH, PLACE_NAME, PLACE_STATE, PLACE_COUNTRY
 
@@ -128,11 +129,9 @@ def fetch_json(url):
         with urllib.request.urlopen(req, timeout=15) as r:
             return json.loads(r.read().decode())
     except urllib.error.HTTPError as e:
-        print(f"HTTP error {e.code} fetching {url}", file=sys.stderr)
-        sys.exit(1)
+        raise RuntimeError(f"HTTP error {e.code} fetching {url}")
     except Exception as e:
-        print(f"Error fetching {url}: {e}", file=sys.stderr)
-        sys.exit(1)
+        raise RuntimeError(f"Error fetching {url}: {e}")
 
 def wmo_icon(code, is_day):
     entry = WMO_MAP.get(code, ("3", "2", "Partly Cloudy"))
@@ -147,12 +146,15 @@ def safe_get(lst, idx, default=0):
     return lst[idx]
 
 def to_ts(dt_str, utc_offset_seconds=None):
-    """Parse Open-Meteo datetime string (no timezone, local) to UTC Unix timestamp using response offset."""
+    """Parse an Open-Meteo local datetime string to a UTC Unix timestamp. The station's time zone gives each time
+    its own offset; the response's single utc_offset_seconds is wrong after a clock change within the 8 days."""
     try:
         dt = datetime.fromisoformat(dt_str)
-        if utc_offset_seconds is not None:
-            tz = timezone(timedelta(seconds=utc_offset_seconds))
-            dt = dt.replace(tzinfo=tz)
+        try:
+            dt = dt.replace(tzinfo=ZoneInfo(TZ))
+        except Exception:
+            if utc_offset_seconds is not None:
+                dt = dt.replace(tzinfo=timezone(timedelta(seconds=utc_offset_seconds)))
         return int(dt.timestamp())
     except Exception:
         return 0
@@ -175,6 +177,19 @@ def build_awd(data):
     hourly_wcodes = data["hourly"]["weathercode"] or []
     hourly_is_day = data["hourly"]["is_day"] or []
     hourly_humid  = data["hourly"].get("relativehumidity_2m") or []
+    hourly_temp   = data["hourly"].get("temperature_2m") or []
+
+    def night_low(date_str, next_date_str):
+        """Lowest hourly temperature from 19:00 on date_str to 07:00 the next morning. The daily minimum for
+        date_str is that MORNING's low, i.e. the previous night's."""
+        vals = [
+            hourly_temp[j]
+            for j, t in enumerate(hourly_times)
+            if j < len(hourly_temp) and hourly_temp[j] is not None
+            and ((t.startswith(date_str) and int(t[11:13]) >= 19)
+                 or (next_date_str and t.startswith(next_date_str) and int(t[11:13]) <= 7))
+        ]
+        return round(min(vals), 1) if len(vals) >= 12 else None
 
     def avg_humidity(date_str, hour_start, hour_end, next_date_str=None):
         """Average hourly humidity for a date between two hours (inclusive).
@@ -206,7 +221,10 @@ def build_awd(data):
         else:
             wcode = daily_wcode
         hi_f     = (daily["temperature_2m_max"] or [None]*20)[i]
-        lo_f     = (daily["temperature_2m_min"] or [None]*20)[i]
+        mins     = daily["temperature_2m_min"] or [None]*20
+        lo_f     = night_low(date_str, times[i+1] if i+1 < len(times) else None)
+        if lo_f is None:
+            lo_f = mins[i+1] if i+1 < len(mins) and mins[i+1] is not None else mins[i]
         hi_c     = f_to_c(hi_f)
         lo_c     = f_to_c(lo_f)
         precip_in = (daily["precipitation_sum"] or [0]*20)[i] or 0
@@ -495,7 +513,11 @@ def write_atomic(path, data):
 
 def main():
     print("Fetching Open-Meteo forecast...")
-    data = fetch_json(OM_URL)
+    try:
+        data = fetch_json(OM_URL)
+    except RuntimeError as e:
+        print(e, file=sys.stderr)
+        sys.exit(1)
 
     # Fetch UV Index from Air Quality API as fallback since main forecast API returns null
     try:
@@ -508,16 +530,19 @@ def main():
         })
         aq_data = fetch_json(aq_url)
         if aq_data and "hourly" in aq_data and "uv_index" in aq_data["hourly"]:
-            data["hourly"]["uv_index"] = aq_data["hourly"]["uv_index"]
-            # Synthesize uv_index_max for each day
+            # fill only the gaps, matched by time: the air-quality API covers 5 days, the forecast 8
+            aq_uv = {t: v for t, v in zip(aq_data["hourly"].get("time", []), aq_data["hourly"]["uv_index"])
+                     if v is not None}
+            h_uv = data["hourly"].get("uv_index") or [None] * len(data["hourly"]["time"])
+            data["hourly"]["uv_index"] = [v if v is not None else aq_uv.get(t)
+                                          for t, v in zip(data["hourly"]["time"], h_uv)]
+            d_uv = data["daily"].get("uv_index_max") or [None] * len(data["daily"]["time"])
             daily_uv_max = []
-            for date_str in data["daily"]["time"]:
-                day_uvs = [
-                    val for j, val in enumerate(aq_data["hourly"]["uv_index"])
-                    if j < len(aq_data["hourly"]["time"]) and aq_data["hourly"]["time"][j].startswith(date_str)
-                    and val is not None
-                ]
-                daily_uv_max.append(max(day_uvs) if day_uvs else 0)
+            for date_str, v in zip(data["daily"]["time"], d_uv):
+                if v is None:
+                    day_uvs = [u for t, u in aq_uv.items() if t.startswith(date_str)]
+                    v = max(day_uvs) if day_uvs else None
+                daily_uv_max.append(v)
             data["daily"]["uv_index_max"] = daily_uv_max
             print("Successfully merged Air Quality UV Index into forecast data.")
     except Exception as e:

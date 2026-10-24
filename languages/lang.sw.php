@@ -33,7 +33,7 @@ $lang['Scandinavia']            = 'Scandinavien (M/S)';
 $lang['Worldwideearthquakes']   = 'Jordskalv världen runt';
 $lang['Toggle']                 = 'Växla till fullskärm ';
 $lang['Contactinfo']            = 'Station & kontakt Info';
-$lang['Templateinfo']           = 'Template information';
+$lang['Templateinfo']           = 'Mallinformation';
 $lang['language']               = 'Välj språk';
 $lang['Weatherstationinfo']     = 'Väderstations info';
 $lang['Webdesigninfo']          = 'Webdesign info';
@@ -95,9 +95,9 @@ $lang['Wind']                   = 'Vind';
 $lang['Wind Run']               = 'Vindväg';
 // Wind phrases for Beaufort scale for windspeed area
 $lang['Calm']                   = 'Stiltje';
-$lang['Lightair']               = 'Nästan siltje';
+$lang['Lightair']               = 'Nästan stiltje';
 $lang['Lightbreeze']            = 'Lätt bris';
-$lang['Gentelbreeze']           = 'Måttlig bris';
+$lang['Gentelbreeze']           = 'God bris';
 $lang['Moderatebreeze']         = 'Frisk bris';
 $lang['Freshbreeze']            = 'Styv bris';
 $lang['Strongbreeze']           = 'Hård bris';
@@ -222,7 +222,7 @@ $lang['Solarradiation']         = 'Solstrålning';
 //current sky
 $lang['Currentsky']             = 'Nuvarande förhållanden';
 $lang['Currently']              = 'För närvarande';
-$lang['Cloudcover']             = 'Molnigt';
+$lang['Cloudcover']             = 'Molntäcke';
 //Notifications
 $lang['Nocurrentalert']         = 'Inga väder varningar';
 $lang['Windalert']              = 'Vind stöt';
@@ -296,8 +296,8 @@ $lang['Hazordous']              = 'Farliga förhållanden';
 $lang['VeryUnhealthy']          = 'Mycket ohälsosam';
 $lang['Unhealthy']              = 'Ohälsosam luftkvalitet';
 $lang['UnhealthyFS']            = 'Ohälsosam för vissa';
-$lang['Moderate']               = 'Moderate Air Quality ';
-$lang['Good']                   = 'Good Air Quality ';
+$lang['Moderate']               = 'Måttlig luftkvalitet';
+$lang['Good']                   = 'Bra luftkvalitet';
 #notification additions
 $lang['notifyTitle']            = 'Väder varningar';
 $lang['notifyAlert']             = 'Varning';
@@ -931,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Åska|i närheten';
 $lang['CondIcePellets']           = 'Iskorn';
 $lang['CondSmoke']                = 'Rök';
 $lang['MetarHoursOld']            = '%s tim gammal';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Liveradar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather-varningar';
+$lang['Current']                  = 'Aktuellt';
 ?>

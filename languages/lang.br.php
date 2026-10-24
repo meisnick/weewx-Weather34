@@ -937,4 +937,9 @@ $lang['CondThunderstormsNearby']  = 'Trovoadas|nas proximidades';
 $lang['CondIcePellets']           = 'Granizo miúdo';
 $lang['CondSmoke']                = 'Fumaça';
 $lang['MetarHoursOld']            = 'há %s h';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Radar ao Vivo';
+$lang['AerisWeatherAlerts']       = 'Alertas AerisWeather';
+$lang['Current']                  = 'Atual';
 ?>

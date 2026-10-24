@@ -33,7 +33,7 @@ $lang['Scandinavia']            = 'Skandynawia (M/S)';
 $lang['Worldwideearthquakes']   = 'Światowa Sieć Trzęsień Ziemi';
 $lang['Toggle']                 = 'Pełen Ekran ';
 $lang['Contactinfo']            = 'Informacje o Stronie i Kontakt';
-$lang['Templateinfo']           = 'Contributors';
+$lang['Templateinfo']           = 'Współtwórcy';
 $lang['language']               = 'Wybór Języka';
 $lang['Weatherstationinfo']     = 'Informacja o Stacji Pogodowej';
 $lang['Webdesigninfo']          = 'Informacje o aplikacji';
@@ -296,8 +296,8 @@ $lang['Hazordous']              = 'Niebezpieczne warunki';
 $lang['VeryUnhealthy']          = 'Bardzo niezdrowe';
 $lang['Unhealthy']              = 'Niezdrowa jakość powietrza';
 $lang['UnhealthyFS']            = 'Niezdrowe dla niektórych';
-$lang['Moderate']               = 'Moderate Air Quality ';
-$lang['Good']                   = 'Good Air Quality ';
+$lang['Moderate']               = 'Umiarkowana jakość powietrza';
+$lang['Good']                   = 'Dobra jakość powietrza';
 #notification additions
 $lang['notifyTitle']            = 'Powiadomienia';
 $lang['notifyAlert']             = 'Alarm';
@@ -931,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Burze|w pobliżu';
 $lang['CondIcePellets']           = 'Ziarna lodowe';
 $lang['CondSmoke']                = 'Dym';
 $lang['MetarHoursOld']            = 'sprzed %s h';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Radar na żywo';
+$lang['AerisWeatherAlerts']       = 'Ostrzeżenia AerisWeather';
+$lang['Current']                  = 'Bieżący';
 ?>

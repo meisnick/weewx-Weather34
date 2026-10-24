@@ -78,7 +78,7 @@ $lang['verydry']                = '& Muy seco';
 $lang['FreezingCold']           = 'Helada';
 $lang['FeelingVeryCold']        = 'Mucho frío';
 $lang['FeelingCold']            = 'Frio';
-$lang['FeelingCool']            = 'Sensacion de frio';
+$lang['FeelingCool']            = 'Sensación fresca';
 $lang['FeelingComfortable']     = 'Agradable ';
 $lang['FeelingWarm']            = 'Calor';
 $lang['FeelingHot']             = 'Sensacion de Calor';
@@ -160,7 +160,7 @@ $lang['raintoday']              = 'Lluvia hoy';
 $lang['Rate']                   = 'Intens.';
 $lang['Rainfall']               = 'Lluvia';
 $lang['Precip']                 = 'precip.';
-$lang['Rain']                   = 'Luvia';
+$lang['Rain']                   = 'Lluvia';
 $lang['Heavyrain']              = 'Lluvia intensa';
 $lang['Flooding']               = 'Posible inundación';
 $lang['Rainbow']                = 'Arcoiris';
@@ -222,7 +222,7 @@ $lang['Solarradiation']         = 'Radiación Solar';
 //current sky
 $lang['Currentsky']             = 'Con. actuales';
 $lang['Currently']              = 'Actualmente';
-$lang['Cloudcover']             = 'Cubierto de nubes';
+$lang['Cloudcover']             = 'Nubosidad';
 //Notifications
 $lang['Nocurrentalert']         = 'No hay alertas meteorológicas';
 $lang['Windalert']              = 'Ráfagas de viento en';
@@ -267,7 +267,7 @@ $lang['Tomorrownight']          = 'Mañana noche';
 $lang['Updated']                = 'Actualizado';
 $lang['Meteor']                 = 'Meteorito Información';
 $lang['Firerisk']               = 'Riesgo de incendio';
-$lang['Localtime']              = 'Tiempo local';
+$lang['Localtime']              = 'Hora local';
 $lang['Nometeor']               = 'Sin meteoritos';
 $lang['LiveWebCam']             = 'Webcam en vivo';
 $lang['Online']                 = 'En linea';
@@ -297,7 +297,7 @@ $lang['VeryUnhealthy']          = 'Muy insalubre ';
 $lang['Unhealthy']              = 'Aire Insalubre';
 $lang['UnhealthyFS']            = 'Insalubre';
 $lang['Moderate']               = 'Moderada calidad del Aire ';
-$lang['Good']                   = 'Buena calitat del Aire ';
+$lang['Good']                   = 'Buena calidad del aire';
 #notification additions
 $lang['notifyTitle']             = 'Notificaciones';
 $lang['notifyAlert']             = 'Alerta';
@@ -931,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Tormentas|cercanas';
 $lang['CondIcePellets']           = 'Granizo menudo';
 $lang['CondSmoke']                = 'Humo';
 $lang['MetarHoursOld']            = 'de hace %s h';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Radar en directo';
+$lang['AerisWeatherAlerts']       = 'Alertas de AerisWeather';
+$lang['Current']                  = 'Actual';
 ?>

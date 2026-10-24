@@ -2,6 +2,17 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [Unreleased] — since 5.1.0
+
+- Clocks follow a daylight-saving change while the page stays open (station time zone, not a fixed offset).
+- jQuery 3.7.1 for the dashboard (was 3.4.0) and the chart pages (were jQuery 1.12.4 and UI 1.12.1 from
+  Google's CDN; jQuery UI 1.14.1 is now bundled).
+- Charts: day charts (date picker, Compare Dates, yearly drill-down) are off for visitors outside the local
+  network, where they could only fail; lightning distance axis shows its unit; the wind roses open their week
+  view when asked for a year; accidental globals in `plots.js` declared.
+- Moon card columns stay inside the card in every language.
+- Setup no longer writes the unused `languages/translations.js`.
+
 ## [5.1.0] — 2026-10-24 — Correctness, PHP 8.4/9 readiness, i18n, popups and charts
 
 Everything since 5.0.0. Upgrading: pull, then copy the files in `user/` into WeeWX's `bin/user` and the `skins/`

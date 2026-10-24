@@ -12,6 +12,10 @@ All notable changes to this maintained fork will be documented in this file.
   view when asked for a year; accidental globals in `plots.js` declared.
 - Moon card columns stay inside the card in every language.
 - Setup no longer writes the unused `languages/translations.js`.
+- **Evapotranspiration (ET):** the rainfall card's year and month pills show that period's ET under the rain,
+  with an ET-today pill beside Rate; the Rain Almanac adds ET for each period and rain − ET for the month and
+  year; the Weekly, Yearly and Monthly Rain charts draw ET (per hour, per day, per month) beside the rain,
+  which is now drawn in the dashboard's rain blue.
 
 ## [5.1.0] — 2026-10-24 — Correctness, PHP 8.4/9 readiness, i18n, popups and charts
 

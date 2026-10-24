@@ -39,8 +39,8 @@ no paid or deprecated APIs.
   including the settings UI.
 - **📡 Live NWS radar** — polished radar module with real-time station picking, dark-mode
   inversion, zero-flash double-buffered loop transitions, and an interactive pan/zoom popup.
-- **🌫️ Air quality** — two-column module with per-pollutant pills for whatever the nearest WAQI
-  station measures (PM2.5, O₃, NO₂, …), a tabbed details popup, and a historical AQI trend chart.
+- **🌫️ Air quality** — two-column module with PM2.5, PM10, O₃ and NO₂ pills from WAQI, a tabbed
+  details popup, and a historical AQI trend chart.
 - **⚡ Lightning** — live strike statistics from the archive database, a 24-hour strike-distance
   strip across the sensor's range (heat-shaded by count, with the latest strike marked), distances
   in the dashboard's units, and a Strike Almanac with yearly and weekly charts.

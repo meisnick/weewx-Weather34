@@ -18,10 +18,10 @@ header('Content-type: text/html; charset=utf-8');?>
 		//date_default_timezone_set($TZ);
         $result = date_sun_info( time(), $lat, $lon );	
 		// homeweatherstation sun hours graphic beta August 8th 2016//
-		$sunr=date_sunrise(time(), SUNFUNCS_RET_STRING, $lat,$lon, $rise_zenith, $UTC_offset);
-		$suns=date_sunset(time(), SUNFUNCS_RET_STRING, $lat,$lon, $set_zenith, $UTC_offset);
-		$sunr1=date_sunrise(strtotime('+1 day', time()), SUNFUNCS_RET_STRING, $lat,$lon, $rise_zenith, $UTC_offset);
-		$suns1=date_sunset(strtotime('+1 day', time()), SUNFUNCS_RET_STRING, $lat,$lon, $set_zenith, $UTC_offset);		
+		// sun34.php: date_sunrise()/date_sunset() with the settings.php zeniths (those functions go in PHP 9)
+		include_once('sun34.php');
+		$sunr=w34_sun_hm(time(), $lat,$lon, $rise_zenith, $UTC_offset, false);
+		$suns=w34_sun_hm(time(), $lat,$lon, $set_zenith, $UTC_offset, true);
 		$suns2 =date( 'G.i', $result['sunset'] );
 		$sunr2 =date( 'G.i', $result['sunrise']  );
 		$sunrisehour =date( 'G', $result['sunrise'] );

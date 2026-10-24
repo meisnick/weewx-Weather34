@@ -26,12 +26,17 @@ transform:rotate(<?php if ($weather["barometer_units"]=='mb' OR $weather["barome
 <?php echo '<div class=mod-barometer-min><valuetext>'.w34t('MinLabel', 'Min').' ('.$weather["thb0seapressmintime"].')<br><minblue><value>',$weather["barometer_min"],'</minblue>&nbsp;',$weather["barometer_units"],' </valuetext></div>';?></div>
 <!--weather34 barometer-trend-->
 <div class="mod-barometer-trend">
-<?php  echo "<valuetext>&nbsp;&nbsp;".w34t('TrendLabel', 'Trend');
-if ($weather["barometer_trend"] > 20  && $weather["barometer_trend"] < 100)  {echo '<rising><rise> '.$risingsymbol.' </rise><span><value>';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}
-else if ($weather["barometer_trend"] < 0) {
+<?php
+// 3-hour change; within +/- barometer_steady (0.02 inHg / 0.7 hPa) is Steady. No data yet (after a restart) is Steady too.
+$baro_tendency = 'steady';
+if (is_numeric($weather["barometer_trend"]) && abs($weather["barometer_trend"]) >= $weather["barometer_steady"]) {
+    $baro_tendency = $weather["barometer_trend"] < 0 ? 'falling' : 'rising';
+}
+echo "<valuetext>&nbsp;&nbsp;".w34t('TrendLabel', 'Trend');
+if ($baro_tendency == 'falling') {
 echo '<falling><fall> '.$fallingsymbol.'</fall><value> '; echo number_format($weather["barometer_trend"],2), '</falling><units> ';echo $weather["barometer_units"], '</units>';}
-else if ($weather["barometer_trend"] > 0 && $weather["barometer_trend"] < 100) {
-echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}	  
+else if ($baro_tendency == 'rising') {
+echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}
 else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class="ink-ogreen"><value>'.w34t('Steady', 'Steady').'</span></steady>';?></valuetext>
 </div>
 
@@ -42,11 +47,9 @@ else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class
 <div class="weather34barometerarrowmax"></div>
 </div>
 <div class="text2"><div class="pressuretext">
-<?php if ($weather["barometer_trend"]>20) {
-    echo '<span class="ink-ogreen">'.$lang['Steady'].'</span>';
-} else if ($weather["barometer_trend"] < 0) {
+<?php if ($baro_tendency == 'falling') {
     echo '<span class="ink-oblue">'.$lang['Falling'].'</span> <fall> '.$fallingsymbol.'</fall>';
-} else if ($weather["barometer_trend"] > 0) {
+} else if ($baro_tendency == 'rising') {
     echo '<span class="ink-oorange">'.$lang['Rising'].'</span> <rise> '.$risingsymbol.' </rise>';
 } else {
     echo '<span class="ink-ogreen">'.$lang['Steady'].'</span>';

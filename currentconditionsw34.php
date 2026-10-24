@@ -12,6 +12,18 @@ if ($windunit == 'mph' || $windunit == 'kts') {
 } else {
     $visibility = $metar34viskm . " km";
 }
+// Thresholds in the display units. Rain rate (NWS intensity): moderate from 0.10 in/h (2.5 mm/h), heavy from
+// 0.30 in/h (7.6 mm/h), flooding possible from 0.8 in/h (20 mm/h). Fog/mist: dewpoint spread under 0.5 / 0.8 C and
+// air above 5 C, converted when the display is in F.
+$rain_in    = ($weather["rain_units"] == 'in');
+$rr_mod     = $rain_in ? 0.10 : 2.5;
+$rr_heavy   = $rain_in ? 0.30 : 7.6;
+$rr_flood   = $rain_in ? 0.8  : 20;
+$temp_f     = ($weather["temp_units"] == 'F');
+$fog_spread = $temp_f ? 0.9 : 0.5;
+$mist_spread = $temp_f ? 1.4 : 0.8;
+$fog_above  = $temp_f ? 41 : 5;
+$dp_spread  = $weather["temp"] - $weather["dewpoint"];
 ?>
 <div class="mod-conditions"><div class="updatedtimecurrent">
 <?php $forecastime=filemtime('jsondata/me.txt');if(filesize('jsondata/me.txt')<160){echo $online;}
@@ -23,10 +35,10 @@ $clouds = w34t('Cloudbase', 'Cloudbase');
 if ($windunit =='mph' ||  $windunit =='kts'){$distance="ft";}
 else if ($windunit =='km/h' ||  $windunit =='m/s'){$distance="m";}
 if ($weather["cloudbase3"]>0){
-if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]>=1999){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
-else if ($windunit =='mph' ||  $windunit =='kts' && $weather["cloudbase3"]<1999){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
-else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
-else if ($windunit =='km/h' ||  $windunit =='m/s' && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+if (($windunit =='mph' ||  $windunit =='kts') && $weather["cloudbase3"]>=1999){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if (($windunit =='mph' ||  $windunit =='kts') && $weather["cloudbase3"]<1999){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if (($windunit =='km/h' ||  $windunit =='m/s') && $weather["cloudbase3"]>=609){echo "<div class=cloudconvertercircle2000>".$clouds."<tyellow> ".$weather["cloudbase3"]."</tyellow><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
+else if (($windunit =='km/h' ||  $windunit =='m/s') && $weather["cloudbase3"]<609){echo "<div class=cloudconvertercircle>".$clouds."<tblue> ".$weather["cloudbase3"]."</tblue><smalltempunit2> ".$distance."</smalltempunit2></div>" ;}
 }
 //nearby airport and its flight category, under the cloudbase pill; opens the METAR popup
 $fltcat = w34_fltcat_badge($_d->{'flight_category'} ?? '', '8px');
@@ -43,11 +55,11 @@ if (!empty($_d->{'icao'}) && $fltcat !== '' && filesize('jsondata/me.txt') >= 16
 if ($windunit=='kts'){$windunit="kn";}       
 //rain-weather34
 if($weather["rain_rate"]>0 && $weather["wind_speed_avg"]>15){echo "<img rel='prefetch' src='css/svg/10w.svg' width='60px' height='55px' alt='weather34 windy rain icon'>";}
-else if($weather["rain_rate"]>10){echo "<img rel='prefetch' src='css/svg/10.svg' width='70px' height='60px' alt='weather34 heavy rain icon'>";}
+else if($weather["rain_rate"]>=$rr_heavy){echo "<img rel='prefetch' src='css/svg/10.svg' width='70px' height='60px' alt='weather34 heavy rain icon'>";}
 else if($weather["rain_rate"]>0){echo "<img rel='prefetch' src='css/svg/09.svg' width='70px' height='60px' alt='weather34 rain icon'>";}
 //fog-weather34
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $dayPartNatural == "night" && $weather["temp"]>5){echo "<img rel='prefetch' src='css/svg/fog.night.svg' width='70px' height='60px' alt='weather34 fog icon'>";}
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $weather["temp"]>5){echo "<img rel='prefetch' src='css/svg/fog.svg' width='70px' height='60px' alt='weather34 fog'>";}
+else if($dp_spread <$mist_spread  && $dayPartNatural == "night" && $weather["temp"]>$fog_above){echo "<img rel='prefetch' src='css/svg/fog.night.svg' width='70px' height='60px' alt='weather34 fog icon'>";}
+else if($dp_spread <$mist_spread  && $weather["temp"]>$fog_above){echo "<img rel='prefetch' src='css/svg/fog.svg' width='70px' height='60px' alt='weather34 fog'>";}
 //windy moderate-weather34
 else if($weather["wind_speed_avg"]>=15 && $dayPartNatural == "night" && $weather["cloud_cover"]<20){echo "<img rel='prefetch' src='css/svg/01nw.svg' width='70px' height='60px' alt='weather34 windy icon'>";}
 else if($weather["wind_speed_avg"]>=15 && $weather["cloud_cover"]<20){echo "<img rel='prefetch' src='css/svg/01dw.svg' width='70px' height='60px' alt='weather34 windy icon'>";}
@@ -65,17 +77,16 @@ else {echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='70px' height=
 if ($windunit=='kts'){$windunit="kn";}
 //rain-weather34
 if($weather["rain_rate"]>0 && $weather["wind_speed_avg"]>15){echo w34_cond("Rain Showers"); echo '<br>';echo w34_cond("Windy Conditions");}
-else if($weather["rain_rate"]>=20){echo w34_cond("Heavy Rain"); echo '<br>';echo w34t('Flooding', 'Flooding Possible');}
-else if($weather["rain_rate"]>=10){echo w34_cond("Heavy Rain<br>Showers");}
-else if($weather["rain_rate"]>=5){echo w34_cond("Moderate Rain<br>Showers");}
-else if($weather["rain_rate"]>=1){echo w34_cond("Steady Rain<br>Showers");}
+else if($weather["rain_rate"]>=$rr_flood){echo w34_cond("Heavy Rain"); echo '<br>';echo w34t('Flooding', 'Flooding Possible');}
+else if($weather["rain_rate"]>=$rr_heavy){echo w34_cond("Heavy Rain<br>Showers");}
+else if($weather["rain_rate"]>=$rr_mod){echo w34_cond("Moderate Rain<br>Showers");}
 else if($weather["rain_rate"]>0){echo w34_cond("Light Rain<br>Showers");}
 //fog-weather34
-else if($weather["temp"] -$weather["dewpoint"] <0.5  && $dayPartNatural == "night" && $weather["temp"]>5){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
-else if($weather["temp"] -$weather["dewpoint"] <0.5  && $weather["temp"]>5){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
+else if($dp_spread <$fog_spread  && $dayPartNatural == "night" && $weather["temp"]>$fog_above){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
+else if($dp_spread <$fog_spread  && $weather["temp"]>$fog_above){echo w34_cond("Misty Fog<br>Conditions")." ".$alert."";}
 //misty-weather34
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $dayPartNatural == "night" && $weather["temp"]>5){echo w34_cond("Fog Hazy<br>Conditions");}
-else if($weather["temp"] -$weather["dewpoint"] <0.8  && $weather["temp"]>5){echo w34_cond("Misty Hazy<br>Conditions");}
+else if($dp_spread <$mist_spread  && $dayPartNatural == "night" && $weather["temp"]>$fog_above){echo w34_cond("Fog Hazy<br>Conditions");}
+else if($dp_spread <$mist_spread  && $weather["temp"]>$fog_above){echo w34_cond("Misty Hazy<br>Conditions");}
 //windy-weather34
 else if($weather["wind_speed_avg"]>=40){echo w34_cond("Strong Wind")." ".$alert."<br>".w34t('Conditions', 'Conditions') ;}
 else if($weather["wind_speed_avg"]>=30){echo w34_cond("Very Windy")." ".$alert."<br>".w34t('Conditions', 'Conditions');}
@@ -85,15 +96,11 @@ else if($weather["wind_speed_avg"]>=15){echo w34_cond("Breezy<br>Conditions");}
 else if(filesize('jsondata/me.txt')<160){echo "<uppercase>".w34_cond("Conditions<br>Not Available")."</uppercase>";}
 else {echo nl2br(htmlspecialchars(w34_cond($sky_desc)));}
 //oktas
-if($weather["cloud_cover"]<5 and $weather["cloud_cover"]>0) {$weather["cloud_oktas"]="0 oktas";}
-else if($weather["cloud_cover"]<=12.5) {$weather["cloud_oktas"]="1 okta";}
-else if($weather["cloud_cover"]<=25) {$weather["cloud_oktas"]="2 oktas";}
-else if($weather["cloud_cover"]<=37.5) {$weather["cloud_oktas"]="3 oktas";}
-else if($weather["cloud_cover"]<=50) {$weather["cloud_oktas"]="4 oktas";}
-else if($weather["cloud_cover"]<=62.5) {$weather["cloud_oktas"]="5 oktas";}
-else if($weather["cloud_cover"]<=75) {$weather["cloud_oktas"]="6 oktas";}
-else if($weather["cloud_cover"]<=87.5) {$weather["cloud_oktas"]="7 oktas";}
-else if($weather["cloud_cover"]<=100) {$weather["cloud_oktas"]="8 oktas";}
+// eighths of sky, rounded to the nearest (0 % is 0 oktas)
+if (is_numeric($weather["cloud_cover"])) {
+    $okta = (int)round(max(0, min(100, $weather["cloud_cover"])) / 12.5);
+    $weather["cloud_oktas"] = $okta . ($okta == 1 ? " okta" : " oktas");
+}
 //metar conditions-weather34
 
 ?>
@@ -104,7 +111,7 @@ else if($weather["cloud_cover"]<=100) {$weather["cloud_oktas"]="8 oktas";}
 //echo "Average <span class=\"ink-oblue\">Cloud Cover</span> last 5 minutes <span class=\"ink-ogreen\">" .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. "(".$weather["cloud_oktas"].")";
 
 if ($visibility!==0){echo "</br>".w34t('Visibility', 'Visibility')." <span class=\"ink-oorange\">".$visibility."</span></br>";}
-if (strpos($weather["cloud_cover"],"N/A") == false){
+if (is_numeric($weather["cloud_cover"])){
 echo "<span class=\"ink-oblue\">".w34t('Cloudcover', 'Cloud Cover')."</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")</valuetext>";
 }
 

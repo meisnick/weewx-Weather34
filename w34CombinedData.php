@@ -68,7 +68,8 @@ if (isset($weewxapi))
     $weather["barometer_max"] = ($weewxapi[34] == "   N/A" ? "0" : $weewxapi[34]);
     $weather["barometer_min"] = ($weewxapi[36] == "   N/A" ? "0" : $weewxapi[36]);
     $weather["barometer_units"] = $weewxrt[15]; // mb or hPa or kPa or in
-    $weather["barometer_trend"] = $weewxrt[10] - ($weewxapi[18] == "   N/A" ? "0" : $weewxapi[18]);
+    // 3-hour change from weather34.py (realtime field 19). Live minus the last hour's average was ~30 minutes of noise.
+    $weather["barometer_trend"] = (is_numeric($weewxrt[18]) ? (float)$weewxrt[18] : null);
     $weather["temp_units"] = $weewxrt[14]; // C
     $weather["temp_indoor"] = $weewxrt[22];
     $weather["temp_indoor_feel"] = heatIndex($weewxrt[22], $weewxrt[23]); // must set temp_units first
@@ -88,13 +89,13 @@ if (isset($weewxapi))
     $weather["uv"] = $weewxrt[43];
     $weather["solar"] = (is_numeric($weewxrt[45]) ? round($weewxrt[45], 1) : null);
     $weather["temp"] = $weewxrt[2];
-    $weather["apptemp"] = ($weewxrt[54] == 'NULL' ? $weewxapi[205] : $weewxrt[54]); // Use Archive data if loop data missing^M
-    $weather["heatindex"] = ($weewxrt[41] == 'NULL' ? $weewxapi[41] : $weewxrt[41]); // Use Archive data if loop data missing^M
-    $weather["windchill"] = ($weewxrt[24] == 'NULL' ? $weewxapi[215] : $weewxrt[24]); // Use Archive data if loop data missing^M
+    // Use archive data if the loop value is missing ('NULL' was already turned into null above)
+    $weather["apptemp"] = ($weewxrt[54] === null ? $weewxapi[205] : $weewxrt[54]);
+    $weather["heatindex"] = ($weewxrt[41] === null ? $weewxapi[41] : $weewxrt[41]);
+    $weather["windchill"] = ($weewxrt[24] === null ? $weewxapi[215] : $weewxrt[24]);
     $weather["humidity"] = (is_numeric($weewxrt[3]) ? number_format($weewxrt[3], 0) : null);
     $weather["temp_today_high"] = (is_numeric($weewxrt[26]) ? number_format($weewxrt[26], 1) : null);
     $weather["temp_today_low"] = (is_numeric($weewxrt[28]) ? number_format($weewxrt[28], 1) : null);
-    $weather["temp_avg15"] = (is_numeric($weewxrt[67]) ? number_format($weewxrt[67], 1) : null);
     $weather["temp_avg"] = ($weewxapi[123] == "   N/A" ? "0" : $weewxapi[123]);
     $weather["wind_speed_avg"] = $weewxrt[5]; //Console's Average Wind Speed
     $weather["wind_direction"] = (is_numeric($weewxrt[7]) ? number_format($weewxrt[7], 0) : null);
@@ -140,7 +141,7 @@ if (isset($weewxapi))
     $weather['wind_speed_avgday'] = ($weewxapi[158] == "   N/A" ? "0" : $weewxapi[158]);
     include_once __DIR__ . '/metar34cloudcover.php';
     $cc = metar34_cloudcover();
-    $weather["cloud_cover"] = ($cc === null ? "0" : (string)$cc);
+    $weather["cloud_cover"] = ($cc === null ? null : (string)$cc); // unknown is null, not 0 % (clear)
     //weather34 windrun
     $weather["windrun"] = ($weewxrt[17] == "   N/A" ? "0" : $weewxrt[17]);
     //$weather["windrun"] = $weewxapi[200];
@@ -215,11 +216,12 @@ if (isset($weewxapi))
     {
         $weather["moonphase"] = 'Waning Crescent';
     }
-    $weather["lightning_distance"] = $weewxrt[58];
-    $weather["lightning_energy"] = $weewxrt[59];
-    $weather["lightning_strike_count"] = $weewxrt[60];
-    $weather["lightning_noise_count"] = $weewxrt[61];
-    $weather["lightning_disturber_count"] = $weewxrt[62];
+    // realtime fields 58-62 (0-based 57-61)
+    $weather["lightning_distance"] = $weewxrt[57];
+    $weather["lightning_energy"] = $weewxrt[58];
+    $weather["lightning_strike_count"] = $weewxrt[59];
+    $weather["lightning_noise_count"] = $weewxrt[60];
+    $weather["lightning_disturber_count"] = $weewxrt[61];
     // weatherflow lightning
     if (trim($weewxapi[77]) == 'N/A' || $weewxapi[77] == '0')
     {
@@ -524,6 +526,7 @@ if (isset($weewxapi))
     $weather["dewpoint_trend"] = number_format($weewxrt[4], 1) - number_format($weewxapi[69], 1);
     $weather["temp_indoor_trend"] = number_format($weewxrt[22], 1) - number_format($weewxapi[70], 1);
     $weather["temp_humidity_trend"] = number_format($weewxrt[23], 1) - number_format($weewxapi[71], 1);
+    $weather["humidity_indoor_trend"] = $weather["temp_humidity_trend"]; // clearer name: indoor humidity vs its 15-minute average
     $weather["barotrend"] = $weewxrt[10] - $barotrend[0];
     $weather["dirtrend"] = $dirtrend[0];
     //barometer units
@@ -726,6 +729,8 @@ if ($pressureunit != $weather["barometer_units"])
         $weather["barometer_units"] = $pressureunit;
     }
 }
+// A 3-hour change within this is Steady (0.7 hPa = 0.02 inHg, the usual console convention)
+$weather["barometer_steady"] = ($weather["barometer_units"] == 'kPa') ? 0.07 : (in_array($weather["barometer_units"], array('mb', 'hPa')) ? 0.7 : 0.02);
 //Convert cloudbase
 if ($windunit != $weather["wind_units"])
 {

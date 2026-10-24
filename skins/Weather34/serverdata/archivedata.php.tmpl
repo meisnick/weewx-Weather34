@@ -150,7 +150,8 @@ $weewxapi[37] = "$day.barometer.mintime.format(format_string="%H:%M")";
 $weewxapi[40] = "$current.windGust.format(add_label=False, $localize=False)";
 $weewxapi[41] = "$current.heatindex.format(add_label=False, $localize=False)";
 $weewxapi[44] = "$span($hour_delta=24).rain.sum.inch.format(add_label=False, $localize=False)";
-$weewxapi[46] = "$span($time_delta=600).windDir.avg.format(add_label=False, $localize=False)";
+## vector average: a plain average of degrees puts 350 + 10 at 180 (south). Calm = no direction (N/A).
+$weewxapi[46] = "$span($time_delta=600).wind.vecdir.format(add_label=False, $localize=False)";
 ## 171/172 are the console/station low-battery flags read by w34CombinedData.php: never reuse them
 $weewxapi[216] = "$current.windGustDir.format(add_label=False, $localize=False)";
 $weewxapi[217] = "$day.wind.gustdir.format(add_label=False, $localize=False)";

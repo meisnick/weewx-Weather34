@@ -927,4 +927,11 @@ $lang['FltCatVFR']                = 'Règles de vol à vue';
 $lang['FltCatMVFR']               = 'VFR marginal';
 $lang['FltCatIFR']                = 'Règles de vol aux instruments';
 $lang['FltCatLIFR']               = 'IFR bas';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Averses|à proximité';
+$lang['CondThunderstormsNearby']  = 'Orages|à proximité';
+$lang['CondIcePellets']           = 'Granules de glace';
+$lang['CondSmoke']                = 'Fumée';
+$lang['MetarHoursOld']            = 'vieux de %s h';
 ?>

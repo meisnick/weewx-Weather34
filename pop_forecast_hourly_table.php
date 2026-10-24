@@ -132,6 +132,12 @@ for ($k = 0;$k < 24;$k++)
         $forecastWindSpeedMax[$k] = round((number_format($forecastWindSpeedMax[$k], 1) * 0.621371) , 0);
         $forecastWindSpeedMin[$k] = round((number_format($forecastWindSpeedMin[$k], 1) * 0.621371) , 0);
     }
+    //kmh to kts
+    if ($windunit == 'kts')
+    {
+        $forecastWindSpeedMax[$k] = round($forecastWindSpeedMax[$k] * 0.539957, 0);
+        $forecastWindSpeedMin[$k] = round($forecastWindSpeedMin[$k] * 0.539957, 0);
+    }
 
     if ($forecastnight[$k] !== false)
     {

@@ -924,4 +924,11 @@ $lang['FltCatVFR']                = 'Visuelle flygeregler';
 $lang['FltCatMVFR']               = 'Marginal VFR';
 $lang['FltCatIFR']                = 'Instrumentflygeregler';
 $lang['FltCatLIFR']               = 'Lav IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Byger|i nærheten';
+$lang['CondThunderstormsNearby']  = 'Tordenvær|i nærheten';
+$lang['CondIcePellets']           = 'Iskorn';
+$lang['CondSmoke']                = 'Røyk';
+$lang['MetarHoursOld']            = '%s t gammel';
 ?>

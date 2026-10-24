@@ -17,9 +17,10 @@ include_once('w34CombinedData.php'); include('settings1.php');
 if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; $theme1 = $theme; }
 
 function w34_uv_class($val) {
-    if ($val >= 10) return 'uv-extreme';
+    $val = round($val); // EPA: 0-2 low, 3-5 moderate, 6-7 high, 8-10 very high, 11+ extreme
+    if ($val >= 11) return 'uv-extreme';
     if ($val >= 8)  return 'uv-veryhigh';
-    if ($val >= 5)  return 'uv-high';
+    if ($val >= 6)  return 'uv-high';
     if ($val >= 3)  return 'uv-moderate';
     return 'uv-low';
 }

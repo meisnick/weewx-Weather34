@@ -925,4 +925,11 @@ $lang['FltCatVFR']                = 'Látva repülési szabályok';
 $lang['FltCatMVFR']               = 'Marginális VFR';
 $lang['FltCatIFR']                = 'Műszeres repülési szabályok';
 $lang['FltCatLIFR']               = 'Alacsony IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Zápor|a közelben';
+$lang['CondThunderstormsNearby']  = 'Zivatar|a közelben';
+$lang['CondIcePellets']           = 'Jégdara';
+$lang['CondSmoke']                = 'Füst';
+$lang['MetarHoursOld']            = '%s órás';
 ?>

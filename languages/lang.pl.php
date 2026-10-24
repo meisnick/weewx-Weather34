@@ -924,4 +924,11 @@ $lang['FltCatVFR']                = 'Przepisy lotu z widocznością';
 $lang['FltCatMVFR']               = 'Marginalne VFR';
 $lang['FltCatIFR']                = 'Przepisy lotu według przyrządów';
 $lang['FltCatLIFR']               = 'Niskie IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Przelotne opady|w pobliżu';
+$lang['CondThunderstormsNearby']  = 'Burze|w pobliżu';
+$lang['CondIcePellets']           = 'Ziarna lodowe';
+$lang['CondSmoke']                = 'Dym';
+$lang['MetarHoursOld']            = 'sprzed %s h';
 ?>

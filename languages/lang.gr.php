@@ -926,4 +926,11 @@ $lang['FltCatVFR']                = 'Κανόνες Πτήσης Εξ Όψεως
 $lang['FltCatMVFR']               = 'Οριακό VFR';
 $lang['FltCatIFR']                = 'Κανόνες Πτήσης με Όργανα';
 $lang['FltCatLIFR']               = 'Χαμηλό IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Μπόρες|κοντά';
+$lang['CondThunderstormsNearby']  = 'Καταιγίδες|κοντά';
+$lang['CondIcePellets']           = 'Παγοχάλαζο';
+$lang['CondSmoke']                = 'Καπνός';
+$lang['MetarHoursOld']            = 'πριν από %s ώρες';
 ?>

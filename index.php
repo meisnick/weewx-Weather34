@@ -102,7 +102,8 @@ function modulePopups($module, $vars) {
             $out = '<span class="yearpopup"><a href="pop_outlookwu.php" data-lity>' . $chartinfo . ' ' . w34t('LinkDailyForecast', 'Daily F.cast') . '</a></span>';
             break;
         case 'currentconditionsw34.php':
-            $metar_offline = (file_exists('jsondata/me.txt') && filesize('jsondata/me.txt') < 160) ? ' (<span class="ink-ored">' . w34t('Offline', 'Offline') . '</span>)' : '';
+            include_once('metar34wx.php');
+            $metar_offline = (metar34_load() === null) ? ' (<span class="ink-ored">' . w34t('Offline', 'Offline') . '</span>)' : '';
             $out  = '<span class="yearpopup"><a href="pop_metarnearby.php" data-lity>' . $chartinfo . ' ' . w34t('LinkNearbyMetar', 'Nearby Metar') . $metar_offline . '</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windyradar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkRadar', 'Radar') . '</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windywind.php" data-lity>' . $chartinfo . ' ' . w34t('LinkWindMap', 'Wind Map') . '</a></span>';

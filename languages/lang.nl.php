@@ -926,4 +926,11 @@ $lang['FltCatVFR']                = 'Zichtvliegvoorschriften';
 $lang['FltCatMVFR']               = 'Marginaal VFR';
 $lang['FltCatIFR']                = 'Instrumentvliegvoorschriften';
 $lang['FltCatLIFR']               = 'Laag IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Buien|in de buurt';
+$lang['CondThunderstormsNearby']  = 'Onweer|in de buurt';
+$lang['CondIcePellets']           = 'IJsregen';
+$lang['CondSmoke']                = 'Rook';
+$lang['MetarHoursOld']            = '%s u oud';
 ?>

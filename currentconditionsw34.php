@@ -26,8 +26,8 @@ $fog_above  = $temp_f ? 41 : 5;
 $dp_spread  = $weather["temp"] - $weather["dewpoint"];
 ?>
 <div class="mod-conditions"><div class="updatedtimecurrent">
-<?php $forecastime=filemtime('jsondata/me.txt');if(filesize('jsondata/me.txt')<160){echo $online;}
-else echo $online,"";echo " ",date($timeFormat,$forecastime);?></div>
+<?php // the report's observation time (the file is rewritten every 15 min whether or not the report changed)
+echo $online; if ($_d) echo " ", date($timeFormat, strtotime($_d->{'observed'}));?></div>
 <div class="cloudconverter">
 <?php //cloudbase-weather34
 $cloudcoverunit = '%';
@@ -42,7 +42,7 @@ else if (($windunit =='km/h' ||  $windunit =='m/s') && $weather["cloudbase3"]<60
 }
 //nearby airport and its flight category, under the cloudbase pill; opens the METAR popup
 $fltcat = w34_fltcat_badge($_d->{'flight_category'} ?? '', '8px');
-if (!empty($_d->{'icao'}) && $fltcat !== '' && filesize('jsondata/me.txt') >= 160) {
+if (!empty($_d->{'icao'}) && $fltcat !== '') {
   echo '<a class="metarpill" href="pop_metarnearby.php" data-lity><div class="cloudconvertercircle">' . htmlspecialchars($_d->{'icao'}) . ' ' . $fltcat . '</div></a>';
 }?></div>
 <style>
@@ -68,7 +68,7 @@ else if($weather["wind_speed_avg"]>=15 && $dayPartNatural == "night"){echo "<img
 else if($weather["wind_speed_avg"]>=15){echo "<img rel='prefetch' src='css/svg/wind.svg' width='70px' height='60px' alt='weather34 windy icon'>";}
 
 //metar sky icon
-else if(filesize('jsondata/me.txt')<160){
+else if($_d === null){
 echo "<img rel='prefetch' src='css/icons/offline.svg' width='70px' height='60px' alt='weather34 offline icon'>";}
 else {echo "<img rel='prefetch' src='css/svg/".$sky_icon."' width='70px' height='60px' alt='".htmlspecialchars($sky_desc)."'>";}
 ?></span1></div>
@@ -93,7 +93,7 @@ else if($weather["wind_speed_avg"]>=30){echo w34_cond("Very Windy")." ".$alert."
 else if($weather["wind_speed_avg"]>=22){echo w34_cond("Moderate Wind<br>Conditions");}
 else if($weather["wind_speed_avg"]>=15){echo w34_cond("Breezy<br>Conditions");}
 //metar sky description
-else if(filesize('jsondata/me.txt')<160){echo "<uppercase>".w34_cond("Conditions<br>Not Available")."</uppercase>";}
+else if($_d === null){echo "<uppercase>".w34_cond("Conditions<br>Not Available")."</uppercase>";}
 else {echo nl2br(htmlspecialchars(w34_cond($sky_desc)));}
 //oktas
 // eighths of sky, rounded to the nearest (0 % is 0 oktas)
@@ -110,7 +110,7 @@ if (is_numeric($weather["cloud_cover"])) {
 <?php //weather34 average station data
 //echo "Average <span class=\"ink-oblue\">Cloud Cover</span> last 5 minutes <span class=\"ink-ogreen\">" .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. "(".$weather["cloud_oktas"].")";
 
-if ($visibility!==0){echo "</br>".w34t('Visibility', 'Visibility')." <span class=\"ink-oorange\">".$visibility."</span></br>";}
+if ($_d){echo "</br>".w34t('Visibility', 'Visibility')." <span class=\"ink-oorange\">".$visibility."</span></br>";}
 if (is_numeric($weather["cloud_cover"])){
 echo "<span class=\"ink-oblue\">".w34t('Cloudcover', 'Cloud Cover')."</span><span class=\"ink-ogreen\"> " .$weather["cloud_cover"]."</span><valuetext>".$cloudcoverunit. " (".$weather["cloud_oktas"].")</valuetext>";
 }

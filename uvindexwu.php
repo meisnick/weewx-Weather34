@@ -99,20 +99,21 @@ $parsed_weather34wujson1 = json_decode($weather34wuurl,true);
    
    
    
-if ($weather["uv"]>=10) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=5) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+$uvr = round((float)$weather["uv"]); // EPA scale on the rounded index
+if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 
 ?></smallrainunit></div></div>
  
 </div>  
 <div class="uvcaution"><?php 
-if ($weather["uv"]>10) {echo 'Extreme UVI<br>Avoid being outside seek a <br>cool shaded area!';}
-else if ($weather["uv"]>8) {echo 'Very High UVI<br>Avoid being outside seek a <br>cool shaded area!';}
-else if ($weather["uv"]>5) {echo 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!';}
-else if ($weather["uv"]>3) {echo 'Moderate UVI<br>Cautionary use suncream protection <br>Wear sunglasses!';}
+if ($uvr>=11) {echo 'Extreme UVI<br>Avoid being outside seek a <br>cool shaded area!';}
+else if ($uvr>=8) {echo 'Very High UVI<br>Avoid being outside seek a <br>cool shaded area!';}
+else if ($uvr>=6) {echo 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!';}
+else if ($uvr>=3) {echo 'Moderate UVI<br>Cautionary use suncream protection <br>Wear sunglasses!';}
 else if ($weather["uv"]>=0) {echo 'Low UVI<br>No cautions required<br>Safe for all Skin types!';}
 ?></div>
 

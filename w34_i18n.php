@@ -114,8 +114,9 @@ function w34_compass($deg) {
 // $cat defaults to the category in jsondata/me.txt.
 function w34_fltcat_badge($cat = null, $size = '9px') {
     if ($cat === null) {
-        $me = @json_decode(@file_get_contents(__DIR__ . '/jsondata/me.txt'), true);
-        $cat = isset($me['data'][0]['flight_category']) ? $me['data'][0]['flight_category'] : '';
+        include_once(__DIR__ . '/metar34wx.php');
+        $me = metar34_load(); // null when missing or older than 2 h
+        $cat = $me->{'flight_category'} ?? '';
     }
     $info = array('VFR' => array('var(--green, #90b12a)', 'Visual Flight Rules'),
         'MVFR' => array('var(--temp-cold-2, #3369e7)', 'Marginal VFR'),

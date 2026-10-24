@@ -85,7 +85,8 @@ for ($k = 0;$k < 12;$k++)
     $forecastTime[$k] = date("H:i", $parsed_json['response'][0]['periods'][$k]['timestamp']);
     $forecastTempHigh[$k] = $parsed_json['response'][0]['periods'][$k]['avgTempC'];
 
-    $forecastWindGust[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedKPH'];
+    $forecastWindSpeed[$k] = $parsed_json['response'][0]['periods'][$k]['windSpeedKPH'];
+    $forecastWindGust[$k] = $parsed_json['response'][0]['periods'][$k]['windGustKPH'] ?? $forecastWindSpeed[$k];
 
     $forecastWinddircardinal[$k] = $parsed_json['response'][0]['periods'][$k]['windDir'];
 
@@ -129,6 +130,12 @@ for ($k = 0;$k < 12;$k++)
     {
         $forecastWindGust[$k] = round((number_format($forecastWindGust[$k], 1) * 0.621371) , 0);
         $forecastWindSpeed[$k] = round((number_format($forecastWindSpeed[$k], 1) * 0.621371) , 0);
+    }
+    //kmh to kts
+    if ($windunit == 'kts')
+    {
+        $forecastWindGust[$k] = round($forecastWindGust[$k] * 0.539957, 0);
+        $forecastWindSpeed[$k] = round($forecastWindSpeed[$k] * 0.539957, 0);
     }
 
     if ($forecastUV[$k] > 0)
@@ -286,64 +293,16 @@ for ($k = 0;$k < 12;$k++)
         echo '<grey>' . $forecastPrecipProb[$k] . '%&nbsp;' . w34t('ChanceLc', 'chance') . '</grey></valuer>';
     }
     echo "</div>";
-    //wind/gusts
-    if ($windunit == 'mph' && $forecastWindGust[$k] >= 30)
+    //wind and gust: the forecast's own values (the old "Gust" was the sustained speed x 1.625, printed twice for mph)
+    $gust_warn = array('mph' => array(25, 30), 'kts' => array(22, 26), 'km/h' => array(40, 48), 'm/s' => array(11, 13));
+    list($g_amber, $g_red) = isset($gust_warn[$windunit]) ? $gust_warn[$windunit] : $gust_warn['km/h'];
+    echo "<wind>" . w34t('Wind', 'Wind') . " <orangeu>" . w34_dir($forecastWinddircardinal[$k]) . "</orangeu>&nbsp;<blueu>" . number_format($forecastWindSpeed[$k], 0) . "&nbsp;<wuunits>" . $windunit . "</wuunits></blueu>";
+    if ($forecastWindGust[$k] > $forecastWindSpeed[$k])
     {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></redu></wind>';
+        $gtag = $forecastWindGust[$k] >= $g_red ? 'redu' : ($forecastWindGust[$k] >= $g_amber ? 'orangeu' : 'blueu');
+        echo "&nbsp;" . w34t('Gust', 'Gust') . "&nbsp;<" . $gtag . ">" . number_format($forecastWindGust[$k], 0) . "</" . $gtag . ">";
     }
-    else if ($windunit == 'mph' && $forecastWindGust[$k] >= 25)
-    {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></orangeu></wind>';
-    }
-    //kts
-    if ($windunit == 'kts' && $forecastWindGust[$k] >= 30)
-    {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625 * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></redu></wind>';
-    }
-    else if ($windunit == 'kts' && $forecastWindGust[$k] >= 25)
-    {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625 * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></orangeu></wind>';
-    }
-    else if ($windunit == 'kts' && $forecastWindGust[$k] >= 0)
-    {
-        echo "<wind>" . w34t('Wind', 'Wind') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<blueu>" . number_format($forecastWindGust[$k] * 0.868976, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></blueu></wind>';
-    }
-    else if ($forecastWindGust[$k] >= 30)
-    {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<redu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></redu></wind>';
-    }
-    else if ($forecastWindGust[$k] >= 25)
-    {
-        echo "<wind>" . w34t('Gust', 'Gust') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<orangeu>" . number_format($forecastWindGust[$k] * 1.625, 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></orangeu></wind>';
-    }
-    else if ($forecastWindGust[$k] < 25)
-    {
-        echo "<wind> " . w34t('Wind', 'Wind') . " <orangeu>";
-        echo w34_dir($forecastWinddircardinal[$k]);
-        echo "</orangeu>&nbsp;<blueu>" . number_format($forecastWindGust[$k], 0) , "&nbsp;<wuunits>" . $windunit;
-        echo '</wuunits></blueu></wind>';
-    }
+    echo '</wind>';
 
 ?>  
 </article>

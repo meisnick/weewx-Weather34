@@ -130,7 +130,12 @@ if (isset($weewxapi))
     $weather["maxwindtime"] = ($weewxapi[31] == "   N/A" ? "0" : $weewxapi[31]);
     $weather["maxgusttime"] = ($weewxapi[33] == "   N/A" ? "0" : $weewxapi[33]);
     //$weather["cloudbase3"] = ($weewxapi[203] == "   N/A" ? "0" : $weewxapi[203]);
-    $weather["cloudbase3"] = ($weewxrt[52] == "   N/A" ? "0" : $weewxrt[52]);
+    // weewx's cloudbase is above SEA level; show it above GROUND like METAR ceilings (feed units: field 54, ft or m)
+    $weather["cloudbase3"] = "0";
+    if (is_numeric($weewxrt[52]) && is_numeric($elevation)) {
+        $cb_elev = (stripos($weewxrt[53], 'f') === 0) ? $elevation * 3.28084 : $elevation;
+        $weather["cloudbase3"] = (string)max(0, round($weewxrt[52] - $cb_elev));
+    }
     
     $weather["swversion"] = $weewxrt[38];
     $weather["build"] = $weewxrt[39];

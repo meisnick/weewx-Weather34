@@ -925,4 +925,11 @@ $lang['FltCatVFR']                = 'Görerek Uçuş Kuralları';
 $lang['FltCatMVFR']               = 'Marjinal VFR';
 $lang['FltCatIFR']                = 'Aletli Uçuş Kuralları';
 $lang['FltCatLIFR']               = 'Düşük IFR';
+
+# Synced from lang.en.php (keys added for newer modules)
+$lang['CondShowersNearby']        = 'Sağanak|yakında';
+$lang['CondThunderstormsNearby']  = 'Gök gürültülü fırtına|yakında';
+$lang['CondIcePellets']           = 'Buz taneleri';
+$lang['CondSmoke']                = 'Duman';
+$lang['MetarHoursOld']            = '%s saat önce';
 ?>

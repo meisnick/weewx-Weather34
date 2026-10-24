@@ -18,42 +18,11 @@ include_once('w34CombinedData.php');
 if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'dark'; }
 
 //weather34 next meteor event original idea betejuice of cumulus forum..
-$meteor_nextevent="No Meteor Shower<br>s";
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 12, 23,19),"event_title"=>"Meteor Shower<br> <orange1>Quadrantids</orange1><div class=date><br>Active Dec 28th-Jan 12th
-<br><green>Estimated ZHR: </green><orange>120 <br> Peaks <orange>Jan 3rd-4th</orange></div></div>","event_end"=>mktime(23, 59, 59, 1, 2,20),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 12, 24),"event_title"=>"Meteor Shower<br> <orange1>Quadrantids</orange1><div class=date><br>Active Dec 28th-Jan 12th
-<br><green>Estimated ZHR: </green><orange>120 <br>Peaks <orange>Jan 3rd-4th</orange></div></div>","event_end"=>mktime(23, 59, 59, 1, 2),);
-$meteor_eventsnext[]=array("event_start"=>mktime(0, 0, 0, 1, 3),"event_title"=>"Meteor Shower<br> <orange1>Quadrantids</orange1><div class=date><br>Peak Viewing Now<br><div class=date>
-<br><green>Estimated ZHR: </green><orange>120</div></div>","event_end"=>mktime(23, 59, 59, 1, 4),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 1, 2),"event_title"=>"Meteor Shower<br> <orange1>Lyrids</orange1><div class=date><br>Active Apr 18th-Apr 25th<br>
-<green>Estimated ZHR: </green><orange>18</orange><br>Peaks <orange>Apr 23rd</orange></div></div>","event_end"=>mktime(23, 59, 59, 4, 20),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 4, 20),"event_title"=>"Meteor Shower<br> <orange1>Lyrids</orange1> <div class=date><br>Peak Viewing Now<br>
-<green>Estimated ZHR: </green><orange>18</orange><br>Peaks <orange>Apr 23rd</orange></div></div>","event_end"=>mktime(23, 59, 59, 4, 22),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 4, 22),"event_title"=>"Meteor Shower<br> <orange1>ETA Aquarids </orange1><br><div class=date><br>Active Apr 24th-May 19th<br>
-<green>Estimated ZHR: </green><orange>55 </orange><br> Peaks <orange>May 6th</orange></div></div>","event_end"=>mktime(23, 59, 59, 5, 6),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 5, 6),"event_title"=>"Meteor Shower<br> <orange1>Delta Aquarids</orange1><div class=date><br>Active Jul 21st-Aug 23rd<br>
-<green>Estimated ZHR: </green><orange>16</orange><br> Peaks <orange>Jul 28th</orange></div></div>","event_end"=>mktime(23, 59, 59, 7, 27),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 7, 27),"event_title"=>"Meteor Shower<br> <orange1> Perseids</orange1><div class=date><br>Active Jul 13th-Aug 26th<br>
-<green>Estimated ZHR: </green><orange>100</orange><br> Peaks <orange>Aug 11th-13th</orange></div>","event_end"=>mktime(23, 59, 59, 8, 10),);
-$meteor_eventsnext[]=array("event_start"=>mktime(0, 0, 0, 8, 12),"event_title"=>"Meteor Shower<br><orange1> Perseids</orange1><div class=date><br>Peak Viewing Now<br>
-<green>Estimated ZHR: </green><orange>100</orange><br> Peaks <orange>Aug 11th-13th</orange></div></div>","event_end"=>mktime(23, 59, 59, 8, 13),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 8, 13),"event_title"=>"Meteor Shower<br> <orange1> Draconids</orange1><div class=date><br>Active October 6th-10th<br>
-<green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>Oct 9th</orange></div></div>","event_end"=>mktime(23, 59, 59, 10, 7),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 10, 7),"event_title"=>"Meteor Shower<br> <orange1> Orionids</orange1><div class=date><br>Active Oct 21st-Oct 22nd<br>
-<green>Estimated ZHR: </green><orange>25</orange><br> Peaks <orange>Oct 22nd</orange></div></div>","event_end"=>mktime(23, 59, 59, 10, 21),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 10, 21),"event_title"=>"Meteor Shower<br> <orange1> South Taurids</orange1><div class=date><br>Active Nov 4th- Nov 5th<br>
-<green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>Oct 10th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 5),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 5),"event_title"=>"Meteor Shower<br> <orange1> North Taurids</orange1><div class=date><br>Active Nov 11th<br>
-<green>Estimated ZHR: </green><orange>5</orange><br> Peaks <orange>Nov 13th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 11),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 11),"event_title"=>"Meteor Shower<br> <orange1> Leonids</orange1><div class=date><br>Active Nov 5th-Dec 3rd<br>
-<green>Estimated ZHR: </green><orange>15</orange><br> Peaks <orange>Nov 18th</orange></div></div>","event_end"=>mktime(23, 59, 59, 11, 18),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 11, 18),"event_title"=>"Meteor Shower<br> <orange1> Geminids</orange1><div class=date><br>Active Nov 30th-Dec 17th<br>
-<green>Estimated ZHR: </green><orange>120</orange><br> Peaks <orange>Dec 14th</orange></div></div>","event_end"=>mktime(23, 59, 59, 12, 16),);
-$meteor_eventsnext[]=array("event_start"=>mktime(23, 59, 59, 12, 15),"event_title"=>"Meteor Shower<br> <orange1> Ursids</orange1><div class=date><br>Active Dec 17th-Dec 24th<br>
-<green>Estimated ZHR: </green><orange>5-10</orange><br> Peaks <orange>Dec 23rd</orange></div></div>","event_end"=>mktime(23, 59, 59, 12, 18),);
-
-$meteorNext=time();$meteorOP=false;
-foreach ($meteor_eventsnext as $meteor_check) {if ($meteor_check["event_start"]<=$meteorNext&&$meteorNext<=$meteor_check["event_end"]) {$meteorOP=true;$meteor_nextevent=$meteor_check["event_title"];}};
+// shared table (meteor34.php): the shower at its peak, else the next peak; and what is visible now
+include_once('meteor34.php');
+$meteor_st = meteor34_status();
+$meteor_nextevent = $meteor_st['peak'] ? meteor34_card($meteor_st['peak'], true) : meteor34_card($meteor_st['next'], false);
+$meteor_default = meteor34_now_text($meteor_st) ?? 'No Meteor';
 //end meteor nevt event
 $meteorinfo3="<svg width='22px' height='22px' viewBox='0 0 16 16'><path fill='darkgrey' d='M0 0l14.527 13.615s.274.382-.081.764c-.355.382-.82.055-.82.055L0 0zm4.315 1.364l11.277 10.368s.274.382-.081.764c-.355.382-.82.055-.82.055L4.315 1.364zm-3.032 2.92l11.278 10.368s.273.382-.082.764c-.355.382-.819.054-.819.054L1.283 4.284zm6.679-1.747l7.88 7.244s.19.267-.058.534-.572.038-.572.038l-7.25-7.816zm-5.68 5.13l7.88 7.244s.19.266-.058.533-.572.038-.572.038l-7.25-7.815zm9.406-3.438l3.597 3.285s.094.125-.029.25c-.122.125-.283.018-.283.018L11.688 4.23zm-7.592 7.04l3.597 3.285s.095.125-.028.25-.283.018-.283.018l-3.286-3.553z'/></svg>";
 ?>
@@ -117,12 +86,12 @@ credit{position:relative;font-size:.8em;top:10%}
   
   <article>  
    <?php echo $info ;?> <green><?php echo w34f('MeteorGuideTitle', 'Guide to %s Major Meteor Showers', date('Y'));?><br></green> <br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Quadrantids', 'Quadrantids');?></green> <?php echo w34_datetext('Dec 28-Jan 12');?><br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Lyrids', 'Lyrids');?></green> <?php echo w34_datetext('Apr 18-Apr 25');?><br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Perseids', 'Perseids');?></green> <?php echo w34_datetext('Jul 13-Aug 26');?><br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Leonids', 'Leonids');?></green> <?php echo w34_datetext('Nov 05-Dec 03');?><br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Geminids', 'Geminids');?></green> <?php echo w34_datetext('Nov 30-Dec 17');?><br>
-       <?php echo $meteorinfo;?> <green><?php echo w34t('Ursids', 'Ursids');?></green> <?php echo w34_datetext('Dec 17-Dec 24');?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Quadrantids', 'Quadrantids');?></green> <?php echo w34_datetext(meteor34_range('Quadrantids'));?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Lyrids', 'Lyrids');?></green> <?php echo w34_datetext(meteor34_range('Lyrids'));?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Perseids', 'Perseids');?></green> <?php echo w34_datetext(meteor34_range('Perseids'));?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Leonids', 'Leonids');?></green> <?php echo w34_datetext(meteor34_range('Leonids'));?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Geminids', 'Geminids');?></green> <?php echo w34_datetext(meteor34_range('Geminids'));?><br>
+       <?php echo $meteorinfo;?> <green><?php echo w34t('Ursids', 'Ursids');?></green> <?php echo w34_datetext(meteor34_range('Ursids'));?><br>
         
    </article> 
    

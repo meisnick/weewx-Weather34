@@ -11,7 +11,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from w34config import ICAO, ME_PATH, WEB_ROOT
 
 API_URL  = f"https://aviationweather.gov/api/data/metar?ids={ICAO}&hours=0&format=json"
-HEADERS  = {"User-Agent": "weewx-weather34/aviationweather"}
+# no-cache: the API's CDN has served reports hours old (2026-10-23 22:00 gave the 11:55Z report)
+HEADERS  = {"User-Agent": "weewx-weather34/aviationweather", "Cache-Control": "no-cache"}
 
 CLOUD_TEXT = {
     "SKC": "Sky Clear", "CLR": "Clear", "CAVOK": "Clear",
@@ -71,17 +72,52 @@ WX_MAP = {
     "+FC":   ("+FC",   "Tornado/Waterspout"),
 }
 
+WX_PH = {
+    "DZ": "Drizzle", "RA": "Rain", "SN": "Snow", "SG": "Snow Grains", "IC": "Ice Crystals", "PL": "Ice Pellets",
+    "GR": "Hail", "GS": "Small Hail", "UP": "Precipitation", "BR": "Mist", "FG": "Fog", "FU": "Smoke",
+    "VA": "Volcanic Ash", "DU": "Widespread Dust", "SA": "Sand", "HZ": "Haze", "PY": "Spray", "PO": "Dust Whirls",
+    "SQ": "Squalls", "FC": "Funnel Cloud", "SS": "Sandstorm", "DS": "Dust Storm",
+}
+WX_DESC = {"MI": "Shallow", "PR": "Partial", "BC": "Patchy", "DR": "Drifting", "BL": "Blowing", "FZ": "Freezing"}
+
+
+def wx_text(token):
+    """Readable text for one present-weather token, e.g. '-SHSN' -> 'Light Snow Showers', 'VCTS' -> 'Thunderstorms
+    Nearby'. No intensity prefix is MODERATE."""
+    if token in WX_MAP:
+        return WX_MAP[token][1]
+    t, intensity, near = token, "", False
+    if t.startswith("VC"):
+        t, near = t[2:], True
+    elif t[:1] in "-+":
+        intensity, t = ("Light " if t[0] == "-" else "Heavy "), t[1:]
+    shower = ts = False
+    words = []
+    while t[:2] in ("MI", "PR", "BC", "DR", "BL", "SH", "TS", "FZ"):
+        d, t = t[:2], t[2:]
+        if d == "SH":
+            shower = True
+        elif d == "TS":
+            ts = True
+        else:
+            words.append(WX_DESC[d])
+    words += [WX_PH.get(t[i:i + 2], t[i:i + 2]) for i in range(0, len(t), 2)]
+    text = intensity + " ".join(words)
+    if shower:
+        text = (text + " Showers") if words else "Showers"
+    if ts:
+        text = "Thunderstorms" + (" with " + text if text.strip() else "")
+    if t == "FC" and intensity == "Heavy ":
+        text = "Tornado/Waterspout"
+    return (text + " Nearby") if near else text
+
+
 def parse_wx(wxstr):
+    """Present-weather tokens in report order, each kept whole (intensity, VC, descriptors), so the dashboard can tell
+    -RA from RA from +RA and VCSH from SH. The old substring match collapsed them (e.g. -DZ -> DZ, VCTS -> TS)."""
     if not wxstr:
         return []
-    results = []
-    remaining = wxstr
-    for token in sorted(WX_MAP, key=len, reverse=True):
-        if token in remaining:
-            code, text = WX_MAP[token]
-            results.append({"code": code, "text": text})
-            remaining = remaining.replace(token, "")
-    return results[:2]
+    return [{"code": tok, "text": wx_text(tok)} for tok in wxstr.split()][:3]
 
 def humidity(t, d):
     if t is None or d is None:
@@ -241,6 +277,17 @@ def main():
 
     rt = m.get("reportTime", "")
     observed = rt[:19] + "Z" if len(rt) >= 19 else rt
+
+    # Never go backwards: a cached/out-of-order response older than the report on disk is dropped (and not added to
+    # the cloud-cover history). ISO-8601 'Z' strings compare in time order.
+    try:
+        with open(ME_PATH) as f:
+            current = json.load(f)["data"][0].get("observed", "")
+    except Exception:
+        current = ""
+    if observed and current and observed < current:
+        print(f"Older report ({observed}) than the one on disk ({current}); kept it.")
+        return
 
     out = {
         "results": 1,

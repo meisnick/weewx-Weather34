@@ -423,6 +423,10 @@ if (!$metar_ts && !empty($metar34time)) {
 $fmt = !empty($timeFormatShort) ? $timeFormatShort : 'H:i';
 if ($metar_ts) {
     echo w34_date('D jS F ' . $fmt, $metar_ts);
+    // older than 2 h: not current conditions (the sky description above then reads Data Offline)
+    if (!empty($metar34stale) && $metar34age !== null) {
+        echo ' <span class="ink-ored">(' . w34f('MetarHoursOld', '%s h old', round($metar34age / 3600)) . ')</span>';
+    }
 }
 ?> </div></div>
 

@@ -69,9 +69,7 @@ var weather34moonCurve;var lf=Math.min(3-4*(phase/30),1);var lc=Math.abs(lf*50);
 var rf=Math.min(3+4*((phase-30)/30),1);	var rc=Math.abs(rf*50);	var rb=(rf<0) ? "0" : "1";weather34moonCurve="M 50,0 "+ "a "+s(lc)+",50 0 0 "+lb+" 0,100 "+ "a "+s(rc)+",50 0 0 "+rb+" 0,-100";
 document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}</script> 
    <div class=moonphasetext>    
-<?php echo " ";{$day = w34_date('l jS F Y');if($day===w34_date("l jS F Y",strtotime('2019-7-2'))){echo 'Solar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-16'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-7-17'))){echo 'Lunar <orange>Eclipse</orange>';}else if($day===w34_date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Eclipse</orange>';}		
-// weather34 moonphase no scraping its calculated from the livedata !
-	else echo "<aqivalue1>".w34_moonphase($weather['moonphase'])." </aqivalue1>";}?>             
+<?php echo " ";{echo "<aqivalue1>".w34_moonphase($weather['moonphase'])." </aqivalue1>";}?>             
 <br>
 <?php echo " " . w34t('Luminance', 'Luminance') . " <orange>" .$weather['luminance']."</orange>%";?>            
 </div>    

@@ -89,7 +89,7 @@ else if($weather["lux"]==0) echo "<div class=luxtodaydark>".$weather["lux"];
 else echo "<div class=luxtoday>".$weather["lux"];?> 
 </div></div></div><div class="luxtodayword"><valuetext><?php echo w34t('Brightness', 'Brightness');?></valuetext></div><div class="luxwrap"></div>
 
-<div class="uvcautionbig"><?php if ($weather["uv"]>=10) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($weather["uv"]>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($weather["uv"]>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($weather["uv"]>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
+<div class="uvcautionbig"><?php $uvr = round((float)$weather["uv"]); if ($uvr>=11) {echo $uviclear.'<span>UVI</span> Extreme';}else if ($uvr>=8) {echo $uviclear.'<span>UVI</span> Very High';}else if ($uvr>=6) {echo $uviclear.'<span>UVI</span> High';}else if ($uvr>=3) {echo $uviclear.'<span>UVI</span> Moderate';}
 else if (date('Hi')>$sunset && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if (date('Gi')<$sunrise && $weather["uv"]>=0 ) {echo $uviclear,w34t('BelowHorizon', 'Below Horizon');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvLow', 'Low');}else if ($weather["uv"]>=0 ) {echo $uviclear,'<span>UVI</span> '.w34t('UvVeryLow', 'Very Low');}?></div>
 
 <script>

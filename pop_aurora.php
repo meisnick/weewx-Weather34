@@ -100,7 +100,8 @@ if ($forecast_ok) {
 }
 
 // ── Derived display values ────────────────────────────────────────────────────
-if ($kp >= 7)      { $storm = $lang['SevereStorm']; $kp_color = '#d35d4e'; }
+// NOAA G scale: Kp 5 G1 ... 7 G3 Strong, 8 G4 Severe
+if ($kp >= 8)      { $storm = $lang['SevereStorm']; $kp_color = '#d35d4e'; }
 elseif ($kp >= 5)  { $storm = $lang['G1PlusStorm'];  $kp_color = '#ff7c39'; }
 elseif ($kp >= 4)  { $storm = $lang['Active'];        $kp_color = '#e6a141'; }
 else               { $storm = $lang['Quiet'];          $kp_color = '#90b12a'; }

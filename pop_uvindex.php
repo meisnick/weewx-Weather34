@@ -100,20 +100,21 @@ supwm2{font-size:0.7em;vertical-align:super;}
   <article>  
    <div class=actualt><?php echo w34t('CurrentUvIndex', 'Current UV Index'); ?></div>        
    <div class="uvcontainer1"><?php 
-if ($weather["uv"]>=10) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>=5) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
-else if ($weather["uv"]>3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+$uvr = round((float)$weather["uv"]); // EPA scale on the rounded index
+if ($uvr>=11) {echo '<div class=uvtoday11>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=8) {echo '<div class=uvtoday9-10>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=6) {echo '<div class=uvtoday6-8>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
+else if ($uvr>=3) {echo '<div class=uvtoday4-5>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 else if ($weather["uv"]>=0) {echo '<div class=uvtoday1-3>'.number_format($weather["uv"],1)."<smalluvunit> &nbsp;UVI";}
 
 ?></smalluvunit></div></div>
  
 </div>  
 <div class="uvcaution"><?php 
-if ($weather["uv"]>10) {echo w34t('UvCautionExtreme', 'Extreme UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
-else if ($weather["uv"]>8) {echo w34t('UvCautionVeryHigh', 'Very High UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
-else if ($weather["uv"]>5) {echo w34t('UvCautionHigh', 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!');}
-else if ($weather["uv"]>3) {echo w34t('UvCautionModerate', 'Moderate UVI<br>Use suncream protection<br>Wear sunglasses!');}
+if ($uvr>=11) {echo w34t('UvCautionExtreme', 'Extreme UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
+else if ($uvr>=8) {echo w34t('UvCautionVeryHigh', 'Very High UVI<br>Avoid being outside, seek a<br>cool shaded area!');}
+else if ($uvr>=6) {echo w34t('UvCautionHigh', 'High UVI<br>Avoid being outside at midday overhead sun!<br>Wear sunglasses!');}
+else if ($uvr>=3) {echo w34t('UvCautionModerate', 'Moderate UVI<br>Use suncream protection<br>Wear sunglasses!');}
 else if ($weather["uv"]>=0) {echo w34t('UvCautionLow', 'Low UVI<br>No cautions required<br>Safe for all skin types!');}
 ?></div>
 

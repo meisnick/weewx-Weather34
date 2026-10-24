@@ -948,4 +948,8 @@ $lang['EtShort']                  = 'ET';
 $lang['RainEtBalance']            = 'Pioggia − ET';
 $lang['HcEt']                     = 'ET';
 $lang['HcEtperHour']              = 'ET (all\'ora)';
+# Lightning card strike-distance strip
+$lang['LtByDistance']             = 'Fulmini per distanza, 24 h';
+$lang['LtNone24h']                = 'Nessun fulmine in 24 h';
+$lang['LtLatest']                 = 'ultimo';
 ?>

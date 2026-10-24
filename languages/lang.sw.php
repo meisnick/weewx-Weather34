@@ -948,4 +948,8 @@ $lang['EtShort']                  = 'ET';
 $lang['RainEtBalance']            = 'Regn − ET';
 $lang['HcEt']                     = 'ET';
 $lang['HcEtperHour']              = 'ET (per timme)';
+# Lightning card strike-distance strip
+$lang['LtByDistance']             = 'Nedslag efter avstånd, 24 h';
+$lang['LtNone24h']                = 'Inga nedslag på 24 h';
+$lang['LtLatest']                 = 'senaste';
 ?>

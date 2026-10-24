@@ -329,7 +329,7 @@ $pm10now = "$current.pm10_0.format(add_label=False, $localize=False)";
 $pm25avg24 = "$span($hour_delta=24).pm2_5.avg.format(add_label=False, $localize=False)"; 
 $pm10avg24 = "$span($hour_delta=24).pm10_0.avg.format(add_label=False, $localize=False)";
 //lightning for Ecowitt sensor
-$lightning['light_last_distance'] = "$alltime.lightning_distance.lastnonzero.format(add_label=False, $localize=False)";
+$lightning['light_last_distance'] = "$alltime.lightning_distance.lastnonzero.km.format(add_label=False, $localize=False)";  ## km: lightning34.php / top_lightning.php convert
 $lightning['last_time'] = "$alltime.lightning_last_det_time.lastnonzero.raw";
 $lightning['strike_count'] = "$alltime.lightning_strike_count.sum";
 $lightning['strike_count_3hr'] = "$span($hour_delta=3).lightning_strike_count.sum";

@@ -949,4 +949,8 @@ $lang['EtShort']                  = 'ET';
 $lang['RainEtBalance']            = 'Eső − ET';
 $lang['HcEt']                     = 'ET';
 $lang['HcEtperHour']              = 'ET (óránként)';
+# Lightning card strike-distance strip
+$lang['LtByDistance']             = 'Becsapódások távolság szerint, 24 ó';
+$lang['LtNone24h']                = 'Nincs becsapódás 24 ó alatt';
+$lang['LtLatest']                 = 'utolsó';
 ?>

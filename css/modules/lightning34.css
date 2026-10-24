@@ -2,7 +2,7 @@
 
 /*
  * padding-top (not margin-top) prevents margin collapse through #grid_N.
- * position:relative establishes containing block for .mod-lt-top-pill.
+ * position:relative establishes containing block for the strip's marker.
  * display:flex + text-align:left overrides .weather-item's global centering.
  */
 .mod-lt {
@@ -17,37 +17,72 @@
     position: relative;
 }
 
-/* ── Top-right energy pill ────────────────────────────────────────────────── */
-.mod-lt-top-pill {
+/* ── Strike-distance strip: last 24 h of strikes by distance (0 to the sensor's 40 km), shaded with the
+   STRIKES badge ramp; a line marks the latest strike ───────────────────────────────────────────────── */
+.mod-lt-strip {
+    position: relative;
+    height: 26px;
+    margin: 2px -5px 0 -5px;
+}
+
+.mod-lt-strip-cap {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 7.8px;
+    line-height: 9px;
+    color: var(--card-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mod-lt-strip-cap b {
+    font-weight: 400;
+    color: var(--caution);
+}
+
+.mod-lt-strip-track {
     position: absolute;
-    top: 4px;
-    right: 10px;
-    border: 1px solid var(--card-surface);
-    -webkit-border-radius: 2px;
+    left: 0;
+    right: 0;
+    top: 11px;
+    height: 7px;
     border-radius: 2px;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 1.1rem;
-    line-height: 16px;
-    padding: 0 6px;
-    box-sizing: border-box;
+    background: var(--card-surface);
     overflow: hidden;
 }
 
-.mod-lt-top-pill .val {
-    font-family: weathertext2, Arial, sans-serif;
-    color: var(--caution);
-    font-size: 0.65rem;
+.mod-lt-strip-cell { position: absolute; top: 0; bottom: 0; }
+.mod-lt-strip-c1   { background: var(--warn-4); }
+.mod-lt-strip-c10  { background: var(--amber); }
+.mod-lt-strip-c50  { background: var(--orange); }
+.mod-lt-strip-c200 { background: var(--uv-red); }
+
+.mod-lt-strip-mark {
+    position: absolute;
+    top: 9px;
+    width: 2px;
+    height: 11px;
+    margin-left: -1px;
+    border-radius: 1px;
+    background: var(--card-ink-strong);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .4);
 }
 
-.mod-lt-top-pill .unit {
-    color: var(--card-ink-blue);
-    font-size: 0.5rem;
-    font-family: Arial, Helvetica, system;
-    margin-left: 2px;
+.mod-lt-strip-ticks {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 19px;
+    height: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 6.5px;
+    line-height: 7px;
+    color: var(--card-ink-soft);
 }
+
+.mod-lt-strip-ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.mod-lt-strip-ticks span:first-child { transform: none; }
+.mod-lt-strip-ticks span:last-child { transform: translateX(-100%); }
 
 /* ── Main row: left col + pill grid ──────────────────────────────────────── */
 .mod-lt-main {
@@ -56,7 +91,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-top: 44px;
+    margin-top: 14px;   /* under the strip, clear of the chin */
 }
 
 /* ── Left column: badge + distance pill ──────────────────────────────────── */
@@ -235,7 +270,10 @@
     border-bottom-color: var(--shadow-mid);
 }
 
-[data-theme="light"] .mod-lt-top-pill,
+[data-theme="light"] .mod-lt-strip-track {
+    background: var(--line-soft);
+}
+
 [data-theme="light"] .mod-lt-distance-pill,
 [data-theme="light"] .mod-lt-pill {
     border-color: var(--line-light);
@@ -243,7 +281,6 @@
 }
 
 /* Darken on-tile lightning pill labels for light mode. Keep var(--white) on colored badge. */
-[data-theme="light"] .mod-lt-top-pill .unit,
 [data-theme="light"] .mod-lt-distance-pill .unit,
 [data-theme="light"] .mod-lt-pill .unit {
   color: var(--card-ink-blue);

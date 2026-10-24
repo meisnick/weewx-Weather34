@@ -950,4 +950,8 @@ $lang['EtShort']                  = 'ET';
 $lang['RainEtBalance']            = 'Βροχή − ET';
 $lang['HcEt']                     = 'ET';
 $lang['HcEtperHour']              = 'ET (ανά ώρα)';
+# Lightning card strike-distance strip
+$lang['LtByDistance']             = 'Κεραυνοί ανά απόσταση, 24 ώ';
+$lang['LtNone24h']                = 'Κανένας κεραυνός σε 24 ώ';
+$lang['LtLatest']                 = 'τελευταίος';
 ?>

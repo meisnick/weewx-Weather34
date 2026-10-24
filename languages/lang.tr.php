@@ -948,4 +948,8 @@ $lang['EtShort']                  = 'ET';
 $lang['RainEtBalance']            = 'Yağmur − ET';
 $lang['HcEt']                     = 'ET';
 $lang['HcEtperHour']              = 'ET (saatlik)';
+# Lightning card strike-distance strip
+$lang['LtByDistance']             = 'Mesafeye göre yıldırım, 24 sa';
+$lang['LtNone24h']                = '24 saatte yıldırım yok';
+$lang['LtLatest']                 = 'son';
 ?>

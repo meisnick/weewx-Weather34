@@ -22,13 +22,13 @@
     $plot_info = explode(",",$_GET['plot_info']);
     $filenames = explode(":", $plot_info[1]);
     $weewxfile = fopen("../serverdata/weewxserverinfo.txt", "r");
-    $weewxdata = fgets($weewxfile);
-    fclose($weewxfile);
+    $weewxdata = $weewxfile ? fgets($weewxfile) : false;
+    if ($weewxfile) fclose($weewxfile);
     if (strlen($weewxdata)){
       $data = explode(":", $weewxdata);
       $weewxserver_address = trim($data[0]);
       $weewxserver_port = trim($data[1]);
-      $weewx_file_transfer = trim($data[2]);
+      $weewx_file_transfer = trim($data[2] ?? '');
       putenv("PYTHONPATH=".trim(implode(":", array_slice($data, 3)))); // may hold several ':'-joined paths
     }
     else{
@@ -52,7 +52,7 @@
       $filename = $plot_info[0].$filenames[$i];
       if (file_exists($filename))
         unlink($filename);
-      $cmd = $plot_info[2]." ".$_GET['epoch']." ".$filename.".tmpl ".getcwd()." ".$weewx_file_transfer;
+      $cmd = $plot_info[2]." ".$_GET['epoch']." ".$filename.".tmpl ".getcwd()." ".($weewx_file_transfer ?? '');
       error_log("NOT AN ERROR ".$cmd);
       if (isset($_GET['epoch1'])){
         $s_file1 = explode(".", $filename)[0]."1.json";
@@ -63,7 +63,7 @@
         else
           shell_exec(escapeshellcmd($cmd));
         rename($filename, $s_file1);
-        $cmd = $plot_info[2]." ".$_GET['epoch1']." ".$filename.".tmpl ".getcwd()." ".$weewx_file_transfer;
+        $cmd = $plot_info[2]." ".$_GET['epoch1']." ".$filename.".tmpl ".getcwd()." ".($weewx_file_transfer ?? '');
         error_log("NOT AN ERROR ".$cmd);
         if (isset($weewxserver_address)){
           try {

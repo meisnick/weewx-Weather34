@@ -1,7 +1,7 @@
 <?php 
     $weewxfile = fopen("serverdata/weewxserverinfo.txt", "r");
-    $weewxdata = fgets($weewxfile);
-    fclose($weewxfile);
+    $weewxdata = $weewxfile ? fgets($weewxfile) : false;
+    if ($weewxfile) fclose($weewxfile);
     if (strlen($weewxdata)){
       $data = explode(":", $weewxdata);
       $weewxserver_address = trim($data[0]);

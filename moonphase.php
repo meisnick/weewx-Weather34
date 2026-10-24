@@ -108,7 +108,7 @@ include_once('meteor34.php');
 $meteor_default = meteor34_now_text(meteor34_status()) ?? w34t('NoMeteorShower', 'No Meteor Showers');
 $meteorOP = ($meteor_default !== w34t('NoMeteorShower', 'No Meteor Showers'));
 ?>
-<div class="updatedtime1"><span><?php if(file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>
+<div class="updatedtime1"><span><?php if(isset($livedata2)&&file_exists($livedata2)&&time()- filemtime($livedata2)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>
 <div class="mod-moonphase">
 <div class="moonphasemoduleposition">
 <div class="moonrise1">
@@ -134,8 +134,8 @@ document.getElementById("weather34shape").setAttribute("d",weather34moonCurve);}
 $now1 = time();
 $moon1 = new MoonPhase();
 echo "";
-if ($now1 < $moon1->full_moon()) {echo date($dateFormat, $moon1->full_moon() );}
-else echo date( $dateFormat, $moon1->next_full_moon() );
+if ($now1 < $moon1->full_moon()) {echo date($dateFormat, (int)$moon1->full_moon() );}
+else echo date( $dateFormat, (int)$moon1->next_full_moon() );
 ?></moonm></value></div>
 </div>
 
@@ -145,7 +145,7 @@ else echo date( $dateFormat, $moon1->next_full_moon() );
 <?php echo $lang['Nextnewmoon'];?> <div class="nextnewmoon"><value><moonm>
 <?php // homeweatherstation create an instance of the next new moon
 $moon = new MoonPhase();
-$nextnewmoon = date( $dateFormat, $moon->next_new_moon() );
+$nextnewmoon = date( $dateFormat, (int)$moon->next_new_moon() );
 //$nextnewmoon = date( 'jS-M', $moon->next_new_moon() );
 echo "$nextnewmoon";
 ?></moonm></value></div>

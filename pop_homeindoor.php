@@ -100,15 +100,15 @@ else if ($weather["temp_indoor"]>=0) echo "#44a6b5";
 ?>" opacity="1.00" d=" M 286.41 150.46 C 329.44 146.38 373.92 161.88 404.75 192.24 C 416.41 203.29 425.90 216.47 433.33 230.67 C 438.74 240.45 442.59 251.03 445.26 261.87 C 456.72 303.60 448.45 350.20 423.60 385.58 C 405.62 411.69 379.21 431.96 349.12 442.07 C 303.35 458.22 249.80 450.25 210.97 421.04 C 191.81 407.16 176.33 388.48 165.68 367.40 C 152.07 340.35 147.21 309.14 151.24 279.17 C 154.66 256.34 162.81 234.07 176.17 215.17 C 200.72 178.50 242.51 154.25 286.41 150.46 Z" />
 </svg>
 <div class=indoorsvgnestvalue>  
-<?php echo number_format($weather["temp_indoor"],1);?><?php echo "<smalluvunit>&deg;",$weather["temp_units"]?></div>
+<?php echo number_format((float)$weather["temp_indoor"],1);?><?php echo "<smalluvunit>&deg;",$weather["temp_units"]?></div>
 <div class="trendicon"><?php 
 if($weather["temp_indoor_trend"] >0)echo $heatindexwu;
 else if($weather["temp_indoor_trend"]<0)echo $windchillwu;
 else if($weather["temp_indoor_trend"] ==0)echo $airqualitybreeze; 
 ?> </div>
 <?php 
-if($weather["temp_indoor_trend"] >0)echo "<div class='weather34indoortrendup'>",number_format($weather["temp_indoor_trend"],1).'&deg; '.$risingsymbol;
-else if($weather["temp_indoor_trend"]<0)echo "<div class='weather34indoortrenddown'>", number_format($weather["temp_indoor_trend"],1).'&deg;'.$fallingsymbol;
+if($weather["temp_indoor_trend"] >0)echo "<div class='weather34indoortrendup'>",number_format((float)$weather["temp_indoor_trend"],1).'&deg; '.$risingsymbol;
+else if($weather["temp_indoor_trend"]<0)echo "<div class='weather34indoortrenddown'>", number_format((float)$weather["temp_indoor_trend"],1).'&deg;'.$fallingsymbol;
 else if($weather["temp_indoor_trend"] ==0)echo "<div class='weather34indoortrendsteady'>" . w34t('Steady', 'Steady'); 
 ?></div></div>
 </div>
@@ -138,7 +138,7 @@ else if($weather["temp_indoor_trend"] ==0)echo "<div class='weather34indoortrend
         </div>
 
 <div class=indoorsvgnestvalue>  
-<?php echo number_format($weather["humidity_indoor"],0);?><?php echo "<smallhumunit>%</smallhumunit>"?></div>
+<?php echo number_format((float)$weather["humidity_indoor"],0);?><?php echo "<smallhumunit>%</smallhumunit>"?></div>
 <div class="trendicon"><?php 
 if($weather["humidity_indoor"]>80)echo $windchillwu;
 else if($weather["humidity_indoor"]>50)echo $airqualitybreeze;
@@ -146,8 +146,8 @@ else if($weather["humidity_indoor"]>35)echo $humiditybreeze;
 else if($weather["humidity_indoor"]<35)echo $heatindexwu;
 ?></div>
 <?php 
-if($weather["humidity_indoortrend"] >0)echo "<div class='weather34indoortrendup'>",number_format($weather["humidity_indoortrend"],0)."<sup>%</sup>".$risingsymbol;
-else if($weather["humidity_indoortrend"]<0)echo "<div class='weather34indoortrenddown'>", number_format($weather["humidity_indoortrend"],0)."<sup>%</sup>".$fallingsymbol;
+if($weather["humidity_indoortrend"] >0)echo "<div class='weather34indoortrendup'>",number_format((float)$weather["humidity_indoortrend"],0)."<sup>%</sup>".$risingsymbol;
+else if($weather["humidity_indoortrend"]<0)echo "<div class='weather34indoortrenddown'>", number_format((float)$weather["humidity_indoortrend"],0)."<sup>%</sup>".$fallingsymbol;
 else if($weather["humidity_indoortrend"]==0)echo "<div class='weather34indoortrendsteady'>" . w34t('Steady', 'Steady'); 
 ?></div></div>
 </div></div></div>
@@ -177,7 +177,7 @@ else if ($weather["temp_indoor_feel"]>=0) echo "#44a6b5";
 ?>" opacity="1.00" d=" M 286.41 150.46 C 329.44 146.38 373.92 161.88 404.75 192.24 C 416.41 203.29 425.90 216.47 433.33 230.67 C 438.74 240.45 442.59 251.03 445.26 261.87 C 456.72 303.60 448.45 350.20 423.60 385.58 C 405.62 411.69 379.21 431.96 349.12 442.07 C 303.35 458.22 249.80 450.25 210.97 421.04 C 191.81 407.16 176.33 388.48 165.68 367.40 C 152.07 340.35 147.21 309.14 151.24 279.17 C 154.66 256.34 162.81 234.07 176.17 215.17 C 200.72 178.50 242.51 154.25 286.41 150.46 Z" />
 </svg>
 <div class=indoorsvgnestvalue>  
-<?php echo number_format($weather["temp_indoor_feel"],1);?><?php echo "<smalluvunit>&deg;",$weather["temp_units"]?></div>
+<?php echo number_format((float)$weather["temp_indoor_feel"],1);?><?php echo "<smalluvunit>&deg;",$weather["temp_units"]?></div>
 <div class="trendicon"><?php 
 if($weather["temp_units"]=='F' &&  $weather["temp_indoor_feel"]>78.8)echo $heatindexwu;
 else if($weather["temp_units"]=='F' &&  $weather["temp_indoor_feel"]>64.4)echo $heatindexwu;

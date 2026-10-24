@@ -56,7 +56,7 @@ if (isset($_GET['theme'])) {
 <body>
   <div class="weather34darkbrowser" url="Wind Map for <?php echo htmlspecialchars($stationlocation); ?>"></div>
   <div class="roundcornerframe">
-    <iframe scrolling="no" src="https://embed.windy.com/embed2.html?lat=<?php echo urlencode($lat); ?>&lon=<?php echo urlencode($lon); ?>&zoom=8&level=surface&overlay=wind&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=<?php echo urlencode($lat); ?>&detailLon=<?php echo urlencode($lon); ?>&metricWind=<?php echo urlencode($weather['wind_units']); ?>&metricTemp=%C2%B0<?php echo urlencode($weather['temp_units']); ?>&metricRain=<?php echo urlencode($weather['rain_units']); ?>&radarRange=-1" frameborder="0"></iframe>
+    <iframe scrolling="no" src="https://embed.windy.com/embed2.html?lat=<?php echo urlencode($lat); ?>&lon=<?php echo urlencode($lon); ?>&zoom=8&level=surface&overlay=wind&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=<?php echo urlencode($lat); ?>&detailLon=<?php echo urlencode($lon); ?>&metricWind=<?php echo urlencode($weather['wind_units'] ?? ''); ?>&metricTemp=%C2%B0<?php echo urlencode($weather['temp_units'] ?? ''); ?>&metricRain=<?php echo urlencode($weather['rain_units'] ?? ''); ?>&radarRange=-1" frameborder="0"></iframe>
   </div>
 </body>
 </html>

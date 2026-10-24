@@ -172,7 +172,7 @@ if ($pressureunit == 'mb' || $pressureunit == 'hPa' || $pressureunit == 'kPa') {
 <?php
 if ($distanceunit == 'mi') {
 	echo $metar34vismiles  ," (", w34t('Miles', 'miles'), ")";
-    echo $metar34cloudbasefeet;
+    echo $metar34cloudbasefeet ?? '';
 } else {
 	echo $metar34viskm ," (km)";
 }
@@ -441,7 +441,7 @@ if ($metar_ts) {
   <article>
   <div class=actualt style="background:teal;color:white;">&nbsp;&nbsp <?php echo w34t('ApiInfo', 'API Info'); ?></div>  
   <div class="lotemp">
-  <?php echo $info?> <?php echo w34t('DataProvidedBy', 'Data Provided by'); ?> </span><a href="https://aviationweather.gov/data/metar/?ids=<?php echo $icao1;?>" title="aviationweather.gov" target="_blank"><br><img src=img/noaa.svg width=130px alt="aviationweather.gov"></a></span></div>
+  <?php echo $info?> <?php echo w34t('DataProvidedBy', 'Data Provided by'); ?> </span><a href="https://aviationweather.gov/data/metar/?ids=<?php echo $icao1 ?? '';?>" title="aviationweather.gov" target="_blank"><br><img src=img/noaa.svg width=130px alt="aviationweather.gov"></a></span></div>
   </article> 
   
   

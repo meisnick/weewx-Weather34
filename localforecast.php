@@ -80,7 +80,7 @@ if (file_exists($file_path)) {
             <!-- Style B (High-Contrast Solid-Bottom Badge, scaled for grid size) -->
             <div class="ym-badge <?php echo $rain_class; ?>">
                 <div class="ym-badge-top">
-                    <span class="ym-lbl"><?php echo $badge_label; ?></span>
+                    <span class="ym-lbl"><?php echo $badge_label ?? ''; ?></span>
                     <span class="ym-val"><?php echo $rain_pct; ?>%</span>
                 </div>
                 <div class="ym-badge-bot">

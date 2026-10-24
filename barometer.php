@@ -34,9 +34,9 @@ if (is_numeric($weather["barometer_trend"]) && abs($weather["barometer_trend"]) 
 }
 echo "<valuetext>&nbsp;&nbsp;".w34t('TrendLabel', 'Trend');
 if ($baro_tendency == 'falling') {
-echo '<falling><fall> '.$fallingsymbol.'</fall><value> '; echo number_format($weather["barometer_trend"],2), '</falling><units> ';echo $weather["barometer_units"], '</units>';}
+echo '<falling><fall> '.$fallingsymbol.'</fall><value> '; echo number_format((float)$weather["barometer_trend"],2), '</falling><units> ';echo $weather["barometer_units"], '</units>';}
 else if ($baro_tendency == 'rising') {
-echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format($weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}
+echo '<rising><rise>'.$risingsymbol.' </rise><value>&nbsp;';echo number_format((float)$weather["barometer_trend"],2), '</rising><units> ';echo $weather["barometer_units"], '</units>';}
 else echo '<span class="ink-ogreen"> '.$steadysymbol.'</span><steady><span class="ink-ogreen"><value>'.w34t('Steady', 'Steady').'</span></steady>';?></valuetext>
 </div>
 

@@ -35,7 +35,7 @@ if (isset($_GET['theme'])) {
 <body>
 <?php
 $forecastime = filemtime('jsondata/uk.txt'); ?>
-<div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="Weather Alerts for <?php echo $stationName ?>
+<div class="weather34darkbrowser" style="color:<?php echo $text1 ?? '' ?>;" url="Weather Alerts for <?php echo $stationName ?>
                                          <?php echo '&nbsp;';
 echo "Risk Level Updated &nbsp;" . date($timeFormatShort, $forecastime); ?>"></div>  
  

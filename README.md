@@ -4,7 +4,7 @@
 Theme-aware, drag-and-drop customizable, with live radar, air quality, lightning, space
 weather, and AI-summarized forecast discussions — all powered by free, keyless data sources.
 
-![WeeWX 5.5.0](https://img.shields.io/badge/WeeWX-5.5.0-1f6feb)
+![WeeWX 5.5.2](https://img.shields.io/badge/WeeWX-5.5.2-1f6feb)
 ![PHP 8.4](https://img.shields.io/badge/PHP-8.4-777bb4)
 ![Python 3.13](https://img.shields.io/badge/Python-3.13-3776ab)
 ![Debian 13](https://img.shields.io/badge/Debian-13%20Trixie-a81d33)
@@ -66,13 +66,13 @@ no paid or deprecated APIs.
 
 | Branch | WeeWX | PHP | Python | OS | Status | Description |
 |--------|-------|-----|--------|----|--------|-------------|
-| **`main`** | 5.5.0 | 8.4 | 3.13 | Debian 13 Trixie 64-bit | **Active** | The modular skin — dynamic layout engine, modular CSS, theme engine, Space Weather & LLM forecast |
+| **`main`** | 5.5.2 | 8.4 | 3.13 | Debian 13 Trixie 64-bit | **Active** | The modular skin — dynamic layout engine, modular CSS, theme engine, Space Weather & LLM forecast |
 | `main-legacy` | 5.5.0 | 8.4 | 3.13 | Debian 13 Trixie 64-bit | Preserved | Previous upstream-compatible standard layout (pre-modularization) |
 | `legacy-4.x` | 4.10.2 | 8.1 | 3.9 | Debian 11 Bullseye | Frozen | Traditional steepleian-style WeeWX 4 releases |
 
 ## Requirements
 
-- **WeeWX** 5.x (tested 5.5.0)
+- **WeeWX** 5.x (tested 5.5.2)
 - **PHP** 8.2+ with `mbstring` (tested 8.4 via `php-cli` + Apache)
 - **Python** 3.9+ (tested 3.13)
 - **OS** Debian 12 Bookworm or 13 Trixie (64-bit recommended)

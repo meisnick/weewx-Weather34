@@ -166,8 +166,7 @@ Copy the scripts to `/usr/local/bin` and make them executable:
 sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update}.py \
         /var/www/html/weewx/weather34/scripts/w34config.py \
         /usr/local/bin/
-sudo cp /var/www/html/weewx/weather34/scripts/update_aqi.sh /usr/local/bin/
-sudo chmod +x /usr/local/bin/*.py /usr/local/bin/update_aqi.sh
+sudo chmod +x /usr/local/bin/*.py
 ```
 
 Create log files:
@@ -180,7 +179,6 @@ sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,clou
 Add to root crontab (`sudo crontab -e`):
 
 ```
-0 * * * *       /usr/local/bin/update_aqi.sh
 1-56/5 * * * *  /usr/bin/python3 /usr/local/bin/cloud_cover_update.py >> /var/log/cloud_cover.log 2>&1
 15 * * * *      /usr/bin/python3 /usr/local/bin/nws_forecast_update.py >> /var/log/nws_forecast.log 2>&1
 */15 * * * *    /usr/bin/python3 /usr/local/bin/metar_update.py >> /var/log/metar_update.log 2>&1

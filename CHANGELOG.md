@@ -20,6 +20,10 @@ Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` int
   nearest WAQI monitor measures neither, so WAQI's values for them weren't readings. PM2.5 and O₃ stay WAQI.
   Add the `om_url` / `om_interval` lines from `weewx5.conf.example` to `[Weather34WebServices]`, add `om`
   to `services`, and restart WeeWX.
+- Top-bar AQI module (`top_aqi_daqi.php`): PM2.5 from WAQI and PM10 from the Open-Meteo model (marked *est*),
+  read directly; labelled AQI, which they always were (not µg/m³, and the bands are US AQI, not UK DAQI).
+  `scripts/update_aqi.sh` and `jsondata/aqiJson.txt` are retired: remove the `update_aqi.sh` line from root's
+  crontab and `/usr/local/bin/update_aqi.sh`.
 - Rainfall card: the year and month headings sit above their pills like Last Hour / Last 24hr.
 - Nowcast card: the RAIN 6H badge lines up with the rainfall card's pills.
 - README feature list brought up to date.

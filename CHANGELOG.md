@@ -22,7 +22,7 @@ folders into WeeWX's skins directory (WeeWX runs its own copies), and restart We
 - **METAR:** one shared decoder for the card and popups: intensities (-RA/+RA), the most-covered cloud layer, cloud
   base above ground, flight category badge (VFR/MVFR/IFR/LIFR); a report older than 2 hours shows as offline.
 - **Scales:** EPA UV categories, AQI 50 = Good, aurora Kp 8 = Severe; meteor shower dates from one shared table.
-- **Air Quality chart:** records PM2.5/PM10 from the WAQI feed; missing PM is a gap, not zero.
+- **Air Quality chart:** records PM2.5 from the WAQI feed; missing PM is a gap, not zero.
 - **Sensors:** sensor-health light covers WH31-family indoor sensors (e.g. WN31); a false station low-battery alert
   (gust direction collided with a battery slot) is fixed; indoor dewpoint pill.
 - **Charts:** true time spacing with breaks at outages; yearly drill-down and radial charts fixed on Highcharts 12;

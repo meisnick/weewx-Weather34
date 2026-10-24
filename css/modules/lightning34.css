@@ -91,7 +91,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-top: 14px;   /* under the strip, clear of the chin */
+    margin-top: 20px;   /* about as far under the strip as above the chin */
 }
 
 /* ── Left column: badge + distance pill ──────────────────────────────────── */

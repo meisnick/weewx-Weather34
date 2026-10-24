@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 11:08:01 UTC
+   Generated: 2026-10-24 11:11:01 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -2492,7 +2492,7 @@ position: static;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-top: 14px;   /* under the strip, clear of the chin */
+    margin-top: 20px;   /* about as far under the strip as above the chin */
 }
 
 /* ── Left column: badge + distance pill ──────────────────────────────────── */

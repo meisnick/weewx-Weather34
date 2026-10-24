@@ -960,4 +960,7 @@ $lang['TabYearlyUv']              = 'Yıllık UV';
 $lang['TabWeeklyUv']              = 'Haftalık UV';
 $lang['TabYearlySolar']           = 'Yıllık güneş';
 $lang['TabWeeklySolar']           = 'Haftalık güneş';
+# Air Quality card: model-estimate pills
+$lang['AqEstShort']               = 'tah.';
+$lang['AqModelTip']               = 'Open-Meteo hava kalitesi modelinden tahmin (CAMS): en yakın istasyon bunu ölçmüyor';
 ?>

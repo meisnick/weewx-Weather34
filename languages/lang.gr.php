@@ -962,4 +962,7 @@ $lang['TabYearlyUv']              = 'UV έτους';
 $lang['TabWeeklyUv']              = 'UV εβδομάδας';
 $lang['TabYearlySolar']           = 'Ηλιακή έτους';
 $lang['TabWeeklySolar']           = 'Ηλιακή εβδομάδας';
+# Air Quality card: model-estimate pills
+$lang['AqEstShort']               = 'εκτ.';
+$lang['AqModelTip']               = 'Εκτίμηση από το μοντέλο ποιότητας αέρα του Open-Meteo (CAMS): ο πλησιέστερος σταθμός δεν το μετρά';
 ?>

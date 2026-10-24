@@ -964,4 +964,7 @@ $lang['TabYearlyUv']              = 'Yearly UV';
 $lang['TabWeeklyUv']              = 'Weekly UV';
 $lang['TabYearlySolar']           = 'Yearly Solar';
 $lang['TabWeeklySolar']           = 'Weekly Solar';
+# Air Quality card: model-estimate pills
+$lang['AqEstShort']               = 'est';
+$lang['AqModelTip']               = 'Estimate from the Open-Meteo air-quality model (CAMS): the nearest monitor does not measure this';
 ?>

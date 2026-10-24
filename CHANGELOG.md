@@ -4,7 +4,8 @@ All notable changes to this maintained fork will be documented in this file.
 
 ## [Unreleased]
 
-Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory.
+Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory
+(and see the Air Quality note below for `weewx.conf`).
 
 - Popups open as popups again: the jQuery 3.7.1 update had dropped the bundled Lity lightbox, so card links
   opened full pages. Lity is now its own `js/lity.js`.
@@ -15,6 +16,10 @@ Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` int
   UV popup gains Yearly and Weekly UV and Solar tabs — full charts with timeframe buttons, like rain, wind,
   temperature and barometer. The lightning chart leaves out the Energy series when there is no energy data
   and draws distance as dots.
+- Air Quality card: PM10 and NO₂ come from the Open-Meteo air-quality model (CAMS) and are marked *est*; the
+  nearest WAQI monitor measures neither, so WAQI's values for them weren't readings. PM2.5 and O₃ stay WAQI.
+  Add the `om_url` / `om_interval` lines from `weewx5.conf.example` to `[Weather34WebServices]`, add `om`
+  to `services`, and restart WeeWX.
 - Rainfall card: the year and month headings sit above their pills like Last Hour / Last 24hr.
 - Nowcast card: the RAIN 6H badge lines up with the rainfall card's pills.
 - README feature list brought up to date.

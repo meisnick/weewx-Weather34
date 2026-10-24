@@ -961,4 +961,7 @@ $lang['TabYearlyUv']              = 'UV – év';
 $lang['TabWeeklyUv']              = 'UV – hét';
 $lang['TabYearlySolar']           = 'Napsugárzás – év';
 $lang['TabWeeklySolar']           = 'Napsugárzás – hét';
+# Air Quality card: model-estimate pills
+$lang['AqEstShort']               = 'becs.';
+$lang['AqModelTip']               = 'Becslés az Open-Meteo levegőminőségi modelljéből (CAMS): a legközelebbi mérőállomás ezt nem méri';
 ?>

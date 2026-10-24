@@ -161,9 +161,12 @@ version = 5.5.0
     aq_interval = 3600
     wu_url = https://api.weather.com/v3/wx/forecast/daily/5day?geocode=LAT,LON&language=en&format=json&units=e&apiKey=YOUR_TWC_API_KEY
     wu_interval = 3600
+    # PM10 and NO2 for the Air Quality card (keyless model data; WAQI's monitor may not measure them)
+    om_url = https://air-quality-api.open-meteo.com/v1/air-quality?latitude=LAT&longitude=LON&current=pm10,nitrogen_dioxide,us_aqi_pm10,us_aqi_nitrogen_dioxide&timezone=auto
+    om_interval = 3600
     ki_url = https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json
     ki_interval = 21600
-    services = aq.wu.ki
+    services = aq.wu.ki.om
 
 [Accumulator]
     [[lightning_strike_count]]

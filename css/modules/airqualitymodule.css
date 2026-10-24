@@ -165,6 +165,13 @@
     text-indent: 0.3px;
 }
 
+/* model estimate (Open-Meteo), not a measurement */
+.mod-aq-pill .lbl .est {
+    font-size: 0.85em;
+    text-transform: none;
+    opacity: .75;
+}
+
 /* ── Light theme ──────────────────────────────────────────────────────────── */
 [data-theme="light"] .mod-aq-badge {
     /* border-box would shrink the fixed 4.5rem interior by 2px and clip the fixed

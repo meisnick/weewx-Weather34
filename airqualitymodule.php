@@ -16,12 +16,21 @@ if (file_exists($aq_file) && (time() - filemtime($aq_file) < 7200)) {
         $aqi         = (int)($d['aqi'] ?? 0);
         $iaqi        = $d['iaqi'] ?? [];
         $aq_pm25     = isset($iaqi['pm25']['v']) ? round((float)$iaqi['pm25']['v']) : null;
-        $aq_pm10     = isset($iaqi['pm10']['v']) ? round((float)$iaqi['pm10']['v']) : null;
         $aq_o3       = isset($iaqi['o3']['v'])   ? round((float)$iaqi['o3']['v'])   : null;
-        $aq_no2      = isset($iaqi['no2']['v'])  ? round((float)$iaqi['no2']['v'])  : null;
         $aq_dominant = strtolower($d['dominentpol'] ?? '');
         $data_ok     = true;
     }
+}
+
+// PM10 and NO2: the nearest monitor measures neither (WAQI's values for them aren't its readings), so they come
+// from Open-Meteo's air-quality model at the station (jsondata/om.txt, the 'om' web service), as US AQI sub-indices
+// like WAQI's, and the pills say they are estimates.
+$om_file = 'jsondata/om.txt';
+if (file_exists($om_file) && (time() - filemtime($om_file) < 10800)) {
+    $om = json_decode(file_get_contents($om_file), true);
+    $omc = $om['current'] ?? [];
+    $aq_pm10 = isset($omc['us_aqi_pm10']) ? round((float)$omc['us_aqi_pm10']) : null;
+    $aq_no2  = isset($omc['us_aqi_nitrogen_dioxide']) ? round((float)$omc['us_aqi_nitrogen_dioxide']) : null;
 }
 
 // Modifier class suffix for a given AQI sub-index value
@@ -57,10 +66,11 @@ $dom_lvl    = aq_level($dom_vals[$aq_dominant] ?? null);
 
 $polls = [
     'PM2.5' => ['val' => $aq_pm25, 'slug' => 'pm25'],
-    'PM10'  => ['val' => $aq_pm10, 'slug' => 'pm10'],
+    'PM10'  => ['val' => $aq_pm10, 'slug' => 'pm10', 'model' => true],
     'O3'    => ['val' => $aq_o3,   'slug' => 'o3'],
-    'NO₂'   => ['val' => $aq_no2,  'slug' => 'no2'],
+    'NO₂'   => ['val' => $aq_no2,  'slug' => 'no2', 'model' => true],
 ];
+$aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Meteo air-quality model (CAMS): the nearest monitor does not measure this'));
 ?>
 <div class="updatedtime"><span>
     <?php if ($data_ok):
@@ -95,9 +105,9 @@ $polls = [
                 $disp = ($p['val'] !== null) ? $p['val'] : '--';
                 $dom  = ($p['slug'] === $aq_dominant) ? ' dominant' : '';
             ?>
-            <div class="mod-aq-pill mod-aq-bg--<?php echo $lvl . $dom; ?>">
+            <div class="mod-aq-pill mod-aq-bg--<?php echo $lvl . $dom; ?>"<?php if (!empty($p['model'])) echo ' title="' . $aq_model_tip . '"'; ?>>
                 <span class="val"><?php echo $disp; ?></span>
-                <span class="lbl"><?php echo $label; ?></span>
+                <span class="lbl"><?php echo $label; if (!empty($p['model'])) echo ' <span class="est">' . w34t('AqEstShort', 'est') . '</span>'; ?></span>
             </div>
             <?php endforeach; ?>
         </div>

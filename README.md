@@ -39,8 +39,9 @@ no paid or deprecated APIs.
   including the settings UI.
 - **📡 Live NWS radar** — polished radar module with real-time station picking, dark-mode
   inversion, zero-flash double-buffered loop transitions, and an interactive pan/zoom popup.
-- **🌫️ Air quality** — two-column module with PM2.5, PM10, O₃ and NO₂ pills from WAQI, a tabbed
-  details popup, and a historical AQI trend chart.
+- **🌫️ Air quality** — two-column module with PM2.5 and O₃ pills from the nearest WAQI monitor and
+  PM10 / NO₂ estimates from the Open-Meteo air-quality model (marked *est*), a tabbed details popup,
+  and a historical AQI trend chart.
 - **⚡ Lightning** — live strike statistics from the archive database, a 24-hour strike-distance
   strip across the sensor's range (heat-shaded by count, with the latest strike marked), distances
   in the dashboard's units, and a Strike Almanac with yearly and weekly charts.
@@ -121,7 +122,7 @@ All supplemental data comes from free, officially maintained sources. Paid and d
 
 | Source | Purpose | License |
 |--------|---------|---------|
-| [Open-Meteo](https://open-meteo.com/) | Forecast + cloud cover | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — attribution required |
+| [Open-Meteo](https://open-meteo.com/) | Forecast, cloud cover, PM10/NO₂ estimates (CAMS model) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — attribution required |
 | [NOAA Aviation Weather Center](https://aviationweather.gov/) | METAR current conditions | US Government / Public Domain |
 | [NOAA National Weather Service](https://www.weather.gov/documentation/services-web-api) | Weather alerts, AFD | US Government / Public Domain |
 | [NOAA Space Weather](https://www.swpc.noaa.gov/) | Kp index / OVATION aurora | US Government / Public Domain |
@@ -130,7 +131,8 @@ All supplemental data comes from free, officially maintained sources. Paid and d
 | [WeeWX](https://weewx.com/) | Weather station daemon | [GPL v3](https://github.com/weewx/weewx/blob/master/LICENSE.txt) |
 | [basmilius/weather-icons](https://github.com/basmilius/weather-icons) | Animated forecast SVG icons | MIT |
 
-Open-Meteo data is used under CC BY 4.0 per their [terms](https://open-meteo.com/en/terms).
+Open-Meteo data is used under CC BY 4.0 per their [terms](https://open-meteo.com/en/terms). The air-quality
+estimates contain modified Copernicus Atmosphere Monitoring Service information.
 NOAA data is US government work and not subject to copyright within the United States.
 
 ---

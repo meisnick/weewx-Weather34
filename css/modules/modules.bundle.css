@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 19:13:49 UTC
+   Generated: 2026-10-24 20:25:47 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -636,6 +636,13 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
     text-indent: 0.3px;
+}
+
+/* model estimate (Open-Meteo), not a measurement */
+.mod-aq-pill .lbl .est {
+    font-size: 0.85em;
+    text-transform: none;
+    opacity: .75;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */

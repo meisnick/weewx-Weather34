@@ -960,4 +960,7 @@ $lang['TabYearlyUv']              = 'UV Jahr';
 $lang['TabWeeklyUv']              = 'UV Woche';
 $lang['TabYearlySolar']           = 'Solar Jahr';
 $lang['TabWeeklySolar']           = 'Solar Woche';
+# Air Quality card: model-estimate pills
+$lang['AqEstShort']               = 'gesch.';
+$lang['AqModelTip']               = 'Schätzung aus dem Open-Meteo-Luftqualitätsmodell (CAMS): die nächste Messstation misst diesen Wert nicht';
 ?>

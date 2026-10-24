@@ -53,6 +53,7 @@
 
 /* ── Rain Risk Badge (Style B Scaled) ─────────────────────────────────────── */
 .ym-badge {
+  margin-right: 6px;   /* right edge 10px in from the card, like the rainfall card pills */
   border-radius: 2px;
   height: 32px;
   width: 62px;

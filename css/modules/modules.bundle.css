@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 10:30:02 UTC
+   Generated: 2026-10-24 10:34:20 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -2720,6 +2720,7 @@ position: static;
 
 /* ── Rain Risk Badge (Style B Scaled) ─────────────────────────────────────── */
 .ym-badge {
+  margin-right: 6px;   /* right edge 10px in from the card, like the rainfall card pills */
   border-radius: 2px;
   height: 32px;
   width: 62px;

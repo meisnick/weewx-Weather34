@@ -1294,8 +1294,8 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	};
 	
 	// rain in the dashboard's rain blue; ET (evapotranspiration, water out) in amber, darker on the light theme
-	var rain_color = '#3b9cac';
-	function et_color(){ return Highcharts.theme == 'white' ? '#b8740f' : '#e6a141'; };
+	var rain_color = '#3b9cac';   // ET is converted at 3 decimals: an hour's ET is ~0.01 in
+	function et_color(){ return /light-charts/.test(location.pathname) ? '#b8740f' : '#e6a141'; };   // light-charts.html / dark-charts.html
 
 	function create_rain_chart(options, span, seriesData, units){
 	    var rp = seriesData[0].rainplot;
@@ -1305,7 +1305,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	        options = create_chart_options(options, 'column', 'RainFall', units.rain, values);
 	        options.series[0].data = remove_zero_dps(convert_rain(rp.units, units.rain, reinflate_time(rp.rainsum)));
 	        if (rp.etsum){
-	            options.series[1].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etsum));
+	            options.series[1].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etsum), 3);
 	            Object.assign(options.series[1], {color: et_color(), lineWidth: 1.5, marker: {enabled: false}});
 	        }
 	    }
@@ -1316,7 +1316,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	        options.series[0].data = convert_rain(rp.units, units.rain, reinflate_time(rp.rain));
 	        options.series[1].data = convert_rain(rp.units, units.rain, reinflate_time(rp.rainRate));
 	        if (rp.etHour){
-	            options.series[2].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etHour));
+	            options.series[2].data = convert_rain(rp.units, units.rain, reinflate_time(rp.etHour), 3);
 	            Object.assign(options.series[2], {color: et_color(), lineWidth: 2, marker: {enabled: false}});
 	        }
 	        options.yAxis[1].title.text = "(" + units.rain + ")";
@@ -1355,7 +1355,7 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	    options.series[0].data = rain.sums.map(function(v){ return parseFloat(v.toFixed(2)); });
 	    options.series[0].color = rain_color;
 	    if (rp.etsum){
-	        var et = by_month(convert_rain(rp.units, units.rain, reinflate_time(rp.etsum)));
+	        var et = by_month(convert_rain(rp.units, units.rain, reinflate_time(rp.etsum), 3));
 	        // matched by calendar month, so ET and rain line up even if one starts a day later
 	        options.series[1].data = rain.keys.map(function(k){ var i = et.keys.indexOf(k); return i < 0 ? null : parseFloat(et.sums[i].toFixed(2)); });
 	        options.series[1].color = et_color();

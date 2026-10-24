@@ -893,6 +893,10 @@ class Weather34RealTime(StdService):
     def handle_new_loop(self, event):
         if self.cache_enable:
             self.newLoopPacket(event)
+        # The GW1000 reports the distance of its LAST strike in every packet, days after the storm. Keep a distance only
+        # in a packet that counted strikes, so archive records without lightning carry none.
+        if event.packet.get('lightning_distance') is not None and not event.packet.get('lightning_strike_count'):
+            event.packet['lightning_distance'] = None
         self.handle_data(event.packet)
 
     def newLoopPacket(self, event):
@@ -931,8 +935,9 @@ class Weather34RealTime(StdService):
             data = self.calculate(event_data, dbm)
             self.write_data(data)
         except Exception as e:
-            logdbg("w34rt: Exception while handling data: %s" % e)
-            raise
+            # Skip this realtime update only. Re-raising reaches weewxd's main loop, which shuts the engine down
+            # (a "database is locked" here stopped data collection on dev on 2026-10-23).
+            logerr("w34rt: realtime update skipped: %s" % e)
 
     def write_data(self, data):
         data = self.create_realtime_string(data)

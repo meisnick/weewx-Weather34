@@ -406,7 +406,8 @@ class w34highcharts_bar_rain_week(SearchList):
         try:
                 (time_start_vt, time_stop_vt, distance_vt) = db_lookup().getSqlVectors(TimeSpan(_start_ts, timespan.stop), 'lightning_distance')
                 distanceRound = int(self.generator.skin_dict['Units']['StringFormats'].get(distance_vt[1], "1f")[-2])
-                distanceRound_vt =  [roundNone(x,distanceRound) if x != None else 0 for x in distance_vt[0]]
+                # no strikes = no distance: null (a gap), not 0 km
+                distanceRound_vt =  [roundNone(x,distanceRound) for x in distance_vt[0]]
                 distanceTime_ms =  [time_stop_vt[0][0] if (x == 0) else time_stop_vt[0][x] - time_stop_vt[0][0] for x in range(len(time_stop_vt[0]))]
                 distance_json = json.dumps(list(zip(distanceTime_ms, distanceRound_vt)))
         except:

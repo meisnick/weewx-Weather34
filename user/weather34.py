@@ -551,15 +551,15 @@ class ForecastData():
             time.sleep(60)
 
 class AirQuality():
-    """Stamps each archive record with PM2.5 and PM10 (ug/m3) from the WAQI feed in jsondata/aq.txt, so the
-    Air Quality chart has history; the station has no PM sensor. WAQI gives US AQI sub-indices, converted back
-    to concentrations with the EPA breakpoints. A value the station supplied is never overwritten."""
+    """Stamps each archive record with PM2.5 (ug/m3) from the WAQI feed in jsondata/aq.txt, so the Air Quality
+    chart has history; the station has no PM sensor. WAQI gives US AQI sub-indices, converted back to
+    concentrations with the EPA breakpoints. A value the station supplied is never overwritten.
+    Not PM10: the Harrington Beach monitor (AirNow 550890009) has no PM10 instrument, and the pm10 WAQI shows
+    for it (like its t and no2) is not that monitor's reading: it held at 9 for a day while PM2.5 moved."""
     # (AQI low, AQI high, concentration low, concentration high). PM2.5 is the pre-2024 table, which WAQI still uses:
     # 18 of 18 monitors around Chicago/Milwaukee matched AirNow's raw hourly ug/m3 with it on 2026-10-23, 1 with 2024's.
     PM2_5 = ((0, 50, 0.0, 12.0), (51, 100, 12.1, 35.4), (101, 150, 35.5, 55.4), (151, 200, 55.5, 150.4),
              (201, 300, 150.5, 250.4), (301, 500, 250.5, 500.4))
-    PM10_0 = ((0, 50, 0, 54), (51, 100, 55, 154), (101, 150, 155, 254), (151, 200, 255, 354),
-              (201, 300, 355, 424), (301, 500, 425, 604))
     MAX_AGE = 3 * 3600   # the monitor's reading time; older means the feed or the monitor has stalled
 
     def __init__(self, html_root):
@@ -578,7 +578,7 @@ class AirQuality():
                 data = json.load(f)['data']
             if time.time() - datetime.datetime.fromisoformat(data['time']['iso']).timestamp() > self.MAX_AGE:
                 return
-            for field, key, table in (('pm2_5', 'pm25', self.PM2_5), ('pm10_0', 'pm10', self.PM10_0)):
+            for field, key, table in (('pm2_5', 'pm25', self.PM2_5),):
                 aqi = data.get('iaqi', {}).get(key, {}).get('v')
                 if event.record.get(field) is None and isinstance(aqi, (int, float)) and aqi >= 0:
                     event.record[field] = self.aqi_to_conc(aqi, table)

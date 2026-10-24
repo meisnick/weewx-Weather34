@@ -935,4 +935,9 @@ $lang['FltCatVFR']                = 'Visual Flight Rules';
 $lang['FltCatMVFR']               = 'Marginal VFR';
 $lang['FltCatIFR']                = 'Instrument Flight Rules';
 $lang['FltCatLIFR']               = 'Low IFR';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Live Radar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather Alerts';
+$lang['Current']                  = 'Current';
 ?>

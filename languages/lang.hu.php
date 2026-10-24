@@ -88,7 +88,7 @@ $lang['FeelingExtremelyHot']    = 'Extrém meleg';
 //wind
 $lang['Windspeed']              = 'Szélsebesség';
 $lang['Gust']                   = 'Széllökés';
-$lang['Direction']              = 'Szélrány';
+$lang['Direction']              = 'Szélirány';
 $lang['Gusting']                = 'Széllökés';
 $lang['Blowing']                = 'Fúj';
 $lang['Wind']                   = 'Szél';
@@ -222,7 +222,7 @@ $lang['Solarradiation']         = 'Napsugárzás';
 //current sky
 $lang['Currentsky']             = 'Jelenlegi időjárás';
 $lang['Currently']              = 'Jelenleg';
-$lang['Cloudcover']             = 'Felhős';
+$lang['Cloudcover']             = 'Felhőzet';
 //Notifications
 $lang['Nocurrentalert']         = 'Nincs <span>Veszély</span>';
 $lang['Windalert']              = 'Széllökés';
@@ -932,4 +932,9 @@ $lang['CondThunderstormsNearby']  = 'Zivatar|a közelben';
 $lang['CondIcePellets']           = 'Jégdara';
 $lang['CondSmoke']                = 'Füst';
 $lang['MetarHoursOld']            = '%s órás';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Élő radar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather figyelmeztetések';
+$lang['Current']                  = 'Jelenlegi';
 ?>

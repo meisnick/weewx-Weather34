@@ -24,8 +24,8 @@ $lang = array();
 // Menu
 $lang['Settings'] = 'Impostazioni';
 $lang['Layout'] = 'Cambia Tema';
-$lang['Lighttheme'] = 'Tema Light';
-$lang['Darktheme'] = 'Tema Dark';
+$lang['Lighttheme'] = 'Tema chiaro';
+$lang['Darktheme'] = 'Tema scuro';
 $lang['Nonmetric'] = 'US (F) ';
 $lang['Metric'] = 'Metrico (C)';
 $lang['UKmetric'] = 'UK (MPH - Metrico) ';
@@ -102,7 +102,7 @@ $lang['Moderatebreeze'] = 'Vento moderato';
 $lang['Freshbreeze'] = 'Vento teso';
 $lang['Strongbreeze'] = 'Vento fresco';
 $lang['Neargale'] = 'Vicino a burrasca';
-$lang['Galeforce'] = 'Gale Burrasca';
+$lang['Galeforce'] = 'Burrasca';
 $lang['Stronggale'] = 'Burrasca forte';
 $lang['Storm'] = 'Tempesta';
 $lang['Violentstorm'] = 'Tempesta violenta';
@@ -120,35 +120,24 @@ $lang['StrongGaleattimes'] = 'Burrasca';
 $lang['StormConditions'] = 'Tempesta';
 $lang['ViolentStormConditions'] = 'Tempesta Violenta';
 $lang['HurricaneConditions'] = 'Uragano';
-$lang['Avg'] = ' Avg: ';
+$lang['Avg'] = '<span2> Media: </span2>';
 //wind direction compass
-$lang['Northdir'] = 'Da Nord
-';
-$lang['NNEdir'] = 'Nord Nord
-Est';
-$lang['NEdir'] = 'Nord Est
-';
-$lang['ENEdir'] = 'Est Nord
-Est';
-$lang['Eastdir'] = "Da Est
-";
-$lang['ESEdir'] = 'Est Sud
-Est';
-$lang['SEdir'] = 'Sud Est';
-$lang['SSEdir'] = 'Sud Sud
-Est';
-$lang['Southdir'] = 'Da Sud';
-$lang['SSWdir'] = 'Sud Sud
-Ovest';
-$lang['SWdir'] = 'Sud Ovest';
-$lang['WSWdir'] = 'Ovest Sud
-Ovest';
-$lang['Westdir'] = 'Da Ovest';
-$lang['WNWdir'] = 'Ovest Nord
-Ovest';
-$lang['NWdir'] = 'Nord Ovest';
-$lang['NWNdir'] = 'Nord Nord
-Ovest';
+$lang['Northdir'] = 'Da <span>Nord<br></span>';
+$lang['NNEdir'] = 'Nord Nord<br><span>Est</span>';
+$lang['NEdir'] = 'Nord <span> Est<br></span>';
+$lang['ENEdir'] = 'Est Nord<br><span>Est</span>';
+$lang['Eastdir'] = 'Da <span> Est<br></span>';
+$lang['ESEdir'] = 'Est Sud<br><span>Est</span>';
+$lang['SEdir'] = 'Sud <span> Est</span>';
+$lang['SSEdir'] = 'Sud Sud<br><span>Est</span>';
+$lang['Southdir'] = 'Da <span> Sud</span>';
+$lang['SSWdir'] = 'Sud Sud<br><span>Ovest</span>';
+$lang['SWdir'] = 'Sud <span> Ovest</span>';
+$lang['WSWdir'] = 'Ovest Sud<br><span>Ovest</span>';
+$lang['Westdir'] = 'Da <span> Ovest</span>';
+$lang['WNWdir'] = 'Ovest Nord<br><span>Ovest</span>';
+$lang['NWdir'] = 'Nord <span> Ovest</span>';
+$lang['NWNdir'] = 'Nord Nord<br><span>Ovest</span>';
 //wind direction avg
 $lang['North'] = 'Nord';
 $lang['NNE'] = 'NNE';
@@ -193,10 +182,8 @@ $lang['Estimated'] = 'Stimato';
 $lang['Daylight'] = 'Luce';
 $lang['Darkness'] = 'Oscurità';
 $lang['Daysold'] = 'Vecchia';
-$lang['Belowhorizon'] = 'sotto
-orizzonte';
-$lang['Mintill'] = '
-min fino';
+$lang['Belowhorizon'] = 'sotto<br>l’orizzonte';
+$lang['Mintill'] = ' min a';
 $lang['Till'] = 'a ';
 $lang['Minago'] = ' min fa';
 $lang['Hrs'] = ' ore';
@@ -227,19 +214,15 @@ $lang['Reducetime'] = 'Ridurre il tempo al sole tra le 10am-4pm ';
 $lang['Minimize'] = 'Ridurre al minimo esposizione al sole tra le 10am-4pm ';
 $lang['Trytoavoid'] = 'Cercate di evitare esposizione al sole tra le 10am-4pm ';
 //solar
-$lang['Poor'] = 'Scarsa
-Radiazione';
-$lang['Low'] = 'Bassa
-Radiazione';
-$lang['Moderate'] = 'Moderata
-Radiazione';
-$lang['Good'] = 'Forte
-Radiazione';
+$lang['Poor'] = 'Radiazione<color> <br>scarsa</color>';
+$lang['Low'] = 'Radiazione <br><color>bassa</color>';
+$lang['Moderate'] = 'Radiazione <br><color>moderata</color>';
+$lang['Good'] = 'Radiazione <br><color>buona</color>';
 $lang['Solarradiation'] = 'Radiazione solare';
 //current sky
 $lang['Currentsky'] = 'Condizioni Attuali';
 $lang['Currently'] = 'Attualmente';
-$lang['Cloudcover'] = 'Coperto dalle Nuvole';
+$lang['Cloudcover'] = 'Nuvolosità';
 //Notifications
 $lang['Nocurrentalert'] = 'Nessuna allerta';
 $lang['Windalert'] = 'Raffiche di vento';
@@ -346,21 +329,6 @@ $lang['RainfallTotals'] = 'Totali precipitazioni';
 $lang['WeatherAdvisory'] = 'Avviso meteorologico';
 
 # Synced from lang.en.php (keys added for newer modules)
-$lang['Northdir']                 = 'Da <span>Nord<br></span>';
-$lang['NNEdir']                   = 'Nord Nord<br><span>Est</span>';
-$lang['NEdir']                    = 'Nord <span> Est<br></span>';
-$lang['ENEdir']                   = 'Est Nord<br><span>Est</span>';
-$lang['Eastdir']                  = 'Da <span> Est<br></span>';
-$lang['ESEdir']                   = 'Est Sud<br><span>Est</span>';
-$lang['SSEdir']                   = 'Sud Sud<br><span>Est</span>';
-$lang['SSWdir']                   = 'Sud Sud<br><span>Ovest</span>';
-$lang['WSWdir']                   = 'Ovest Sud<br><span>Ovest</span>';
-$lang['WNWdir']                   = 'Ovest Nord<br><span>Ovest</span>';
-$lang['NWNdir']                   = 'Nord Nord<br><span>Ovest</span>';
-$lang['Belowhorizon']             = 'sotto<br>l’orizzonte';
-$lang['Mintill']                  = ' min a';
-$lang['Poor']                     = 'Radiazione<color> <br>scarsa</color>';
-$lang['Low']                      = 'Radiazione <br><color>bassa</color>';
 $lang['Active']                   = 'Attivo';
 $lang['AIndex']                   = 'Indice A';
 $lang['AuroraAGuide']             = 'è un indicatore di possibili comunicazioni radio VHF migliorate a distanze di 1000 miglia o più. Durante una forte attività solare, le frequenze da 28 a 433 MHz o superiori consentono comunicazioni radio a medie e alte latitudini.';
@@ -963,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Temporali|nelle vicinanze';
 $lang['CondIcePellets']           = 'Granuli di ghiaccio';
 $lang['CondSmoke']                = 'Fumo';
 $lang['MetarHoursOld']            = 'di %s h fa';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Radar in tempo reale';
+$lang['AerisWeatherAlerts']       = 'Allerte AerisWeather';
+$lang['Current']                  = 'Attuale';
 ?>

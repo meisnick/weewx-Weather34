@@ -559,6 +559,11 @@ $lang['CondVeryWindy']            = 'Very Windy';
 $lang['CondModerateWindConditions'] = 'Moderate Wind|Conditions';
 $lang['CondBreezyConditions']     = 'Breezy|Conditions';
 $lang['CondConditionsNotAvailable'] = 'Conditions|Not Available';
+$lang['CondShowersNearby']        = 'Showers|Nearby';
+$lang['CondThunderstormsNearby']  = 'Thunderstorms|Nearby';
+$lang['CondIcePellets']           = 'Ice Pellets';
+$lang['CondSmoke']                = 'Smoke';
+$lang['MetarHoursOld']            = '%s h old';
 $lang['UnitDay']                  = 'day';
 $lang['UnitDays']                 = 'days';
 $lang['UnitHour']                 = 'hour';
@@ -924,4 +929,15 @@ $lang['HcViewMonths']             = 'View {count} months';
 $lang['HcViewYears']              = 'View {count} years';
 $lang['HcViewYtd']                = 'View year to date';
 $lang['HcLoading']                = 'Loading...';
+
+# METAR flight category hover text (w34_i18n.php w34_fltcat_badge)
+$lang['FltCatVFR']                = 'Visual Flight Rules';
+$lang['FltCatMVFR']               = 'Marginal VFR';
+$lang['FltCatIFR']                = 'Instrument Flight Rules';
+$lang['FltCatLIFR']               = 'Low IFR';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Live Radar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather Alerts';
+$lang['Current']                  = 'Current';
 ?>

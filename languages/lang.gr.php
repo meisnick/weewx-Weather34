@@ -128,7 +128,7 @@ $lang['NEdir']                  = 'Βορειο-<span>Ανατολικός<br></
 $lang['ENEdir']                 = 'Ανατολικός-Βορειο<br><span>Ανατολικός</span>';
 $lang['Eastdir']                = "<span> Ανατολικός<br></span>";
 $lang['ESEdir']                 = 'Ανατολικός-Νότιο<br><span>Ανατολικός</span>';
-$lang['SEdir']                  = 'Νοτιο-<span>:Ανατολικός</span>';
+$lang['SEdir']                  = 'Νοτιο-<span>Ανατολικός</span>';
 $lang['SSEdir']                 = 'Νότιος-Νοτιο<br><span>Ανατολικός</span>';
 $lang['Southdir']               = '<span> Νότιος</span>';
 $lang['SSWdir']                 = 'Νότιος-Νοτιο<br><span>Δυτικός</span>';
@@ -296,8 +296,8 @@ $lang['Hazordous']               = 'Επικίνδυνες συνθήκες';
 $lang['VeryUnhealthy']           = 'Πολύ ανθυγιεινή';
 $lang['Unhealthy']               = 'Ανθυγιεινή ποιότητα αέρα';
 $lang['UnhealthyFS']             = 'Ανθυγιεινή για ορισμένους';
-$lang['Moderate']                = 'Moderate Air Quality ';
-$lang['Good']                    = 'Good Air Quality ';
+$lang['Moderate']                = 'Μέτρια ποιότητα αέρα';
+$lang['Good']                    = 'Καλή ποιότητα αέρα';
 #notification additions
 $lang['notifyTitle']             = 'Ειδοποιήσεις Μετεωρολ. Σταθμού';
 $lang['notifyAlert']             = 'Ειδοποίηση';
@@ -933,4 +933,9 @@ $lang['CondThunderstormsNearby']  = 'Καταιγίδες|κοντά';
 $lang['CondIcePellets']           = 'Παγοχάλαζο';
 $lang['CondSmoke']                = 'Καπνός';
 $lang['MetarHoursOld']            = 'πριν από %s ώρες';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Ζωντανό ραντάρ';
+$lang['AerisWeatherAlerts']       = 'Ειδοποιήσεις AerisWeather';
+$lang['Current']                  = 'Τρέχων';
 ?>

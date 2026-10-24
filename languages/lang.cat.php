@@ -78,7 +78,7 @@ $lang['verydry']                = '& Molt sec';
 $lang['FreezingCold']           = 'Fred gelat';
 $lang['FeelingVeryCold']        = 'Sensació molt freda';
 $lang['FeelingCold']            = 'Sensació de fred';
-$lang['FeelingCool']            = 'Sensació de fred';
+$lang['FeelingCool']            = 'Sensació fresca';
 $lang['FeelingComfortable']     = 'Sensació còmoda ';
 $lang['FeelingWarm']            = 'Sensació de calor';
 $lang['FeelingHot']             = 'Sensació de calor';
@@ -99,8 +99,8 @@ $lang['Lightair']               = 'Vent lleuger';
 $lang['Lightbreeze']            = 'Brisa lleugera';
 $lang['Gentelbreeze']           = 'Brisa suau';
 $lang['Moderatebreeze']         = 'Brisa moderada';
-$lang['Freshbreeze']            = 'Brisa moderada';
-$lang['Strongbreeze']           = 'Brisa fresca';
+$lang['Freshbreeze']            = 'Brisa fresca';
+$lang['Strongbreeze']           = 'Brisa forta';
 $lang['Neargale']               = 'Brisa forta';
 $lang['Galeforce']              = 'Vendaval';
 $lang['Stronggale']             = 'Vendaval fort';
@@ -222,7 +222,7 @@ $lang['Solarradiation']         = 'Radiacio Solar';
 //current sky
 $lang['Currentsky']             = 'Condicions actuals';
 $lang['Currently']              = 'Actualment';
-$lang['Cloudcover']             = 'Cobert';
+$lang['Cloudcover']             = 'Nuvolositat';
 //Notifications
 $lang['Nocurrentalert']         = 'No hi ha alertes ';
 $lang['Windalert']              = 'Ràfegues de vent a';
@@ -267,7 +267,7 @@ $lang['Tomorrownight']          = 'Demà a la nit';
 $lang['Updated']                = 'Actualitzat';
 $lang['Meteor']                 = 'Informació de Meteors';
 $lang['Firerisk']               = 'Risc dincendis';
-$lang['Localtime']              = 'Temps local';
+$lang['Localtime']              = 'Hora local';
 $lang['Nometeor']               = 'Sense  meteors';
 $lang['LiveWebCam']             = 'WebCam en directe';
 $lang['Online']                 = 'En línia';
@@ -931,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Tempestes|properes';
 $lang['CondIcePellets']           = 'Gragea de gel';
 $lang['CondSmoke']                = 'Fum';
 $lang['MetarHoursOld']            = 'fa %s h';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Radar en directe';
+$lang['AerisWeatherAlerts']       = 'Alertes d’AerisWeather';
+$lang['Current']                  = 'Actual';
 ?>

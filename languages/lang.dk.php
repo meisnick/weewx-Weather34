@@ -78,7 +78,7 @@ $lang['verydry']                = '& Meget Tørt';
 $lang['FreezingCold']           = 'Frysende Koldt';
 $lang['FeelingVeryCold']        = 'Føles Meget Koldt';
 $lang['FeelingCold']            = 'Føles Koldt';
-$lang['FeelingCool']            = 'Føles Koldt';
+$lang['FeelingCool']            = 'Føles køligt';
 $lang['FeelingComfortable']     = 'Føles Komfortabelt ';
 $lang['FeelingWarm']            = 'Føles Varmt';
 $lang['FeelingHot']             = 'Føles Rigtigt Varmt';
@@ -162,7 +162,7 @@ $lang['Rainfall']               = 'Regn';
 $lang['Precip']                 = 'ca.'; // must be short name do not use full precipatation !!!! ///
 $lang['Rain']                   = 'Regn';
 $lang['Heavyrain']              = 'Kraftig regn';
-$lang['Flooding']               = 'Mulighed for oversmømmelse';
+$lang['Flooding']               = 'Mulighed for oversvømmelse';
 $lang['Rainbow']                = 'Regnbue';
 $lang['Windy']                  = 'Blæsende';
 //sun -moon-daylight-darkness
@@ -227,7 +227,7 @@ $lang['Cloudcover']             = 'Skydække';
 $lang['Nocurrentalert']         = 'Ingen Nuværende Vejr Alarmer';
 $lang['Windalert']              = 'Vindstød Af';
 $lang['Tempalert']              = 'Høj Temperatur';
-$lang['Heatindexalert']         = 'Heat Index Forsigtighed ';
+$lang['Heatindexalert']         = 'Varmeindeks-advarsel';
 $lang['Windchillalert']         = 'Vind Faktor Forsigtighed';
 $lang['Dewpointalert']          = 'Ubehagelig Luftfugtighed';
 $lang['Dewpointcolderalert']    = 'Dugpunkt føles koldere';
@@ -240,7 +240,7 @@ $lang['Significant']            = 'Betydelig Jordskælv';
 $lang['Nosignificant']          = 'Ingen Betydelige Jordskælv';
 //Main page
 $lang['Barometer']              = 'Barometer';
-$lang['UVSOLAR']                = 'UV | Solar Data';
+$lang['UVSOLAR']                = 'UV | Soldata';
 $lang['Earthquake']             = 'Jordskælvs Data';
 $lang['Daynight']               = 'Dagslys og Natte Info';
 $lang['SunPosition']            = 'Solens position';
@@ -296,8 +296,8 @@ $lang['Hazordous']              = 'Farlige forhold';
 $lang['VeryUnhealthy']          = 'Meget usund';
 $lang['Unhealthy']              = 'Usund luftkvalitet';
 $lang['UnhealthyFS']            = 'Usund for nogle';
-$lang['Moderate']               = 'Moderate Air Quality ';
-$lang['Good']                   = 'Good Air Quality ';
+$lang['Moderate']               = 'Moderat luftkvalitet';
+$lang['Good']                   = 'God luftkvalitet';
 #notification additions
 $lang['notifyTitle']             = 'Notifikationer';
 $lang['notifyAlert']             = 'Advarsel';
@@ -931,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Tordenvejr|i nærheden';
 $lang['CondIcePellets']           = 'Iskorn';
 $lang['CondSmoke']                = 'Røg';
 $lang['MetarHoursOld']            = '%s t gammel';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Live-radar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather-varsler';
+$lang['Current']                  = 'Aktuel';
 ?>

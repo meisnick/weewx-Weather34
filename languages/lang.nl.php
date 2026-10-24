@@ -24,8 +24,8 @@ $lang                           = array();
 // Menu
 $lang['Settings']               = 'Instellingen';
 $lang['Layout']                 = 'Verander Lay-out';
-$lang['Lighttheme']             = 'Lichte Topic';
-$lang['Darktheme']              = 'Donkere Topic';
+$lang['Lighttheme']             = 'Licht thema';
+$lang['Darktheme']              = 'Donker thema';
 $lang['Nonmetric']              = 'US (F) ';
 $lang['Metric']                 = 'Metrisch (C)';
 $lang['UKmetric']               = 'VK (MPH - metrisch)';
@@ -159,10 +159,9 @@ $lang['NWN']                    = 'NWN';
 $lang['raintoday']              = 'Regen vandaag';
 $lang['Rate']                   = 'Intens.';
 $lang['Rainfall']               = 'Neerslag';
-$lang['precip']                 = 'Neerslag'; // must be short name do not use full precipatation or I will remove it if it does not align !!!! ///
 $lang['Precip']                 = 'Neerslag'; // must be short name do not use full precipatation or I will remove it if it does not align !!!! ///
 $lang['Rain']                   = 'Regen';
-$lang['HeavyRain']              = 'Hevige regen';
+$lang['Heavyrain']              = 'Zware regen';
 $lang['Rainbow']                = 'Regenboog';
 $lang['Windy']                  = 'Winderig';
 //sun -moon-daylight-darkness
@@ -296,8 +295,8 @@ $lang['Hazordous']              = 'Gevaarlijke omstandigheden';
 $lang['VeryUnhealthy']          = 'Zeer ongezond';
 $lang['Unhealthy']              = 'Ongezonde luchtkwaliteit';
 $lang['UnhealthyFS']            = 'Ongezond voor sommigen';
-$lang['Moderate']               = 'Moderate Air Quality ';
-$lang['Good']                   = 'Good Air Quality ';
+$lang['Moderate']               = 'Matige luchtkwaliteit';
+$lang['Good']                   = 'Goede luchtkwaliteit';
 #notification additions
 $lang['notifyTitle']            = 'Weerstation Meldingen';
 $lang['notifyAlert']             = 'Waarschuwing';
@@ -329,7 +328,6 @@ $lang['RainfallTotals']          = 'Neerslag totalen';
 $lang['WeatherAdvisory']         = 'Weerswaarschuwing';
 
 # Synced from lang.en.php (keys added for newer modules)
-$lang['Heavyrain']                = 'Zware regen';
 $lang['Flooding']                 = 'Overstroming mogelijk';
 $lang['Active']                   = 'Actief';
 $lang['AIndex']                   = 'A-index';
@@ -933,4 +931,9 @@ $lang['CondThunderstormsNearby']  = 'Onweer|in de buurt';
 $lang['CondIcePellets']           = 'IJsregen';
 $lang['CondSmoke']                = 'Rook';
 $lang['MetarHoursOld']            = '%s u oud';
+
+# Page titles and labels used by modules (pop_radar_live.php, pop_ukalerts.php, solaruv.php)
+$lang['LiveRadar']                = 'Live radar';
+$lang['AerisWeatherAlerts']       = 'AerisWeather-waarschuwingen';
+$lang['Current']                  = 'Huidig';
 ?>

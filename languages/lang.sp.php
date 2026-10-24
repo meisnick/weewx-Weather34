@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (por hora)';
 $lang['LtByDistance']             = 'Rayos por distancia, 24 h';
 $lang['LtNone24h']                = 'Sin rayos en 24 h';
 $lang['LtLatest']                 = 'último';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Almanaque y gráficos de rayos';
+$lang['TabYearlyLightning']       = 'Rayos anual';
+$lang['TabWeeklyLightning']       = 'Rayos semanal';
+$lang['TabYearlyUv']              = 'UV anual';
+$lang['TabWeeklyUv']              = 'UV semanal';
+$lang['TabYearlySolar']           = 'Solar anual';
+$lang['TabWeeklySolar']           = 'Solar semanal';
 ?>

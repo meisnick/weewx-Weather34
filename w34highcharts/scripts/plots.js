@@ -1387,33 +1387,48 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	};
 	
 	function create_lightning_chart(options, span, seriesData, units){
+	    // energy only from stations whose sensor reports it (the WH57 doesn't): no empty series, no blank third axis
+	    var lp = seriesData[0].lightningplot, has_energy = function(d){ return (d || []).some(function(p, i){ return i > 0 && p[1] > 0; }); };
+	    var dist = {marker: {enabled: true, radius: 2.5, symbol: 'circle'}, lineWidth: 0};
 	    if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'Lightning Distance/Strikes/Energy Max & Avg/Cnt', null, [['Distance Max', 'column',1], ['Distance Avg', 'column',1], ['Strikes Cnt', 'column'], ['Energy Max', 'column',2], ['Energy Avg', 'column',2]]);
-	        options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.distanceMax));
-	        options.series[1].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.distanceAvg));
-	        options.series[2].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCount || []));
-	        options.series[3].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.energyMax));
-	        options.series[4].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.energyAvg));
+	        var energy = has_energy(lp.energyMax);
+	        var series = [['Strikes Cnt', 'column'], ['Distance Max', 'scatter',1], ['Distance Avg', 'scatter',1]];
+	        if (energy) series.push(['Energy Max', 'column',2], ['Energy Avg', 'column',2]);
+	        options = create_chart_options(options, 'column', energy ? 'Lightning Distance/Strikes/Energy Max & Avg/Cnt' : 'Lightning Strikes', null, series);
+	        options.series[0].data = remove_zero_dps(reinflate_time(lp.strikeCount || []));
+	        options.series[1].data = remove_zero_dps(reinflate_time(lp.distanceMax));
+	        options.series[2].data = remove_zero_dps(reinflate_time(lp.distanceAvg));
+	        if (energy){
+	            options.series[3].data = remove_zero_dps(reinflate_time(lp.energyMax));
+	            options.series[4].data = remove_zero_dps(reinflate_time(lp.energyAvg));
+	        }
 	    }else if (span[0] == "weekly"){
-	        if (compare_dates)
-	            options = create_chart_options(options, 'column', 'Lightning Strikes/Distance/Energy', null, [['Strikes', 'column'], ['Distance', 'column',1], ['Energy', 'column',2],['Strikes', 'column',,,,,1], ['Distance', 'column',1,,,,1], ['Energy', 'column',2,,,,1]]);
-	        else
-	            options = create_chart_options(options, 'column', 'Lightning Strikes/Distance/Energy', null, [['Strikes', 'column'], ['Distance', 'column',1], ['Energy', 'column',2]]);
-	        options.series[0].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.strikeCountWeek));
-	        options.series[1].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.distanceWeek));
-	        options.series[2].data = remove_zero_dps(reinflate_time(seriesData[0].lightningplot.energyWeek));
+	        var energy = has_energy(lp.energyWeek) || (compare_dates && has_energy(seriesData[1].lightningplot.energyWeek));
+	        var series = [['Strikes', 'column'], ['Distance', 'scatter',1]];
+	        if (energy) series.push(['Energy', 'column',2]);
+	        var n = series.length;
 	        if (compare_dates){
-	            create_compare_days_ts(options.series[0].data, seriesData[1].lightningplot.strikeCountWeek);
-	            options.series[3].data = remove_zero_dps(reinflate_time(seriesData[1].lightningplot.strikeCountWeek, options.series[0].data[0][0]));
-	            options.series[4].data = remove_zero_dps(reinflate_time(seriesData[1].lightningplot.distanceWeek, options.series[0].data[0][0]));
-	            options.series[5].data = remove_zero_dps(reinflate_time(seriesData[1].lightningplot.energyWeek, options.series[0].data[0][0]));
+	            series.push(['Strikes', 'column',,,,,1], ['Distance', 'scatter',1,,,,1]);
+	            if (energy) series.push(['Energy', 'column',2,,,,1]);
+	        }
+	        options = create_chart_options(options, 'column', energy ? 'Lightning Strikes/Distance/Energy' : 'Lightning Strikes', null, series);
+	        options.series[0].data = remove_zero_dps(reinflate_time(lp.strikeCountWeek));
+	        options.series[1].data = remove_zero_dps(reinflate_time(lp.distanceWeek));
+	        if (energy) options.series[2].data = remove_zero_dps(reinflate_time(lp.energyWeek));
+	        if (compare_dates){
+	            var lp1 = seriesData[1].lightningplot;
+	            create_compare_days_ts(options.series[0].data, lp1.strikeCountWeek);
+	            options.series[n].data = remove_zero_dps(reinflate_time(lp1.strikeCountWeek, options.series[0].data[0][0]));
+	            options.series[n + 1].data = remove_zero_dps(reinflate_time(lp1.distanceWeek, options.series[0].data[0][0]));
+	            if (energy) options.series[n + 2].data = remove_zero_dps(reinflate_time(lp1.energyWeek, options.series[0].data[0][0]));
 	        }
 	    }
+	    options.series.forEach(function(s){ if (s.type == 'scatter') Object.assign(s, dist); });
 	    options.yAxis[0].min = 0;
 	    options.yAxis[0].title.text = getTranslation("Strikes");
 	    options.yAxis[0].allowDecimals = false;
 	    options.yAxis[1].min = 0;
-	    options.yAxis[1].title.text = getTranslation("Distance") + (seriesData[0].lightningplot.distanceunits ? " (" + seriesData[0].lightningplot.distanceunits + ")" : "");
+	    options.yAxis[1].title.text = getTranslation("Distance") + (lp.distanceunits ? " (" + lp.distanceunits + ")" : "");
 	    options.yAxis[1].allowDecimals = true;
 	    options.yAxis[2].min = 0;
 	    options.yAxis[2].title.text = getTranslation("Energy");

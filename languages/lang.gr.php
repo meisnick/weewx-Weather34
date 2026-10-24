@@ -954,4 +954,12 @@ $lang['HcEtperHour']              = 'ET (ανά ώρα)';
 $lang['LtByDistance']             = 'Κεραυνοί ανά απόσταση, 24 ώ';
 $lang['LtNone24h']                = 'Κανένας κεραυνός σε 24 ώ';
 $lang['LtLatest']                 = 'τελευταίος';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Αλμανάκ και γραφήματα κεραυνών';
+$lang['TabYearlyLightning']       = 'Κεραυνοί έτους';
+$lang['TabWeeklyLightning']       = 'Κεραυνοί εβδομάδας';
+$lang['TabYearlyUv']              = 'UV έτους';
+$lang['TabWeeklyUv']              = 'UV εβδομάδας';
+$lang['TabYearlySolar']           = 'Ηλιακή έτους';
+$lang['TabWeeklySolar']           = 'Ηλιακή εβδομάδας';
 ?>

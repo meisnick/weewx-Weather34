@@ -956,4 +956,12 @@ $lang['HcEtperHour']              = 'ET (per hour)';
 $lang['LtByDistance']             = 'Strikes by distance, 24 h';
 $lang['LtNone24h']                = 'No strikes in 24 h';
 $lang['LtLatest']                 = 'latest';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Strike Almanac and Charts';
+$lang['TabYearlyLightning']       = 'Yearly Lightning';
+$lang['TabWeeklyLightning']       = 'Weekly Lightning';
+$lang['TabYearlyUv']              = 'Yearly UV';
+$lang['TabWeeklyUv']              = 'Weekly UV';
+$lang['TabYearlySolar']           = 'Yearly Solar';
+$lang['TabWeeklySolar']           = 'Weekly Solar';
 ?>

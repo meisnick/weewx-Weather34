@@ -86,6 +86,10 @@ body {
 <div class="tab-bar">
   <button class="tablink" onclick="openPage('Tab1', this)" id="defaultOpen"><?php echo w34t('TabUvAlmanac', 'UV Index Almanac'); ?></button>
   <button class="tablink" onclick="openPage('Tab2', this)"><?php echo w34t('LinkSolarAlmanac', 'Solar Almanac'); ?></button>
+  <button class="tablink" onclick="openPage('Tab4', this)"><?php echo w34t('TabYearlyUv', 'Yearly UV'); ?></button>
+  <button class="tablink" onclick="openPage('Tab5', this)"><?php echo w34t('TabWeeklyUv', 'Weekly UV'); ?></button>
+  <button class="tablink" onclick="openPage('Tab6', this)"><?php echo w34t('TabYearlySolar', 'Yearly Solar'); ?></button>
+  <button class="tablink" onclick="openPage('Tab7', this)"><?php echo w34t('TabWeeklySolar', 'Weekly Solar'); ?></button>
   <button class="tablink" onclick="openPage('Tab3', this)"><?php echo w34t('LinkUvGuide', 'UV Guide'); ?></button>  
 </div>
 
@@ -99,6 +103,22 @@ body {
 
 <div id="Tab3" class="tabcontent">
   <iframe scrolling="no" data-src="pop_uvindex.php?theme=<?php echo $theme; ?>" frameborder="0"></iframe>
+</div>
+
+<div id="Tab4" class="tabcontent">
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=uvplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+</div>
+
+<div id="Tab5" class="tabcontent">
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=uvplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+</div>
+
+<div id="Tab6" class="tabcontent">
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=radiationplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+</div>
+
+<div id="Tab7" class="tabcontent">
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=radiationplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <script>

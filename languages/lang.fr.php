@@ -954,4 +954,12 @@ $lang['HcEtperHour']              = 'ET (par heure)';
 $lang['LtByDistance']             = 'Impacts par distance, 24 h';
 $lang['LtNone24h']                = 'Aucun impact en 24 h';
 $lang['LtLatest']                 = 'dernier';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Almanach et graphiques des impacts';
+$lang['TabYearlyLightning']       = 'Foudre annuelle';
+$lang['TabWeeklyLightning']       = 'Foudre hebdomadaire';
+$lang['TabYearlyUv']              = 'UV annuel';
+$lang['TabWeeklyUv']              = 'UV hebdomadaire';
+$lang['TabYearlySolar']           = 'Solaire annuel';
+$lang['TabWeeklySolar']           = 'Solaire hebdomadaire';
 ?>

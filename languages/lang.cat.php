@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (per hora)';
 $lang['LtByDistance']             = 'Llamps per distància, 24 h';
 $lang['LtNone24h']                = 'Cap llamp en 24 h';
 $lang['LtLatest']                 = 'darrer';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Almanac i gràfics de llamps';
+$lang['TabYearlyLightning']       = 'Llamps anual';
+$lang['TabWeeklyLightning']       = 'Llamps setmanal';
+$lang['TabYearlyUv']              = 'UV anual';
+$lang['TabWeeklyUv']              = 'UV setmanal';
+$lang['TabYearlySolar']           = 'Solar anual';
+$lang['TabWeeklySolar']           = 'Solar setmanal';
 ?>

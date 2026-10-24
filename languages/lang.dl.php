@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (pro Stunde)';
 $lang['LtByDistance']             = 'Einschläge nach Entfernung, 24 h';
 $lang['LtNone24h']                = 'Keine Einschläge in 24 h';
 $lang['LtLatest']                 = 'zuletzt';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Blitz-Almanach und Diagramme';
+$lang['TabYearlyLightning']       = 'Blitze Jahr';
+$lang['TabWeeklyLightning']       = 'Blitze Woche';
+$lang['TabYearlyUv']              = 'UV Jahr';
+$lang['TabWeeklyUv']              = 'UV Woche';
+$lang['TabYearlySolar']           = 'Solar Jahr';
+$lang['TabWeeklySolar']           = 'Solar Woche';
 ?>

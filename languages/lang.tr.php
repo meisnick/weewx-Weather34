@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (saatlik)';
 $lang['LtByDistance']             = 'Mesafeye göre yıldırım, 24 sa';
 $lang['LtNone24h']                = '24 saatte yıldırım yok';
 $lang['LtLatest']                 = 'son';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Yıldırım almanağı ve grafikleri';
+$lang['TabYearlyLightning']       = 'Yıllık yıldırım';
+$lang['TabWeeklyLightning']       = 'Haftalık yıldırım';
+$lang['TabYearlyUv']              = 'Yıllık UV';
+$lang['TabWeeklyUv']              = 'Haftalık UV';
+$lang['TabYearlySolar']           = 'Yıllık güneş';
+$lang['TabWeeklySolar']           = 'Haftalık güneş';
 ?>

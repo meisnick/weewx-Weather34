@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (na godzinę)';
 $lang['LtByDistance']             = 'Wyładowania wg odległości, 24 h';
 $lang['LtNone24h']                = 'Brak wyładowań w 24 h';
 $lang['LtLatest']                 = 'ostatnie';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Almanach i wykresy wyładowań';
+$lang['TabYearlyLightning']       = 'Wyładowania – rok';
+$lang['TabWeeklyLightning']       = 'Wyładowania – tydzień';
+$lang['TabYearlyUv']              = 'UV – rok';
+$lang['TabWeeklyUv']              = 'UV – tydzień';
+$lang['TabYearlySolar']           = 'Słońce – rok';
+$lang['TabWeeklySolar']           = 'Słońce – tydzień';
 ?>

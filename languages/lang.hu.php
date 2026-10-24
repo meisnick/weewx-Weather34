@@ -953,4 +953,12 @@ $lang['HcEtperHour']              = 'ET (óránként)';
 $lang['LtByDistance']             = 'Becsapódások távolság szerint, 24 ó';
 $lang['LtNone24h']                = 'Nincs becsapódás 24 ó alatt';
 $lang['LtLatest']                 = 'utolsó';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Villám-almanach és grafikonok';
+$lang['TabYearlyLightning']       = 'Villámok – év';
+$lang['TabWeeklyLightning']       = 'Villámok – hét';
+$lang['TabYearlyUv']              = 'UV – év';
+$lang['TabWeeklyUv']              = 'UV – hét';
+$lang['TabYearlySolar']           = 'Napsugárzás – év';
+$lang['TabWeeklySolar']           = 'Napsugárzás – hét';
 ?>

@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (all\'ora)';
 $lang['LtByDistance']             = 'Fulmini per distanza, 24 h';
 $lang['LtNone24h']                = 'Nessun fulmine in 24 h';
 $lang['LtLatest']                 = 'ultimo';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Almanacco e grafici dei fulmini';
+$lang['TabYearlyLightning']       = 'Fulmini annuali';
+$lang['TabWeeklyLightning']       = 'Fulmini settimanali';
+$lang['TabYearlyUv']              = 'UV annuale';
+$lang['TabWeeklyUv']              = 'UV settimanale';
+$lang['TabYearlySolar']           = 'Solare annuale';
+$lang['TabWeeklySolar']           = 'Solare settimanale';
 ?>

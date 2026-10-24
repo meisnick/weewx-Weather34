@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (per time)';
 $lang['LtByDistance']             = 'Nedslag etter avstand, 24 t';
 $lang['LtNone24h']                = 'Ingen nedslag på 24 t';
 $lang['LtLatest']                 = 'siste';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Lynalmanakk og grafer';
+$lang['TabYearlyLightning']       = 'Lyn år';
+$lang['TabWeeklyLightning']       = 'Lyn uke';
+$lang['TabYearlyUv']              = 'UV år';
+$lang['TabWeeklyUv']              = 'UV uke';
+$lang['TabYearlySolar']           = 'Sol år';
+$lang['TabWeeklySolar']           = 'Sol uke';
 ?>

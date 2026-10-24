@@ -952,4 +952,12 @@ $lang['HcEtperHour']              = 'ET (per uur)';
 $lang['LtByDistance']             = 'Inslagen per afstand, 24 u';
 $lang['LtNone24h']                = 'Geen inslagen in 24 u';
 $lang['LtLatest']                 = 'laatste';
+# Lightning and UV/solar popout chart tabs
+$lang['LinkStrikeAlmanacCharts']  = 'Inslagalmanak en grafieken';
+$lang['TabYearlyLightning']       = 'Bliksem per jaar';
+$lang['TabWeeklyLightning']       = 'Bliksem per week';
+$lang['TabYearlyUv']              = 'UV per jaar';
+$lang['TabWeeklyUv']              = 'UV per week';
+$lang['TabYearlySolar']           = 'Zon per jaar';
+$lang['TabWeeklySolar']           = 'Zon per week';
 ?>

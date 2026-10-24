@@ -2,7 +2,11 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
-## [Unreleased] — since 5.1.0
+## [5.1.1] — 2026-10-24 — Evapotranspiration, clocks, jQuery 3.7
+
+Upgrading: pull, then copy `user/w34highchartsSearchX.py` into WeeWX's `bin/user`, and
+`skins/w34Highcharts/json/{bar_rain_week,year_rain,year_lightning}.json.tmpl` and
+`skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory, and restart WeeWX.
 
 - Clocks follow a daylight-saving change while the page stays open (station time zone, not a fixed offset).
 - jQuery 3.7.1 for the dashboard (was 3.4.0) and the chart pages (were jQuery 1.12.4 and UI 1.12.1 from
@@ -16,6 +20,8 @@ All notable changes to this maintained fork will be documented in this file.
   with an ET-today pill beside Rate; the Rain Almanac adds ET for each period and rain − ET for the month and
   year; the Weekly, Yearly and Monthly Rain charts draw ET (per hour, per day, per month) beside the rain,
   which is now drawn in the dashboard's rain blue.
+- Rainfall card: the pill rows are evenly spaced.
+- Weather advisory card: an active alert's icon and text are centred in the card.
 
 ## [5.1.0] — 2026-10-24 — Correctness, PHP 8.4/9 readiness, i18n, popups and charts
 

@@ -279,13 +279,13 @@ rainratetextheading {
   margin-right: 2px;
 }
 
-/* ET (evapotranspiration, water out): the year and month pills hold heading + rain + ET, drawn with the
-   pill's own border (the inner rain pill drops its border); the ET today pill sits beside Rate */
+/* ET (evapotranspiration, water out): the year and month pills hold rain + ET under their heading, drawn with
+   the pill's own border (the inner rain pill drops its border); the ET today pill sits beside Rate */
 /* rows sized to their content (equal 1fr rows padded the shorter Last Hour row), so the column spaces
-   the mm pill, the two pill rows and the bottom pills evenly: about 8px each */
+   the mm pill, the two pill rows and the bottom pills evenly: about 7px each */
 .mod-rainfall .mod-rainfall-2x2 {
   grid-template-rows: auto auto;
-  row-gap: 8px;
+  row-gap: 7px;
 }
 
 .mod-rainfall-etbox {
@@ -297,10 +297,6 @@ rainratetextheading {
   border: 1px solid var(--card-surface);
   border-radius: 2px;
   padding: 1px 0 2px;
-}
-
-.mod-rainfall .mod-rainfall-etbox valuetextheading1 {
-  line-height: 12px;
 }
 
 .mod-rainfall .mod-rainfall-etbox .rainmodulehome {

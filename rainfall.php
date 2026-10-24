@@ -54,8 +54,8 @@ include_once('w34CombinedData.php');
       <div class="mod-rainfall-2x2">
         <!-- Year: rain and ET (evapotranspiration) in one pill -->
         <div class="mod-rainfall-block">
-          <div class="mod-rainfall-etbox">
           <valuetextheading1><?php echo date('Y');?></valuetextheading1>
+          <div class="mod-rainfall-etbox">
           <div class="rainmodulehome">
             <raiblue><?php
               if($weather["rain_year"]>=1000) { echo round((float)$weather["rain_year"],0); }
@@ -69,8 +69,8 @@ include_once('w34CombinedData.php');
         
         <!-- Month: rain and ET in one pill -->
         <div class="mod-rainfall-block">
-          <div class="mod-rainfall-etbox">
           <valuetextheading1><?php echo w34_date('F');?></valuetextheading1>
+          <div class="mod-rainfall-etbox">
           <div class="rainmodulehome">
             <raiblue><?php echo $weather["rain_month"];?></raiblue>
             <smallrainunit2><?php echo $weather["rain_units"];?></smallrainunit2>

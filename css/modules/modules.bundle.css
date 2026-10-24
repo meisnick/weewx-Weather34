@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 11:11:01 UTC
+   Generated: 2026-10-24 19:13:49 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -2422,14 +2422,14 @@ position: static;
    STRIKES badge ramp; a line marks the latest strike ───────────────────────────────────────────────── */
 .mod-lt-strip {
     position: relative;
-    height: 26px;
+    height: 30px;
     margin: 2px -5px 0 -5px;
 }
 
 .mod-lt-strip-cap {
     font-family: weathertext2, Arial, sans-serif;
-    font-size: 7.8px;
-    line-height: 9px;
+    font-size: 9.1px;   /* card type scale: label */
+    line-height: 11px;
     color: var(--card-ink);
     white-space: nowrap;
     overflow: hidden;
@@ -2445,7 +2445,7 @@ position: static;
     position: absolute;
     left: 0;
     right: 0;
-    top: 11px;
+    top: 13px;
     height: 7px;
     border-radius: 2px;
     background: var(--card-surface);
@@ -2460,7 +2460,7 @@ position: static;
 
 .mod-lt-strip-mark {
     position: absolute;
-    top: 9px;
+    top: 11px;
     width: 2px;
     height: 11px;
     margin-left: -1px;
@@ -2473,11 +2473,11 @@ position: static;
     position: absolute;
     left: 0;
     right: 0;
-    top: 19px;
-    height: 7px;
+    top: 21px;
+    height: 9px;
     font-family: Arial, sans-serif;
-    font-size: 6.5px;
-    line-height: 7px;
+    font-size: 7.8px;
+    line-height: 9px;
     color: var(--card-ink-soft);
 }
 
@@ -2492,7 +2492,7 @@ position: static;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-top: 20px;   /* about as far under the strip as above the chin */
+    margin-top: 17px;   /* about as far under the strip as above the chin */
 }
 
 /* ── Left column: badge + distance pill ──────────────────────────────────── */

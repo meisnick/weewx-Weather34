@@ -602,7 +602,7 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	                temp += temp1;
 	        }
 	    });
-	    if (first_tp_display){
+	    if (first_tp_display && !disable_day_plots){
 	        first_tp_display = false;
 	        temp += getTranslation("When mouse cursor turns to a hand then left click to drill down into chart data")
 	    }

@@ -95,6 +95,13 @@ if (!w34_is_english()) {
     );
 }
 echo 'var translations = ' . json_encode($out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) . ";\n";
+// Day charts are built on request by getDayChart.php, which is LAN-only: switch them off for other visitors
+// (date picker, Compare Dates and yearly drill-down would only fail). Read after plots_config.js.
+$w34_local_only_functions = true;
+include_once 'local_only.php';
+if (!is_local_ip(w34_client_ip())) {
+    echo "var disable_day_plots = true;\n";
+}
 if ($hcLang) {
     echo 'if (window.Highcharts) Highcharts.setOptions({lang: ' . json_encode($hcLang, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) . "});\n";
 }

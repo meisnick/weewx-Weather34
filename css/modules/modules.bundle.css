@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 09:42:52 UTC
+   Generated: 2026-10-24 10:04:33 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -143,14 +143,39 @@
   color: var(--good);
 }
 
+/* Active alert: icon + text as one row centred in the 240px top-bar card. The wrappers above are the
+   wide (316px) card's and start 20px in, so the row spans the card explicitly; vertically it sits midway
+   under the card header (18px above, 17px below). */
 .mod-advisory .mod-adv-active {
-  top: 27px;
-  width: 168px;
+  left: -20px;
+  top: 36px;
+  width: 240px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: left;
 }
 
 .mod-advisory .mod-adv-active alertadvisory {
-  top: 0;
+  position: static;
+  margin: 0;
+  flex: none;
+  width: 36px;
+  height: 30px;
+}
+
+.mod-advisory .mod-adv-active alertadvisory svg {
+  display: block;
+  width: 36px;
+  height: 30px;
+}
+
+.mod-advisory .mod-adv-active .mod-adv-val {
+  margin: 0;
+  min-width: 0;
+  max-width: 180px;
 }
 
 .mod-advisory .mod-adv-sev-extreme  { --adv-col: var(--danger); }

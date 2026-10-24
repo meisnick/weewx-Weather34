@@ -2,6 +2,64 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [5.1.0] — 2026-10-24 — Correctness, PHP 8.4/9 readiness, i18n, popups and charts
+
+Everything since 5.0.0. Upgrading: pull, then copy the files in `user/` into WeeWX's `bin/user` and the `skins/`
+folders into WeeWX's skins directory (WeeWX runs its own copies), and restart WeeWX.
+
+### Data correctness
+- **Wind:** the 10-minute average direction is a vector average (a plain average of 350° and 10° read south);
+  the wind dial no longer points north when it is calm; gust direction shown; 15-minute average from the archive.
+- **Realtime feed:** pressure and temperature trends in display units; rain month/year/yesterday totals from the
+  daily summaries (correct across midnight and much cheaper); METRICWX wind run and ET in display units; the data
+  files are written atomically, so a page never reads a half-written file.
+- **Reliability:** a realtime error no longer stops WeeWX collecting data; no lightning distance is shown without a
+  strike.
+- **Dashboard logic:** pressure tendency, rain intensity, cloud oktas, indoor humidity trend, and values that were
+  mapped to the wrong archive fields.
+- **Forecasts:** real forecast gusts; overnight lows from the hourly forecast; times in the station's timezone
+  across DST; hourly dewpoint arrives in °F (was converted as °C); cancelled and non-actual NWS alerts are ignored.
+- **METAR:** one shared decoder for the card and popups: intensities (-RA/+RA), the most-covered cloud layer, cloud
+  base above ground, flight category badge (VFR/MVFR/IFR/LIFR); a report older than 2 hours shows as offline.
+- **Scales:** EPA UV categories, AQI 50 = Good, aurora Kp 8 = Severe; meteor shower dates from one shared table.
+- **Air Quality chart:** records PM2.5/PM10 from the WAQI feed; missing PM is a gap, not zero.
+- **Sensors:** sensor-health light covers WH31-family indoor sensors (e.g. WN31); a false station low-battery alert
+  (gust direction collided with a battery slot) is fixed; indoor dewpoint pill.
+- **Charts:** true time spacing with breaks at outages; yearly drill-down and radial charts fixed on Highcharts 12;
+  day-chart date picker no longer hangs and loads the day you picked; `year.json` split per chart family; yearly
+  heat index and windchill series no longer swapped; English labels no longer show stray "Avg:" text; the realtime
+  gust rose reads the gust (not luminosity); realtime charts poll every 10 s without blocking the page; W/m², UV
+  and lightning axis titles; knots supported in chart unit conversion.
+- **Radiation:** `weewx5.conf.example` derives solar radiation from GW1000 luminosity.
+
+### PHP 8.4, ready for PHP 9
+- No fatal errors, deprecations or warnings when a feed is missing, empty, NULL or `N/A` (42 files).
+- Sunrise/sunset no longer use `date_sunrise()`/`date_sunset()` (removed in PHP 9): `sun34.php` uses the same
+  algorithm and keeps the tuned zeniths in `settings.php`; times are identical.
+
+### Security
+- Setup, sandbox, lookups and the day-chart endpoint are LAN-only; the open JSONP proxies are gone.
+- The WeeWX day-chart listener only accepts this box and the configured web server, and only chart templates.
+- Setup saves are escaped; the Edit Layout button only appears on the local network, where saving works.
+- The aurora popup uses the bundled Highcharts instead of an unpinned CDN copy.
+
+### Languages
+- All 15 languages synced with English (missing keys fall back to English); popups, side menu, charts, axis
+  titles, compass labels and notifications translated; Swedish selectable; **Brazilian Portuguese** added;
+  overlong labels shortened; pages declare the visitor's language.
+
+### Look and layout
+- Every card rebuilt on one type scale with light/dark parity and readable contrast (WCAG AA in popups).
+- Popups: shared colour tokens (`css/tokens.css`), no white canvas bleed or clipping, tabs load on first open,
+  almanac logic bugs fixed (yesterday/year/all-time), sensor battery shown as V, level /5 or OK/LOW.
+- Charts: no overlapping range buttons, legends or labels at desktop or phone sizes, in any language.
+- Phone: chart titles clear of the chart menu button; menu popups fill the space under their tab bar.
+- Forecast tables: compact, scrolling, consistent icons.
+
+### Housekeeping
+- Dead code, unused pages and unused CSS removed; Apache compression and no-cache configs in `scripts/system`.
+- AFD summarizer only summarises a new NWS issuance and rejects invented numbers or days.
+
 ## [2026-08-21] — Branch Promotion, Naming Cleanup, Attribution & History Scrub
 
 - **`modularize` promoted to `main`.** The modular skin is now the primary branch. The previous

@@ -100,6 +100,19 @@ function w34_dir($abbr) {
     return w34t(isset($keys[$a]) ? $keys[$a] : $a, $a);
 }
 
+// Forecast card wind line: "Wind DIR speed unit", plus "Gust G" when the forecast gust is above the speed, coloured by
+// gust strength (amber / red thresholds per display unit).
+function w34_fc_wind($dir, $speed, $gust, $unit) {
+    $warn = array('mph' => array(25, 30), 'kts' => array(22, 26), 'km/h' => array(40, 48), 'm/s' => array(11, 13));
+    list($amber, $red) = isset($warn[$unit]) ? $warn[$unit] : $warn['km/h'];
+    $s = "<wind>" . w34t('Wind', 'Wind') . " <orangeu>" . w34_dir($dir) . "</orangeu>&nbsp;<blueu>" . number_format($speed, 0) . "&nbsp;<wuunits>" . $unit . "</wuunits></blueu>";
+    if ($gust > $speed) {
+        $tag = $gust >= $red ? 'redu' : ($gust >= $amber ? 'orangeu' : 'blueu');
+        $s .= "&nbsp;" . w34t('Gust', 'Gust') . "&nbsp;<" . $tag . ">" . number_format($gust, 0) . "</" . $tag . ">";
+    }
+    return $s . '</wind>';
+}
+
 // 16-point compass abbreviation for a bearing in degrees, in the active language (225 -> 'SW', French 'SO')
 function w34_compass($deg) {
     if (!is_numeric($deg)) return '';

@@ -294,16 +294,7 @@ for ($k = 0;$k < 12;$k++)
         echo '<grey>' . $forecastPrecipProb[$k] . '%&nbsp;' . w34t('ChanceLc', 'chance') . '</grey></valuer>';
     }
     echo "</div>";
-    //wind and gust: the forecast's own values (the old "Gust" was the sustained speed x 1.625, printed twice for mph)
-    $gust_warn = array('mph' => array(25, 30), 'kts' => array(22, 26), 'km/h' => array(40, 48), 'm/s' => array(11, 13));
-    list($g_amber, $g_red) = isset($gust_warn[$windunit]) ? $gust_warn[$windunit] : $gust_warn['km/h'];
-    echo "<wind>" . w34t('Wind', 'Wind') . " <orangeu>" . w34_dir($forecastWinddircardinal[$k]) . "</orangeu>&nbsp;<blueu>" . number_format($forecastWindSpeed[$k], 0) . "&nbsp;<wuunits>" . $windunit . "</wuunits></blueu>";
-    if ($forecastWindGust[$k] > $forecastWindSpeed[$k])
-    {
-        $gtag = $forecastWindGust[$k] >= $g_red ? 'redu' : ($forecastWindGust[$k] >= $g_amber ? 'orangeu' : 'blueu');
-        echo "&nbsp;" . w34t('Gust', 'Gust') . "&nbsp;<" . $gtag . ">" . number_format($forecastWindGust[$k], 0) . "</" . $gtag . ">";
-    }
-    echo '</wind>';
+    echo w34_fc_wind($forecastWinddircardinal[$k], $forecastWindSpeed[$k], $forecastWindGust[$k], $windunit);
 
 ?>  
 </article>

@@ -895,7 +895,9 @@ class Weather34RealTime(StdService):
             self.newLoopPacket(event)
         # The GW1000 reports the distance of its LAST strike in every packet, days after the storm. Keep a distance only
         # in a packet that counted strikes, so archive records without lightning carry none.
-        if event.packet.get('lightning_distance') is not None and not event.packet.get('lightning_strike_count'):
+        # A packet with no count field at all (some drivers) keeps its distance.
+        pkt = event.packet
+        if pkt.get('lightning_distance') is not None and 'lightning_strike_count' in pkt and not pkt['lightning_strike_count']:
             event.packet['lightning_distance'] = None
         self.handle_data(event.packet)
 
@@ -1072,14 +1074,14 @@ class Weather34RealTime(StdService):
         if w_u == 'knot' and data['windrun'] is not None:
             data['windrun'] /= 1.15077945
         data['cloudbase'] = self._cvt_a('cloudbase', packet, cb_u)
-        p1 = packet.get('barometer')
+        # trends in the display units (p_u / t_u), like barometer and outTemp: both ends are converted before
+        # subtracting, so a pressure or temperature unit override does not leave the trend in packet units
         p2 = get_trend('barometer', dbm, ts)
-        p2 = self._cvt_us(p2, self.pkt_us, 'barometer', 'group_pressure')
-        data['pressure_trend'] = calc_trend(p1, p2)
-        t1 = packet.get('outTemp')
+        p2 = self._cvt(p2, p_u, 'barometer', 'group_pressure')
+        data['pressure_trend'] = calc_trend(data['barometer'], p2)
         t2 = get_trend('outTemp', dbm, ts)
-        t2 = self._cvt_us(t2, self.pkt_us, 'outTemp', 'group_temperature')
-        data['temperature_trend'] = calc_trend(t1, t2)
+        t2 = self._cvt(t2, t_u, 'outTemp', 'group_temperature')
+        data['temperature_trend'] = calc_trend(data['outTemp'], t2)
 
         data['rain_month'] = self._cvt(
             calc_rain_month(dbm, ts), r_u, 'rain', 'group_rain')

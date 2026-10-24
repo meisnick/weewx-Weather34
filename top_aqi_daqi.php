@@ -20,7 +20,7 @@ list($cls10, $band10) = $pm10 === null ? ['', '--'] : yt_daqi_info($pm10);
 <div class="mod-topyear">
 <?php
 echo yt_side($cls25, 'PM<sub>2.5</sub>', $pm25 ?? '--', $u, $band25);
-echo '<div class="yt-year"><a alt="DAQI air quality info" title="AQI air quality info" href="pop_aqinfo.php" data-lity>DAQI</a></div>';
+echo '<div class="yt-year"><a title="AQI air quality info" href="pop_aqinfo.php" data-lity>AQI</a></div>';
 echo yt_side($cls10, 'PM<sub>10</sub> <span title="' . htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Meteo air-quality model (CAMS): the nearest monitor does not measure this')) . '">' . w34t('AqEstShort', 'est') . '</span>', $pm10 ?? '--', $u, $band10);
 ?>
 </div><!-- /mod-topyear -->

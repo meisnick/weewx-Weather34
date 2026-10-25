@@ -2,10 +2,13 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
-## [Unreleased]
+## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 
-Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory
-(and see the Air Quality note below for `weewx.conf`).
+Upgrading: pull, then
+1. copy `skins/Weather34/serverdata/archivedata.php.tmpl` into WeeWX's skins directory;
+2. add the `om_url` / `om_interval` lines from `weewx5.conf.example` to `[Weather34WebServices]` in
+   `weewx.conf` (your latitude and longitude), add `om` to `services`, and restart WeeWX;
+3. remove the `update_aqi.sh` line from root's crontab and delete `/usr/local/bin/update_aqi.sh`.
 
 - Popups open as popups again: the jQuery 3.7.1 update had dropped the bundled Lity lightbox, so card links
   opened full pages. Lity is now its own `js/lity.js`.
@@ -18,12 +21,14 @@ Upgrading: pull, then copy `skins/Weather34/serverdata/archivedata.php.tmpl` int
   and draws distance as dots.
 - Air Quality card: PM10 and NO₂ come from the Open-Meteo air-quality model (CAMS) and are marked *est*; the
   nearest WAQI monitor measures neither, so WAQI's values for them weren't readings. PM2.5 and O₃ stay WAQI.
-  Add the `om_url` / `om_interval` lines from `weewx5.conf.example` to `[Weather34WebServices]`, add `om`
-  to `services`, and restart WeeWX.
+  The empty O₃ pill says *off season* outside the monitor's ozone season (set `$aq_o3_off` in
+  `airqualitymodule.php` for your own monitor).
 - Top-bar AQI module (`top_aqi_daqi.php`): PM2.5 from WAQI and PM10 from the Open-Meteo model (marked *est*),
   read directly; labelled AQI, which they always were (not µg/m³, and the bands are US AQI, not UK DAQI).
-  `scripts/update_aqi.sh` and `jsondata/aqiJson.txt` are retired: remove the `update_aqi.sh` line from root's
-  crontab and `/usr/local/bin/update_aqi.sh`.
+  `scripts/update_aqi.sh` and `jsondata/aqiJson.txt` are retired.
+- Indoor, Air Quality and Cloud Cover popups: yearly and weekly charts with timeframe buttons, like the other
+  cards (the Indoor card opens Indoor Guide / Yearly / Weekly Indoor). The air-quality chart leaves out PM10
+  when there is no PM10 data. An empty air-quality pill is readable in the light theme.
 - Rainfall card: the year and month headings sit above their pills like Last Hour / Last 24hr.
 - Nowcast card: the RAIN 6H badge lines up with the rainfall card's pills.
 - README feature list brought up to date.

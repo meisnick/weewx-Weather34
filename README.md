@@ -56,7 +56,8 @@ no paid or deprecated APIs.
   Nowcast card.
 - **📈 Almanacs & history charts** — each card's popup opens an almanac (today, yesterday, month,
   year, all-time records) plus tabbed Highcharts yearly and weekly charts with timeframe buttons,
-  for temperature, wind, rain, barometer, lightning, UV and solar radiation.
+  for temperature, wind, rain, barometer, lightning, UV, solar radiation, indoor, air quality and
+  cloud cover.
 - **🔔 Dashboard notifications** — toast alerts for low battery, UV caution, heat exhaustion, wind
   advisory/warning, wind chill, and freezing dewpoint.
 - **🌍 Internationalized** — 15 languages across the cards, popups and charts via `$lang[]`.

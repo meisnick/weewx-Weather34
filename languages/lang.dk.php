@@ -963,4 +963,14 @@ $lang['TabWeeklySolar']           = 'Sol uge';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'est.';
 $lang['AqModelTip']               = 'Estimat fra Open-Meteos luftkvalitetsmodel (CAMS): den nærmeste målestation måler ikke dette';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'Indendørsguide og grafer';
+$lang['TabYearlyIndoor']          = 'Inde år';
+$lang['TabWeeklyIndoor']          = 'Inde uge';
+$lang['TabWeeklyCloud']           = 'Skydække uge';
+$lang['TabYearlyCloud']           = 'Skydække år';
+$lang['TabWeeklyAq']              = 'Luftkvalitet uge';
+$lang['TabYearlyAq']              = 'Luftkvalitet år';
+$lang['AqOffSeason']              = 'uden for sæson';
+$lang['AqOffSeasonTip']           = 'Den nærmeste målestation måler kun ozon i ozonsæsonen (forår til midt i oktober)';
 ?>

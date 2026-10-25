@@ -70,6 +70,12 @@ $polls = [
     'O3'    => ['val' => $aq_o3,   'slug' => 'o3'],
     'NO₂'   => ['val' => $aq_no2,  'slug' => 'no2', 'model' => true],
 ];
+// The nearest monitor measures ozone only in its ozone season (Harrington Beach, WI: about mid/late March to
+// 13 October, from AirNow's 2025-26 hourly files). An empty O3 pill outside it says so instead of looking broken.
+// Set the window for your own monitor (MM-DD, inclusive; it wraps the new year).
+$aq_o3_off = ['10-14', '03-31'];
+$aq_md = date('m-d');
+$aq_o3_offseason = ($aq_o3 === null) && ($aq_md >= $aq_o3_off[0] || $aq_md <= $aq_o3_off[1]);
 $aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Meteo air-quality model (CAMS): the nearest monitor does not measure this'));
 ?>
 <div class="updatedtime"><span>
@@ -105,9 +111,10 @@ $aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Mete
                 $disp = ($p['val'] !== null) ? $p['val'] : '--';
                 $dom  = ($p['slug'] === $aq_dominant) ? ' dominant' : '';
             ?>
-            <div class="mod-aq-pill mod-aq-bg--<?php echo $lvl . $dom; ?>"<?php if (!empty($p['model'])) echo ' title="' . $aq_model_tip . '"'; ?>>
+            <?php $off = ($p['slug'] === 'o3' && $aq_o3_offseason); ?>
+            <div class="mod-aq-pill mod-aq-bg--<?php echo $lvl . $dom; ?>"<?php if (!empty($p['model'])) echo ' title="' . $aq_model_tip . '"'; elseif ($off) echo ' title="' . htmlspecialchars(w34t('AqOffSeasonTip', 'The nearest monitor measures ozone only in the ozone season (spring to mid-October)')) . '"'; ?>>
                 <span class="val"><?php echo $disp; ?></span>
-                <span class="lbl"><?php echo $label; if (!empty($p['model'])) echo ' <span class="est">' . w34t('AqEstShort', 'est') . '</span>'; ?></span>
+                <span class="lbl"><?php echo $label; if (!empty($p['model'])) echo ' <span class="est">' . w34t('AqEstShort', 'est') . '</span>'; elseif ($off) echo ' <span class="est">' . w34t('AqOffSeason', 'off season') . '</span>'; ?></span>
             </div>
             <?php endforeach; ?>
         </div>

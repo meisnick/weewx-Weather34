@@ -963,4 +963,14 @@ $lang['TabWeeklySolar']           = 'Haftalık güneş';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'tah.';
 $lang['AqModelTip']               = 'Open-Meteo hava kalitesi modelinden tahmin (CAMS): en yakın istasyon bunu ölçmüyor';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'İç mekân rehberi ve grafikleri';
+$lang['TabYearlyIndoor']          = 'Yıllık iç mekân';
+$lang['TabWeeklyIndoor']          = 'Haftalık iç mekân';
+$lang['TabWeeklyCloud']           = 'Haftalık bulutluluk';
+$lang['TabYearlyCloud']           = 'Yıllık bulutluluk';
+$lang['TabWeeklyAq']              = 'Haftalık hava kalitesi';
+$lang['TabYearlyAq']              = 'Yıllık hava kalitesi';
+$lang['AqOffSeason']              = 'sezon dışı';
+$lang['AqOffSeasonTip']           = 'En yakın istasyon ozonu yalnızca ozon sezonunda ölçer (ilkbahardan ekim ortasına)';
 ?>

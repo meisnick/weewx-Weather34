@@ -963,4 +963,14 @@ $lang['TabWeeklySolar']           = 'Słońce – tydzień';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'szac.';
 $lang['AqModelTip']               = 'Szacunek z modelu jakości powietrza Open-Meteo (CAMS): najbliższa stacja tego nie mierzy';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'Przewodnik wewnętrzny i wykresy';
+$lang['TabYearlyIndoor']          = 'Wewnątrz – rok';
+$lang['TabWeeklyIndoor']          = 'Wewnątrz – tydzień';
+$lang['TabWeeklyCloud']           = 'Zachmurzenie – tydzień';
+$lang['TabYearlyCloud']           = 'Zachmurzenie – rok';
+$lang['TabWeeklyAq']              = 'Jakość powietrza – tydzień';
+$lang['TabYearlyAq']              = 'Jakość powietrza – rok';
+$lang['AqOffSeason']              = 'poza sezonem';
+$lang['AqOffSeasonTip']           = 'Najbliższa stacja mierzy ozon tylko w sezonie ozonowym (od wiosny do połowy października)';
 ?>

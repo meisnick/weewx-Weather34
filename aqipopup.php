@@ -8,19 +8,27 @@ $forecastime = filemtime ('jsondata/uk.txt');
 
 <body>
 <div class="tabs-header">
-  <button class="tablink" onclick="openTab('historical-tab', this)" id="defaultOpen"><?php echo w34t('HistoricalTrends', 'Historical Trends'); ?></button>
+  <button class="tablink" onclick="openTab('historical-tab', this)" id="defaultOpen"><?php echo w34t('TabWeeklyAq', 'Weekly Air Quality'); ?></button>
+  <button class="tablink" onclick="openTab('yearly-tab', this)"><?php echo w34t('TabYearlyAq', 'Yearly Air Quality'); ?></button>
   <button class="tablink" onclick="openTab('help-tab', this)"><?php echo w34t('AqiMeasurementGuide', 'AQI Measurement Guide'); ?></button>
 </div>
 
 <!-- TAB 1: HISTORICAL TRENDS HIGHCHART -->
 <div id="historical-tab" class="tabcontent">
-  <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('AqiHistoryTitle', 'Historical Air Quality Trends (Weekly PM2.5 / PM10)')); ?>"></div>
   <div class="chart-container">
     <iframe src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </div>
 </div>
 
-<!-- TAB 2: MEASUREMENT GUIDE TABLES -->
+<!-- TAB 2: YEARLY HIGHCHART (loaded when first opened) -->
+<div id="yearly-tab" class="tabcontent">
+  <div class="chart-container">
+    <iframe data-src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+  </div>
+</div>
+<style>#yearly-tab.tabcontent.active { display: flex; flex-direction: column; }</style>
+
+<!-- TAB 3: MEASUREMENT GUIDE TABLES -->
 <div id="help-tab" class="tabcontent">
   <div class="weather34darkbrowser" style="color:<?php echo $text1 ?>;" url="<?php echo htmlspecialchars(w34t('AqiEpaNote', 'The World AQI Indices are based on the US EPA (United States Environmental Protection Agency) Scale, latest 24 hour running mean for the current day.')); ?>"></div>  
   <br> 
@@ -132,6 +140,8 @@ function openTab(tabId, btn) {
     tablinks[i].classList.remove("active");
   }
   document.getElementById(tabId).classList.add("active");
+  var frame = document.getElementById(tabId).querySelector("iframe[data-src]");
+  if (frame) { frame.src = frame.getAttribute("data-src"); frame.removeAttribute("data-src"); }
   btn.classList.add("active");
 }
 document.getElementById("defaultOpen").click();

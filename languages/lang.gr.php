@@ -965,4 +965,14 @@ $lang['TabWeeklySolar']           = 'Ηλιακή εβδομάδας';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'εκτ.';
 $lang['AqModelTip']               = 'Εκτίμηση από το μοντέλο ποιότητας αέρα του Open-Meteo (CAMS): ο πλησιέστερος σταθμός δεν το μετρά';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'Οδηγός εσωτερικού και γραφήματα';
+$lang['TabYearlyIndoor']          = 'Εσωτερικό έτους';
+$lang['TabWeeklyIndoor']          = 'Εσωτερικό εβδομάδας';
+$lang['TabWeeklyCloud']           = 'Νεφοκάλυψη εβδομάδας';
+$lang['TabYearlyCloud']           = 'Νεφοκάλυψη έτους';
+$lang['TabWeeklyAq']              = 'Ποιότητα αέρα εβδομάδας';
+$lang['TabYearlyAq']              = 'Ποιότητα αέρα έτους';
+$lang['AqOffSeason']              = 'εκτός εποχής';
+$lang['AqOffSeasonTip']           = 'Ο πλησιέστερος σταθμός μετρά το όζον μόνο την περίοδο του όζοντος (από την άνοιξη έως τα μέσα Οκτωβρίου)';
 ?>

@@ -963,4 +963,14 @@ $lang['TabWeeklySolar']           = 'Zon per week';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'sch.';
 $lang['AqModelTip']               = 'Schatting uit het Open-Meteo-luchtkwaliteitsmodel (CAMS): het dichtstbijzijnde meetstation meet dit niet';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'Binnengids en grafieken';
+$lang['TabYearlyIndoor']          = 'Binnen per jaar';
+$lang['TabWeeklyIndoor']          = 'Binnen per week';
+$lang['TabWeeklyCloud']           = 'Bewolking per week';
+$lang['TabYearlyCloud']           = 'Bewolking per jaar';
+$lang['TabWeeklyAq']              = 'Luchtkwaliteit per week';
+$lang['TabYearlyAq']              = 'Luchtkwaliteit per jaar';
+$lang['AqOffSeason']              = 'buiten seizoen';
+$lang['AqOffSeasonTip']           = 'Het dichtstbijzijnde meetstation meet ozon alleen in het ozonseizoen (voorjaar tot half oktober)';
 ?>

@@ -110,7 +110,7 @@ function modulePopups($module, $vars) {
             $out  = '<span class="yearpopup"><a href="pop_metarnearby.php" data-lity>' . $chartinfo . ' ' . w34t('LinkNearbyMetar', 'Nearby Metar') . $metar_offline . '</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windyradar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkRadar', 'Radar') . '</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_windywind.php" data-lity>' . $chartinfo . ' ' . w34t('LinkWindMap', 'Wind Map') . '</a></span>';
-            $out .= '<span class="todaypopup"><a href="' . $chartsource . '/' . $theme1 . '-charts.html?chart=\'cloudcoverplot\'&span=\'weekly\'" data-lity>' . $menucharticonpage . ' ' . w34t('LinkCloudCover', 'Cloud Cover') . '</a></span>';
+            $out .= '<span class="todaypopup"><a href="pop_menu_cloud.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkCloudCover', 'Cloud Cover') . '</a></span>';
             break;
         case 'windspeeddirection.php':
             $out = '<span class="yearpopup"><a href="pop_menu_wind.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkWindAlmanac', 'Wind Almanac and Charts') . '</a></span>';
@@ -139,7 +139,7 @@ function modulePopups($module, $vars) {
             $out .= '<span class="yearpopup"><a href="pop_mooninfo.php" data-lity>' . $chartinfo . ' ' . w34t('LinkMoonInfo', 'Moon Info') . '</a></span>';
             break;
         case 'indoortemperature.php':
-            $out = '<span class="yearpopup"><a href="pop_homeindoor.php" data-lity>' . $chartinfo . ' ' . w34t('LinkIndoorGuide', 'Indoor Guide') . '</a></span>';
+            $out = '<span class="yearpopup"><a href="pop_menu_indoor.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkIndoorGuideCharts', 'Indoor Guide and Charts') . '</a></span>';
             break;
         case 'airqualitymodule.php':
             $out = '<span class="yearpopup"><a href="aqipopup.php" data-lity>' . $chartinfo . ' ' . w34t('AirQuality', 'Air Quality') . '</a></span>';

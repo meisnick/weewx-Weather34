@@ -964,4 +964,14 @@ $lang['TabWeeklySolar']           = 'Napsugárzás – hét';
 # Air Quality card: model-estimate pills
 $lang['AqEstShort']               = 'becs.';
 $lang['AqModelTip']               = 'Becslés az Open-Meteo levegőminőségi modelljéből (CAMS): a legközelebbi mérőállomás ezt nem méri';
+# Indoor / cloud cover / air quality chart tabs; ozone off season
+$lang['LinkIndoorGuideCharts']    = 'Beltéri útmutató és grafikonok';
+$lang['TabYearlyIndoor']          = 'Beltér – év';
+$lang['TabWeeklyIndoor']          = 'Beltér – hét';
+$lang['TabWeeklyCloud']           = 'Felhőzet – hét';
+$lang['TabYearlyCloud']           = 'Felhőzet – év';
+$lang['TabWeeklyAq']              = 'Levegőminőség – hét';
+$lang['TabYearlyAq']              = 'Levegőminőség – év';
+$lang['AqOffSeason']              = 'szezonon kívül';
+$lang['AqOffSeasonTip']           = 'A legközelebbi mérőállomás csak az ózonszezonban méri az ózont (tavasztól október közepéig)';
 ?>

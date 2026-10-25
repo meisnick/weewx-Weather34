@@ -1612,29 +1612,41 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	};
 	
 	function create_aq_chart(options, span, seriesData, units){
+	    // PM10 only where there is some (no PM10 sensor or monitor here): no empty series in the legend
+	    var aq = seriesData[0].aqplot, has_pm10 = function(d){ return (d || []).some(function(p, i){ return i > 0 && p[1] != null && p[1] > 0; }); };
 	    if (do_radial && span[0] == "yearly"){
-	        var dataMinMax = [];
-	        dataMinMax.push(reinflate_time(seriesData[0].aqplot.pm2_5Max));
-	        dataMinMax.push(reinflate_time(seriesData[0].aqplot.pm10_0Max));
-	        return do_radial_chart(options, dataMinMax, 'columnrange', ['PM 2.5', 'PM 10.0'], aqcolors);
+	        var dataMinMax = [], names = ['PM 2.5'];
+	        dataMinMax.push(reinflate_time(aq.pm2_5Max));
+	        if (has_pm10(aq.pm10_0Max)){ dataMinMax.push(reinflate_time(aq.pm10_0Max)); names.push('PM 10.0'); }
+	        return do_radial_chart(options, dataMinMax, 'columnrange', names, aqcolors);
 	    } else if (span[0] == "yearly"){
-	        options = create_chart_options(options, 'column', 'Air Quality Maximum & Average', null, [['PM 2.5 Max', 'column'], ['PM 2.5 Avg', 'column'], ['PM 10.0 Max', 'column'], ['PM 10.0 Avg', 'column']]);
-	        options.series[0].data = reinflate_time(seriesData[0].aqplot.pm2_5Max);
-	        options.series[1].data = reinflate_time(seriesData[0].aqplot.pm2_5Avg);
-	        options.series[2].data = reinflate_time(seriesData[0].aqplot.pm10_0Max);
-	        options.series[3].data = reinflate_time(seriesData[0].aqplot.pm10_0Avg);
+	        var pm10 = has_pm10(aq.pm10_0Max);
+	        var series = [['PM 2.5 Max', 'column'], ['PM 2.5 Avg', 'column']];
+	        if (pm10) series.push(['PM 10.0 Max', 'column'], ['PM 10.0 Avg', 'column']);
+	        options = create_chart_options(options, 'column', 'Air Quality Maximum & Average', null, series);
+	        options.series[0].data = reinflate_time(aq.pm2_5Max);
+	        options.series[1].data = reinflate_time(aq.pm2_5Avg);
+	        if (pm10){
+	            options.series[2].data = reinflate_time(aq.pm10_0Max);
+	            options.series[3].data = reinflate_time(aq.pm10_0Avg);
+	        }
 	    }
 	    else if (span[0] == "weekly"){
-	        if (compare_dates)
-	            options = create_chart_options(options, 'spline', 'Air Quality', null, [['PM 2.5', 'spline'], ['PM 10.0', 'spline'], ['PM 2.5', 'spline',,,,,1],['PM 10.0', 'spline',,,,,1]]);
-	        else
-	            options = create_chart_options(options, 'spline', 'Air Quality', null, [['PM 2.5', 'spline'],['PM 10.0', 'spline']]);
-	        options.series[0].data = reinflate_time(seriesData[0].aqplot.pm2_5Week);
-	        options.series[1].data = reinflate_time(seriesData[0].aqplot.pm10_0Week);
+	        var pm10 = has_pm10(aq.pm10_0Week) || (compare_dates && has_pm10(seriesData[1].aqplot.pm10_0Week));
+	        var series = [['PM 2.5', 'spline']];
+	        if (pm10) series.push(['PM 10.0', 'spline']);
+	        var n = series.length;
+	        if (compare_dates){
+	            series.push(['PM 2.5', 'spline',,,,,1]);
+	            if (pm10) series.push(['PM 10.0', 'spline',,,,,1]);
+	        }
+	        options = create_chart_options(options, 'spline', 'Air Quality', null, series);
+	        options.series[0].data = reinflate_time(aq.pm2_5Week);
+	        if (pm10) options.series[1].data = reinflate_time(aq.pm10_0Week);
 	        if (compare_dates){
 	            create_compare_days_ts(options.series[0].data, seriesData[1].aqplot.pm2_5Week);
-	            options.series[2].data = reinflate_time(seriesData[1].aqplot.pm2_5Week, options.series[0].data[0][0]);
-	            options.series[3].data = reinflate_time(seriesData[1].aqplot.pm10_0Week, options.series[0].data[0][0]);
+	            options.series[n].data = reinflate_time(seriesData[1].aqplot.pm2_5Week, options.series[0].data[0][0]);
+	            if (pm10) options.series[n + 1].data = reinflate_time(seriesData[1].aqplot.pm10_0Week, options.series[0].data[0][0]);
 	        }
 	    }
 	    options.yAxis[0].min = 0;

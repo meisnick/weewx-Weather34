@@ -971,6 +971,6 @@ $lang['TabWeeklyCloud']           = 'Nubosidad semanal';
 $lang['TabYearlyCloud']           = 'Nubosidad anual';
 $lang['TabWeeklyAq']              = 'Calidad del aire semanal';
 $lang['TabYearlyAq']              = 'Calidad del aire anual';
-$lang['AqOffSeason']              = 'fuera de temporada';
+$lang['AqOffSeason']              = 'fuera de temp.';
 $lang['AqOffSeasonTip']           = 'La estación más cercana solo mide el ozono en la temporada de ozono (de primavera a mediados de octubre)';
 ?>

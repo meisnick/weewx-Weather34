@@ -977,6 +977,6 @@ $lang['TabWeeklyCloud']           = 'Nebulosidade Semanal';
 $lang['TabYearlyCloud']           = 'Nebulosidade Anual';
 $lang['TabWeeklyAq']              = 'Qualidade do Ar Semanal';
 $lang['TabYearlyAq']              = 'Qualidade do Ar Anual';
-$lang['AqOffSeason']              = 'fora de temporada';
+$lang['AqOffSeason']              = 'fora de temp.';
 $lang['AqOffSeasonTip']           = 'A estação mais próxima mede o ozônio apenas na temporada de ozônio (da primavera a meados de outubro)';
 ?>

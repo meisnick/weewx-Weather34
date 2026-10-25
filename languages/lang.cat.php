@@ -971,6 +971,6 @@ $lang['TabWeeklyCloud']           = 'Nuvolositat setmanal';
 $lang['TabYearlyCloud']           = 'Nuvolositat anual';
 $lang['TabWeeklyAq']              = 'Qualitat de l\'aire setmanal';
 $lang['TabYearlyAq']              = 'Qualitat de l\'aire anual';
-$lang['AqOffSeason']              = 'fora de temporada';
+$lang['AqOffSeason']              = 'fora de temp.';
 $lang['AqOffSeasonTip']           = 'L\'estació més propera només mesura l\'ozó durant la temporada d\'ozó (de la primavera a mitjan octubre)';
 ?>

@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-24 20:27:12 UTC
+   Generated: 2026-10-26 01:00:27 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -3247,6 +3247,13 @@ position: static;
 [data-theme="light"] .mod-moonphase .moonrise1 span,
 [data-theme="light"] .mod-moonphase .moonset1 {
   color: var(--card-ink-blue);
+}
+
+/* Phones: full size. framework.base.css still scales this to .68 from when the layout was ~430px wide and
+   overflowed the 320px card; it fits since the 5.1.1 rebuild (360-412px wide, en/hu/gr checked), so the
+   scale only made the card small. */
+@media screen and (max-width:768px) {
+  .mod-moonphase .moonphasemoduleposition { transform: none; }
 }
 
 /* ==== radar.css ==== */

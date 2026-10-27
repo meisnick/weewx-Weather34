@@ -520,3 +520,19 @@ valuetextheading2 {
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block [class^="tempmodulehome"] { position: relative !important; left: 0; top: 0; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-block.mod-gauge-ring--7 { position: relative !important; left: 2px !important; top: 0 !important; }
 .weather-item[data-module="indoortemperature.php"] .mod-temperature-1x2 .mod-gauge-ring-content--indoor-feels valuetextheading1 { position: relative !important; left: 0px !important; top: 0 !important; }
+
+/* Indoor pill colour follows the outdoor Temperature card: same Celsius bands and gradients as
+ * .mod-temp-band--* (framework.base.css), which carry that card's box geometry so can't be reused here. */
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--m10 { background: linear-gradient(45deg, var(--temp-cold), var(--temp-cold-2)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--m5 { background: linear-gradient(45deg, var(--temp-cold), var(--temp-cool)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--0 { background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-cool-3)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--0-5 { background: linear-gradient(270deg, var(--temp-cool-2), var(--temp-chilly)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--6-10 { background: linear-gradient(90deg, var(--temp-cool-2), var(--temp-mild)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--11-15 { background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--16-20 { background: linear-gradient(90deg, var(--temp-mild-2), var(--temp-warm-2)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--21-25 { background: linear-gradient(90deg, var(--temp-warm-3), var(--temp-hot)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--26-30 { background: linear-gradient(90deg, var(--temp-hot-2), var(--temp-hot-3)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--31-35 { background: linear-gradient(90deg, var(--temp-hot), var(--temp-hot-4)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--36-40 { background: linear-gradient(90deg, var(--temp-hot-5), var(--temp-blue)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--41-45 { background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue)); }
+.weather-item[data-module="indoortemperature.php"] .mod-indoor-band--50 { background: linear-gradient(90deg, var(--temp-extreme), var(--temp-blue)); }

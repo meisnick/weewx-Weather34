@@ -143,6 +143,11 @@
   height: 30px;
 }
 
+/* "No Active Advisories" uses the same centred row; drop alertvalue's legacy 10px top margin. */
+.mod-advisory .mod-adv-active alertvalue {
+  margin: 0;
+}
+
 .mod-advisory .mod-adv-active .mod-adv-val {
   margin: 0;
   min-width: 0;

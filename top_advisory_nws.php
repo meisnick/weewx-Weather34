@@ -33,7 +33,7 @@ $_sevclass = [
 <div class="wulargeforecasthome"><div class="wulargediv">
 <div class="eqcirclehomeregional"><div class="eqtexthomeregional">
 <?php if ($_count === 0): ?>
-<spanelightning>
+<spanelightning class="mod-adv-active">
 <alertadvisory><a alt="Alerts" title="<?php echo htmlspecialchars(w34t('NwsWeatherAlerts', 'NWS Weather Alerts')); ?>" href="pop_nwsalerts.php" data-lity><?php echo $newalertgreen; ?></a></alertadvisory>
 <alertvalue><?php echo w34t('NoActive', 'No Active');?> <lightgreen><?php echo w34t('Advisories', 'Advisories');?></lightgreen></alertvalue>
 </spanelightning>

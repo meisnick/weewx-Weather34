@@ -348,9 +348,3 @@
   color: var(--card-ink-blue);
 }
 
-/* Phones: full size. framework.base.css still scales this to .68 from when the layout was ~430px wide and
-   overflowed the 320px card; it fits since the 5.1.1 rebuild (360-412px wide, en/hu/gr checked), so the
-   scale only made the card small. */
-@media screen and (max-width:768px) {
-  .mod-moonphase .moonphasemoduleposition { transform: none; }
-}

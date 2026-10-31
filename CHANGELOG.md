@@ -37,6 +37,11 @@ Upgrading: pull, then
   summary; Days 4 to 8 the chance of severe storms. A map of each day's outlook (risk or hazard layers, region or
   whole US) is drawn over a small Natural Earth basemap (`js/na_basemap.json`). US only; no API keys
   (`scripts/spc_outlook_update.py`, twice an hour).
+- Rainfall: a flash-flood line at the top of the card from the Weather Prediction Center's Excessive Rainfall
+  Outlook, the highest level at the station over the next five days and when ("Flash flood: Slight risk ·
+  Tomorrow", or "No flash-flood risk · 5 days"). It opens the Storm Outlook popout on its new Flash flood layer,
+  which maps the outlook and gives the level's meaning (at least 5, 15, 40 or 70% chance that rain exceeds
+  flash-flood guidance within 25 miles) and the nearest risk area. Fetched with the storm outlook; no new cron line.
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

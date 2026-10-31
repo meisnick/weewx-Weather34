@@ -1,10 +1,37 @@
 <?php include_once('w34_i18n.php'); ?>
 <?php  //weather34 rain module
 include_once('w34CombinedData.php');
+
+// Flash-flood line: the WPC Excessive Rainfall Outlook at the station (jsondata/spc_outlook.json, written by
+// scripts/spc_outlook_update.py), the highest level over the next five days and the first day it comes. Opens the
+// Storm Outlook popout on its flood layer. Hidden when the outlook is missing or over six hours old.
+$ff = null; $ff_days = 0;
+$ffj = @json_decode(@file_get_contents('jsondata/spc_outlook.json'), true);
+if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetched']) < 6 * 3600) {
+    $ff_rank = array('MRGL' => 1, 'SLGT' => 2, 'MDT' => 3, 'HIGH' => 4);
+    foreach ($ffj['days'] ?? array() as $d) {
+        if (!isset($d['point']['ero'])) continue;
+        $ff_days++;
+        $e = $d['point']['ero'];
+        if ($e && isset($ff_rank[$e]) && (!$ff || $ff_rank[$e] > $ff_rank[$ff['cat']] || ($ff_rank[$e] == $ff_rank[$ff['cat']] && $d['day'] < $ff['day'])))
+            $ff = array('cat' => $e, 'day' => (int)$d['day'], 'valid' => $d['valid'] ?? null);
+    }
+}
 ?>
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 
 <div class="mod-rainfall">
+<?php if ($ff_days):
+    $ff_names = array('MRGL' => w34t('SpcMRGL', 'Marginal risk'), 'SLGT' => w34t('SpcSLGT', 'Slight risk'),
+                      'MDT' => w34t('SpcMDT', 'Moderate risk'), 'HIGH' => w34t('SpcHIGH', 'High risk'));
+    if ($ff) {
+        $when = $ff['day'] == 1 ? w34t('Today', 'Today') : ($ff['day'] == 2 ? w34t('Tomorrow', 'Tomorrow') : w34_date('l', strtotime($ff['valid'])));
+        $txt = w34t('FfLabel', 'Flash flood:') . ' <b>' . $ff_names[$ff['cat']] . '</b> &middot; ' . $when;
+    } else {
+        $txt = w34f('FfNone', 'No flash-flood risk &middot; %s days', $ff_days);
+    } ?>
+  <a class="mod-rainfall-ff<?php echo $ff ? ' mod-rainfall-ff--risk' : ''; ?>" href="pop_spcoutlook.php?layer=ero&amp;day=<?php echo $ff ? $ff['day'] : 1; ?>" data-lity title="<?php echo htmlspecialchars(w34t('FfTip', 'WPC Excessive Rainfall Outlook: the chance rain exceeds flash-flood guidance within 25 miles')); ?>"><i class="mod-rainfall-ff-dot mod-rainfall-ff-<?php echo $ff ? $ff['cat'] : 'none'; ?>"></i><?php echo $txt; ?></a>
+<?php endif; ?>
   <div class="mod-rainfall-grid">
     
     <!-- LEFT COLUMN -->

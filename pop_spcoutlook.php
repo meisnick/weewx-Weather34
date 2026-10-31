@@ -42,6 +42,8 @@ $chip = function ($d) {
     if (($p['prob'] ?? 0) >= 5) return 'spc-c-MRGL';
     return 'spc-c-none';
 };
+// WPC Excessive Rainfall Outlook levels: the least chance that rain exceeds flash-flood guidance within 25 miles
+$ero_pct = array('MRGL' => 5, 'SLGT' => 15, 'MDT' => 40, 'HIGH' => 70);
 $map_days = array();
 foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? array());
 ?>
@@ -107,6 +109,15 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
 <?php if (!empty($p['near'])): ?>
       <p class="spc-near"><?php echo w34f('SpcNear', 'Nearest severe risk: %s, %s %s', '<b>' . $cat_name($p['near']['cat']) . '</b>', $dist($p['near']['km']), w34_compass($p['near']['bearing'])); ?></p>
 <?php endif; ?>
+<?php if (isset($p['ero'])): $e = $p['ero']; ?>
+      <h4><?php echo w34t('SpcFlood', 'Flash flood (WPC)'); ?></h4>
+      <p class="spc-flood"><i class="spc-dot spc-c-<?php echo $e ?: 'none'; ?>"></i> <b><?php echo $e ? $cat_name($e) : w34t('SpcFloodNone', 'No risk area'); ?></b> &middot; <?php
+        echo $e ? w34f('SpcFloodPct', 'at least %s%% chance rain exceeds flash-flood guidance within 25 mi', $ero_pct[$e])
+                : w34t('SpcFloodLow', 'under 5% chance rain exceeds flash-flood guidance within 25 mi'); ?></p>
+<?php if (!empty($p['ero_near'])): ?>
+      <p class="spc-near"><?php echo w34f('SpcFloodNear', 'Nearest flash-flood risk: %s, %s %s', '<b>' . $cat_name($p['ero_near']['cat']) . '</b>', $dist($p['ero_near']['km']), w34_compass($p['ero_near']['bearing'])); ?></p>
+<?php endif; ?>
+<?php endif; ?>
 <?php if (!empty($d['summary'])): ?>
       <h4><?php echo w34t('SpcSummary', 'Forecaster summary (SPC)'); ?></h4>
       <p class="spc-sum" title="<?php echo htmlspecialchars($d['summary']); ?>"><?php echo htmlspecialchars($d['summary']); ?></p>
@@ -126,7 +137,7 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
     <div class="spc-legend"></div>
   </div>
 </div>
-<div class="spc-src"><?php echo w34t('SpcSource', 'NOAA/NWS Storm Prediction Center convective outlooks, checked twice an hour. Map: Natural Earth.');
+<div class="spc-src"><?php echo w34t('SpcSource', 'NOAA/NWS Storm Prediction Center convective and Weather Prediction Center excessive-rainfall outlooks, checked twice an hour. Map: Natural Earth.');
   if ($spc_age !== null && $spc_age > 3 * 3600) echo ' <span class="spc-stale">' . w34f('SpcStale', 'Last update %s hours ago.', round($spc_age / 3600)) . '</span>'; ?></div>
 <?php endif; ?>
 
@@ -136,7 +147,7 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
   var STATION = [<?php echo (float)$lon; ?>, <?php echo (float)$lat; ?>];
   var T = <?php echo json_encode(array(
       'cat' => w34t('SpcRisk', 'Risk'), 'torn' => w34t('SpcTornado', 'Tornado'), 'wind' => w34t('SpcWind', 'Damaging wind'),
-      'hail' => w34t('SpcHail', 'Large hail'), 'prob' => w34t('SpcAnySevere', 'Any severe'), 'sig' => w34t('SpcSigLegend', 'Significant (hatched)'),
+      'hail' => w34t('SpcHail', 'Large hail'), 'prob' => w34t('SpcAnySevere', 'Any severe'), 'ero' => w34t('SpcFloodLayer', 'Flash flood'), 'sig' => w34t('SpcSigLegend', 'Significant (hatched)'),
       'TSTM' => w34t('SpcTSTM', 'General thunderstorms'), 'MRGL' => w34t('SpcMRGL', 'Marginal risk'), 'SLGT' => w34t('SpcSLGT', 'Slight risk'),
       'ENH' => w34t('SpcENH', 'Enhanced risk'), 'MDT' => w34t('SpcMDT', 'Moderate risk'), 'HIGH' => w34t('SpcHIGH', 'High risk'),
       'station' => w34t('SpcStation', 'Station')), JSON_UNESCAPED_UNICODE); ?>;
@@ -183,7 +194,9 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
     b.states.forEach(function (f) { el('path', {d: ringPath(f)}, gStates); });
   });
 
-  var view = 'region', day = 1, lay = 'cat';
+  // ?layer=ero&day=2 (the Rainfall card's flood line) opens on that layer and day
+  var q = new URLSearchParams(location.search);
+  var view = 'region', day = 1, want = q.get('layer') || 'cat', lay = want;
   function setView() {
     var box = svg.parentNode.getBoundingClientRect(), asp = (box.height || 300) / (box.width || 400), x0, y0, w, h;
     if (view == 'us') {
@@ -203,15 +216,17 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
     while (gOut.firstChild) gOut.removeChild(gOut.firstChild);
     var L = (DAYS[day] || {}).layers || {};
     var all = (L[lay] || []).slice().sort(function (a, b) { return a.dn - b.dn; });
-    var plain = function (f) { return lay == 'cat' || !isNaN(parseFloat(f.label)); };
+    var named = lay == 'cat' || lay == 'ero';   // levels by name; the rest are probabilities
+    var plain = function (f) { return named || !isNaN(parseFloat(f.label)); };
     var feats = all.filter(plain), sig = (L['sig' + lay] || []).concat(all.filter(function (f) { return !plain(f); }));
     var legend = [];
     feats.forEach(function (f) {
       var d = f.polys.map(function (poly) { return poly.map(ringPath).join(''); }).join('');
       var p = el('path', {d: d, 'fill-rule': 'evenodd', class: 'spc-poly'}, gOut);
       p.style.fill = f.fill; p.style.stroke = f.stroke;
-      var name = lay == 'cat' ? (T[f.label] || f.label2) : Math.round(parseFloat(f.label) * 100) + '%';
-      legend.push('<span><i style="background:' + f.fill + ';border-color:' + f.stroke + '"></i>' + name + '</span>');
+      var name = named ? (T[f.label] || f.label2) : Math.round(parseFloat(f.label) * 100) + '%';
+      var key = '<span><i style="background:' + f.fill + ';border-color:' + f.stroke + '"></i>' + name + '</span>';
+      if (legend.indexOf(key) < 0) legend.push(key);   // an area drawn in several pieces gets one key
     });
     sig.forEach(function (f) {
       var d = f.polys.map(function (poly) { return poly.map(ringPath).join(''); }).join('');
@@ -223,8 +238,8 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
   }
 
   function tools() {
-    var L = (DAYS[day] || {}).layers || {}, keys = ['cat', 'torn', 'wind', 'hail', 'prob'].filter(function (k) { return k in L; });
-    if (keys.indexOf(lay) < 0) lay = keys[0] || 'cat';
+    var L = (DAYS[day] || {}).layers || {}, keys = ['cat', 'torn', 'wind', 'hail', 'prob', 'ero'].filter(function (k) { return k in L; });
+    lay = keys.indexOf(want) >= 0 ? want : (keys[0] || 'cat');   // the chosen layer wherever the day has it
     var h = keys.length > 1 ? keys.map(function (k) { return '<button data-layer="' + k + '"' + (k == lay ? ' class="on"' : '') + '>' + T[k] + '</button>'; }).join('') : '';
     document.querySelector('.spc-layers').innerHTML = h;
   }
@@ -246,14 +261,14 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
   });
   document.querySelector('.spc-tools').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    if (b.dataset.layer) { lay = b.dataset.layer; tools(); draw(); }
+    if (b.dataset.layer) { want = b.dataset.layer; tools(); draw(); }
     if (b.dataset.view) {
       view = b.dataset.view; setView();
       document.querySelectorAll('.spc-views button').forEach(function (x) { x.classList.toggle('on', x == b); });
     }
   });
   window.addEventListener('resize', setView);
-  setView(); show(1);
+  setView(); show(Math.min(8, Math.max(1, parseInt(q.get('day'), 10) || 1)));
 })();
 </script>
 </body>

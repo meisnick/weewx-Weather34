@@ -191,8 +191,9 @@ Add to root crontab (`sudo crontab -e`):
 (US only: NOAA satellite smoke analysis, AirNow agency forecast, Open-Meteo model AQI; no API keys). Set
 `AQ_MONITOR_SITE` in `w34config.py` to a nearby AirNow monitor that measures black carbon to add the soot check.
 
-`spc_outlook_update.py` feeds the Storm Outlook popout (linked from the Lightning card): the NWS Storm Prediction
-Center's severe-storm outlooks for Days 1 to 8 at the station, with a map (US only; no API keys).
+`spc_outlook_update.py` feeds the Storm Outlook popout (linked from the Lightning card) and the Rainfall card's
+flash-flood line: the NWS Storm Prediction Center's severe-storm outlooks for Days 1 to 8 and the Weather Prediction
+Center's Excessive Rainfall Outlook for Days 1 to 5 at the station, with a map (US only; no API keys).
 
 ---
 

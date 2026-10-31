@@ -9,10 +9,13 @@ Prediction Center's convective outlooks (free, keyless GeoJSON at www.spc.noaa.g
   Day 3         categorical risk and the probability of any severe weather
   Day 4 to 8    the probability of any severe weather (15% and 30% areas)
 
-For each day it records the risk and the hazard probabilities at the station, the nearest severe-risk area when
-the station is outside one, the outlook polygons (for the popout's map) and, for Days 1 to 3, the summary from
-the forecaster's discussion. Each day fails on its own; the last good copy is kept. Root cron,
-twice an hour (SPC issues Day 1 five times a day):
+and, for Days 1 to 5, the Weather Prediction Center's Excessive Rainfall Outlook (www.wpc.ncep.noaa.gov/exper/
+eromap/geojson/): the chance that rain exceeds flash-flood guidance within 25 miles, marginal (5%) to high (70%).
+
+For each day it records the risk and the hazard probabilities at the station, the nearest risk area when the
+station is outside one, the outlook polygons (for the popout's map) and, for Days 1 to 3, the summary from the
+forecaster's discussion. Each day fails on its own; the last good copy is kept. Root cron, twice an hour (SPC
+issues Day 1 five times a day):
   7,37 * * * * /usr/bin/python3 /usr/local/bin/spc_outlook_update.py >> /var/log/spc_outlook.log 2>&1
 """
 
@@ -41,6 +44,11 @@ DAYS = {
 for d in range(4, 9):
     DAYS[d] = {"prob": "exper/day4-8/day%dprob" % d}
 NEAR_KM = 800   # report the nearest severe-risk area within this distance
+ERO_URL = "https://www.wpc.ncep.noaa.gov/exper/eromap/geojson/Day%d_Latest.geojson"
+ERO_DAYS = 5
+# WPC's ERO levels by the first word of OUTLOOK ("Slight (At Least 15%)"), in SPC's matching colours
+ERO = {"Marginal": ("MRGL", "#66A366", "#005500"), "Slight": ("SLGT", "#FFE066", "#DDAA00"),
+       "Moderate": ("MDT", "#E06666", "#CC0000"), "High": ("HIGH", "#EE99EE", "#CC00CC")}
 
 
 def fetch(url, timeout=40):
@@ -150,16 +158,10 @@ def build_day(day):
         if key == "cat":
             hit = max(here, key=lambda f: CAT.index(f["label"]) if f["label"] in CAT else -1, default=None)
             out["point"]["cat"] = hit["label"] if hit else ""
-            severe = [f for f in feats if f["label"] in CAT[1:]]
-            if severe and (not hit or hit["label"] == "TSTM"):
-                near = []
-                for f in severe:
-                    n = nearest(f["polys"])
-                    if n and n[0] <= NEAR_KM:
-                        near.append((n[0], n[1], f["label"]))
+            if not hit or hit["label"] == "TSTM":
+                near = nearest_area([f for f in feats if f["label"] in CAT[1:]])
                 if near:
-                    d, b, lab = min(near)
-                    out["point"]["near"] = {"cat": lab, "km": d, "bearing": b}
+                    out["point"]["near"] = near
         elif key.startswith("sig"):
             out["point"][key] = out["point"].get(key, False) or bool(here)
         else:
@@ -177,7 +179,48 @@ def build_day(day):
             out.update(discussion(day))
         except Exception as e:
             print("day %d discussion failed: %s" % (day, e), file=sys.stderr)
+    if day <= ERO_DAYS:
+        try:
+            ero(day, out)
+        except Exception as e:
+            print("day %d excessive rainfall outlook failed: %s" % (day, e), file=sys.stderr)
     return out
+
+
+def nearest_area(feats):
+    """The closest of these areas within NEAR_KM: {cat, km, bearing}, or None."""
+    near = []
+    for f in feats:
+        n = nearest(f["polys"])
+        if n and n[0] <= NEAR_KM:
+            near.append((n[0], n[1], f["label"]))
+    if not near:
+        return None
+    d, b, lab = min(near)
+    return {"cat": lab, "km": d, "bearing": b}
+
+
+def ero(day, out):
+    """WPC Excessive Rainfall Outlook for this day: the 'ero' layer, the level at the station ('' outside) and the
+    nearest area when outside."""
+    gj = json.loads(fetch(ERO_URL % day))
+    feats = []
+    for f in gj.get("features", []):
+        p = f.get("properties", {})
+        lv = ERO.get(str(p.get("OUTLOOK", "")).split(" ")[0])
+        polys = polygons(f.get("geometry") or {})
+        if not lv or not polys:
+            continue
+        feats.append({"label": lv[0], "label2": p.get("OUTLOOK", ""), "dn": p.get("dn", 0), "fill": lv[1], "stroke": lv[2],
+                      "polys": polys})
+    here = [f for f in feats if inside(LON, LAT, f["polys"])]
+    hit = max(here, key=lambda f: CAT.index(f["label"]), default=None)
+    out["point"]["ero"] = hit["label"] if hit else ""
+    if not hit:
+        near = nearest_area(feats)
+        if near:
+            out["point"]["ero_near"] = near
+    out["layers"]["ero"] = [slim(f) for f in feats]
 
 
 def write_atomic(path, data):

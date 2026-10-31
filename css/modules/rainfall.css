@@ -388,3 +388,42 @@ rainratetextheading {
 }
 
 /* NO USER OFFSETS! */
+
+/* Flash-flood line (WPC Excessive Rainfall Outlook), top left above the beaker, clear of the mm pill; opens the
+   Storm Outlook popout on its flood layer */
+.mod-rainfall-ff {
+  position: absolute;
+  top: 3px;
+  left: 14px;
+  max-width: 220px;
+  z-index: 11;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.1px;   /* card type scale: label */
+  line-height: 11px;
+  color: var(--card-ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-rainfall-ff:hover { color: var(--card-ink); }
+.mod-rainfall-ff--risk { color: var(--card-ink); }
+.mod-rainfall-ff b { font-weight: 400; color: var(--caution); }
+
+.mod-rainfall-ff-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border-radius: 50%;
+  vertical-align: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .3);
+}
+
+/* WPC levels in SPC's outlook colours (data colours, as in the Storm Outlook popout) */
+.mod-rainfall-ff-none { background: var(--card-surface); }
+.mod-rainfall-ff-MRGL { background: #66a366; }
+.mod-rainfall-ff-SLGT { background: #ffe066; }
+.mod-rainfall-ff-MDT  { background: #e06666; }
+.mod-rainfall-ff-HIGH { background: #ee99ee; }

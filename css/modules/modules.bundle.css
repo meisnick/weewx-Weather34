@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-31 05:25:43 UTC
+   Generated: 2026-10-31 05:31:01 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -3769,20 +3769,34 @@ rainratetextheading {
 /* NO USER OFFSETS! */
 
 /* Flood pill (WPC Excessive Rainfall Outlook), top left of the card: on the left column's top, level with the mm pill
-   that tops the right column, at x14 like the chin's links. The ET/Rate pill style, sized to its words, the level
-   in its outlook colour (darker in the light theme) */
+   that tops the right column, at x14 like the chin's links. Sized and set like the Current Conditions card's Cloudbase
+   pill (96 x 16, label and value 9.12px weight 500, unit 8.8px); the level in its outlook colour (darker in the light
+   theme) */
 .mod-rainfall .mod-rainfall-ffpill {
   position: absolute;
   top: 0;
   left: 12px;
   z-index: 11;
   width: max-content;
-  min-width: 72px;
+  min-width: 96px;   /* Cloudbase's width; longer words (Spanish, Swedish ... about 110px) grow into the free top row */
   height: 16px;
-  padding: 0 5px;
+  padding: 0 4px;
   box-sizing: border-box;
   white-space: nowrap;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.12px;
+  font-weight: 500;
 }
+
+.mod-rainfall .mod-rainfall-ffpill rainratetextheading,
+.mod-rainfall .mod-rainfall-ffpill raiblue {
+  font-size: 9.12px;
+  font-weight: 500;
+  margin-right: 0;
+}
+
+.mod-rainfall .mod-rainfall-ffpill rainratetextheading { margin-right: 3px; }
+.mod-rainfall .mod-rainfall-ffpill smallrainunit2 { font-family: weathertext2, Arial, sans-serif; font-size: 8.8px; font-weight: 500; margin-left: 3px; }
 
 .mod-rainfall-ffpill--MRGL raiblue { color: #66a366; }
 .mod-rainfall-ffpill--SLGT raiblue { color: #ffe066; }

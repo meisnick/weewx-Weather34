@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-31 05:19:32 UTC
+   Generated: 2026-10-31 05:25:43 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -3768,15 +3768,16 @@ rainratetextheading {
 
 /* NO USER OFFSETS! */
 
-/* Flood pill (WPC Excessive Rainfall Outlook) beside the mm pill: the ET/Rate pill style, sized to its words, the
-   level in its outlook colour (darker in the light theme) */
-.mod-rainfall-top-pill {
-  gap: 6px;
-}
-
+/* Flood pill (WPC Excessive Rainfall Outlook), top left of the card: on the left column's top, level with the mm pill
+   that tops the right column, at x14 like the chin's links. The ET/Rate pill style, sized to its words, the level
+   in its outlook colour (darker in the light theme) */
 .mod-rainfall .mod-rainfall-ffpill {
-  width: auto;
-  min-width: 4.5rem;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  z-index: 11;
+  width: max-content;
+  min-width: 72px;
   height: 16px;
   padding: 0 5px;
   box-sizing: border-box;

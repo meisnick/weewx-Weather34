@@ -22,9 +22,18 @@ if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetche
 
 <div class="mod-rainfall">
   <div class="mod-rainfall-grid">
-    
+
     <!-- LEFT COLUMN -->
     <div class="mod-rainfall-col-left">
+<?php if ($ff_days):
+    // the level, then the day it comes when that is not today ("Slight Sat"); "None" over the five days
+    $ff_names = array('MRGL' => w34t('FfMRGL', 'Marginal'), 'SLGT' => w34t('FfSLGT', 'Slight'), 'MDT' => w34t('FfMDT', 'Moderate'), 'HIGH' => w34t('FfHIGH', 'High')); ?>
+      <div class="rainratemodulehome mod-rainfall-ffpill<?php echo $ff ? ' mod-rainfall-ffpill--' . $ff['cat'] : ''; ?>" title="<?php echo htmlspecialchars(w34t('FfTip', 'WPC Excessive Rainfall Outlook: the chance rain exceeds flash-flood guidance within 25 miles')); ?>">
+        <rainratetextheading><?php echo w34t('FfPill', 'Flood'); ?></rainratetextheading>
+        <raiblue><?php echo $ff ? $ff_names[$ff['cat']] : w34t('FfNoneShort', 'None'); ?></raiblue>
+        <?php if ($ff && $ff['day'] > 1) echo '<smallrainunit2>' . w34_date('D', strtotime($ff['valid'])) . '</smallrainunit2>'; ?>
+      </div>
+<?php endif; ?>
       <!-- Graphic Container -->
       <div class="mod-rainfall-graphic-container">
         <div class="weather34i-rairate-bar">
@@ -57,15 +66,6 @@ if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetche
       
       <!-- Top Pill (Converter) -->
       <div class="mod-rainfall-top-pill">
-<?php if ($ff_days):
-    // the level, then the day it comes when that is not today ("Slight Sat"); "None" over the five days
-    $ff_names = array('MRGL' => w34t('FfMRGL', 'Marginal'), 'SLGT' => w34t('FfSLGT', 'Slight'), 'MDT' => w34t('FfMDT', 'Moderate'), 'HIGH' => w34t('FfHIGH', 'High')); ?>
-        <div class="rainratemodulehome mod-rainfall-ffpill<?php echo $ff ? ' mod-rainfall-ffpill--' . $ff['cat'] : ''; ?>" title="<?php echo htmlspecialchars(w34t('FfTip', 'WPC Excessive Rainfall Outlook: the chance rain exceeds flash-flood guidance within 25 miles')); ?>">
-          <rainratetextheading><?php echo w34t('FfPill', 'Flood'); ?></rainratetextheading>
-          <raiblue><?php echo $ff ? $ff_names[$ff['cat']] : w34t('FfNoneShort', 'None'); ?></raiblue>
-          <?php if ($ff && $ff['day'] > 1) echo '<smallrainunit2>' . w34_date('D', strtotime($ff['valid'])) . '</smallrainunit2>'; ?>
-        </div>
-<?php endif; ?>
         <?php
           if ($weather["rain_units"] =='in') {
             echo "<div class='rainconvertercircle'>".number_format($weather["rain_today"]*25.400013716,1)."<smallrainunit>mm</smallrainunit></div>";

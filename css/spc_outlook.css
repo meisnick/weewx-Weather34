@@ -1,0 +1,195 @@
+/* Storm Outlook popout (pop_spcoutlook.php). Loaded after popup.<theme>.css and tokens.css. */
+
+.spc {
+  --spc-ink: #c5c6ca;
+  --spc-ink-strong: #fff;
+  --spc-head: #8fa8b8;
+  --spc-soft: #7d8086;
+  --spc-box-bg: rgba(33, 34, 39, .6);
+  --spc-box-line: rgba(84, 85, 86, .35);
+  --spc-water: #1b2633;
+  --spc-land: #2c2f35;
+  --spc-border: #5b6068;
+  --spc-hatch: rgba(0, 0, 0, .7);
+  --spc-mark: #fff;
+  --spc-on: rgba(194, 102, 58, .95);
+  /* SPC's own categorical fills (data colours, as on spc.noaa.gov) */
+  --spc-TSTM: #c1e9c1;
+  --spc-MRGL: #66a366;
+  --spc-SLGT: #ffe066;
+  --spc-ENH: #ffa366;
+  --spc-MDT: #e06666;
+  --spc-HIGH: #ee99ee;
+  --spc-none: #4a4e55;
+}
+
+.spc--light {
+  --spc-ink: #333;
+  --spc-ink-strong: #111;
+  --spc-head: #5d7a8c;
+  --spc-soft: #777;
+  --spc-box-bg: #fff;
+  --spc-box-line: #d6d8dc;
+  --spc-water: #cfe0ec;
+  --spc-land: #f4f2ec;
+  --spc-border: #a3a6ab;
+  --spc-hatch: rgba(0, 0, 0, .6);
+  --spc-mark: #111;
+  --spc-none: #c9ccd1;
+}
+
+/* the page is a column: tabs, then the body takes the height left, then the sources line; no scrollbar */
+body.spc { display: flex; flex-direction: column; }
+.spc .tabs-header { flex: none; flex-wrap: wrap; }
+.spc .tablink { display: inline-flex; align-items: center; gap: 6px; }
+
+.spc-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .35); }
+.spc-c-TSTM { background: var(--spc-TSTM); }
+.spc-c-MRGL { background: var(--spc-MRGL); }
+.spc-c-SLGT { background: var(--spc-SLGT); }
+.spc-c-ENH  { background: var(--spc-ENH); }
+.spc-c-MDT  { background: var(--spc-MDT); }
+.spc-c-HIGH { background: var(--spc-HIGH); }
+.spc-c-none { background: var(--spc-none); }
+
+.spc-body { flex: 1 1 0; min-height: 0; display: flex; gap: 10px; }
+
+.spc-info {
+  flex: 0 0 265px;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--spc-box-line);
+  border-radius: 4px;
+  background: var(--spc-box-bg);
+  padding: 8px 10px;
+  font: 11px/1.45 Arial, Helvetica, sans-serif;
+  color: var(--spc-ink);
+}
+
+.spc-info h4 {
+  margin: 9px 0 3px;
+  font: 10.5px weathertext2, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--spc-head);
+}
+
+.spc-info p { margin: 4px 0; }
+.spc-info b { color: var(--spc-ink-strong); font-weight: 600; }
+
+.spc-sub { display: flex; gap: 3px; margin-bottom: 8px; }
+.spc-sub[hidden] { display: none; }
+.spc-subday {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+  padding: 3px 0;
+  white-space: nowrap;
+  font: 9.5px weathertext2, Arial, sans-serif;
+  color: var(--spc-ink);
+  background: transparent;
+  border: 1px solid var(--spc-box-line);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.spc-subday.on { background: var(--spc-on); border-color: var(--spc-on); color: #fff; }
+
+.spc-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font: 13px weathertext2, Arial, sans-serif;
+  color: #111;
+}
+.spc-badge.spc-c-none { color: var(--spc-ink-strong); }
+.spc-level { margin-left: 6px; font-size: 10px; color: var(--spc-soft); text-transform: uppercase; letter-spacing: .3px; }
+
+.spc-desc { color: var(--spc-ink-strong); }
+.spc-when, .spc-issued { color: var(--spc-soft); font-size: 10px; }
+
+.spc-haz { border-collapse: collapse; width: 100%; }
+.spc-haz td { padding: 1px 0; white-space: nowrap; }
+.spc-haz td:first-child { color: var(--spc-head); width: 42%; }
+.spc-haz td:nth-child(2) { color: var(--spc-ink-strong); width: 18%; }
+.spc-sig { font-size: 10px; color: var(--spc-ENH); }
+.spc--light .spc-sig { color: #c0571c; }
+
+.spc-near { color: var(--spc-ink); }
+
+.spc-sum {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+}
+
+.spc-mapcol { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+
+.spc-tools { flex: none; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+.spc-views { white-space: nowrap; }
+.spc-tools button {
+  padding: 3px 9px;
+  font: 10px weathertext2, Arial, sans-serif;
+  color: var(--spc-ink);
+  background: var(--spc-box-bg);
+  border: 1px solid var(--spc-box-line);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.spc-tools button + button { margin-left: 4px; }
+.spc-tools button.on { background: var(--spc-on); border-color: var(--spc-on); color: #fff; }
+
+.spc-map {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border: 1px solid var(--spc-box-line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--spc-water);
+}
+#spc-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.spc-land path { fill: var(--spc-land); stroke: none; }
+.spc-lake path { fill: var(--spc-water); stroke: none; }
+.spc-states path { fill: none; stroke: var(--spc-border); stroke-width: .8px; vector-effect: non-scaling-stroke; }
+.spc-poly { fill-opacity: .8; stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
+.spc-sigpoly { fill: url(#spc-hatch); stroke: #000; stroke-width: 1px; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.spc-hatchline { stroke: var(--spc-hatch); stroke-width: 1.5; }
+.spc-mark-ring { fill: none; stroke: var(--spc-mark); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+.spc-mark-dot { fill: var(--spc-mark); }
+
+.spc-maptxt {
+  position: absolute; left: 0; right: 0; bottom: 8px;
+  text-align: center;
+  font: 11px Arial, Helvetica, sans-serif;
+  color: var(--spc-soft);
+}
+.spc-maptxt[hidden] { display: none; }
+
+.spc-legend {
+  flex: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px;
+  min-height: 14px;
+  font: 10px Arial, Helvetica, sans-serif;
+  color: var(--spc-ink);
+}
+.spc-legend i {
+  display: inline-block; width: 10px; height: 10px; margin-right: 4px; vertical-align: -1px;
+  border: 1px solid; border-radius: 2px;
+}
+.spc-legend .spc-hatchkey {
+  border-color: var(--spc-soft);
+  background: repeating-linear-gradient(45deg, var(--spc-soft) 0 1.5px, transparent 1.5px 4px);
+}
+
+.spc-src { flex: none; margin-top: 6px; font: 10px Arial, Helvetica, sans-serif; color: var(--spc-soft); }
+.spc-stale { color: var(--spc-ENH); }
+.spc-empty { padding: 20px; color: var(--spc-soft); }
+
+/* phones: the info stacks over the map and the page scrolls */
+@media (max-width: 600px) {
+  html { height: auto; overflow-y: auto; }
+  body.spc { display: block; height: auto; overflow: visible; }
+  .spc-body { flex-direction: column; }
+  .spc-info { flex: none; overflow: visible; }
+  .spc-map { flex: none; height: 300px; }
+}

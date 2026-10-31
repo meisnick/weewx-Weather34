@@ -130,7 +130,8 @@ function modulePopups($module, $vars) {
             $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts') . '</a></span>';
             break;
         case 'lightning34.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_lightning.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkStrikeAlmanacCharts', 'Strike Almanac and Charts') . '</a></span>';
+            $out  = '<span class="yearpopup"><a href="pop_menu_lightning.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkStrikeAlmanacCharts', 'Strike Almanac and Charts') . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_spcoutlook.php" data-lity>' . $chartinfo . ' ' . w34t('LinkStormOutlook', 'Storm Outlook') . '</a></span>';
             break;
         case 'webcamsmall.php':
             if (!empty($webcamurl) || !empty($videoWeatherCamURL)) {

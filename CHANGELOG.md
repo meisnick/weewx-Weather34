@@ -8,7 +8,10 @@ Upgrading: pull, then
 1. `sudo ln -s /var/www/html/weewx/weather34/scripts/aq_outlook_update.py /usr/local/bin/aq_outlook_update.py`;
 2. add `25 * * * * /usr/bin/python3 /usr/local/bin/aq_outlook_update.py >> /var/log/aq_outlook.log 2>&1` to root's
    crontab;
-3. optionally set `AQ_MONITOR_SITE` (and `AQ_BC_BASELINE`) in `scripts/w34config.py`, see `w34config.example.py`.
+3. optionally set `AQ_MONITOR_SITE` (and `AQ_BC_BASELINE`) in `scripts/w34config.py`, see `w34config.example.py`;
+4. `sudo ln -s /var/www/html/weewx/weather34/scripts/spc_outlook_update.py /usr/local/bin/spc_outlook_update.py`
+   and add `7,37 * * * * /usr/bin/python3 /usr/local/bin/spc_outlook_update.py >> /var/log/spc_outlook.log 2>&1`
+   to root's crontab.
 
 - Air Quality: why the air is the way it is, and where it is heading. The card gains a cause line (satellite
   smoke over the station from NOAA's Hazard Mapping System, and the dominant pollutant: "Wildfire smoke · heavy
@@ -27,6 +30,13 @@ Upgrading: pull, then
 - UV & Solar: a sunburn row under the pills, the unprotected minutes to sunburn (one minimal erythemal dose)
   at the UV now for skin types II (fair) to V (brown), shown as skin-tone swatches; after dark, at the forecast
   peak of the coming day.
+- Storm Outlook popout, linked from the Lightning card: the NWS Storm Prediction Center's convective outlooks at
+  the station. Days 1 to 3 give the risk level (general thunder, marginal ... high) with what it means, the
+  tornado, damaging-wind and large-hail chances within 25 miles (and whether the hatched "significant" area
+  covers the station), the nearest severe-risk area when the station is outside one, and the forecaster's
+  summary; Days 4 to 8 the chance of severe storms. A map of each day's outlook (risk or hazard layers, region or
+  whole US) is drawn over a small Natural Earth basemap (`js/na_basemap.json`). US only; no API keys
+  (`scripts/spc_outlook_update.py`, twice an hour).
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

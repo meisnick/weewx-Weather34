@@ -28,9 +28,10 @@ Root's crontab runs these from `/usr/local/bin`:
 | :--- | :--- | :--- |
 | `scripts/metar_update.py` | `jsondata/me.txt` | symlink |
 | `scripts/nws_alerts_update.py` | `jsondata/nws_alerts.txt` | symlink |
-| `scripts/nws_forecast_update.py` | `jsondata/forecast_daily.txt`, `forecast_hourly.txt` | symlink |
+| `scripts/nws_forecast_update.py` | `jsondata/forecast_daily.txt`, `forecast_hourly.txt`, `uv_day.json` | symlink |
 | `scripts/nws_kp_update.py` | `jsondata/ki.txt` | symlink |
 | `scripts/aq_outlook_update.py` | `jsondata/aq_outlook.json` | symlink |
+| `scripts/spc_outlook_update.py` | `jsondata/spc_outlook.json` | symlink |
 | `scripts/update_aurora_power.sh` | `jsondata/aurora_power.txt` | copy, mode 755 |
 | `scripts/update_noaa_scales.sh` | `jsondata/noaa_scales.json`, `aurora_forecast.txt` | copy, mode 755 |
 

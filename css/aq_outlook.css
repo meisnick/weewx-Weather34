@@ -31,24 +31,35 @@
   --aqx-box-line: #d6d8dc;
 }
 
+/* popup.*.css gives tabs 100% - 50px, but the tab header is 50px plus a 15px margin (more when its buttons wrap
+   on a phone), so the body clipped the last line. While this tab shows, the body is a column and the tab takes
+   the height left under the header. */
+body:has(> #outlook-tab.active) {
+  display: flex;
+  flex-direction: column;
+}
+
 #outlook-tab.tabcontent.active {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   padding: 0 4px;
-  overflow-y: auto;
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+  overflow: hidden; /* no scrollbar: the chart takes whatever height the panels and sources line leave */
 }
 
-.aqx-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.aqx-row { display: flex; flex-wrap: wrap; gap: 10px; flex: none; }
 
 .aqx-box {
   flex: 1 1 180px;
   border: 1px solid var(--aqx-box-line);
   border-radius: 4px;
-  padding: 8px 10px;
+  padding: 6px 9px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11.5px;
-  line-height: 1.45;
+  font-size: 11px;
+  line-height: 1.4;
   color: var(--aqx-ink);
   background: var(--aqx-box-bg);
 }
@@ -84,6 +95,12 @@
 
 .aqx-action { font-size: 10px; color: var(--aqx-unhealthy); text-transform: uppercase; letter-spacing: .3px; }
 
-.aqx-src { font: 10px Arial, Helvetica, sans-serif; color: var(--aqx-soft); margin-top: 3px; }
+.aqx-src { font: 10px Arial, Helvetica, sans-serif; color: var(--aqx-soft); margin-top: 3px; flex: none; }
 
-#aqx-chart { height: 285px; flex: none; }
+#aqx-chart { flex: 1 1 0; min-height: 0; }
+
+/* phones: the panels stack and would leave the chart a sliver, so it keeps its height and the tab scrolls */
+@media (max-width: 600px) {
+  #outlook-tab.tabcontent.active { overflow-y: auto; }
+  #aqx-chart { flex: none; height: 220px; }
+}

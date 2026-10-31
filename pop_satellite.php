@@ -102,8 +102,7 @@ $tab = ($_GET['tab'] ?? '') === 'close' && $passes ? 'close' : 'live';
   function live() {
     var my = ++token, def = LAYERS[st.layer];
     clearAll(); scale.hidden = true; stamp.textContent = '…';
-    var z = st.extent == 'local' ? 7 : 5;
-    map.setView(st.extent == 'local' ? [LAT, LON] : [LAT - 1, LON - 1.5], z, {animate: false});
+    place(st.extent == 'local' ? [LAT, LON] : [LAT - 1, LON - 1.5], st.extent == 'local' ? 7 : 5);
     var now = Date.now(), from = now - (st.hours * 60 + 120) * 60000;   // the newest frame runs about an hour behind
     // air mass is drawn over infrared (below), which has gaps of its own: only where it has the frame
     Promise.all([domain(def, from, now), st.layer == 'airmass' ? domain(LAYERS.ir, from, now) : []])
@@ -150,7 +149,7 @@ $tab = ($_GET['tab'] ?? '') === 'close' && $passes ? 'close' : 'live';
     var p = PASSES[st.pass]; if (!p) return;
     group.addLayer(L.tileLayer(url('VIIRS_NOAA20_CorrectedReflectance_TrueColor', p.date, 9, 'jpg'), {maxNativeZoom: 9, maxZoom: 15}));
     group.addLayer(L.tileLayer(url('HLS_' + p.src + '_Nadir_BRDF_Adjusted_Reflectance', p.date, 12), {maxNativeZoom: 12, maxZoom: 15}));
-    map.setView([LAT, LON], st.zoom, {animate: false});
+    place([LAT, LON], st.zoom);
     var d = new Date(p.date + 'T17:00:00Z');
     stamp.innerHTML = d.toLocaleDateString(LANG, {timeZone: TZ, weekday: 'short', month: 'short', day: 'numeric'}) + ' &middot; ' + p.sat
       + ' <b>&middot; ' + fmt(T.days, Math.round((Date.now() - d) / 86400000)) + '</b>';
@@ -159,9 +158,21 @@ $tab = ($_GET['tab'] ?? '') === 'close' && $passes ? 'close' : 'live';
   function km() {   // the map's real width, for the zoom buttons and the corner label
     var w = map.getSize().x, m0 = 156543.03 * Math.cos(LAT * Math.PI / 180);   // metres a pixel at zoom 0
     var across = function (z) { return Math.round(w * m0 / Math.pow(2, z) / 1000); };
-    document.querySelectorAll('[data-set=zoom] button').forEach(function (b) { b.textContent = across(+b.dataset.v) + ' km'; });
+    document.querySelectorAll('[data-set=zoom] button').forEach(function (b) {
+      b.textContent = across(+b.dataset.v) + ' km';
+      b.classList.toggle('on', +b.dataset.v == map.getZoom());   // follows wheel and +/- zooming too
+    });
     scale.textContent = fmt(T.km, across(map.getZoom())); scale.hidden = false;
   }
+
+  // Each tab opens centred on the station; once panned or zoomed, the map stays where it was put while the pass,
+  // view or loop changes, and each tab keeps its own place. The Local / Wide buttons recentre the Live tab.
+  var views = {};
+  function place(center, zoom) {
+    var v = views[st.tab];
+    map.setView(v ? v[0] : center, v ? v[1] : zoom, {animate: false});
+  }
+  map.on('moveend', function () { views[st.tab] = [map.getCenter(), map.getZoom()]; });
 
   function render() { (st.tab == 'live' ? live : close)(); }
 
@@ -178,6 +189,7 @@ $tab = ($_GET['tab'] ?? '') === 'close' && $passes ? 'close' : 'live';
       g.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x == b); });
       var v = b.dataset.v; st[g.dataset.set] = isNaN(v) ? v : +v;
       if (g.dataset.set == 'zoom') { map.setZoom(st.zoom); return; }
+      if (g.dataset.set == 'extent') delete views.live;
       render();
     });
   });

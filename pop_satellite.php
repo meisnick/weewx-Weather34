@@ -83,26 +83,43 @@ $tab = ($_GET['tab'] ?? '') === 'close' && $passes ? 'close' : 'live';
 
   function clearAll() { if (timer) clearInterval(timer); timer = null; group.clearLayers(); frames = []; bar.innerHTML = ''; }
 
-  // ---- Live: GIBS reports the newest frame of a layer in the Layer-Time-Actual header of a 'default' tile
+  // ---- Live: the frames GIBS actually has in the loop's window, from its DescribeDomains list, newest last. GOES has
+  // the odd missing 10-minute frame, and asking for one gives a black frame. The 4 hour loop takes every other frame.
+  function minutes(dur) { var m = /PT(?:(\d+)H)?(?:(\d+)M)?/.exec(dur || ''); return m ? (+(m[1] || 0) * 60 + +(m[2] || 0)) || 10 : 10; }
+  var iso = function (t) { return new Date(t).toISOString().slice(0, 19) + 'Z'; };
+  function domain(def, from, to) {   // the frame times (ms) GIBS has for a layer between two times
+    return fetch(GIBS + '1.0.0/' + def[0] + '/default/GoogleMapsCompatible_Level' + def[1] + '/all/' + iso(from) + '--' + iso(to) + '.xml')
+      .then(function (r) { return r.ok ? r.text() : ''; }, function () { return ''; })
+      .then(function (xml) {
+        var m = /<Domain>([^<]*)<\/Domain>/.exec(xml), times = [];
+        (m ? m[1].split(',') : []).forEach(function (part) {   // "start/end/PT10M" runs, or single times
+          var p = part.trim().split('/'), a = Date.parse(p[0]), b = p[1] ? Date.parse(p[1]) : a, step = minutes(p[2]) * 60000;
+          for (var t = a; t <= b; t += step) times.push(t);
+        });
+        return times;
+      });
+  }
   function live() {
     var my = ++token, def = LAYERS[st.layer];
     clearAll(); scale.hidden = true; stamp.textContent = '…';
     var z = st.extent == 'local' ? 7 : 5;
     map.setView(st.extent == 'local' ? [LAT, LON] : [LAT - 1, LON - 1.5], z, {animate: false});
-    var tx = Math.floor((LON + 180) / 360 * (1 << (def[1] - 1))),
-        ty = Math.floor((1 - Math.asinh(Math.tan(LAT * Math.PI / 180)) / Math.PI) / 2 * (1 << (def[1] - 1)));
-    fetch(url(def[0], 'default', def[1]).replace('{z}', def[1] - 1).replace('{y}', ty).replace('{x}', tx), {method: 'HEAD'})
-      .then(function (r) { return r.headers.get('layer-time-actual'); })
-      .then(function (last) {
+    var now = Date.now(), from = now - (st.hours * 60 + 120) * 60000;   // the newest frame runs about an hour behind
+    // air mass is drawn over infrared (below), which has gaps of its own: only where it has the frame
+    Promise.all([domain(def, from, now), st.layer == 'airmass' ? domain(LAYERS.ir, from, now) : []])
+      .then(function (got) {
         if (my != token) return;
-        if (!last) { stamp.textContent = T.none; return; }
-        var end = new Date(last).getTime(), step = st.hours > 2 ? 20 : 10, count = st.hours * 60 / step;
-        for (var i = count - 1; i >= 0; i--) frames.push(new Date(end - i * step * 60000));
+        var times = got[0], under = got[1];
+        if (!times.length) { stamp.textContent = T.none; return; }
+        var last = times[times.length - 1];
+        times = times.filter(function (t) { return t > last - st.hours * 3600000; });
+        if (st.hours > 2) times = times.filter(function (t, i) { return (times.length - 1 - i) % 2 == 0; });
+        frames = times.map(function (t) { return new Date(t); });
         frames.forEach(function (t) {
-          var iso = t.toISOString().slice(0, 19) + 'Z', o = {maxNativeZoom: def[1], maxZoom: 10, opacity: 0}, parts = [];
+          var at = iso(t), o = {maxNativeZoom: def[1], maxZoom: 10, opacity: 0}, parts = [];
           // GIBS leaves the air mass product's coldest cloud tops transparent: the same time's infrared shows through
-          if (st.layer == 'airmass') parts.push(L.tileLayer(url(LAYERS.ir[0], iso, LAYERS.ir[1]), o));
-          parts.push(L.tileLayer(url(def[0], iso, def[1]), o));
+          if (under.indexOf(t.getTime()) >= 0) parts.push(L.tileLayer(url(LAYERS.ir[0], at, LAYERS.ir[1]), o));
+          parts.push(L.tileLayer(url(def[0], at, def[1]), o));
           group.addLayer(L.layerGroup(parts));
         });
         bar.innerHTML = frames.map(function () { return '<i></i>'; }).join('');

@@ -1,0 +1,27 @@
+# Rotation for the Weather34 fetcher logs, which cron appends to and nothing else trims.
+# Install: sudo install -m 644 scripts/system/weather34-logrotate /etc/logrotate.d/weather34
+# copytruncate keeps each log's owner (some are www-data's, some root's) without a create line per file.
+
+/var/log/nws_forecast.log /var/log/metar_update.log /var/log/nws_alerts.log /var/log/nws_kp.log
+/var/log/cloud_cover.log /var/log/aq_outlook.log /var/log/spc_outlook.log /var/log/sat_passes.log
+/var/log/ollama_afd_summarizer.log /var/log/afd_summarizer.log /var/log/aurora_prob.log {
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+}
+
+# The nowcast pipeline's logs (pi's crontab)
+/home/pi/forecast/*.log {
+    su pi pi
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+}

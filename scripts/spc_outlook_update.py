@@ -17,9 +17,11 @@ station is outside one, the outlook polygons (for the popout's map) and, for Day
 forecaster's discussion. Each day fails on its own; the last good copy is kept. Root cron, twice an hour (SPC
 issues Day 1 five times a day):
   7,37 * * * * /usr/bin/python3 /usr/local/bin/spc_outlook_update.py >> /var/log/spc_outlook.log 2>&1
+Most runs find nothing new: each of the 30 files is asked for only if it changed since the copy kept in CACHE_DIR,
+and an unchanged one comes back as an empty 304.
 """
 
-import json, math, os, re, sys, urllib.request
+import hashlib, json, math, os, re, sys, urllib.error, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -51,9 +53,40 @@ ERO = {"Marginal": ("MRGL", "#66A366", "#005500"), "Slight": ("SLGT", "#FFE066",
        "Moderate": ("MDT", "#E06666", "#CC0000"), "High": ("HIGH", "#EE99EE", "#CC00CC")}
 
 
+CACHE_DIR = "/tmp/w34-spc"   # the last copy of each file and its ETag/Last-Modified; RAM, so a reboot refetches all
+UNCHANGED = []   # urls answered 304 this run, for the log
+
+
 def fetch(url, timeout=40):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=timeout) as r:
-        return r.read().decode("utf-8", "replace")
+    path = os.path.join(CACHE_DIR, hashlib.sha1(url.encode()).hexdigest() + ".json")
+    try:
+        with open(path) as f:
+            cached = json.load(f)
+    except Exception:
+        cached = None
+    headers = dict(HEADERS)
+    if cached and cached.get("etag"):
+        headers["If-None-Match"] = cached["etag"]
+    if cached and cached.get("modified"):
+        headers["If-Modified-Since"] = cached["modified"]
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
+            body = r.read().decode("utf-8", "replace")
+            etag, modified = r.headers.get("ETag"), r.headers.get("Last-Modified")
+    except urllib.error.HTTPError as e:
+        if e.code == 304 and cached:
+            UNCHANGED.append(url)
+            return cached["body"]
+        raise
+    if etag or modified:
+        try:
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            with open(path + ".tmp", "w") as f:
+                json.dump({"etag": etag, "modified": modified, "body": body}, f)
+            os.replace(path + ".tmp", path)
+        except Exception as e:
+            print("cache write failed for %s: %s" % (url, e), file=sys.stderr)
+    return body
 
 
 def polygons(geom):
@@ -255,6 +288,7 @@ def main():
             if d in prev:
                 days.append(prev[d])   # the last good copy; its own 'fetched' says how old it is
     write_atomic(OUT_PATH, {"fetched": now, "days": days})
+    print("%s %d files unchanged since the last run" % (now, len(UNCHANGED)))
 
 
 if __name__ == "__main__":

@@ -40,6 +40,13 @@ Cron runs the Python fetchers through `python3`, so symlinks into the repo work 
 current. It executes the shell scripts directly, and the postinst above would strip their execute bit
 inside the repo, so those are copies.
 
+The fetchers append to logs in `/var/log` (and the nowcast pipeline to `/home/pi/forecast/*.log`); nothing else
+trims them, so `weather34-logrotate` rotates them weekly and keeps four compressed weeks:
+
+```sh
+sudo install -m 644 scripts/system/weather34-logrotate /etc/logrotate.d/weather34
+```
+
 `/usr/local/bin/w34config.py` is a symlink to `scripts/w34config.py`, which is the single station
 config. The nowcast scripts, the root fetchers and `icao_lookup.php`/`nws_zone_lookup.php` all use it.
 

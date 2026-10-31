@@ -174,6 +174,7 @@ Create log files:
 ```bash
 sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook,sat_passes}.log
 sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook,sat_passes}.log
+sudo install -m 644 scripts/system/weather34-logrotate /etc/logrotate.d/weather34   # weekly, four kept
 ```
 
 Add to root crontab (`sudo crontab -e`):

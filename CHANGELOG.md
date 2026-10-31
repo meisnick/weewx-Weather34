@@ -14,7 +14,9 @@ Upgrading: pull, then
    to root's crontab;
 5. `sudo ln -s /var/www/html/weewx/weather34/scripts/sat_passes_update.py /usr/local/bin/sat_passes_update.py`
    and add `45 */6 * * * /usr/bin/python3 /usr/local/bin/sat_passes_update.py >> /var/log/sat_passes.log 2>&1`
-   to root's crontab (needs `python3-pil`).
+   to root's crontab (needs `python3-pil`);
+6. copy `skins/w34Highcharts/skin.conf` into WeeWX's skins directory;
+7. `sudo install -m 644 scripts/system/weather34-logrotate /etc/logrotate.d/weather34`.
 
 - Air Quality: why the air is the way it is, and where it is heading. The card gains a cause line (satellite
   smoke over the station from NOAA's Hazard Mapping System, and the dominant pollutant: "Wildfire smoke · heavy
@@ -53,6 +55,10 @@ Upgrading: pull, then
   clear passes to pick from and three zooms labelled with their real width, over that day's VIIRS image so the
   lake and the swath edge are not blank. `scripts/sat_passes_update.py` scores the station's tile for cover and
   cloud every six hours, fetching only days it has not seen. Leaflet from cdnjs; no API keys.
+- Less load on the SD card and on NOAA: the yearly chart files are rebuilt hourly instead of every five minutes
+  (today's point can lag by an hour); the storm outlook fetcher asks for each of its 30 files only if it changed
+  since the last run (SPC issues a few times a day, so most runs download nothing); and the fetcher logs in
+  `/var/log`, which only grew, rotate weekly (`scripts/system/weather34-logrotate`).
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

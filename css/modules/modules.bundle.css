@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-31 04:37:36 UTC
+   Generated: 2026-10-31 04:47:59 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -4224,6 +4224,49 @@ rainratetextheading {
 .mod-uvs-ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
 
 [data-theme="light"] .mod-uvs-track { background: var(--line-soft); }
+
+/* Sunburn time row under the pills: a skin-tone swatch per Fitzpatrick type (II fair to V brown) and its minutes */
+.mod-uvs-burn {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 130px;
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.1px;
+  line-height: 11px;
+  text-align: center;
+  color: var(--card-ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-uvs-burn-l { color: var(--card-ink-soft); }
+.mod-uvs-burn-v { color: var(--card-ink); margin-right: 5px; }
+
+.mod-uvs-skin {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin: 0 3px 0 2px;
+  vertical-align: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .25);
+}
+
+.mod-uvs-skin2 { background: #f1c9a5; }   /* skin-tone swatches: data colours, not theme colours */
+.mod-uvs-skin3 { background: #d9a273; }
+.mod-uvs-skin4 { background: #b67a4c; }
+.mod-uvs-skin5 { background: #7c4d2c; }
+
+/* the Clear Sky label runs longer than "Brightness" did (Klarer Himmel, Tiszta égbolt): one line, centred on its pill */
+.mod-solaruv--strip .luxtodayword {
+  width: 80px !important;
+  margin-left: 6px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* ==== sun.css ==== */
 /* ── SUN MODULE: Clean Flow-Based Layout (Year-Card Pattern) ──────────── */

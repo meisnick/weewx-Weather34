@@ -186,4 +186,20 @@ else {echo '<div class=uvtoday1-3>'.number_format((float)$weather["uv3"],1)."<sm
 if ($clearsky === null) echo "<div class=luxtodaydark>--";
 else echo "<div class=luxtoday>" . $clearsky;?>
 </div></div></div><div class="luxtodayword"><valuetext><?php echo w34t('ClearSky', 'Clear Sky');?></valuetext></div><div class="luxwrap"></div>
+<?php
+// Sunburn time: minutes of unprotected sun to one minimal erythemal dose (MED) at this UV. One UV index unit is
+// 25 mW/m2 of erythemal irradiance, so minutes = MED (J/m2) / (UV x 1.5). MEDs for Fitzpatrick skin types II to V.
+// While the sun is up it uses the UV now; after dark, the peak of the day the strip forecasts.
+$sb_uv = $sun_up ? (float)$weather["uv3"] : ($uvs_fpk ? $uvs_fpk[0] : 0);
+$sb_skin = array(2 => 250, 3 => 350, 4 => 500, 5 => 800);
+$sb_fmt = function ($m) { return $m >= 180 ? '3h+' : ($m >= 60 ? intdiv($m, 60) . 'h' . sprintf('%02d', $m % 60) : $m . 'm'); };
+?>
+<div class="mod-uvs-burn" title="<?php echo htmlspecialchars(w34t('UvsBurnTip', 'Unprotected time to sunburn for skin types II (fair) to V (brown)')); ?>">
+<?php
+if ($sb_uv < 1) echo '<span class="mod-uvs-burn-l">' . w34t('UvsBurnNone', 'Sunburn unlikely &middot; UV under 1') . '</span>';
+else {
+    echo '<span class="mod-uvs-burn-l">' . ($sun_up ? w34t('UvsBurn', 'Sunburn in') : w34t('UvsBurnPeak', 'Sunburn at peak')) . '</span>';
+    foreach ($sb_skin as $t => $med) echo ' <i class="mod-uvs-skin mod-uvs-skin' . $t . '"></i><span class="mod-uvs-burn-v">' . $sb_fmt((int)round($med / ($sb_uv * 1.5))) . '</span>';
+}
+?></div>
 </div>

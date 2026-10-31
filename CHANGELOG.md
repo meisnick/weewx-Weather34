@@ -24,6 +24,9 @@ Upgrading: pull, then
   sensor reading as W/m², becomes Clear Sky: measured radiation as a percentage of weewx's clear-sky radiation for
   the sun's height (lux moves to the W/m² pill's tooltip). `nws_forecast_update.py` also writes
   `jsondata/uv_day.json` (today's and tomorrow's hourly UV); no new cron line.
+- UV & Solar: a sunburn row under the pills, the unprotected minutes to sunburn (one minimal erythemal dose)
+  at the UV now for skin types II (fair) to V (brown), shown as skin-tone swatches; after dark, at the forecast
+  peak of the coming day.
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

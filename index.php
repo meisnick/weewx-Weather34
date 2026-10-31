@@ -172,6 +172,7 @@ function modulePopups($module, $vars) {
         case 'radar_module.php':
             $out  = '<span class="yearpopup"><a href="pop_radar.php" data-lity>' . $chartinfo . ' ' . w34t('LinkRadarLoop', 'Radar Loop') . ' (KMKX)</a></span>';
             $out .= '<span class="monthpopup"><a href="pop_radar_live.php" data-lity>' . $chartinfo . ' ' . w34t('LinkInteractiveRadar', 'Interactive Radar') . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_satellite.php" data-lity>' . $chartinfo . ' ' . w34t('LinkSatellite', 'Satellite') . '</a></span>';
             break;
     }
     return $out;

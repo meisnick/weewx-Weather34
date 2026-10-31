@@ -1,0 +1,100 @@
+/* Satellite popout (pop_satellite.php). Loaded after popup.<theme>.css and tokens.css. */
+
+.sat {
+  --sat-ink: #c5c6ca;
+  --sat-head: #8fa8b8;
+  --sat-soft: #7d8086;
+  --sat-box-bg: rgba(33, 34, 39, .6);
+  --sat-box-line: rgba(84, 85, 86, .35);
+  --sat-map-bg: #111;
+  --sat-on: rgba(194, 102, 58, .95);
+  --sat-stamp-bg: rgba(20, 21, 24, .75);
+  --sat-stamp-ink: #e8e8e8;
+  --sat-accent: #ff7c39;
+}
+
+.sat--light {
+  --sat-ink: #333;
+  --sat-head: #5d7a8c;
+  --sat-soft: #777;
+  --sat-box-bg: #fff;
+  --sat-box-line: #d6d8dc;
+  --sat-map-bg: #dfe3e8;
+}
+
+/* the page is a column: tabs, tools, then the map takes the height left, then the sources line; no scrollbar */
+body.sat { display: flex; flex-direction: column; }
+.sat .tabs-header { flex: none; flex-wrap: wrap; }
+.sat-body { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.sat [hidden] { display: none !important; }
+
+.sat-tools { flex: none; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.sat-lab {
+  font: 10px weathertext2, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--sat-head);
+}
+.sat-sp { flex: 1; }
+.sat-group { display: inline-flex; gap: 4px; }
+.sat-tools button {
+  padding: 3px 9px;
+  font: 10px weathertext2, Arial, sans-serif;
+  color: var(--sat-ink);
+  background: var(--sat-box-bg);
+  border: 1px solid var(--sat-box-line);
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sat-tools button.on { background: var(--sat-on); border-color: var(--sat-on); color: #fff; }
+.sat-tools button small { margin-left: 4px; color: var(--sat-soft); font-size: 8px; }
+.sat-tools button.on small { color: #fff; }
+
+.sat-map {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border: 1px solid var(--sat-box-line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--sat-map-bg);
+}
+#sat-map { position: absolute; inset: 0; background: var(--sat-map-bg); }
+.sat .leaflet-container { font: 10px Arial, Helvetica, sans-serif; }
+.sat .leaflet-bar a { width: 24px; height: 24px; line-height: 24px; }
+
+/* loop progress along the top, the frame time bottom left, the width bottom right (left of the zoom buttons) */
+.sat-bar { position: absolute; left: 8px; right: 8px; top: 8px; z-index: 500; display: flex; gap: 2px; pointer-events: none; }
+.sat-bar i { flex: 1; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, .25); }
+.sat-bar i.on { background: var(--sat-accent); }
+.sat-stamp, .sat-scale {
+  position: absolute;
+  bottom: 8px;
+  z-index: 500;
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: var(--sat-stamp-bg);
+  color: var(--sat-stamp-ink);
+  pointer-events: none;
+}
+.sat-stamp { left: 8px; font: 11px weathertext2, Arial, sans-serif; }
+.sat-stamp b { color: var(--sat-accent); font-weight: 400; }
+.sat-scale { right: 44px; font: 10px Arial, Helvetica, sans-serif; }
+
+/* the station: a white ring with a dot, outlined so it shows on cloud and on snow */
+.sat-pin { position: relative; width: 12px; height: 12px; margin: -6px 0 0 -6px; border: 2px solid #fff; border-radius: 50%;
+  box-sizing: border-box; box-shadow: 0 0 0 1px rgba(0, 0, 0, .6); }
+.sat-pin::after { content: ''; position: absolute; left: 2px; top: 2px; width: 4px; height: 4px; border-radius: 50%; background: #fff; }
+
+.sat-src { flex: none; font: 10px Arial, Helvetica, sans-serif; color: var(--sat-soft); }
+
+/* phones: the tools wrap and the map keeps a usable height; the page scrolls */
+@media (max-width: 600px) {
+  html { height: auto; overflow-y: auto; }
+  body.sat { display: block; height: auto; overflow: visible; }
+  .sat-body { display: flex; }
+  .sat-map { flex: none; height: 340px; }
+  .sat-group { flex-wrap: wrap; }
+  .sat-scale { display: none; }   /* the zoom buttons give the width; the stamp needs the room */
+}

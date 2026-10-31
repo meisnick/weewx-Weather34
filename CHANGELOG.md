@@ -11,7 +11,10 @@ Upgrading: pull, then
 3. optionally set `AQ_MONITOR_SITE` (and `AQ_BC_BASELINE`) in `scripts/w34config.py`, see `w34config.example.py`;
 4. `sudo ln -s /var/www/html/weewx/weather34/scripts/spc_outlook_update.py /usr/local/bin/spc_outlook_update.py`
    and add `7,37 * * * * /usr/bin/python3 /usr/local/bin/spc_outlook_update.py >> /var/log/spc_outlook.log 2>&1`
-   to root's crontab.
+   to root's crontab;
+5. `sudo ln -s /var/www/html/weewx/weather34/scripts/sat_passes_update.py /usr/local/bin/sat_passes_update.py`
+   and add `45 */6 * * * /usr/bin/python3 /usr/local/bin/sat_passes_update.py >> /var/log/sat_passes.log 2>&1`
+   to root's crontab (needs `python3-pil`).
 
 - Air Quality: why the air is the way it is, and where it is heading. The card gains a cause line (satellite
   smoke over the station from NOAA's Hazard Mapping System, and the dominant pollutant: "Wildfire smoke · heavy
@@ -43,6 +46,13 @@ Upgrading: pull, then
   its new Flash flood layer, on the worst day: the outlook on the map, the level's meaning (at least 5, 15, 40 or
   70% chance that rain exceeds flash-flood guidance within 25 miles) and the nearest risk area. Fetched with the
   storm outlook; no new cron line.
+- Satellite popout, a third link in the Radar card's chin. Live: GOES-East imagery every 10 minutes as a 1, 2 or
+  4 hour loop ending on the newest frame NASA GIBS has (GeoColor, which shows city lights under infrared cloud at
+  night; clean infrared; air mass, over the infrared where it leaves the coldest cloud tops empty), local or wide.
+  Close-up: the latest clear Landsat 8/9 or Sentinel-2 pass around the station at 30 m (NASA HLS), with the recent
+  clear passes to pick from and three zooms labelled with their real width, over that day's VIIRS image so the
+  lake and the swath edge are not blank. `scripts/sat_passes_update.py` scores the station's tile for cover and
+  cloud every six hours, fetching only days it has not seen. Leaflet from cdnjs; no API keys.
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

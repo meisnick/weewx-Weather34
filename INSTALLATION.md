@@ -163,7 +163,7 @@ Fill in your station's latitude, longitude, ICAO airport code, and NWS zone iden
 Copy the scripts to `/usr/local/bin` and make them executable:
 
 ```bash
-sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update,aq_outlook_update,spc_outlook_update}.py \
+sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update,aq_outlook_update,spc_outlook_update,sat_passes_update}.py \
         /var/www/html/weewx/weather34/scripts/w34config.py \
         /usr/local/bin/
 sudo chmod +x /usr/local/bin/*.py
@@ -172,8 +172,8 @@ sudo chmod +x /usr/local/bin/*.py
 Create log files:
 
 ```bash
-sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook}.log
-sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook}.log
+sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook,sat_passes}.log
+sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook,spc_outlook,sat_passes}.log
 ```
 
 Add to root crontab (`sudo crontab -e`):
@@ -185,6 +185,7 @@ Add to root crontab (`sudo crontab -e`):
 */5 * * * *     /usr/bin/python3 /usr/local/bin/nws_alerts_update.py >> /var/log/nws_alerts.log 2>&1
 25 * * * *      /usr/bin/python3 /usr/local/bin/aq_outlook_update.py >> /var/log/aq_outlook.log 2>&1
 7,37 * * * *    /usr/bin/python3 /usr/local/bin/spc_outlook_update.py >> /var/log/spc_outlook.log 2>&1
+45 */6 * * *    /usr/bin/python3 /usr/local/bin/sat_passes_update.py >> /var/log/sat_passes.log 2>&1
 ```
 
 `aq_outlook_update.py` feeds the Air Quality card's cause line and forecast row and the popout's Outlook & Cause tab
@@ -194,6 +195,10 @@ Add to root crontab (`sudo crontab -e`):
 `spc_outlook_update.py` feeds the Storm Outlook popout (linked from the Lightning card) and the Rainfall card's
 Flood pill: the NWS Storm Prediction Center's severe-storm outlooks for Days 1 to 8 and the Weather Prediction
 Center's Excessive Rainfall Outlook for Days 1 to 5 at the station, with a map (US only; no API keys).
+
+`sat_passes_update.py` finds the recent clear Landsat and Sentinel-2 passes over the station for the Satellite
+popout's Close-up tab (linked from the Radar card); it needs Pillow (`sudo apt install python3-pil`). The popout's
+Live tab needs no fetcher: it loads GOES-East imagery straight from NASA GIBS.
 
 ---
 

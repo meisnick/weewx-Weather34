@@ -2,9 +2,9 @@
 <?php  //weather34 rain module
 include_once('w34CombinedData.php');
 
-// Flash-flood line: the WPC Excessive Rainfall Outlook at the station (jsondata/spc_outlook.json, written by
-// scripts/spc_outlook_update.py), the highest level over the next five days and the first day it comes. Opens the
-// Storm Outlook popout on its flood layer. Hidden when the outlook is missing or over six hours old.
+// Flood pill: the WPC Excessive Rainfall Outlook at the station (jsondata/spc_outlook.json, written by
+// scripts/spc_outlook_update.py), the highest level over the next five days and the first day it comes. The card's
+// chin links the Storm Outlook popout's flood layer. Hidden when the outlook is missing or over six hours old.
 $ff = null; $ff_days = 0;
 $ffj = @json_decode(@file_get_contents('jsondata/spc_outlook.json'), true);
 if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetched']) < 6 * 3600) {
@@ -21,17 +21,6 @@ if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetche
 <div class="updatedtime"><span><?php if(file_exists($livedata)&&time()- filemtime($livedata)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$weather["time"];?></span></div>  
 
 <div class="mod-rainfall">
-<?php if ($ff_days):
-    $ff_names = array('MRGL' => w34t('SpcMRGL', 'Marginal risk'), 'SLGT' => w34t('SpcSLGT', 'Slight risk'),
-                      'MDT' => w34t('SpcMDT', 'Moderate risk'), 'HIGH' => w34t('SpcHIGH', 'High risk'));
-    if ($ff) {
-        $when = $ff['day'] == 1 ? w34t('Today', 'Today') : ($ff['day'] == 2 ? w34t('Tomorrow', 'Tomorrow') : w34_date('l', strtotime($ff['valid'])));
-        $txt = w34t('FfLabel', 'Flash flood:') . ' <b>' . $ff_names[$ff['cat']] . '</b> &middot; ' . $when;
-    } else {
-        $txt = w34f('FfNone', 'No flash-flood risk &middot; %s days', $ff_days);
-    } ?>
-  <a class="mod-rainfall-ff<?php echo $ff ? ' mod-rainfall-ff--risk' : ''; ?>" href="pop_spcoutlook.php?layer=ero&amp;day=<?php echo $ff ? $ff['day'] : 1; ?>" data-lity title="<?php echo htmlspecialchars(w34t('FfTip', 'WPC Excessive Rainfall Outlook: the chance rain exceeds flash-flood guidance within 25 miles')); ?>"><i class="mod-rainfall-ff-dot mod-rainfall-ff-<?php echo $ff ? $ff['cat'] : 'none'; ?>"></i><?php echo $txt; ?></a>
-<?php endif; ?>
   <div class="mod-rainfall-grid">
     
     <!-- LEFT COLUMN -->
@@ -68,7 +57,16 @@ if (is_array($ffj) && !empty($ffj['fetched']) && time() - strtotime($ffj['fetche
       
       <!-- Top Pill (Converter) -->
       <div class="mod-rainfall-top-pill">
-        <?php 
+<?php if ($ff_days):
+    // the level, then the day it comes when that is not today ("Slight Sat"); "None" over the five days
+    $ff_names = array('MRGL' => w34t('FfMRGL', 'Marginal'), 'SLGT' => w34t('FfSLGT', 'Slight'), 'MDT' => w34t('FfMDT', 'Moderate'), 'HIGH' => w34t('FfHIGH', 'High')); ?>
+        <div class="rainratemodulehome mod-rainfall-ffpill<?php echo $ff ? ' mod-rainfall-ffpill--' . $ff['cat'] : ''; ?>" title="<?php echo htmlspecialchars(w34t('FfTip', 'WPC Excessive Rainfall Outlook: the chance rain exceeds flash-flood guidance within 25 miles')); ?>">
+          <rainratetextheading><?php echo w34t('FfPill', 'Flood'); ?></rainratetextheading>
+          <raiblue><?php echo $ff ? $ff_names[$ff['cat']] : w34t('FfNoneShort', 'None'); ?></raiblue>
+          <?php if ($ff && $ff['day'] > 1) echo '<smallrainunit2>' . w34_date('D', strtotime($ff['valid'])) . '</smallrainunit2>'; ?>
+        </div>
+<?php endif; ?>
+        <?php
           if ($weather["rain_units"] =='in') {
             echo "<div class='rainconvertercircle'>".number_format($weather["rain_today"]*25.400013716,1)."<smallrainunit>mm</smallrainunit></div>";
           } else if ($weather["rain_units"] =='mm') {

@@ -1,6 +1,6 @@
 /* ==========================================================================
    Weather34 CSS Modules Bundle (Production Artifact)
-   Generated: 2026-10-31 05:13:43 UTC
+   Generated: 2026-10-31 05:19:32 UTC
    Source count: 21
    Manifest:
      - [1/21] advisory.css
@@ -3768,44 +3768,29 @@ rainratetextheading {
 
 /* NO USER OFFSETS! */
 
-/* Flash-flood line (WPC Excessive Rainfall Outlook), top left above the beaker, clear of the mm pill; opens the
-   Storm Outlook popout on its flood layer */
-.mod-rainfall-ff {
-  position: absolute;
-  top: 3px;
-  left: 14px;
-  max-width: 220px;
-  z-index: 11;
-  font-family: weathertext2, Arial, sans-serif;
-  font-size: 9.1px;   /* card type scale: label */
-  line-height: 11px;
-  color: var(--card-ink-soft);
-  text-decoration: none;
+/* Flood pill (WPC Excessive Rainfall Outlook) beside the mm pill: the ET/Rate pill style, sized to its words, the
+   level in its outlook colour (darker in the light theme) */
+.mod-rainfall-top-pill {
+  gap: 6px;
+}
+
+.mod-rainfall .mod-rainfall-ffpill {
+  width: auto;
+  min-width: 4.5rem;
+  height: 16px;
+  padding: 0 5px;
+  box-sizing: border-box;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.mod-rainfall-ff:hover { color: var(--card-ink); }
-.mod-rainfall-ff--risk { color: var(--card-ink); }
-.mod-rainfall-ff b { font-weight: 400; color: var(--caution); }
-
-.mod-rainfall-ff-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 4px;
-  border-radius: 50%;
-  vertical-align: 0;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .3);
-}
-
-/* WPC levels in SPC's outlook colours (data colours, as in the Storm Outlook popout) */
-.mod-rainfall-ff-none { background: var(--card-surface); }
-.mod-rainfall-ff-MRGL { background: #66a366; }
-.mod-rainfall-ff-SLGT { background: #ffe066; }
-.mod-rainfall-ff-MDT  { background: #e06666; }
-.mod-rainfall-ff-HIGH { background: #ee99ee; }
+.mod-rainfall-ffpill--MRGL raiblue { color: #66a366; }
+.mod-rainfall-ffpill--SLGT raiblue { color: #ffe066; }
+.mod-rainfall-ffpill--MDT  raiblue { color: #e06666; }
+.mod-rainfall-ffpill--HIGH raiblue { color: #ee99ee; }
+[data-theme="light"] .mod-rainfall-ffpill--MRGL raiblue { color: #3d7a3d; }
+[data-theme="light"] .mod-rainfall-ffpill--SLGT raiblue { color: #a87b00; }
+[data-theme="light"] .mod-rainfall-ffpill--MDT  raiblue { color: #c62828; }
+[data-theme="light"] .mod-rainfall-ffpill--HIGH raiblue { color: #a43aa4; }
 
 /* ==== solar.css ==== */
 /* solaruv module — scoped to .mod-solaruv */

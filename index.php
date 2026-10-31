@@ -127,7 +127,8 @@ function modulePopups($module, $vars) {
             $out .= '<span class="yearpopup"><a href="pop_meteorshowers.php" data-lity>' . $meteorinfo . ' ' . w34t('MeteorShowers', 'Meteor Showers') . '</a></span>';
             break;
         case 'rainfall.php':
-            $out = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts') . '</a></span>';
+            $out  = '<span class="yearpopup"><a href="pop_menu_rain.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkRainAlmanac', 'Rainfall Almanac and Charts') . '</a></span>';
+            $out .= '<span class="yearpopup"><a href="pop_spcoutlook.php?layer=ero" data-lity>' . $chartinfo . ' ' . w34t('LinkFloodOutlook', 'Flood Outlook') . '</a></span>';
             break;
         case 'lightning34.php':
             $out  = '<span class="yearpopup"><a href="pop_menu_lightning.php" data-lity>' . $menucharticonpage . ' ' . w34t('LinkStrikeAlmanacCharts', 'Strike Almanac and Charts') . '</a></span>';

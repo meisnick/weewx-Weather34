@@ -44,6 +44,12 @@ $chip = function ($d) {
 };
 // WPC Excessive Rainfall Outlook levels: the least chance that rain exceeds flash-flood guidance within 25 miles
 $ero_pct = array('MRGL' => 5, 'SLGT' => 15, 'MDT' => 40, 'HIGH' => 70);
+// the day the flood layer opens on without ?day= (the Rainfall card's chin link): the first day with the highest level
+$ero_day = 1; $ero_top = 0;
+foreach ($days as $n => $d) {
+    $e = $d['point']['ero'] ?? '';
+    if ($e && $ero_pct[$e] > $ero_top) { $ero_top = $ero_pct[$e]; $ero_day = $n; }
+}
 $map_days = array();
 foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? array());
 ?>
@@ -194,7 +200,7 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
     b.states.forEach(function (f) { el('path', {d: ringPath(f)}, gStates); });
   });
 
-  // ?layer=ero&day=2 (the Rainfall card's flood line) opens on that layer and day
+  // ?layer=ero (the Rainfall card's Flood Outlook link) opens on that layer, on ?day= or the worst flood day
   var q = new URLSearchParams(location.search);
   var view = 'region', day = 1, want = q.get('layer') || 'cat', lay = want;
   function setView() {
@@ -268,7 +274,7 @@ foreach ($days as $n => $d) $map_days[$n] = array('layers' => $d['layers'] ?? ar
     }
   });
   window.addEventListener('resize', setView);
-  setView(); show(Math.min(8, Math.max(1, parseInt(q.get('day'), 10) || 1)));
+  setView(); show(Math.min(8, Math.max(1, parseInt(q.get('day'), 10) || (want == 'ero' ? <?php echo (int)$ero_day; ?> : 1))));
 })();
 </script>
 </body>

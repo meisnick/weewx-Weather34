@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'bugün zirve %s, saat %s';
 $lang['UvsBurn']                  = 'Güneş yanığı';
 $lang['UvsBurnPeak']              = 'Zirvede güneş yanığı';
 $lang['UvsBurnNone']              = 'Güneş yanığı olası değil &middot; UV 1 altı';
-$lang['UvsBurnTip']               = 'Korumasız güneş yanığı süresi, cilt tipi II (açık) – V (kahverengi)';
 $lang['LinkStormOutlook']         = 'Fırtına Görünümü';
 $lang['SpcTitle']                 = 'Fırtına Görünümü';
 $lang['SpcDay']                   = '%s. gün';

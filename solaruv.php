@@ -194,7 +194,7 @@ $sb_uv = $sun_up ? (float)$weather["uv3"] : ($uvs_fpk ? $uvs_fpk[0] : 0);
 $sb_skin = array(2 => 250, 3 => 350, 4 => 500, 5 => 800);
 $sb_fmt = function ($m) { return $m >= 180 ? '3h+' : ($m >= 60 ? intdiv($m, 60) . 'h' . sprintf('%02d', $m % 60) : $m . 'm'); };
 ?>
-<div class="mod-uvs-burn" title="<?php echo htmlspecialchars(w34t('UvsBurnTip', 'Unprotected time to sunburn for skin types II (fair) to V (brown)')); ?>">
+<div class="mod-uvs-burn">
 <?php
 if ($sb_uv < 1) echo '<span class="mod-uvs-burn-l">' . w34t('UvsBurnNone', 'Sunburn unlikely &middot; UV under 1') . '</span>';
 else {

@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'piek vandaag %s om %s';
 $lang['UvsBurn']                  = 'Verbranding in';
 $lang['UvsBurnPeak']              = 'Verbranding op piek';
 $lang['UvsBurnNone']              = 'Verbranding onwaarschijnlijk &middot; UV onder 1';
-$lang['UvsBurnTip']               = 'Onbeschermde tijd tot verbranding voor huidtype II (licht) tot V (bruin)';
 $lang['LinkStormOutlook']         = 'Onweersverwachting';
 $lang['SpcTitle']                 = 'Onweersverwachting';
 $lang['SpcDay']                   = 'Dag %s';

@@ -490,7 +490,6 @@ $lang['UvsTodayPeak']             = 'today’s peak %s at %s';
 $lang['UvsBurn']                  = 'Sunburn in';
 $lang['UvsBurnPeak']              = 'Sunburn at peak';
 $lang['UvsBurnNone']              = 'Sunburn unlikely &middot; UV under 1';
-$lang['UvsBurnTip']               = 'Unprotected time to sunburn for skin types II (fair) to V (brown)';
 $lang['LinkStormOutlook']         = 'Storm Outlook';
 $lang['SpcTitle']                 = 'Storm Outlook';
 $lang['SpcDay']                   = 'Day %s';

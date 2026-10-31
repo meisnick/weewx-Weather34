@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'pic aujourd’hui %s à %s';
 $lang['UvsBurn']                  = 'Coup de soleil en';
 $lang['UvsBurnPeak']              = 'Coup de soleil au pic';
 $lang['UvsBurnNone']              = 'Coup de soleil peu probable &middot; UV sous 1';
-$lang['UvsBurnTip']               = 'Durée sans protection avant le coup de soleil, phototypes II (clair) à V (brun)';
 $lang['LinkStormOutlook']         = 'Prévision d’orages';
 $lang['SpcTitle']                 = 'Prévision d’orages';
 $lang['SpcDay']                   = 'Jour %s';

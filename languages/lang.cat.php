@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'màxim avui %s a les %s';
 $lang['UvsBurn']                  = 'Cremada en';
 $lang['UvsBurnPeak']              = 'Cremada al màxim';
 $lang['UvsBurnNone']              = 'Cremada improbable &middot; UV sota 1';
-$lang['UvsBurnTip']               = 'Temps sense protecció fins a cremar-se per als fototips II (clar) a V (bru)';
 $lang['LinkStormOutlook']         = 'Previsió de tempestes';
 $lang['SpcTitle']                 = 'Previsió de tempestes';
 $lang['SpcDay']                   = 'Dia %s';

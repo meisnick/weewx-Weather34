@@ -487,7 +487,6 @@ $lang['UvsTodayPeak']             = 'mai csúcs %s, %s';
 $lang['UvsBurn']                  = 'Leégés';
 $lang['UvsBurnPeak']              = 'Leégés a csúcson';
 $lang['UvsBurnNone']              = 'Leégés nem valószínű &middot; UV 1 alatt';
-$lang['UvsBurnTip']               = 'Védelem nélküli idő a leégésig a II. (világos) – V. (barna) bőrtípusra';
 $lang['LinkStormOutlook']         = 'Viharelőrejelzés';
 $lang['SpcTitle']                 = 'Viharelőrejelzés';
 $lang['SpcDay']                   = '%s. nap';

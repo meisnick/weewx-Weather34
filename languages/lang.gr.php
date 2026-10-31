@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'μέγιστο σήμερα %s στις %s'
 $lang['UvsBurn']                  = 'Έγκαυμα σε';
 $lang['UvsBurnPeak']              = 'Έγκαυμα στο μέγιστο';
 $lang['UvsBurnNone']              = 'Έγκαυμα απίθανο &middot; UV κάτω από 1';
-$lang['UvsBurnTip']               = 'Χρόνος χωρίς προστασία έως το έγκαυμα για τύπους δέρματος II (ανοιχτό) έως V (καστανό)';
 $lang['LinkStormOutlook']         = 'Πρόγνωση καταιγίδων';
 $lang['SpcTitle']                 = 'Πρόγνωση καταιγίδων';
 $lang['SpcDay']                   = 'Ημέρα %s';

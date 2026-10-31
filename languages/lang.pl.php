@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'szczyt dziś %s o %s';
 $lang['UvsBurn']                  = 'Oparzenie za';
 $lang['UvsBurnPeak']              = 'Oparzenie w szczycie';
 $lang['UvsBurnNone']              = 'Oparzenie mało prawdopodobne &middot; UV poniżej 1';
-$lang['UvsBurnTip']               = 'Czas bez ochrony do oparzenia dla fototypów II (jasna) do V (brązowa)';
 $lang['LinkStormOutlook']         = 'Prognoza burz';
 $lang['SpcTitle']                 = 'Prognoza burz';
 $lang['SpcDay']                   = 'Dzień %s';

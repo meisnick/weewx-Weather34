@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'top i dag %s kl. %s';
 $lang['UvsBurn']                  = 'Solskoldning om';
 $lang['UvsBurnPeak']              = 'Solskoldning ved top';
 $lang['UvsBurnNone']              = 'Solskoldning usandsynlig &middot; UV under 1';
-$lang['UvsBurnTip']               = 'Tid uden beskyttelse til solskoldning for hudtype II (lys) til V (brun)';
 $lang['LinkStormOutlook']         = 'Uvejrsudsigt';
 $lang['SpcTitle']                 = 'Uvejrsudsigt';
 $lang['SpcDay']                   = 'Dag %s';

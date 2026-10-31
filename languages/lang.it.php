@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'picco oggi %s alle %s';
 $lang['UvsBurn']                  = 'Scottatura in';
 $lang['UvsBurnPeak']              = 'Scottatura al picco';
 $lang['UvsBurnNone']              = 'Scottatura improbabile &middot; UV sotto 1';
-$lang['UvsBurnTip']               = 'Tempo senza protezione fino alla scottatura per i fototipi II (chiaro) a V (bruno)';
 $lang['LinkStormOutlook']         = 'Previsione temporali';
 $lang['SpcTitle']                 = 'Previsione temporali';
 $lang['SpcDay']                   = 'Giorno %s';

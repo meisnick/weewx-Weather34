@@ -490,7 +490,6 @@ $lang['UvsTodayPeak']             = 'pico hoje %s às %s';
 $lang['UvsBurn']                  = 'Queimadura em';
 $lang['UvsBurnPeak']              = 'Queimadura no pico';
 $lang['UvsBurnNone']              = 'Queimadura improvável &middot; UV abaixo de 1';
-$lang['UvsBurnTip']               = 'Tempo sem proteção até a queimadura para os tipos de pele II (clara) a V (morena escura)';
 $lang['LinkStormOutlook']         = 'Previsão de Tempestades';
 $lang['SpcTitle']                 = 'Previsão de Tempestades';
 $lang['SpcDay']                   = 'Dia %s';

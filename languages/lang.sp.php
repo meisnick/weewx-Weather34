@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'máximo hoy %s a las %s';
 $lang['UvsBurn']                  = 'Quemadura en';
 $lang['UvsBurnPeak']              = 'Quemadura en el máximo';
 $lang['UvsBurnNone']              = 'Quemadura improbable &middot; UV bajo 1';
-$lang['UvsBurnTip']               = 'Tiempo sin protección hasta quemarse para fototipos II (clara) a V (morena)';
 $lang['LinkStormOutlook']         = 'Previsión de tormentas';
 $lang['SpcTitle']                 = 'Previsión de tormentas';
 $lang['SpcDay']                   = 'Día %s';

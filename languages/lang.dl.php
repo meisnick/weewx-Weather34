@@ -486,7 +486,6 @@ $lang['UvsTodayPeak']             = 'Spitze heute %s um %s';
 $lang['UvsBurn']                  = 'Sonnenbrand in';
 $lang['UvsBurnPeak']              = 'Sonnenbrand zur Spitze';
 $lang['UvsBurnNone']              = 'Sonnenbrand unwahrscheinlich &middot; UV unter 1';
-$lang['UvsBurnTip']               = 'Ungeschützte Zeit bis zum Sonnenbrand für Hauttyp II (hell) bis V (braun)';
 $lang['LinkStormOutlook']         = 'Unwetterausblick';
 $lang['SpcTitle']                 = 'Unwetterausblick';
 $lang['SpcDay']                   = 'Tag %s';

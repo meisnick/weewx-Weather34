@@ -1,8 +1,9 @@
 # Weather34 for WeeWX
 
 **A modern, modular self-hosted weather dashboard skin for [WeeWX](https://weewx.com/) 5.**
-Theme-aware, drag-and-drop customizable, with live radar, air quality, lightning, space
-weather, and AI-summarized forecast discussions — all powered by free, keyless data sources.
+Theme-aware, drag-and-drop customizable, with live radar and satellite, air quality with its cause
+and outlook, lightning, storm and flood outlooks, space weather, and AI-summarized forecast
+discussions — all powered by free, keyless data sources.
 
 ![WeeWX 5.5.2](https://img.shields.io/badge/WeeWX-5.5.2-1f6feb)
 ![PHP 8.4](https://img.shields.io/badge/PHP-8.4-777bb4)
@@ -39,12 +40,24 @@ no paid or deprecated APIs.
   including the settings UI.
 - **📡 Live NWS radar** — polished radar module with real-time station picking, dark-mode
   inversion, zero-flash double-buffered loop transitions, and an interactive pan/zoom popup.
-- **🌫️ Air quality** — two-column module with PM2.5 and O₃ pills from the nearest WAQI monitor and
-  PM10 / NO₂ estimates from the Open-Meteo air-quality model (marked *est*), a tabbed details popup,
-  and a historical AQI trend chart.
+- **🌫️ Air quality** — PM2.5 and O₃ from the nearest WAQI monitor and PM10 / NO₂ estimates from the
+  Open-Meteo air-quality model (marked *est*), plus *why* the air is the way it is and where it's
+  heading: a cause line (satellite smoke over the station from NOAA's Hazard Mapping System, or the
+  dominant pollutant) and the official AQI forecast for the next four days (AirNow). The popout
+  opens on an Outlook & Cause tab with a 72-hour model AQI chart; the AQI trend chart sits beside it.
+- **☀️ UV & Solar** — a sunrise-to-sunset UV strip (measured UV over the hourly forecast, coloured by
+  UV category), a Clear Sky pill (radiation as a share of clear-sky radiation for the sun's height),
+  and minutes to sunburn at the current UV for skin types II to V.
 - **⚡ Lightning** — live strike statistics from the archive database, a 24-hour strike-distance
   strip across the sensor's range (heat-shaded by count, with the latest strike marked), distances
   in the dashboard's units, and a Strike Almanac with yearly and weekly charts.
+- **⛈️ Storm & flood outlooks** — a Storm Outlook popout with the Storm Prediction Center's
+  convective outlooks for Days 1–8 at the station (risk level, tornado / wind / hail chances, the
+  nearest risk area, the forecaster's summary) on a map, and a Flood pill on the rainfall card from
+  the Weather Prediction Center's Excessive Rainfall Outlook for the next five days.
+- **🛰️ Satellite** — GOES-East loops of the last 1, 2 or 4 hours (GeoColor, clean infrared, air
+  mass) and a 30 m close-up of the station from the latest clear Landsat 8/9 or Sentinel-2 passes;
+  the map keeps your pan and zoom while you change views or passes.
 - **💧 Rain & evapotranspiration** — rain and ET totals side by side on the rainfall card, ET and
   the rain − ET balance in the Rain Almanac, and ET drawn alongside rain in the rain charts.
 - **🩺 Sensor health light** — a top-bar check-engine light for low batteries and sensors that have
@@ -61,8 +74,13 @@ no paid or deprecated APIs.
 - **🔔 Dashboard notifications** — toast alerts for low battery, UV caution, heat exhaustion, wind
   advisory/warning, wind chill, and freezing dewpoint.
 - **🌍 Internationalized** — 15 languages across the cards, popups and charts via `$lang[]`.
-- **🆓 Free & keyless data** — Open-Meteo, NOAA Aviation Weather METAR, and NWS alerts require no
-  API key; only optional extended forecast / AQI use free tokens.
+- **🆓 Free & keyless data** — Open-Meteo, NOAA (METAR, NWS alerts and forecasts, SPC, WPC, space
+  weather, smoke), AirNow and NASA imagery require no API key; only the optional extended forecast
+  and the WAQI monitor use free tokens.
+- **🪶 Easy on the Pi** — cron fetchers on schedules matched to how often each product changes,
+  skipping files that haven't changed; cards and popouts read those saved files, never an outside
+  API; map and satellite tiles load in the visitor's browser straight from their source; yearly
+  charts rebuild hourly; fetcher logs rotate.
 
 ## Branches
 
@@ -108,7 +126,8 @@ cp scripts/w34config.example.py scripts/w34config.py
 ```
 
 Then configure `/etc/weewx/weewx.conf` (start from `weewx5.conf.example`) and set up the cron
-scripts that fetch forecast, METAR, alerts, cloud cover, and air quality. See
+scripts that fetch forecast, METAR, alerts, cloud cover, air quality and its outlook, the storm
+outlook, and the satellite passes. See
 [INSTALLATION.md](INSTALLATION.md) for the complete procedure and
 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) if something looks off.
 
@@ -127,6 +146,13 @@ All supplemental data comes from free, officially maintained sources. Paid and d
 | [NOAA Aviation Weather Center](https://aviationweather.gov/) | METAR current conditions | US Government / Public Domain |
 | [NOAA National Weather Service](https://www.weather.gov/documentation/services-web-api) | Weather alerts, AFD | US Government / Public Domain |
 | [NOAA Space Weather](https://www.swpc.noaa.gov/) | Kp index / OVATION aurora | US Government / Public Domain |
+| [NOAA Storm Prediction Center](https://www.spc.noaa.gov/) | Convective outlooks, Days 1–8 | US Government / Public Domain |
+| [NOAA Weather Prediction Center](https://www.wpc.ncep.noaa.gov/) | Excessive Rainfall Outlook | US Government / Public Domain |
+| [NOAA Hazard Mapping System](https://www.ospo.noaa.gov/products/land/hms.html) | Satellite smoke analysis | US Government / Public Domain |
+| [AirNow](https://www.airnow.gov/) (EPA) | Official AQI forecasts | US Government / Public Domain |
+| [NASA GIBS](https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api) | GOES-East, Landsat/Sentinel-2 (HLS) and VIIRS imagery | NASA open data, no restrictions |
+| [Natural Earth](https://www.naturalearthdata.com/) | Storm Outlook basemap | Public Domain |
+| [Leaflet](https://leafletjs.com/) | Satellite map | BSD 2-Clause |
 | [IBM The Weather Company](https://www.weather.com/) | Optional extended forecast | Requires API key |
 | [WAQI](https://waqi.info/) | Air quality index | Requires free API token |
 | [WeeWX](https://weewx.com/) | Weather station daemon | [GPL v3](https://github.com/weewx/weewx/blob/master/LICENSE.txt) |
@@ -163,7 +189,8 @@ naming conventions provide the grouping.
 
 | Directory | Contents |
 |---|---|
-| `scripts/` | Python cron scripts (forecast, METAR, NWS alerts, cloud cover) |
+| `scripts/` | Python cron scripts (forecast, METAR, NWS alerts, Kp, air-quality outlook, storm outlook, satellite passes) |
+| `scripts/system/` | Box-level files: permissions hook, Apache snippets, log rotation |
 | `css/` | Stylesheets — `framework.*` + scoped `css/modules/*.css` |
 | `js/` | Vendor JS libraries (jQuery, gauge, lightbox, SortableJS) |
 | `w34highcharts/` | Highcharts subsystem — PHP data endpoints, JS, theme CSS |
@@ -190,8 +217,8 @@ api.weather.gov; cloud cover → Open-Meteo archive. Deprecated-service filename
 **Modular rebuild (the `main` branch)** — CSS-Grid page layout; drag-and-drop dashboard editor
 (SortableJS) with instant save and column controls; theme-aware `framework.*` stylesheets plus
 scoped `css/modules/*.css`; a dynamic loader that pulls only the CSS for active modules; and
-redesigned Air Quality, Lightning (v2), Space Weather, NWS Radar, Forecast Discussion, and Local
-Nowcast modules. Legacy runtime class names were folded into the scoped `.mod-*` system with
+redesigned Air Quality, Lightning (v2), UV & Solar, Space Weather, NWS Radar, Forecast Discussion,
+and Local Nowcast modules; and new Storm Outlook and Satellite popouts. Legacy runtime class names were folded into the scoped `.mod-*` system with
 render-parity gates.
 
 **Hardening & cleanup** — dead earthquake module removed; restored dashboard toast notifications;

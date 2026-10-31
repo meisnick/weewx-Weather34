@@ -556,6 +556,17 @@ def main():
     awh = build_awh(data)
     write_atomic(FORECAST_HOURLY_PATH, awh)
 
+    # Today's and tomorrow's hourly UV for the UV & Solar card's day strip (forecast_hourly.txt starts at the
+    # current hour, so by afternoon it has lost the morning)
+    try:
+        days = data["daily"]["time"][:2]
+        uv = {t: round(v, 1) for t, v in zip(data["hourly"]["time"], data["hourly"].get("uv_index") or [])
+              if v is not None and t[:10] in days}
+        write_atomic(os.path.join(os.path.dirname(FORECAST_HOURLY_PATH), "uv_day.json"),
+                     {"generated": int(datetime.now(timezone.utc).timestamp()), "uv": uv})
+    except Exception as e:
+        print(f"Warning: could not write uv_day.json: {e}", file=sys.stderr)
+
     print("Done.")
 
 

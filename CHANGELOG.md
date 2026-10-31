@@ -17,6 +17,13 @@ Upgrading: pull, then
   the explanation, the smoke analysis, the forecast table and a 72-hour model AQI chart (Open-Meteo CAMS).
   With `AQ_MONITOR_SITE` set to a monitor that measures black carbon, soot against its 30-day median tells smoke
   at ground level from other particles. US only; no API keys (`scripts/aq_outlook_update.py`, hourly).
+- UV & Solar: a UV day strip across the top of the card, sunrise to sunset: the hourly UV forecast under the
+  measured UV in 10-minute steps, coloured by UV category, with a line at now and a caption with the category,
+  the day's peak so far and when, and the forecast peak. After sunset it shows tomorrow's forecast, and the UV
+  pill's night-time forecast now comes from the same numbers (it showed the day just ended). The Lux pill, the same
+  sensor reading as W/m², becomes Clear Sky: measured radiation as a percentage of weewx's clear-sky radiation for
+  the sun's height (lux moves to the W/m² pill's tooltip). `nws_forecast_update.py` also writes
+  `jsondata/uv_day.json` (today's and tomorrow's hourly UV); no new cron line.
 
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 

@@ -377,3 +377,79 @@
   text-align: center !important;
   margin: 0 !important;
 }
+
+/* --- UV day strip (solaruv.php): sunrise to sunset, hourly forecast UV (faint) under the measured UV in
+   10-minute steps, coloured by UV category; a line marks now. Sits across the top like the Lightning card's
+   strike strip; the pills move down to make room. --- */
+
+.mod-solaruv--strip { top: 8px; }
+
+.mod-uvs {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: -4px;
+  height: 40px;
+}
+
+.mod-uvs-cap {
+  font-family: weathertext2, Arial, sans-serif;
+  font-size: 9.1px;   /* card type scale: label */
+  line-height: 11px;
+  text-align: left;
+  color: var(--card-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-uvs-cap b { font-weight: 400; color: var(--caution); }
+
+.mod-uvs-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--card-surface);
+  overflow: hidden;
+}
+
+.mod-uvs-track svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; }
+
+.mod-uvs-night { fill: rgba(0, 0, 0, .18); }
+.mod-uvs-f     { opacity: .3; }
+.mod-uvs--fc .mod-uvs-f { opacity: .85; }   /* nothing measured yet: the forecast is the whole story */
+.mod-uvs-u1  { fill: var(--green); }
+.mod-uvs-u3  { fill: var(--amber); }
+.mod-uvs-u6  { fill: var(--orange); }
+.mod-uvs-u8  { fill: var(--uv-red); }
+.mod-uvs-u11 { fill: var(--uv-purple); }
+
+.mod-uvs-mark {
+  position: absolute;
+  top: 11px;
+  width: 2px;
+  height: 20px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--card-ink-strong);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4);
+}
+
+.mod-uvs-ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  height: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 7.8px;
+  line-height: 9px;
+  color: var(--card-ink-soft);
+}
+
+.mod-uvs-ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+
+[data-theme="light"] .mod-uvs-track { background: var(--line-soft); }

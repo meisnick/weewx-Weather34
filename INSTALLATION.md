@@ -163,7 +163,7 @@ Fill in your station's latitude, longitude, ICAO airport code, and NWS zone iden
 Copy the scripts to `/usr/local/bin` and make them executable:
 
 ```bash
-sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update}.py \
+sudo cp /var/www/html/weewx/weather34/scripts/{nws_forecast_update,metar_update,nws_alerts_update,cloud_cover_update,aq_outlook_update}.py \
         /var/www/html/weewx/weather34/scripts/w34config.py \
         /usr/local/bin/
 sudo chmod +x /usr/local/bin/*.py
@@ -172,8 +172,8 @@ sudo chmod +x /usr/local/bin/*.py
 Create log files:
 
 ```bash
-sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover}.log
-sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover}.log
+sudo touch /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook}.log
+sudo chown www-data:www-data /var/log/{nws_forecast,metar_update,nws_alerts,cloud_cover,aq_outlook}.log
 ```
 
 Add to root crontab (`sudo crontab -e`):
@@ -183,7 +183,12 @@ Add to root crontab (`sudo crontab -e`):
 15 * * * *      /usr/bin/python3 /usr/local/bin/nws_forecast_update.py >> /var/log/nws_forecast.log 2>&1
 */15 * * * *    /usr/bin/python3 /usr/local/bin/metar_update.py >> /var/log/metar_update.log 2>&1
 */5 * * * *     /usr/bin/python3 /usr/local/bin/nws_alerts_update.py >> /var/log/nws_alerts.log 2>&1
+25 * * * *      /usr/bin/python3 /usr/local/bin/aq_outlook_update.py >> /var/log/aq_outlook.log 2>&1
 ```
+
+`aq_outlook_update.py` feeds the Air Quality card's cause line and forecast row and the popout's Outlook & Cause tab
+(US only: NOAA satellite smoke analysis, AirNow agency forecast, Open-Meteo model AQI; no API keys). Set
+`AQ_MONITOR_SITE` in `w34config.py` to a nearby AirNow monitor that measures black carbon to add the soot check.
 
 ---
 

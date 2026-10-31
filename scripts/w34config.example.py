@@ -26,6 +26,16 @@ FORECAST_HOURLY_PATH   = WEB_ROOT + "/jsondata/forecast_hourly.txt"
 ME_PATH    = WEB_ROOT + "/jsondata/me.txt"
 ALERTS_PATH = WEB_ROOT + "/jsondata/nws_alerts.txt"
 
+# Air Quality outlook (scripts/aq_outlook_update.py): satellite smoke, agency AQI forecast, model AQI.
+# AirNow reporting area for the forecast; "" picks the nearest one (names are in
+# https://files.airnowtech.org/airnow/today/reportingarea.dat, column 8).
+AQ_REPORTING_AREA = ""
+# AirNow site id (AQSID) of a nearby monitor that measures black carbon (BC), e.g. "550890009"; "" = none.
+# Its soot level against its own 30-day median separates smoke at ground level from other particles.
+AQ_MONITOR_SITE = ""
+# Usual BC at that monitor (ug/m3), used until the script has 72 hours of its own history; None = wait.
+AQ_BC_BASELINE = None
+
 # Nowcast Pipeline Configuration
 NOWCAST_LOCAL_FEATURE_DB = "/home/weewx/features.db"   # SQLite DB for historical features
 NOWCAST_LOCAL_LOG_DB     = "/home/weewx/forecast_log.db" # SQLite DB for logging

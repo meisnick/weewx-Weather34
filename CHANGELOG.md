@@ -2,6 +2,22 @@
 
 All notable changes to this maintained fork will be documented in this file.
 
+## [Unreleased]
+
+Upgrading: pull, then
+1. `sudo ln -s /var/www/html/weewx/weather34/scripts/aq_outlook_update.py /usr/local/bin/aq_outlook_update.py`;
+2. add `25 * * * * /usr/bin/python3 /usr/local/bin/aq_outlook_update.py >> /var/log/aq_outlook.log 2>&1` to root's
+   crontab;
+3. optionally set `AQ_MONITOR_SITE` (and `AQ_BC_BASELINE`) in `scripts/w34config.py`, see `w34config.example.py`.
+
+- Air Quality: why the air is the way it is, and where it is heading. The card gains a cause line (satellite
+  smoke over the station from NOAA's Hazard Mapping System, and the dominant pollutant: "Wildfire smoke · heavy
+  plume overhead", "Ozone", "Light smoke aloft · …", "Clean air") and a row of the official AQI forecast for
+  today and the next three days (the state agency's, via AirNow). The popout opens on a new Outlook & Cause tab:
+  the explanation, the smoke analysis, the forecast table and a 72-hour model AQI chart (Open-Meteo CAMS).
+  With `AQ_MONITOR_SITE` set to a monitor that measures black carbon, soot against its 30-day median tells smoke
+  at ground level from other particles. US only; no API keys (`scripts/aq_outlook_update.py`, hourly).
+
 ## [5.1.2] — 2026-10-25 — Popups, lightning strip, chart tabs, honest air quality
 
 Upgrading: pull, then

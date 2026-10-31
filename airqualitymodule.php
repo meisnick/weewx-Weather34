@@ -1,5 +1,5 @@
 <?php include_once('w34_i18n.php'); ?>
-<?php include_once('shared_core.php'); include('common.php');
+<?php include_once('shared_core.php'); include('common.php'); include_once('aq_outlook.php');
 
 // --- Load AQ data safely ---
 $aq_file = 'jsondata/aq.txt';
@@ -76,6 +76,9 @@ $polls = [
 $aq_o3_off = ['10-14', '03-31'];
 $aq_md = date('m-d');
 $aq_o3_offseason = ($aq_o3 === null) && ($aq_md >= $aq_o3_off[0] || $aq_md <= $aq_o3_off[1]);
+// Cause line and agency forecast row (jsondata/aq_outlook.json); without it the card keeps its plain layout.
+$aqx = aqx_load();
+if ($aqx) list($aqx_kind, $aqx_title, $aqx_detail) = aqx_cause($data_ok ? $aqi : 0, $aq_dominant, $aqx);
 $aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Meteo air-quality model (CAMS): the nearest monitor does not measure this'));
 ?>
 <div class="updatedtime"><span>
@@ -86,7 +89,15 @@ $aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Mete
     endif; ?>
 </span></div>
 
-<div class="mod-aq">
+<div class="mod-aq<?php if ($aqx) echo ' mod-aq--outlook'; ?>">
+
+    <?php if ($aqx): ?>
+    <!-- Cause: satellite smoke over the station and the dominant pollutant -->
+    <div class="mod-aq-cause" title="<?php echo htmlspecialchars(strip_tags(aqx_why($data_ok ? $aqi : 0, $aq_dominant, $aqx))); ?>">
+        <span class="ic mod-aq-cause--<?php echo $aqx_kind; ?>"><?php if ($aqx_kind === 'o3'): ?><svg viewBox="0 0 12 12" width="10" height="10"><circle cx="6" cy="6" r="2.6" fill="currentColor"/><g stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 .8v1.6M6 9.6v1.6M.8 6h1.6M9.6 6h1.6M2.3 2.3l1.1 1.1M8.6 8.6l1.1 1.1M2.3 9.7l1.1-1.1M8.6 3.4l1.1-1.1"/></g></svg><?php else: ?><svg viewBox="0 0 12 10" width="11" height="9"><path d="M1 3c2-2 3 2 5 0s3 2 5 0M1 6c2-2 3 2 5 0s3 2 5 0M1 9c2-2 3 2 5 0s3 2 5 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><?php endif; ?></span>
+        <b class="mod-aq-cause--<?php echo $aqx_kind; ?>"><?php echo htmlspecialchars($aqx_title); ?></b><?php if ($aqx_detail !== ''): ?><span class="sep">&middot;</span><span><?php echo htmlspecialchars($aqx_detail); ?></span><?php endif; ?>
+    </div>
+    <?php endif; ?>
 
     <!-- Left: Main AQI Badge -->
     <div class="mod-aq-badge">
@@ -119,5 +130,17 @@ $aq_model_tip = htmlspecialchars(w34t('AqModelTip', 'Estimate from the Open-Mete
             <?php endforeach; ?>
         </div>
     </div>
+
+    <?php if (isset($aqx['forecast'])): ?>
+    <!-- Agency AQI forecast (AirNow), today + 3 days -->
+    <div class="mod-aq-fc">
+        <div class="mod-aq-fc-lbl"><?php echo w34t('AqxForecast', 'AQI forecast'); ?></div>
+        <?php foreach ($aqx['forecast']['days'] as $i => $d): list($lvl, $short, $long) = aqx_cat($d['cat']); ?>
+        <div class="mod-aq-day mod-aq-bg--<?php echo $lvl . ($i === 0 ? ' today' : '') . (!empty($d['action']) ? ' action' : ''); ?>" title="<?php echo htmlspecialchars(aqx_day($d['date']) . ': ' . $long . ' (' . aqx_pol($d['pol']) . ')'); ?>">
+            <span class="mod-aq-day-d"><?php echo aqx_day($d['date']); ?></span><span class="mod-aq-day-c"><?php echo $short; ?></span>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
 
 </div>

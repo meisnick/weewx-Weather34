@@ -199,3 +199,96 @@
 [data-theme="light"] .mod-aq-heading {
   color: var(--card-ink-blue);
 }
+
+/* ── Cause line and agency forecast row (aq_outlook.php) ─────────────────── */
+/* With an outlook the badge row moves up 8px; the cause line sits above it and the forecast chips below. */
+.mod-aq--outlook {
+    position: relative;
+    padding-top: 42px;
+}
+
+.mod-aq-cause {
+    position: absolute;
+    left: 20px;
+    right: 15px;
+    top: 23px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 8.4px;
+    line-height: 13px;
+    color: var(--card-ink);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mod-aq-cause .ic { display: inline-flex; flex: none; }
+.mod-aq-cause b { font-weight: 400; flex: none; }
+.mod-aq-cause .sep { opacity: .5; flex: none; }
+.mod-aq-cause > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+
+.mod-aq-cause--none  { color: var(--good); }
+.mod-aq-cause--light { color: var(--card-ink-soft); }
+.mod-aq-cause--med   { color: var(--caution); }
+.mod-aq-cause--heavy { color: var(--danger); }
+.mod-aq-cause--o3    { color: var(--warn); }
+
+.mod-aq-fc {
+    position: absolute;
+    left: 20px;
+    right: 15px;
+    top: 122px;
+    height: 28px;
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.mod-aq-fc-lbl {
+    width: 56px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.5rem;
+    line-height: 1.2;
+    color: var(--card-ink-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    overflow-wrap: anywhere; /* long one-word translations (Hungarian, German) break instead of running into the chips */
+}
+
+.mod-aq-day {
+    flex: 1;
+    min-width: 0;
+    border-radius: 3px;
+    border-bottom: 3px solid var(--shadow-strong);
+    box-sizing: border-box;
+    padding-top: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-ink);
+}
+
+.mod-aq-day-d {
+    font-size: 0.45rem;
+    line-height: 9px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    color: var(--white-soft);
+}
+
+.mod-aq-day-c {
+    font-family: weathertext2, Arial, sans-serif;
+    font-size: 0.56rem;
+    line-height: 10px;
+}
+
+.mod-aq-day.today { box-shadow: inset 0 0 0 1px var(--white-soft-2); }
+/* an air-quality action day: the agency asks people to cut emissions */
+.mod-aq-day.action { box-shadow: inset 0 0 0 1px var(--accent-ink), 0 0 0 1px var(--danger); }
+
+[data-theme="light"] .mod-aq-day { border-bottom-color: var(--shadow-mid); }

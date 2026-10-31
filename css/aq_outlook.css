@@ -1,0 +1,89 @@
+/* Air Quality popout, Outlook & Cause tab (aqipopup.php, aq_outlook.php). Loaded after tokens.css. */
+
+.aqx {
+  /* AQI category colours: the dashboard's --good/--warn/--caution/--danger, --uv-purple and --purple */
+  --aqx-good: var(--green);
+  --aqx-moderate: var(--amber);
+  --aqx-usg: var(--orange);
+  --aqx-unhealthy: var(--red);
+  --aqx-vu: #a475cb;
+  --aqx-hazard: #b600b0;
+  --aqx-ink: #c5c6ca;
+  --aqx-ink-strong: #fff;
+  --aqx-head: #8fa8b8;
+  --aqx-soft: #7d8086;
+  --aqx-grid: rgba(255, 255, 255, .07);
+  --aqx-line: #e8e8e8;
+  --aqx-o3: #5fb3d9;
+  --aqx-box-bg: rgba(33, 34, 39, .6);
+  --aqx-box-line: rgba(84, 85, 86, .35);
+}
+
+.aqx--light {
+  --aqx-ink: #333;
+  --aqx-ink-strong: #111;
+  --aqx-head: #5d7a8c;
+  --aqx-soft: #777;
+  --aqx-grid: #e6e6e6;
+  --aqx-line: #333;
+  --aqx-o3: #2a8ab8;
+  --aqx-box-bg: #fff;
+  --aqx-box-line: #d6d8dc;
+}
+
+#outlook-tab.tabcontent.active {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 4px;
+  overflow-y: auto;
+}
+
+.aqx-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.aqx-box {
+  flex: 1 1 180px;
+  border: 1px solid var(--aqx-box-line);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--aqx-ink);
+  background: var(--aqx-box-bg);
+}
+
+.aqx-box.aqx-why { flex: 1.7 1 260px; }
+
+.aqx-box h4 {
+  margin: 0 0 4px;
+  font: 11px weathertext2, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--aqx-head);
+}
+
+.aqx-box b { color: var(--aqx-ink-strong); font-weight: 600; }
+
+.aqx-big { font: 18px weathertext2, Arial, sans-serif; color: var(--aqx-ink-strong); }
+.aqx-den--none   { color: var(--aqx-good); }
+.aqx-den--medium { color: var(--aqx-usg); }
+.aqx-den--heavy  { color: var(--aqx-unhealthy); }
+
+.aqx-tbl { border-collapse: collapse; width: 100%; }
+.aqx-tbl td { padding: 1px 4px; font-size: 11.5px; line-height: 1.5; white-space: nowrap; color: var(--aqx-ink); }
+.aqx-tbl td:first-child { color: var(--aqx-head); }
+
+.aqx-sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.aqx-bg--good      { background: var(--aqx-good); }
+.aqx-bg--moderate  { background: var(--aqx-moderate); }
+.aqx-bg--usg       { background: var(--aqx-usg); }
+.aqx-bg--unhealthy { background: var(--aqx-unhealthy); }
+.aqx-bg--vu        { background: var(--aqx-vu); }
+.aqx-bg--hazard    { background: var(--aqx-hazard); }
+
+.aqx-action { font-size: 10px; color: var(--aqx-unhealthy); text-transform: uppercase; letter-spacing: .3px; }
+
+.aqx-src { font: 10px Arial, Helvetica, sans-serif; color: var(--aqx-soft); margin-top: 3px; }
+
+#aqx-chart { height: 285px; flex: none; }

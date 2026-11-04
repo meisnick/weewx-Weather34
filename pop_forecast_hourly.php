@@ -200,22 +200,22 @@ for ($k = 0;$k < 12;$k++)
     {
         if ($tempunit == 'F' && $forecastTempHigh[$k] >= 82)
         {
-            echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+            echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
         }
         else if ($tempunit == 'C' && $forecastTempHigh[$k] >= 28)
         {
-            echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+            echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
         }
     }
     if ($forecastnight == 'N')
     {
         if ($tempunit == 'F' && $forecastTempHigh[$k] >= 71)
         {
-            echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+            echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
         }
         if ($tempunit == 'C' && $forecastTempHigh[$k] >= 22)
         {
-            echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+            echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
         }
     }
 

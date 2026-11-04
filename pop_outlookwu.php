@@ -1558,17 +1558,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 
@@ -1715,17 +1715,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight1 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh1 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh1 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight1 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh1 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh1 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 	//icon        
@@ -1874,17 +1874,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight2 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh2 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh2 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight2 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh2 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh2 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 	//icon        
@@ -2031,17 +2031,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight3 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh3 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh3 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight3 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh3 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh3 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 	//icon        
@@ -2187,17 +2187,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight4 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh4 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh4 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight4 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh4 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh4 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 	//icon        
@@ -2341,17 +2341,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight5 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh5 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh5 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight5 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh5 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh5 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 	//icon        
@@ -2495,17 +2495,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight6 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh6 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh6 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight6 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh6 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh6 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 echo "<div class=iconpos> ";
@@ -2649,17 +2649,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight7 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh7 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh7 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight7 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh7 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh7 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 echo "<div class=iconpos> ";
@@ -2805,17 +2805,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight8 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh8 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh8 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight8 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh8 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh8 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 echo "<div class=iconpos> ";
@@ -2960,17 +2960,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight9 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh9 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh9 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight9 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh9 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh9 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 echo "<div class=iconpos> ";
@@ -3112,17 +3112,17 @@ echo "°<spantemp>" . $tempunit . "</spantemp></tempicon>";
 	//high temp icon
 if ($wuskydaynight10 == 'D') {
 	if ($tempunit == 'F' && $wuskydayTempHigh10 >= 82) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	} else if ($tempunit == 'C' && $wuskydayTempHigh10 >= 28) {
-		echo "<img src='css/aqi/daywarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 if ($wuskydaynight10 == 'N') {
 	if ($tempunit == 'F' && $wuskydayTempHigh10 >= 71) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 	if ($tempunit == 'C' && $wuskydayTempHigh10 >= 22) {
-		echo "<img src='css/aqi/nightwarm.svg' width='40px' class='tempalerticon'> ";
+		echo "<img src='css/icons/nt_warm.svg' width='40px' class='tempalerticon'> ";
 	}
 }
 echo "<div class=iconpos> ";

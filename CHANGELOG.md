@@ -57,6 +57,10 @@ Upgrading: pull, then
   cloud every six hours, fetching only days it has not seen. Leaflet from cdnjs; no API keys.
 - Current Conditions: the night-time fog icon shows again (it pointed at `fog.night.svg`; the file is
   `fog-night.svg`).
+- Missing icons: the forecast popups' warm-day / warm-night markers (forecast highs from 82 °F by day, 71 °F at
+  night) pointed at `css/aqi/daywarm.svg` / `nightwarm.svg`, which don't exist, and now use `css/icons/warm.svg`
+  / `nt_warm.svg`; the Weather Underground forecast gains its missing icon codes (25 at night, 44 "not
+  available"); the menu's Ambient Weather link uses the generic link icon.
 - Less load on the SD card and on NOAA: the yearly chart files are rebuilt hourly instead of every five minutes
   (today's point can lag by an hour); the storm outlook fetcher asks for each of its 30 files only if it changed
   since the last run (SPC issues a few times a day, so most runs download nothing); and the fetcher logs in

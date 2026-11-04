@@ -304,7 +304,7 @@ if ($extralinks == 'yes')
     { ?>
             <li>
               <a href="https://dashboard.ambientweather.net/devices/public/<?php echo $linkAmbientWeatherID; ?>" title="Ambient Weather" target= "_blank">
-                <img class="menuimg" src="img/ambientweather.svg" alt=""/>
+                <img class="menuimg" src="img/arrow34iconlink.svg" alt=""/>
                 View on Ambient Weather
               </a>
             </li>

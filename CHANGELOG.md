@@ -55,6 +55,8 @@ Upgrading: pull, then
   clear passes to pick from and three zooms labelled with their real width, over that day's VIIRS image so the
   lake and the swath edge are not blank. `scripts/sat_passes_update.py` scores the station's tile for cover and
   cloud every six hours, fetching only days it has not seen. Leaflet from cdnjs; no API keys.
+- Current Conditions: the night-time fog icon shows again (it pointed at `fog.night.svg`; the file is
+  `fog-night.svg`).
 - Less load on the SD card and on NOAA: the yearly chart files are rebuilt hourly instead of every five minutes
   (today's point can lag by an hour); the storm outlook fetcher asks for each of its 30 files only if it changed
   since the last run (SPC issues a few times a day, so most runs download nothing); and the fetcher logs in

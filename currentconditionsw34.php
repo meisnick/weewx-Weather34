@@ -58,7 +58,7 @@ if($weather["rain_rate"]>0 && $weather["wind_speed_avg"]>15){echo "<img rel='pre
 else if($weather["rain_rate"]>=$rr_heavy){echo "<img rel='prefetch' src='css/svg/10.svg' width='70px' height='60px' alt='weather34 heavy rain icon'>";}
 else if($weather["rain_rate"]>0){echo "<img rel='prefetch' src='css/svg/09.svg' width='70px' height='60px' alt='weather34 rain icon'>";}
 //fog-weather34
-else if($dp_spread <$mist_spread  && $dayPartNatural == "night" && $weather["temp"]>$fog_above){echo "<img rel='prefetch' src='css/svg/fog.night.svg' width='70px' height='60px' alt='weather34 fog icon'>";}
+else if($dp_spread <$mist_spread  && $dayPartNatural == "night" && $weather["temp"]>$fog_above){echo "<img rel='prefetch' src='css/svg/fog-night.svg' width='70px' height='60px' alt='weather34 fog icon'>";}
 else if($dp_spread <$mist_spread  && $weather["temp"]>$fog_above){echo "<img rel='prefetch' src='css/svg/fog.svg' width='70px' height='60px' alt='weather34 fog'>";}
 //windy moderate-weather34
 else if($weather["wind_speed_avg"]>=15 && $dayPartNatural == "night" && $weather["cloud_cover"]<20){echo "<img rel='prefetch' src='css/svg/01nw.svg' width='70px' height='60px' alt='weather34 windy icon'>";}

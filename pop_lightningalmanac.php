@@ -70,7 +70,7 @@ a{color:var(--pop-link);text-decoration:none;}
 
 <main class="grid1">
   <articlegraph>
-    <iframe src="w34highcharts/<?php echo $theme1; ?>-charts.html?chart=strikesmallplot&span=yearly&temp=<?php echo $weather['temp_units']; ?>&pressure=<?php echo $weather['barometer_units']; ?>&wind=<?php echo $weather['wind_units']; ?>&rain=<?php echo $weather['rain_units']; ?>&height=380" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+    <iframe src="w34highcharts/<?php echo $theme1; ?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=strikesmallplot&span=yearly&temp=<?php echo $weather['temp_units']; ?>&pressure=<?php echo $weather['barometer_units']; ?>&wind=<?php echo $weather['wind_units']; ?>&rain=<?php echo $weather['rain_units']; ?>&height=380" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </articlegraph>
   <div class="lotemp">
     <a href="https://highcharts.com" title="https://highcharts.com" target="_blank" style="color:inherit;text-decoration:none;font-size:8px;"><?php echo w34t('ChartsUsingHighcharts', 'Charts rendered using Highcharts.'); ?></a>

@@ -95,15 +95,15 @@ body {
 </div>
   
 <div id="Tab2" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=rainplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=rainplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
  
 <div id="Tab3" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=rainmonthplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=rainmonthplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab4" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=rainplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=rainplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <script>

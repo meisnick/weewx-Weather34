@@ -34,7 +34,7 @@ else echo '<trendmovementsteadyx><valuetext>Trend '.$steadysymbol.'Steady</value
 <div class="mod-gauge-ring"><div class="mod-gauge-ring-content">
 <?php 
 echo "<valuetextheading1>".$lang['Apparent']."</valuetextheading1>";?>
-<a alt="weekly apparent" title="weekly apparent" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='apparentplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
+<a alt="weekly apparent" title="weekly apparent" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='apparentplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php  //apparent temp
      if(anyToC($weather["apptemp"])>=40){echo "<div class=tempconverter1><div class=tempmodulehome40-50c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["apptemp"])>=35){echo "<div class=tempconverter1><div class=tempmodulehome35-40c>".$weather["apptemp"]."&deg;<smalltempunit2>".$weather["temp_units"];}
@@ -63,7 +63,7 @@ else if (anyToC($weather["temp_avgtoday"])>-10){echo "<div class=tempconverter1>
 else if (anyToC($weather["temp_avgtoday"])>-50){echo "<div class=tempconverter1><div class=tempmodulehome-50-10c>".$weather["temp_avgtoday"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 ?></smalltempunit2></div></div></div></div>
 <div class="mod-gauge-ring--3"><div class="mod-gauge-ring-content"><valuetextheading1><?php echo $lang['Humidity']?></valuetextheading1>
-<a alt="weekly humidity" title="weekly humidity" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='humidityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
+<a alt="weekly humidity" title="weekly humidity" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='humidityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //humidity
      if ($weather["humidity"]>90){echo "<div class=tempconverter1><div class=temphumcircle80-100>".$weather["humidity"];}
 else if ($weather["humidity"]>70){echo "<div class=tempconverter1><div class=temphumcircle60-80>".$weather["humidity"];}
@@ -73,7 +73,7 @@ else if ($weather["humidity"]<=25){echo "<div class=tempconverter1><div class=te
 <?php //humidity trend
 if($weather["humidity_trend"]>0){echo '&nbsp;'.$risingsymbol;}else if($weather["humidity_trend"]<0){echo '&nbsp;'.$fallingsymbol;}else{ echo '';}?></a></div></div></div></div>
 <div class="mod-gauge-ring--4"><div class="mod-gauge-ring-content"><valuetextheading1><?php echo $lang['Dewpoint']?></valuetextheading1>
-<a alt="weekly dewpoint" title="weekly dewpoint" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='dewpointplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
+<a alt="weekly dewpoint" title="weekly dewpoint" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='dewpointplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php //dewpoint
      if(anyToC($weather["dewpoint"])>21) {echo "<div class=tempconverter1><div class=tempmodulehome25-30c>&nbsp;".$weather['dewpoint'].'&deg;<smalltempunit2>'.$weather["temp_units"];}
 else if(anyToC($weather["dewpoint"])>=20){echo "<div class=tempconverter1><div class=tempmodulehome20-25c>&nbsp;".$weather['dewpoint'].'&deg;<smalltempunit2>'.$weather["temp_units"];}
@@ -107,7 +107,7 @@ else if(anyToC($weather["temp"])<100){echo "<div class=tempconvertercircle50>".(
 </div>
 <div class="tempindoorextra1">
 <valuetextheading2><?php echo $lang['Heatindex']?></valuetextheading1>
-<a alt="weekly heatindex" title="weekly derivedtemp" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='tempderivedplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
+<a alt="weekly heatindex" title="weekly derivedtemp" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='tempderivedplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php  //HeatIndex
      if(anyToC($weather["heatindex"])>=25){echo "<div class=tempmodulehome40-50c>".$weather["heatindex"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["heatindex"])>=35){echo "<div class=tempmodulehome35-40c>".$weather["heatindex"]."&deg;<smalltempunit2>".$weather["temp_units"];}
@@ -123,7 +123,7 @@ else if(anyToC($weather["heatindex"])>-50){echo "<div class=tempmodulehome-50-10
 ?></smalltempunit2></a></div></div>
 <div class="tempindoorextra2">
 <valuetextheading2><?php echo $lang['Windchill']?></valuetextheading1>
-<a alt="weekly windchill" title="weekly derivedtemp" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart='tempderivedplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
+<a alt="weekly windchill" title="weekly derivedtemp" href="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='tempderivedplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units']?>" data-lity > 
 <?php  //HeatIndex
      if(anyToC($weather["windchill"])>=25){echo "<div class=tempmodulehome40-50c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}
 else if(anyToC($weather["windchill"])>=35){echo "<div class=tempmodulehome35-40c>".$weather["windchill"]."&deg;<smalltempunit2>".$weather["temp_units"];}

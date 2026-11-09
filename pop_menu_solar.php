@@ -106,19 +106,19 @@ body {
 </div>
 
 <div id="Tab4" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=uvplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=uvplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab5" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=uvplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=uvplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab6" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=radiationplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=radiationplot&span=yearly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <div id="Tab7" class="tabcontent">
-  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?chart=radiationplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
+  <iframe scrolling="no" data-src="<?php echo $chartsource;?>/<?php echo $theme1;?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart=radiationplot&span=weekly&temp=<?php echo $weather['temp_units'];?>&pressure=<?php echo $weather['barometer_units'];?>&wind=<?php echo $weather['wind_units'];?>&rain=<?php echo $weather['rain_units'];?>" frameborder="0"></iframe>
 </div>
 
 <script>

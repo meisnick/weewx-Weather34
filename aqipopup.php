@@ -92,14 +92,14 @@ list($aqx_aqi, $aqx_dom) = aqx_now();
 <!-- TAB 2: HISTORICAL TRENDS HIGHCHART (loaded when first opened) -->
 <div id="historical-tab" class="tabcontent">
   <div class="chart-container">
-    <iframe data-src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+    <iframe data-src="w34highcharts/<?php echo $theme; ?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='airqualityplot'&span='weekly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </div>
 </div>
 
 <!-- TAB 3: YEARLY HIGHCHART (loaded when first opened) -->
 <div id="yearly-tab" class="tabcontent">
   <div class="chart-container">
-    <iframe data-src="w34highcharts/<?php echo $theme; ?>-charts.html?chart='airqualityplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+    <iframe data-src="w34highcharts/<?php echo $theme; ?>-charts.html?v=<?php echo @filemtime('w34highcharts/scripts/plots.js'); ?>&chart='airqualityplot'&span='yearly'&temp='<?php echo $weather['temp_units'];?>'&pressure='<?php echo $weather['barometer_units'];?>'&wind='<?php echo $weather['wind_units'];?>'&rain='<?php echo $weather['rain_units'];?>'&height='410'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
   </div>
 </div>
 <style>#yearly-tab.tabcontent.active { display: flex; flex-direction: column; }</style>

@@ -10,7 +10,7 @@ if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'da
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <?php
 //###################################################################################################################
 //	weewx-Weather34 fork maintained by meisnick, based on the WeeWX skin by Ian Millard (Steepleian)    #

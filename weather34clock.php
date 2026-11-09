@@ -28,7 +28,7 @@ $_months   = array_map('w34_datetext', array("Jan","Feb","Mar","Apr","May","Jun"
     <div class="center"></div>
   </div>
 </div><!-- /mod-clock -->
-<script src="js/w34time.js"></script>
+<script src="js/w34time.js?version=<?php echo @filemtime('js/w34time.js'); ?>"></script>
 <script>
 (function() {
   if (window._clockHandsTimer) { clearInterval(window._clockHandsTimer); }

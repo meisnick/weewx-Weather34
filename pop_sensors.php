@@ -92,7 +92,7 @@ foreach ($lines as $line) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GW1000 Sensor Status</title>
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <style>
 body{margin:8px 44px 8px 8px;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;color:silver;background-color:var(--pop-bg)}
 [data-theme="light"] body{color:#333}

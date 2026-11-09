@@ -7,7 +7,7 @@ $theme = (isset($_GET['theme']) && $_GET['theme'] === 'light') ? 'light' : 'dark
 <head>
 <meta charset="utf-8">
 <title><?php echo w34t('LiveRadar', 'Live Radar'); ?></title>
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:var(--radar-black);}

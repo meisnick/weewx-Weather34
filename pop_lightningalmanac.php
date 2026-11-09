@@ -22,7 +22,7 @@ if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'da
   <meta charset="UTF-8">
   <title><?php echo w34t('LinkStrikeAlmanac', 'Strike Almanac'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype");}
 html,body{font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:var(--pop-bg);color:var(--pop-ink);margin:0;padding:4px;overflow:hidden;}

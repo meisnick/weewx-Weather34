@@ -156,7 +156,7 @@ FCLOSE($fp);
         <link href="favicon.ico" rel="icon" type="image/x-icon">
         <script src="js/jquery.js?v=3.7.1"></script>
         <script src="js/lity.js?v=2.3.1"></script>
-        <link href="css/templateSetup.css" rel="stylesheet prefetch">
+        <link href="css/templateSetup.css?version=<?php echo @filemtime('css/templateSetup.css'); ?>" rel="stylesheet prefetch">
         <?php if ($theme === "dark"): ?>
         <style>
             body { background: #1b1c20 !important; color: #aaa; }

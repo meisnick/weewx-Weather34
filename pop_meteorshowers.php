@@ -32,7 +32,7 @@ $meteorinfo3="<svg width='22px' height='22px' viewBox='0 0 16 16'><path fill='da
   <meta charset="UTF-8">
   <title><?php echo w34t('MeteorShowers', 'Meteor Showers'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
 @font-face{font-family:weathertext;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}
 html,body{background-color:var(--pop-bg);margin:0;padding:0;font-size:13px;font-family:"weathertext",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--pop-ink);}

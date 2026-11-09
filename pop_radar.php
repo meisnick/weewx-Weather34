@@ -7,7 +7,7 @@ if (isset($_GET['theme'])) {
 <html lang="<?php echo w34_html_lang(); ?>" data-theme="<?php echo htmlspecialchars($theme); ?>">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}

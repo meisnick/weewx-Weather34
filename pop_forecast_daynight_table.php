@@ -20,7 +20,7 @@ $forecastTime[0] = "0";
   <meta charset="UTF-8">
   <title>Day Night Forecast</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
   html, body { height: auto; }
   body { margin: 0 !important; padding: 0 10px 10px !important; background: var(--pop-bg) !important; color: var(--pop-ink); font-family: Arial, Helvetica, sans-serif; }

@@ -46,7 +46,7 @@ if ($_issued) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo $lang['NwsWeatherAlerts']; ?></title>
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <style>
 :root, [data-theme="dark"] {
   --nws-bg: rgba(30,33,36,1);

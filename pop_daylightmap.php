@@ -7,7 +7,7 @@ if (isset($_GET['theme'])) { $theme = $_GET['theme'] === 'light' ? 'light' : 'da
   <meta charset="UTF-8">
   <title><?php echo w34t('DaylightMapTitle', 'Equirectangular Projection World Daylight Map'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {

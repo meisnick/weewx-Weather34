@@ -27,7 +27,7 @@ $iconset = "icon";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery.js?v=3.7.1"></script>
   <script src="js/lity.js?v=2.3.1"></script>
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(css/fonts/verbatim-regular.woff2) format("woff2"),url(css/fonts/verbatim-regular.ttf) format("truetype")}
 html,body{background-color:var(--pop-bg);margin:0;padding:0;font-size:13px;font-family:"weathertext2",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--pop-ink);}

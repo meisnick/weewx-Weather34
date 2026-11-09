@@ -21,7 +21,7 @@ if (isset($_GET['theme'])) {
   <meta charset="UTF-8">
   <title><?php echo w34t('AerisWeatherAlerts', 'AerisWeather Alerts'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <link href="css/popup.<?php echo $theme; ?>.css?version=<?php echo filemtime('css/popup.' . $theme . '.css'); ?>" rel="stylesheet prefetch">
   <style>
     body { height: auto; overflow: auto; padding: 10px 44px 10px 15px; }

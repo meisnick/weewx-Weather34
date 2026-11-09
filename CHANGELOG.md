@@ -58,6 +58,12 @@ Upgrading: pull, then
 - Weekly charts' RT (live) button: the live view kept the whole week's axis, so the live line sat squeezed at the
   right edge (rain's ET series held it open too), and it removed the range buttons, leaving no way back but the
   menu's Reload. It now zooms to the live window (12 hours; rain 4) and shows RT and All, which returns to the week.
+- Updates reach browsers at once: a browser could keep running an old chart script for days, because the static
+  chart page and its scripts carried no caching rule and browsers guessed them fresh. The chart popouts now open the
+  chart page under the chart script's file time; the popups' `tokens.css`, the clock's `w34time.js` and the
+  settings page's CSS are versioned by file time like the dashboard's own stylesheets; and Apache serves the chart
+  and daylight-map pages, scripts and styles as `no-cache` (`scripts/system/weather34-nocache.conf`; re-copy it, or
+  on prod mirror its blocks in the vhost).
 - Current Conditions: the night-time fog icon shows again (it pointed at `fog.night.svg`; the file is
   `fog-night.svg`).
 - Missing icons: the forecast popups' warm-day / warm-night markers (forecast highs from 82 °F by day, 71 °F at

@@ -28,7 +28,7 @@ $alert="<svg id='firealert' viewBox='0 0 32 32' width='18px' height='18px' fill=
   <meta charset="UTF-8">
   <title>Weather34 Air Quality</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
   <style>
 @font-face{font-family:weathertext2;src:url(css/fonts/verbatim-regular.woff) format("woff"),url(fonts/verbatim-regular.woff2) format("woff2"),url(fonts/verbatim-regular.ttf) format("truetype")}
 body,html{background-color:var(--pop-bg);font-size:13px;font-family:weathertext2,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--pop-ink);margin:0;padding:0;}

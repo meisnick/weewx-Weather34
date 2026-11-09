@@ -140,7 +140,7 @@ $south_json = json_encode($south_pts);
   <meta charset="UTF-8">
   <title><?php echo $lang['SpaceWeather']; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tokens.css?version=<?php echo @filemtime('css/tokens.css'); ?>">
 <style>
 :root {
   --aurora-bg: var(--page-bg);

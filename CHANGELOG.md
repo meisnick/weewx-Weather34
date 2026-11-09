@@ -55,6 +55,9 @@ Upgrading: pull, then
   clear passes to pick from and three zooms labelled with their real width, over that day's VIIRS image so the
   lake and the swath edge are not blank. `scripts/sat_passes_update.py` scores the station's tile for cover and
   cloud every six hours, fetching only days it has not seen. Leaflet from cdnjs; no API keys.
+- Weekly charts' RT (live) button: the live view kept the whole week's axis, so the live line sat squeezed at the
+  right edge (rain's ET series held it open too), and it removed the range buttons, leaving no way back but the
+  menu's Reload. It now zooms to the live window (12 hours; rain 4) and shows RT and All, which returns to the week.
 - Current Conditions: the night-time fog icon shows again (it pointed at `fog.night.svg`; the file is
   `fog-night.svg`).
 - Missing icons: the forecast popups' warm-day / warm-night markers (forecast highs from 82 °F by day, 71 °F at

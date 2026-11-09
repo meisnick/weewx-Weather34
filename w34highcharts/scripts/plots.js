@@ -445,6 +445,17 @@ function plot_js(units, ptype, span, plt_div, dplots = false, cdates = false, re
 	        rangeSelector: {enabled: false}
 	    });
 	};
+
+	// live mode keeps a selector, so there is a way back: RT (lit, the mode you are in) and All, the week again
+	function show_realtime_selector(chart, units){
+	    chart.update({
+	        rangeSelector: {enabled: true, inputEnabled: false, selected: 0, buttons: [
+	            {type: 'all', text: getTranslation("RT"), events: {click: function (e) {return false}}},
+	            {type: 'all', text: getTranslation("All"), events: {click: function (e) {
+	                setTimeout(display_chart, 0, units, plot_type, ['weekly'], plot_div, false, false, reload_plot_type+":"+reload_span, false);
+	                return false}}}]}
+	    });
+	};
 	
 	function add_realtime_button(units,plot_type){
 	    if (auto_update) return;
@@ -2008,10 +2019,19 @@ function create_chart_options(options, type, title, valueSuffix, values, first_l
 	                postcreatefunctions[plot_type][i](chart);
 	        if (do_realtime || do_radial){
 	            if (do_realtime && (plot_type != 'windroseplot' && plot_type != 'windrosegustplot'))
-	                remove_range_selector(chart);
-	            if (do_realtime){ 
+	                show_realtime_selector(chart, units);
+	            if (do_realtime){
 	                for (var j =0; j < realtimeplot[plot_type][0].length; j++)
 	                    chart.series[j].setData(options.series[j].data.slice(-realtimeinterval*realtimeXscaleFactor));
+	                if (plot_type != 'windroseplot' && plot_type != 'windrosegustplot'){
+	                    // series with no live feed (rain's ET) are cut to the same window, or their week holds the axis open
+	                    var px = function (p) {return Array.isArray(p) ? p[0] : (p != null ? p.x : null)};
+	                    var t0 = px((options.series[0].data.slice(-realtimeinterval*realtimeXscaleFactor) || [])[0]);
+	                    for (var j = realtimeplot[plot_type][0].length; t0 != null && j < options.series.length; j++)
+	                        if (chart.series[j] && Array.isArray(options.series[j].data))
+	                            chart.series[j].setData(options.series[j].data.filter(function (p) {return px(p) >= t0}));
+	                    chart.xAxis[0].setExtremes(null, null);   // the axis still spanned the week the trimmed data came from
+	                }
 	                timer2 = setInterval(do_realtime_update, (realtimeplot[plot_type][0].length == 0 ? realtimeplot[plot_type][4]*1000 : realtimeinterval*1000), chart, plot_type, units);
 	            }
 	            return;
